@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClInclude Include="GameEngineCore.h" />
+    <ClInclude Include="GameEngineActor.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineLevel.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineResources.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineRender.h">
+      <Filter>Object\Rendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineObject.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineCollision.h">
+      <Filter>Object\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineComponent.h">
+      <Filter>Object</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Object\BasicContents\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="NumberRenderObject.h">
+      <Filter>Object\BasicContents\SubClass</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTileMap.h">
+      <Filter>Object\BasicContents\Actor</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameEngineCore.cpp" />
+    <ClCompile Include="GameEngineActor.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineLevel.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineResources.cpp">
+      <Filter>Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineRender.cpp">
+      <Filter>Object\Rendering</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineObject.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineCollision.cpp">
+      <Filter>Object\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineComponent.cpp">
+      <Filter>Object</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Object\BasicContents\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="NumberRenderObject.cpp">
+      <Filter>Object\BasicContents\SubClass</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTileMap.cpp">
+      <Filter>Object\BasicContents\Actor</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Object">
+      <UniqueIdentifier>{61da20f2-294b-4815-92ca-64566381bc26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{cb8b7483-77a1-440c-8145-8b00a4990342}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Rendering">
+      <UniqueIdentifier>{9ff5ea44-4985-468d-a75e-87b94cde0ce8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\Collision">
+      <UniqueIdentifier>{e42c7004-1254-46e3-a8b8-e00e515e7d88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\BasicContents">
+      <UniqueIdentifier>{4c917027-b982-4fdb-af2c-df854bd34bce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\BasicContents\Actor">
+      <UniqueIdentifier>{1992c65c-a2cf-4f6c-a88d-ff71a170b8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Object\BasicContents\SubClass">
+      <UniqueIdentifier>{da6e728d-cbba-4945-a70c-26aa6e2d8e22}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
