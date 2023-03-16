@@ -8,3 +8,7 @@ PokeDataBase::~PokeDataBase()
 {
 }
 
+void PokeCreate()
+{
+
+}
