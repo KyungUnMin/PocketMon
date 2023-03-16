@@ -12,7 +12,11 @@ PokeDataBase::~PokeDataBase()
 
 void PokeDataBase::PokeCreate(PokeNumber _Number, int _Level)
 {
-	PokeDexNumber = _Number;
+	int ChangePokeNumber = 0;
+	ChangePokeNumber = static_cast<int>(_Number) - 1;
+
+	PokeDexNumber = static_cast<PokeNumber>(ChangePokeNumber);
+
 	switch (PokeDexNumber)
 	{
 	case PokeNumber::Bulbasaur:
@@ -115,12 +119,15 @@ PokePersonality PokeDataBase::PersonalityDecision()
 	Personality = static_cast<PokePersonality>(RandValue);
 }
 
+//////////////////////////////////////////////////////////////// ÇªÅ°¸Õ
+
 void PokeDataBase::BulbasaurData(int _Level)
 {
 	GenderDecision();
 	PersonalityDecision();
 	Type = PokeType::Grass;
 	Characteristic = PokeCharacteristic::½É·Ï;
+	PokeDexNumber = PokeNumber::Bulbasaur;
 	
 	HealthPoint = 20;
 	AttackPower = 15;
@@ -148,6 +155,7 @@ void PokeDataBase::CharmanderData(int _Level)
 	PersonalityDecision();
 	Type = PokeType::Fire;
 	Characteristic = PokeCharacteristic::¸ÍÈ­;
+	PokeDexNumber = PokeNumber::Charmander;
 
 	HealthPoint = 25;
 	AttackPower = 12;
@@ -175,6 +183,7 @@ void PokeDataBase::SquirtleData(int _Level)
 	PersonalityDecision();
 	Type = PokeType::Water;
 	Characteristic = PokeCharacteristic::±Þ·ù;
+	PokeDexNumber = PokeNumber::Squirtle;
 
 	HealthPoint = 30;
 	AttackPower = 10;
