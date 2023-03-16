@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CenterActor.h">
       <SubType>
       </SubType>
@@ -45,6 +49,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
     <ClCompile Include="Fieldmap.cpp" />

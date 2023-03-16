@@ -37,6 +37,9 @@
     <Filter Include="Map\Class">
       <UniqueIdentifier>{aeea3e88-fe91-4dd8-ae84-3226a4709a09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Battle\01.Level">
+      <UniqueIdentifier>{748ba1ac-6a06-45db-bfca-ac5a0d6bd137}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -63,6 +66,9 @@
     <ClInclude Include="FieldmapLevel.h">
       <Filter>Map\Level</Filter>
     </ClInclude>
+    <ClInclude Include="BattleLevel.h">
+      <Filter>Battle\01.Level</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -82,6 +88,9 @@
     </ClCompile>
     <ClCompile Include="FieldmapLevel.cpp">
       <Filter>Map\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Battle\01.Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
