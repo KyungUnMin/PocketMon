@@ -39,25 +39,9 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TestActor.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TestActor.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
       <SubType>
       </SubType>
     </ClCompile>
