@@ -59,6 +59,8 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h">
       <SubType>
       </SubType>
@@ -90,6 +92,9 @@
     <ClCompile Include="Fieldmap.cpp" />
     <ClCompile Include="FieldmapLevel.cpp" />
     <ClCompile Include="int2.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>
