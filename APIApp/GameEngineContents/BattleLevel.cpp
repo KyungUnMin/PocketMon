@@ -1,4 +1,5 @@
 #include "BattleLevel.h"
+#include "BattleBackGround.h"
 #include "BattlePlayer.h"
 #include "BattleNPC.h"
 
@@ -16,7 +17,7 @@ BattleLevel::~BattleLevel()
 
 void BattleLevel::Loading()
 {
-	
+	CreateActor<BattleBackGround>();
 }
 
 void BattleLevel::Update(float _DeltaTime)

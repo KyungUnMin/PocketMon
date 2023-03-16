@@ -145,6 +145,13 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="int2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Fieldmap.h">
+      <Filter>Map\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="LetterRenderObject.h">
       <Filter>FieldUI\BaseUI</Filter>
     </ClInclude>

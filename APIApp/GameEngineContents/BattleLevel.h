@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class GameEngineRender;
+
 class BattleLevel : public GameEngineLevel
 {
 public:
@@ -21,7 +23,8 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
 private:
-
+	GameEngineRender* FadeDownRender = nullptr;
+	GameEngineRender* FadeUpRender = nullptr;
 
 };
 

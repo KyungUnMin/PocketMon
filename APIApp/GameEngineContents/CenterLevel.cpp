@@ -24,6 +24,11 @@ void CenterLevel::Loading()
 	Dir.Move("Image");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Combat_TextFrame.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\FadeDown.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\FadeUp.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\TrainerGround.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleBackGround.bmp"));
+
 
 	{
 		Dir.Move("Plyer_YDM");
