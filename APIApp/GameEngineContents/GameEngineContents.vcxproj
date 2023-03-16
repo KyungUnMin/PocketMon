@@ -20,6 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="PokeSkillBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="BattleBackGround.h">
       <SubType>
@@ -86,6 +91,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="PokeSkillBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="BattleBackGround.cpp">
       <SubType>
