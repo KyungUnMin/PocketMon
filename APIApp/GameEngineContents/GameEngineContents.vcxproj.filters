@@ -12,12 +12,6 @@
     <ClInclude Include="PocketMonCore.h">
       <Filter>01.GameCore</Filter>
     </ClInclude>
-    <ClInclude Include="TestActor.h">
-      <Filter>CenterLevel</Filter>
-    </ClInclude>
-    <ClInclude Include="TestLevel.h">
-      <Filter>CenterLevel</Filter>
-    </ClInclude>
     <ClInclude Include="CenterLevel.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
@@ -28,12 +22,6 @@
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
       <Filter>01.GameCore</Filter>
-    </ClCompile>
-    <ClCompile Include="TestActor.cpp">
-      <Filter>CenterLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
-      <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterLevel.cpp">
       <Filter>CenterLevel</Filter>

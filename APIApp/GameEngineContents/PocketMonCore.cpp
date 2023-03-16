@@ -1,7 +1,6 @@
 #include "PocketMonCore.h"
 
 #include "CenterLevel.h"
-#include "TestLevel.h"
 
 PocketMonCore PocketMonCore::Core;
 
@@ -19,8 +18,7 @@ void PocketMonCore::Start()
 {
 	bool* FOR_DEBUG = new bool;
 
-	CreateLevel<TestLevel>("TestLevel");
-	CreateLevel<CenterLevel>("CenterLevel");
+	CreateLevel<CenterLevel>("CenterLesvel");
 
 	ChangeLevel("CenterLevel");
 }
