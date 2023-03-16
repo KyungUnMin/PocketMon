@@ -18,146 +18,10 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="BackTextActor.h" />
-    <ClInclude Include="FieldDialog.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="PokeSkillBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="FriendlyHPBackground.h" />
-    <ClInclude Include="TestScript.h" />
-    <ClInclude Include="BattleBackGround.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleNPC.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattlePlayer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleTrainerBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="CenterActor.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="CenterLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="ContentsEnum.h" />
-    <ClInclude Include="Fieldmap.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="FieldmapLevel.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="FieldmapRender.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="FirstSetLevel.h" />
-    <ClInclude Include="int2.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerTestLevel.h" />
-    <ClInclude Include="PocketMonCore.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="TextTestLevel.h" />
-    <ClInclude Include="PokeDataBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="BackTextActor.cpp" />
-    <ClCompile Include="FieldDialog.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="PokeSkillBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="FriendlyHPBackground.cpp" />
-    <ClCompile Include="TestScript.cpp" />
-    <ClCompile Include="BattleBackGround.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleNPC.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattlePlayer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleTrainerBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="CenterActor.cpp" />
-    <ClCompile Include="CenterLevel.cpp" />
-    <ClCompile Include="Fieldmap.cpp" />
-    <ClCompile Include="FieldmapLevel.cpp" />
-    <ClCompile Include="FieldmapRender.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="FirstSetLevel.cpp" />
-    <ClCompile Include="int2.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerState.cpp" />
-    <ClCompile Include="PlayerTestLevel.cpp" />
-    <ClCompile Include="PocketMonCore.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TextTestLevel.cpp" />
-    <ClCompile Include="PokeDataBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
-      <Project>{a6e9bfee-96ec-4fc9-9219-12202f5126cc}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\GameEngineCore\GameEngineCore.vcxproj">
-      <Project>{4235d360-1c2a-445e-978e-19835add99a7}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\GameEnginePlatform\GameEnginePlatform.vcxproj">
-      <Project>{012509bd-0610-46f2-bcef-076c0828d24f}</Project>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{dd304768-7ea1-403d-895d-a7a6dcc97275}</ProjectGuid>
+    <ProjectGuid>{6b760d57-60d9-4161-a9e7-3a563b2ecd97}</ProjectGuid>
     <RootNamespace>GameEngineContents</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -166,27 +30,27 @@
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -207,26 +71,24 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);;..\;</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(SolutionDir)Bin\$(Platform)\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);..\;</IncludePath>
-    <LibraryPath>$(VC_LibraryPath_x64);$(WindowsSDK_LibraryPath_x64);;..\;</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -292,6 +154,61 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="BattleBackGround.cpp" />
+    <ClCompile Include="BattleLevel.cpp" />
+    <ClCompile Include="BattleNPC.cpp" />
+    <ClCompile Include="BattlePlayer.cpp" />
+    <ClCompile Include="BattleTrainerBase.cpp" />
+    <ClCompile Include="CenterActor.cpp" />
+    <ClCompile Include="CenterLevel.cpp" />
+    <ClCompile Include="FieldDialog.cpp" />
+    <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="FieldmapLevel.cpp" />
+    <ClCompile Include="FieldmapRender.cpp" />
+    <ClCompile Include="FirstSetLevel.cpp" />
+    <ClCompile Include="FriendlyHPBackground.cpp" />
+    <ClCompile Include="int2.cpp" />
+    <ClCompile Include="NPC1.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="PlayerTestLevel.cpp" />
+    <ClCompile Include="PocketMonCore.cpp" />
+    <ClCompile Include="PokeDataBase.cpp" />
+    <ClCompile Include="PokeSkillBase.cpp" />
+    <ClCompile Include="TestScript.cpp" />
+    <ClCompile Include="TextTestLevel.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="BattleBackGround.h" />
+    <ClInclude Include="BattleLevel.h" />
+    <ClInclude Include="BattleNPC.h" />
+    <ClInclude Include="BattlePlayer.h" />
+    <ClInclude Include="BattleTrainerBase.h" />
+    <ClInclude Include="CenterActor.h" />
+    <ClInclude Include="CenterLevel.h" />
+    <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="ContentsEnums.h" />
+    <ClInclude Include="FieldDialog.h" />
+    <ClInclude Include="Fieldmap.h" />
+    <ClInclude Include="FieldmapLevel.h" />
+    <ClInclude Include="FieldmapRender.h" />
+    <ClInclude Include="FirstSetLevel.h" />
+    <ClInclude Include="FriendlyHPBackground.h" />
+    <ClInclude Include="int2.h" />
+    <ClInclude Include="NPC1.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerTestLevel.h" />
+    <ClInclude Include="PocketMonCore.h" />
+    <ClInclude Include="PokeDataBase.h" />
+    <ClInclude Include="PokeSkillBase.h" />
+    <ClInclude Include="TestScript.h" />
+    <ClInclude Include="TextTestLevel.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

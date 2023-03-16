@@ -14,7 +14,7 @@ BackGround::~BackGround()
 void BackGround::Start() 
 {
 	{
-		GameEngineRender* AnimationRender = CreateRender(BubbleRenderOrder::BackGround);
+		GameEngineRender* AnimationRender = CreateRender(RenderOrder::Background);
 		AnimationRender->SetPosition(GameEngineWindow::GetScreenSize().half());
 		AnimationRender->SetScale(GameEngineWindow::GetScreenSize());
 		AnimationRender->CreateAnimation({ .AnimationName = "Loop",  .ImageName = "BackGround.bmp", .Start = 0, .End = 2, .InterTime = 0.5f });

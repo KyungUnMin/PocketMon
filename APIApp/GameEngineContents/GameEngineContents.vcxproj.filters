@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="CenterActor.cpp" />
+    <ClCompile Include="CenterLevel.cpp" />
+    <ClCompile Include="FriendlyHPBackground.cpp" />
+    <ClCompile Include="NPC1.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp" />
+    <ClCompile Include="TestScript.cpp" />
+    <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="int2.cpp">
-      <Filter>Base</Filter>
-    </ClCompile>
-    <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="Fieldmap.cpp">
@@ -17,71 +25,49 @@
     <ClCompile Include="FieldmapRender.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="CenterLevel.cpp">
-      <Filter>Level</Filter>
+    <ClCompile Include="PokeSkillBase.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="CenterActor.cpp">
-      <Filter>Level\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="BackTextActor.cpp">
-      <Filter>BattleUI</Filter>
-    </ClCompile>
-    <ClCompile Include="TextTestLevel.cpp">
-      <Filter>BattleUI</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Player\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerState.cpp">
-      <Filter>Player\Player</Filter>
-    </ClCompile>
-    <ClCompile Include="PlayerTestLevel.cpp">
-      <Filter>Player\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleLevel.cpp">
-      <Filter>Battle\01.Level</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleBackGround.cpp">
-      <Filter>Battle\02.Actor\01.BackGround</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleTrainerBase.cpp">
-      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
-    </ClCompile>
-    <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleNPC.cpp">
-      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
-    </ClCompile>
-    <ClCompile Include="FirstSetLevel.cpp">
-      <Filter>FieldUI</Filter>
-    </ClCompile>
-    <ClCompile Include="TestScript.cpp">
-      <Filter>BattleUI</Filter>
+    <ClCompile Include="PokeDataBase.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp">
       <Filter>FieldUI</Filter>
     </ClCompile>
-    <ClCompile Include="TestScript.cpp">
-      <Filter>BattleUI</Filter>
+    <ClCompile Include="FirstSetLevel.cpp">
+      <Filter>FieldUI</Filter>
     </ClCompile>
-    <ClCompile Include="PokeSkillBase.cpp">
-      <Filter>Base</Filter>
+    <ClCompile Include="BattleBackGround.cpp">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
     </ClCompile>
-    <ClCompile Include="FriendlyHPBackground.cpp">
-      <Filter>BattleUI</Filter>
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Battle\01.Level</Filter>
     </ClCompile>
-    <ClCompile Include="NPC1.cpp">
-      <Filter>Player\NPC\NPC1</Filter>
+    <ClCompile Include="BattlePlayer.cpp">
+      <Filter>Battle\02.Actor\02.Trainer\02.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTrainerBase.cpp">
+      <Filter>Battle\02.Actor\02.Trainer\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleNPC.cpp">
+      <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="CenterActor.h" />
+    <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="FriendlyHPBackground.h" />
+    <ClInclude Include="NPC1.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h" />
+    <ClInclude Include="TestScript.h" />
+    <ClInclude Include="TextTestLevel.h" />
+    <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="int2.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="PokeDataBase.h">
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="Fieldmap.h">
@@ -93,145 +79,76 @@
     <ClInclude Include="FieldmapRender.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="CenterLevel.h">
-      <Filter>Level</Filter>
+    <ClInclude Include="PokeSkillBase.h">
+      <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="CenterActor.h">
-      <Filter>Level\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="BackTextActor.h">
-      <Filter>BattleUI</Filter>
-    </ClInclude>
-    <ClInclude Include="TextTestLevel.h">
-      <Filter>BattleUI</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Player\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="PlayerTestLevel.h">
-      <Filter>Player\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleLevel.h">
-      <Filter>Battle\01.Level</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleBackGround.h">
-      <Filter>Battle\02.Actor\01.BackGround</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleTrainerBase.h">
-      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
-    </ClInclude>
-    <ClInclude Include="BattlePlayer.h">
-      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleNPC.h">
-      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
-    </ClInclude>
-    <ClInclude Include="FirstSetLevel.h">
-      <Filter>FieldUI</Filter>
-    </ClInclude>
-    <ClInclude Include="TestScript.h">
-      <Filter>BattleUI</Filter>
+    <ClInclude Include="PokeDataBase.h">
+      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="FieldDialog.h">
       <Filter>FieldUI</Filter>
     </ClInclude>
-    <ClInclude Include="TestScript.h">
-      <Filter>BattleUI</Filter>
+    <ClInclude Include="FirstSetLevel.h">
+      <Filter>FieldUI</Filter>
     </ClInclude>
-    <ClInclude Include="PokeSkillBase.h">
-      <Filter>Base</Filter>
+    <ClInclude Include="BattleBackGround.h">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
     </ClInclude>
-    <ClInclude Include="FriendlyHPBackground.h">
-      <Filter>BattleUI</Filter>
+    <ClInclude Include="BattleLevel.h">
+      <Filter>Battle\01.Level</Filter>
     </ClInclude>
-    <ClInclude Include="NPC1.h">
-      <Filter>Player\NPC\NPC1</Filter>
+    <ClInclude Include="BattlePlayer.h">
+      <Filter>Battle\02.Actor\02.Trainer\02.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTrainerBase.h">
+      <Filter>Battle\02.Actor\02.Trainer\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleNPC.h">
+      <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
-      <UniqueIdentifier>{b102c016-e71f-44ba-940e-c72cca981895}</UniqueIdentifier>
+      <UniqueIdentifier>{6c033d82-11e7-4f82-80cf-e3d1d20f0fa8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map">
-      <UniqueIdentifier>{bdaaf5eb-83f9-4739-b637-a43c9a7c24a5}</UniqueIdentifier>
+      <UniqueIdentifier>{fcf7930e-b940-4a63-9c0f-63df9d39af25}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map\Class">
-      <UniqueIdentifier>{de46b966-ca3b-422d-8ff7-41f8610529fc}</UniqueIdentifier>
+      <UniqueIdentifier>{99111552-5f96-47be-ae8a-55bc1ba208a6}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map\Actor">
-      <UniqueIdentifier>{192ee187-8b20-4fdc-b0d9-90ab93a9518c}</UniqueIdentifier>
+      <UniqueIdentifier>{1fffd9dd-4fe7-45ff-beed-a34b8c4ad923}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map\Level">
-      <UniqueIdentifier>{d386df86-631e-4ab1-923d-43011bfeb39b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level">
-      <UniqueIdentifier>{1497c1bd-a63d-456a-bff6-881e89d032c2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Level\Actor">
-      <UniqueIdentifier>{2e7a6bfc-2995-4f8a-95e9-eb8dd68a6991}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BattleUI">
-      <UniqueIdentifier>{06069b15-a76d-47ed-a8e8-92c2249f8a05}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player">
-      <UniqueIdentifier>{71c05644-be58-4193-9bcb-c6cfe5f95b9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player\Player">
-      <UniqueIdentifier>{8d53d3dd-f94a-4fbb-bd50-c2916bc09b9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Player\Level">
-      <UniqueIdentifier>{218b6a84-7d1e-4e31-8061-85963a5066a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle">
-      <UniqueIdentifier>{8e078d4d-a21e-438d-8cb8-f532f12f872a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\01.Level">
-      <UniqueIdentifier>{d78e6fa9-5e2d-4a57-a097-0f6d9a53136e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor">
-      <UniqueIdentifier>{54a28824-78f4-4b60-9b08-0faf3a8ad8d4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\02.BattleTrainer">
-      <UniqueIdentifier>{71dc2e83-a3c7-4aef-bf54-885b8c9edae3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\02.BattleTrainer\01.Base">
-      <UniqueIdentifier>{9aa98528-458a-4595-b058-9e139221a8c1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\02.BattleTrainer\02.Player">
-      <UniqueIdentifier>{e147f5d9-91ab-41e1-b207-c9ae263b9cfe}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\02.BattleTrainer\03.NPC">
-      <UniqueIdentifier>{0c115c02-58ca-4e51-92da-f6746c28787f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\01.BackGround">
-      <UniqueIdentifier>{80c2447f-65cc-449d-b238-2ce1ce312ba0}</UniqueIdentifier>
+      <UniqueIdentifier>{bf0b231d-428d-45e0-9a13-7a1eac09d9bf}</UniqueIdentifier>
     </Filter>
     <Filter Include="FieldUI">
-      <UniqueIdentifier>{f5987466-8d8c-43c9-b018-a62a9ea8e174}</UniqueIdentifier>
+      <UniqueIdentifier>{dc844f2b-8b90-4482-9a12-1312cbe527be}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC">
-      <UniqueIdentifier>{9c342485-3902-4761-b01f-4322c2ffb05d}</UniqueIdentifier>
+    <Filter Include="Battle">
+      <UniqueIdentifier>{4269efaa-0f00-4e25-8bbc-3ae182e8e8a0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\NPC1">
-      <UniqueIdentifier>{dbfacc62-bd71-4730-b31a-0a0986a7d513}</UniqueIdentifier>
+    <Filter Include="Battle\01.Level">
+      <UniqueIdentifier>{54544db5-16f5-431c-afe3-8a9d0c0bfbbf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\NPC2">
-      <UniqueIdentifier>{439c8c31-ff38-42a2-8f64-f439386fd9e5}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor">
+      <UniqueIdentifier>{83aa50d4-b355-42de-91ec-97ca6895ff3e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\NPC3">
-      <UniqueIdentifier>{71b1a8eb-e0f9-4607-9c1d-b9588a3448ea}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\01.BackGround">
+      <UniqueIdentifier>{7cd50bd3-6bbc-4e9b-82e2-102fb7908561}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\NPC4">
-      <UniqueIdentifier>{2bd25d33-180e-40e4-ab3a-be7b9fad4bb3}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\02.Trainer">
+      <UniqueIdentifier>{52f9238a-0279-45f3-8192-809e4fb1ad03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\NPC5">
-      <UniqueIdentifier>{7615c6a6-89ea-4658-a088-48208b01357a}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\02.Trainer\01.Base">
+      <UniqueIdentifier>{2364065d-cc42-445f-b355-8837d47e1275}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\OAK">
-      <UniqueIdentifier>{0282b1a7-0f25-4cf8-ae55-581307e24ac2}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\02.Trainer\02.Player">
+      <UniqueIdentifier>{ddee7a48-c424-4725-9853-c684396de44f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Player\NPC\RIVAL">
-      <UniqueIdentifier>{37fe962e-180b-4f9f-bc1b-1b1c066881cd}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\02.Trainer\03.NPC">
+      <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

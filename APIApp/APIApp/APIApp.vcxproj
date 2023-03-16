@@ -164,7 +164,7 @@
       <Project>{a6e9bfee-96ec-4fc9-9219-12202f5126cc}</Project>
     </ProjectReference>
     <ProjectReference Include="..\GameEngineContents\GameEngineContents.vcxproj">
-      <Project>{dd304768-7ea1-403d-895d-a7a6dcc97275}</Project>
+      <Project>{6b760d57-60d9-4161-a9e7-3a563b2ecd97}</Project>
     </ProjectReference>
     <ProjectReference Include="..\GameEngineCore\GameEngineCore.vcxproj">
       <Project>{4235d360-1c2a-445e-978e-19835add99a7}</Project>
