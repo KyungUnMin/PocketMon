@@ -2,10 +2,11 @@
 #include <string>
 #include <string_view>
 #include <GameEngineCore/GameEngineObject.h>
+#include <GameEngineBase/GameEngineMath.h>
 
-
+class GameEngineRender;
 class GameEngineActor;
-class LetterRenderObject : GameEngineObject
+class LetterRenderObject : public GameEngineObject
 {
 public:
 	// construtor destructor
