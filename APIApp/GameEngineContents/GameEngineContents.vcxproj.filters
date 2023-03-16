@@ -43,6 +43,27 @@
     <Filter Include="Battle\02.Actor">
       <UniqueIdentifier>{228ee5fc-4ac0-40e5-bf5e-e85c43339377}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Battle\02.Actor\02.BattleTrainer">
+      <UniqueIdentifier>{3e6c4af9-b059-4ded-a95f-7032370354db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\01.Base">
+      <UniqueIdentifier>{22314913-a31f-40fa-b270-69fdc6e34f98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\02.Player">
+      <UniqueIdentifier>{11c0d50b-31eb-4f1f-b42f-6da142964e96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\03.NPC">
+      <UniqueIdentifier>{85bc0424-df42-4449-ab75-1cc08775632c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\01.BackGround">
+      <UniqueIdentifier>{3caf163c-139c-414d-9bec-2aae9f2d134c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\TestLevel">
+      <UniqueIdentifier>{15410cd2-aafc-4980-9e05-bafd0c636856}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Player">
+      <UniqueIdentifier>{e6d3b709-693a-4dc6-a98c-1505dd70d8c0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -72,8 +93,23 @@
     <ClInclude Include="BattleLevel.h">
       <Filter>Battle\01.Level</Filter>
     </ClInclude>
-    <ClInclude Include="BattleTrainer.h">
-      <Filter>Battle\02.Actor</Filter>
+    <ClInclude Include="BattleTrainerBase.h">
+      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer.h">
+      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleNPC.h">
+      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleBackGround.h">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTestLevel.h">
+      <Filter>Player\TestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player\Player</Filter>
     </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="int2.h" />
@@ -104,8 +140,26 @@
     <ClCompile Include="BattleLevel.cpp">
       <Filter>Battle\01.Level</Filter>
     </ClCompile>
-    <ClCompile Include="BattleTrainer.cpp">
-      <Filter>Battle\02.Actor</Filter>
+    <ClCompile Include="BattleTrainerBase.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleNPC.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTestLevel.cpp">
+      <Filter>Player\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Player\Player</Filter>
     </ClCompile>
     <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>

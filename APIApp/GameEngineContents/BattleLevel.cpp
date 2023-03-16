@@ -1,4 +1,8 @@
 #include "BattleLevel.h"
+#include "BattlePlayer.h"
+#include "BattleNPC.h"
+
+const float BattleLevel::IntroTime = 2.f;
 
 BattleLevel::BattleLevel()
 {
@@ -17,12 +21,21 @@ void BattleLevel::Loading()
 
 void BattleLevel::Update(float _DeltaTime)
 {
+
 }
 
-void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
-{
-}
+
+
+
 
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BattlePlayer* P1 = CreateActor<BattlePlayer>();
+	BattleNPC* P2 = CreateActor<BattleNPC>();
+}
+
+
+void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+
 }
