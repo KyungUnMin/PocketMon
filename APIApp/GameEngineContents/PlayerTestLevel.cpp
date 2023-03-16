@@ -26,7 +26,7 @@ void PlayerTestLevel::Loading()
 {
 	// 액터 생성
 	{
-		//CreateActor<Player>();
+		CreateActor<Player>();
 	}
 		
 }

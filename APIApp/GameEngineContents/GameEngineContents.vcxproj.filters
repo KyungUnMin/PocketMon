@@ -119,5 +119,8 @@
     <ClCompile Include="Player.cpp">
       <Filter>Player\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -69,6 +69,7 @@
     <ClCompile Include="FieldmapLevel.cpp" />
     <ClCompile Include="int2.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
