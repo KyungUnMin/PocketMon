@@ -41,6 +41,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CenterActor.cpp" />
+    <ClCompile Include="CenterLevel.cpp" />
+    <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="int2.cpp" />
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>
