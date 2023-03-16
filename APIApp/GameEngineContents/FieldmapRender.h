@@ -23,6 +23,8 @@ protected:
 private:
 	std::vector<std::vector<GameEngineRender*>> TileRenders;
 	std::vector<std::vector<GameEngineRender*>> DebugRenders;
+
+	float4 RendersSize = float4::Zero;
 	float4 CurPos = float4::Zero;
 
 	const int RenderSizeX = 3;
@@ -32,4 +34,9 @@ private:
 	int FieldSizeHalf = 0;
 
 	bool IsDebugRender = false;
+
+	void TileRenderSwtich();
+	void DebugRenderSwtich();
+	
+	void SetRendersPos(std::vector<std::vector<GameEngineRender*>>& _Renders);
 };
