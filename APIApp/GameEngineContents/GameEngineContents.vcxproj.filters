@@ -7,6 +7,27 @@
     <Filter Include="CenterLevel">
       <UniqueIdentifier>{c061cfcb-2b78-4d1b-802d-009dce3e16b5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{3abc53f6-5eb3-49da-9a1f-8c7e88cb471b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle">
+      <UniqueIdentifier>{28963121-9d0e-4c63-a719-4326beba2a52}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{fab3db73-d8d8-4fec-9149-d231ae568db2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI">
+      <UniqueIdentifier>{1d273ebe-3125-41b9-bd56-73d2e678398f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleUI">
+      <UniqueIdentifier>{cf60c27b-4119-4726-b3e4-4fe54ecce186}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Data">
+      <UniqueIdentifier>{f3e301eb-e8d3-43b1-b1bc-4b54a518f98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{d79ce54b-aa9b-4ef6-8013-365a20d2c5be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
