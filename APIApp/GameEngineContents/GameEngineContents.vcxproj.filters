@@ -47,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="int2.h" />
+    <ClInclude Include="PokeDataBase.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -59,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="CenterLevel.cpp">
       <Filter>CenterLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="PokeDataBase.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
