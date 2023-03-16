@@ -118,7 +118,7 @@ void Player::MoveUpdate(float _Time)
 		MoveRange = float4::Right;
 	}
 
-	if (true == GameEngineInput::IsPress("UpMove"))
+	else if (true == GameEngineInput::IsPress("UpMove"))
 	{
 		MoveRange = float4::Up;
 	}

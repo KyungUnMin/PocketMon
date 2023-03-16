@@ -31,15 +31,20 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IdleLeft.bmp"))->Cut(1, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("IdleDown.bmp"))->Cut(1, 1);
 
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkLeft.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkDown.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkRight.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkUp.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkLeft.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkDown.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkRight.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WalkUp.bmp"))->Cut(3, 1);
 
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RunRight.bmp"))->Cut(3, 1);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RunLeft.bmp"))->Cut(3, 1);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RunDown.bmp"))->Cut(3, 1);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RunUp.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeStopDown.bmp"))->Cut(1, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeStopLeft.bmp"))->Cut(1, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeStopRight.bmp"))->Cut(1, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeStopUp.bmp"))->Cut(1, 1);
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeDown.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeLeft.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeRight.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeUp.bmp"))->Cut(3, 1);
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))

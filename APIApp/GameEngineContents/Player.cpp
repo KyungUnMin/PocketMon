@@ -33,10 +33,24 @@ void Player::Start()
 		Players->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "IdleUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Down_Idle",  .ImageName = "IdleDown.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 
-		Players->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "RunRight.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
-		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "RunLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
-		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "RunUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
-		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "RunDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		Players->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "WalkRight.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
+		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		Players->On();
+
+		BikePlayers = CreateRender(PlayerTestOrder::R_Player);
+		BikePlayers->SetScale({ 50,50 });
+		BikePlayers->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "BikeStopRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "BikeStopLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "BikeStopUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Down_Idle",  .ImageName = "BikeStopDown.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		
+		BikePlayers->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "BikeRight.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "BikeLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "BikeUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
+		BikePlayers->Off();
 
 	}
 	ChangeState(PlayerState::IDLE);
@@ -67,6 +81,7 @@ void Player::DirCheck(const std::string_view& _AnimationName)
 {
 	std::string PrevDirString = DirString;
 	Players->ChangeAnimation(DirString + _AnimationName.data());
+	BikePlayers->ChangeAnimation(DirString + _AnimationName.data());
 
 	if (GameEngineInput::IsPress("LeftMove"))
 	{
@@ -88,6 +103,7 @@ void Player::DirCheck(const std::string_view& _AnimationName)
 	if (PrevDirString != DirString)
 	{
 		Players->ChangeAnimation(DirString + _AnimationName.data());
+		BikePlayers->ChangeAnimation(DirString + _AnimationName.data());
 	}
 }
 
