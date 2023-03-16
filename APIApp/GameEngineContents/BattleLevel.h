@@ -4,6 +4,8 @@
 class BattleLevel : public GameEngineLevel
 {
 public:
+	static const float IntroTime;
+
 	BattleLevel();
 	~BattleLevel() override;
 
@@ -19,6 +21,7 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
 private:
+
 
 };
 

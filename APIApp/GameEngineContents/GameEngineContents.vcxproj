@@ -23,7 +23,15 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BattleTrainer.h">
+    <ClInclude Include="BattleNPC.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleTrainerBase.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -57,7 +65,15 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleTrainer.cpp">
+    <ClCompile Include="BattleNPC.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleTrainerBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
