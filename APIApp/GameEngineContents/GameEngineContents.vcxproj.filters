@@ -64,6 +64,18 @@
     <Filter Include="Player\Player">
       <UniqueIdentifier>{e6d3b709-693a-4dc6-a98c-1505dd70d8c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FieldUI\FirstSet">
+      <UniqueIdentifier>{a5a06fdf-7082-44da-a4bb-050491b44b50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\FirstSet\Level">
+      <UniqueIdentifier>{5ede4ec7-38be-46da-af60-f2b6c861fc51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\FirstSet\Actor">
+      <UniqueIdentifier>{ed88e299-ebb0-4492-8aa3-2bec51c7d7dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\BaseUI">
+      <UniqueIdentifier>{6cfb0eac-a083-4e1c-ad0b-ce714ccff9a2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -117,6 +129,15 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="LetterRenderObject.h">
+      <Filter>FieldUI\BaseUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstSetLevel.h">
+      <Filter>FieldUI\FirstSet\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTest.h">
+      <Filter>FieldUI\FirstSet\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -163,6 +184,15 @@
     </ClCompile>
     <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="LetterRenderObject.cpp">
+      <Filter>FieldUI\BaseUI</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstSetLevel.cpp">
+      <Filter>FieldUI\FirstSet\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="TextTest.cpp">
+      <Filter>FieldUI\FirstSet\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -47,6 +47,13 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeUp.bmp"))->Cut(3, 1);
 	}
 
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
+		Dir.Move("FieldUI_HSM");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_eng.bmp"))->Cut(27, 2);
+	}
+
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange1", '1');
@@ -87,7 +94,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange4"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("FirstSetLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange5"))
