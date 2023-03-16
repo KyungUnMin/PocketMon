@@ -4,7 +4,7 @@
 class BattlePlayer : public BattleTrainerBase
 {
 public:
-	static BattlePlayer PlayerPtr;
+	static BattlePlayer* PlayerPtr;
 
 	BattlePlayer();
 	~BattlePlayer() override;

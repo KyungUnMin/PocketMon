@@ -43,17 +43,20 @@
     <Filter Include="Battle\02.Actor">
       <UniqueIdentifier>{228ee5fc-4ac0-40e5-bf5e-e85c43339377}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\01.BattleTrainer">
+    <Filter Include="Battle\02.Actor\02.BattleTrainer">
       <UniqueIdentifier>{3e6c4af9-b059-4ded-a95f-7032370354db}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\01.BattleTrainer\01.Base">
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\01.Base">
       <UniqueIdentifier>{22314913-a31f-40fa-b270-69fdc6e34f98}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\01.BattleTrainer\02.Player">
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\02.Player">
       <UniqueIdentifier>{11c0d50b-31eb-4f1f-b42f-6da142964e96}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\01.BattleTrainer\03.NPC">
+    <Filter Include="Battle\02.Actor\02.BattleTrainer\03.NPC">
       <UniqueIdentifier>{85bc0424-df42-4449-ab75-1cc08775632c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\01.BackGround">
+      <UniqueIdentifier>{3caf163c-139c-414d-9bec-2aae9f2d134c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,13 +88,16 @@
       <Filter>Battle\01.Level</Filter>
     </ClInclude>
     <ClInclude Include="BattleTrainerBase.h">
-      <Filter>Battle\02.Actor\01.BattleTrainer\01.Base</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="BattlePlayer.h">
-      <Filter>Battle\02.Actor\01.BattleTrainer\02.Player</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
     </ClInclude>
     <ClInclude Include="BattleNPC.h">
-      <Filter>Battle\02.Actor\01.BattleTrainer\03.NPC</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleBackGround.h">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -117,13 +123,16 @@
       <Filter>Battle\01.Level</Filter>
     </ClCompile>
     <ClCompile Include="BattleTrainerBase.cpp">
-      <Filter>Battle\02.Actor\01.BattleTrainer\01.Base</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="BattlePlayer.cpp">
-      <Filter>Battle\02.Actor\01.BattleTrainer\02.Player</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
     </ClCompile>
     <ClCompile Include="BattleNPC.cpp">
-      <Filter>Battle\02.Actor\01.BattleTrainer\03.NPC</Filter>
+      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

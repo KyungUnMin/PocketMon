@@ -19,6 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BattleBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleLevel.h">
       <SubType>
       </SubType>
@@ -61,6 +65,10 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BattleBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleLevel.cpp">
       <SubType>
       </SubType>
