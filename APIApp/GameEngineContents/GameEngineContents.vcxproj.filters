@@ -56,22 +56,37 @@
     </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="int2.h" />
+    <ClInclude Include="FieldmapLevel.h" />
+    <ClInclude Include="TextTestLevel.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BackTextActor.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
       <Filter>01.GameCore</Filter>
-    </ClCompile>
-    <ClCompile Include="TestActor.cpp">
-      <Filter>CenterLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="TestLevel.cpp">
-      <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterLevel.cpp">
       <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterActor.cpp">
       <Filter>CenterLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="int2.cpp" />
+    <ClCompile Include="TextTestLevel.cpp">
+      <Filter>BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BackTextActor.cpp">
+      <Filter>BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>BattleUI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
 #include "CenterLevel.h"
-
+#include "TextTestLevel.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -24,6 +24,7 @@ void CenterLevel::Loading()
 	Dir.Move("Image");
 	
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Combat_TextFrame.bmp"));
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
@@ -67,7 +68,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange6"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("TextTestLevel");
 	}
 }
 

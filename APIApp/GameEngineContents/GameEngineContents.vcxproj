@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="TestScript.h" />
     <ClInclude Include="CenterActor.h">
       <SubType>
       </SubType>
@@ -43,8 +45,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TextTestLevel.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
     <ClCompile Include="Fieldmap.cpp" />
@@ -53,6 +58,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TextTestLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
