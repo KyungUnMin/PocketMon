@@ -3,6 +3,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include "ContentsEnum.h"
 
 TestScript::TestScript()
 {
@@ -14,9 +15,10 @@ TestScript::~TestScript()
 
 void TestScript::Start()
 {
-	/*TextRender = CreateRender(RenderOrder::UI);
-	Script = "けけけけけけけけけけけけけけけけけけけけけさ\nけけけけけけけけけけけけけけけけけけけけけさ";
+	TextRender = CreateRender(RenderOrder::Player);
+	Script = "oksadawda\nsadwasdawd";
 	BoxScale = { 650, 300 };
-	TextRender->SetText(Script, 30, "閏顕", TextAlign::Left, RGB(255, 255, 255), BoxScale);
-	TextRender->EffectCameraOff();*/
+	TextRender->SetText(Script, 50, "閏顕", TextAlign::Left, RGB(0, 0, 0), BoxScale);
+	TextRender->SetPosition({ 50,500 });
+	TextRender->EffectCameraOff();
 }

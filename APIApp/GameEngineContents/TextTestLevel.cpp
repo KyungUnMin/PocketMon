@@ -18,7 +18,7 @@ TextTestLevel::~TextTestLevel()
 
 void TextTestLevel::Loading()
 {
-	//CreateActor<BackTextActor>();
+	CreateActor<BackTextActor>();
 	CreateActor<TestScript>();
 }
 

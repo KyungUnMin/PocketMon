@@ -43,7 +43,6 @@ private:
 
 	int PoketBall = 0;                        // 포켓몬이 담겨있는 포켓볼 종류
 	int PokeType = 0;
-	int 
 	// 타입 (물, 불, 땅, 비행 등)
 	// 특성 (
 	// 성격
