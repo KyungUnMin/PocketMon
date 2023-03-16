@@ -65,6 +65,9 @@
     <ClCompile Include="TestScript.cpp">
       <Filter>BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="FriendlyHPBackground.cpp">
+      <Filter>BattleUI</Filter>
+    </ClCompile>
     <ClCompile Include="NPC1.cpp">
       <Filter>Player\NPC\NPC1</Filter>
     </ClCompile>
@@ -130,6 +133,9 @@
       <Filter>FieldUI</Filter>
     </ClInclude>
     <ClInclude Include="TestScript.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FriendlyHPBackground.h">
       <Filter>BattleUI</Filter>
     </ClInclude>
     <ClInclude Include="NPC1.h">
