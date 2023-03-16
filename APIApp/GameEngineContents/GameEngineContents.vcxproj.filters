@@ -81,12 +81,6 @@
     <ClInclude Include="CenterActor.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
-    <ClInclude Include="int2.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Fieldmap.h">
-      <Filter>Map\Class</Filter>
-    </ClInclude>
     <ClInclude Include="FieldmapLevel.h">
       <Filter>Map\Level</Filter>
     </ClInclude>
@@ -116,9 +110,17 @@
     <ClInclude Include="PokeDataBase.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="FieldmapRender.h">
       <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="int2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Fieldmap.h">
+      <Filter>Map\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +141,36 @@
     </ClCompile>
     <ClCompile Include="FieldmapLevel.cpp">
       <Filter>Map\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapRender.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PokeDataBase.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleNPC.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\03.NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\02.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTrainerBase.cpp">
+      <Filter>Battle\02.Actor\02.BattleTrainer\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp">
+      <Filter>Battle\02.Actor\01.BackGround</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Battle\01.Level</Filter>
+    </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTestLevel.cpp">
+      <Filter>Player\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Player\Player</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
