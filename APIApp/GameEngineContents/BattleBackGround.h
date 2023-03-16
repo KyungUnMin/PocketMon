@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+class GameEngineRender;
+
 class BattleBackGround : public GameEngineActor
 {
 public:
@@ -17,6 +19,11 @@ protected:
 	void Update(float _DeltaTime) override;
 	
 private:
+	float4 ScreenSize = float4::Zero;
+	GameEngineRender* FadeUp = nullptr;
+	GameEngineRender* FadeDown = nullptr;
+	const float FadeDuration = 1.f;
 
+	void FadeMove();
 };
 
