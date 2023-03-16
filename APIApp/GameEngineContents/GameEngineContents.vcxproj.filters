@@ -63,6 +63,9 @@
     <ClInclude Include="FieldmapLevel.h">
       <Filter>Map\Level</Filter>
     </ClInclude>
+    <ClInclude Include="FieldmapRender.h">
+      <Filter>Map\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -82,6 +85,9 @@
     </ClCompile>
     <ClCompile Include="FieldmapLevel.cpp">
       <Filter>Map\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapRender.cpp">
+      <Filter>Map\Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

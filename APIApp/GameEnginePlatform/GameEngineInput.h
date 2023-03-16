@@ -41,6 +41,7 @@ public:
 	static void Update(float _DeltaTime);
 
 	static void CreateKey(const std::string_view& _Name, int _Key);
+	static void CreateKeyNoToupper(const std::string_view& _Name, int _Key);
 
 	static bool IsKey(const std::string_view& _Name);
 

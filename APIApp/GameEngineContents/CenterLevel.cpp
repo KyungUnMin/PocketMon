@@ -35,6 +35,18 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange6", '6');
 	}
 
+	// ¸Ê °ü·Ã Å°
+	if (false == GameEngineInput::IsKey("MapRenderDebug"))
+	{
+		GameEngineInput::CreateKeyNoToupper("MapRenderDebug", VK_F1);
+		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F2);
+
+		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
+		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);
+		GameEngineInput::CreateKey("FreeCameraMoveLeft", VK_LEFT);
+		GameEngineInput::CreateKey("FreeCameraMoveRight", VK_RIGHT);
+	}
+
 	CreateActor<CenterActor>();
 }
 
