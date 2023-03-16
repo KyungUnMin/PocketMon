@@ -21,6 +21,26 @@
   <ItemGroup>
     <ClInclude Include="BackTextActor.h" />
     <ClInclude Include="TestScript.h" />
+    <ClInclude Include="BattleBackGround.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleNPC.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleTrainerBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CenterActor.h">
       <SubType>
       </SubType>
@@ -29,6 +49,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="Fieldmap.h">
       <SubType>
       </SubType>
@@ -41,24 +62,58 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="TextTestLevel.h" />
+    <ClInclude Include="PokeDataBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackTextActor.cpp" />
     <ClCompile Include="TestScript.cpp" />
+    <ClCompile Include="BattleBackGround.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleNPC.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleTrainerBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
     <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="FieldmapLevel.cpp" />
     <ClCompile Include="int2.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerState.cpp" />
+    <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="TextTestLevel.cpp" />
+    <ClCompile Include="PokeDataBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\GameEngineBase\GameEngineBase.vcxproj">
