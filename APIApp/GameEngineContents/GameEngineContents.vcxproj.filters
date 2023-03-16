@@ -80,6 +80,7 @@
     <ClInclude Include="PokeDataBase.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">

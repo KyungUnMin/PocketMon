@@ -35,6 +35,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="Fieldmap.h">
       <SubType>
       </SubType>
