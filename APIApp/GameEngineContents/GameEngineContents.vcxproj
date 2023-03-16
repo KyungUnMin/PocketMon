@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="TestScript.h" />
     <ClInclude Include="BattleBackGround.h">
       <SubType>
       </SubType>
@@ -56,6 +58,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="FieldmapRender.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FirstSetLevel.h" />
     <ClInclude Include="int2.h">
       <SubType>
@@ -68,6 +74,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TextTestLevel.h" />
     <ClInclude Include="PokeDataBase.h">
       <SubType>
       </SubType>
@@ -78,6 +85,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="BattleBackGround.cpp">
       <SubType>
       </SubType>
@@ -102,6 +111,10 @@
     <ClCompile Include="CenterLevel.cpp" />
     <ClCompile Include="Fieldmap.cpp" />
     <ClCompile Include="FieldmapLevel.cpp" />
+    <ClCompile Include="FieldmapRender.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FirstSetLevel.cpp" />
     <ClCompile Include="int2.cpp" />
     <ClCompile Include="LetterRenderObject.cpp" />
@@ -112,6 +125,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="PokeDataBase.cpp">
       <SubType>
       </SubType>
