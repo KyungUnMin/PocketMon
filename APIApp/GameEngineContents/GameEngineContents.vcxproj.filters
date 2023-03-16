@@ -65,6 +65,9 @@
     <ClCompile Include="TestScript.cpp">
       <Filter>BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="PokeSkillBase.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
     <ClCompile Include="FriendlyHPBackground.cpp">
       <Filter>BattleUI</Filter>
     </ClCompile>
@@ -134,6 +137,9 @@
     </ClInclude>
     <ClInclude Include="TestScript.h">
       <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PokeSkillBase.h">
+      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="FriendlyHPBackground.h">
       <Filter>BattleUI</Filter>
