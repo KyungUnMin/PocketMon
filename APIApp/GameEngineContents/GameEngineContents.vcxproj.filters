@@ -4,6 +4,12 @@
     <Filter Include="01.GameCore">
       <UniqueIdentifier>{453641b2-da0f-41bd-91d7-ee634c70e6b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Base">
+      <UniqueIdentifier>{80c30a09-f363-440d-8acf-8afb783a062d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map">
+      <UniqueIdentifier>{081d4686-9624-4c0e-9766-5f4af3ff3303}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -11,6 +17,12 @@
     </ClInclude>
     <ClInclude Include="TestLevel.h" />
     <ClInclude Include="TestActor.h" />
+    <ClInclude Include="Fieldmap.h">
+      <Filter>Map</Filter>
+    </ClInclude>
+    <ClInclude Include="int2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -18,5 +30,11 @@
     </ClCompile>
     <ClCompile Include="TestLevel.cpp" />
     <ClCompile Include="TestActor.cpp" />
+    <ClCompile Include="Fieldmap.cpp">
+      <Filter>Map</Filter>
+    </ClCompile>
+    <ClCompile Include="int2.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
