@@ -6,10 +6,6 @@
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
     <ClCompile Include="FriendlyHPBackground.cpp" />
-    <ClCompile Include="NPC1.cpp" />
-    <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerState.cpp" />
-    <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp" />
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
@@ -52,6 +48,18 @@
     <ClCompile Include="BattleNPC.cpp">
       <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerState.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerTestLevel.cpp">
+      <Filter>Player\PlayerTestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC1.cpp">
+      <Filter>Player\NPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -60,9 +68,6 @@
     <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="FriendlyHPBackground.h" />
-    <ClInclude Include="NPC1.h" />
-    <ClInclude Include="Player.h" />
-    <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h" />
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="TextTestLevel.h" />
@@ -105,6 +110,15 @@
     </ClInclude>
     <ClInclude Include="BattleNPC.h">
       <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Player\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerTestLevel.h">
+      <Filter>Player\PlayerTestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC1.h">
+      <Filter>Player\NPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +163,18 @@
     </Filter>
     <Filter Include="Battle\02.Actor\02.Trainer\03.NPC">
       <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{15be744f-b142-48fa-8078-7a2834c8aa89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\Player">
+      <UniqueIdentifier>{fd32f652-55d6-4a15-938d-36a5a77c1054}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\PlayerTestLevel">
+      <UniqueIdentifier>{5607be65-2e3d-45c5-9146-a4d770161b07}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC">
+      <UniqueIdentifier>{b4b3e5d1-2ef0-43e2-8173-ae968d1ae06b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
