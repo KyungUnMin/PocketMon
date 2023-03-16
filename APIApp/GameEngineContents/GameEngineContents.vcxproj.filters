@@ -81,12 +81,6 @@
     <ClInclude Include="CenterActor.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
-    <ClInclude Include="int2.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Fieldmap.h">
-      <Filter>Map\Class</Filter>
-    </ClInclude>
     <ClInclude Include="FieldmapLevel.h">
       <Filter>Map\Level</Filter>
     </ClInclude>
@@ -117,6 +111,12 @@
       <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="ContentsEnum.h" />
+    <ClInclude Include="int2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Fieldmap.h">
+      <Filter>Map\Class</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">

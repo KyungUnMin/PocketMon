@@ -18,12 +18,15 @@ public:
 	PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
 	PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
+	void PokeCreate();
+
 protected:
 
 private:
 	// 포켓몬 데이터
 
 	GameEngineRender* MonsterImage = nullptr;  // 포켓몬 이미지
+	// 기술 4개 벡터
 
 	std::string Name = "안농";                 // 포켓몬 이름
 
@@ -41,14 +44,10 @@ private:
 	int Experience = 0;						   // 몬스터 경험치
 	int RemainingExperience = 0;               // 몬스터 다음 레벨까지 남은 경험치
 
-	int PoketBall = 0;                        // 포켓몬이 담겨있는 포켓볼 종류
-	int PokeType = 0;
-	int 
-	// 타입 (물, 불, 땅, 비행 등)
-	// 특성 (
-	// 성격
-	// 
-
+	int PokeBall = 0;                         // 포켓몬이 담겨있는 포켓볼 종류
+	int Type = 0;							  // 포켓몬 속성 타입
+	int Personality = 0;                      // 포켓몬 성격
+	int Characteristic = 0;					  // 포켓몬 특성
 
 };
 
