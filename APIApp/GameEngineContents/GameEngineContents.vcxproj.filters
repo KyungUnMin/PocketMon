@@ -2,13 +2,9 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
-    <ClCompile Include="BackTextActor.cpp" />
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
-    <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="PocketMonCore.cpp" />
-    <ClCompile Include="TestScript.cpp" />
-    <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="int2.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -60,17 +56,25 @@
     <ClCompile Include="NPC1.cpp">
       <Filter>Player\NPC</Filter>
     </ClCompile>
+    <ClCompile Include="TextTestLevel.cpp">
+      <Filter>BattleUI\TestLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="BackTextActor.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="FriendlyHPBackground.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
-    <ClInclude Include="BackTextActor.h" />
     <ClInclude Include="CenterActor.h" />
     <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
-    <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="PocketMonCore.h" />
-    <ClInclude Include="TestScript.h" />
-    <ClInclude Include="TextTestLevel.h" />
     <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="int2.h">
       <Filter>Base</Filter>
@@ -119,6 +123,18 @@
     </ClInclude>
     <ClInclude Include="NPC1.h">
       <Filter>Player\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="TextTestLevel.h">
+      <Filter>BattleUI\TestLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="BackTextActor.h">
+      <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FriendlyHPBackground.h">
+      <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript.h">
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +191,15 @@
     </Filter>
     <Filter Include="Player\NPC">
       <UniqueIdentifier>{b4b3e5d1-2ef0-43e2-8173-ae968d1ae06b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleUI">
+      <UniqueIdentifier>{e6adf7b2-3227-4123-a3c3-e51d384666cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleUI\TestLevel">
+      <UniqueIdentifier>{513eb1c5-51e1-4661-a8b4-a5924bb8163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="BattleUI\Actor">
+      <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
