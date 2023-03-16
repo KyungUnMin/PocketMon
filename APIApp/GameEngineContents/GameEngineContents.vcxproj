@@ -27,20 +27,20 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Fieldmap.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="int2.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PocketMonCore.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CenterActor.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="CenterLevel.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>

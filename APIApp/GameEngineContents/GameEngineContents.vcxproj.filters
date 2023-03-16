@@ -39,10 +39,22 @@
     <ClInclude Include="CenterActor.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
+    <ClInclude Include="CenterLevel.h">
+      <Filter>CenterLevel</Filter>
+    </ClInclude>
+    <ClInclude Include="CenterActor.h">
+      <Filter>CenterLevel</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
       <Filter>01.GameCore</Filter>
+    </ClCompile>
+    <ClCompile Include="TestActor.cpp">
+      <Filter>CenterLevel</Filter>
+    </ClCompile>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterLevel.cpp">
       <Filter>CenterLevel</Filter>
