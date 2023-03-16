@@ -7,7 +7,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 
 #include "Player.h"
-
+#include "ContentsEnum.h"
 
 Player* Player::MainPlayer;
 
@@ -26,7 +26,7 @@ void Player::Start()
 	SetMove(GameEngineWindow::GetScreenSize().half());  //시작하면위치는 가운데로
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	{
-		Players = CreateRender(PlayerTestOrder::R_Player);
+		Players = CreateRender(RenderOrder::Player);
 		Players->SetScale({ 50,50 });
 		Players->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "IdleRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "IdleLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
@@ -37,9 +37,9 @@ void Player::Start()
 		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
 		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
 		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
-		Players->On();
+		
 
-		BikePlayers = CreateRender(PlayerTestOrder::R_Player);
+		BikePlayers = CreateRender(RenderOrder::Player);
 		BikePlayers->SetScale({ 50,50 });
 		BikePlayers->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "BikeStopRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "BikeStopLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });

@@ -4,6 +4,8 @@
 #include "FieldmapLevel.h"
 #include "BattleLevel.h"
 #include "PlayerTestLevel.h"
+#include "TextTestLevel.h"
+
 
 PocketMonCore PocketMonCore::Core;
 
@@ -25,6 +27,7 @@ void PocketMonCore::Start()
 	CreateLevel<FieldmapLevel>("FieldmapLevel");
 	CreateLevel<BattleLevel>("BattleLevel");
 	CreateLevel<PlayerTestLevel>("PlayerLevel");
+	CreateLevel<TextTestLevel>("TextTestLevel");
 
 	ChangeLevel("CenterLevel");
 }
