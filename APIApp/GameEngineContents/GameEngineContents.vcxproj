@@ -19,6 +19,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="TestScript.h" />
     <ClInclude Include="BattleBackGround.h">
       <SubType>
       </SubType>
@@ -70,12 +72,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="TextTestLevel.h" />
     <ClInclude Include="PokeDataBase.h">
       <SubType>
       </SubType>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="BattleBackGround.cpp">
       <SubType>
       </SubType>
@@ -112,6 +117,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="PokeDataBase.cpp">
       <SubType>
       </SubType>

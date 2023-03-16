@@ -107,6 +107,16 @@
     </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="int2.h" />
+    <ClInclude Include="FieldmapLevel.h" />
+    <ClInclude Include="TextTestLevel.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BackTextActor.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TestScript.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
     <ClInclude Include="PokeDataBase.h">
       <Filter>Base</Filter>
     </ClInclude>
@@ -133,6 +143,13 @@
     <ClCompile Include="CenterActor.cpp">
       <Filter>CenterLevel</Filter>
     </ClCompile>
+    <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="int2.cpp" />
+    <ClCompile Include="TextTestLevel.cpp">
+      <Filter>BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BackTextActor.cpp">
+      <Filter>BattleUI</Filter>
     <ClCompile Include="int2.cpp">
       <Filter>Base</Filter>
     </ClCompile>
@@ -145,6 +162,8 @@
     <ClCompile Include="FieldmapRender.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>BattleUI</Filter>
     <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>
     </ClCompile>
