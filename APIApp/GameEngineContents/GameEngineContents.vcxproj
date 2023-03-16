@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CenterActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CenterLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fieldmap.h">
       <SubType>
       </SubType>
@@ -41,14 +49,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Fieldmap.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="int2.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>
