@@ -65,6 +65,12 @@
     <ClCompile Include="TestScript.cpp">
       <Filter>BattleUI</Filter>
     </ClCompile>
+    <ClCompile Include="FriendlyHPBackground.cpp">
+      <Filter>BattleUI</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC1.cpp">
+      <Filter>Player\NPC\NPC1</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ContentsEnum.h" />
@@ -129,6 +135,12 @@
     <ClInclude Include="TestScript.h">
       <Filter>BattleUI</Filter>
     </ClInclude>
+    <ClInclude Include="FriendlyHPBackground.h">
+      <Filter>BattleUI</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC1.h">
+      <Filter>Player\NPC\NPC1</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -190,6 +202,30 @@
     </Filter>
     <Filter Include="FieldUI">
       <UniqueIdentifier>{f5987466-8d8c-43c9-b018-a62a9ea8e174}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC">
+      <UniqueIdentifier>{9c342485-3902-4761-b01f-4322c2ffb05d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NPC1">
+      <UniqueIdentifier>{dbfacc62-bd71-4730-b31a-0a0986a7d513}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NPC2">
+      <UniqueIdentifier>{439c8c31-ff38-42a2-8f64-f439386fd9e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NPC3">
+      <UniqueIdentifier>{71b1a8eb-e0f9-4607-9c1d-b9588a3448ea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NPC4">
+      <UniqueIdentifier>{2bd25d33-180e-40e4-ab3a-be7b9fad4bb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NPC5">
+      <UniqueIdentifier>{7615c6a6-89ea-4658-a088-48208b01357a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\OAK">
+      <UniqueIdentifier>{0282b1a7-0f25-4cf8-ae55-581307e24ac2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\RIVAL">
+      <UniqueIdentifier>{37fe962e-180b-4f9f-bc1b-1b1c066881cd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

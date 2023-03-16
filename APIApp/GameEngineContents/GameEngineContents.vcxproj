@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="BattleBackGround.h">
       <SubType>
@@ -86,6 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="BattleBackGround.cpp">
       <SubType>
