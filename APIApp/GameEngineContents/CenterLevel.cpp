@@ -42,12 +42,12 @@ void CenterLevel::Update(float _DeltaTime)
 {
 	if (GameEngineInput::IsDown("LevelChange1"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange2"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange3"))

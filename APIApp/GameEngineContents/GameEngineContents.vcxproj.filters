@@ -28,6 +28,21 @@
     <Filter Include="Player">
       <UniqueIdentifier>{d79ce54b-aa9b-4ef6-8013-365a20d2c5be}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Map\Actor">
+      <UniqueIdentifier>{11baf478-18ae-4c90-95d3-d933e602f111}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Level">
+      <UniqueIdentifier>{f4f23bef-508d-4f0f-bb94-d37aa3c95dae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Class">
+      <UniqueIdentifier>{aeea3e88-fe91-4dd8-ae84-3226a4709a09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\01.Level">
+      <UniqueIdentifier>{748ba1ac-6a06-45db-bfca-ac5a0d6bd137}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor">
+      <UniqueIdentifier>{228ee5fc-4ac0-40e5-bf5e-e85c43339377}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -45,6 +60,21 @@
     <ClInclude Include="CenterActor.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
+    <ClInclude Include="int2.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Fieldmap.h">
+      <Filter>Map\Class</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapLevel.h">
+      <Filter>Map\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleLevel.h">
+      <Filter>Battle\01.Level</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleTrainer.h">
+      <Filter>Battle\02.Actor</Filter>
+    </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="int2.h" />
     <ClInclude Include="PokeDataBase.h">
@@ -55,13 +85,26 @@
     <ClCompile Include="PocketMonCore.cpp">
       <Filter>01.GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="int2.cpp" />
-    <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="CenterLevel.cpp">
+      <Filter>CenterLevel</Filter>
+    </ClCompile>
     <ClCompile Include="CenterActor.cpp">
       <Filter>CenterLevel</Filter>
     </ClCompile>
-    <ClCompile Include="CenterLevel.cpp">
-      <Filter>CenterLevel</Filter>
+    <ClCompile Include="int2.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Fieldmap.cpp">
+      <Filter>Map\Class</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapLevel.cpp">
+      <Filter>Map\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleLevel.cpp">
+      <Filter>Battle\01.Level</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTrainer.cpp">
+      <Filter>Battle\02.Actor</Filter>
     </ClCompile>
     <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>

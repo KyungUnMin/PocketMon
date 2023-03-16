@@ -1,18 +1,11 @@
 #pragma once
+#include <vector>
 #include <GameEngineBase/GameEngineMath.h>
 #include "int2.h"
 
 class Fieldmap
 {
 public:
-	Fieldmap();
-	~Fieldmap();
-
-	Fieldmap(const Fieldmap& _Other) = delete;
-	Fieldmap(Fieldmap&& _Other) noexcept = delete;
-	Fieldmap& operator=(const Fieldmap& _Other) = delete;
-	Fieldmap& operator=(Fieldmap&& _Other) noexcept = delete;
-
 	static bool Walkable()
 	{
 		return true;
@@ -37,9 +30,20 @@ public:
 	{
 		return int2(0, 0);
 	}
+private:
+	static Fieldmap* CurFieldmapLevel;
+	std::vector<Fieldmap*> CreateFieldmaps;
+
+public:
+	Fieldmap();
+	~Fieldmap();
+
+	Fieldmap(const Fieldmap& _Other) = delete;
+	Fieldmap(Fieldmap&& _Other) noexcept = delete;
+	Fieldmap& operator=(const Fieldmap& _Other) = delete;
+	Fieldmap& operator=(Fieldmap&& _Other) noexcept = delete;
 
 protected:
 
 private:
-
 };
