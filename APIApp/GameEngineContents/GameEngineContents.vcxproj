@@ -19,6 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CenterActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CenterLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PocketMonCore.h">
       <SubType>
       </SubType>
@@ -33,6 +41,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CenterActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="CenterLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PocketMonCore.cpp">
       <SubType>
       </SubType>

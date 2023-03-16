@@ -26,6 +26,7 @@ void TestLevel::Loading()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Test.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
 
 	CreateActor<TestActor>();
 }
