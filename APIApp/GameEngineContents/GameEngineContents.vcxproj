@@ -20,6 +20,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="FieldDialog.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PokeSkillBase.h">
       <SubType>
       </SubType>
@@ -72,7 +76,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="LetterRenderObject.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h">
@@ -84,13 +87,13 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="TextTest.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="FieldDialog.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PokeSkillBase.cpp">
       <SubType>
       </SubType>
@@ -127,7 +130,6 @@
     </ClCompile>
     <ClCompile Include="FirstSetLevel.cpp" />
     <ClCompile Include="int2.cpp" />
-    <ClCompile Include="LetterRenderObject.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="PlayerTestLevel.cpp" />
@@ -137,10 +139,6 @@
     </ClCompile>
     <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="PokeDataBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="TextTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>

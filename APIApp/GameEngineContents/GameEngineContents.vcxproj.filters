@@ -56,10 +56,10 @@
     <ClCompile Include="FirstSetLevel.cpp">
       <Filter>FieldUI</Filter>
     </ClCompile>
-    <ClCompile Include="LetterRenderObject.cpp">
-      <Filter>FieldUI</Filter>
+    <ClCompile Include="TestScript.cpp">
+      <Filter>BattleUI</Filter>
     </ClCompile>
-    <ClCompile Include="TextTest.cpp">
+    <ClCompile Include="FieldDialog.cpp">
       <Filter>FieldUI</Filter>
     </ClCompile>
     <ClCompile Include="TestScript.cpp">
@@ -129,10 +129,10 @@
     <ClInclude Include="FirstSetLevel.h">
       <Filter>FieldUI</Filter>
     </ClInclude>
-    <ClInclude Include="LetterRenderObject.h">
-      <Filter>FieldUI</Filter>
+    <ClInclude Include="TestScript.h">
+      <Filter>BattleUI</Filter>
     </ClInclude>
-    <ClInclude Include="TextTest.h">
+    <ClInclude Include="FieldDialog.h">
       <Filter>FieldUI</Filter>
     </ClInclude>
     <ClInclude Include="TestScript.h">

@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineResources.h>
 
+class FieldDialog;
 class FirstSetLevel : public GameEngineLevel
 {
 public:
@@ -23,6 +24,7 @@ protected:
 
 private:
 
+	FieldDialog* AcFieldDialog = nullptr;
 	void ImageLoad();
 };
 
