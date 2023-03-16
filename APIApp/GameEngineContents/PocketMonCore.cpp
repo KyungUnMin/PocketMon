@@ -2,6 +2,7 @@
 
 #include "CenterLevel.h"
 #include "FieldmapLevel.h"
+#include "BattleLevel.h"
 
 PocketMonCore PocketMonCore::Core;
 
@@ -21,6 +22,7 @@ void PocketMonCore::Start()
 
 	CreateLevel<CenterLevel>("CenterLevel");
 	CreateLevel<FieldmapLevel>("FieldmapLevel");
+	CreateLevel<BattleLevel>("BattleLevel");
 
 	ChangeLevel("CenterLevel");
 }

@@ -1,11 +1,11 @@
 #pragma once
+#include <GameEngineCore/GameEngineLevel.h>
 
-
-class BattleLevel
+class BattleLevel : public GameEngineLevel
 {
 public:
 	BattleLevel();
-	~BattleLevel();
+	~BattleLevel() override;
 
 	BattleLevel(const BattleLevel& _Other) = delete;
 	BattleLevel(BattleLevel&& _Other) noexcept = delete;
@@ -13,6 +13,10 @@ public:
 	BattleLevel& operator=(const BattleLevel&& _Other) noexcept = delete;
 
 protected:
+	void Loading() override;
+	void Update(float _DeltaTime) override;
+	void LevelChangeEnd(GameEngineLevel* _NextLevel);
+	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
 private:
 

@@ -40,6 +40,9 @@
     <Filter Include="Battle\01.Level">
       <UniqueIdentifier>{748ba1ac-6a06-45db-bfca-ac5a0d6bd137}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Battle\02.Actor">
+      <UniqueIdentifier>{228ee5fc-4ac0-40e5-bf5e-e85c43339377}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PocketMonCore.h">
@@ -69,6 +72,9 @@
     <ClInclude Include="BattleLevel.h">
       <Filter>Battle\01.Level</Filter>
     </ClInclude>
+    <ClInclude Include="BattleTrainer.h">
+      <Filter>Battle\02.Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
@@ -91,6 +97,9 @@
     </ClCompile>
     <ClCompile Include="BattleLevel.cpp">
       <Filter>Battle\01.Level</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleTrainer.cpp">
+      <Filter>Battle\02.Actor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
