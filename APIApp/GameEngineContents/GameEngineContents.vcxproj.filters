@@ -54,34 +54,24 @@
     <ClInclude Include="CenterActor.h">
       <Filter>CenterLevel</Filter>
     </ClInclude>
-    <ClInclude Include="int2.h">
-      <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="Fieldmap.h">
-      <Filter>Map\Class</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapLevel.h">
-      <Filter>Map\Level</Filter>
-    </ClInclude>
+    <ClInclude Include="Fieldmap.h" />
+    <ClInclude Include="int2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PocketMonCore.cpp">
       <Filter>01.GameCore</Filter>
     </ClCompile>
-    <ClCompile Include="int2.cpp">
-      <Filter>Base</Filter>
+    <ClCompile Include="TestActor.cpp">
+      <Filter>CenterLevel</Filter>
     </ClCompile>
-    <ClCompile Include="Fieldmap.cpp">
-      <Filter>Map\Class</Filter>
+    <ClCompile Include="TestLevel.cpp">
+      <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterLevel.cpp">
       <Filter>CenterLevel</Filter>
     </ClCompile>
     <ClCompile Include="CenterActor.cpp">
       <Filter>CenterLevel</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapLevel.cpp">
-      <Filter>Map\Level</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

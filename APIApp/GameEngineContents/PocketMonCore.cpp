@@ -18,7 +18,7 @@ void PocketMonCore::Start()
 {
 	bool* FOR_DEBUG = new bool;
 
-	CreateLevel<CenterLevel>("CenterLesvel");
+	CreateLevel<CenterLevel>("CenterLevel");
 
 	ChangeLevel("CenterLevel");
 }

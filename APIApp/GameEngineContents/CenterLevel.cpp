@@ -2,6 +2,8 @@
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineBase/GameEngineDirectory.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 #include "CenterActor.h"
 
@@ -15,6 +17,14 @@ CenterLevel::~CenterLevel()
 
 void CenterLevel::Loading()
 {
+	GameEngineDirectory Dir;
+
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
+	
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
+
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange1", '1');
