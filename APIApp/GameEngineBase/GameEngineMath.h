@@ -167,7 +167,10 @@ public:
 	{
 		return {x * 0.5f,y * 0.5f,z * 0.5f,w};
 	}
-
+	float4 Bottom() const
+	{
+		return { x * 0.5f,y * 0.85f,z * 0.5f,w };
+	}
 	bool IsZero() const
 	{
 		return x == 0.0f && y == 0.0f && z == 0.0f;

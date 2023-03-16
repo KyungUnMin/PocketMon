@@ -6,7 +6,15 @@
 class Fieldmap
 {
 public:
-	static bool Walkable()
+	static const float TileSize;
+	static const float TileSizeHalf;
+
+	static bool Walkable(const float4& _Pos)
+	{
+		return true;
+	}
+
+	static bool Walkable(const int2& _Index)
 	{
 		return true;
 	}
@@ -21,6 +29,12 @@ public:
 		return float4(0.0f, 0.0f);
 	}
 
+	static void CalRenderStartPos(float4& _Pos)
+	{
+		_Pos.x = TileSize * static_cast<int>(_Pos.x / TileSize);
+		_Pos.y = TileSize * static_cast<int>(_Pos.y / TileSize);
+	}
+
 	static int2 GetIndex(const float _x, const float _y)
 	{
 		return GetIndex(float4(_x, _y));
@@ -28,7 +42,7 @@ public:
 
 	static int2 GetIndex(const float4& _Pos)
 	{
-		return int2(0, 0);
+		return int2(static_cast<int>(_Pos.x / TileSize), static_cast<int>(_Pos.y / TileSize));
 	}
 private:
 	static Fieldmap* CurFieldmapLevel;

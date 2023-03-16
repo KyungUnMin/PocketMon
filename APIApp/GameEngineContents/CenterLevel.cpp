@@ -1,5 +1,5 @@
 #include "CenterLevel.h"
-
+#include "TextTestLevel.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineBase/GameEngineDirectory.h>
@@ -23,6 +23,7 @@ void CenterLevel::Loading()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Combat_TextFrame.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\FadeDown.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\FadeUp.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\TrainerGround.bmp"));
@@ -70,6 +71,18 @@ void CenterLevel::Loading()
 
 	}
 
+	// ¸Ê °ü·Ã Å°
+	if (false == GameEngineInput::IsKey("MapRenderDebug"))
+	{
+		GameEngineInput::CreateKeyNoToupper("MapRenderDebug", VK_F1);
+		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F2);
+
+		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
+		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);
+		GameEngineInput::CreateKey("FreeCameraMoveLeft", VK_LEFT);
+		GameEngineInput::CreateKey("FreeCameraMoveRight", VK_RIGHT);
+	}
+
 	CreateActor<CenterActor>();
 }
 
@@ -102,7 +115,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange6"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("TextTestLevel");
 	}
 }
 
