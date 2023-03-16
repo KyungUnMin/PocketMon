@@ -1,4 +1,7 @@
 #include "BattlePlayer.h"
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineRender.h>
+#include "ContentsEnum.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 
@@ -17,5 +20,14 @@ BattlePlayer::~BattlePlayer()
 
 void BattlePlayer::Start()
 {
-	SetMovePositions({ 100.f, 100.f }, { 500.f, 100.f });
+	const float4 ScreenSize = GameEngineWindow::GetScreenSize();
+	const float4 MoveStartPos = float4{ 0.f, 0.f };
+
+	SetMovePositions(ScreenSize, { 0.f, ScreenSize.y });
+
+	const float4 GroundRenderScale = float4{ 200.f, 200.f };
+	GameEngineRender* GroundRender = CreateRender("BattlePlayerGround.bmp", RenderOrder::Player);
+	GroundRender->SetScale(GroundRenderScale);
+
+
 }

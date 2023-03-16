@@ -21,9 +21,9 @@ void BattleBackGround::Start()
 	BackRender->SetScale(ScreenSize);
 	BackRender->SetPosition(ScreenSize.half());
 
-	FadeUp = CreateRender("FadeUp.bmp", RenderOrder::BackGround);
+	FadeUp = CreateRender("BattleFadeUp.bmp", RenderOrder::Fade);
 	FadeUp->SetScale(ScreenSize);
-	FadeDown = CreateRender("FadeDown.bmp", RenderOrder::BackGround);
+	FadeDown = CreateRender("BattleFadeDown.bmp", RenderOrder::Fade);
 	FadeDown->SetScale(ScreenSize);
 }
 
