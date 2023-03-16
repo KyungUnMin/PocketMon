@@ -52,7 +52,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange3"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("PlayerLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange4"))
