@@ -21,13 +21,11 @@ BattlePlayer::~BattlePlayer()
 void BattlePlayer::Start()
 {
 	const float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	const float4 MoveStartPos = float4{ 0.f, 0.f };
+	const float4 GroundRenderScale = float4{ 528.f, 72.f };
+	const float Height = (ScreenSize.y - 200.f);
 
-	SetMovePositions(ScreenSize, { 0.f, ScreenSize.y });
 
-	const float4 GroundRenderScale = float4{ 200.f, 200.f };
 	GameEngineRender* GroundRender = CreateRender("BattlePlayerGround.bmp", RenderOrder::Player);
 	GroundRender->SetScale(GroundRenderScale);
-
-
+	SetMovePositions({ ScreenSize.x + GroundRenderScale.hx(), Height}, { GroundRenderScale.hx(), Height});
 }

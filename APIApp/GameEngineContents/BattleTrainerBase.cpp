@@ -45,19 +45,3 @@ void BattleTrainerBase::BattleStartMove()
 
 
 
-#include <GameEnginePlatform/GameEngineWindow.h>
-#include <GameEnginePlatform/GameEngineImage.h>
-
-void BattleTrainerBase::Render(float _DeltaTime)
-{
-	HDC Hdc = GameEngineWindow::GetDoubleBufferImage()->GetImageDC();
-	float4 ThisPos = GetPos();
-
-	Rectangle(Hdc,
-		ThisPos.ix() - 20,
-		ThisPos.iy() - 20,
-		ThisPos.ix() + 20,
-		ThisPos.iy() + 20);
-}
-
-
