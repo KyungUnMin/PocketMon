@@ -88,10 +88,10 @@ void CenterLevel::Loading()
 	}
 
 	{
-		Dir.MoveParentToDirectory("Image");
-		Dir.Move("Image");
-		Dir.Move("FieldUI_HSM");
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_eng.bmp"))->Cut(27, 2);
+		//Dir.MoveParentToDirectory("Image");
+		//Dir.Move("Image");
+		//Dir.Move("FieldUI_HSM");
+		//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_eng.bmp"))->Cut(27, 2);
 	}
 	{
 		Dir.MoveParentToDirectory("Image");

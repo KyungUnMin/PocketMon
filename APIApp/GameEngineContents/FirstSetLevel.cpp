@@ -49,4 +49,5 @@ void FirstSetLevel::ImageLoad()
 	Dir.Move("Image");
 	Dir.Move("FieldUI_HSM");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Npc_TextFrame.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_All.bmp"))->Cut(27, 3);
 }

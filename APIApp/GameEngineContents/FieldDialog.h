@@ -34,7 +34,7 @@ private:
 	int OneLineSize = 30;
 	int LineCount = 2;
 	float4 TextRenderImageScale = { 24, 48 };
-	float4 FirstTextRenderPos = { -388,-28 }; // 오른쪽으로 28 아래로 24
+	float4 FirstTextRenderPos = { -388,-28 };
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
 
