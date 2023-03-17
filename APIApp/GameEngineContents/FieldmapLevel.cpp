@@ -2,8 +2,10 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
+#include "Fieldmap.h"
 #include "FieldmapRender.h"
 #include "Player.h"
+#include "int2.h"
 
 FieldmapLevel::FieldmapLevel()
 {
@@ -17,6 +19,10 @@ void FieldmapLevel::Loading()
 {
 	MainFieldRender = CreateActor<FieldmapRender>();
 	MainPlayer = CreateActor<Player>();
+	MainPlayer->SetPos(float4::Zero);
+
+	Fieldmap::AddFieldData("TempMap", "Test.data");
+	Fieldmap::ChangeField("TempMap");
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -46,6 +52,10 @@ void FieldmapLevel::Update(float _DeltaTime)
 		{
 			SetCameraMove(float4::Left * 200.0f * _DeltaTime);
 		}
+
+		int2 PlayerIndex = Fieldmap::GetIndex(MainPlayer->GetPos());
+
+		DebugTextPush("PlayerIndex : " + PlayerIndex.ToString());
 	}
 	else
 	{

@@ -84,7 +84,8 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
 		Dir.Move("FieldMap");
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(4, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FieldTileSet.bmp"))->Cut(10, 10);
 	}
 
 	{

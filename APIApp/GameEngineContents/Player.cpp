@@ -5,9 +5,11 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 #include "Player.h"
 #include "ContentsEnum.h"
+#include "Fieldmap.h"
 
 Player* Player::MainPlayer;
 
@@ -60,9 +62,16 @@ void Player::Update(float _DeltaTime)
 {
 	//CollisionCheck(_DeltaTime);
 	//Movecalculation(_DeltaTime);
+	UpdateState(_DeltaTime);
+
+	// Walkable 반환값 true = 이동가능 false = 이동 불가능
+	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime)))
+	{
+		SetMove(MoveDir * _DeltaTime); //STATE에서받은값으로 움직임 제어
+	}
+}
 	UpdateState(_DeltaTime); //움직임관리
 	NPCtalkValueSet(); //NPC방향세팅용
-	SetMove(MoveDir* _DeltaTime); //STATE에서받은값으로 움직임 제어
 }
 
 //맵 충돌 관리
@@ -132,5 +141,11 @@ void Player::NPCtalkValueSet()
 
 void Player::Render(float _DeltaTime)
 {
-	
+	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
+
+	Rectangle(GameEngineWindow::GetWindowBackBufferHdc(),
+		PlayerPos.ix() - 5,
+		PlayerPos.iy() - 5,
+		PlayerPos.ix() + 5,
+		PlayerPos.iy() + 5);
 }

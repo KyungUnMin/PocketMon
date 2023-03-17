@@ -26,9 +26,10 @@ private:
 	float4 RendersSize = float4::Zero;
 	float4 CurPos = float4::Zero;
 
-	const int RenderSizeX = 20;
-	const int RenderSizeY = 10;
+	const int RenderSizeX = 3;
+	const int RenderSizeY = 3;
 
+	float4 FieldSizeHalfFloat4 = float4::Zero;
 	int FieldSize = 0;
 	int FieldSizeHalf = 0;
 

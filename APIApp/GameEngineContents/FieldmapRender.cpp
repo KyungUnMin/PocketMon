@@ -24,6 +24,7 @@ void FieldmapRender::Start()
 {
 	FieldSize = static_cast<int>(Fieldmap::TileSize);
 	FieldSizeHalf = static_cast<int>(Fieldmap::TileSizeHalf);
+	FieldSizeHalfFloat4 = float4{Fieldmap::TileSizeHalf, Fieldmap::TileSizeHalf };
 
 	TileRenders.reserve((RenderSizeY * 2) + 1);
 
@@ -36,7 +37,7 @@ void FieldmapRender::Start()
 
 		for (size_t x = 0; x < TempTileRenders.capacity(); x++)
 		{
-			GameEngineRender* TileRender = CreateRender("DebugTilemap.BMP", RenderOrder::Tilemap);
+			GameEngineRender* TileRender = CreateRender("FieldTileSet.BMP", RenderOrder::Tilemap);
 			TileRender->SetFrame(0);
 			TileRender->SetScale({ TileSize ,TileSize });
 			TileRender->On();
@@ -80,11 +81,13 @@ void FieldmapRender::SetRendersPos(std::vector<std::vector<GameEngineRender*>>& 
 		{
 			float4 RenderPos = CurPos - RendersSize + float4(
 				static_cast<float>(x * FieldSize),
-				static_cast<float>(y * FieldSize));
+				static_cast<float>(y * FieldSize)) ;
 
 			int2 RenderIndex = Fieldmap::GetIndex(RenderPos);
 			RenderPos = Fieldmap::GetPos(RenderIndex);
+			RenderPos += FieldSizeHalfFloat4;
 
+			_Renders[y][x]->SetFrame(Fieldmap::GetRenderFrame(RenderIndex));
 			_Renders[y][x]->SetPosition(RenderPos);
 		}
 	}

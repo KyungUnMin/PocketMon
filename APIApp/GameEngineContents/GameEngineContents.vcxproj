@@ -180,6 +180,10 @@
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp" />
     <ClCompile Include="Fieldmap.cpp" />
+    <ClCompile Include="FieldmapBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapLevel.cpp" />
     <ClCompile Include="FieldmapRender.cpp" />
     <ClCompile Include="FirstSetLevel.cpp" />
@@ -224,6 +228,10 @@
     </ClInclude>
     <ClInclude Include="FieldDialog.h" />
     <ClInclude Include="Fieldmap.h" />
+    <ClInclude Include="FieldmapBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldmapLevel.h" />
     <ClInclude Include="FieldmapRender.h" />
     <ClInclude Include="FirstSetLevel.h" />
