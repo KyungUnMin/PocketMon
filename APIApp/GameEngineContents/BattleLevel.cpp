@@ -20,9 +20,16 @@ void BattleLevel::Loading()
 	CreateActor<BattleBackGround>();
 }
 
+#include <GameEnginePlatform/GameEngineInput.h>
+#include "PocketMonCore.h"
+
 void BattleLevel::Update(float _DeltaTime)
 {
-
+	if (true == GameEngineInput::IsDown("LevelChange2"))
+	{
+		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		return;
+	}
 }
 
 

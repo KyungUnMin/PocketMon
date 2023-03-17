@@ -23,13 +23,17 @@ void CenterLevel::Loading()
 	Dir.Move("ContentsResources");
 	Dir.Move("Image");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CenterActor.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Combat_TextFrame.bmp"));
 
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleFadeDown.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleFadeUp.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleNPCGround.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattlePlayerGround.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleBackGround.bmp"));
+	{
+		//Battle ¸®¼Ò½º
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleFadeDown.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleFadeUp.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleNPCGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattlePlayerGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Battle\\BattleBackGround.bmp"));
+	}
+
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Combat_TextFrame.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\EnemyHPBar.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\EnemyHPBackground.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\BattleCommend.bmp"));
