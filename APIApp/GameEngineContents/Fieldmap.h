@@ -26,7 +26,7 @@ public:
 
 	static float4 GetPos(const int2& _Index)
 	{
-		return float4(0.0f, 0.0f);
+		return float4(_Index.x * TileSize, _Index.y * TileSize);
 	}
 
 	static void CalRenderStartPos(float4& _Pos)
@@ -42,11 +42,31 @@ public:
 
 	static int2 GetIndex(const float4& _Pos)
 	{
-		return int2(static_cast<int>(_Pos.x / TileSize), static_cast<int>(_Pos.y / TileSize));
+		int2 ResultIndex = { 0, 0 };
+
+		float PosX = _Pos.x;
+		float PosY = _Pos.y;
+
+		if (PosX < 0)
+		{
+			PosX -= TileSize - (PosX - static_cast<int>(PosX));
+		}
+
+		if (PosY < 0)
+		{
+			PosY -= TileSize - (PosY - static_cast<int>(PosY));
+		}
+
+		float CountX = PosX / TileSize;
+		float CountY = PosY / TileSize;
+
+		ResultIndex.x = static_cast<int>(CountX);
+		ResultIndex.y = static_cast<int>(CountY);
+
+		return ResultIndex;
 	}
 private:
 	static Fieldmap* CurFieldmapLevel;
-	std::vector<Fieldmap*> CreateFieldmaps;
 
 public:
 	Fieldmap();
@@ -60,4 +80,5 @@ public:
 protected:
 
 private:
+
 };

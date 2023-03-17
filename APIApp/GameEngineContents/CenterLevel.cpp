@@ -67,6 +67,13 @@ void CenterLevel::Loading()
 	{
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
+		Dir.Move("FieldMap");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(2, 1);
+	}
+
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
 		Dir.Move("FieldUI_HSM");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_eng.bmp"))->Cut(27, 2);
 	}

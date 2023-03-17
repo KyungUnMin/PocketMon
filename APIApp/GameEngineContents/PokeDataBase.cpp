@@ -117,6 +117,9 @@ PokePersonality PokeDataBase::PersonalityDecision()
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 24);
 
 	Personality = static_cast<PokePersonality>(RandValue);
+
+	// 오류로 인해 임시 반환 값
+	return PokePersonality::Adamant;
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼

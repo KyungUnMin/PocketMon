@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class FieldmapRender;
+class Player;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
@@ -21,8 +22,7 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {}
 private:
 	FieldmapRender* MainFieldRender = nullptr;
-
-	float4 FreeCameraPos = float4::Zero;
+	Player* MainPlayer = nullptr;
 
 	bool IsCameraDebug = false;
 };

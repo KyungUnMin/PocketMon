@@ -3,6 +3,7 @@
 enum class RenderOrder
 {
 	BackGround,		 // 0
+	Tilemap,
 	Monster,		 // 1
 	Player,			 // 2
 

@@ -1,7 +1,9 @@
 #include "FieldmapLevel.h"
+#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "FieldmapRender.h"
+#include "Player.h"
 
 FieldmapLevel::FieldmapLevel()
 {
@@ -14,6 +16,7 @@ FieldmapLevel::~FieldmapLevel()
 void FieldmapLevel::Loading()
 {
 	MainFieldRender = CreateActor<FieldmapRender>();
+	MainPlayer = CreateActor<Player>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -29,27 +32,25 @@ void FieldmapLevel::Update(float _DeltaTime)
 
 		if (true == GameEngineInput::IsPress("FreeCameraMoveUp"))
 		{
-			FreeCameraPos += float4::Down * 200.0f * _DeltaTime;
+			SetCameraMove(float4::Down * 200.0f * _DeltaTime);
 		}
 		else if (true == GameEngineInput::IsPress("FreeCameraMoveDown"))
 		{
-			FreeCameraPos += float4::Up * 200.0f * _DeltaTime;
+			SetCameraMove(float4::Up * 200.0f * _DeltaTime);
 		}
 		else if (true == GameEngineInput::IsPress("FreeCameraMoveLeft"))
 		{
-			FreeCameraPos += float4::Right * 200.0f * _DeltaTime;
+			SetCameraMove(float4::Right * 200.0f * _DeltaTime);
 		}
 		else if (true == GameEngineInput::IsPress("FreeCameraMoveRight"))
 		{
-			FreeCameraPos += float4::Left * 200.0f * _DeltaTime;
+			SetCameraMove(float4::Left * 200.0f * _DeltaTime);
 		}
-
-		MainFieldRender->RenderPosUpdate(FreeCameraPos);
 	}
 	else
 	{
-		// Todo : Player 위치로 변경
-		MainFieldRender->RenderPosUpdate(FreeCameraPos);
+		SetCameraPos(MainPlayer->GetPos() - GameEngineWindow::GetScreenSize().half());
 	}
 
+	MainFieldRender->RenderPosUpdate(MainPlayer->GetPos());
 }
