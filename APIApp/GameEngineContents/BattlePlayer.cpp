@@ -2,6 +2,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
+#include "BattleLevel.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 
@@ -18,14 +19,42 @@ BattlePlayer::~BattlePlayer()
 	}
 }
 
-void BattlePlayer::Start()
+
+void BattlePlayer::Init(BattleFieldType _FieldType)
+{
+	CreateGround(_FieldType);
+
+}
+
+void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 {
 	const float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	const float4 GroundRenderScale = float4{ 528.f, 72.f };
-	const float Height = (ScreenSize.y - 200.f);
+	const float Height = (ScreenSize.y - 196.f);
+	std::string GroundPath = "";
 
+	switch (_FieldType)
+	{
+	case BattleFieldType::Indoor:
+		GroundPath = "BattleIndoorPlayerGround.bmp";
+		break;
+	case BattleFieldType::Grass:
+		GroundPath = "BattleGrassPlayerGround.bmp";
+		break;
+	case BattleFieldType::Stone:
+		GroundPath = "BattleStonePlayerGround.bmp";
+		break;
+	}
 
-	GameEngineRender* GroundRender = CreateRender("BattlePlayerGround.bmp", RenderOrder::Player);
+	GameEngineRender* GroundRender = CreateRender(GroundPath, RenderOrder::Player);
+	GroundRender->SetScaleToImage();
+
+	const float4& RenderScale = GroundRender->GetScale();
+	SetMovePositions({ ScreenSize.x + RenderScale.hx(), Height }, { RenderScale.hx(), Height });
+}
+
+void BattlePlayer::CreatePlayer()
+{
+	const float4 GroundRenderScale = float4{ 256.f, 196.f };
+	GameEngineRender* GroundRender = CreateRender("BattlePlayer.bmp", RenderOrder::Player);
 	GroundRender->SetScale(GroundRenderScale);
-	SetMovePositions({ ScreenSize.x + GroundRenderScale.hx(), Height}, { GroundRenderScale.hx(), Height});
 }

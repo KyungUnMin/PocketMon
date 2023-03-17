@@ -2,7 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 class GameEngineRender;
-
+enum class BattleFieldType;
+	
 class BattleBackGround : public GameEngineActor
 {
 public:
@@ -14,8 +15,9 @@ public:
 	BattleBackGround& operator=(const BattleBackGround& _Other) = delete;
 	BattleBackGround& operator=(const BattleBackGround&& _Other) noexcept = delete;
 
+	void Init(BattleFieldType _BattleType);
+
 protected:
-	void Start() override;
 	void Update(float _DeltaTime) override;
 	
 private:
@@ -24,6 +26,8 @@ private:
 	GameEngineRender* FadeDown = nullptr;
 	const float FadeDuration = 1.f;
 
+	void CreateField(BattleFieldType _BattleType);
+	void CreateFadeEffect();
 	void FadeMove();
 };
 

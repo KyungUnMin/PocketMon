@@ -35,8 +35,8 @@
     <ClCompile Include="BattleTrainerBase.cpp">
       <Filter>Battle\02.Actor\02.Trainer\01.Base</Filter>
     </ClCompile>
-    <ClCompile Include="BattleNPC.cpp">
-      <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
+    <ClCompile Include="BattleEnemy.cpp">
+      <Filter>Battle\02.Actor\02.Trainer\03.Enemy</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Player\Player</Filter>
@@ -115,8 +115,8 @@
     <ClInclude Include="BattleTrainerBase.h">
       <Filter>Battle\02.Actor\02.Trainer\01.Base</Filter>
     </ClInclude>
-    <ClInclude Include="BattleNPC.h">
-      <Filter>Battle\02.Actor\02.Trainer\03.NPC</Filter>
+    <ClInclude Include="BattleEnemy.h">
+      <Filter>Battle\02.Actor\02.Trainer\03.Enemy</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Player\Player</Filter>
@@ -195,9 +195,6 @@
     <Filter Include="Battle\02.Actor\02.Trainer\02.Player">
       <UniqueIdentifier>{ddee7a48-c424-4725-9853-c684396de44f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\02.Trainer\03.NPC">
-      <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Player">
       <UniqueIdentifier>{15be744f-b142-48fa-8078-7a2834c8aa89}</UniqueIdentifier>
     </Filter>
@@ -224,6 +221,9 @@
     </Filter>
     <Filter Include="FieldUI\HSM">
       <UniqueIdentifier>{67809fc1-ef1f-4703-b7c8-9cb88f6365bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\02.Trainer\03.Enemy">
+      <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

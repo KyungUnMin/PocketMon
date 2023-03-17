@@ -167,7 +167,7 @@
     </ClCompile>
     <ClCompile Include="BattleBackGround.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
-    <ClCompile Include="BattleNPC.cpp" />
+    <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
     <ClCompile Include="CenterActor.cpp" />
@@ -206,7 +206,7 @@
     </ClInclude>
     <ClInclude Include="BattleBackGround.h" />
     <ClInclude Include="BattleLevel.h" />
-    <ClInclude Include="BattleNPC.h" />
+    <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleTrainerBase.h" />
     <ClInclude Include="CenterActor.h" />

@@ -14,10 +14,14 @@ public:
 	BattlePlayer& operator=(const BattlePlayer& _Other) = delete;
 	BattlePlayer& operator=(const BattlePlayer&& _Other) noexcept = delete;
 
+	void Init(BattleFieldType _FieldType) override;
+
 protected:
-	void Start() override;
 
 private:
+	
 
+	void CreateGround(BattleFieldType _FieldType);
+	void CreatePlayer();
 };
 

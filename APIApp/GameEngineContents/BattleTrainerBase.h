@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class BattleFieldType;
+
 class BattleTrainerBase : public GameEngineActor
 {
 public:
@@ -13,6 +15,8 @@ public:
 	BattleTrainerBase(BattleTrainerBase&& _Other) noexcept = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase& _Other) = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
+
+	virtual void Init(BattleFieldType _FieldType) = 0;
 
 protected:
 	void Start() override;

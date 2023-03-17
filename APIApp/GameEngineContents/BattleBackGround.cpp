@@ -2,6 +2,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
+#include "BattleLevel.h"
 
 BattleBackGround::BattleBackGround()
 {
@@ -13,19 +14,45 @@ BattleBackGround::~BattleBackGround()
 
 }
 
-void BattleBackGround::Start()
+void BattleBackGround::Init(BattleFieldType _BattleType)
 {
 	ScreenSize = GameEngineWindow::GetScreenSize();
-	
-	GameEngineRender* BackRender = CreateRender("BattleBackGround.bmp", RenderOrder::BackGround);
+
+	CreateField(_BattleType);
+	CreateFadeEffect();
+}
+
+void BattleBackGround::CreateField(BattleFieldType _BattleType)
+{
+	std::string BackRenderPath = "";
+
+	switch (_BattleType)
+	{
+	case BattleFieldType::Indoor:
+		BackRenderPath = "BattleIndoorField.bmp";
+		break;
+	case BattleFieldType::Grass:
+		BackRenderPath = "BattleGrassField.bmp";
+		break;
+	case BattleFieldType::Stone:
+		BackRenderPath = "BattleStoneField.bmp";
+		break;
+	}
+
+	GameEngineRender* BackRender = CreateRender(BackRenderPath, RenderOrder::BackGround);
+
 	BackRender->SetScale(ScreenSize);
 	BackRender->SetPosition(ScreenSize.half());
+}
 
+void BattleBackGround::CreateFadeEffect()
+{
 	FadeUp = CreateRender("BattleFadeUp.bmp", RenderOrder::Fade);
 	FadeUp->SetScale(ScreenSize);
 	FadeDown = CreateRender("BattleFadeDown.bmp", RenderOrder::Fade);
 	FadeDown->SetScale(ScreenSize);
 }
+
 
 void BattleBackGround::Update(float _DeltaTime)
 {
@@ -33,6 +60,8 @@ void BattleBackGround::Update(float _DeltaTime)
 
 
 }
+
+
 
 void BattleBackGround::FadeMove()
 {
