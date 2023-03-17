@@ -15,6 +15,10 @@ public:
 	FieldDialog& operator=(const FieldDialog& _Other) = delete;
 	FieldDialog& operator=(FieldDialog&& _Other) noexcept = delete;
 
+	void On() override;
+	void Off() override;
+	void OnOffSwtich() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -28,6 +32,7 @@ private:
 
 	std::vector<std::vector<GameEngineRender*>> FieldDialogTextRender = std::vector<std::vector<GameEngineRender*>>();
 	int OneLineSize = 30;
+	int LineCount = 2;
 	float4 TextRenderImageScale = { 24, 48 };
 	float4 FirstTextRenderPos = { -388,-28 }; // 오른쪽으로 28 아래로 24
 	float4 TextRenderInterval = { 0,12 };
@@ -35,6 +40,14 @@ private:
 
 	std::string Str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz";
 	
+	float Time = 0;
+	int FirstLineRenderLen = 0;
+	int SecondLineRenderLen = 0;
+
+	void UpdateStart();
+	void UpdateEnd();
+
 	void StringToRender();
+	void ClearDialog();
 };
 
