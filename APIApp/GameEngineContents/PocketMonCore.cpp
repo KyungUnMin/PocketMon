@@ -1,4 +1,4 @@
-#include "PocketMonCore.h"
+ #include "PocketMonCore.h"
 
 #include "CenterLevel.h"
 #include "FieldmapLevel.h"
@@ -6,7 +6,7 @@
 #include "PlayerTestLevel.h"
 #include "TextTestLevel.h"
 #include "FirstSetLevel.h"
-
+#include "BagLevel.h"
 PocketMonCore PocketMonCore::Core;
 
 PocketMonCore::PocketMonCore()
@@ -29,6 +29,7 @@ void PocketMonCore::Start()
 	CreateLevel<PlayerTestLevel>("PlayerLevel");
 	CreateLevel<TextTestLevel>("TextTestLevel");
 	CreateLevel<FirstSetLevel>("FirstSetLevel");
+	CreateLevel<BagLevel>("BagLevel");
 
 	ChangeLevel("CenterLevel");
 }

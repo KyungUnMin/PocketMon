@@ -71,6 +71,9 @@
     <ClCompile Include="FieldData.cpp">
       <Filter>Map\Class</Filter>
     </ClCompile>
+    <ClCompile Include="BagLevel.cpp">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -142,6 +145,9 @@
     <ClInclude Include="FieldData.h">
       <Filter>Map\Class</Filter>
     </ClInclude>
+    <ClInclude Include="BagLevel.h">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -206,6 +212,9 @@
     </Filter>
     <Filter Include="BattleUI\Actor">
       <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\BagUI">
+      <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

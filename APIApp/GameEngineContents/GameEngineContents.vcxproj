@@ -157,6 +157,10 @@
   <ItemGroup>
     <ClCompile Include="BackGround.cpp" />
     <ClCompile Include="BackTextActor.cpp" />
+    <ClCompile Include="BagLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleBackGround.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="BattleNPC.cpp" />
@@ -188,6 +192,10 @@
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
     <ClInclude Include="BackTextActor.h" />
+    <ClInclude Include="BagLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleBackGround.h" />
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="BattleNPC.h" />

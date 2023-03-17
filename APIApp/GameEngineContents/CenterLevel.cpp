@@ -139,7 +139,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange5"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("BagLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange6"))
