@@ -81,7 +81,22 @@ void CenterLevel::Loading()
 		Dir.Move("FieldUI_HSM");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_eng.bmp"))->Cut(27, 2);
 	}
-
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
+		Dir.Move("FieldUI_KKH");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Back.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_CurrentArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_EnterArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_RightArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Items.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_PoketBalls.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_KeyItems.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftOpen.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_MiddleOpen.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_RightOpen.bmp"));
+	}
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange1", '1');

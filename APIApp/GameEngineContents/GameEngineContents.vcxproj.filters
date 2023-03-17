@@ -74,6 +74,9 @@
     <ClCompile Include="BagLevel.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
+    <ClCompile Include="BagUI.cpp">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -146,6 +149,9 @@
       <Filter>Map\Class</Filter>
     </ClInclude>
     <ClInclude Include="BagLevel.h">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BagUI.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
   </ItemGroup>
