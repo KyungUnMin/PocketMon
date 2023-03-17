@@ -10,10 +10,11 @@ PokeDataBase::~PokeDataBase()
 {
 }
 
-void PokeDataBase::PokeCreate(PokeNumber _Number, int _Level)
+void PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 {
 	int ChangePokeNumber = 0;
-	ChangePokeNumber = static_cast<int>(_Number) - 1;
+	
+	ChangePokeNumber = _PokeDexNumber - 1;
 
 	PokeDexNumber = static_cast<PokeNumber>(ChangePokeNumber);
 
@@ -45,6 +46,11 @@ void PokeDataBase::PokeCreate(PokeNumber _Number, int _Level)
 	default:
 		break;
 	}
+}
+
+void PokeDataBase::PokeNameEdit(std::string _EditName)
+{
+	Name = _EditName;
 }
 
 // 몬스터를 처치하면 경험치 획득
@@ -112,14 +118,14 @@ void PokeDataBase::GenderDecision()
 }
 
 // 성격 결정
-PokePersonality PokeDataBase::PersonalityDecision()
+void PokeDataBase::PersonalityDecision()
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 24);
 
 	Personality = static_cast<PokePersonality>(RandValue);
 
 	// 오류로 인해 임시 반환 값
-	return PokePersonality::Adamant;
+	// return PokePersonality::Adamant;
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼
@@ -130,7 +136,7 @@ void PokeDataBase::BulbasaurData(int _Level)
 	PersonalityDecision();
 	Type = PokeType::Grass;
 	Characteristic = PokeCharacteristic::심록;
-	PokeDexNumber = PokeNumber::Bulbasaur;
+	Name = "Bulbasaur";
 	
 	HealthPoint = 20;
 	AttackPower = 15;
@@ -141,10 +147,12 @@ void PokeDataBase::BulbasaurData(int _Level)
 
 	int PlusLevel = MonsterLevel + _Level;
 
-	for (int i = 0; i < PlusLevel; i++)
+	for (int i = 1; i < PlusLevel; i++)
 	{
 		PokeStatusUp(1);
 	}
+
+	MonsterLevel = PlusLevel;
 
 	// 스킬 부여
 	// SkillList[0].~ = "몸통박치기";
@@ -158,7 +166,7 @@ void PokeDataBase::CharmanderData(int _Level)
 	PersonalityDecision();
 	Type = PokeType::Fire;
 	Characteristic = PokeCharacteristic::맹화;
-	PokeDexNumber = PokeNumber::Charmander;
+	Name = "Charmander";
 
 	HealthPoint = 25;
 	AttackPower = 12;
@@ -169,10 +177,12 @@ void PokeDataBase::CharmanderData(int _Level)
 
 	int PlusLevel = MonsterLevel + _Level;
 
-	for (int i = 0; i < PlusLevel; i++)
+	for (int i = 1; i < PlusLevel; i++)
 	{
 		PokeStatusUp(2);
 	}
+
+	MonsterLevel = PlusLevel;
 
 	// 스킬부여
 	// SkillList[0].~ = "몸통박치기";
@@ -186,7 +196,7 @@ void PokeDataBase::SquirtleData(int _Level)
 	PersonalityDecision();
 	Type = PokeType::Water;
 	Characteristic = PokeCharacteristic::급류;
-	PokeDexNumber = PokeNumber::Squirtle;
+	Name = "Squirtle";
 
 	HealthPoint = 30;
 	AttackPower = 10;
@@ -197,10 +207,12 @@ void PokeDataBase::SquirtleData(int _Level)
 
 	int PlusLevel = MonsterLevel + _Level;
 
-	for (int i = 0; i < PlusLevel; i++)
+	for (int i = 1; i < PlusLevel; i++)
 	{
 		PokeStatusUp(3);
 	}
+
+	MonsterLevel = PlusLevel;
 
 	// 스킬부여
 	// SkillList[0].~ = "몸통박치기";

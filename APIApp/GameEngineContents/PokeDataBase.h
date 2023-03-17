@@ -21,53 +21,53 @@ enum class PokeNumber
 // 포켓몬 타입
 enum class PokeType
 {
-	Normal,
-	Fight,
-	Flying,
-	Poision,
-	Bug,
-	Ground,
-	Rock,
-	Ghost,
-	Steel,
-	Fire,
-	Water,
-	Grass,
-	Electro,
-	Ice,
-	Psvchc,
-	Dragon,
-	Drak,
+	Normal,   // 노말
+	Fight,    // 격투
+	Flying,   // 비행
+	Poision,  // 독
+	Bug,      // 벌레
+	Ground,   // 땅
+	Rock,     // 바위
+	Ghost,    // 고스트
+	Steel,    // 강철
+	Fire,     // 불
+	Water,    // 물
+	Grass,    // 풀
+	Electro,  // 전기
+	Ice,      // 얼음
+	Psvchc,   // 에스퍼
+	Dragon,   // 드래곤
+	Drak,     // 악
 };
 
 // 포켓몬 성격
 enum class PokePersonality
 {
-	Lonely,
-	Adamant,
-	Naughty,
-	Brave,
-	Bold,
-	Impish,
-	Lax,
-	Relaxed,
-	Modest,
-	Mild,
-	Rash,
-	Quiet,
-	Calm,
-	Gentle,
-	Careful,
-	Sassy,
-	Timid,
-	Hasty,
-	Jolly,
-	Naive,
-	Bashful,
-	Hardy,
-	Docile,
-	Quirky,
-	Serious,
+	Lonely,   // 외로운
+	Adamant,  // 고집스러운
+	Naughty,  // 어리광부리는
+	Brave,    // 용감한
+	Bold,     // 뻔뻔한
+	Impish,   // 장난이 심한
+	Lax,      // 덜렁한
+	Relaxed,  // 느긋한
+	Modest,   // 소극적인
+	Mild,     // 대범한
+	Rash,     // 무심한
+	Quiet,    // 냉정한
+	Calm,     // 온화한
+	Gentle,   // 얌전한
+	Careful,  // 신중한
+	Sassy,    // 건방진
+	Timid,    // 겁많은
+	Hasty,    // 성급한
+	Jolly,    // 쾌활한
+	Naive,    // 순진한
+	Bashful,  // 수줍은
+	Hardy,    // 노력하는
+	Docile,   // 고분고분한
+	Quirky,   // 변덕스러운
+	Serious,  // 성실한
 };
 
 // 포켓몬 특성
@@ -95,12 +95,13 @@ public:
 	PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
 	PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
-	void PokeCreate(PokeNumber _Number, int _Level);
+	void PokeCreate(int _PokeDexNumber, int _Level);
 	void PokeExperienceAcquisition(int _EXP);
 	void PokeLevelUp(int _EXP);
 	void PokeStatusUp(int _Status);
 	void PokeEvolution();
 	void PokeSkillAcquisition();
+	void PokeNameEdit(std::string _EditName);
 
 protected:
 
@@ -131,7 +132,7 @@ private:
 	PokeCharacteristic Characteristic = PokeCharacteristic::심록;	 // 포켓몬 특성
 
 	// 성격, 성별 난수
-	PokePersonality PersonalityDecision();
+	void PersonalityDecision();
 	void GenderDecision();
 
 
