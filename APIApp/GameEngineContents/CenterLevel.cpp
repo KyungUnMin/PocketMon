@@ -103,6 +103,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_EnterArrow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftArrow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_RightArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_UpArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_DownArrow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Items.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_PoketBalls.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_KeyItems.bmp"));
