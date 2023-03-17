@@ -1,19 +1,18 @@
 #pragma once
-#include <GameEngineCore/GameEngineActor.h>
-
+#include "HpBackGroundMove.h"
 // Ό³Έν :
-class BackTextActor : public GameEngineActor
+class FriendlyHPBackground : public HpBackGroundMove
 {
 public:
-	// constrcuter destructer
-	BackTextActor();
-	~BackTextActor();
+	static FriendlyHPBackground* FriendlyPtr;
+	FriendlyHPBackground();
+	~FriendlyHPBackground() override;
 
 	// delete Function
-	BackTextActor(const BackTextActor& _Other) = delete;
-	BackTextActor(BackTextActor&& _Other) noexcept = delete;
-	BackTextActor& operator=(const BackTextActor& _Other) = delete;
-	BackTextActor& operator=(BackTextActor&& _Other) noexcept = delete;
+	FriendlyHPBackground(const FriendlyHPBackground& _Other) = delete;
+	FriendlyHPBackground(FriendlyHPBackground&& _Other) noexcept = delete;
+	FriendlyHPBackground& operator=(const FriendlyHPBackground& _Other) = delete;
+	FriendlyHPBackground& operator=(FriendlyHPBackground&& _Other) noexcept = delete;
 
 protected:
 	void Start() override;

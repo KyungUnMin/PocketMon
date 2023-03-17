@@ -13,7 +13,7 @@ BackTextActor::~BackTextActor()
 
 void BackTextActor::Start()
 {
-	SetPos(GameEngineWindow::GetScreenSize().Bottom());
+	SetPos({480,540});
 	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", RenderOrder::BackGround);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 }

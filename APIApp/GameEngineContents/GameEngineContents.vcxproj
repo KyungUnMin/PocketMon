@@ -170,8 +170,10 @@
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
+    <ClCompile Include="Battle_Select.cpp" />
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
+    <ClCompile Include="EnemyHPBackground.cpp" />
     <ClCompile Include="FieldData.cpp">
       <SubType>
       </SubType>
@@ -182,6 +184,7 @@
     <ClCompile Include="FieldmapRender.cpp" />
     <ClCompile Include="FirstSetLevel.cpp" />
     <ClCompile Include="FriendlyHPBackground.cpp" />
+    <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="int2.cpp" />
     <ClCompile Include="NPC1.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -209,10 +212,12 @@
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleTrainerBase.h" />
+    <ClInclude Include="Battle_Select.h" />
     <ClInclude Include="CenterActor.h" />
     <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="ContentsEnums.h" />
+    <ClInclude Include="EnemyHPBackground.h" />
     <ClInclude Include="FieldData.h">
       <SubType>
       </SubType>
@@ -223,6 +228,7 @@
     <ClInclude Include="FieldmapRender.h" />
     <ClInclude Include="FirstSetLevel.h" />
     <ClInclude Include="FriendlyHPBackground.h" />
+    <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="int2.h" />
     <ClInclude Include="NPC1.h" />
     <ClInclude Include="Player.h" />

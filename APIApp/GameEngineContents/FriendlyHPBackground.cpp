@@ -1,19 +1,27 @@
-#include "BackTextActor.h"
+#include "FriendlyHPBackground.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
-BackTextActor::BackTextActor()
+FriendlyHPBackground* FriendlyHPBackground::FriendlyPtr = nullptr;
+
+FriendlyHPBackground::FriendlyHPBackground()
 {
+	FriendlyPtr = this;
 }
 
-BackTextActor::~BackTextActor()
+FriendlyHPBackground::~FriendlyHPBackground()
 {
+	if (this == FriendlyPtr)
+	{
+		FriendlyPtr = nullptr;
+	}
 }
 
-void BackTextActor::Start()
+void FriendlyHPBackground::Start()
 {
-	SetPos(GameEngineWindow::GetScreenSize().Bottom());
-	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", RenderOrder::BackGround);
+	GameEngineRender* RenderPtr = CreateRender("FriendlyHPBackground.bmp", RenderOrder::BackGround);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
+	SetMovePositions({1500,370 }, {730,370});
+
 }
