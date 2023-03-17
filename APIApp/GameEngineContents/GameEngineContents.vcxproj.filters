@@ -23,12 +23,6 @@
     <ClCompile Include="PokeDataBase.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="FieldDialog.cpp">
-      <Filter>FieldUI</Filter>
-    </ClCompile>
-    <ClCompile Include="FirstSetLevel.cpp">
-      <Filter>FieldUI</Filter>
-    </ClCompile>
     <ClCompile Include="BattleBackGround.cpp">
       <Filter>Battle\02.Actor\01.BackGround</Filter>
     </ClCompile>
@@ -77,6 +71,12 @@
     <ClCompile Include="BagUI.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
+    <ClCompile Include="FieldDialog.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
+    <ClCompile Include="FirstSetLevel.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -102,12 +102,6 @@
     </ClInclude>
     <ClInclude Include="PokeDataBase.h">
       <Filter>Base</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldDialog.h">
-      <Filter>FieldUI</Filter>
-    </ClInclude>
-    <ClInclude Include="FirstSetLevel.h">
-      <Filter>FieldUI</Filter>
     </ClInclude>
     <ClInclude Include="BattleBackGround.h">
       <Filter>Battle\02.Actor\01.BackGround</Filter>
@@ -153,6 +147,12 @@
     </ClInclude>
     <ClInclude Include="BagUI.h">
       <Filter>FieldUI\BagUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldDialog.h">
+      <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="FirstSetLevel.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -221,6 +221,9 @@
     </Filter>
     <Filter Include="FieldUI\BagUI">
       <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\HSM">
+      <UniqueIdentifier>{67809fc1-ef1f-4703-b7c8-9cb88f6365bf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
