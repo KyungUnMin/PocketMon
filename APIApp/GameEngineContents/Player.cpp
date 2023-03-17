@@ -69,7 +69,6 @@ void Player::Update(float _DeltaTime)
 	{
 		SetMove(MoveDir * _DeltaTime); //STATE에서받은값으로 움직임 제어
 	}
-}
 	UpdateState(_DeltaTime); //움직임관리
 	NPCtalkValueSet(); //NPC방향세팅용
 }

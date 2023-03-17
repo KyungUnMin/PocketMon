@@ -77,6 +77,12 @@
     <ClCompile Include="FirstSetLevel.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
+    <ClCompile Include="Battle_Select.cpp" />
+    <ClCompile Include="EnemyHPBackground.cpp" />
+    <ClCompile Include="HpBackGroundMove.cpp" />
+    <ClCompile Include="FieldmapBackground.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -153,6 +159,12 @@
     </ClInclude>
     <ClInclude Include="FirstSetLevel.h">
       <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_Select.h" />
+    <ClInclude Include="EnemyHPBackground.h" />
+    <ClInclude Include="HpBackGroundMove.h" />
+    <ClInclude Include="FieldmapBackground.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
