@@ -10,6 +10,8 @@
 #include "Player.h"
 #include "PlayerTestLevel.h"
 
+#include "NPC1.h"
+
 
 
 
@@ -27,6 +29,8 @@ void PlayerTestLevel::Loading()
 	// 액터 생성
 	{
 		CreateActor<Player>();
+		NPC1* TestNpc = CreateActor<NPC1>();
+		TestNpc->SetPos({ 300,300 });
 	}
 		
 }
