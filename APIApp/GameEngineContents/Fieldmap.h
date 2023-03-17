@@ -40,31 +40,8 @@ public:
 		return GetIndex(float4(_x, _y));
 	}
 
-	static int2 GetIndex(const float4& _Pos)
-	{
-		int2 ResultIndex = { 0, 0 };
+	static int2 GetIndex(const float4& _Pos);
 
-		float PosX = _Pos.x;
-		float PosY = _Pos.y;
-
-		if (PosX < 0)
-		{
-			PosX -= TileSize - (PosX - static_cast<int>(PosX));
-		}
-
-		if (PosY < 0)
-		{
-			PosY -= TileSize - (PosY - static_cast<int>(PosY));
-		}
-
-		float CountX = PosX / TileSize;
-		float CountY = PosY / TileSize;
-
-		ResultIndex.x = static_cast<int>(CountX);
-		ResultIndex.y = static_cast<int>(CountY);
-
-		return ResultIndex;
-	}
 private:
 	static Fieldmap* CurFieldmapLevel;
 

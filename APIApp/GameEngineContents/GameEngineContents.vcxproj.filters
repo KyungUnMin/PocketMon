@@ -68,6 +68,9 @@
     <ClCompile Include="TestScript.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="FieldData.cpp">
+      <Filter>Map\Class</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -135,6 +138,9 @@
     </ClInclude>
     <ClInclude Include="TestScript.h">
       <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldData.h">
+      <Filter>Map\Class</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
