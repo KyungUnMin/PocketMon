@@ -55,7 +55,7 @@ void FieldDialog::Start()
 	{
 		for (size_t x = 0; x < FieldDialogTextRender[y].size(); x++)
 		{
-			FieldDialogTextRender[y][x] = CreateRender("Font_eng.bmp",1);
+			FieldDialogTextRender[y][x] = CreateRender("Font_All.bmp",1);
 			FieldDialogTextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } * (TextRenderInterval + TextRenderImageScale));
 			FieldDialogTextRender[y][x]->SetScale(TextRenderImageScale);
 			FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
