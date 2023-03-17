@@ -60,8 +60,9 @@ void Player::Update(float _DeltaTime)
 {
 	//CollisionCheck(_DeltaTime);
 	//Movecalculation(_DeltaTime);
-	UpdateState(_DeltaTime);
-	SetMove(MoveDir* _DeltaTime);
+	UpdateState(_DeltaTime); //움직임관리
+	NPCtalkValueSet(); //NPC방향세팅용
+	SetMove(MoveDir* _DeltaTime); //STATE에서받은값으로 움직임 제어
 }
 
 //맵 충돌 관리
@@ -104,6 +105,26 @@ void Player::DirCheck(const std::string_view& _AnimationName)
 	{
 		Players->ChangeAnimation(DirString + _AnimationName.data());
 		BikePlayers->ChangeAnimation(DirString + _AnimationName.data());
+	}
+}
+
+void Player::NPCtalkValueSet()
+{
+	if (GameEngineInput::IsDown("LeftMove"))
+	{
+		TalkValue = NPCtalkValue::RIGHT;
+	}
+	else if (GameEngineInput::IsDown("RightMove"))
+	{
+		TalkValue = NPCtalkValue::LEFT;
+	}
+	else if (GameEngineInput::IsDown("UpMove"))
+	{
+		TalkValue = NPCtalkValue::DOWN;
+	}
+	else if (GameEngineInput::IsDown("DownMove"))
+	{
+		TalkValue = NPCtalkValue::UP;
 	}
 }
 

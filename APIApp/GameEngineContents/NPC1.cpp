@@ -9,7 +9,7 @@
 
 #include "NPC1.h"
 #include "ContentsEnum.h"
-
+#include "Player.h"
 
 
 NPC1::NPC1()
@@ -31,6 +31,9 @@ void NPC1::ImageLoad()
 	Dir.Move("Green");
 
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Down.bmp"))->Cut(1, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Left.bmp"))->Cut(1, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Right.bmp"))->Cut(1, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Up.bmp"))->Cut(1, 1);
 
 
 
@@ -48,6 +51,9 @@ void NPC1::Start()
 		R_NPC1 = CreateRender(RenderOrder::Player);
 		R_NPC1->SetScale({ 50,50 });
 		R_NPC1->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "Green_Idle_Down.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		R_NPC1->CreateAnimation({ .AnimationName = "leftIdle",  .ImageName = "Green_Idle_Left.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		R_NPC1->CreateAnimation({ .AnimationName = "rightIdle",  .ImageName = "Green_Idle_Right.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		R_NPC1->CreateAnimation({ .AnimationName = "upIdle",  .ImageName = "Green_Idle_Up.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		
 	/*
 		R_NPC1->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "WalkRight.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
@@ -60,7 +66,10 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
-	
+	if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue())
+	{
+		R_NPC1->ChangeAnimation("upIdle");
+	}
 }
 
 

@@ -8,6 +8,15 @@ enum class PlayerState
 	MOVE,
 	
 };
+
+enum class NPCtalkValue
+{
+	NONE,
+	UP, //1
+	DOWN, //2
+	RIGHT, //3
+	LEFT, //4
+};
 class Player : public GameEngineActor
 {
 public:
@@ -25,7 +34,7 @@ public:
 	void Movecalculation(float _DeltaTime);
 	void CollisionCheck(float _DeltaTime);
 	void Render(float _DeltaTime);
-
+	void NPCtalkValueSet();
 
 	float GetPlayerSpeed()
 	{
@@ -34,6 +43,11 @@ public:
 	float SetPlayerSpeed(float _PlayerSpeed)
 	{
 		MoveSpeed = _PlayerSpeed;
+	}
+
+	NPCtalkValue GetPlayerNPCtalkValue()
+	{
+		return TalkValue;
 	}
 
 protected:
@@ -65,5 +79,10 @@ private:
 	//////////Speed&Pos//////////
 	float MoveSpeed = 200.0f;
 	float4 MoveDir = float4::Zero;
+	
+
+	NPCtalkValue TalkValue = NPCtalkValue::NONE;
+
+
 };
 
