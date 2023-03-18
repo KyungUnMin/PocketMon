@@ -22,12 +22,21 @@ protected:
 	
 private:
 	float4 ScreenSize = float4::Zero;
+
 	GameEngineRender* FadeUp = nullptr;
 	GameEngineRender* FadeDown = nullptr;
 	const float FadeDuration = 1.f;
 
+	std::vector<GameEngineRender*> EnterEffect;
+	float EffectSpeed = 0.f;
+	const float EffectDuration = 1.f;
+
 	void CreateField(BattleFieldType _BattleType);
 	void CreateFadeEffect();
+	void CreateEnterEffect(BattleFieldType _BattleType);
+
+
 	void FadeMove();
+	void EffectMove(float _DeltaTime);
 };
 

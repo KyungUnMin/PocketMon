@@ -20,6 +20,7 @@ void BattleBackGround::Init(BattleFieldType _BattleType)
 
 	CreateField(_BattleType);
 	CreateFadeEffect();
+	CreateEnterEffect(_BattleType);
 }
 
 void BattleBackGround::CreateField(BattleFieldType _BattleType)
@@ -53,12 +54,40 @@ void BattleBackGround::CreateFadeEffect()
 	FadeDown->SetScale(ScreenSize);
 }
 
+void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
+{
+	size_t EffectCount = 5;
+	EnterEffect.resize(EffectCount, nullptr);
+	EffectSpeed = (ScreenSize.x * EffectCount);
+
+	std::string EffectPath = "";
+	switch (_BattleType)
+	{
+	case BattleFieldType::Indoor:
+		EffectPath = "BattleIndoorIntro.bmp";
+		break;
+	case BattleFieldType::Grass:
+		EffectPath = "BattleGrassIntro.bmp";
+		break;
+	case BattleFieldType::Stone:
+		EffectPath = "BattleStoneIntro.bmp";
+		break;
+	}
+
+	for (size_t i = 0; i < EnterEffect.size(); ++i)
+	{
+		EnterEffect[i] = CreateRender(EffectPath, RenderOrder::Particle);
+		EnterEffect[i]->SetScaleToImage();
+		EnterEffect[i]->SetPosition({ ScreenSize.x * i, ScreenSize.hy()});
+	}
+
+}
+
 
 void BattleBackGround::Update(float _DeltaTime)
 {
 	FadeMove();
-
-
+	EffectMove(_DeltaTime);
 }
 
 
@@ -87,4 +116,28 @@ void BattleBackGround::FadeMove()
 
 	float4 FadeDownOffset = float4::LerpClamp(StartPos, { StartPos.x, ScreenSize.y }, Ratio);
 	FadeDown->SetPosition(FadeDownOffset);
+}
+
+void BattleBackGround::EffectMove(float _DeltaTime)
+{
+	float LiveTime = GetLiveTime();
+	if (EffectDuration < LiveTime)
+	{
+		if (true == EnterEffect.empty())
+			return;
+
+		for (GameEngineRender* Effect : EnterEffect)
+		{
+			Effect->Death();
+		}
+
+		EnterEffect.clear();
+		return;
+	}
+
+	for (GameEngineRender* Effect : EnterEffect)
+	{
+		Effect->SetMove(float4::Left * EffectSpeed * _DeltaTime);
+	}
+
 }

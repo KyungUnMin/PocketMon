@@ -10,6 +10,7 @@ enum class RenderOrder
 	DebugUI,
 	Field_Dialog,
 	Field_Dialog_Text,
+	Particle,
 
 	Fade,
 };
