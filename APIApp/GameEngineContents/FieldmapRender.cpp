@@ -37,7 +37,7 @@ void FieldmapRender::Start()
 
 		for (size_t x = 0; x < TempTileRenders.capacity(); x++)
 		{
-			GameEngineRender* TileRender = CreateRender("FieldTileSet.BMP", RenderOrder::Tilemap);
+			GameEngineRender* TileRender = CreateRender("DebugTilemap.BMP", RenderOrder::Tilemap);
 			TileRender->SetFrame(0);
 			TileRender->SetScale({ TileSize ,TileSize });
 			TileRender->On();
@@ -87,7 +87,15 @@ void FieldmapRender::SetRendersPos(std::vector<std::vector<GameEngineRender*>>& 
 			RenderPos = Fieldmap::GetPos(RenderIndex);
 			RenderPos += FieldSizeHalfFloat4;
 
-			_Renders[y][x]->SetFrame(Fieldmap::GetRenderFrame(RenderIndex));
+			if (true == Fieldmap::Walkable(RenderIndex))
+			{
+				_Renders[y][x]->SetFrame(1);
+			}
+			else
+			{
+				_Renders[y][x]->SetFrame(2);
+			}
+
 			_Renders[y][x]->SetPosition(RenderPos);
 		}
 	}

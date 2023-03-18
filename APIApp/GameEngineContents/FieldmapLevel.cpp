@@ -3,7 +3,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "Fieldmap.h"
-#include "FieldmapRender.h"
+#include "FieldmapCity.h"
 #include "Player.h"
 #include "int2.h"
 
@@ -17,12 +17,19 @@ FieldmapLevel::~FieldmapLevel()
 
 void FieldmapLevel::Loading()
 {
-	MainFieldRender = CreateActor<FieldmapRender>();
-	MainPlayer = CreateActor<Player>();
-	MainPlayer->SetPos(float4::Zero);
+	{
+		FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>();
 
-	Fieldmap::AddFieldData("TempMap", "Test.data");
-	Fieldmap::ChangeField("TempMap");
+		PalletTownPtr->InitFieldRender("PalletTown.bmp");
+		PalletTownPtr->InitPos(float4::Zero);
+
+		Fieldmap::AddCity("PalletTown", PalletTownPtr);
+	}
+
+	Fieldmap::ChangeCity("PalletTown");
+
+	MainPlayer = CreateActor<Player>();
+	MainPlayer->SetPos(Fieldmap::GetPos(0, 0));
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -61,6 +68,4 @@ void FieldmapLevel::Update(float _DeltaTime)
 	{
 		SetCameraPos(MainPlayer->GetPos() - GameEngineWindow::GetScreenSize().half());
 	}
-
-	MainFieldRender->RenderPosUpdate(MainPlayer->GetPos());
 }

@@ -1,15 +1,16 @@
 #include "Fieldmap.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineRandom.h>
+#include <GameEngineBase/GameEngineString.h>
 #include "FieldData.h"
+#include "FieldmapCity.h"
 #include "ContentsEnum.h"
 
 const float Fieldmap::TileSize = 64.0f;
 const float Fieldmap::TileSizeHalf = 32.0f;
-FieldData* Fieldmap::CurFieldData = nullptr;
-std::map<std::string, FieldData*> Fieldmap::FieldList;
 
-Fieldmap Fieldmap::DeleteObject = Fieldmap();
+FieldmapCity* Fieldmap::CurCity = nullptr;
+std::map<std::string, FieldmapCity*> Fieldmap::AllCitys;
 
 Fieldmap::Fieldmap()
 {
@@ -17,28 +18,30 @@ Fieldmap::Fieldmap()
 
 Fieldmap::~Fieldmap()
 {
-	std::map<std::string, FieldData*>::iterator LoopIter = FieldList.begin();
-	std::map<std::string, FieldData*>::iterator EndIter = FieldList.end();
+}
 
-	while (LoopIter != EndIter)
+float4 Fieldmap::GetPos(const int2& _Index)
+{
+	if (nullptr == CurCity)
 	{
-		if (nullptr != LoopIter->second)
-		{
-			delete LoopIter->second;
-		}
-
-		++LoopIter;
+		MsgAssert("아직 필드맵이 초기화되지 않았습니다");
 	}
 
-	FieldList.clear();
+	return float4(_Index.x * TileSize, _Index.y * TileSize) + CurCity->GetCityStartPos();
 }
 
 int2 Fieldmap::GetIndex(const float4& _Pos)
 {
+	if (nullptr == CurCity)
+	{
+		MsgAssert("아직 필드맵이 초기화되지 않았습니다");
+	}
+
+	float4 CityStartPos = CurCity->GetCityStartPos();
 	int2 ResultIndex = { 0, 0 };
 
-	float PosX = _Pos.x;
-	float PosY = _Pos.y;
+	float PosX = _Pos.x + CityStartPos.x;
+	float PosY = _Pos.y + CityStartPos.y;
 
 	if (PosX < 0)
 	{
@@ -69,69 +72,37 @@ int2 Fieldmap::GetIndex(const float4& _Pos)
 	return ResultIndex;
 }
 
-int Fieldmap::GetRenderFrame(const int2& _Index)
-{
-	if (nullptr == CurFieldData)
-	{
-		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려했습니다.");
-	}
-
-	return CurFieldData->GetRenderFrame(_Index);
-}
-
 bool Fieldmap::Walkable(const int2& _Index)
 {
-	if (nullptr == CurFieldData)
+	if (nullptr == CurCity)
 	{
 		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
 		return false;
 	}
 
-	return CurFieldData->Walkabal(_Index);
+	return CurCity->Walkable(_Index);
 }
 
-bool Fieldmap::AddFieldData(std::string _FieldName, std::string _FileName)
+void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr)
 {
-	if (FieldList.end() != FieldList.find(_FieldName))
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() != AllCitys.find(UpperName))
 	{
-		MsgAssert("같은 이름의 필드 데이터를 중복 생성했습니다.");
-		return false;
+		MsgAssert("같은 이름의 필드맵 시티를 중복 생성했습니다.");
 	}
 
-	FieldData* NewData = new FieldData(int2(30, 30));
-
-	for (size_t y = 0; y < NewData->GetSizeY(); y++)
-	{
-		for (size_t x = 0; x < NewData->GetSizeX(); x++)
-		{
-			NewData->SetWalkData(int2{static_cast<int>(x), static_cast<int>(y)}, FieldData::TileWalkType::Walk);
-			NewData->SetRenderData(int2{ static_cast<int>(x), static_cast<int>(y) }, 1);
-		}
-	}
-
-	NewData->SetWalkData(int2{ 1, 1 }, FieldData::TileWalkType::Unwalk);
-	NewData->SetRenderData(int2{ 1, 1 }, 0);
-	NewData->SetWalkData(int2{ 0, 5 }, FieldData::TileWalkType::Unwalk);
-	NewData->SetRenderData(int2{0, 5}, 0);
-	NewData->SetWalkData(int2{ 5, 0 }, FieldData::TileWalkType::Unwalk);
-	NewData->SetRenderData(int2{5, 0}, 0);
-	NewData->SetWalkData(int2{ 8, 0 }, FieldData::TileWalkType::Swim);
-	NewData->SetRenderData(int2{8, 0}, 10);
-	NewData->SetWalkData(int2{ 9, 0 }, FieldData::TileWalkType::Swim);
-	NewData->SetRenderData(int2{9, 0}, 10);
-
-	FieldList[_FieldName] = NewData;
-	return true;
+	AllCitys[UpperName] = _CityPtr;
 }
 
-bool Fieldmap::ChangeField(std::string _FieldName)
+void Fieldmap::ChangeCity(const std::string_view& _CityName)
 {
-	if (FieldList.end() == FieldList.find(_FieldName))
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() == AllCitys.find(UpperName))
 	{
-		MsgAssert("생성하지 않은 필드를 사용하려 했습니다.");
-		return false;
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	CurFieldData = FieldList[_FieldName];
-	return true;
+	CurCity = AllCitys[UpperName];
 }

@@ -1,7 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
-class FieldmapRender;
 class Player;
 class FieldmapLevel : public GameEngineLevel
 {
@@ -21,7 +20,6 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {}
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {}
 private:
-	FieldmapRender* MainFieldRender = nullptr;
 	Player* MainPlayer = nullptr;
 
 	bool IsCameraDebug = false;

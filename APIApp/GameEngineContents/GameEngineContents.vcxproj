@@ -180,7 +180,7 @@
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp" />
     <ClCompile Include="Fieldmap.cpp" />
-    <ClCompile Include="FieldmapBackground.cpp">
+    <ClCompile Include="FieldmapCity.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -228,7 +228,7 @@
     </ClInclude>
     <ClInclude Include="FieldDialog.h" />
     <ClInclude Include="Fieldmap.h" />
-    <ClInclude Include="FieldmapBackground.h">
+    <ClInclude Include="FieldmapCity.h">
       <SubType>
       </SubType>
     </ClInclude>

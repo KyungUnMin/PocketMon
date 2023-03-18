@@ -5,7 +5,7 @@
 #include <GameEngineBase/GameEngineMath.h>
 #include "int2.h"
 
-class FieldData;
+class FieldmapCity;
 class Fieldmap
 {
 public:
@@ -17,16 +17,7 @@ public:
 		return GetPos(int2(_x, _y));
 	}
 
-	static float4 GetPos(const int2& _Index)
-	{
-		return float4(_Index.x * TileSize, _Index.y * TileSize);
-	}
-
-	static void CalRenderStartPos(float4& _Pos)
-	{
-		_Pos.x = TileSize * static_cast<int>(_Pos.x / TileSize);
-		_Pos.y = TileSize * static_cast<int>(_Pos.y / TileSize);
-	}
+	static float4 GetPos(const int2& _Index);
 
 	static int2 GetIndex(const float _x, const float _y)
 	{
@@ -39,29 +30,15 @@ public:
 	{
 		return Walkable(GetIndex(_Pos));
 	}
-
-	static int GetRenderFrame(const float4& _Pos)
-	{
-		return GetRenderFrame(GetIndex(_Pos));
-	}
-
-	static int GetRenderFrame(const int2& _Index);
-
+	
 	static bool Walkable(const int2& _Index);
-	static bool AddFieldData(std::string _FieldName, std::string _FileName);
-	static bool ChangeField(std::string _FieldName);
+
+	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
+	static void ChangeCity(const std::string_view& _CityName);
 
 private:
-	static FieldData* CurFieldData;
-	static std::map<std::string, FieldData*> FieldList;
-
-	// 소멸자 호출용 삭제 오브젝트
-	static Fieldmap DeleteObject;
-
-public:
-
-
-protected:
+	static FieldmapCity* CurCity;
+	static std::map<std::string, FieldmapCity*> AllCitys;
 
 private:	
 	Fieldmap();
