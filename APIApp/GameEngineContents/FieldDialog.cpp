@@ -1,5 +1,6 @@
 #include "FieldDialog.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 
 FieldDialog* FieldDialog::MainFieldDialog = nullptr;
@@ -14,10 +15,10 @@ FieldDialog::~FieldDialog()
 
 }
 
-void FieldDialog::On()
+void FieldDialog::On(std::list<std::string>* _Script) // 말을걸었을때 On하면서 대상 스크립트 리스트 주소를 넣어 줄 생각
 {
 	GameEngineObject::On();
-	UpdateStart();
+	UpdateStart(_Script);
 
 }
 
@@ -35,7 +36,7 @@ void FieldDialog::OnOffSwtich()
 	}
 	else
 	{
-		On();
+		On(&TestScript);
 	}
 }
 
@@ -66,17 +67,18 @@ void FieldDialog::Start()
 	}
 	
 	//Test
-	TestScript.push_back("AAAA");
-	TestScript.push_back("BBBB");
-	TestScript.push_back("CCCC");
+	TestScript.push_back("ASDASDLJASL");
+	TestScript.push_back("asd321as32");
+	TestScript.push_back("fjkghfjgk");
 
 	Off();
 }
 
-void FieldDialog::UpdateStart()
+void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 {
-	PushScriptBegin(TestScript);
-	StringToRender(ScriptBeginIter->data());
+	PushScriptBegin(_Script->begin());
+	PushScriptEnd(_Script->end());
+	StringToRender();
 }
 
 void FieldDialog::Update(float _DeltaTime)
@@ -109,7 +111,19 @@ void FieldDialog::Update(float _DeltaTime)
 		}
 	}
 
-
+	if (FirstLineRenderLen >= 2 && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
+	{
+		ScriptIter++;
+		if (ScriptIter != ScriptEndIter)
+		{
+			UpdateEnd();
+			StringToRender();
+		}
+		else
+		{
+			Off();
+		}
+	}
 }
 
 void FieldDialog::UpdateEnd()
@@ -119,38 +133,44 @@ void FieldDialog::UpdateEnd()
 	SecondLineRenderLen = 0;
 }
 
-void FieldDialog::PushScriptBegin(std::list<std::string> _Script)
+void FieldDialog::PushScriptBegin(std::list<std::string>::iterator _Begin)
 {
-	ScriptBeginIter = _Script.begin();
+	ScriptIter = _Begin;
 }
 
-void FieldDialog::StringToRender(const std::string_view& _Str)
+void FieldDialog::PushScriptEnd(std::list<std::string>::iterator _End)
 {
-	size_t StrEndIndex = _Str.size()-1;
+	ScriptEndIter = _End;
+}
+
+void FieldDialog::StringToRender()
+{
+	const std::string_view& Str = ScriptIter->data();
+	size_t StrEndIndex = Str.size() - 1;
 	int StrIndex = 0;
 	for (size_t y = 0; y < FieldDialogTextRender.size(); y++)
 	{
 		for (size_t x = 0; x < FieldDialogTextRender[y].size(); x++)
 		{
-			if (StrEndIndex < StrIndex || ' ' == _Str[StrIndex])
+			if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
 			{
 				FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
 			}
 			else
 			{
-				if (_Str[StrIndex] >= 'A' && _Str[StrIndex] <= 'Z')
+				if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - 'A');
+					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'A');
 				}
-				else if (_Str[StrIndex] >= 'a' && _Str[StrIndex] <= 'z')
+				else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - 'a' + 27);
+					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'a' + 27);
 				}
-				else if (_Str[StrIndex] >= '0' && _Str[StrIndex] <= '9')
+				else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - '0' + 54);
+					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - '0' + 54);
 				}
-				else if (_Str[StrIndex] == '\n')
+				else if (Str[StrIndex] == '\n')
 				{
 					while (x < FieldDialogTextRender[y].size())
 					{
@@ -160,7 +180,7 @@ void FieldDialog::StringToRender(const std::string_view& _Str)
 				}
 				else
 				{
-					//switch (_Str[StrIndex])
+					//switch (Str[StrIndex])
 					//{
 					//case '!':
 					//	break;

@@ -16,7 +16,7 @@ public:
 	FieldDialog& operator=(const FieldDialog& _Other) = delete;
 	FieldDialog& operator=(FieldDialog&& _Other) noexcept = delete;
 
-	void On() override;
+	void On(std::list<std::string>* _Script);
 	void Off() override;
 	void OnOffSwtich() override;
 
@@ -39,18 +39,19 @@ private:
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
 
-	std::string Str = "ABCDEFGHIJKLMNOP012345\nabcdefghijklmnopq6789";
 	std::list<std::string> TestScript = std::list<std::string>();
 
-	std::list<std::string>::iterator ScriptBeginIter = std::list<std::string>::iterator();
-	
+	std::list<std::string>::iterator ScriptIter = std::list<std::string>::iterator();
+	std::list<std::string>::iterator ScriptEndIter = std::list<std::string>::iterator();
+
 	float Time = 0;
 	int FirstLineRenderLen = 0;
 	int SecondLineRenderLen = 0;
 
-	void UpdateStart();
-	void PushScriptBegin(std::list<std::string> _Script);
-	void StringToRender(const std::string_view& _Str);
+	void UpdateStart(std::list<std::string>* _Script);
+	void PushScriptBegin(std::list<std::string>::iterator _Begin);
+	void PushScriptEnd(std::list<std::string>::iterator _End);
+	void StringToRender();
 
 	void UpdateEnd();
 
