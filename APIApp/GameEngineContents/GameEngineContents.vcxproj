@@ -186,7 +186,6 @@
     </ClCompile>
     <ClCompile Include="FieldmapLevel.cpp" />
     <ClCompile Include="FieldmapRender.cpp" />
-    <ClCompile Include="FirstSetLevel.cpp" />
     <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="int2.cpp" />
@@ -234,7 +233,6 @@
     </ClInclude>
     <ClInclude Include="FieldmapLevel.h" />
     <ClInclude Include="FieldmapRender.h" />
-    <ClInclude Include="FirstSetLevel.h" />
     <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="int2.h" />

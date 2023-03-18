@@ -2,11 +2,11 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineRender.h>
 
-FieldDialog* FieldDialog::AcFeidDialog = nullptr;
+FieldDialog* FieldDialog::MainFieldDialog = nullptr;
 
 FieldDialog::FieldDialog()
 {
-	AcFeidDialog = this;
+	MainFieldDialog = this;
 }
 
 FieldDialog::~FieldDialog()
@@ -43,7 +43,7 @@ void FieldDialog::OnOffSwtich()
 
 void FieldDialog::Start()
 {
-	FieldDialogFrame = CreateRender("Npc_TextFrame.bmp", 0);
+	FieldDialogFrame = CreateRender("Npc_TextFrame.bmp", RenderOrder::Field_Dialog);
 	FieldDialogFrame->SetScaleToImage();
 	SetPos(ActorPos);
 
@@ -55,14 +55,14 @@ void FieldDialog::Start()
 	{
 		for (size_t x = 0; x < FieldDialogTextRender[y].size(); x++)
 		{
-			FieldDialogTextRender[y][x] = CreateRender("Font_All.bmp",1);
+			FieldDialogTextRender[y][x] = CreateRender("Font_Dialog.bmp",RenderOrder::Field_Dialog_Text);
 			FieldDialogTextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } * (TextRenderInterval + TextRenderImageScale));
 			FieldDialogTextRender[y][x]->SetScale(TextRenderImageScale);
 			FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
 			FieldDialogTextRender[y][x]->Off();
 		}
 	}
-
+	
 	Off();
 }
 
@@ -120,19 +120,20 @@ void FieldDialog::StringToRender()
 			if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
 			{
 				FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
-				StrIndex++;
 			}
 			else
 			{
 				if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
 				{
 					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'A');
-					StrIndex++;
 				}
 				else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
 				{
 					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'a' + 27);
-					StrIndex++;
+				}
+				else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
+				{
+					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - '0' + 54);
 				}
 				else if (Str[StrIndex] == '\n')
 				{
@@ -141,13 +142,49 @@ void FieldDialog::StringToRender()
 						FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
 						x++;
 					}
-					StrIndex++;
 				}
 				else
 				{
+					//switch (Str[StrIndex])
+					//{
+					//case '!':
+					//	break;
+					//case '?':
+					//	break;
+					//case '/':
+					//	break;
+					//case '-':
+					//	break;
+					//case '"':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//case '!':
+					//	break;
+					//default:
+					//	break;
+					//}
+
 					MsgAssert("아직 생각해보지 않은 글자입니다.");
 				}
 			}
+			StrIndex++;
 		}
 	}
 }

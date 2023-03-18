@@ -1,10 +1,12 @@
 #include "FieldmapLevel.h"
+#include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
 #include "Fieldmap.h"
 #include "FieldmapCity.h"
 #include "Player.h"
+#include "FieldDialog.h"
 #include "int2.h"
 
 FieldmapLevel::FieldmapLevel()
@@ -28,8 +30,12 @@ void FieldmapLevel::Loading()
 
 	Fieldmap::ChangeCity("PalletTown");
 
+	ImageLoad();
+
+	MainFieldRender = CreateActor<FieldmapRender>();
 	MainPlayer = CreateActor<Player>();
 	MainPlayer->SetPos(Fieldmap::GetPos(0, 0));
+	MainFieldDialog = CreateActor<FieldDialog>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -68,4 +74,22 @@ void FieldmapLevel::Update(float _DeltaTime)
 	{
 		SetCameraPos(MainPlayer->GetPos() - GameEngineWindow::GetScreenSize().half());
 	}
+
+	if (GameEngineInput::IsDown("FieldDialogSwitch"))
+	{
+		MainFieldDialog->OnOffSwtich();
+	}
+
+	MainFieldRender->RenderPosUpdate(MainPlayer->GetPos());
+}
+
+void FieldmapLevel::ImageLoad()
+{
+	GameEngineDirectory Dir;
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Image");
+	Dir.Move("FieldUI_HSM");
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Npc_TextFrame.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog.bmp"))->Cut(27, 4);
 }

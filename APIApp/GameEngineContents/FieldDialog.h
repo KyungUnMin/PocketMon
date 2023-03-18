@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "ContentsEnum.h"
 
 class GameEngineRender;
 class FieldDialog : public GameEngineActor
@@ -25,7 +26,7 @@ protected:
 
 private:
 	
-	static FieldDialog* AcFeidDialog;
+	static FieldDialog* MainFieldDialog;
 
 	float4 ActorPos = {480,544};
 	GameEngineRender* FieldDialogFrame = nullptr;
@@ -38,7 +39,7 @@ private:
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
 
-	std::string Str = "ABCDEFGHIJKLMNOPQRSTUVWXYZ\nabcdefghijklmnopqrstuvwxyz";
+	std::string Str = "ABCDEFGHIJKLMNOP012345\nabcdefghijklmnopq6789";
 	
 	float Time = 0;
 	int FirstLineRenderLen = 0;

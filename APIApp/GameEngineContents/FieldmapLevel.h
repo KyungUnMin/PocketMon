@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class Player;
+class FieldDialog;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
@@ -21,6 +22,9 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {}
 private:
 	Player* MainPlayer = nullptr;
+	FieldDialog* MainFieldDialog = nullptr;
 
 	bool IsCameraDebug = false;
+
+	void ImageLoad();
 };

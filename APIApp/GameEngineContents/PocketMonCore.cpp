@@ -5,7 +5,6 @@
 #include "BattleLevel.h"
 #include "PlayerTestLevel.h"
 #include "TextTestLevel.h"
-#include "FirstSetLevel.h"
 #include "BagLevel.h"
 PocketMonCore PocketMonCore::Core;
 
@@ -28,7 +27,6 @@ void PocketMonCore::Start()
 	CreateLevel<BattleLevel>("BattleLevel");
 	CreateLevel<PlayerTestLevel>("PlayerLevel");
 	CreateLevel<TextTestLevel>("TextTestLevel");
-	CreateLevel<FirstSetLevel>("FirstSetLevel");
 	CreateLevel<BagLevel>("BagLevel");
 
 	ChangeLevel("CenterLevel");

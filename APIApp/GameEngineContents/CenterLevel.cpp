@@ -159,6 +159,12 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("FreeCameraMoveRight", VK_RIGHT);
 	}
 
+	//Field_UI °ü·Ã Å°
+	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
+	{
+		GameEngineInput::CreateKey("FieldDialogSwitch", 'p');
+	}
+
 	CreateActor<CenterActor>();
 }
 
@@ -181,7 +187,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange4"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("FirstSetLevel");
+		GameEngineCore::GetInst()->ChangeLevel("");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange5"))
