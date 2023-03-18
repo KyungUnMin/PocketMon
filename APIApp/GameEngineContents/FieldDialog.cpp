@@ -65,9 +65,18 @@ void FieldDialog::Start()
 		}
 	}
 	
-	
+	//Test
+	TestScript.push_back("AAAA");
+	TestScript.push_back("BBBB");
+	TestScript.push_back("CCCC");
 
 	Off();
+}
+
+void FieldDialog::UpdateStart()
+{
+	PushScriptBegin(TestScript);
+	StringToRender(ScriptBeginIter->data());
 }
 
 void FieldDialog::Update(float _DeltaTime)
@@ -99,11 +108,8 @@ void FieldDialog::Update(float _DeltaTime)
 			return;
 		}
 	}
-}
 
-void FieldDialog::UpdateStart()
-{
-	StringToRender();
+
 }
 
 void FieldDialog::UpdateEnd()
@@ -113,33 +119,38 @@ void FieldDialog::UpdateEnd()
 	SecondLineRenderLen = 0;
 }
 
-void FieldDialog::StringToRender()
+void FieldDialog::PushScriptBegin(std::list<std::string> _Script)
 {
-	size_t StrEndIndex = Str.size()-1;
+	ScriptBeginIter = _Script.begin();
+}
+
+void FieldDialog::StringToRender(const std::string_view& _Str)
+{
+	size_t StrEndIndex = _Str.size()-1;
 	int StrIndex = 0;
 	for (size_t y = 0; y < FieldDialogTextRender.size(); y++)
 	{
 		for (size_t x = 0; x < FieldDialogTextRender[y].size(); x++)
 		{
-			if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
+			if (StrEndIndex < StrIndex || ' ' == _Str[StrIndex])
 			{
 				FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
 			}
 			else
 			{
-				if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
+				if (_Str[StrIndex] >= 'A' && _Str[StrIndex] <= 'Z')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'A');
+					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - 'A');
 				}
-				else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
+				else if (_Str[StrIndex] >= 'a' && _Str[StrIndex] <= 'z')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - 'a' + 27);
+					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - 'a' + 27);
 				}
-				else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
+				else if (_Str[StrIndex] >= '0' && _Str[StrIndex] <= '9')
 				{
-					FieldDialogTextRender[y][x]->SetFrame(Str[StrIndex] - '0' + 54);
+					FieldDialogTextRender[y][x]->SetFrame(_Str[StrIndex] - '0' + 54);
 				}
-				else if (Str[StrIndex] == '\n')
+				else if (_Str[StrIndex] == '\n')
 				{
 					while (x < FieldDialogTextRender[y].size())
 					{
@@ -149,7 +160,7 @@ void FieldDialog::StringToRender()
 				}
 				else
 				{
-					//switch (Str[StrIndex])
+					//switch (_Str[StrIndex])
 					//{
 					//case '!':
 					//	break;

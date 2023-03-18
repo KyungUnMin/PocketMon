@@ -162,7 +162,11 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("DownMove", VK_DOWN);
 		GameEngineInput::CreateKey("RightMove", VK_RIGHT);
 
-
+		//기본 키 설정(에뮬레이터 기준)
+		GameEngineInput::CreateKeyNoToupper("Select", VK_RSHIFT);
+		GameEngineInput::CreateKeyNoToupper("Start", VK_RETURN);
+		GameEngineInput::CreateKey("A", 'z'); // 게임보이 기기의 A키를 말함
+		GameEngineInput::CreateKey("B", 'x'); // 게임보이 기기의 B키를 말함
 	}
 
 	// 맵 관련 키
@@ -180,7 +184,7 @@ void CenterLevel::Loading()
 	//Field_UI 관련 키
 	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
 	{
-		GameEngineInput::CreateKey("FieldDialogSwitch", 'p');
+		GameEngineInput::CreateKey("FieldDialogSwitch", 'p'); //테스트용
 	}
 
 	CreateActor<CenterActor>();

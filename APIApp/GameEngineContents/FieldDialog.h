@@ -40,15 +40,20 @@ private:
 	int SpaceFrameNum = 26;
 
 	std::string Str = "ABCDEFGHIJKLMNOP012345\nabcdefghijklmnopq6789";
+	std::list<std::string> TestScript = std::list<std::string>();
+
+	std::list<std::string>::iterator ScriptBeginIter = std::list<std::string>::iterator();
 	
 	float Time = 0;
 	int FirstLineRenderLen = 0;
 	int SecondLineRenderLen = 0;
 
 	void UpdateStart();
+	void PushScriptBegin(std::list<std::string> _Script);
+	void StringToRender(const std::string_view& _Str);
+
 	void UpdateEnd();
 
-	void StringToRender();
 	void ClearDialog();
 };
 
