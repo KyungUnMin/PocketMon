@@ -45,6 +45,7 @@ void FieldDialog::Start()
 {
 	FieldDialogFrame = CreateRender("Npc_TextFrame.bmp", RenderOrder::Field_Dialog);
 	FieldDialogFrame->SetScaleToImage();
+	FieldDialogFrame->EffectCameraOff();
 	SetPos(ActorPos);
 
 	FieldDialogTextRender.resize(LineCount);
@@ -60,9 +61,12 @@ void FieldDialog::Start()
 			FieldDialogTextRender[y][x]->SetScale(TextRenderImageScale);
 			FieldDialogTextRender[y][x]->SetFrame(SpaceFrameNum);
 			FieldDialogTextRender[y][x]->Off();
+			FieldDialogTextRender[y][x]->EffectCameraOff();
 		}
 	}
 	
+	
+
 	Off();
 }
 
