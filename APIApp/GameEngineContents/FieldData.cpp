@@ -1,9 +1,16 @@
 #include "FieldData.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
-FieldData::FieldData(const int2& _Size)
+FieldData::FieldData()
 {
+}
 
+FieldData::~FieldData()
+{
+}
+
+void FieldData::Init(const int2& _Size)
+{
 	TileSizeX = _Size.x;
 	TileSizeY = _Size.y;
 
@@ -22,18 +29,13 @@ FieldData::FieldData(const int2& _Size)
 
 		TileDatas.push_back(DatasX);
 	}
-
-}
-
-FieldData::~FieldData()
-{
 }
 
 bool FieldData::Walkabal(const int2& _Index) const
 {
 	if (true == OverlapCheck(_Index))
 	{
-		return false;
+		return true;
 	}
 
 	return TileWalkType::Walk == TileDatas[_Index.y][_Index.x].WalkType;

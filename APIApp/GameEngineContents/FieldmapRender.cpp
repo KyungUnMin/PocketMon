@@ -26,77 +26,67 @@ void FieldmapRender::Start()
 	FieldSizeHalf = static_cast<int>(Fieldmap::TileSizeHalf);
 	FieldSizeHalfFloat4 = float4{Fieldmap::TileSizeHalf, Fieldmap::TileSizeHalf };
 
-	TileRenders.reserve((RenderSizeY * 2) + 1);
-
 	float TileSize = Fieldmap::TileSize;
+	
+	int RenderLengthX = (RenderSizeX * 2) + 1;
+	int RenderLengthY = (RenderSizeY * 2) + 1;
+
+	TileRenders.reserve(static_cast<size_t>(RenderLengthY));
+
+	RendersSizeHalf = float4(static_cast<float>(RenderLengthX) * FieldSizeHalf, static_cast<float>(RenderLengthY) * FieldSizeHalf);
 
 	for (size_t y = 0; y < TileRenders.capacity(); y++)
 	{
 		std::vector<GameEngineRender*> TempTileRenders;
-		TempTileRenders.reserve((RenderSizeX * 2) + 1);
+		TempTileRenders.reserve(RenderLengthX);
 
 		for (size_t x = 0; x < TempTileRenders.capacity(); x++)
 		{
-			GameEngineRender* TileRender = CreateRender("DebugTilemap.BMP", RenderOrder::Tilemap);
-			TileRender->SetFrame(0);
-			TileRender->SetScale({ TileSize ,TileSize });
+			GameEngineRender* TileRender = CreateRender("DebugTilemap.BMP", RenderOrder::DebugUI);
+
+			float4 RenderScale = float4{ TileSize ,TileSize };
+			float4 RenderPos = -RendersSizeHalf 
+				+ FieldSizeHalfFloat4 
+				+ float4(static_cast<float>(x * FieldSize), static_cast<float>(y * FieldSize));
+
+			TileRender->SetFrame(1); 
+			TileRender->SetScale(RenderScale);
+			TileRender->SetPosition(RenderPos);
 			TileRender->On();
 			TempTileRenders.push_back(TileRender);
 		}
 
 		TileRenders.push_back(TempTileRenders);
 	}
-
-	RendersSize = float4(
-		static_cast<float>((TileRenders[0].size() - 1) * FieldSizeHalf),
-		static_cast<float>((TileRenders.size() - 1) * FieldSizeHalf));
 }
 
 void FieldmapRender::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsUp("MapRenderDebug"))
-	{
-		IsDebugRender = !IsDebugRender;
-	}
+	int2 Index = Fieldmap::GetIndex(CurPos);
+	float4 TilePos = Fieldmap::GetPos(Index);
 
-	SetRendersPos(TileRenders);
-}
+	SetPos(TilePos);
 
-void FieldmapRender::TileRenderSwtich()
-{
+	int2 RenderIndex = Index - int2(RenderSizeX, RenderSizeY);
+
 	for (size_t y = 0; y < TileRenders.size(); y++)
 	{
 		for (size_t x = 0; x < TileRenders[y].size(); x++)
 		{
-			TileRenders[y][x]->OnOffSwtich();
-		}
-	}
-}
-
-void FieldmapRender::SetRendersPos(std::vector<std::vector<GameEngineRender*>>& _Renders)
-{
-	for (size_t y = 0; y < _Renders.size(); y++)
-	{
-		for (size_t x = 0; x < _Renders[y].size(); x++)
-		{
-			float4 RenderPos = CurPos - RendersSize + float4(
-				static_cast<float>(x * FieldSize),
-				static_cast<float>(y * FieldSize)) ;
-
-			int2 RenderIndex = Fieldmap::GetIndex(RenderPos);
-			RenderPos = Fieldmap::GetPos(RenderIndex);
-			RenderPos += FieldSizeHalfFloat4;
-
 			if (true == Fieldmap::Walkable(RenderIndex))
 			{
-				_Renders[y][x]->SetFrame(1);
+				TileRenders[y][x]->SetFrame(1);
 			}
 			else
 			{
-				_Renders[y][x]->SetFrame(2);
+				TileRenders[y][x]->SetFrame(2);
 			}
 
-			_Renders[y][x]->SetPosition(RenderPos);
+			++RenderIndex.x;
 		}
+
+
+		RenderIndex.x = Index.x - RenderSizeX;
+		++RenderIndex.y;
 	}
 }

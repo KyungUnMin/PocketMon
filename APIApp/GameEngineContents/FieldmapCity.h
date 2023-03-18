@@ -2,8 +2,10 @@
 #include <string>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
+#include "FieldData.h"
 
 class GameEngineRender;
+class GameEngineImage;
 class FieldmapCity : public GameEngineActor
 {
 public:
@@ -22,11 +24,11 @@ public:
 		return CityPos;
 	}
 
-	void InitFieldRender(const std::string_view& _ImageName);
+	void InitFieldRender(const std::string_view& _ImageName, const std::string_view& _ColImageName);
 
 	bool Walkable(const int2& _Index) const
 	{
-		return true;
+		return MyTilemapData.Walkabal(_Index);
 	}
 
 protected:
@@ -34,6 +36,9 @@ protected:
 
 private:
 	GameEngineRender* CityRenderer = nullptr;
+	GameEngineImage* CityColImage = nullptr;
+
+	FieldData MyTilemapData = FieldData();;
 
 	float4 CityPos = float4::Zero;
 };

@@ -41,8 +41,8 @@ int2 Fieldmap::GetIndex(const float4& _Pos)
 	float4 CityStartPos = CurCity->GetCityStartPos();
 	int2 ResultIndex = { 0, 0 };
 
-	float PosX = _Pos.x + CityStartPos.x;
-	float PosY = _Pos.y + CityStartPos.y;
+	float PosX = _Pos.x - CityStartPos.x;
+	float PosY = _Pos.y - CityStartPos.y;
 
 	if (PosX < 0)
 	{

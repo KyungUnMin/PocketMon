@@ -28,5 +28,5 @@ private:
 	bool IsCameraDebug = false;
 
 	void ImageLoad();
-	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
+	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const std::string_view& _ColImageName, const float4& _Pos);
 };

@@ -22,7 +22,7 @@ public:
 	};
 
 public:
-	FieldData(const int2& _Size);
+	FieldData();
 	~FieldData();
 
 	FieldData(const FieldData& _Other) = delete;
@@ -30,6 +30,7 @@ public:
 	FieldData& operator=(const FieldData& _Other) = delete;
 	FieldData& operator=(FieldData&& _Other) noexcept = delete;
 
+	void Init(const int2& _Size);
 	bool Walkabal(const int2& _Index) const;
 	bool Swinable(const int2& _Index) const;
 

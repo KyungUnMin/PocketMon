@@ -7,6 +7,7 @@ enum class RenderOrder
 	Tilemap,
 	Monster,		 // 1
 	Player,			 // 2
+	DebugUI,
 	Field_Dialog,
 	Field_Dialog_Text,
 
