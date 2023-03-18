@@ -3,6 +3,8 @@
 #include <string>
 #include <vector>
 
+#include "PokeSkillBase.h"
+
 // 도감번호는 +1로 표시
 enum class PokeNumber
 {
@@ -15,6 +17,11 @@ enum class PokeNumber
 	Squirtle,   // 6 꼬부기
 	Wartortle,  // 7 어니부기
 	Blastoise,  // 8 거북왕
+	Pidgey,     // 9 구구
+	Rattata,    // 10 꼬렛
+	Spearow,    // 11 깨비참
+	Geodude,    // 12 꼬마돌
+	Onix,       // 13 롱스톤
 	Max,        // max
 };
 
@@ -76,10 +83,13 @@ enum class PokeCharacteristic
 	심록,
 	맹화,
 	급류,
+	날카로운눈,
+	근성,
+	돌머리,
 };
 
 class GameEngineRender;
-class PokeSkillBase;
+// class PokeSkillBase;
 
 // 설명 :
 class PokeDataBase
@@ -95,15 +105,16 @@ public:
 	PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
 	PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
-	void PokeCreate(int _PokeDexNumber, int _Level);
+	void PokeCreate(int _PokeDexNumber, int _Level = 1);
 	void PokeExperienceAcquisition(int _EXP);
 	void PokeLevelUp(int _EXP);
-	void PokeStatusUp(int _Status);
-	void PokeEvolution();
-	void PokeSkillAcquisition();
+	void PokeStatusUp();
+	//void PokeEvolution();
+	//void PokeSkillAcquisition();
 
 	void PokeNameEdit(std::string _EditName);
 
+	// 포켓몬 이름 가져오기
 	std::string_view GetName()
 	{
 		return Name;
@@ -114,15 +125,14 @@ protected:
 private:
 	// 포켓몬 데이터
 	GameEngineRender* MonsterImage = nullptr;						 // 포켓몬 이미지
-	// 기술 4개 벡터
-
 	std::string Name = "안농";									     // 포켓몬 이름
-											    
+										    
 	bool IsMan = true;											     // 포켓몬 성별
 	bool IsbeCaught = false;									     // 야생포켓몬인지 잡힌 포켓몬인지
 
 	PokeNumber PokeDexNumber = PokeNumber::Max;					     // 포켓몬 도감 번호
-	int HealthPoint = 0;										     // 몬스터 체력
+	int MaxHealthPoint = 0;										     // 몬스터 최대 체력
+	int CurrentHealthPoint = 0;									     // 몬스터 잔여 체력
 	int AttackPower = 0;											 // 몬스터 공격력
 	int Defense = 0;												 // 몬스터 방어력
 	int SpecialAttackPower = 0;										 // 몬스터 특수공격력
@@ -137,17 +147,31 @@ private:
 	PokePersonality Personality = PokePersonality::Serious;			 // 포켓몬 성격
 	PokeCharacteristic Characteristic = PokeCharacteristic::심록;	 // 포켓몬 특성
 
-	// 성격, 성별 난수
-	void PersonalityDecision();
-	void GenderDecision();
-
+	// 데이터 생성 보조
+	void PersonalityDecision();                                 // 성격
+	void GenderDecision();                                      // 성별
+	void PokeSkillInit(int _Index, PokeSkill _SkillName);       // 스킬 할당
 
 	// 포켓몬 베이스 데이터
 	void BulbasaurData(int _Level);
+	void IvysaurData(int _Level);
+	void VenusaurData(int _Level);
 	void CharmanderData(int _Level);
+	void CharmeleonData(int _Level);
+	void CharizardData(int _Level);
 	void SquirtleData(int _Level);
-
+	void WartortleData(int _Level);
+	void BlastoiseData(int _Level);
+	void PidgeyData(int _Level);
+	void RattataData(int _Level);
+	void SpearowData(int _Level);
+	void GeodudeData(int _Level);
+	void OnixData(int _Level);
+	
 	// 스킬
 	std::vector<PokeSkillBase*> SkillList = std::vector<PokeSkillBase*>(4);
+
+	// 전투
+	void Attack();
 };
 

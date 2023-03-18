@@ -1,6 +1,8 @@
 #include <Windows.h>
 #include <GameEngineContents/PocketMonCore.h>
 
+#include <vector>
+
 #include <GameEngineContents/PokeDataBase.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
@@ -9,14 +11,32 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ int       nCmdShow)
 {
 	// 1 이상해씨, 4 파이리, 7 꼬부기
-	PokeDataBase Po;
-	Po.PokeCreate(1, 1);
+	std::vector<PokeDataBase*> PlayerPokemons;
+	PlayerPokemons.reserve(6);
 
-	PokeDataBase Po1;
-	Po1.PokeCreate(4, 3);
+	PokeDataBase AA;
+	AA.PokeCreate(1, 1);
+	PlayerPokemons.push_back(&AA);
 
-	PokeDataBase Po2;
-	Po2.PokeCreate(7, 6);
+	PokeDataBase BB;
+	BB.PokeCreate(4, 1);
+	PlayerPokemons.push_back(&BB);
+
+	PokeDataBase CC;
+	CC.PokeCreate(7, 1);
+	PlayerPokemons.push_back(&CC);
+
+	PokeDataBase DD;
+	DD.PokeCreate(9, 1);
+	PlayerPokemons.push_back(&DD);
+
+	PokeDataBase EE;
+	EE.PokeCreate(11, 1);
+	PlayerPokemons.push_back(&EE);
+
+	PokeDataBase FF;
+	FF.PokeCreate(14, 1);
+	PlayerPokemons.push_back(&FF);
 
 	int a = 0;
 
