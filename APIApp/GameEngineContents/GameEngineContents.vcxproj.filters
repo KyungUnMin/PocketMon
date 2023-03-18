@@ -51,16 +51,16 @@
       <Filter>Player\NPC</Filter>
     </ClCompile>
     <ClCompile Include="TextTestLevel.cpp">
-      <Filter>BattleUI\TestLevel</Filter>
+      <Filter>Map\BattleUI\TestLevel</Filter>
     </ClCompile>
     <ClCompile Include="BackTextActor.cpp">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="FriendlyHPBackground.cpp">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TestScript.cpp">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="FieldData.cpp">
       <Filter>Map\Class</Filter>
@@ -134,16 +134,16 @@
       <Filter>Player\NPC</Filter>
     </ClInclude>
     <ClInclude Include="TextTestLevel.h">
-      <Filter>BattleUI\TestLevel</Filter>
+      <Filter>Map\BattleUI\TestLevel</Filter>
     </ClInclude>
     <ClInclude Include="BackTextActor.h">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="FriendlyHPBackground.h">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TestScript.h">
-      <Filter>BattleUI\Actor</Filter>
+      <Filter>Map\BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="FieldData.h">
       <Filter>Map\Class</Filter>
@@ -219,15 +219,6 @@
     <Filter Include="Player\NPC">
       <UniqueIdentifier>{b4b3e5d1-2ef0-43e2-8173-ae968d1ae06b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="BattleUI">
-      <UniqueIdentifier>{e6adf7b2-3227-4123-a3c3-e51d384666cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BattleUI\TestLevel">
-      <UniqueIdentifier>{513eb1c5-51e1-4661-a8b4-a5924bb8163f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="BattleUI\Actor">
-      <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FieldUI\BagUI">
       <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
     </Filter>
@@ -236,6 +227,15 @@
     </Filter>
     <Filter Include="Battle\02.Actor\02.Trainer\03.Enemy">
       <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\BattleUI">
+      <UniqueIdentifier>{e6adf7b2-3227-4123-a3c3-e51d384666cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\BattleUI\TestLevel">
+      <UniqueIdentifier>{513eb1c5-51e1-4661-a8b4-a5924bb8163f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\BattleUI\Actor">
+      <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -33,7 +33,6 @@ void FieldmapLevel::Loading()
 
 	ImageLoad();
 
-	MainFieldRender = CreateActor<FieldmapRender>();
 	MainPlayer = CreateActor<Player>();
 	MainPlayer->SetPos(Fieldmap::GetPos(0, 0));
 	MainFieldDialog = CreateActor<FieldDialog>();
@@ -80,8 +79,6 @@ void FieldmapLevel::Update(float _DeltaTime)
 	{
 		MainFieldDialog->OnOffSwtich();
 	}
-
-	MainFieldRender->RenderPosUpdate(MainPlayer->GetPos());
 }
 
 void FieldmapLevel::ImageLoad()

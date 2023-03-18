@@ -33,6 +33,7 @@ void FieldmapCity::InitFieldRender(const std::string_view& _ImageName)
 
 	CityRenderer = CreateRender(_ImageName);
 	CityRenderer->SetScaleToImage();
+	//CityRenderer->
 }
 
 void FieldmapCity::Update(float _DeltaTime)
