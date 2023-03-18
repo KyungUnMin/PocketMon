@@ -38,6 +38,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	FF.PokeCreate(14, 1);
 	PlayerPokemons.push_back(&FF);
 
+	int aa = PlayerPokemons[0]->GetMonsterCurrentHP();
+	int bb = PlayerPokemons[1]->GetMonsterCurrentHP();
+	int cc = PlayerPokemons[2]->GetMonsterCurrentHP();
+	int dd = PlayerPokemons[3]->GetMonsterCurrentHP();
+
 	int a = 0;
 
 	PocketMonCore::GetInst().CoreStart(hInstance);

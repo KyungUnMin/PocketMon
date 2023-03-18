@@ -120,6 +120,37 @@ public:
 		return Name;
 	}
 
+	// 포켓몬 레벨 가져오기
+	int GetMonsterLevel()
+	{
+		return MonsterLevel;
+	}
+
+	// 포켓몬 성별 가져오기
+	int GetMonsterGender()
+	{
+		return IsMan;
+	}
+
+	// 포켓몬 최대 체력 가져오기
+	int GetMonsterMaxHP()
+	{
+		return MaxHealthPoint;
+	}
+
+	// 포켓몬 현재 체력 가져오기
+	int GetMonsterCurrentHP()
+	{
+		return CurrentHealthPoint;
+	}
+
+	// 포켓몬 스킬리스트 가져오기
+	std::vector<PokeSkillBase*> GetMonsterSkillList()
+	{
+		return SkillList;
+	}
+
+
 protected:
 
 private:
