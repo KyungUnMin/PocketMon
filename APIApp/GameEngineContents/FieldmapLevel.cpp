@@ -10,6 +10,8 @@
 #include "int2.h"
 #include "FieldmapRender.h"
 
+float4 FieldmapLevel::PlayerPos = float4::Zero;
+
 FieldmapLevel::FieldmapLevel()
 {
 }
@@ -44,8 +46,6 @@ void FieldmapLevel::Loading()
 
 void FieldmapLevel::Update(float _DeltaTime)
 {
-	SetCameraPos(float4::Zero);
-
 	if (true == GameEngineInput::IsDown("MapRenderDebug"))
 	{
 		MainFieldRender->OnOffSwtich();
@@ -84,7 +84,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 	}
 	else
 	{
-		float4 PlayerPos = MainPlayer->GetPos();
+		PlayerPos = MainPlayer->GetPos();
 	
 		SetCameraPos(PlayerPos - GameEngineWindow::GetScreenSize().half());
 		
@@ -117,8 +117,6 @@ void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const 
 {
 	FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>();
 
-	PalletTownPtr->InitFieldRender(_ImageName, _ColImageName);
+	PalletTownPtr->InitFieldRender(_CityName, _ImageName, _ColImageName);
 	PalletTownPtr->InitPos(_Pos);
-
-	Fieldmap::AddCity(_CityName, PalletTownPtr);
 }

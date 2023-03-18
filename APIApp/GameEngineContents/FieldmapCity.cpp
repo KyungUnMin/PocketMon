@@ -4,7 +4,9 @@
 #include <GameEnginePlatform/GameEngineImage.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEngineCore/GameEngineCollision.h>
 #include "Fieldmap.h"
+#include "FieldmapLevel.h"
 
 FieldmapCity::FieldmapCity()
 {
@@ -26,8 +28,10 @@ void FieldmapCity::InitPos(const float4& _CityPos)
 	CityPos = _CityPos - CityRenderer->GetScale().half();
 }
 
-void FieldmapCity::InitFieldRender(const std::string_view& _ImageName, const std::string_view& _ColImageName)
+void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName, const std::string_view& _ColImageName)
 {
+	CityName = _CityName;
+
 	if (nullptr != CityRenderer)
 	{
 		MsgAssert("필드맵 시티를 중복 초기화 했습니다");
@@ -38,12 +42,12 @@ void FieldmapCity::InitFieldRender(const std::string_view& _ImageName, const std
 
 	CityColImage = GameEngineResources::GetInst().ImageFind(_ColImageName);
 
-	float4 ImageScale = CityRenderer->GetImage()->GetImageScale();
+	CityScale = CityRenderer->GetImage()->GetImageScale();
 
 	float TileSize = Fieldmap::TileSize;
 
-	int TileSizeX = static_cast<int>(ImageScale.x / TileSize);
-	int TileSizeY = static_cast<int>(ImageScale.y / TileSize);
+	int TileSizeX = static_cast<int>(CityScale.x / TileSize);
+	int TileSizeY = static_cast<int>(CityScale.y / TileSize);
 
 	MyTilemapData.Init(int2(TileSizeX, TileSizeY));
 
@@ -66,9 +70,22 @@ void FieldmapCity::InitFieldRender(const std::string_view& _ImageName, const std
 			}
 		}
 	}
+
+	Fieldmap::AddCity(CityName, this);
 }
 
 void FieldmapCity::Update(float _DeltaTime)
 {
-	// 콜리전 체크해서 켰다 껏다
+	float4 PlayerPos = FieldmapLevel::GetPlayerPos();
+
+	if (true == GameEngineCollision::CollisionRectToPoint(
+		CollisionData(GetPos(), CityScale), CollisionData(PlayerPos)))
+	{
+		CityRenderer->On();
+		Fieldmap::ChangeCity(CityName);
+	}
+	else
+	{
+		CityRenderer->Off();
+	}
 }

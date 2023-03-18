@@ -24,7 +24,7 @@ public:
 		return CityPos;
 	}
 
-	void InitFieldRender(const std::string_view& _ImageName, const std::string_view& _ColImageName);
+	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName, const std::string_view& _ColImageName);
 
 	bool Walkable(const int2& _Index) const
 	{
@@ -35,10 +35,13 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	std::string CityName;
+
 	GameEngineRender* CityRenderer = nullptr;
 	GameEngineImage* CityColImage = nullptr;
 
 	FieldData MyTilemapData = FieldData();;
 
 	float4 CityPos = float4::Zero;
+	float4 CityScale = float4::Zero;
 };

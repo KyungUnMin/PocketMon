@@ -7,6 +7,13 @@ class FieldmapRender;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
+	static float4 GetPlayerPos()
+	{
+		return PlayerPos;
+	}
+private:
+	static float4 PlayerPos;
+public:
 	FieldmapLevel();
 	~FieldmapLevel();
 
