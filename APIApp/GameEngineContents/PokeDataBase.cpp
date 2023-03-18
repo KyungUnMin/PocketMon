@@ -2,6 +2,8 @@
 
 #include <GameEngineBase/GameEngineRandom.h>
 
+#include "PokeSkillBase.h"
+
 PokeDataBase::PokeDataBase() 
 {
 }
@@ -48,10 +50,19 @@ void PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 	}
 }
 
-void PokeDataBase::PokeNameEdit(std::string _EditName)
+// 진화 조건을 충족 시 몬스터 진화
+void PokeDataBase::PokeEvolution()
 {
-	Name = _EditName;
+	// 파이리의 레벨이 10이면 진화 물어봄
 }
+
+// 스킬 습득 조건을 충족 시 새로운 스킬 획득
+void PokeDataBase::PokeSkillAcquisition()
+{
+	// 파이리의 레벨이 몇 일때 무슨 스킬을 획득 가능
+}
+
+//////////////////////////////////////////////////////////////// 푸키먼 전투
 
 // 몬스터를 처치하면 경험치 획득
 void PokeDataBase::PokeExperienceAcquisition(int _EXP)
@@ -90,17 +101,7 @@ void PokeDataBase::PokeStatusUp(int _Status)
 	Agility += _Status;
 }
 
-// 진화 조건을 충족 시 몬스터 진화
-void PokeDataBase::PokeEvolution()
-{
-	// 파이리의 레벨이 10이면 진화 물어봄
-}
-
-// 스킬 습득 조건을 충족 시 새로운 스킬 획득
-void PokeDataBase::PokeSkillAcquisition()
-{
-	// 파이리의 레벨이 몇 일때 무슨 스킬을 획득 가능
-}
+//////////////////////////////////////////////////////////////// 푸키먼 데이터 생성 보조
 
 // 성별 결정
 void PokeDataBase::GenderDecision()
@@ -128,7 +129,13 @@ void PokeDataBase::PersonalityDecision()
 	// return PokePersonality::Adamant;
 }
 
-//////////////////////////////////////////////////////////////// 푸키먼
+// 포켓몬 이름 수정
+void PokeDataBase::PokeNameEdit(std::string _EditName)
+{
+	Name = _EditName;
+}
+
+//////////////////////////////////////////////////////////////// 푸키먼 데이터
 
 void PokeDataBase::BulbasaurData(int _Level)
 {
@@ -155,7 +162,7 @@ void PokeDataBase::BulbasaurData(int _Level)
 	MonsterLevel = PlusLevel;
 
 	// 스킬 부여
-	// SkillList[0].~ = "몸통박치기";
+	SkillList[0]->CreateSkill("몸통박치기");
 	// SkillList[1].~ = "울음소리";
 	// SkillList[2].~ = "잎날리기";
 }

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <map>
 
 // 설명 :
 class PokeSkillBase
@@ -16,9 +17,13 @@ public:
 	PokeSkillBase& operator=(const PokeSkillBase& _Other) = delete;
 	PokeSkillBase& operator=(PokeSkillBase&& _Other) noexcept = delete;
 
+	void CreateSkill(std::string_view _SkillName);
+
 protected:
 
 private:
+	std::map<std::string, PokeSkillBase*> AllSkills = std::map<std::string, PokeSkillBase*>();
+	
 	std::string SkillName = "몸통박치기";
 
 	bool IsAttacskill = true;
@@ -28,6 +33,6 @@ private:
 	int SkillDebuff = 0;
 	int SkillPowerPoint = 0;
 
-
+	void Tackle();
 };
 

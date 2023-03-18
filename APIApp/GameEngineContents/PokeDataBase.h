@@ -101,7 +101,13 @@ public:
 	void PokeStatusUp(int _Status);
 	void PokeEvolution();
 	void PokeSkillAcquisition();
+
 	void PokeNameEdit(std::string _EditName);
+
+	std::string_view GetName()
+	{
+		return Name;
+	}
 
 protected:
 
