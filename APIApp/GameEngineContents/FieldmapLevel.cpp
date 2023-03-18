@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "FieldDialog.h"
 #include "int2.h"
+#include "FieldmapRender.h"
 
 FieldmapLevel::FieldmapLevel()
 {

@@ -3,6 +3,7 @@
 
 class Player;
 class FieldDialog;
+class FieldmapRender;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
@@ -23,7 +24,7 @@ protected:
 private:
 	Player* MainPlayer = nullptr;
 	FieldDialog* MainFieldDialog = nullptr;
-
+	FieldmapRender* MainFieldRender = nullptr;
 	bool IsCameraDebug = false;
 
 	void ImageLoad();
