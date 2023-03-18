@@ -11,6 +11,7 @@ class Fieldmap
 public:
 	static const float TileSize;
 	static const float TileSizeHalf;
+	static const float4 TileSizeFloat4Half;
 
 	static float4 GetPos(const int _x, const int _y)
 	{

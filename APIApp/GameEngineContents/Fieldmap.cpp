@@ -8,6 +8,7 @@
 
 const float Fieldmap::TileSize = 64.0f;
 const float Fieldmap::TileSizeHalf = 32.0f;
+const float4 Fieldmap::TileSizeFloat4Half = { TileSizeHalf, TileSizeHalf };
 
 FieldmapCity* Fieldmap::CurCity = nullptr;
 std::map<std::string, FieldmapCity*> Fieldmap::AllCitys;
@@ -27,7 +28,7 @@ float4 Fieldmap::GetPos(const int2& _Index)
 		MsgAssert("아직 필드맵이 초기화되지 않았습니다");
 	}
 
-	return float4(_Index.x * TileSize, _Index.y * TileSize) + CurCity->GetCityStartPos();
+	return float4(_Index.x * TileSize, _Index.y * TileSize) + CurCity->GetCityStartPos() + TileSizeFloat4Half;
 }
 
 int2 Fieldmap::GetIndex(const float4& _Pos)

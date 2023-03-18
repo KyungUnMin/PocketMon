@@ -28,4 +28,5 @@ private:
 	bool IsCameraDebug = false;
 
 	void ImageLoad();
+	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
 };
