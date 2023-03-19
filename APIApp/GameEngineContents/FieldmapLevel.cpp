@@ -30,6 +30,26 @@ void FieldmapLevel::Loading()
 		CreateFieldmapCity("Route2_Down", "Route2_Down", float4(0.0f, -7808.0f));
 		CreateFieldmapCity("Route2_Up", "Route2_Up",float4(0.0f, -10368.0f));
 		CreateFieldmapCity("PewterCity", "PewterCity", float4(0.0f, -12480.0f));
+
+		CreateFieldmapCity("PalletTown_Home1F", "Myroom_1F", float4(0.0f, 2000.0f));
+		CreateFieldmapCity("PalletTown_Home2F", "Myroom_2F", float4(0.0f, 4000.0f));
+		CreateFieldmapCity("PalletTown_Office", "Office", float4(0.0f, 6000.0f));
+		CreateFieldmapCity("PalletTown_House1", "GreyCityHouse", float4(0.0f, 8000.0f));
+
+		CreateFieldmapCity("ViridianCity_PokemonCenter", "Center_1F", float4(2000.0f, 2000.0f));
+		CreateFieldmapCity("ViridianCity_Market", "Market", float4(2000.0f, 4000.0f));
+		CreateFieldmapCity("ViridianCity_Office", "Office", float4(2000.0f, 6000.0f));
+		CreateFieldmapCity("ViridianCity_House1", "GreyCityHouse", float4(2000.0f, 8000.0f));
+		CreateFieldmapCity("ViridianCity_House2", "GreyCityHouse", float4(2000.0f, 10000.0f));
+		CreateFieldmapCity("ViridianForest", "ViridianForest", float4(2000.0f, 15000.0f));
+
+		CreateFieldmapCity("PewterCity_Gym", "GreyCityGym", float4(6000.0f, 2000.0f));
+		CreateFieldmapCity("PewterCity_Market", "Market", float4(6000.0f, 4000.0f));
+		CreateFieldmapCity("PewterCity_Museum1F", "GreyCityMuseum_1F", float4(6000.0f, 6000.0f));
+		CreateFieldmapCity("PewterCity_Museum2F", "GreyCityMuseum_2F", float4(6000.0f, 8000.0f));
+		CreateFieldmapCity("PewterCity_House1", "GreyCityHouse", float4(6000.0f, 10000.0f));
+		CreateFieldmapCity("PewterCity_House2", "GreyCityHouse", float4(6000.0f, 12000.0f));
+		CreateFieldmapCity("PewterCity_PokemonCenter", "Center_1F", float4(6000.0f, 14000.0f));
 	}
 
 	Fieldmap::ChangeCity("PalletTown");
