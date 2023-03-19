@@ -5,10 +5,11 @@
 
 #include "PokeSkillBase.h"
 
+PokeDataBase PokeDataBase::Ptr;                                                     // PokeDataBasePtr (사용X)
+std::list<PokeDataBase*> PokeDataBase::AllPokemons = std::list<PokeDataBase*>();    // 모든 포켓몬 (왠만하면 사용 X)
+std::list<PokeSkillBase*> PokeDataBase::AllSkills = std::list<PokeSkillBase*>();    // 모든 스킬 (왠만하면 사용 X)
+
 std::vector<PokeSkillBase*> PokeDataBase::SkillList = std::vector<PokeSkillBase*>(4);
-std::list<PokeDataBase*> PokeDataBase::AllPokemons = std::list<PokeDataBase*>(); // 모든 포켓몬
-std::list<PokeSkillBase*> PokeDataBase::AllSkills = std::list<PokeSkillBase*>();
-PokeDataBase PokeDataBase::Ptr;
 
 GameEngineRender* PokeDataBase::MonsterImage = nullptr;						// 포켓몬 이미지
 std::string PokeDataBase::Name = "안농";										// 포켓몬 이름

@@ -99,6 +99,12 @@ public:
 		return IsAttackSkill;
 	}
 
+	// 이것은 특수공격입니까?
+	inline bool ItisSpecialSkill()
+	{
+		return IsSpecialSkill;
+	}
+
 	// 스킬 공격력 가져오기
 	inline int GetSkillDamage()
 	{
@@ -141,6 +147,12 @@ public:
 		return SkillType;
 	}
 
+	// 스킬 종류 가져오기
+	PokeSkill GetSkill()
+	{
+		return Skills;
+	}
+
 	// 스킬이름 가져오기
 	std::string_view ForUI_GetSkillName()
 	{
@@ -155,6 +167,7 @@ private:
 	std::string Name = "대폭발";					  // 스킬 이름
 
 	bool IsAttackSkill = true;                    // 공격스킬인지 버프스킬인지
+	bool IsSpecialSkill = false;				  // 물공인지 마공인지
 
 	int SkillDamage = 0;                          // 스킬공격력
 	int MaxSkillPowerPoint = 0;                   // 최대 스킬 파워포인트

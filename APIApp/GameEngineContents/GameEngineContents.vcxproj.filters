@@ -74,14 +74,14 @@
     <ClCompile Include="FieldDialog.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
-    <ClCompile Include="FirstSetLevel.cpp">
-      <Filter>FieldUI\HSM</Filter>
-    </ClCompile>
     <ClCompile Include="Battle_Select.cpp" />
     <ClCompile Include="EnemyHPBackground.cpp" />
     <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="FieldmapCity.cpp">
       <Filter>Map\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="PokeBattleSystem.cpp">
+      <Filter>Base</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,14 +157,14 @@
     <ClInclude Include="FieldDialog.h">
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
-    <ClInclude Include="FirstSetLevel.h">
-      <Filter>FieldUI\HSM</Filter>
-    </ClInclude>
     <ClInclude Include="Battle_Select.h" />
     <ClInclude Include="EnemyHPBackground.h" />
     <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="FieldmapCity.h">
       <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="PokeBattleSystem.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

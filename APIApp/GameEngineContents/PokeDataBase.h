@@ -252,6 +252,7 @@ public:
 protected:
 
 private:
+	// 메모리 할당, 해제용 리스트, 포인터 (사용하지 마세요...)
 	static std::list<PokeDataBase*> AllPokemons;		    // 모든 포켓몬
 	static std::list<PokeSkillBase*> AllSkills;			    // 모든 스킬
 	static PokeDataBase Ptr;                                // 사용하지 마세요...

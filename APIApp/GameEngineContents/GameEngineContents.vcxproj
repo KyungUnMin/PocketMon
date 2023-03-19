@@ -194,6 +194,10 @@
     <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp" />
+    <ClCompile Include="PokeBattleSystem.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PokeDataBase.cpp" />
     <ClCompile Include="PokeSkillBase.cpp" />
     <ClCompile Include="TestScript.cpp" />
@@ -240,6 +244,10 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h" />
+    <ClInclude Include="PokeBattleSystem.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PokeDataBase.h" />
     <ClInclude Include="PokeSkillBase.h" />
     <ClInclude Include="TestScript.h" />

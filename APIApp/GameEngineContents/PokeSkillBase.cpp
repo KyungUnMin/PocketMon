@@ -454,6 +454,7 @@ void PokeSkillBase::QuickAttackData()
 void PokeSkillBase::TwisterData() 
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Dragon;
 	Name = "Twister";
 
@@ -532,6 +533,7 @@ void PokeSkillBase::FuryAttackData()
 void PokeSkillBase::PursuitData() 
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Drak;
 	Name = "Pursuit";
 
@@ -545,6 +547,7 @@ void PokeSkillBase::PursuitData()
 void PokeSkillBase::FastMoveData() 
 {
 	IsAttackSkill = false;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Psvchc;
 	Name = "FastMove";
 
@@ -558,6 +561,7 @@ void PokeSkillBase::FastMoveData()
 void PokeSkillBase::AssuranceData() 
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Drak;
 	Name = "Assurance";
 
@@ -701,6 +705,7 @@ void PokeSkillBase::RockTombData()
 void PokeSkillBase::DragonBreathData() 
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Dragon;
 	Name = "DragonBreath";
 
@@ -740,6 +745,7 @@ void PokeSkillBase::SandTombData()
 void PokeSkillBase::BiteData()
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Drak;
 	Name = "Bite";
 
@@ -766,6 +772,7 @@ void PokeSkillBase::HyperFangData()
 void PokeSkillBase::CrunchData()
 {
 	IsAttackSkill = true;
+	IsSpecialSkill = true;
 	SkillType = SkillType::Drak;
 	Name = "Crunch";
 
