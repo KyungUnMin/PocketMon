@@ -23,13 +23,13 @@ FieldmapLevel::~FieldmapLevel()
 void FieldmapLevel::Loading()
 {
 	{
-		CreateFieldmapCity("PalletTown", "PalletTown.bmp", "PalletTown_Col.bmp", float4::Zero);
-		CreateFieldmapCity("Route1", "Route1.bmp", "Route1_Col.bmp", float4(0.0f, -2240.0f));
-		CreateFieldmapCity("ViridianCity", "ViridianCity.bmp", "ViridianCity_Col.bmp", float4(224.0f, -4800.0f));
-		CreateFieldmapCity("Route22", "Route22.bmp", "Route22_Col.bmp", float4(-3360.0f, -4640.0f));
-		CreateFieldmapCity("Route2_Down", "Route2_Down.bmp", "Route2_Down_Col.bmp", float4(0.0f, -7808.0f));
-		CreateFieldmapCity("Route2_Up", "Route2_Up.bmp", "Route2_Up_Col.bmp", float4(0.0f, -9742.0f));
-		CreateFieldmapCity("PewterCity", "PewterCity.bmp", "PewterCity_Col.bmp", float4(0.0f, -11854.0f));
+		CreateFieldmapCity("PalletTown", "PalletTown", float4::Zero);
+		CreateFieldmapCity("Route1", "Route1", float4(0.0f, -2240.0f));
+		CreateFieldmapCity("ViridianCity", "ViridianCity", float4(224.0f, -4800.0f));
+		CreateFieldmapCity("Route22", "Route22", float4(-3360.0f, -4640.0f));
+		CreateFieldmapCity("Route2_Down", "Route2_Down", float4(0.0f, -7808.0f));
+		CreateFieldmapCity("Route2_Up", "Route2_Up",float4(0.0f, -10368.0f));
+		CreateFieldmapCity("PewterCity", "PewterCity", float4(0.0f, -12480.0f));
 	}
 
 	Fieldmap::ChangeCity("PalletTown");
@@ -41,14 +41,36 @@ void FieldmapLevel::Loading()
 	
 	MainPlayer = CreateActor<Player>();
 	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
+	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("MapRenderDebug"))
+	if (true == GameEngineInput::IsDown("WalkableDebug"))
 	{
-		MainFieldRender->OnOffSwtich();
+		if (FieldmapRender::RenderType::Walkable == MainFieldRender->GetRenderType())
+		{
+			MainFieldRender->OnOffSwtich();
+		}
+		else
+		{
+			MainFieldRender->SetRenderType(FieldmapRender::RenderType::Walkable);
+			MainFieldRender->On();
+		}
+	}
+
+	if (true == GameEngineInput::IsDown("FieldmapTypeDebug"))
+	{
+		if (FieldmapRender::RenderType::GroundType == MainFieldRender->GetRenderType())
+		{
+			MainFieldRender->OnOffSwtich();
+		}
+		else
+		{
+			MainFieldRender->SetRenderType(FieldmapRender::RenderType::GroundType);
+			MainFieldRender->On();
+		}
 	}
 	
 	if (true == GameEngineInput::IsDown("FreeCamera"))
@@ -80,6 +102,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 		int2 PlayerIndex = Fieldmap::GetIndex(MainPlayer->GetPos());
 	
 		DebugTextPush("PlayerIndex : " + PlayerIndex.ToString());
+		MainPlayer->SetPos(GetCameraPos() + GameEngineWindow::GetScreenSize().half());
 		MainPlayer->Off();
 	}
 	else
@@ -113,10 +136,10 @@ void FieldmapLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog.bmp"))->Cut(27, 4);
 }
 
-void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const std::string_view& _ColImageName, const float4& _Pos)
+void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos)
 {
 	FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>();
 
-	PalletTownPtr->InitFieldRender(_CityName, _ImageName, _ColImageName);
+	PalletTownPtr->InitFieldRender(_CityName, _ImageName);
 	PalletTownPtr->InitPos(_Pos);
 }

@@ -51,6 +51,16 @@ bool FieldData::Swinable(const int2& _Index) const
 	return TileWalkType::Swim == TileDatas[_Index.y][_Index.x].WalkType;
 }
 
+GroundType FieldData::GetGroundType(const int2& _Index) const
+{
+	if (true == OverlapCheck(_Index))
+	{
+		return GroundType::Unknown;
+	}
+
+	return TileDatas[_Index.y][_Index.x].groundType;
+}
+
 void FieldData::SetRenderData(const int2& _Index, int _RenderFrame)
 {
 	if (true == OverlapCheck(_Index))

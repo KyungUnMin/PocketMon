@@ -84,6 +84,16 @@ bool Fieldmap::Walkable(const int2& _Index)
 	return CurCity->Walkable(_Index);
 }
 
+GroundType Fieldmap::GetGroundType(const int2& _Index)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+	}
+
+	return CurCity->GetGroundType(_Index);
+}
+
 void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);

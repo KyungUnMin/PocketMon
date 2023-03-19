@@ -87,43 +87,61 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
 		Dir.Move("FieldMap");
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(4, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(8, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityGym.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityGym_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityGym_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityHouse.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityHouse_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityHouse_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_1F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_1F_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_1F_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_2F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_2F_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GreyCityMuseum_2F_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Market.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Market_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Market_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_1F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_1F_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_1F_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_2F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_2F_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Myroom_2F_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Office.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Office_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Office_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PalletTown.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PalletTown_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PalletTown_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PewterCity.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PewterCity_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PewterCity_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rivalroom.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rivalroom_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rivalroom_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route1.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route1_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route1_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Down.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Down_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Down_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Up.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Up_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Up_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route22.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route22_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route22_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianCity.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianCity_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianCity_Type.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Col.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Type.bmp"));
 	}
 
 	{
@@ -173,10 +191,11 @@ void CenterLevel::Loading()
 	}
 
 	// ¸Ê °ü·Ã Å°
-	if (false == GameEngineInput::IsKey("MapRenderDebug"))
+	if (false == GameEngineInput::IsKey("WalkableDebug"))
 	{
-		GameEngineInput::CreateKeyNoToupper("MapRenderDebug", VK_F1);
-		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F2);
+		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F1);
+		GameEngineInput::CreateKeyNoToupper("WalkableDebug", VK_F2);
+		GameEngineInput::CreateKeyNoToupper("FieldmapTypeDebug", VK_F3);
 
 		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
 		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);

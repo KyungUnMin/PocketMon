@@ -73,18 +73,28 @@ void FieldmapRender::Update(float _DeltaTime)
 	{
 		for (size_t x = 0; x < TileRenders[y].size(); x++)
 		{
-			if (true == Fieldmap::Walkable(RenderIndex))
+			switch (DebugType)
 			{
-				TileRenders[y][x]->SetFrame(1);
-			}
-			else
-			{
-				TileRenders[y][x]->SetFrame(2);
+			case FieldmapRender::RenderType::Walkable:
+				if (true == Fieldmap::Walkable(RenderIndex))
+				{
+					TileRenders[y][x]->SetFrame(0);
+				}
+				else
+				{
+					TileRenders[y][x]->SetFrame(1);
+				}
+				break;
+			case FieldmapRender::RenderType::GroundType:
+				TileRenders[y][x]->SetFrame(3 + static_cast<int>(Fieldmap::GetGroundType(RenderIndex)));
+				break;
+			default:
+				MsgAssert("잘못된 FieldmapRender DebugType 입니다");
+				break;
 			}
 
 			++RenderIndex.x;
 		}
-
 
 		RenderIndex.x = Index.x - RenderSizeX;
 		++RenderIndex.y;

@@ -40,7 +40,8 @@ public:
 	{
 		return MoveSpeed;
 	}
-	float SetPlayerSpeed(float _PlayerSpeed)
+
+	void SetPlayerSpeed(float _PlayerSpeed)
 	{
 		MoveSpeed = _PlayerSpeed;
 	}

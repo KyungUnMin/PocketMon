@@ -33,6 +33,7 @@ public:
 	void Init(const int2& _Size);
 	bool Walkabal(const int2& _Index) const;
 	bool Swinable(const int2& _Index) const;
+	GroundType GetGroundType(const int2& _Index) const;
 
 	void SetRenderData(const int2& _Index, int _RenderFrame);
 	void SetWalkData(const int2& _Index, TileWalkType _WalkData);

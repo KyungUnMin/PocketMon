@@ -24,11 +24,17 @@ public:
 		return CityPos;
 	}
 
-	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName, const std::string_view& _ColImageName);
+	// .bmp »©°í ÀÔ·Â
+	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName);
 
 	bool Walkable(const int2& _Index) const
 	{
 		return MyTilemapData.Walkabal(_Index);
+	}
+
+	GroundType GetGroundType(const int2& _Index) const
+	{
+		return MyTilemapData.GetGroundType(_Index);
 	}
 
 protected:
@@ -39,6 +45,7 @@ private:
 
 	GameEngineRender* CityRenderer = nullptr;
 	GameEngineImage* CityColImage = nullptr;
+	GameEngineImage* CityTypeImage = nullptr;
 
 	FieldData MyTilemapData = FieldData();;
 

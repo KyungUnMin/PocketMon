@@ -4,6 +4,7 @@
 #include <string>
 #include <GameEngineBase/GameEngineMath.h>
 #include "int2.h"
+#include "ContentsEnum.h"
 
 class FieldmapCity;
 class Fieldmap
@@ -33,6 +34,13 @@ public:
 	}
 	
 	static bool Walkable(const int2& _Index);
+
+	static GroundType GetGroundType(const float4& _Pos)
+	{
+		return GetGroundType(GetIndex(_Pos));
+	}
+
+	static GroundType GetGroundType(const int2& _Index);
 
 	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
 	static void ChangeCity(const std::string_view& _CityName);
