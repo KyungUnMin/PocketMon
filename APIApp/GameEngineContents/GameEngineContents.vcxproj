@@ -201,6 +201,7 @@
     <ClCompile Include="PokeDataBase.cpp" />
     <ClCompile Include="PokeSkillBase.cpp" />
     <ClCompile Include="TestScript.cpp" />
+    <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -251,6 +252,7 @@
     <ClInclude Include="PokeDataBase.h" />
     <ClInclude Include="PokeSkillBase.h" />
     <ClInclude Include="TestScript.h" />
+    <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

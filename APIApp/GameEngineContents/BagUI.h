@@ -11,6 +11,7 @@ enum class BagSpace
 // 설명 : 가방을 관리하는 클래스
 // 필드, 전투중 아이템을 사용하는 기능들을 구현한다
 class GameEngineRender;
+class TextActor;
 class BagUI : public GameEngineActor
 {
 public:
@@ -44,9 +45,15 @@ private:
 
 	GameEngineRender* UpArrow = nullptr;		// 아이템 목록 - 위 화살표
 	GameEngineRender* DownArrow = nullptr;		// 아이템 목록 - 아래 화살표
-	GameEngineRender* CurrentArrow = nullptr;	// 아이템 목록 - 선택중인 아이템 표시
+	GameEngineRender* CurrentCursor = nullptr;	// 아이템 목록 - 선택중인 아이템 표시
+
+	std::vector<TextActor*> Items = std::vector<TextActor*>(5);
+	std::vector<TextActor*> KeyItems = std::vector<TextActor*>(5);
+	std::vector<TextActor*> PokeBalls = std::vector<TextActor*>(5);
+	TextActor* ItemInfo = nullptr;
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();
 	void ChangeSpaceRight();
+
 };

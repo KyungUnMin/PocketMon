@@ -164,9 +164,10 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Items.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_PoketBalls.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_KeyItems.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftOpen.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_MiddleOpen.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_RightOpen.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag.bmp"))->Cut(3,1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Roll.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Shadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
 	}
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{

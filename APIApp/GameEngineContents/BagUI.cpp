@@ -1,6 +1,8 @@
 #include "BagUI.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include "TextActor.h"
 #include "ContentsEnum.h"
 BagUI::BagUI() {
 }
@@ -17,9 +19,17 @@ void BagUI::Start()
 		BackUI->SetScaleToImage();
 		BackUI->SetPosition(BackUI->GetScale().half());
 
-		BagRender = CreateRender("Bag_LeftOpen.bmp", RenderOrder::Player);
-		BagRender->SetScaleToImage();
+		BagRender = CreateRender("Bag.bmp", RenderOrder::Player);
+		BagRender->CreateAnimation({ .AnimationName = "Left", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 0, .End = 0});
+		BagRender->CreateAnimation({ .AnimationName = "Middle", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 1, .End = 1 });
+		BagRender->CreateAnimation({ .AnimationName = "Right", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 2, .End = 2 });
+		BagRender->SetScale({232, 252});
 		BagRender->SetPosition({ 168, 276 });
+		BagRender->ChangeAnimation("Left");
+
+		GameEngineRender* BackShadow = CreateRender("Bag_Shadow.bmp", RenderOrder::Monster);
+		BackShadow->SetScaleToImage();
+		BackShadow->SetPosition({ 168, 276 });
 
 		SpaceText = CreateRender("Bag_Items.bmp", RenderOrder::Player);
 		SpaceText->SetScaleToImage();
@@ -45,12 +55,21 @@ void BagUI::Start()
 		DownArrow->SetScaleToImage();
 		DownArrow->SetPosition({ 644, 424 });
 
-		CurrentArrow = CreateRender("Bag_CurrentArrow.bmp", RenderOrder::Player);
-		CurrentArrow->SetScaleToImage();
-		CurrentArrow->SetPosition({ 372, 64 });
+		CurrentCursor = CreateRender("Bag_CurrentArrow.bmp", RenderOrder::Player);
+		CurrentCursor->SetScaleToImage();
+		CurrentCursor->SetPosition({ 372, 68 });
 	}
-	ChangeSpace(BagSpace::Items);	// 아이템 공간으로 이동
+	CurrentSpace = BagSpace::Items;
 
+	Items[0] = GetLevel()->CreateActor<TextActor>();
+	Items[0]->SetText("POTION");
+	Items[0]->SetPos({ 404, 72 });
+	Items[1] = GetLevel()->CreateActor<TextActor>();
+	Items[1]->SetText("REVIVE");
+	Items[1]->SetPos({ 404, 136 });
+	ItemInfo = GetLevel()->CreateActor<TextActor>();
+	ItemInfo->SetText("A spary type wound medicine It restores the Hp of one POKEMON by 200 points", "Font_Dialog_White.bmp", true);
+	ItemInfo->SetPos({ 172, 488 });
 }
 
 void BagUI::Update(float _DeltaTime)
@@ -64,10 +83,15 @@ void BagUI::Update(float _DeltaTime)
 	{
 		ChangeSpaceRight();
 	}
-	if (GameEngineInput::IsDown("LevelChange1"))
+	if (GameEngineInput::IsDown("UpMove"))
 	{
 
 	}
+	if (GameEngineInput::IsDown("DownMove"))
+	{
+
+	}
+
 }
 
 void BagUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
@@ -88,18 +112,18 @@ void BagUI::ChangeSpace(BagSpace _Space)
 	switch (CurrentSpace)
 	{
 	case BagSpace::Items:
-		BagRender->SetImage("Bag_LeftOpen.bmp");
+		BagRender->ChangeAnimation("Left");
 		SpaceText->SetImage("Bag_Items.bmp");
 		LeftArrow->Off();
 		break;
 	case BagSpace::KeyItems:
-		BagRender->SetImage("Bag_MiddleOpen.bmp");
+		BagRender->ChangeAnimation("Middle");
 		SpaceText->SetImage("Bag_KeyItems.bmp");
 		LeftArrow->On();
 		RightArrow->On();
 		break;
 	case BagSpace::PokeBalls:
-		BagRender->SetImage("Bag_RightOpen.bmp");
+		BagRender->ChangeAnimation("Right");
 		SpaceText->SetImage("Bag_PoketBalls.bmp");
 		RightArrow->Off();
 		break;
