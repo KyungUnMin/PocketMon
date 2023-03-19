@@ -159,6 +159,9 @@ void PokeSkillBase::InitCreateSkill(PokeSkill _SkillName)
 	case PokeSkill::DoubleEdge:
 		DoubleEdgeData();
 		break;
+	case PokeSkill::Unknown:
+		UnknownData();
+		break;
 	default:
 		break;
 	}
@@ -748,4 +751,15 @@ void PokeSkillBase::DoubleEdgeData()
 	MaxSkillPowerPoint = 5;
 	CurrentSkillPowerPoint = 5;
 	SkillHitrate = 1.f;
+}
+
+void PokeSkillBase::UnknownData()
+{
+	IsAttackSkill = false;
+	SkillType = SkillType::Bug;
+
+	SkillDamage = 0;
+	MaxSkillPowerPoint = 0;
+	CurrentSkillPowerPoint = 0;
+	SkillHitrate = 0.f;
 }

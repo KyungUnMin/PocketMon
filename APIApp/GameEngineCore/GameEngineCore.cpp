@@ -71,13 +71,12 @@ void GameEngineCore::GlobalUpdate()
 	Core->MainLevel->Release();
 }
 
-void GameEngineCore::GlobalEnd() 
+void GameEngineCore::GlobalEnd()
 {
 	Core->End();
 
 	GameEngineResources::GetInst().Release();
 }
-
 
 GameEngineCore::GameEngineCore() 
 {

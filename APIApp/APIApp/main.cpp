@@ -10,41 +10,20 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
 {
-	// 1 이상해씨, 4 파이리, 7 꼬부기
-	std::vector<PokeDataBase*> PlayerPokemons;
-	PlayerPokemons.reserve(6);
+	PokeDataBase* NewPoke = PokeDataBase::PokeCreate(1, 1);
+	PokeDataBase* NewPoke2 = PokeDataBase::PokeCreate(4, 1);
+	PokeDataBase* NewPoke3 = PokeDataBase::PokeCreate(7, 1);
+	PokeDataBase* NewPoke4 = PokeDataBase::PokeCreate(9, 1);
+	PokeDataBase* NewPoke5 = PokeDataBase::PokeCreate(11, 1);
 
-	PokeDataBase AA;
-	AA.PokeCreate(1, 1);
-	PlayerPokemons.push_back(&AA);
-
-	PokeDataBase BB;
-	BB.PokeCreate(4, 1);
-	PlayerPokemons.push_back(&BB);
-
-	PokeDataBase CC;
-	CC.PokeCreate(7, 1);
-	PlayerPokemons.push_back(&CC);
-
-	PokeDataBase DD;
-	DD.PokeCreate(9, 1);
-	PlayerPokemons.push_back(&DD);
-
-	PokeDataBase EE;
-	EE.PokeCreate(11, 1);
-	PlayerPokemons.push_back(&EE);
-
-	PokeDataBase FF;
-	FF.PokeCreate(14, 1);
-	PlayerPokemons.push_back(&FF);
-
-	int aa = PlayerPokemons[0]->GetMonsterCurrentHP();
-	int bb = PlayerPokemons[1]->GetMonsterCurrentHP();
-	int cc = PlayerPokemons[2]->GetMonsterCurrentHP();
-	int dd = PlayerPokemons[3]->GetMonsterCurrentHP();
-
-	int a = 0;
+	int aa = NewPoke->GetMonsterMaxHP();
+	int a1 = NewPoke->GetMonsterAgility();
+	int a2 = NewPoke->GetMonsterAttackPower();
+	PokeSkillBase* aaaa = NewPoke->GetMonsterSkillList(1);
+	int d1 = NewPoke->GetMonsterSkillList(1)->GetSkillDamage();
+	float d3 = NewPoke->GetMonsterSkillList(1)->GetSkillHitrate();
 
 	PocketMonCore::GetInst().CoreStart(hInstance);
 	return 1;
+
 }

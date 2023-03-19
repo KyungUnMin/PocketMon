@@ -53,6 +53,7 @@ enum class PokeSkill
 	Crunch,       // 깨물어부수기
 	SuperFang,    // 분노의앞니
 	DoubleEdge,   // 이판사판태클
+	Unknown,      // 동적할당용
 };
 
 enum class SkillType
@@ -91,6 +92,42 @@ public:
 	PokeSkillBase(PokeSkillBase&& _Other) noexcept = delete;
 	PokeSkillBase& operator=(const PokeSkillBase& _Other) = delete;
 	PokeSkillBase& operator=(PokeSkillBase&& _Other) noexcept = delete;
+
+	// 이것은 공격스킬입니까?
+	inline bool ItisAttackSkill()
+	{
+		return IsAttackSkill;
+	}
+
+	// 스킬 공격력 가져오기
+	inline int GetSkillDamage()
+	{
+		return SkillDamage;
+	}
+
+	// 스킬 최대 PP 가져오기
+	inline int GetMaxSkillPowerPoint()
+	{
+		return MaxSkillPowerPoint;
+	}
+
+	// 스킬 현재 PP 가져오기
+	inline int GetCurrentSkillPowerPoint()
+	{
+		return CurrentSkillPowerPoint;
+	}
+
+	// 스킬 적중률 가져오기
+	inline float GetSkillHitrate()
+	{
+		return SkillHitrate;
+	}
+
+	// 스킬 타입 가져오기
+	SkillType GetSkillType()
+	{
+		return SkillType;
+	}
 
 protected:
 
@@ -156,4 +193,5 @@ private:
 	void CrunchData();
 	void SuperFangData();
 	void DoubleEdgeData();
+	void UnknownData();
 };

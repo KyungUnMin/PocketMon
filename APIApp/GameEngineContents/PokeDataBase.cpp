@@ -5,30 +5,68 @@
 
 #include "PokeSkillBase.h"
 
+std::vector<PokeSkillBase*> PokeDataBase::SkillList = std::vector<PokeSkillBase*>(4);
+std::list<PokeDataBase*> PokeDataBase::AllPokemons = std::list<PokeDataBase*>(); // 모든 포켓몬
+std::list<PokeSkillBase*> PokeDataBase::AllSkills = std::list<PokeSkillBase*>();
+PokeDataBase PokeDataBase::Ptr;
+
+GameEngineRender* PokeDataBase::MonsterImage = nullptr;						// 포켓몬 이미지
+std::string PokeDataBase::Name = "안농";										// 포켓몬 이름
+
+bool PokeDataBase::IsMan = true;											// 포켓몬 성별
+bool PokeDataBase::IsbeCaught = false;									    // 야생포켓몬인지 잡힌 포켓몬인지
+
+PokeNumber PokeDataBase::PokeDexNumber = PokeNumber::Max;					// 포켓몬 도감 번호
+int PokeDataBase::MaxHealthPoint = 0;									    // 몬스터 최대 체력
+int PokeDataBase::CurrentHealthPoint = 0;									// 몬스터 잔여 체력
+int PokeDataBase::AttackPower = 0;											// 몬스터 공격력
+int PokeDataBase::Defense = 0;												// 몬스터 방어력
+int PokeDataBase::SpecialAttackPower = 0;								    // 몬스터 특수공격력
+int PokeDataBase::SpecialDefense = 0;									    // 몬스터 특수방어력
+int PokeDataBase::Agility = 0;											    // 몬스터 민첩성
+int PokeDataBase::MonsterLevel = 0;										    // 몬스터 레벨
+int PokeDataBase::Experience = 0;										    // 몬스터 경험치
+int PokeDataBase::RemainingExperience = 0;								    // 몬스터 다음 레벨까지 남은 경험치
+
+int PokeDataBase::PokeBall = 0;												// 포켓몬이 담겨있는 포켓볼 종류
+PokeType PokeDataBase::Type = PokeType::Normal;								// 포켓몬 속성 타입
+PokePersonality PokeDataBase::Personality = PokePersonality::Serious;	    // 포켓몬 성격
+PokeCharacteristic PokeDataBase::Characteristic = PokeCharacteristic::심록;	// 포켓몬 특성
+
 PokeDataBase::PokeDataBase() 
 {
 }
 
 PokeDataBase::~PokeDataBase() 
 {
-	for (PokeSkillBase* PokeSkills : SkillList)
+}
+
+void PokeDataBase::Release()
+{
+	for (PokeSkillBase* Sk : AllSkills)
 	{
-		if (nullptr == PokeSkills)
+		if (nullptr == Sk)
 		{
 			continue;
 		}
 
-		delete PokeSkills;
-		PokeSkills = nullptr;
+		delete Sk;
+		Sk = nullptr;
+	}
+
+	for (PokeDataBase* Pokes : AllPokemons)
+	{
+		if (nullptr == Pokes)
+		{
+			continue;
+		}
+
+		delete Pokes;
+		Pokes = nullptr;
 	}
 }
 
-void PokeDataBase::Attack()
-{
-
-}
-
-void PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
+PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 {
 	int ChangePokeNumber = _PokeDexNumber - 1;
 	int MaxNumber = static_cast<int>(PokeNumber::Max);
@@ -36,359 +74,370 @@ void PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 	if (ChangePokeNumber >= MaxNumber)
 	{
 		MsgAssert("포켓몬 넘버는 14(롱스톤)까지만 존재합니다.");
-		return;
+		return nullptr;
 	}
 	else if (ChangePokeNumber < 0)
 	{
 		MsgAssert("포켓몬 넘버는 1(이상해씨) 미만일 수 없습니다.");
-		return;
+		return nullptr;
 	}
 
 	if (_Level <= 0)
 	{
 		MsgAssert("레벨이 0인 포켓몬은 생성할 수 없습니다.");
-		return;
+		return nullptr;
 	}
 
-	PokeDexNumber = static_cast<PokeNumber>(ChangePokeNumber);
+	PokeDataBase* PoKeCreatePtr = new PokeDataBase();
 
-	switch (PokeDexNumber)
+	PoKeCreatePtr->PokeDexNumber = static_cast<PokeNumber>(ChangePokeNumber);
+
+	switch (PoKeCreatePtr->PokeDexNumber)
 	{
 	case PokeNumber::Bulbasaur:
 	{
-		BulbasaurData(_Level);
+		BulbasaurData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		
-		if (MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 7)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed);
+			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 9)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip);
+			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Ivysaur:
 	{
-		IvysaurData(_Level);
+		IvysaurData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 7)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed);
+			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 9)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip);
+			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Venusaur:
 	{
-		VenusaurData(_Level);
+		VenusaurData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 7)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed);
+			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 9)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip);
+			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Charmander:
 	{
-		CharmanderData(_Level);
+		CharmanderData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Scratch);
-		PokeSkillInit(2, PokeSkill::Growl);
+		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr );
 		
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Ember);
+			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::Leer);
+			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Charmeleon:
 	{
-		CharmeleonData(_Level);
+		CharmeleonData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Scratch);
-		PokeSkillInit(2, PokeSkill::Growl);
+		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Ember);
+			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::Leer);
+			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Charizard:
 	{
-		CharizardData(_Level);
+		CharizardData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Scratch);
-		PokeSkillInit(2, PokeSkill::Growl);
+		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Ember);
+			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::Leer);
+			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Squirtle:
 	{
-		SquirtleData(_Level);
+		SquirtleData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Bubble);
+			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::WaterGun);
+			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Wartortle:
 	{
-		WartortleData(_Level);
+		WartortleData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Bubble);
+			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::WaterGun);
+			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Blastoise:
 	{
-		BlastoiseData(_Level);
+		BlastoiseData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Bubble);
+			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::WaterGun);
+			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Pidgey:
 	{
-		PidgeyData(_Level);
+		PidgeyData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::SandAttack);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::SandAttack, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::Gust);
+			PokeSkillInit(3, PokeSkill::Gust, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::QuickAttack);
+			PokeSkillInit(4, PokeSkill::QuickAttack, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Rattata:
 	{
-		RattataData(_Level);
+		RattataData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::TailWhip);
-		PokeSkillInit(3, PokeSkill::QuickAttack);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::QuickAttack, PoKeCreatePtr);
 
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::HyperFang);
+			PokeSkillInit(4, PokeSkill::HyperFang, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Spearow:
 	{
-		SpearowData(_Level);
+		SpearowData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Peck);
-		PokeSkillInit(2, PokeSkill::Growl);
-		PokeSkillInit(3, PokeSkill::Leer);
+		PokeSkillInit(1, PokeSkill::Peck, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Leer, PoKeCreatePtr);
 
-		if (MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 9)
 		{
-			PokeSkillInit(4, PokeSkill::FuryAttack);
+			PokeSkillInit(4, PokeSkill::FuryAttack, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Geodude:
 	{
-		GeodudeData(_Level);
+		GeodudeData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::DefenseCurl);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
 
-		if (MonsterLevel >= 8)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::RockPolish);
+			PokeSkillInit(3, PokeSkill::RockPolish, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[2] = nullptr;
+			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::RockThrow);
+			PokeSkillInit(4, PokeSkill::RockThrow, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	case PokeNumber::Onix:
 	{
-		OnixData(_Level);
+		OnixData(_Level, PoKeCreatePtr);
 
-		PokeSkillInit(1, PokeSkill::Tackle);
-		PokeSkillInit(2, PokeSkill::DefenseCurl);
-		PokeSkillInit(3, PokeSkill::Bind);
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Bind, PoKeCreatePtr);
 
-		if (MonsterLevel >= 12)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::RockThrow);
+			PokeSkillInit(4, PokeSkill::RockThrow, PoKeCreatePtr);
 		}
 		else
 		{
-			SkillList[3] = nullptr;
+			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 		}
 	}
 	break;
 	default:
 	break;
 	}
+
+	AllPokemons.push_back(PoKeCreatePtr);
+
+	return PoKeCreatePtr;
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼 전투
+
+void PokeDataBase::Attack()
+{
+
+}
 
 // 몬스터를 처치하면 경험치 획득
 void PokeDataBase::PokeExperienceAcquisition(int _EXP)
@@ -397,34 +446,34 @@ void PokeDataBase::PokeExperienceAcquisition(int _EXP)
 	// 몬스터의 레벨 확인
 	// 획득 경험치 산출
 	// 자신의 경험치에 추가
-	Experience += _EXP;
+	//PoKeCreatePtr->Experience += _EXP;
 }
 
 // 일정 경험치 이상을 획득할 경우 레벨이 증가
 void PokeDataBase::PokeLevelUp(int _EXP)
 {
-	int AcquiExperience = _EXP;
-	int PlusExperience = Experience + _EXP;
-	int ResidueExperience = PlusExperience - 100;
+	//int AcquiExperience = _EXP;
+	//int PlusExperience = Experience + _EXP;
+	//int ResidueExperience = PlusExperience - 100;
 
-	if (PlusExperience >= 100)
-	{
-		MonsterLevel += 1;
-		Experience = 0;
-	}
+	//if (PlusExperience >= 100)
+	//{
+	//	PoKeCreatePtr->MonsterLevel += 1;
+	//	PoKeCreatePtr->Experience = 0;
+	//}
 
-	Experience += PlusExperience;
+	//PoKeCreatePtr->Experience += PlusExperience;
 }
 
 // 레벨업을 하면 체력, 공격력, 방어력, 특수공격력, 특수방어력, 민첩성이 증가
-void PokeDataBase::PokeStatusUp()
+void PokeDataBase::PokeStatusUp(PokeDataBase* _PoKeCreatePtr)
 {
-	MaxHealthPoint += 1;
-	AttackPower += 1;
-	Defense += 1;
-	SpecialAttackPower += 1;
-	SpecialDefense += 1;
-	Agility += 1;
+	_PoKeCreatePtr->MaxHealthPoint += 1;
+	_PoKeCreatePtr->AttackPower += 1;
+	_PoKeCreatePtr->Defense += 1;
+	_PoKeCreatePtr->SpecialAttackPower += 1;
+	_PoKeCreatePtr->SpecialDefense += 1;
+	_PoKeCreatePtr->Agility += 1;
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼 데이터
@@ -433,419 +482,415 @@ void PokeDataBase::PokeStatusUp()
 // 데이터 생성 보조 함수와 푸키먼 데이터 함수가 있습니다.
 
 // 푸키먼 스킬 이닛
-void PokeDataBase::PokeSkillInit(int _Skillslot, PokeSkill _SkillName)
+void PokeDataBase::PokeSkillInit(int _Skillslot, PokeSkill _SkillName, PokeDataBase* _PoKeCreatePtr)
 {
 	PokeSkillBase* Skill = new PokeSkillBase();
 	Skill->InitCreateSkill(_SkillName);
 
-	SkillList[_Skillslot - 1] = Skill;
+	_PoKeCreatePtr->SkillList[_Skillslot - 1] = Skill;
+
+	AllSkills.push_back(_PoKeCreatePtr->SkillList[_Skillslot - 1]);
 }
 
 // 성별 결정
-void PokeDataBase::GenderDecision()
+void PokeDataBase::GenderDecision(PokeDataBase* _PoKeCreatePtr)
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(1, 2);
 
 	if (1 == RandValue)
 	{
-		IsMan = true;  // 수컷
+		_PoKeCreatePtr->IsMan = true;  // 수컷
 	}
 	else
 	{
-		IsMan = false; // 암컷
+		_PoKeCreatePtr->IsMan = false; // 암컷
 	}
 }
 
 // 성격 결정
-void PokeDataBase::PersonalityDecision()
+void PokeDataBase::PersonalityDecision(PokeDataBase* _PoKeCreatePtr)
 {
 	int RandValue = GameEngineRandom::MainRandom.RandomInt(0, 24);
 
-	Personality = static_cast<PokePersonality>(RandValue);
+	_PoKeCreatePtr->Personality = static_cast<PokePersonality>(RandValue);
 
 	// 오류로 인해 임시 반환 값
 	// return PokePersonality::Adamant;
 }
 
-// 포켓몬 이름 수정
-void PokeDataBase::PokeNameEdit(std::string _EditName)
-{
-	Name = _EditName;
-}
-
 // No.1 이상해씨
-void PokeDataBase::BulbasaurData(int _Level)
+void PokeDataBase::BulbasaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();                          // 성별 결정 (암, 수)
-	PersonalityDecision();                     // 성격 결정 (신중한 등)
-	Type = PokeType::Grass;                    // 포켓몬 타입 
-	Characteristic = PokeCharacteristic::심록; // 포켓몬 특성
-	Name = "Bulbasaur";                        // 포켓몬 디폴트 이름
+	GenderDecision(PoKeCreatePtr);                            // 성별 결정 (암, 수)
+	PersonalityDecision(PoKeCreatePtr);                       // 성격 결정 (신중한 등)
+	PoKeCreatePtr->Type = PokeType::Grass;                    // 포켓몬 타입 
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록; // 포켓몬 특성
+	PoKeCreatePtr->Name = "Bulbasaur";                        // 포켓몬 디폴트 이름
 	
-	MaxHealthPoint = 45;                       // 포켓몬 기초 최대 체력
-	CurrentHealthPoint = 45;                   // 포켓몬 기초 잔여 체력
-	AttackPower = 49;                          // 포켓몬 기초 공격력
-	Defense = 49;                              // 포켓몬 기초 방어력
-	SpecialAttackPower = 65;                   // 포켓몬 기초 특수공격력
-	SpecialDefense = 65;                       // 포켓몬 기초 특수방어력 // "특수"는 마법공격, 마법방어로, 노말은 물리공격, 물리방어로 생각하면 됩니다.
-	Agility = 45;                              // 포켓몬 기초 스피드
+	PoKeCreatePtr->MaxHealthPoint = 45;                       // 포켓몬 기초 최대 체력
+	PoKeCreatePtr->CurrentHealthPoint = 45;                   // 포켓몬 기초 잔여 체력
+	PoKeCreatePtr->AttackPower = 49;                          // 포켓몬 기초 공격력
+	PoKeCreatePtr->Defense = 49;                              // 포켓몬 기초 방어력
+	PoKeCreatePtr->SpecialAttackPower = 65;                   // 포켓몬 기초 특수공격력
+	PoKeCreatePtr->SpecialDefense = 65;                       // 포켓몬 기초 특수방어력 // "특수"는 마법공격, 마법방어로, 노말은 물리공격, 물리방어로 생각하면 됩니다.
+	PoKeCreatePtr->Agility = 45;                              // 포켓몬 기초 스피드
 
-	int PlusLevel = MonsterLevel + _Level;     // 야생 포켓몬 스폰 목적 시, 레벨을 입력해줍니다.
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;     // 야생 포켓몬 스폰 목적 시, 레벨을 입력해줍니다.
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.2 이상해풀
-void PokeDataBase::IvysaurData(int _Level) 
+void PokeDataBase::IvysaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Grass;
-	Characteristic = PokeCharacteristic::심록;
-	Name = "Ivysaur";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Grass;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록;
+	PoKeCreatePtr->Name = "Ivysaur";
 
-	MaxHealthPoint = 60;
-	CurrentHealthPoint = 60;
-	AttackPower = 62;
-	Defense = 63;
-	SpecialAttackPower = 80;
-	SpecialDefense = 80;
-	Agility = 60;
+	PoKeCreatePtr->MaxHealthPoint = 60;
+	PoKeCreatePtr->CurrentHealthPoint = 60;
+	PoKeCreatePtr->AttackPower = 62;
+	PoKeCreatePtr->Defense = 63;
+	PoKeCreatePtr->SpecialAttackPower = 80;
+	PoKeCreatePtr->SpecialDefense = 80;
+	PoKeCreatePtr->Agility = 60;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 // No.3 이상해꽃
-void PokeDataBase::VenusaurData(int _Level) 
+void PokeDataBase::VenusaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Grass;
-	Characteristic = PokeCharacteristic::심록;
-	Name = "Venusaur";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Grass;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록;
+	PoKeCreatePtr->Name = "Venusaur";
 
-	MaxHealthPoint = 80;
-	CurrentHealthPoint = 80;
-	AttackPower = 82;
-	Defense = 83;
-	SpecialAttackPower = 100;
-	SpecialDefense = 100;
-	Agility = 80;
+	PoKeCreatePtr->MaxHealthPoint = 80;
+	PoKeCreatePtr->CurrentHealthPoint = 80;
+	PoKeCreatePtr->AttackPower = 82;
+	PoKeCreatePtr->Defense = 83;
+	PoKeCreatePtr->SpecialAttackPower = 100;
+	PoKeCreatePtr->SpecialDefense = 100;
+	PoKeCreatePtr->Agility = 80;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.4 파이리
-void PokeDataBase::CharmanderData(int _Level)
+void PokeDataBase::CharmanderData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Fire;
-	Characteristic = PokeCharacteristic::맹화;
-	Name = "Charmander";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Fire;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
+	PoKeCreatePtr->Name = "Charmander";
 
-	MaxHealthPoint = 39;
-	CurrentHealthPoint = 39;
-	AttackPower = 52;
-	Defense = 43;
-	SpecialAttackPower = 60;
-	SpecialDefense = 50;
-	Agility = 65;
+	PoKeCreatePtr->MaxHealthPoint = 39;
+	PoKeCreatePtr->CurrentHealthPoint = 39;
+	PoKeCreatePtr->AttackPower = 52;
+	PoKeCreatePtr->Defense = 43;
+	PoKeCreatePtr->SpecialAttackPower = 60;
+	PoKeCreatePtr->SpecialDefense = 50;
+	PoKeCreatePtr->Agility = 65;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.5 리자드
-void PokeDataBase::CharmeleonData(int _Level) 
+void PokeDataBase::CharmeleonData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Fire;
-	Characteristic = PokeCharacteristic::맹화;
-	Name = "Charmeleon";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Fire;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
+	PoKeCreatePtr->Name = "Charmeleon";
 
-	MaxHealthPoint = 58;
-	CurrentHealthPoint = 58;
-	AttackPower = 64;
-	Defense = 58;
-	SpecialAttackPower = 80;
-	SpecialDefense = 65;
-	Agility = 80;
+	PoKeCreatePtr->MaxHealthPoint = 58;
+	PoKeCreatePtr->CurrentHealthPoint = 58;
+	PoKeCreatePtr->AttackPower = 64;
+	PoKeCreatePtr->Defense = 58;
+	PoKeCreatePtr->SpecialAttackPower = 80;
+	PoKeCreatePtr->SpecialDefense = 65;
+	PoKeCreatePtr->Agility = 80;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.6 리자몽
-void PokeDataBase::CharizardData(int _Level) 
+void PokeDataBase::CharizardData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Fire;
-	Characteristic = PokeCharacteristic::맹화;
-	Name = "Charizard";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Fire;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
+	PoKeCreatePtr->Name = "Charizard";
 
-	MaxHealthPoint = 78;
-	CurrentHealthPoint = 78;
-	AttackPower = 84;
-	Defense = 78;
-	SpecialAttackPower = 109;
-	SpecialDefense = 85;
-	Agility = 100;
+	PoKeCreatePtr->MaxHealthPoint = 78;
+	PoKeCreatePtr->CurrentHealthPoint = 78;
+	PoKeCreatePtr->AttackPower = 84;
+	PoKeCreatePtr->Defense = 78;
+	PoKeCreatePtr->SpecialAttackPower = 109;
+	PoKeCreatePtr->SpecialDefense = 85;
+	PoKeCreatePtr->Agility = 100;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.7 꼬부기
-void PokeDataBase::SquirtleData(int _Level)
+void PokeDataBase::SquirtleData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Water;
-	Characteristic = PokeCharacteristic::급류;
-	Name = "Squirtle";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Water;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
+	PoKeCreatePtr->Name = "Squirtle";
 
-	MaxHealthPoint = 44;
-	CurrentHealthPoint = 44;
-	AttackPower = 48;
-	Defense = 65;
-	SpecialAttackPower = 50;
-	SpecialDefense = 64;
-	Agility = 43;
+	PoKeCreatePtr->MaxHealthPoint = 44;
+	PoKeCreatePtr->CurrentHealthPoint = 44;
+	PoKeCreatePtr->AttackPower = 48;
+	PoKeCreatePtr->Defense = 65;
+	PoKeCreatePtr->SpecialAttackPower = 50;
+	PoKeCreatePtr->SpecialDefense = 64;
+	PoKeCreatePtr->Agility = 43;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.8 어니부기
-void PokeDataBase::WartortleData(int _Level)
+void PokeDataBase::WartortleData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Water;
-	Characteristic = PokeCharacteristic::급류;
-	Name = "Wartortle";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Water;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
+	PoKeCreatePtr->Name = "Wartortle";
 
-	MaxHealthPoint = 59;
-	CurrentHealthPoint = 59;
-	AttackPower = 63;
-	Defense = 80;
-	SpecialAttackPower = 65;
-	SpecialDefense = 80;
-	Agility = 58;
+	PoKeCreatePtr->MaxHealthPoint = 59;
+	PoKeCreatePtr->CurrentHealthPoint = 59;
+	PoKeCreatePtr->AttackPower = 63;
+	PoKeCreatePtr->Defense = 80;
+	PoKeCreatePtr->SpecialAttackPower = 65;
+	PoKeCreatePtr->SpecialDefense = 80;
+	PoKeCreatePtr->Agility = 58;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.9 거북왕
-void PokeDataBase::BlastoiseData(int _Level) 
+void PokeDataBase::BlastoiseData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Water;
-	Characteristic = PokeCharacteristic::급류;
-	Name = "Blastoise";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Water;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
+	PoKeCreatePtr->Name = "Blastoise";
 
-	MaxHealthPoint = 79;
-	CurrentHealthPoint = 79;
-	AttackPower = 83;
-	Defense = 100;
-	SpecialAttackPower = 85;
-	SpecialDefense = 105;
-	Agility = 78;
+	PoKeCreatePtr->MaxHealthPoint = 79;
+	PoKeCreatePtr->CurrentHealthPoint = 79;
+	PoKeCreatePtr->AttackPower = 83;
+	PoKeCreatePtr->Defense = 100;
+	PoKeCreatePtr->SpecialAttackPower = 85;
+	PoKeCreatePtr->SpecialDefense = 105;
+	PoKeCreatePtr->Agility = 78;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.10 구구
-void PokeDataBase::PidgeyData(int _Level) 
+void PokeDataBase::PidgeyData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Flying;
-	Characteristic = PokeCharacteristic::날카로운눈;
-	Name = "Pidgey";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Flying;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::날카로운눈;
+	PoKeCreatePtr->Name = "Pidgey";
 
-	MaxHealthPoint = 40;
-	CurrentHealthPoint = 40;
-	AttackPower = 45;
-	Defense = 40;
-	SpecialAttackPower = 35;
-	SpecialDefense = 35;
-	Agility = 56;
+	PoKeCreatePtr->MaxHealthPoint = 40;
+	PoKeCreatePtr->CurrentHealthPoint = 40;
+	PoKeCreatePtr->AttackPower = 45;
+	PoKeCreatePtr->Defense = 40;
+	PoKeCreatePtr->SpecialAttackPower = 35;
+	PoKeCreatePtr->SpecialDefense = 35;
+	PoKeCreatePtr->Agility = 56;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.11 꼬렛
-void PokeDataBase::RattataData(int _Level) 
+void PokeDataBase::RattataData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Normal;
-	Characteristic = PokeCharacteristic::근성;
-	Name = "Rattata";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Normal;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::근성;
+	PoKeCreatePtr->Name = "Rattata";
 
-	MaxHealthPoint = 30;
-	CurrentHealthPoint = 30;
-	AttackPower = 56;
-	Defense = 35;
-	SpecialAttackPower = 25;
-	SpecialDefense = 35;
-	Agility = 72;
+	PoKeCreatePtr->MaxHealthPoint = 30;
+	PoKeCreatePtr->CurrentHealthPoint = 30;
+	PoKeCreatePtr->AttackPower = 56;
+	PoKeCreatePtr->Defense = 35;
+	PoKeCreatePtr->SpecialAttackPower = 25;
+	PoKeCreatePtr->SpecialDefense = 35;
+	PoKeCreatePtr->Agility = 72;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.12 깨비참
-void PokeDataBase::SpearowData(int _Level) 
+void PokeDataBase::SpearowData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Flying;
-	Characteristic = PokeCharacteristic::날카로운눈;
-	Name = "Spearow";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Flying;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::날카로운눈;
+	PoKeCreatePtr->Name = "Spearow";
 
-	MaxHealthPoint = 40;
-	CurrentHealthPoint = 40;
-	AttackPower = 60;
-	Defense = 30;
-	SpecialAttackPower = 31;
-	SpecialDefense = 31;
-	Agility = 70;
+	PoKeCreatePtr->MaxHealthPoint = 40;
+	PoKeCreatePtr->CurrentHealthPoint = 40;
+	PoKeCreatePtr->AttackPower = 60;
+	PoKeCreatePtr->Defense = 30;
+	PoKeCreatePtr->SpecialAttackPower = 31;
+	PoKeCreatePtr->SpecialDefense = 31;
+	PoKeCreatePtr->Agility = 70;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.13 꼬마돌
-void PokeDataBase::GeodudeData(int _Level) 
+void PokeDataBase::GeodudeData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Rock;
-	Characteristic = PokeCharacteristic::돌머리;
-	Name = "Geodude";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Rock;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::돌머리;
+	PoKeCreatePtr->Name = "Geodude";
 
-	MaxHealthPoint = 40;
-	CurrentHealthPoint = 40;
-	AttackPower = 80;
-	Defense = 100;
-	SpecialAttackPower = 30;
-	SpecialDefense = 30;
-	Agility = 20;
+	PoKeCreatePtr->MaxHealthPoint = 40;
+	PoKeCreatePtr->CurrentHealthPoint = 40;
+	PoKeCreatePtr->AttackPower = 80;
+	PoKeCreatePtr->Defense = 100;
+	PoKeCreatePtr->SpecialAttackPower = 30;
+	PoKeCreatePtr->SpecialDefense = 30;
+	PoKeCreatePtr->Agility = 20;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }
 
 // No.14 롱스톤
-void PokeDataBase::OnixData(int _Level) 
+void PokeDataBase::OnixData(int _Level, PokeDataBase* PoKeCreatePtr)
 {
-	GenderDecision();
-	PersonalityDecision();
-	Type = PokeType::Rock;
-	Characteristic = PokeCharacteristic::돌머리;
-	Name = "Onix";
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr->Type = PokeType::Rock;
+	PoKeCreatePtr->Characteristic = PokeCharacteristic::돌머리;
+	PoKeCreatePtr->Name = "Onix";
 
-	MaxHealthPoint = 35;
-	CurrentHealthPoint = 35;
-	AttackPower = 45;
-	Defense = 160;
-	SpecialAttackPower = 30;
-	SpecialDefense = 45;
-	Agility = 70;
+	PoKeCreatePtr->MaxHealthPoint = 35;
+	PoKeCreatePtr->CurrentHealthPoint = 35;
+	PoKeCreatePtr->AttackPower = 45;
+	PoKeCreatePtr->Defense = 160;
+	PoKeCreatePtr->SpecialAttackPower = 30;
+	PoKeCreatePtr->SpecialDefense = 45;
+	PoKeCreatePtr->Agility = 70;
 
-	int PlusLevel = MonsterLevel + _Level;
+	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
 	{
-		PokeStatusUp();
+		PokeStatusUp(PoKeCreatePtr);
 	}
 
-	MonsterLevel = PlusLevel;
+	PoKeCreatePtr->MonsterLevel = PlusLevel;
 }

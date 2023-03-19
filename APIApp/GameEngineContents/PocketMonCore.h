@@ -22,7 +22,6 @@ protected:
 private:
 	static PocketMonCore Core;
 
-
 	PocketMonCore();
 	~PocketMonCore();
 };

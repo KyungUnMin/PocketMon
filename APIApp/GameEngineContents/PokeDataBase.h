@@ -2,7 +2,9 @@
 
 #include <string>
 #include <vector>
+#include <list>
 
+#include <GameEngineBase/GameEngineDebug.h>
 #include "PokeSkillBase.h"
 
 // 도감번호는 +1로 표시
@@ -105,14 +107,12 @@ public:
 	PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
 	PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
-	void PokeCreate(int _PokeDexNumber, int _Level = 1);
+	static PokeDataBase* PokeCreate(int _PokeDexNumber, int _Level = 1);
+	static void PokeStatusUp(PokeDataBase* _PoKeCreatePtr);
 	void PokeExperienceAcquisition(int _EXP);
 	void PokeLevelUp(int _EXP);
-	void PokeStatusUp();
 	//void PokeEvolution();
 	//void PokeSkillAcquisition();
-
-	void PokeNameEdit(std::string _EditName);
 
 	// 포켓몬 이름 가져오기
 	std::string_view GetName()
@@ -120,87 +120,164 @@ public:
 		return Name;
 	}
 
+	// 포켓몬 이름 수정
+	void PokeNameEdit(std::string _EditName)
+	{
+		Name = _EditName;
+	}
+
 	// 포켓몬 레벨 가져오기
-	int GetMonsterLevel()
+	inline int GetMonsterLevel()
 	{
 		return MonsterLevel;
 	}
 
+	// 포켓몬 경험치 가져오기
+	inline int GetMonsterExperience()
+	{
+		return Experience;
+	}
+
 	// 포켓몬 성별 가져오기
-	int GetMonsterGender()
+	inline int GetMonsterGender()
 	{
 		return IsMan;
 	}
 
 	// 포켓몬 최대 체력 가져오기
-	int GetMonsterMaxHP()
+	inline int GetMonsterMaxHP()
 	{
 		return MaxHealthPoint;
 	}
 
 	// 포켓몬 현재 체력 가져오기
-	int GetMonsterCurrentHP()
+	inline int GetMonsterCurrentHP()
 	{
 		return CurrentHealthPoint;
 	}
 
-	// 포켓몬 스킬리스트 가져오기
-	std::vector<PokeSkillBase*> GetMonsterSkillList()
+	// 공격력 가져오기
+	inline int GetMonsterAttackPower()
 	{
-		return SkillList;
+		return AttackPower;
 	}
 
+	// 방어력 가져오기
+	inline int GetMonsterDefense()
+	{
+		return Defense;
+	}
+
+	// 특수공격력 가져오기
+	inline int GetMonsterSpecialAttackPower()
+	{
+		return SpecialAttackPower;
+	}
+
+	// 특수방어력 가져오기
+	inline int GetMonsterSpecialDefense()
+	{
+		return SpecialDefense;
+	}
+
+	// 스피드 가져오기
+	inline int GetMonsterAgility()
+	{
+		return Agility;
+	}
+
+	// 포켓몬 스킬리스트 가져오기
+	PokeSkillBase* GetMonsterSkillList(int _SkillNumber)
+	{
+		if (_SkillNumber <= 0 || _SkillNumber >= 5)
+		{
+			MsgAssert("스킬목록은 1, 2, 3, 4 입니다.");
+			return nullptr; 
+		}
+
+		return SkillList[_SkillNumber - 1];
+	}
+
+	// 포켓몬 타입 가져오기
+	PokeType GetMonsterType()
+	{
+		return Type;
+	}
+
+	// 포켓몬 특성 가져오기
+	PokePersonality GetMonsterPersonality()
+	{
+		return Personality;
+	}
+
+	// 포켓몬 성격 가져오기
+	PokeCharacteristic GetMonsterCharacteristic()
+	{
+		return Characteristic;
+	}
+
+	/// <summary>
+	/// 메모리 해제용 포인터 Get 함수입니다. 호출해서 사용하지 마세요. 터집니다.
+	/// </summary>
+	static PokeDataBase& GetPtr()
+	{
+		return Ptr;
+	}
+	static void Release();
 
 protected:
 
 private:
-	// 포켓몬 데이터
-	GameEngineRender* MonsterImage = nullptr;						 // 포켓몬 이미지
-	std::string Name = "안농";									     // 포켓몬 이름
-										    
-	bool IsMan = true;											     // 포켓몬 성별
-	bool IsbeCaught = false;									     // 야생포켓몬인지 잡힌 포켓몬인지
+	static std::list<PokeDataBase*> AllPokemons;		    // 모든 포켓몬
+	static std::list<PokeSkillBase*> AllSkills;			    // 모든 스킬
+	static PokeDataBase Ptr;                                // 사용하지 마세요...
 
-	PokeNumber PokeDexNumber = PokeNumber::Max;					     // 포켓몬 도감 번호
-	int MaxHealthPoint = 0;										     // 몬스터 최대 체력
-	int CurrentHealthPoint = 0;									     // 몬스터 잔여 체력
-	int AttackPower = 0;											 // 몬스터 공격력
-	int Defense = 0;												 // 몬스터 방어력
-	int SpecialAttackPower = 0;										 // 몬스터 특수공격력
-	int SpecialDefense = 0;											 // 몬스터 특수방어력
-	int Agility = 0;											     // 몬스터 민첩성
-	int MonsterLevel = 0;										     // 몬스터 레벨
-	int Experience = 0;												 // 몬스터 경험치
-	int RemainingExperience = 0;								     // 몬스터 다음 레벨까지 남은 경험치
+	// 포켓몬 데이터
+	static GameEngineRender* MonsterImage;					// 포켓몬 이미지
+	static std::string Name;							    // 포켓몬 이름
+
+	static std::vector<PokeSkillBase*> SkillList;			// 포켓몬 스킬리스트
+										    
+	static bool IsMan;										// 포켓몬 성별
+	static bool IsbeCaught;									// 야생포켓몬인지 잡힌 포켓몬인지
+
+	static PokeNumber PokeDexNumber;					    // 포켓몬 도감 번호
+	static int MaxHealthPoint;								// 몬스터 최대 체력
+	static int CurrentHealthPoint;						    // 몬스터 잔여 체력
+	static int AttackPower;									// 몬스터 공격력
+	static int Defense;										// 몬스터 방어력
+	static int SpecialAttackPower;							// 몬스터 특수공격력
+	static int SpecialDefense;								// 몬스터 특수방어력
+	static int Agility;									    // 몬스터 민첩성
+	static int MonsterLevel;								// 몬스터 레벨
+	static int Experience;									// 몬스터 경험치
+	static int RemainingExperience;						    // 몬스터 다음 레벨까지 남은 경험치
 											    
-	int PokeBall = 0;												 // 포켓몬이 담겨있는 포켓볼 종류
-	PokeType Type = PokeType::Normal;								 // 포켓몬 속성 타입
-	PokePersonality Personality = PokePersonality::Serious;			 // 포켓몬 성격
-	PokeCharacteristic Characteristic = PokeCharacteristic::심록;	 // 포켓몬 특성
+	static int PokeBall;									// 포켓몬이 담겨있는 포켓볼 종류
+	static PokeType Type;								    // 포켓몬 속성 타입
+	static PokePersonality Personality;			            // 포켓몬 성격
+	static PokeCharacteristic Characteristic;	            // 포켓몬 특성
 
 	// 데이터 생성 보조
-	void PersonalityDecision();                                 // 성격
-	void GenderDecision();                                      // 성별
-	void PokeSkillInit(int _Index, PokeSkill _SkillName);       // 스킬 할당
+	static void PersonalityDecision(PokeDataBase* _PoKeCreatePtr);                                 // 성격
+	static void GenderDecision(PokeDataBase* _PoKeCreatePtr);                                      // 성별
+	static void PokeSkillInit(int _Index, PokeSkill _SkillName, PokeDataBase* _PoKeCreatePtr);     // 스킬 할당
 
 	// 포켓몬 베이스 데이터
-	void BulbasaurData(int _Level);
-	void IvysaurData(int _Level);
-	void VenusaurData(int _Level);
-	void CharmanderData(int _Level);
-	void CharmeleonData(int _Level);
-	void CharizardData(int _Level);
-	void SquirtleData(int _Level);
-	void WartortleData(int _Level);
-	void BlastoiseData(int _Level);
-	void PidgeyData(int _Level);
-	void RattataData(int _Level);
-	void SpearowData(int _Level);
-	void GeodudeData(int _Level);
-	void OnixData(int _Level);
-	
-	// 스킬
-	std::vector<PokeSkillBase*> SkillList = std::vector<PokeSkillBase*>(4);
+	static void BulbasaurData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void IvysaurData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void VenusaurData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void CharmanderData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void CharmeleonData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void CharizardData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void SquirtleData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void WartortleData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void BlastoiseData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void PidgeyData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void RattataData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void SpearowData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void GeodudeData(int _Level, PokeDataBase* _PoKeCreatePtr);
+	static void OnixData(int _Level, PokeDataBase* _PoKeCreatePtr);
 
 	// 전투
 	void Attack();

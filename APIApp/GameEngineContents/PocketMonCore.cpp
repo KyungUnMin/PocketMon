@@ -1,5 +1,7 @@
  #include "PocketMonCore.h"
 
+#include "PokeDataBase.h"
+
 #include "CenterLevel.h"
 #include "FieldmapLevel.h"
 #include "BattleLevel.h"
@@ -39,5 +41,5 @@ void PocketMonCore::Update()
 
 void PocketMonCore::End()
 {
-
+	PokeDataBase::GetPtr().Release();
 }
