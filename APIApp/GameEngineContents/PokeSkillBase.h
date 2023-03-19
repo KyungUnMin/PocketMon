@@ -111,10 +111,22 @@ public:
 		return MaxSkillPowerPoint;
 	}
 
+	// UI용 최대 PP 반환
+	inline std::string ForUI_GetMaxSkillPowerPoint()
+	{
+		return std::to_string(MaxSkillPowerPoint);
+	}
+
 	// 스킬 현재 PP 가져오기
 	inline int GetCurrentSkillPowerPoint()
 	{
 		return CurrentSkillPowerPoint;
+	}
+
+	// UI용 현재 PP 반환
+	inline std::string ForUI_GetCurrentSkillPowerPoint()
+	{
+		return std::to_string(CurrentSkillPowerPoint);
 	}
 
 	// 스킬 적중률 가져오기
@@ -129,11 +141,18 @@ public:
 		return SkillType;
 	}
 
+	// 스킬이름 가져오기
+	std::string_view ForUI_GetSkillName()
+	{
+		return Name;
+	}
+
 protected:
 
 private:
-	PokeSkill Skills = PokeSkill::Tackle;         // 스킬 이름
+	PokeSkill Skills = PokeSkill::Tackle;         // 스킬 종류
 	SkillType SkillType = SkillType::Normal;      // 스킬 타입
+	std::string Name = "대폭발";					  // 스킬 이름
 
 	bool IsAttackSkill = true;                    // 공격스킬인지 버프스킬인지
 

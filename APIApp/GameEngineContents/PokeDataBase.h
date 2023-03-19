@@ -115,7 +115,7 @@ public:
 	//void PokeSkillAcquisition();
 
 	// 포켓몬 이름 가져오기
-	std::string_view GetName()
+	std::string_view ForUI_GetMonsterName()
 	{
 		return Name;
 	}
@@ -132,10 +132,22 @@ public:
 		return MonsterLevel;
 	}
 
+	// UI용 레벨 string 반환
+	inline std::string ForUI_GetMonsterLevel()
+	{
+		return std::to_string(MonsterLevel);
+	}
+
 	// 포켓몬 경험치 가져오기
 	inline int GetMonsterExperience()
 	{
 		return Experience;
+	}
+
+	// UI용 경험치 string 반환
+	inline std::string ForUI_GetMonsterExperience()
+	{
+		return std::to_string(Experience);
 	}
 
 	// 포켓몬 성별 가져오기
@@ -150,10 +162,22 @@ public:
 		return MaxHealthPoint;
 	}
 
+	// UI용 최대 체력 string 반환
+	inline std::string ForUI_GetMonsterMaxHP()
+	{
+		return std::to_string(MaxHealthPoint);
+	}
+
 	// 포켓몬 현재 체력 가져오기
 	inline int GetMonsterCurrentHP()
 	{
 		return CurrentHealthPoint;
+	}
+
+	// UI용 현재 체력 string 반환
+	inline std::string ForUI_GetMonsterCurrentHP()
+	{
+		return std::to_string(CurrentHealthPoint);
 	}
 
 	// 공격력 가져오기

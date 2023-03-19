@@ -182,6 +182,7 @@ void PokeSkillBase::ScratchData()
 {
 	IsAttackSkill = true;            // 공격 스킬인지, 버프(디버프) 스킬인지 확인
 	SkillType = SkillType::Normal;   // 스킬공격 타입 설정
+	Name = "Scratch";                // 스킬 이름 설정
 
 	SkillDamage = 40;                // 스킬공격력 설정
 	MaxSkillPowerPoint = 35;         // 스킬 최대 파워포인트 설정
@@ -194,6 +195,7 @@ void PokeSkillBase::GrowlData()
 {
 	IsAttackSkill = false;           
 	SkillType = SkillType::Normal;   
+	Name = "Growl";
 
 	SkillDamage = 0;                
 	MaxSkillPowerPoint = 40;         
@@ -206,6 +208,7 @@ void PokeSkillBase::EmberData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Fire;
+	Name = "Ember";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 25;
@@ -218,6 +221,7 @@ void PokeSkillBase::LeerData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Normal;
+	Name = "Leer";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 30;
@@ -230,6 +234,7 @@ void PokeSkillBase::SlashData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "Slash";
 
 	SkillDamage = 70;
 	MaxSkillPowerPoint = 20;
@@ -242,6 +247,7 @@ void PokeSkillBase::FlamethrowerData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Fire;
+	Name = "Flamethrower";
 
 	SkillDamage = 95;
 	MaxSkillPowerPoint = 15;
@@ -254,6 +260,7 @@ void PokeSkillBase::TackleData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "Tackle";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 35;
@@ -266,6 +273,7 @@ void PokeSkillBase::TailWhipData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Normal;
+	Name = "TailWhip";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 40;
@@ -278,6 +286,7 @@ void PokeSkillBase::BubbleData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Water;
+	Name = "Bubble";
 
 	SkillDamage = 20;
 	MaxSkillPowerPoint = 30;
@@ -290,6 +299,7 @@ void PokeSkillBase::WaterGunData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Water;
+	Name = "WaterGun";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 25;
@@ -302,6 +312,7 @@ void PokeSkillBase::WithdrawData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Water;
+	Name = "Withdraw";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 40;
@@ -314,6 +325,7 @@ void PokeSkillBase::SkullBashData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "SkullBash";
 
 	SkillDamage = 100;
 	MaxSkillPowerPoint = 15;
@@ -326,6 +338,7 @@ void PokeSkillBase::HydroPumpData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Water;
+	Name = "HydroPump";
 
 	SkillDamage = 120;
 	MaxSkillPowerPoint = 5;
@@ -338,6 +351,7 @@ void PokeSkillBase::LeechSeedData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Grass;
+	Name = "LeechSeed";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 10;
@@ -350,6 +364,7 @@ void PokeSkillBase::VineWhipData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Grass;
+	Name = "VineWhip";
 
 	SkillDamage = 35;
 	MaxSkillPowerPoint = 10;
@@ -362,6 +377,7 @@ void PokeSkillBase::RazorLeafData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Grass;
+	Name = "RazorLeaf";
 
 	SkillDamage = 55;
 	MaxSkillPowerPoint = 25;
@@ -374,6 +390,7 @@ void PokeSkillBase::SleepPowderData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Grass;
+	Name = "SleepPowder";
 
 	SkillDamage = 55;
 	MaxSkillPowerPoint = 15;
@@ -386,6 +403,7 @@ void PokeSkillBase::SolarBeamData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Grass;
+	Name = "SolarBeam";
 
 	SkillDamage = 120;
 	MaxSkillPowerPoint = 10;
@@ -398,6 +416,7 @@ void PokeSkillBase::SandAttackData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Ground;
+	Name = "SandAttack";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 15;
@@ -410,6 +429,7 @@ void PokeSkillBase::GustData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "Gust";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 35;
@@ -422,6 +442,7 @@ void PokeSkillBase::QuickAttackData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "QuickAttack";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 30;
@@ -434,6 +455,7 @@ void PokeSkillBase::TwisterData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Dragon;
+	Name = "Twister";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 20;
@@ -446,6 +468,7 @@ void PokeSkillBase::FeatherDanceData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "FeatherDance";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 15;
@@ -458,6 +481,7 @@ void PokeSkillBase::WingAttackData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "WingAttack";
 
 	SkillDamage = 60;
 	MaxSkillPowerPoint = 35;
@@ -470,6 +494,7 @@ void PokeSkillBase::AirSlashData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "AirSlash";
 
 	SkillDamage = 75;
 	MaxSkillPowerPoint = 20;
@@ -482,6 +507,7 @@ void PokeSkillBase::PeckData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "Peck";
 
 	SkillDamage = 35;
 	MaxSkillPowerPoint = 35;
@@ -494,6 +520,7 @@ void PokeSkillBase::FuryAttackData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "FuryAttack";
 
 	SkillDamage = 15;
 	MaxSkillPowerPoint = 20;
@@ -506,6 +533,7 @@ void PokeSkillBase::PursuitData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Drak;
+	Name = "Pursuit";
 
 	SkillDamage = 40;
 	MaxSkillPowerPoint = 20;
@@ -518,6 +546,7 @@ void PokeSkillBase::FastMoveData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Psvchc;
+	Name = "FastMove";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 15;
@@ -530,6 +559,7 @@ void PokeSkillBase::AssuranceData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Drak;
+	Name = "Assurance";
 
 	SkillDamage = 50;
 	MaxSkillPowerPoint = 10;
@@ -542,6 +572,7 @@ void PokeSkillBase::DrillPeckData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Flying;
+	Name = "DrillPeck";
 
 	SkillDamage = 80;
 	MaxSkillPowerPoint = 20;
@@ -554,6 +585,7 @@ void PokeSkillBase::DefenseCurlData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Normal;
+	Name = "DefenseCurl";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 40;
@@ -566,6 +598,7 @@ void PokeSkillBase::RockPolishData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Rock;
+	Name = "RockPolish";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 20;
@@ -578,6 +611,7 @@ void PokeSkillBase::RockThrowData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Rock;
+	Name = "RockThrow";
 
 	SkillDamage = 50;
 	MaxSkillPowerPoint = 15;
@@ -590,6 +624,7 @@ void PokeSkillBase::MagnitudeData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Ground;
+	Name = "Magnitude";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 30;
@@ -602,6 +637,7 @@ void PokeSkillBase::SelfdestructData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "Selfdestruct";
 
 	SkillDamage = 200;
 	MaxSkillPowerPoint = 5;
@@ -614,6 +650,7 @@ void PokeSkillBase::EarthquakeData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Ground;
+	Name = "Earthquake";
 
 	SkillDamage = 100;
 	MaxSkillPowerPoint = 10;
@@ -626,6 +663,7 @@ void PokeSkillBase::StoneEdgeData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Rock;
+	Name = "StoneEdge";
 
 	SkillDamage = 100;
 	MaxSkillPowerPoint = 5;
@@ -638,6 +676,7 @@ void PokeSkillBase::BindData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "Bind";
 
 	SkillDamage = 15;
 	MaxSkillPowerPoint = 30;
@@ -650,6 +689,7 @@ void PokeSkillBase::RockTombData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Rock;
+	Name = "RockTomb";
 
 	SkillDamage = 50;
 	MaxSkillPowerPoint = 10;
@@ -662,6 +702,7 @@ void PokeSkillBase::DragonBreathData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Dragon;
+	Name = "DragonBreath";
 
 	SkillDamage = 60;
 	MaxSkillPowerPoint = 20;
@@ -674,6 +715,7 @@ void PokeSkillBase::IronTailData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Steel;
+	Name = "IronTail";
 
 	SkillDamage = 100;
 	MaxSkillPowerPoint = 15;
@@ -686,6 +728,7 @@ void PokeSkillBase::SandTombData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Ground;
+	Name = "SandTomb";
 
 	SkillDamage = 15;
 	MaxSkillPowerPoint = 15;
@@ -698,6 +741,7 @@ void PokeSkillBase::BiteData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Drak;
+	Name = "Bite";
 
 	SkillDamage = 60;
 	MaxSkillPowerPoint = 25;
@@ -710,6 +754,7 @@ void PokeSkillBase::HyperFangData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "HyperFang";
 
 	SkillDamage = 80;
 	MaxSkillPowerPoint = 15;
@@ -722,6 +767,7 @@ void PokeSkillBase::CrunchData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Drak;
+	Name = "Crunch";
 
 	SkillDamage = 80;
 	MaxSkillPowerPoint = 15;
@@ -734,6 +780,7 @@ void PokeSkillBase::SuperFangData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Normal;
+	Name = "SuperFang";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 10;
@@ -746,6 +793,7 @@ void PokeSkillBase::DoubleEdgeData()
 {
 	IsAttackSkill = true;
 	SkillType = SkillType::Normal;
+	Name = "DoubleEdge";
 
 	SkillDamage = 120;
 	MaxSkillPowerPoint = 5;
@@ -757,6 +805,7 @@ void PokeSkillBase::UnknownData()
 {
 	IsAttackSkill = false;
 	SkillType = SkillType::Bug;
+	Name = "Unknown";
 
 	SkillDamage = 0;
 	MaxSkillPowerPoint = 0;
