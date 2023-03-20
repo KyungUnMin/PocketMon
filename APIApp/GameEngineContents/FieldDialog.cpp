@@ -72,9 +72,9 @@ void FieldDialog::Start()
 	ArrowRender->ChangeAnimation("Arrow");
 
 	//Test
-	TestScript.push_back("ASDASDLJASL");
-	TestScript.push_back("asd321as32");
-	TestScript.push_back("fjkghfjgk");
+	TestScript.push_back("ASDAfjkladshfkladshfkdsafhsdahfsadhfsdjhkfhSDLJASL");
+	TestScript.push_back("sdlkfjaslghasdjklghsagshgjashfjkasdh");
+	TestScript.push_back("dfjkhgsadhjfasgfhjsghfgadsjfhgdsafhdsagfsahj");
 
 	Off();
 }
@@ -84,6 +84,7 @@ void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 	PushScriptBegin(_Script->begin());
 	PushScriptEnd(_Script->end());
 	StringToRender();
+	ArrowRender->Off();
 }
 
 void FieldDialog::Update(float _DeltaTime)
@@ -104,10 +105,18 @@ void FieldDialog::Update(float _DeltaTime)
 		Time = 0;
 		if (FirstLineRenderLen != OneLineSize)
 		{
+			if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && !IsLastScript())
+			{
+				ArrowRender->On();
+			}
 			++FirstLineRenderLen;
 		}
 		else if (SecondLineRenderLen != OneLineSize)
 		{
+			if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && !IsLastScript())
+			{
+				ArrowRender->On();
+			}
 			++SecondLineRenderLen;
 		}
 		else
@@ -116,7 +125,7 @@ void FieldDialog::Update(float _DeltaTime)
 		}
 	}
 
-	if (FirstLineRenderLen >= 2 && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
+	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
 	{
 		ScriptIter++;
 		if (ScriptIter != ScriptEndIter)
@@ -125,6 +134,7 @@ void FieldDialog::Update(float _DeltaTime)
 			FirstLineRenderLen = 0;
 			SecondLineRenderLen = 0;
 			StringToRender();
+			ArrowRender->Off();
 		}
 		else
 		{
@@ -265,5 +275,19 @@ int2 FieldDialog::FindLastTextRenderIndex()
 void FieldDialog::SetArrowRenderPos(const int2& _LastIndex)
 {
 	ArrowRender->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(_LastIndex.x),static_cast<float>(_LastIndex.y) } *(TextRenderInterval + TextRenderImageScale) + ArrowRenderPlusPos);
+}
+
+bool FieldDialog::IsLastScript()
+{
+	auto NextIter = ScriptIter;
+	NextIter++;
+	if (NextIter != ScriptEndIter)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
 

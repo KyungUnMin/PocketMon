@@ -66,5 +66,7 @@ private:
 
 	int2 FindLastTextRenderIndex();
 	void SetArrowRenderPos(const int2& _LastIndex);
+
+	bool IsLastScript();
 };
 
