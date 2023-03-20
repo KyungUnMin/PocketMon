@@ -15,10 +15,10 @@ BattleCommendActor::~BattleCommendActor()
 void BattleCommendActor::Start()
 {
 	SetPos({ 480,540 });
-	GameEngineRender* RenderPtr = CreateRender("BattleCommend.bmp", RenderOrder::BackGround);
+	GameEngineRender* RenderPtr = CreateRender("BattleCommend.bmp", RenderOrder::Battle_Text);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 
-	BattleArrowRender = CreateRender("Battle_Arrow.bmp", RenderOrder::Player);
+	BattleArrowRender = CreateRender("Battle_Arrow.bmp", RenderOrder::Battle_Cursor);
 	BattleArrowRender->SetScale((BattleArrowRender->GetImage()->GetImageScale()));
 
 	BattleArrowRender->SetPosition({ -430,-25 }); // y값은 -25 40 고정 

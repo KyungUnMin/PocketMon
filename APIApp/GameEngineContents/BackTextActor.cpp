@@ -14,6 +14,6 @@ BackTextActor::~BackTextActor()
 void BackTextActor::Start()
 {
 	SetPos({480,540});
-	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", RenderOrder::BackGround);
+	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", RenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 }

@@ -14,6 +14,9 @@ enum class RenderOrder
 	DebugText,
 	Field_Dialog,
 	Field_Dialog_Text,
+	Battle_UI,
+	Battle_Text,
+	Battle_Cursor,
 
 	Fade,
 };

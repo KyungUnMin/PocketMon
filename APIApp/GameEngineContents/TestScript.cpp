@@ -33,7 +33,7 @@ void TestScript::Start()
 	Script3 = "»ß¸®¸®¸®¸® ½Î¿ï±î?\n³Ñ¾î°¡±â´Â Z";
 
 
-	TextRender1 = CreateRender(RenderOrder::Player);
+	TextRender1 = CreateRender(RenderOrder::Battle_Text);
 	BoxScale = { 650, 300 };
 	TextRender1->SetText(Script1, 40, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);
 	TextRender1->SetPosition({ 50,490 });

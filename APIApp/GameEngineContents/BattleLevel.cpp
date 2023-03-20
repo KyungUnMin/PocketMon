@@ -3,6 +3,14 @@
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
 
+#include "BackTextActor.h"
+#include "Battle_Select.h"
+#include "BattleCommendActor.h"
+#include "EnemyHPBackground.h"
+#include "FriendlyHPBackground.h"
+#include "HpBackGroundMove.h"
+#include "TestScript.h"
+
 BattleLevel::BattleLevel()
 {
 
@@ -33,6 +41,22 @@ void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>();
 	Enemy->Init(_FieldType, _NpcType);
+
+	/*CreateActor<BackTextActor>();
+	CreateActor<Battle_Select>();
+	CreateActor<BattleCommendActor>();
+	CreateActor<EnemyHPBackground>();
+	CreateActor<FriendlyHPBackground>();
+	CreateActor<HpBackGroundMove>();
+	CreateActor<TestScript>();*/
+
+	CreateActor<BackTextActor>();
+	ScriptPtr = CreateActor<TestScript>();// 대사들 띄우고 뭐하고
+
+
+	//띄우기 위해 조건이 필요할 때
+	CreateActor<EnemyHPBackground>();
+	CreateActor<FriendlyHPBackground>();
 }
 
 
@@ -46,6 +70,13 @@ void BattleLevel::Update(float _DeltaTime)
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
 		return;
+	}
+
+	static bool IsCreate = false;
+	if (false == IsCreate && (3 == ScriptPtr->GetTextCount()))
+	{
+		CreateActor<Battle_Select>()->init(ScriptPtr);
+		IsCreate = true;
 	}
 }
 

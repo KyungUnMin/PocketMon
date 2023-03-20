@@ -23,7 +23,7 @@ void BattleBackGround::Init(BattleFieldType _BattleType)
 	CreateFadeEffect();
 	CreateEnterEffect(_BattleType);
 
-	GetLevel()->CreateActor<BackTextActor>();
+	//GetLevel()->CreateActor<BackTextActor>();
 }
 
 void BattleBackGround::CreateField(BattleFieldType _BattleType)

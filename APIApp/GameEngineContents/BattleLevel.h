@@ -3,6 +3,8 @@
 #include "ContentsEnum.h"
 
 class GameEngineRender;
+class TestScript;
+class Battle_Select;
 
 enum class BattleFieldType
 {
@@ -45,5 +47,7 @@ private:
 	GameEngineRender* FadeDownRender = nullptr;
 	GameEngineRender* FadeUpRender = nullptr;
 
+	TestScript* ScriptPtr = nullptr;
+	Battle_Select* BattleCursor = nullptr;
 };
 
