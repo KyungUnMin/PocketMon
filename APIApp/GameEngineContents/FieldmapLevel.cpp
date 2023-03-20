@@ -11,6 +11,7 @@
 #include "int2.h"
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
+#include "FieldMainMenu.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -81,6 +82,7 @@ void FieldmapLevel::Loading()
 	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
+	MainFieldMainMenu = CreateActor<FieldMainMenu>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -170,10 +172,14 @@ void FieldmapLevel::ImageLoad()
 	Dir.Move("Image");
 	Dir.Move("FieldUI_HSM");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Npc_TextFrame.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_0.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_1.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_2.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_3.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_4.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_5.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog.bmp"))->Cut(27, 4);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_Dialog.bmp"))->Cut(4, 1);
-
-
 }
 
 void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos)
