@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "int2.h"
 #include "ContentsEnum.h"
 
 class GameEngineRender;
@@ -16,9 +17,10 @@ public:
 	FieldDialog& operator=(const FieldDialog& _Other) = delete;
 	FieldDialog& operator=(FieldDialog&& _Other) noexcept = delete;
 
-	void On(std::list<std::string>* _Script);
 	void Off() override;
 	void OnOffSwtich() override;
+
+	void ConversationStart(std::list<std::string>* _Script);
 
 protected:
 	void Start() override;
@@ -48,6 +50,11 @@ private:
 	int FirstLineRenderLen = 0;
 	int SecondLineRenderLen = 0;
 
+	GameEngineRender* ArrowRender = nullptr;
+	float4 ArrowRenderScale = { 40, 48 };
+	float4 ArrowRenderPlusPos = { 36,0 };
+	int2 LastTextRenderIndex = { -1,-1 };
+
 	void UpdateStart(std::list<std::string>* _Script);
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);
 	void PushScriptEnd(std::list<std::string>::iterator _End);
@@ -56,5 +63,8 @@ private:
 	void UpdateEnd();
 
 	void ClearDialog();
+
+	int2 FindLastTextRenderIndex();
+	void SetArrowRenderPos(const int2& _LastIndex);
 };
 

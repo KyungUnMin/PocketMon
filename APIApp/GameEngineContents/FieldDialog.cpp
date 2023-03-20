@@ -15,13 +15,6 @@ FieldDialog::~FieldDialog()
 
 }
 
-void FieldDialog::On(std::list<std::string>* _Script) // 말을걸었을때 On하면서 대상 스크립트 리스트 주소를 넣어 줄 생각
-{
-	GameEngineObject::On();
-	UpdateStart(_Script);
-
-}
-
 void FieldDialog::Off()
 {
 	GameEngineObject::Off();
@@ -36,8 +29,14 @@ void FieldDialog::OnOffSwtich()
 	}
 	else
 	{
-		On(&TestScript);
+		ConversationStart(&TestScript);
 	}
+}
+
+void FieldDialog::ConversationStart(std::list<std::string>* _Script)
+{
+	On();
+	UpdateStart(_Script);
 }
 
 
@@ -66,6 +65,12 @@ void FieldDialog::Start()
 		}
 	}
 	
+	ArrowRender = CreateRender(RenderOrder::Field_Dialog_Text);
+	ArrowRender->EffectCameraOff();
+	ArrowRender->CreateAnimation({.AnimationName = "Arrow", .ImageName = "Arrow_Dialog.bmp", .Start = 0, .End = 3, .InterTime = 0.1f});
+	ArrowRender->SetScale(ArrowRenderScale);
+	ArrowRender->ChangeAnimation("Arrow");
+
 	//Test
 	TestScript.push_back("ASDASDLJASL");
 	TestScript.push_back("asd321as32");
@@ -133,8 +138,6 @@ void FieldDialog::UpdateEnd()
 	ClearDialog();
 	FirstLineRenderLen = 0;
 	SecondLineRenderLen = 0;
-	ScriptIter = std::list<std::string>::iterator();
-	ScriptEndIter = std::list<std::string>::iterator();
 }
 
 void FieldDialog::PushScriptBegin(std::list<std::string>::iterator _Begin)
@@ -227,6 +230,8 @@ void FieldDialog::StringToRender()
 			StrIndex++;
 		}
 	}
+	LastTextRenderIndex = FindLastTextRenderIndex();
+	SetArrowRenderPos(LastTextRenderIndex);
 }
 
 void FieldDialog::ClearDialog()
@@ -240,3 +245,25 @@ void FieldDialog::ClearDialog()
 		}
 	}
 }
+
+int2 FieldDialog::FindLastTextRenderIndex()
+{
+	int2 SaveLastRenderIndex = { 0,0 };
+	for (int y = 0; y < FieldDialogTextRender.size(); y++)
+	{
+		for (int x = 0; x < FieldDialogTextRender[y].size(); x++)
+		{
+			if (SpaceFrameNum != FieldDialogTextRender[y][x]->GetFrame())
+			{
+				SaveLastRenderIndex = { x,y };
+			}
+		}
+	}
+	return SaveLastRenderIndex;
+}
+
+void FieldDialog::SetArrowRenderPos(const int2& _LastIndex)
+{
+	ArrowRender->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(_LastIndex.x),static_cast<float>(_LastIndex.y) } *(TextRenderInterval + TextRenderImageScale) + ArrowRenderPlusPos);
+}
+
