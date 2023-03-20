@@ -14,6 +14,19 @@ class GameEngineRender;
 class TextActor;
 class BagUI : public GameEngineActor
 {
+private:
+	class Item
+	{
+		friend BagUI;
+	public:
+		Item(std::string_view _Name, std::string_view _Information, int _ItemCode, int _Num)
+		:Name(_Name), Information(_Information), ItemCode(_ItemCode), Num(_Num){}
+
+		std::string_view Name;
+		std::string_view Information;
+		int ItemCode;
+		int Num;	// 개수
+	};
 public:
 	// constructer destructer
 	BagUI();
@@ -45,15 +58,21 @@ private:
 
 	GameEngineRender* UpArrow = nullptr;		// 아이템 목록 - 위 화살표
 	GameEngineRender* DownArrow = nullptr;		// 아이템 목록 - 아래 화살표
-	GameEngineRender* CurrentCursor = nullptr;	// 아이템 목록 - 선택중인 아이템 표시
+	GameEngineRender* CursorRender = nullptr;	// 아이템 목록 - 선택중인 아이템 표시
 
-	std::vector<TextActor*> Items = std::vector<TextActor*>(5);
-	std::vector<TextActor*> KeyItems = std::vector<TextActor*>(5);
-	std::vector<TextActor*> PokeBalls = std::vector<TextActor*>(5);
+	std::vector<Item> Items = std::vector<Item>();
+	std::vector<Item> KeyItems = std::vector<Item>();
+	std::vector<Item> PokeBalls = std::vector<Item>();
+
+	std::vector<TextActor*> ItemName = std::vector<TextActor*>(5);
 	TextActor* ItemInfo = nullptr;
+
+	int CurrentCursor = 0;
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();
 	void ChangeSpaceRight();
 
+	void CursorUp();
+	void CursorDown();
 };

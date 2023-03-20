@@ -10,6 +10,8 @@ public:
 
 	void SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation = false);
 	void SetText(const std::string_view& _Str, bool _Animation = false);
+	void SkipAnimation();
+	bool IsAnimationEnd();
 	// delete Function
 	TextActor(const TextActor& _Other) = delete;
 	TextActor(TextActor&& _Other) = delete;
@@ -35,5 +37,6 @@ private:
 	std::list<std::string> TestScript = std::list<std::string>();
 
 	void SetFont(const std::string_view& _Font);
+	void Clear();
 };
 

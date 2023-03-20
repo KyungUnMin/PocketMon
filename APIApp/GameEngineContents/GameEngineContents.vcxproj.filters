@@ -83,6 +83,9 @@
     <ClCompile Include="PokeBattleSystem.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="TextActor.cpp">
+      <Filter>FieldUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -165,6 +168,9 @@
     </ClInclude>
     <ClInclude Include="PokeBattleSystem.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="TextActor.h">
+      <Filter>FieldUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

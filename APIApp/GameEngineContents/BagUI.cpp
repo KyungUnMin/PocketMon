@@ -20,12 +20,10 @@ void BagUI::Start()
 		BackUI->SetPosition(BackUI->GetScale().half());
 
 		BagRender = CreateRender("Bag.bmp", RenderOrder::Player);
-		BagRender->CreateAnimation({ .AnimationName = "Left", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 0, .End = 0});
-		BagRender->CreateAnimation({ .AnimationName = "Middle", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 1, .End = 1 });
-		BagRender->CreateAnimation({ .AnimationName = "Right", .ImageName = "Bag.bmp", .FilterName = "Bag_Roll.bmp", .Start = 2, .End = 2 });
+		BagRender->SetRotFilter("Bag_Roll.bmp");
 		BagRender->SetScale({232, 252});
 		BagRender->SetPosition({ 168, 276 });
-		BagRender->ChangeAnimation("Left");
+		BagRender->SetFrame(0);
 
 		GameEngineRender* BackShadow = CreateRender("Bag_Shadow.bmp", RenderOrder::Monster);
 		BackShadow->SetScaleToImage();
@@ -35,8 +33,8 @@ void BagUI::Start()
 		SpaceText->SetScaleToImage();
 		SpaceText->SetPosition({ 168, 62 });
 
-		IconRender = CreateRender("Bag_EnterArrow.bmp", RenderOrder::Player);
-		IconRender->SetScaleToImage();
+		IconRender = CreateRender("Items.bmp", RenderOrder::Player);
+		IconRender->SetScale({ 128,128 });
 		IconRender->SetPosition({ 80, 550 });
 
 		RightArrow = CreateRender("Bag_RightArrow.bmp", RenderOrder::Player);
@@ -55,21 +53,30 @@ void BagUI::Start()
 		DownArrow->SetScaleToImage();
 		DownArrow->SetPosition({ 644, 424 });
 
-		CurrentCursor = CreateRender("Bag_CurrentArrow.bmp", RenderOrder::Player);
-		CurrentCursor->SetScaleToImage();
-		CurrentCursor->SetPosition({ 372, 68 });
+		CursorRender = CreateRender("Bag_CurrentArrow.bmp", RenderOrder::Player);
+		CursorRender->SetScaleToImage();
+		CursorRender->SetPosition({ 372, 68 });
 	}
 	CurrentSpace = BagSpace::Items;
-
-	Items[0] = GetLevel()->CreateActor<TextActor>();
-	Items[0]->SetText("POTION");
-	Items[0]->SetPos({ 404, 72 });
-	Items[1] = GetLevel()->CreateActor<TextActor>();
-	Items[1]->SetText("REVIVE");
-	Items[1]->SetPos({ 404, 136 });
-	ItemInfo = GetLevel()->CreateActor<TextActor>();
-	ItemInfo->SetText("A spary type wound medicine It restores the Hp of one POKEMON by 200 points", "Font_Dialog_White.bmp", true);
+	GameEngineLevel* BagLevel = GetLevel();
+	ItemName[0] = BagLevel->CreateActor<TextActor>();
+	ItemName[0]->SetPos({ 404, 72 });
+	ItemName[1] = BagLevel->CreateActor<TextActor>();
+	ItemName[1]->SetPos({ 404, 136 });
+	ItemInfo = BagLevel->CreateActor<TextActor>();
 	ItemInfo->SetPos({ 172, 488 });
+	//ItemInfo->SetText("A spary type wound medicine It restores the Hp of one POKEMON by 200 points", "Font_Dialog_White.bmp", true);
+
+	// 아이템 생성
+	{
+		Items.reserve(2);
+		Items.push_back(Item("POTION", "A spary type wound medicine It restores the Hp of one POKEMON by 200 points", 0, 0));
+		Items.push_back(Item("CANCEL", "CLOSE BAG", 27, -1));
+		ItemName[0]->SetText(Items[0].Name);
+		ItemInfo->SetText(Items[0].Information, "Font_Dialog_White.bmp", false);
+		IconRender->SetFrame(Items[0].ItemCode);
+		ItemName[1]->SetText(Items[1].Name);
+	}
 }
 
 void BagUI::Update(float _DeltaTime)
@@ -85,11 +92,11 @@ void BagUI::Update(float _DeltaTime)
 	}
 	if (GameEngineInput::IsDown("UpMove"))
 	{
-
+		CursorUp();
 	}
 	if (GameEngineInput::IsDown("DownMove"))
 	{
-
+		CursorDown();
 	}
 
 }
@@ -112,18 +119,18 @@ void BagUI::ChangeSpace(BagSpace _Space)
 	switch (CurrentSpace)
 	{
 	case BagSpace::Items:
-		BagRender->ChangeAnimation("Left");
+		BagRender->SetFrame(0);
 		SpaceText->SetImage("Bag_Items.bmp");
 		LeftArrow->Off();
 		break;
 	case BagSpace::KeyItems:
-		BagRender->ChangeAnimation("Middle");
+		BagRender->SetFrame(1);
 		SpaceText->SetImage("Bag_KeyItems.bmp");
 		LeftArrow->On();
 		RightArrow->On();
 		break;
 	case BagSpace::PokeBalls:
-		BagRender->ChangeAnimation("Right");
+		BagRender->SetFrame(2);
 		SpaceText->SetImage("Bag_PoketBalls.bmp");
 		RightArrow->Off();
 		break;
@@ -168,4 +175,28 @@ void BagUI::ChangeSpaceRight()
 	default:
 		break;
 	}
+}
+
+void BagUI::CursorUp()
+{
+	if (0 > --CurrentCursor)
+	{
+		CurrentCursor = 0;
+		return;
+	}
+	ItemName[CurrentCursor]->SetText(Items[CurrentCursor].Name);
+	ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
+	IconRender->SetFrame(Items[CurrentCursor].ItemCode);
+}
+
+void BagUI::CursorDown()
+{
+	if (Items.size() <= ++CurrentCursor)
+	{
+		CurrentCursor = Items.size() - 1;
+		return;
+	}
+	ItemName[CurrentCursor]->SetText(Items[CurrentCursor].Name);
+	ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
+	IconRender->SetFrame(Items[CurrentCursor].ItemCode);
 }
