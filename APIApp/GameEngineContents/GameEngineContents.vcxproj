@@ -161,7 +161,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BagUI.cpp">
+    <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -188,6 +188,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp" />
+    <ClCompile Include="FieldMainMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Fieldmap.cpp" />
     <ClCompile Include="FieldmapCity.cpp">
       <SubType>
@@ -224,7 +228,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BagUI.h">
+    <ClInclude Include="PlayerBag.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -253,6 +257,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="FieldDialog.h" />
+    <ClInclude Include="FieldMainMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Fieldmap.h" />
     <ClInclude Include="FieldmapCity.h">
       <SubType>

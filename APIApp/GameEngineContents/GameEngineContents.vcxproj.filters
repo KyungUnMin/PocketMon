@@ -68,7 +68,7 @@
     <ClCompile Include="BagLevel.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
-    <ClCompile Include="BagUI.cpp">
+    <ClCompile Include="PlayerBag.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp">
@@ -103,6 +103,9 @@
     </ClCompile>
     <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldMainMenu.cpp">
+      <Filter>FieldUI\HSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -172,7 +175,7 @@
     <ClInclude Include="BagLevel.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
-    <ClInclude Include="BagUI.h">
+    <ClInclude Include="PlayerBag.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
     <ClInclude Include="FieldDialog.h">
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="TileDebugRender.h">
       <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldMainMenu.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
