@@ -166,6 +166,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleBackGround.cpp" />
+    <ClCompile Include="BattleCommendActor.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleMonsterBase.cpp">
@@ -228,6 +229,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleBackGround.h" />
+    <ClInclude Include="BattleCommendActor.h" />
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattleMonsterBase.h">

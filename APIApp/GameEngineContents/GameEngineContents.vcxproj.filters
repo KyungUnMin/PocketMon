@@ -51,16 +51,16 @@
       <Filter>Player\NPC</Filter>
     </ClCompile>
     <ClCompile Include="TextTestLevel.cpp">
-      <Filter>Map\BattleUI\TestLevel</Filter>
+      <Filter>BattleUI\TestLevel</Filter>
     </ClCompile>
     <ClCompile Include="BackTextActor.cpp">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="FriendlyHPBackground.cpp">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TestScript.cpp">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="FieldData.cpp">
       <Filter>Map\Class</Filter>
@@ -74,9 +74,6 @@
     <ClCompile Include="FieldDialog.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
-    <ClCompile Include="Battle_Select.cpp" />
-    <ClCompile Include="EnemyHPBackground.cpp" />
-    <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="FieldmapCity.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
@@ -85,6 +82,18 @@
     </ClCompile>
     <ClCompile Include="TextActor.cpp">
       <Filter>FieldUI</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_Select.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyHPBackground.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="HpBackGroundMove.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleCommendActor.cpp">
+      <Filter>BattleUI\Actor</Filter>
     </ClCompile>
     <ClCompile Include="TileDebugRender.cpp">
       <Filter>Map\Actor</Filter>
@@ -146,16 +155,16 @@
       <Filter>Player\NPC</Filter>
     </ClInclude>
     <ClInclude Include="TextTestLevel.h">
-      <Filter>Map\BattleUI\TestLevel</Filter>
+      <Filter>BattleUI\TestLevel</Filter>
     </ClInclude>
     <ClInclude Include="BackTextActor.h">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="FriendlyHPBackground.h">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="TestScript.h">
-      <Filter>Map\BattleUI\Actor</Filter>
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="FieldData.h">
       <Filter>Map\Class</Filter>
@@ -169,9 +178,6 @@
     <ClInclude Include="FieldDialog.h">
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
-    <ClInclude Include="Battle_Select.h" />
-    <ClInclude Include="EnemyHPBackground.h" />
-    <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="FieldmapCity.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
@@ -180,6 +186,18 @@
     </ClInclude>
     <ClInclude Include="TextActor.h">
       <Filter>FieldUI</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_Select.h">
+      <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyHPBackground.h">
+      <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="HpBackGroundMove.h">
+      <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleCommendActor.h">
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBase.h">
       <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
@@ -252,13 +270,13 @@
     <Filter Include="Battle\02.Actor\02.Trainer\03.Enemy">
       <UniqueIdentifier>{1b2f23a1-bf93-4ffe-a281-64c0dd29e368}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map\BattleUI">
+    <Filter Include="BattleUI">
       <UniqueIdentifier>{e6adf7b2-3227-4123-a3c3-e51d384666cf}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map\BattleUI\TestLevel">
+    <Filter Include="BattleUI\TestLevel">
       <UniqueIdentifier>{513eb1c5-51e1-4661-a8b4-a5924bb8163f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map\BattleUI\Actor">
+    <Filter Include="BattleUI\Actor">
       <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
     </Filter>
     <Filter Include="Battle\02.Actor\03.Monster">

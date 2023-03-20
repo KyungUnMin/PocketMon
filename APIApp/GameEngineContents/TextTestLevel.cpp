@@ -4,6 +4,8 @@
 #include "FriendlyHPBackground.h"
 #include "EnemyHPBackground.h"
 #include "Battle_Select.h"
+#include "BattleCommendActor.h"
+
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
@@ -25,14 +27,14 @@ void TextTestLevel::Loading()
 
 
 	CreateActor<BackTextActor>();
-	CreateActor<TestScript>();// 대사들 띄우고 뭐하고
+	TestScript* sSSS= CreateActor<TestScript>();// 대사들 띄우고 뭐하고
 
 
 	//띄우기 위해 조건이 필요할 때
 	CreateActor<EnemyHPBackground>();
 	CreateActor<FriendlyHPBackground>();
-	CreateActor<Battle_Select>();
-	
+	CreateActor<Battle_Select>()->init(sSSS);
+
 
 }
 
