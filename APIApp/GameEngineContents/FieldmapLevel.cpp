@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "FieldDialog.h"
 #include "int2.h"
+#include "PocketMonCore.h"
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
@@ -89,6 +90,11 @@ void FieldmapLevel::Loading()
 
 void FieldmapLevel::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	{
+		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		return;
+	}
 	if (true == GameEngineInput::IsDown("WalkableDebug"))
 	{
 		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::Walkable);

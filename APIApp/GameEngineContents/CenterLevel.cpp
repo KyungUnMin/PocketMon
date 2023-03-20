@@ -207,6 +207,8 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);
 		GameEngineInput::CreateKey("FreeCameraMoveLeft", VK_LEFT);
 		GameEngineInput::CreateKey("FreeCameraMoveRight", VK_RIGHT);
+
+		GameEngineInput::CreateKey("BackCenterLevel", VK_ESCAPE);
 	}
 
 	//Field_UI °ü·Ã Å°

@@ -42,7 +42,7 @@ void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 
 void BattleLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("LevelChange2"))
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
 		return;

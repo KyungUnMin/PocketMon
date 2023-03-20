@@ -7,9 +7,10 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "PocketMonCore.h"
+
 #include "Player.h"
 #include "PlayerTestLevel.h"
-
 #include "NPC1.h"
 
 
@@ -37,7 +38,11 @@ void PlayerTestLevel::Loading()
 
 void PlayerTestLevel::Update(float _DeltaTime)
 {
-
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	{
+		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		return;
+	}
 }
 
 

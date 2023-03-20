@@ -9,6 +9,7 @@
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
+#include "PocketMonCore.h"
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineResources.h>
 
@@ -40,7 +41,11 @@ void TextTestLevel::Loading()
 
 void TextTestLevel::Update(float _DeltaTime)
 {
-
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	{
+		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		return;
+	}
 }
 
 
