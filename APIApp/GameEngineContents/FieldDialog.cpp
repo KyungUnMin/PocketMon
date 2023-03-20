@@ -72,9 +72,9 @@ void FieldDialog::Start()
 	ArrowRender->ChangeAnimation("Arrow");
 
 	//Test
-	TestScript.push_back("ASDAfjkladshfkladshfkdsafhsdahfsadhfsdjhkfhSDLJASL");
-	TestScript.push_back("sdlkfjaslghasdjklghsagshgjashfjkasdh");
-	TestScript.push_back("dfjkhgsadhjfasgfhjsghfgadsjfhgdsafhdsagfsahj");
+	TestScript.push_back("sdjkhfsbjk,,lsjkdghgsdjklhfsadfhsjadkfhadskjfhasdflkfhsdjfsfsadfsfsfdasfsafa");
+	TestScript.push_back("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+	TestScript.push_back("sdjkhfsbjk,,vqqwjbfhqkasjfbaukuvbdmjvgqsj,vqvbkvbax,jga,vbhjxa.");
 
 	Off();
 }
@@ -118,6 +118,13 @@ void FieldDialog::Update(float _DeltaTime)
 				ArrowRender->On();
 			}
 			++SecondLineRenderLen;
+		}
+		else if (SecondLineRenderLen == OneLineSize)
+		{
+			if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && !IsLastScript())
+			{
+				ArrowRender->On();
+			}
 		}
 		else
 		{
@@ -197,44 +204,36 @@ void FieldDialog::StringToRender()
 				}
 				else
 				{
-					//switch (Str[StrIndex])
-					//{
-					//case '!':
+					switch (Str[StrIndex])
+					{
+					case '!':
+						FieldDialogTextRender[y][x]->SetFrame(81);
+						break;
+					case '?':
+						FieldDialogTextRender[y][x]->SetFrame(82);
+						break;
+					case '/':
+						FieldDialogTextRender[y][x]->SetFrame(85);
+						break;
+					case '-':
+						FieldDialogTextRender[y][x]->SetFrame(86);
+						break;
+					//case '…':
+					//	FieldDialogTextRender[y][x]->SetFrame(91);
 					//	break;
-					//case '?':
-					//	break;
-					//case '/':
-					//	break;
-					//case '-':
-					//	break;
-					//case '"':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//default:
-					//	MsgAssert("아직 생각해보지 않은 글자입니다.");
-					//  break;
-					//}
-
-					MsgAssert("아직 생각해보지 않은 글자입니다.");
+					case '.':
+						FieldDialogTextRender[y][x]->SetFrame(92);
+						break;
+					case ',':
+						FieldDialogTextRender[y][x]->SetFrame(93);
+						break;
+					case '@':
+						FieldDialogTextRender[y][x]->SetFrame(94);
+						break;
+					default:
+						MsgAssert("아직 생각해보지 않은 글자입니다.");
+					  break;
+					}
 				}
 			}
 			StrIndex++;
