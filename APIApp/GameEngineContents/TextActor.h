@@ -9,8 +9,11 @@ public:
 	~TextActor();
 
 	void SetAligned(bool _IsRightAligned);
+	void SetText(const std::string_view& _Str, const std::string_view& _Font, int _Order, bool _Animation = false);
 	void SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation = false);
 	void SetText(const std::string_view& _Str, bool _Animation = false);
+	void SetLine(int _LineCount);
+	void SetInterver(const float4& _Interval);
 	void SkipAnimation();
 	bool IsAnimationEnd();
 	void Clear();
@@ -39,7 +42,7 @@ private:
 	std::vector<int> LineRenderIndex = std::vector<int>(0);
 	std::list<std::string> TestScript = std::list<std::string>();
 
-	void SetFont(const std::string_view& _Font);
+	void SetFont(const std::string_view& _Font, int _Order);
 	
 };
 

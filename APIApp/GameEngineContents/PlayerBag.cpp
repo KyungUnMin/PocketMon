@@ -89,48 +89,59 @@ void PlayerBag::Start()
 	MainBag = this;
 	// ____________렌더 생성______________
 	{
-		GameEngineRender* BackUI = CreateRender("Bag_Back.bmp", RenderOrder::BackGround);
+		GameEngineRender* BackUI = CreateRender("Bag_Back.bmp", 0);
 		BackUI->SetScaleToImage();
 		BackUI->SetPosition(BackUI->GetScale().half());
 
-		BagRender = CreateRender("Bag.bmp", RenderOrder::Player);
+		BagRender = CreateRender("Bag.bmp", 2);
 		BagRender->SetRotFilter("Bag_Roll.bmp");
 		BagRender->SetScale({232, 252});
 		BagRender->SetPosition({ 168, 276 });
 		BagRender->SetFrame(0);
 
-		GameEngineRender* BackShadow = CreateRender("Bag_Shadow.bmp", RenderOrder::Monster);
+		GameEngineRender* BackShadow = CreateRender("Bag_Shadow.bmp", 1);
 		BackShadow->SetScaleToImage();
 		BackShadow->SetPosition({ 168, 276 });
 
-		SpaceText = CreateRender("Bag_Items.bmp", RenderOrder::Player);
+		SpaceText = CreateRender("Bag_Items.bmp", 1);
 		SpaceText->SetScaleToImage();
 		SpaceText->SetPosition({ 168, 62 });
 
-		IconRender = CreateRender("Items.bmp", RenderOrder::Player);
+		IconRender = CreateRender("Items.bmp", 1);
 		IconRender->SetScale({ 128,128 });
 		IconRender->SetPosition({ 80, 550 });
 
-		RightArrow = CreateRender("Bag_RightArrow.bmp", RenderOrder::Player);
+		RightArrow = CreateRender("Bag_RightArrow.bmp", 1);
 		RightArrow->SetScaleToImage();
 		RightArrow->SetPosition({ 300, 280 });
 
-		LeftArrow = CreateRender("Bag_LeftArrow.bmp", RenderOrder::Player);
+		LeftArrow = CreateRender("Bag_LeftArrow.bmp", 1);
 		LeftArrow->SetScaleToImage();
 		LeftArrow->SetPosition({ 28, 280 });
 
-		UpArrow = CreateRender("Bag_UpArrow.bmp", RenderOrder::Player);
+		UpArrow = CreateRender("Bag_UpArrow.bmp", 1);
 		UpArrow->SetScaleToImage();
 		UpArrow->Off();
 
-		DownArrow = CreateRender("Bag_DownArrow.bmp", RenderOrder::Player);
+		DownArrow = CreateRender("Bag_DownArrow.bmp", 1);
 		DownArrow->SetScaleToImage();
 		DownArrow->SetPosition({ 644, 424 });
 		DownArrow->Off();
 
-		CursorRender = CreateRender("Bag_CurrentArrow.bmp", RenderOrder::Player);
-		CursorRender->SetScaleToImage();
+		CursorRender = CreateRender("Bag_CurrentArrow.bmp", 1);
+		CursorRender->SetScale({24, 40});
+		CursorRender->SetFrame(0);
 		CursorRender->SetPosition({ 372, 68 });
+
+		TextBox = CreateRender("Bag_Text1.bmp", 3);
+		TextBox->SetScaleToImage();
+		TextBox->SetPosition({408, 546});
+		TextBox->Off();
+
+		SelectBox = CreateRender("Bag_Text2.bmp", 3);
+		SelectBox->SetScaleToImage();
+		SelectBox->SetPosition({ 814, 474 });
+		SelectBox->Off();
 	}
 
 	// 텍스트 엑터 생성
@@ -148,7 +159,14 @@ void PlayerBag::Start()
 	}
 	ItemInfo = BagLevel->CreateActor<TextActor>();
 	ItemInfo->SetPos({ 172, 488 });
-
+	ItemSelectText = BagLevel->CreateActor<TextActor>();
+	ItemSelectText->SetPos({ 212, 518 });
+	SelectText = BagLevel->CreateActor<TextActor>();
+	SelectText->SetPos({ 744, 380 });
+	SelectText->SetInterver({ 0, 20 });
+	SelectText->SetLine(4);
+	SelectText->SetText("USE\nGIVE\nTOSS\nCANCEL");
+	SelectText->Off();
 	// 아이템 생성
 	{
 		Items.reserve(5);
@@ -167,6 +185,36 @@ void PlayerBag::Start()
 
 void PlayerBag::Update(float _DeltaTime)
 {
+	// 아이템 조작
+	if (true == IsItemSelect)
+	{
+		if (GameEngineInput::IsDown("UpMove"))
+		{
+			return;
+		}
+		if (GameEngineInput::IsDown("DownMove"))
+		{
+			return;
+		}
+		if (GameEngineInput::IsDown("A"))
+		{
+			return;
+		}
+		if (GameEngineInput::IsDown("B"))
+		{
+			ItemInfo->On();
+			TextBox->Off();
+			SelectBox->Off();
+			ItemSelectText->Off();
+			SelectText->Off();
+			CursorRender->SetFrame(0);
+			IsItemSelect = false;
+			return;
+		}
+
+		return;
+	}
+
 	// 가방 조작
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
@@ -250,7 +298,7 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 	for (int i = 0; i < CurrentSpaceItems.size(); i++)
 	{
 		ItemName[i]->SetText(CurrentSpaceItems[i].Name);
-		if (CurrentSpaceItems[i].ItemCode == 29)
+		if (CurrentSpaceItems[i].ItemCode == CancelCode)
 		{
 			ItemNumSign[i]->Off();
 			ItemNum[i]->Clear();
@@ -335,7 +383,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
+		ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", 2, false);
 		IconRender->SetFrame(Items[CurrentCursor].ItemCode);
 	}
 	else if (CurrentSpace == BagSpace::KeyItems)
@@ -344,7 +392,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(KeyItems[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
+		ItemInfo->SetText(KeyItems[CurrentCursor].Information, "Font_Dialog_White.bmp",2, false);
 		IconRender->SetFrame(KeyItems[CurrentCursor].ItemCode);
 	}
 	else if (CurrentSpace == BagSpace::PokeBalls)
@@ -353,7 +401,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(PokeBalls[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
+		ItemInfo->SetText(PokeBalls[CurrentCursor].Information, "Font_Dialog_White.bmp",2, false);
 		IconRender->SetFrame(PokeBalls[CurrentCursor].ItemCode);
 	}
 	CursorRender->SetPosition({ 372, 68.0f + 64 * CurrentCursor });
@@ -370,11 +418,27 @@ void PlayerBag::ItemSelect()
 	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
 	ItemCode = CurrentSpaceItems[CurrentCursor].ItemCode;
 
-	if (ItemCode == 27)
+	if (ItemCode == CancelCode)
 	{
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		return;
 	}
+
+	ItemInfo->Off();
+	TextBox->On();
+	SelectBox->On();
+	ItemSelectText->SetText(CurrentSpaceItems[CurrentCursor].Name.data() + std::string(" is\nselected"));
+	ItemSelectText->On();
+	SelectText->On();
+	CursorRender->SetFrame(1);
+	IsItemSelect = true;
+}
+
+void PlayerBag::ItemUse()
+{
+	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
+	ItemCode = CurrentSpaceItems[CurrentCursor].ItemCode;
+
 	if (true == IsBattle && CurrentSpace == BagSpace::KeyItems)
 	{
 		return;

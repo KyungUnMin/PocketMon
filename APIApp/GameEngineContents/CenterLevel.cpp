@@ -164,7 +164,7 @@ void CenterLevel::Loading()
 		Dir.Move("Image");
 		Dir.Move("FieldUI_KKH");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Back.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_CurrentArrow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_CurrentArrow.bmp"))->Cut(2,1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftArrow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_RightArrow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_UpArrow.bmp"));
@@ -175,6 +175,9 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag.bmp"))->Cut(3,1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Roll.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Shadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Text1.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Text2.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Text3.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Items.bmp"))->Cut(15,2);
 	}

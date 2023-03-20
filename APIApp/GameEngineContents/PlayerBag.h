@@ -57,11 +57,16 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
 	GameEngineLevel* PrevLevel = nullptr;
+	const int CancelCode = 29;
 	bool IsBattle = false;
+	bool IsItemSelect = false;
 	BagSpace CurrentSpace = BagSpace::Items;
+	
 
 	// _____________Renders
 	GameEngineRender* BagRender = nullptr;		// 가방 이미지
+	GameEngineRender* TextBox = nullptr;		// 텍스트 상자
+	GameEngineRender* SelectBox = nullptr;		// 선택 상자
 	GameEngineRender* IconRender = nullptr;		// 아이템 아이콘
 
 	GameEngineRender* LeftArrow = nullptr;		// 가방 이동 - 왼쪽 화살표
@@ -79,6 +84,8 @@ private:
 	std::vector<TextActor*> ItemName = std::vector<TextActor*>(5);
 	std::vector<TextActor*> ItemNum = std::vector<TextActor*>(5);
 	std::vector<TextActor*> ItemNumSign = std::vector<TextActor*>(5);
+	TextActor* ItemSelectText = nullptr;
+	TextActor* SelectText = nullptr;
 	TextActor* ItemInfo = nullptr;
 
 	size_t CurrentCursor = 0;
@@ -94,4 +101,5 @@ private:
 	void CursorMove(int _Cursor);
 
 	void ItemSelect();
+	void ItemUse();
 };

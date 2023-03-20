@@ -15,11 +15,11 @@ void TextActor::SetAligned(bool _IsRightAligned)
 	RightAligned = _IsRightAligned;
 }
 
-void TextActor::SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation)
+void TextActor::SetText(const std::string_view& _Str, const std::string_view& _Font, int _Order, bool _Animation)
 {
 	TextAnim = _Animation;
 	Clear();
-	SetFont(_Font);
+	SetFont(_Font, _Order);
 	size_t StrEndIndex = _Str.size() - 1;
 	int StrIndex = 0;
 	std::string Str = _Str.data();
@@ -30,7 +30,7 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 			Str[_Str.size() - 1 - i] = _Str[i];
 		}
 	}
-	
+
 	for (size_t y = 0; y < TextRender.size(); y++)
 	{
 		for (size_t x = 0; x < TextRender[y].size(); x++)
@@ -106,9 +106,24 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 		}
 	}
 }
+
+void TextActor::SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation)
+{
+	SetText(_Str, _Font, static_cast<int>(RenderOrder::Field_Dialog_Text), _Animation);
+}
 void TextActor::SetText(const std::string_view& _Str, bool _Animation)
 {
-	SetText(_Str, DefalutFont, _Animation);
+	SetText(_Str, DefalutFont, static_cast<int>(RenderOrder::Field_Dialog_Text), _Animation);
+}
+
+void TextActor::SetLine(int _LineCount)
+{
+	LineCount = _LineCount;
+}
+
+void TextActor::SetInterver(const float4& _Interval)
+{
+	TextRenderInterval = _Interval;
 }
 
 void TextActor::SkipAnimation()
@@ -131,7 +146,7 @@ bool TextActor::IsAnimationEnd()
 	return true;
 }
 
-void TextActor::SetFont(const std::string_view& _Font)
+void TextActor::SetFont(const std::string_view& _Font, int _Order)
 {
 	TextRender.resize(LineCount);
 	LineRenderIndex.resize(LineCount);
@@ -141,7 +156,7 @@ void TextActor::SetFont(const std::string_view& _Font)
 		TextRender[y].resize(OneLineSize);
 		for (size_t x = 0; x < TextRender[y].size(); x++)
 		{
-			TextRender[y][x] = CreateRender(_Font, RenderOrder::Field_Dialog_Text);
+			TextRender[y][x] = CreateRender(_Font, _Order);
 			if (true == RightAligned)
 			{
 				TextRender[y][x]->SetPosition(FirstTextRenderPos - float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
