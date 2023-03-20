@@ -56,19 +56,21 @@ void FieldmapLevel::Loading()
 	}
 
 	{
-		Fieldmap::AddEvent("PalletTown", int2(22, 8), 
-			{.Name = "Test1",
-			.Order = 0, 
+		Fieldmap::AddEvent("PalletTown", int2(21, 9), {
+			.Name = "TestEvent 001",
+			.Order = 0,
 			.VaildFunc = std::bind(&FieldmapLevel::VaileTest, this),
 			.EventFunc = std::bind(&FieldmapLevel::EventTest1, this),
-			.Loop = false});
+			.Loop = false
+			});
 
-		Fieldmap::AddEvent("PalletTown", int2(22, 8),
-			{ .Name = "Test2",
-			.Order = 1,
+		Fieldmap::AddEvent("PalletTown", int2(21, 9), {
+			.Name = "TestEvent 002",
+			.Order = -1,
 			.VaildFunc = std::bind(&FieldmapLevel::VaileTest, this),
 			.EventFunc = std::bind(&FieldmapLevel::EventTest2, this),
-			.Loop = false });
+			.Loop = false
+			});
 	}
 
 	Fieldmap::ChangeCity("PalletTown");

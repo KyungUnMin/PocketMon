@@ -57,11 +57,18 @@ public:
 		return MyTilemapData.ShowEventLog(_Index);
 	}
 
+	// 인덱스 중복체크를 안하기 때문에 주의해서 사용
+	void AddActor(const int2& _Index, GameEngineActor* _Actor);
+
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
 	std::string CityName;
+
+	bool CityActive = false;
+
+	std::vector<GameEngineActor*> CityActors;
 
 	GameEngineRender* CityRenderer = nullptr;
 	GameEngineImage* CityColImage = nullptr;

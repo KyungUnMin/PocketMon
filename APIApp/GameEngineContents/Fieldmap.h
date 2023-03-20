@@ -9,6 +9,7 @@
 #include "FieldData.h"
 
 class FieldmapCity;
+class GameEngineActor;
 class Fieldmap
 {
 public:
@@ -51,6 +52,8 @@ public:
 	static void EventCheck(const int2& _Index);
 	static size_t GetEventCount(const int2& _Index);
 	static void ShowEventLog(const int2& _Index);
+
+	static void AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor);
 
 private:
 	static FieldmapCity* CurCity;

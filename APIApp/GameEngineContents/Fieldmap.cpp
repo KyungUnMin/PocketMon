@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineBase/GameEngineString.h>
+#include <GameEngineCore/GameEngineActor.h>
 #include "FieldData.h"
 #include "FieldmapCity.h"
 #include "ContentsEnum.h"
@@ -158,4 +159,22 @@ void Fieldmap::ShowEventLog(const int2& _Index)
 	}
 
 	CurCity->ShowEventLog(_Index);
+}
+
+void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor)
+{
+	if (nullptr == _Actor)
+	{
+		MsgAssert("필드맵 시티에 nullptr 액터를 등록하려 했습니다");
+		return;
+	}
+
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() == AllCitys.find(UpperName))
+	{
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
+	}
+
+	AllCitys[UpperName]->AddActor(_Index, _Actor);
 }

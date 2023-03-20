@@ -10,6 +10,7 @@
 
 FieldmapCity::FieldmapCity()
 {
+	CityActors.reserve(128);
 }
 
 FieldmapCity::~FieldmapCity()
@@ -46,6 +47,7 @@ void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std:
 	CityTypeImage = GameEngineResources::GetInst().ImageFind(ImageName + "_Type.bmp");
 
 	CityScale = CityRenderer->GetImage()->GetImageScale();
+	CityRenderer->Off();
 
 	float TileSize = Fieldmap::TileSize;
 
@@ -110,6 +112,34 @@ void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std:
 	Fieldmap::AddCity(CityName, this);
 }
 
+void FieldmapCity::AddActor(const int2& _Index, GameEngineActor* _Actor)
+{
+	if (nullptr == _Actor)
+	{
+		MsgAssert("필드맵 시티에 nullptr 액터를 등록하려 했습니다");
+		return;
+	}
+
+	if (true == MyTilemapData.OverlapCheck(_Index))
+	{
+		MsgAssert("필드맵 시티 범위를 초과해 액터를 등록하려 했습니다");
+		return;
+	}
+
+	_Actor->SetPos(Fieldmap::GetPos(_Index));
+
+	if (true == CityActive)
+	{
+		_Actor->On();
+	}
+	else
+	{
+		_Actor->Off();
+	}
+
+	CityActors.push_back(_Actor);
+}
+
 void FieldmapCity::Update(float _DeltaTime)
 {
 	float4 PlayerPos = FieldmapLevel::GetPlayerPos();
@@ -117,11 +147,30 @@ void FieldmapCity::Update(float _DeltaTime)
 	if (true == GameEngineCollision::CollisionRectToPoint(
 		CollisionData(GetPos(), CityScale), CollisionData(PlayerPos)))
 	{
-		CityRenderer->On();
-		Fieldmap::ChangeCity(CityName);
+		if (false == CityActive)
+		{
+			CityActive = true;
+			CityRenderer->On();
+
+			for (size_t i = 0; i < CityActors.size(); i++)
+			{
+				CityActors[i]->On();
+			}
+
+			Fieldmap::ChangeCity(CityName);
+		}
 	}
 	else
 	{
-		CityRenderer->Off();
+		if (true == CityActive)
+		{
+			CityActive = false;
+			CityRenderer->Off();
+
+			for (size_t i = 0; i < CityActors.size(); i++)
+			{
+				CityActors[i]->Off();
+			}
+		}
 	}
 }
