@@ -113,6 +113,9 @@
     <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClCompile>
+    <ClCompile Include="FieldmapDoor.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -225,6 +228,9 @@
     </ClInclude>
     <ClInclude Include="BattleMonster_Bulbasaur.h">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapDoor.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
