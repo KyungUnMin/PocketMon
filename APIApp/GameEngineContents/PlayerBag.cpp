@@ -250,7 +250,7 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 	for (int i = 0; i < CurrentSpaceItems.size(); i++)
 	{
 		ItemName[i]->SetText(CurrentSpaceItems[i].Name);
-		if (CurrentSpaceItems[i].Num == -1)
+		if (CurrentSpaceItems[i].ItemCode == 29)
 		{
 			ItemNumSign[i]->Off();
 			ItemNum[i]->Clear();

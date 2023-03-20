@@ -17,9 +17,14 @@ void BagLevel::Loading()
 
 void BagLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	if (true == GameEngineInput::IsDown("LevelChange1"))
 	{
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		PlayerBag::MainBag->AddItem(0);
+		return;
+	}
+	if (true == GameEngineInput::IsDown("LevelChange1"))
+	{
+		PlayerBag::MainBag->RemoveItem(0);
 		return;
 	}
 }
