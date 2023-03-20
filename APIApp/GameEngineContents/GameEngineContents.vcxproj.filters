@@ -107,6 +107,12 @@
     <ClCompile Include="FieldMainMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
+    <ClCompile Include="BattleMonsterBase.cpp">
+      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMonster_Bulbasaur.cpp">
+      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -213,6 +219,12 @@
     </ClInclude>
     <ClInclude Include="FieldMainMenu.h">
       <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBase.h">
+      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMonster_Bulbasaur.h">
+      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
