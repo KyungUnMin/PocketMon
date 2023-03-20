@@ -96,10 +96,10 @@ void Player::MoveUpdate(float _Time)
 {
 	DirCheck("Move");
 	if (
-		false == GameEngineInput::IsPress("LeftMove") &&
-		false == GameEngineInput::IsPress("RightMove") &&
-		false == GameEngineInput::IsPress("DownMove") &&
-		false == GameEngineInput::IsPress("UpMove")
+		false == GameEngineInput::IsDown("LeftMove") &&
+		false == GameEngineInput::IsDown("RightMove") &&
+		false == GameEngineInput::IsDown("DownMove") &&
+		false == GameEngineInput::IsDown("UpMove")
 		)
 	{
 		ChangeState(PlayerState::IDLE);
@@ -110,31 +110,42 @@ void Player::MoveUpdate(float _Time)
 	int2 IndexValue = Fieldmap::GetIndex(GetPos());
 
 	float4 MoveRange = Fieldmap::GetPos(IndexValue);
-	int2 NextIndex = int2(IndexValue.x+1 , IndexValue.y);
-  	float4 NextPos = Fieldmap::GetPos(NextIndex);
+	int2 NextXplusIndex = int2(IndexValue.x + 1, IndexValue.y);
+	int2 NextXminusIndex = int2(IndexValue.x - 1, IndexValue.y);
 
+	int2 NextYplusIndex = int2(IndexValue.x, IndexValue.y+1);
+	int2 NextYMinusIndex = int2(IndexValue.x, IndexValue.y-1);
+
+  	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
+	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
+	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
+	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
+
+	
 	if (true == GameEngineInput::IsPress("LeftMove")) 
 	{
-		MoveRange = float4::Left;
+		SetPos(NextPos2);
 	}
 	
 
 	else if (true == GameEngineInput::IsPress("RightMove"))
 	{
-		MoveRange = float4::Right;
+		SetPos(NextPos1);
 	}
 
 	else if (true == GameEngineInput::IsPress("UpMove"))
 	{
-		MoveRange = float4::Up;
+		SetPos(NextPos4);
 	}
 	else if (true == GameEngineInput::IsPress("DownMove"))
 	{
-		MoveRange = float4::Down;
+		SetPos(NextPos3);
 	}
 
+
+	//플레이어인덱스를받고 업데이트에서돌리기
 	
-	MoveDir = MoveRange* MoveTile;
+	
 
 
 }
