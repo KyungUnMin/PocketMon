@@ -67,7 +67,7 @@ private:
 	std::vector<TextActor*> ItemName = std::vector<TextActor*>(5);
 	TextActor* ItemInfo = nullptr;
 
-	int CurrentCursor = 0;
+	size_t CurrentCursor = 0;
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();

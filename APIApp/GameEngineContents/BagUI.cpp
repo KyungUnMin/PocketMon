@@ -179,11 +179,12 @@ void BagUI::ChangeSpaceRight()
 
 void BagUI::CursorUp()
 {
-	if (0 > --CurrentCursor)
+	if (0 >= CurrentCursor)
 	{
 		CurrentCursor = 0;
 		return;
 	}
+	CurrentCursor--;
 	ItemName[CurrentCursor]->SetText(Items[CurrentCursor].Name);
 	ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", false);
 	IconRender->SetFrame(Items[CurrentCursor].ItemCode);
