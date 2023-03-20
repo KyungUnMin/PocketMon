@@ -161,7 +161,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BagUI.cpp">
+    <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -224,7 +224,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BagUI.h">
+    <ClInclude Include="PlayerBag.h">
       <SubType>
       </SubType>
     </ClInclude>

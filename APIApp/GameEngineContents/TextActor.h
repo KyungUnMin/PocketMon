@@ -8,10 +8,12 @@ public:
 	TextActor();
 	~TextActor();
 
+	void SetAligned(bool _IsRightAligned);
 	void SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation = false);
 	void SetText(const std::string_view& _Str, bool _Animation = false);
 	void SkipAnimation();
 	bool IsAnimationEnd();
+	void Clear();
 	// delete Function
 	TextActor(const TextActor& _Other) = delete;
 	TextActor(TextActor&& _Other) = delete;
@@ -26,6 +28,7 @@ private:
 	const int SpaceFrameNum = 26;
 	std::vector<std::vector<GameEngineRender*>> TextRender = std::vector<std::vector<GameEngineRender*>>();
 	bool TextAnim = false;
+	bool RightAligned = false;
 	int OneLineSize = 30;
 	int LineCount = 3;
 	float4 FirstTextRenderPos = { 0, 0 };
@@ -37,6 +40,6 @@ private:
 	std::list<std::string> TestScript = std::list<std::string>();
 
 	void SetFont(const std::string_view& _Font);
-	void Clear();
+	
 };
 

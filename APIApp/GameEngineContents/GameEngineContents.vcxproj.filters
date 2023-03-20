@@ -68,7 +68,7 @@
     <ClCompile Include="BagLevel.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
-    <ClCompile Include="BagUI.cpp">
+    <ClCompile Include="PlayerBag.cpp">
       <Filter>FieldUI\BagUI</Filter>
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp">
@@ -172,7 +172,7 @@
     <ClInclude Include="BagLevel.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
-    <ClInclude Include="BagUI.h">
+    <ClInclude Include="PlayerBag.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
     <ClInclude Include="FieldDialog.h">

@@ -10,6 +10,11 @@ TextActor::~TextActor()
 {
 }
 
+void TextActor::SetAligned(bool _IsRightAligned)
+{
+	RightAligned = _IsRightAligned;
+}
+
 void TextActor::SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation)
 {
 	TextAnim = _Animation;
@@ -17,29 +22,38 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 	SetFont(_Font);
 	size_t StrEndIndex = _Str.size() - 1;
 	int StrIndex = 0;
+	std::string Str = _Str.data();
+	if (true == RightAligned)
+	{
+		for (size_t i = 0; i < _Str.size(); i++)
+		{
+			Str[_Str.size() - 1 - i] = _Str[i];
+		}
+	}
+	
 	for (size_t y = 0; y < TextRender.size(); y++)
 	{
 		for (size_t x = 0; x < TextRender[y].size(); x++)
 		{
-			if (StrEndIndex < StrIndex || ' ' == _Str[StrIndex])
+			if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
 			{
 				TextRender[y][x]->SetFrame(SpaceFrameNum);
 			}
 			else
 			{
-				if (_Str[StrIndex] >= 'A' && _Str[StrIndex] <= 'Z')
+				if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
 				{
-					TextRender[y][x]->SetFrame(_Str[StrIndex] - 'A');
+					TextRender[y][x]->SetFrame(Str[StrIndex] - 'A');
 				}
-				else if (_Str[StrIndex] >= 'a' && _Str[StrIndex] <= 'z')
+				else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
 				{
-					TextRender[y][x]->SetFrame(_Str[StrIndex] - 'a' + 27);
+					TextRender[y][x]->SetFrame(Str[StrIndex] - 'a' + 27);
 				}
-				else if (_Str[StrIndex] >= '0' && _Str[StrIndex] <= '9')
+				else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
 				{
-					TextRender[y][x]->SetFrame(_Str[StrIndex] - '0' + 54);
+					TextRender[y][x]->SetFrame(Str[StrIndex] - '0' + 54);
 				}
-				else if (_Str[StrIndex] == '\n')
+				else if (Str[StrIndex] == '\n')
 				{
 					while (x < TextRender[y].size())
 					{
@@ -128,7 +142,14 @@ void TextActor::SetFont(const std::string_view& _Font)
 		for (size_t x = 0; x < TextRender[y].size(); x++)
 		{
 			TextRender[y][x] = CreateRender(_Font, RenderOrder::Field_Dialog_Text);
-			TextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
+			if (true == RightAligned)
+			{
+				TextRender[y][x]->SetPosition(FirstTextRenderPos - float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
+			}
+			else
+			{
+				TextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
+			}
 			TextRender[y][x]->SetScale(TextRenderImageScale);
 			TextRender[y][x]->SetFrame(SpaceFrameNum);
 			TextRender[y][x]->EffectCameraOff();

@@ -7,36 +7,47 @@ enum class BagSpace
 	KeyItems,
 	PokeBalls
 };
-
 // 설명 : 가방을 관리하는 클래스
-// 필드, 전투중 아이템을 사용하는 기능들을 구현한다
+// 필드, 전투중 BagLevel로 이동시 이 클래스가 아이템들을 관리합니다
+// 사용방법
+// 1. ChangeLevel로 BagLevel로 이동
+// 2. 아이템이 선택되면 BagLevel로 이동하기전 Level로 다시 이동됩니다.
+// 3. MainBag 에게 ItemCode를 받아와서 사용된 아이템의 코드를 알 수 있습니다.
 class GameEngineRender;
 class TextActor;
-class BagUI : public GameEngineActor
+class PlayerBag : public GameEngineActor
 {
 private:
 	class Item
 	{
-		friend BagUI;
+		friend PlayerBag;
 	public:
-		Item(std::string_view _Name, std::string_view _Information, int _ItemCode, int _Num)
-		:Name(_Name), Information(_Information), ItemCode(_ItemCode), Num(_Num){}
+		Item(std::string_view _Name, std::string_view _Information, int _ItemCode)
+		:Name(_Name), Information(_Information), ItemCode(_ItemCode){}
 
 		std::string_view Name;
 		std::string_view Information;
 		int ItemCode;
-		int Num;	// 개수
+		int Num = 1;	// 개수
 	};
 public:
 	// constructer destructer
-	BagUI();
-	~BagUI();
-	
+	PlayerBag();
+	~PlayerBag();
+
+	static PlayerBag* MainBag;
+	int GetItemCode()
+	{
+		return ItemCode;
+	}
+	void AddItem(int _ItemCode);
+	void RemoveItem(int _ItemCode);
+
 	// delete Function
-	BagUI(const BagUI& _Other) = delete;
-	BagUI(BagUI&& _Other) = delete;
-	BagUI& operator=(const BagUI& _Other) = delete;
-	BagUI& operator=(BagUI&& _Other) = delete;
+	PlayerBag(const PlayerBag& _Other) = delete;
+	PlayerBag(PlayerBag&& _Other) = delete;
+	PlayerBag& operator=(const PlayerBag& _Other) = delete;
+	PlayerBag& operator=(PlayerBag&& _Other) = delete;
 
 protected:
 	void Start() override;
@@ -45,7 +56,8 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _PrevLevel) override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
-
+	GameEngineLevel* PrevLevel = nullptr;
+	bool IsBattle = false;
 	BagSpace CurrentSpace = BagSpace::Items;
 
 	// _____________Renders
@@ -65,9 +77,12 @@ private:
 	std::vector<Item> PokeBalls = std::vector<Item>();
 
 	std::vector<TextActor*> ItemName = std::vector<TextActor*>(5);
+	std::vector<TextActor*> ItemNum = std::vector<TextActor*>(5);
+	std::vector<TextActor*> ItemNumSign = std::vector<TextActor*>(5);
 	TextActor* ItemInfo = nullptr;
 
 	size_t CurrentCursor = 0;
+	int ItemCode = 0;
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();
@@ -75,4 +90,8 @@ private:
 
 	void CursorUp();
 	void CursorDown();
+	void CursorMove();
+	void CursorMove(int _Cursor);
+
+	void ItemSelect();
 };
