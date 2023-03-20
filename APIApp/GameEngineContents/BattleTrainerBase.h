@@ -16,7 +16,10 @@ public:
 	BattleTrainerBase& operator=(const BattleTrainerBase& _Other) = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
 
-	virtual void Init(BattleFieldType _FieldType) = 0;
+	virtual void PocketBallThrow(){}
+
+	virtual void MonsterCreate(){}
+
 
 protected:
 	void Start() override;

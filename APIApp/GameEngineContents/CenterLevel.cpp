@@ -29,21 +29,23 @@ void CenterLevel::Loading()
 		Dir.Move("Battle");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeDown.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeUp.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattlePlayer.bmp"));
 
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Grass\\BattleGrassEnemyGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Grass\\BattleGrassPlayerGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Grass\\BattleGrassField.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Grass\\BattleGrassIntro.bmp"));
+		Dir.Move("Field");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestEnemyGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestPlayerGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestField.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestIntro.bmp"));
 
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Indoor\\BattleIndoorEnemyGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Indoor\\BattleIndoorPlayerGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Indoor\\BattleIndoorField.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Indoor\\BattleIndoorIntro.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Indoor\\BattleIndoorEnemyGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Indoor\\BattleIndoorPlayerGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Indoor\\BattleIndoorField.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Indoor\\BattleIndoorIntro.bmp"));
 
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Stone\\BattleStoneEnemyGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Stone\\BattleStonePlayerGround.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Stone\\BattleStoneField.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Field\\Stone\\BattleStoneIntro.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymEnemyGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymPlayerGround.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymField.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymIntro.bmp"));
 		
 		Dir.MoveParentToDirectory("Battle");
 	}

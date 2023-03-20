@@ -5,13 +5,15 @@ enum class RenderOrder
 	//Field
 	BackGround,		 // 0
 	Tilemap,
+	BattleGround,
 	Monster,		 // 1
 	Player,			 // 2
+	Particle,
+
 	DebugUI,
 	DebugText,
 	Field_Dialog,
 	Field_Dialog_Text,
-	Particle,
 
 	Fade,
 };

@@ -1,6 +1,8 @@
 #pragma once
 #include "BattleTrainerBase.h"
 
+class GameEngineRender;
+
 class BattlePlayer : public BattleTrainerBase
 {
 public:
@@ -14,12 +16,12 @@ public:
 	BattlePlayer& operator=(const BattlePlayer& _Other) = delete;
 	BattlePlayer& operator=(const BattlePlayer&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType) override;
+	void Init(BattleFieldType _FieldType);
 
 protected:
 
 private:
-	
+	GameEngineRender* PlayerRenderPtr = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
 	void CreatePlayer();

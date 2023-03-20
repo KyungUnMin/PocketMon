@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
 #include "BattleLevel.h"
+#include "BackTextActor.h"
 
 BattleBackGround::BattleBackGround()
 {
@@ -21,6 +22,8 @@ void BattleBackGround::Init(BattleFieldType _BattleType)
 	CreateField(_BattleType);
 	CreateFadeEffect();
 	CreateEnterEffect(_BattleType);
+
+	GetLevel()->CreateActor<BackTextActor>();
 }
 
 void BattleBackGround::CreateField(BattleFieldType _BattleType)
@@ -32,11 +35,12 @@ void BattleBackGround::CreateField(BattleFieldType _BattleType)
 	case BattleFieldType::Indoor:
 		BackRenderPath = "BattleIndoorField.bmp";
 		break;
-	case BattleFieldType::Grass:
-		BackRenderPath = "BattleGrassField.bmp";
+	case BattleFieldType::Forest0:
+	case BattleFieldType::Forest1:
+		BackRenderPath = "BattleForestField.bmp";
 		break;
-	case BattleFieldType::Stone:
-		BackRenderPath = "BattleStoneField.bmp";
+	case BattleFieldType::Gym:
+		BackRenderPath = "BattleGymField.bmp";
 		break;
 	}
 
@@ -66,19 +70,22 @@ void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 	case BattleFieldType::Indoor:
 		EffectPath = "BattleIndoorIntro.bmp";
 		break;
-	case BattleFieldType::Grass:
-		EffectPath = "BattleGrassIntro.bmp";
+	case BattleFieldType::Forest0:
+		EffectPath = "BattleForestIntro.bmp";
 		break;
-	case BattleFieldType::Stone:
-		EffectPath = "BattleStoneIntro.bmp";
+	case BattleFieldType::Gym:
+		EffectPath = "BattleGymIntro.bmp";
 		break;
 	}
 
+	const float OffsetY = 50.f;
 	for (size_t i = 0; i < EnterEffect.size(); ++i)
 	{
 		EnterEffect[i] = CreateRender(EffectPath, RenderOrder::Particle);
 		EnterEffect[i]->SetScaleToImage();
-		EnterEffect[i]->SetPosition({ ScreenSize.x * i, ScreenSize.hy()});
+
+		float4 Offset = { ScreenSize.x * i, ScreenSize.hy() + (OffsetY * i) };
+		EnterEffect[i]->SetPosition(Offset);
 	}
 
 }

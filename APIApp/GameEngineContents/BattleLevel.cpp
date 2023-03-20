@@ -19,12 +19,12 @@ BattleLevel::~BattleLevel()
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
-	//Init(BattleFieldType::Grass);
+	Init(BattleFieldType::Forest0);
 	//Init(BattleFieldType::Indoor);
-	Init(BattleFieldType::Stone);
+	//Init(BattleFieldType::Gym);
 }
 
-void BattleLevel::Init(BattleFieldType _FieldType)
+void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	CreateActor<BattleBackGround>()->Init(_FieldType);
 
@@ -32,7 +32,7 @@ void BattleLevel::Init(BattleFieldType _FieldType)
 	Player->Init(_FieldType);
 
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>();
-	Enemy->Init(_FieldType);
+	Enemy->Init(_FieldType, _NpcType);
 }
 
 

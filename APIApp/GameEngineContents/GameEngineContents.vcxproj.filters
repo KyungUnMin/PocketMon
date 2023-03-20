@@ -89,6 +89,12 @@
     <ClCompile Include="TileDebugRender.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleMonsterBase.cpp">
+      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMonster_Bulbasaur.cpp">
+      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -175,6 +181,12 @@
     <ClInclude Include="TextActor.h">
       <Filter>FieldUI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleMonsterBase.h">
+      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMonster_Bulbasaur.h">
+      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
+    </ClInclude>
     <ClInclude Include="TileDebugRender.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
@@ -248,6 +260,15 @@
     </Filter>
     <Filter Include="Map\BattleUI\Actor">
       <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\03.Monster">
+      <UniqueIdentifier>{00b1e797-7e06-4b1c-a3b9-87f562495ea0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\03.Monster\01.Base">
+      <UniqueIdentifier>{03815605-b3aa-4bc6-a2fe-fa86c28a05ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29">
+      <UniqueIdentifier>{79436394-1a67-4813-b60f-ad782b4c6989}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -1,6 +1,9 @@
 #pragma once
 #include "BattleTrainerBase.h"
 
+enum class BattleNpcType;
+class BattleMonsterBase;
+
 class BattleEnemy : public BattleTrainerBase
 {
 public:
@@ -14,13 +17,21 @@ public:
 	BattleEnemy& operator=(const BattleEnemy& _Other) = delete;
 	BattleEnemy& operator=(const BattleEnemy&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType) override;
+	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
+
+	inline BattleMonsterBase* GetMonster()
+	{
+		return Monster;
+	}
 
 protected:
 
 private:
+	BattleMonsterBase* Monster = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
-	void CreatePlayer();
+	void CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType);
+
+	void CreateWildMonster(BattleFieldType _FieldType);
 };
 

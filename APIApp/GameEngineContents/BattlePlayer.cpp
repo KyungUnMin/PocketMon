@@ -23,13 +23,13 @@ BattlePlayer::~BattlePlayer()
 void BattlePlayer::Init(BattleFieldType _FieldType)
 {
 	CreateGround(_FieldType);
-
+	CreatePlayer();
 }
 
 void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 {
 	const float4 ScreenSize = GameEngineWindow::GetScreenSize();
-	const float Height = (ScreenSize.y - 196.f);
+	const float Height = (ScreenSize.y - 230.f);
 	std::string GroundPath = "";
 
 	switch (_FieldType)
@@ -37,15 +37,16 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 	case BattleFieldType::Indoor:
 		GroundPath = "BattleIndoorPlayerGround.bmp";
 		break;
-	case BattleFieldType::Grass:
-		GroundPath = "BattleGrassPlayerGround.bmp";
+	case BattleFieldType::Forest0:
+	case BattleFieldType::Forest1:
+		GroundPath = "BattleForestPlayerGround.bmp";
 		break;
-	case BattleFieldType::Stone:
-		GroundPath = "BattleStonePlayerGround.bmp";
+	case BattleFieldType::Gym:
+		GroundPath = "BattleGymPlayerGround.bmp";
 		break;
 	}
 
-	GameEngineRender* GroundRender = CreateRender(GroundPath, RenderOrder::Player);
+	GameEngineRender* GroundRender = CreateRender(GroundPath, RenderOrder::BattleGround);
 	GroundRender->SetScaleToImage();
 
 	const float4& RenderScale = GroundRender->GetScale();
@@ -54,7 +55,9 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 
 void BattlePlayer::CreatePlayer()
 {
-	const float4 GroundRenderScale = float4{ 256.f, 196.f };
-	GameEngineRender* GroundRender = CreateRender("BattlePlayer.bmp", RenderOrder::Player);
-	GroundRender->SetScale(GroundRenderScale);
+	const float4 Offset = {0.f, -65.f};
+
+	PlayerRenderPtr = CreateRender("BattlePlayer.bmp", RenderOrder::Player);
+	PlayerRenderPtr->SetScaleToImage();
+	PlayerRenderPtr->SetPosition(Offset);
 }

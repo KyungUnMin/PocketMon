@@ -168,6 +168,14 @@
     <ClCompile Include="BattleBackGround.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="BattleMonsterBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonster_Bulbasaur.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattlePlayer.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
     <ClCompile Include="Battle_Select.cpp" />
@@ -222,6 +230,14 @@
     <ClInclude Include="BattleBackGround.h" />
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="BattleMonsterBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonster_Bulbasaur.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattlePlayer.h" />
     <ClInclude Include="BattleTrainerBase.h" />
     <ClInclude Include="Battle_Select.h" />
