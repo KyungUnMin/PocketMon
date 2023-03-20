@@ -116,7 +116,9 @@ void FieldDialog::Update(float _DeltaTime)
 		ScriptIter++;
 		if (ScriptIter != ScriptEndIter)
 		{
-			UpdateEnd();
+			ClearDialog();
+			FirstLineRenderLen = 0;
+			SecondLineRenderLen = 0;
 			StringToRender();
 		}
 		else
@@ -131,6 +133,8 @@ void FieldDialog::UpdateEnd()
 	ClearDialog();
 	FirstLineRenderLen = 0;
 	SecondLineRenderLen = 0;
+	ScriptIter = std::list<std::string>::iterator();
+	ScriptEndIter = std::list<std::string>::iterator();
 }
 
 void FieldDialog::PushScriptBegin(std::list<std::string>::iterator _Begin)
@@ -213,7 +217,8 @@ void FieldDialog::StringToRender()
 					//case '!':
 					//	break;
 					//default:
-					//	break;
+					//	MsgAssert("아직 생각해보지 않은 글자입니다.");
+					//  break;
 					//}
 
 					MsgAssert("아직 생각해보지 않은 글자입니다.");
