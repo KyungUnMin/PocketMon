@@ -535,7 +535,7 @@ void PokeDataBase::BulbasaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 65;                   // 포켓몬 기초 특수공격력
 	PoKeCreatePtr->SpecialDefense = 65;                       // 포켓몬 기초 특수방어력 // "특수"는 마법공격, 마법방어로, 노말은 물리공격, 물리방어로 생각하면 됩니다.
 	PoKeCreatePtr->Agility = 45;                              // 포켓몬 기초 스피드
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;     // 야생 포켓몬 스폰 목적 시, 레벨을 입력해줍니다.
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -562,7 +562,7 @@ void PokeDataBase::IvysaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 80;
 	PoKeCreatePtr->SpecialDefense = 80;
 	PoKeCreatePtr->Agility = 60;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -588,7 +588,7 @@ void PokeDataBase::VenusaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 100;
 	PoKeCreatePtr->SpecialDefense = 100;
 	PoKeCreatePtr->Agility = 80;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -615,7 +615,7 @@ void PokeDataBase::CharmanderData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 60;
 	PoKeCreatePtr->SpecialDefense = 50;
 	PoKeCreatePtr->Agility = 65;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -642,7 +642,7 @@ void PokeDataBase::CharmeleonData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 80;
 	PoKeCreatePtr->SpecialDefense = 65;
 	PoKeCreatePtr->Agility = 80;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -669,7 +669,7 @@ void PokeDataBase::CharizardData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 109;
 	PoKeCreatePtr->SpecialDefense = 85;
 	PoKeCreatePtr->Agility = 100;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -696,7 +696,7 @@ void PokeDataBase::SquirtleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 50;
 	PoKeCreatePtr->SpecialDefense = 64;
 	PoKeCreatePtr->Agility = 43;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -723,7 +723,7 @@ void PokeDataBase::WartortleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 65;
 	PoKeCreatePtr->SpecialDefense = 80;
 	PoKeCreatePtr->Agility = 58;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -750,7 +750,7 @@ void PokeDataBase::BlastoiseData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 85;
 	PoKeCreatePtr->SpecialDefense = 105;
 	PoKeCreatePtr->Agility = 78;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -777,7 +777,7 @@ void PokeDataBase::PidgeyData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 35;
 	PoKeCreatePtr->SpecialDefense = 35;
 	PoKeCreatePtr->Agility = 56;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -804,7 +804,7 @@ void PokeDataBase::RattataData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 25;
 	PoKeCreatePtr->SpecialDefense = 35;
 	PoKeCreatePtr->Agility = 72;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -831,7 +831,7 @@ void PokeDataBase::SpearowData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 31;
 	PoKeCreatePtr->SpecialDefense = 31;
 	PoKeCreatePtr->Agility = 70;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -858,7 +858,7 @@ void PokeDataBase::GeodudeData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 30;
 	PoKeCreatePtr->SpecialDefense = 30;
 	PoKeCreatePtr->Agility = 20;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
@@ -885,7 +885,7 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->SpecialAttackPower = 30;
 	PoKeCreatePtr->SpecialDefense = 45;
 	PoKeCreatePtr->Agility = 70;
-
+	PoKeCreatePtr->MonsterLevel = 0;
 	int PlusLevel = PoKeCreatePtr->MonsterLevel + _Level;
 
 	for (int i = 1; i < PlusLevel; i++)
