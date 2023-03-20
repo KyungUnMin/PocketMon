@@ -29,8 +29,16 @@ public:
 	}
 
 protected:
+	void Update(float _DeltaTime) override;
 
 private:
 	PokeDataBase* DbPtr = nullptr;
+	bool IsPlayerMonter = true;
+	const float4 Offset = float4{ 0.f, -50.f };
+
+	inline void SetTeam(bool _IsPlayerMonter)
+	{
+		IsPlayerMonter = _IsPlayerMonter;
+	}
 };
 

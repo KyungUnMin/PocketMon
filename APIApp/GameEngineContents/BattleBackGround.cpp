@@ -78,7 +78,7 @@ void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 		break;
 	}
 
-	const float OffsetY = 50.f;
+	const float OffsetY = 20.f;
 	for (size_t i = 0; i < EnterEffect.size(); ++i)
 	{
 		EnterEffect[i] = CreateRender(EffectPath, RenderOrder::Particle);

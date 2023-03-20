@@ -25,8 +25,9 @@ BattleEnemy::~BattleEnemy()
 void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	CreateGround(_FieldType);
-	//CreateNpc(_FieldType, _NpcType);
+	CreateNpc(_FieldType, _NpcType);
 }
+
 
 void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 {
@@ -90,5 +91,8 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	}
 
 	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
-	Monster = BattleMonsterBase::CreateMonster(GetLevel(), MonsterNumsters[MonIndex], false);
+	//Monster = BattleMonsterBase::CreateMonster(GetLevel(), MonsterNumsters[MonIndex], false);
+
+	//юс╫ц
+	Monster = BattleMonsterBase::CreateMonster(GetLevel(), PokeNumber::Bulbasaur, false);
 }
