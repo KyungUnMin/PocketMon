@@ -2,6 +2,11 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineResources.h>
+
+
+#include "FieldmapCity.h"
+#include "Fieldmap.h"
+
 enum class PlayerState
 {
 	IDLE,
@@ -35,15 +40,16 @@ public:
 	void CollisionCheck(float _DeltaTime);
 	void Render(float _DeltaTime);
 	void NPCtalkValueSet();
+	void ChangeLevelCheck();
 
-	float GetPlayerSpeed()
+	float GetPlayerMoveTile()
 	{
-		return MoveSpeed;
+		return MoveTile;
 	}
 
-	void SetPlayerSpeed(float _PlayerSpeed)
+	void SetPlayerSpeed(float _PlayerTileSpeed)
 	{
-		MoveSpeed = _PlayerSpeed;
+		MoveTile = _PlayerTileSpeed;
 	}
 
 	NPCtalkValue GetPlayerNPCtalkValue()
@@ -78,11 +84,14 @@ private:
 
 	
 	//////////Speed&Pos//////////
-	float MoveSpeed = 200.0f;
+	float MoveTile = 64.0f;
 	float4 MoveDir = float4::Zero;
+	int2 MoveSet = int2::Zero;
 	
 
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
+
+
 
 
 };

@@ -11,6 +11,7 @@
 
 
 #include "Player.h"
+#include "Fieldmap.h"
 
 
 void Player::ChangeState(PlayerState _State)
@@ -106,16 +107,23 @@ void Player::MoveUpdate(float _Time)
 		return;
 	}
 
-	float4 MoveRange = float4::Zero;
+	int2 IndexValue = Fieldmap::GetIndex(GetPos());
+	int2 NextIndex = int2(IndexValue.x+1 , IndexValue.y);
 
-	if (true == GameEngineInput::IsPress("LeftMove"))
+	float4 NextPos = Fieldmap::GetPos(NextIndex);
+
+	float4 MoveRange = Fieldmap::GetPos(IndexValue);
+	//??
+	float SaveYvalue = MoveRange.y;
+	if (true == GameEngineInput::IsPress("LeftMove")) 
 	{
 		MoveRange = float4::Left;
 	}
 
+
 	else if (true == GameEngineInput::IsPress("RightMove"))
 	{
-		MoveRange = float4::Right;
+		MoveRange = NextPos;
 	}
 
 	else if (true == GameEngineInput::IsPress("UpMove"))
@@ -127,9 +135,8 @@ void Player::MoveUpdate(float _Time)
 		MoveRange = float4::Down;
 	}
 
-	MoveRange.Normalize();
-
-	MoveDir = MoveRange * MoveSpeed;
+	
+	MoveDir = MoveRange;
 
 
 }

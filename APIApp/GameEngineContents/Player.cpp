@@ -60,20 +60,20 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
-	//CollisionCheck(_DeltaTime);
-	//Movecalculation(_DeltaTime);
-	UpdateState(_DeltaTime);
+	 ChangeLevelCheck();
+	 UpdateState(_DeltaTime);
 
+	
 	// Walkable 반환값 true = 이동가능 false = 이동 불가능
 	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime)))
 	{
-		SetMove(MoveDir * _DeltaTime); //STATE에서받은값으로 움직임 제어
+		SetMove(MoveDir); //STATE에서받은값으로 움직임 제어
 	}
 	UpdateState(_DeltaTime); //움직임관리
 	NPCtalkValueSet(); //NPC방향세팅용
 }
 
-//맵 충돌 관리
+//맵 충돌 관리        
 void Player::Movecalculation(float _DeltaTime)
 {
 	
@@ -85,6 +85,28 @@ void Player::CollisionCheck(float _DeltaTime)
 	
 }
 
+void Player::ChangeLevelCheck()
+{
+	/*if (확률 || Collision에 닿으면)
+	{
+		switch (FieldmapCity::GetGroundType(int2 & _index))
+		{
+		case:
+				GameEngineCore::ChangeLevel("ㅇㅇㅇbattle level");
+				break;
+		case:
+				GameEngineCore::ChangeLevel("ㅇㅇㅇbattle level");
+				break;
+		case:
+				GameEngineCore::ChangeLevel("ㅇㅇㅇbattle level");
+				break;
+		}
+	}
+	if (GameEngineInput::IsDown("ㅇㅇㅇItemBag"))
+	{
+		GameEngineCore::ChangeLevel("ㅇㅇㅇItemLevel");
+	}*/
+}
 
 void Player::DirCheck(const std::string_view& _AnimationName)
 {
