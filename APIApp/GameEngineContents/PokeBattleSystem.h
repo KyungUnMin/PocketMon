@@ -40,9 +40,9 @@ private:
 	float OtherPersonalitycalculation_SD(PokePersonality _personality);
 
 	float CriticalRand();
+	float Randomvalue();
 
 	void Ownpropertiescorrection();
 	void Compatibilitycorrection();
-	void Randomvalue();
 
 };

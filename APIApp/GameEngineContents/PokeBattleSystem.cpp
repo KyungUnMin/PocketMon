@@ -23,9 +23,9 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 		return;
 	}
 
-	// (데미지 = ((((((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × Mod1) × [[급소]] × Mod2) × 자속보정 × 타입상성1 × 타입상성2 × 랜덤수 ÷ 100)
+	// 데미지 = (((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × [[급소]] × 자속보정 × 타입상성 × 랜덤수 ÷ 100
 
-	int step1 = _Attacker->GetMonsterLevel() * 2 / 5;
+	int step1 = (_Attacker->GetMonsterLevel() * 2 / 5) + 2;
 	float step2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
 	float step3 = 0;
 	float step4 = 0;
@@ -42,6 +42,11 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 		step3 = SpecialAttackstatuscalculator(_Attacker) / 50;
 		step4 = SpecialDeffencestatuscalculator(_Defender);
 	}
+
+	float step5 = CriticalRand();
+	float step6 = 0.0f; // 자속보정
+	float step7 = 0.0f; // 타입상성
+	float step8 = Randomvalue();
 	
 	// Damage = ((step1 * static_cast<int>(round(step2)) * static_cast<int>(round(step3)) / static_cast<int>(round(step4)) ;
 }
@@ -391,11 +396,11 @@ float PokeBattleSystem::OtherPersonalitycalculation_SD(PokePersonality _personal
 
 float PokeBattleSystem::CriticalRand()
 {
-	int Randomvalue = GameEngineRandom::MainRandom.RandomInt(1, 10);
+	int Rand = GameEngineRandom::MainRandom.RandomInt(1, 10);
 	
 	float Criticalvalue = 0.0f;
 
-	if (1 == Randomvalue)
+	if (1 == Rand)
 	{
 		Criticalvalue = 1.5f;
 	}
@@ -407,15 +412,22 @@ float PokeBattleSystem::CriticalRand()
 	return Criticalvalue;
 }
 
+float PokeBattleSystem::Randomvalue()
+{
+	// 랜덤수 = ((217~255 사이의 랜덤한 수 x 100) / 255), 소수점 이하 버림, 즉 85~100 사이의 수가 나온다.
+
+	int Rand = GameEngineRandom::MainRandom.RandomInt(217, 255);
+
+	float Randv = ((Rand * 100) / 255);
+
+	return Randv;
+}
+
 void PokeBattleSystem::Ownpropertiescorrection()
 {
 
 }
 void PokeBattleSystem::Compatibilitycorrection()
-{
-
-}
-void PokeBattleSystem::Randomvalue()
 {
 
 }
