@@ -1,5 +1,6 @@
 #include "FieldData.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineString.h>
 
 FieldData::FieldData()
 {
@@ -49,6 +50,74 @@ bool FieldData::Swinable(const int2& _Index) const
 	}
 
 	return TileWalkType::Swim == TileDatas[_Index.y][_Index.x].WalkType;
+}
+
+void FieldData::AddEvent(const int2& _Index, const FieldEventParameter& _EventParameter)
+{
+	if (true == OverlapCheck(_Index))
+	{
+		MsgAssert("필드맵 시티 인덱스 밖에 이벤트를 생성하려 했습니다");
+	}
+
+	std::vector<FieldEvent>& OrderEventList = TileDatas[_Index.y][_Index.x].EventList[_EventParameter.Order];
+
+	std::string UpperName = GameEngineString::ToUpper(_EventParameter.Name);
+
+	for (size_t i = 0; i < OrderEventList.size(); i++)
+	{
+		if (OrderEventList[i].Name == UpperName)
+		{
+			MsgAssert("같은 시티의 같은 필드맵 타일에 같은 오더 및 이름의 이벤트가 추가되었습니다");
+			return;
+		}
+	}
+
+	OrderEventList.push_back(FieldEvent(UpperName, _EventParameter.VaildFunc, _EventParameter.EventFunc, _EventParameter.Loop));
+}
+
+void FieldData::EventCheck(const int2& _Index)
+{
+	if (true == OverlapCheck(_Index))
+	{
+		return;
+	}
+
+	std::map<int, std::vector<FieldEvent>>& OrederListRef = TileDatas[_Index.y][_Index.x].EventList;
+
+	std::map<int, std::vector<FieldEvent>>::iterator OrderLoopIter = OrederListRef.begin();
+	std::map<int, std::vector<FieldEvent>>::iterator OrderEndIter = OrederListRef.end();
+
+	while (OrderLoopIter != OrderEndIter)
+	{
+		std::vector<FieldEvent>& VecListRef = (*OrderLoopIter).second;
+
+		std::vector<FieldEvent>::iterator vecLoopIter = VecListRef.begin();
+
+		while (vecLoopIter != VecListRef.end())
+		{
+			if (true == vecLoopIter->EvenetVaild())
+			{
+				vecLoopIter->MainEvent();
+			
+				if (false == vecLoopIter->Loop)
+				{
+					vecLoopIter = VecListRef.erase(vecLoopIter);
+					continue;
+				}
+			}
+
+			++vecLoopIter;
+		}
+
+		if (0 == VecListRef.size())
+		{
+			OrderLoopIter = OrederListRef.erase(OrderLoopIter);
+		}
+		else
+		{
+			++OrderLoopIter;
+		}
+	}
 }
 
 GroundType FieldData::GetGroundType(const int2& _Index) const

@@ -37,6 +37,16 @@ public:
 		return MyTilemapData.GetGroundType(_Index);
 	}
 
+	inline void AddEvent(const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+	{
+		MyTilemapData.AddEvent(_Index, _Parameter);
+	}
+
+	inline void EventCheck(const int2& _Index)
+	{
+		MyTilemapData.EventCheck(_Index);
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 

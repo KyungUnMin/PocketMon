@@ -52,6 +52,15 @@ void FieldmapLevel::Loading()
 		CreateFieldmapCity("PewterCity_PokemonCenter", "Center_1F", float4(6000.0f, 14000.0f));
 	}
 
+	{
+		Fieldmap::AddEvent("PalletTown", int2(22, 8), 
+			{.Name = "Test",
+			.Order = 0, 
+			.VaildFunc = std::bind(&FieldmapLevel::VaileTest, this),
+			.EventFunc = std::bind(&FieldmapLevel::EventTest, this),
+			.Loop = true});
+	}
+
 	Fieldmap::ChangeCity("PalletTown");
 
 	MainFieldRender = CreateActor<FieldmapRender>();
@@ -139,9 +148,14 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainPlayer->On();
 	}
 	
-	if (GameEngineInput::IsDown("FieldDialogSwitch"))
+	if (true == GameEngineInput::IsDown("FieldDialogSwitch"))
 	{
 		MainFieldDialog->OnOffSwtich();
+	}
+
+	if (true == GameEngineInput::IsDown("EventCheckDebug"))
+	{
+		Fieldmap::EventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
 }
 

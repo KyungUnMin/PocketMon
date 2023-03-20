@@ -1,10 +1,32 @@
 #pragma once
 #include <vector>
+#include <map>
+#include <functional>
 #include "ContentsEnum.h"
 #include "int2.h"
 
 class FieldData
 {
+public:
+	class FieldEventParameter
+	{
+	public:
+		std::string Name = "";
+		int Order = 0;
+		std::function<bool()> VaildFunc = nullptr;
+		std::function<void()> EventFunc = nullptr;
+		bool Loop = false;
+	};
+
+private:
+	class FieldEvent
+	{
+	public:
+		std::string Name = "";
+		std::function<bool()> EvenetVaild = nullptr;
+		std::function<void()> MainEvent = nullptr;
+		bool Loop = false;
+	};
 public:
 	enum class TileWalkType
 	{
@@ -19,6 +41,8 @@ public:
 		TileWalkType WalkType = TileWalkType::Walk;
 		GroundType groundType = GroundType::Grass;
 		int RenderIndex = -1;
+
+		std::map<int, std::vector<FieldEvent>> EventList;
 	};
 
 public:
@@ -33,6 +57,10 @@ public:
 	void Init(const int2& _Size);
 	bool Walkabal(const int2& _Index) const;
 	bool Swinable(const int2& _Index) const;
+
+	void AddEvent(const int2& _Index, const FieldEventParameter& _EventParameter);
+	void EventCheck(const int2& _Index);
+
 	GroundType GetGroundType(const int2& _Index) const;
 
 	void SetRenderData(const int2& _Index, int _RenderFrame);

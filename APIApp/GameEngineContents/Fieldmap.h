@@ -2,9 +2,11 @@
 #include <vector>
 #include <map>
 #include <string>
+#include <functional>
 #include <GameEngineBase/GameEngineMath.h>
 #include "int2.h"
 #include "ContentsEnum.h"
+#include "FieldData.h"
 
 class FieldmapCity;
 class Fieldmap
@@ -44,6 +46,9 @@ public:
 
 	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
 	static void ChangeCity(const std::string_view& _CityName);
+
+	static void AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
+	static void EventCheck(const int2& _Index);
 
 private:
 	static FieldmapCity* CurCity;

@@ -38,4 +38,16 @@ private:
 	
 	// ImageName에는 .bmp를 빼고 입력
 	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
+
+	bool VaileTest() const
+	{
+		int b = 0;
+
+		return true;
+	}
+
+	void EventTest() const
+	{
+		int a = 0;
+	}
 };

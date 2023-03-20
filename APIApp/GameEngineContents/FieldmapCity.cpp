@@ -122,6 +122,6 @@ void FieldmapCity::Update(float _DeltaTime)
 	}
 	else
 	{
-		//CityRenderer->Off();
+		CityRenderer->Off();
 	}
 }
