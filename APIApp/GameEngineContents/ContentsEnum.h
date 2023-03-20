@@ -8,6 +8,7 @@ enum class RenderOrder
 	Monster,		 // 1
 	Player,			 // 2
 	DebugUI,
+	DebugText,
 	Field_Dialog,
 	Field_Dialog_Text,
 	Particle,

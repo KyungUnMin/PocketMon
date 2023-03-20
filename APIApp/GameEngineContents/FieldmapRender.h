@@ -1,16 +1,10 @@
 #pragma once
 #include <vector>
 #include <GameEngineCore/GameEngineActor.h>
+#include "TileDebugRender.h"
 
-class GameEngineRender;
 class FieldmapRender : public GameEngineActor
 {
-public:
-	enum class RenderType
-	{
-		Walkable,
-		GroundType
-	};
 public:
 	FieldmapRender();
 	~FieldmapRender();
@@ -21,26 +15,14 @@ public:
 	FieldmapRender& operator=(FieldmapRender&& _Other) noexcept = delete;
 
 	void RenderPosUpdate(const float4& _Pos);
-
-	inline void SetRenderType(RenderType _Type)
-	{
-		DebugType = _Type;
-	}
-
-	inline RenderType GetRenderType() const
-	{
-		return DebugType;
-	}
-
+	void RenderTypeSwitch(TileDebugRender::RenderType _DebugRenderType);
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
-	std::vector<std::vector<GameEngineRender*>> TileRenders;
-
-	RenderType DebugType = RenderType::Walkable;
+	std::vector<std::vector<TileDebugRender*>> TileDebugRenders;
 
 	float4 RendersSizeHalf = float4::Zero;
 	float4 CurPos = float4::Zero;

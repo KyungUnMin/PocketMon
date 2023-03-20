@@ -197,7 +197,9 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F1);
 		GameEngineInput::CreateKeyNoToupper("WalkableDebug", VK_F2);
 		GameEngineInput::CreateKeyNoToupper("FieldmapTypeDebug", VK_F3);
-		GameEngineInput::CreateKeyNoToupper("EventCheckDebug", VK_F5);
+		GameEngineInput::CreateKeyNoToupper("EventDebug", VK_F4);
+		GameEngineInput::CreateKeyNoToupper("EventCheck", VK_F5);
+		GameEngineInput::CreateKeyNoToupper("EventLog", VK_F6);
 
 		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
 		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);

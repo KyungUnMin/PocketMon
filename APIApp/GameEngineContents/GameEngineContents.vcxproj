@@ -203,6 +203,10 @@
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
+    <ClCompile Include="TileDebugRender.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -254,6 +258,10 @@
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
+    <ClInclude Include="TileDebugRender.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

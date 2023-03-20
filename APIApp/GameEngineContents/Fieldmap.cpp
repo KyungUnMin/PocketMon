@@ -139,3 +139,23 @@ void Fieldmap::EventCheck(const int2& _Index)
 
 	CurCity->EventCheck(_Index);
 }
+
+size_t Fieldmap::GetEventCount(const int2& _Index)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+	}
+	
+	return CurCity->GetEventCount(_Index);
+}
+
+void Fieldmap::ShowEventLog(const int2& _Index)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+	}
+
+	CurCity->ShowEventLog(_Index);
+}

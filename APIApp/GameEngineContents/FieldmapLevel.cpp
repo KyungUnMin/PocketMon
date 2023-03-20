@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
 
 #include "Fieldmap.h"
 #include "FieldmapCity.h"
@@ -9,6 +10,7 @@
 #include "FieldDialog.h"
 #include "int2.h"
 #include "FieldmapRender.h"
+#include "TileDebugRender.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -54,17 +56,24 @@ void FieldmapLevel::Loading()
 
 	{
 		Fieldmap::AddEvent("PalletTown", int2(22, 8), 
-			{.Name = "Test",
+			{.Name = "Test1",
 			.Order = 0, 
 			.VaildFunc = std::bind(&FieldmapLevel::VaileTest, this),
-			.EventFunc = std::bind(&FieldmapLevel::EventTest, this),
-			.Loop = true});
+			.EventFunc = std::bind(&FieldmapLevel::EventTest1, this),
+			.Loop = false});
+
+		Fieldmap::AddEvent("PalletTown", int2(22, 8),
+			{ .Name = "Test2",
+			.Order = 1,
+			.VaildFunc = std::bind(&FieldmapLevel::VaileTest, this),
+			.EventFunc = std::bind(&FieldmapLevel::EventTest2, this),
+			.Loop = false });
 	}
 
 	Fieldmap::ChangeCity("PalletTown");
 
 	MainFieldRender = CreateActor<FieldmapRender>();
-	MainFieldRender->Off();
+	MainFieldRender->On();
 		
 	ImageLoad();
 	
@@ -78,30 +87,24 @@ void FieldmapLevel::Update(float _DeltaTime)
 {
 	if (true == GameEngineInput::IsDown("WalkableDebug"))
 	{
-		if (FieldmapRender::RenderType::Walkable == MainFieldRender->GetRenderType())
-		{
-			MainFieldRender->OnOffSwtich();
-		}
-		else
-		{
-			MainFieldRender->SetRenderType(FieldmapRender::RenderType::Walkable);
-			MainFieldRender->On();
-		}
+		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::Walkable);
 	}
 
 	if (true == GameEngineInput::IsDown("FieldmapTypeDebug"))
 	{
-		if (FieldmapRender::RenderType::GroundType == MainFieldRender->GetRenderType())
-		{
-			MainFieldRender->OnOffSwtich();
-		}
-		else
-		{
-			MainFieldRender->SetRenderType(FieldmapRender::RenderType::GroundType);
-			MainFieldRender->On();
-		}
+		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::GroundType);
+	}
+
+	if (true == GameEngineInput::IsDown("EventDebug"))
+	{
+		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::Event);
 	}
 	
+	if (true == GameEngineInput::IsDown("EventLog"))
+	{
+		Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
+	}
+
 	if (true == GameEngineInput::IsDown("FreeCamera"))
 	{
 		IsCameraDebug = !IsCameraDebug;
@@ -153,7 +156,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainFieldDialog->OnOffSwtich();
 	}
 
-	if (true == GameEngineInput::IsDown("EventCheckDebug"))
+	if (true == GameEngineInput::IsDown("EventCheck"))
 	{
 		Fieldmap::EventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}

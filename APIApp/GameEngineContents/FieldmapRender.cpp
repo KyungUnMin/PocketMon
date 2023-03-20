@@ -20,6 +20,26 @@ void FieldmapRender::RenderPosUpdate(const float4& _Pos)
 	CurPos = _Pos;
 }
 
+void FieldmapRender::RenderTypeSwitch(TileDebugRender::RenderType _DebugRenderType)
+{
+	for (size_t y = 0; y < TileDebugRenders.size(); y++)
+	{
+		for (size_t x = 0; x < TileDebugRenders[y].size(); x++)
+		{
+			if (TileDebugRenders[y][x]->GetDebugType() == _DebugRenderType)
+			{
+				TileDebugRenders[y][x]->OnOffSwtich();
+			}
+			else
+			{
+				TileDebugRenders[y][x]->On();
+			}
+
+			TileDebugRenders[y][x]->SetDebugType(_DebugRenderType);
+		}
+	}
+}
+
 void FieldmapRender::Start()
 {
 	FieldSize = static_cast<int>(Fieldmap::TileSize);
@@ -31,32 +51,30 @@ void FieldmapRender::Start()
 	int RenderLengthX = (RenderSizeX * 2) + 1;
 	int RenderLengthY = (RenderSizeY * 2) + 1;
 
-	TileRenders.reserve(static_cast<size_t>(RenderLengthY));
+	TileDebugRenders.reserve(static_cast<size_t>(RenderLengthY));
 
 	RendersSizeHalf = float4(static_cast<float>(RenderLengthX) * FieldSizeHalf, static_cast<float>(RenderLengthY) * FieldSizeHalf);
 
-	for (size_t y = 0; y < TileRenders.capacity(); y++)
+	for (size_t y = 0; y < TileDebugRenders.capacity(); y++)
 	{
-		std::vector<GameEngineRender*> TempTileRenders;
+		std::vector<TileDebugRender*> TempTileRenders;
 		TempTileRenders.reserve(RenderLengthX);
 
 		for (size_t x = 0; x < TempTileRenders.capacity(); x++)
 		{
-			GameEngineRender* TileRender = CreateRender("DebugTilemap.BMP", RenderOrder::DebugUI);
+			TileDebugRender* TileRender = GetLevel()->CreateActor<TileDebugRender>();
 
 			float4 RenderScale = float4{ TileSize ,TileSize };
 			float4 RenderPos = -RendersSizeHalf 
 				+ FieldSizeHalfFloat4 
 				+ float4(static_cast<float>(x * FieldSize), static_cast<float>(y * FieldSize));
 
-			TileRender->SetFrame(1); 
-			TileRender->SetScale(RenderScale);
-			TileRender->SetPosition(RenderPos);
-			TileRender->On();
+			TileRender->SetPos(RenderPos);
+			TileRender->Off();
 			TempTileRenders.push_back(TileRender);
 		}
 
-		TileRenders.push_back(TempTileRenders);
+		TileDebugRenders.push_back(TempTileRenders);
 	}
 }
 
@@ -64,35 +82,17 @@ void FieldmapRender::Update(float _DeltaTime)
 {
 	int2 Index = Fieldmap::GetIndex(CurPos);
 	float4 TilePos = Fieldmap::GetPos(Index);
+	float4 CameraPos = GetLevel()->GetCameraPos();
 
 	SetPos(TilePos);
 
 	int2 RenderIndex = Index - int2(RenderSizeX, RenderSizeY);
 
-	for (size_t y = 0; y < TileRenders.size(); y++)
+	for (size_t y = 0; y < TileDebugRenders.size(); y++)
 	{
-		for (size_t x = 0; x < TileRenders[y].size(); x++)
+		for (size_t x = 0; x < TileDebugRenders[y].size(); x++)
 		{
-			switch (DebugType)
-			{
-			case FieldmapRender::RenderType::Walkable:
-				if (true == Fieldmap::Walkable(RenderIndex))
-				{
-					TileRenders[y][x]->SetFrame(0);
-				}
-				else
-				{
-					TileRenders[y][x]->SetFrame(1);
-				}
-				break;
-			case FieldmapRender::RenderType::GroundType:
-				TileRenders[y][x]->SetFrame(3 + static_cast<int>(Fieldmap::GetGroundType(RenderIndex)));
-				break;
-			default:
-				MsgAssert("잘못된 FieldmapRender DebugType 입니다");
-				break;
-			}
-
+			TileDebugRenders[y][x]->SetIndex(RenderIndex);
 			++RenderIndex.x;
 		}
 

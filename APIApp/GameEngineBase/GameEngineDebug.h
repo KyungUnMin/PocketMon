@@ -28,3 +28,4 @@ private:
 
 
 #define MsgAssert(MsgText) std::string ErrorText = MsgText; MessageBoxA(nullptr, ErrorText.c_str(), "Error", MB_OK); assert(false);
+#define DebugMsgBox(MsgText) std::string MsgboxText = MsgText; MessageBoxA(nullptr, MsgboxText.c_str(), "Debug", MB_OK);

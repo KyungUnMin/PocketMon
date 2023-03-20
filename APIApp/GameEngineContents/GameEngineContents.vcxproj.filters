@@ -86,6 +86,9 @@
     <ClCompile Include="TextActor.cpp">
       <Filter>FieldUI</Filter>
     </ClCompile>
+    <ClCompile Include="TileDebugRender.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -171,6 +174,9 @@
     </ClInclude>
     <ClInclude Include="TextActor.h">
       <Filter>FieldUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TileDebugRender.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

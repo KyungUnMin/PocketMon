@@ -42,7 +42,7 @@ public:
 		GroundType groundType = GroundType::Grass;
 		int RenderIndex = -1;
 
-		std::map<int, std::vector<FieldEvent>> EventList;
+		std::map<int, FieldEvent> EventList;
 	};
 
 public:
@@ -68,7 +68,8 @@ public:
 	void SetGroundData(const int2& _Index, GroundType _GroundData);
 
 	int GetRenderFrame(const int2& _Index) const;
-
+	size_t GetEventCount(const int2& _Index) const;
+	
 	size_t GetSizeX() const
 	{
 		return TileSizeX;
@@ -80,6 +81,8 @@ public:
 	}
 
 	bool OverlapCheck(const int2& _Index) const;
+
+	void ShowEventLog(const int2& _Index) const;
 
 protected:
 

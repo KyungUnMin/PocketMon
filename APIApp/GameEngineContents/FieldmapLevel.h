@@ -46,8 +46,13 @@ private:
 		return true;
 	}
 
-	void EventTest() const
+	void EventTest1() const
 	{
-		int a = 0;
+		DebugMsgBox("Call Event1\n");
+	}
+
+	void EventTest2() const
+	{
+		DebugMsgBox("Call Event2\n");
 	}
 };

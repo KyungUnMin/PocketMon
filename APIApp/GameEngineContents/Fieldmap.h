@@ -49,6 +49,8 @@ public:
 
 	static void AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
 	static void EventCheck(const int2& _Index);
+	static size_t GetEventCount(const int2& _Index);
+	static void ShowEventLog(const int2& _Index);
 
 private:
 	static FieldmapCity* CurCity;

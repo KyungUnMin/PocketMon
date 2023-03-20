@@ -59,20 +59,24 @@ void FieldData::AddEvent(const int2& _Index, const FieldEventParameter& _EventPa
 		MsgAssert("필드맵 시티 인덱스 밖에 이벤트를 생성하려 했습니다");
 	}
 
-	std::vector<FieldEvent>& OrderEventList = TileDatas[_Index.y][_Index.x].EventList[_EventParameter.Order];
+	std::map<int, FieldEvent>& EventListRef = TileDatas[_Index.y][_Index.x].EventList;
+
+	if (EventListRef.find(_EventParameter.Order) != EventListRef.end())
+	{
+		MsgAssert("같은 우선순위의 필드맵 이벤트를 생성하려 했습니다");
+	}
 
 	std::string UpperName = GameEngineString::ToUpper(_EventParameter.Name);
 
-	for (size_t i = 0; i < OrderEventList.size(); i++)
+	for (const std::pair<int, FieldEvent>& _Loop : EventListRef)
 	{
-		if (OrderEventList[i].Name == UpperName)
+		if (_Loop.second.Name == UpperName)
 		{
-			MsgAssert("같은 시티의 같은 필드맵 타일에 같은 오더 및 이름의 이벤트가 추가되었습니다");
-			return;
+			MsgAssert("같은 이름의 필드맵 이벤트를 생성하려 했습니다");
 		}
 	}
 
-	OrderEventList.push_back(FieldEvent(UpperName, _EventParameter.VaildFunc, _EventParameter.EventFunc, _EventParameter.Loop));
+	EventListRef[_EventParameter.Order] = FieldEvent(UpperName, _EventParameter.VaildFunc, _EventParameter.EventFunc, _EventParameter.Loop);
 }
 
 void FieldData::EventCheck(const int2& _Index)
@@ -82,41 +86,28 @@ void FieldData::EventCheck(const int2& _Index)
 		return;
 	}
 
-	std::map<int, std::vector<FieldEvent>>& OrederListRef = TileDatas[_Index.y][_Index.x].EventList;
+	std::map<int, FieldEvent>& OrederListRef = TileDatas[_Index.y][_Index.x].EventList;
 
-	std::map<int, std::vector<FieldEvent>>::iterator OrderLoopIter = OrederListRef.begin();
-	std::map<int, std::vector<FieldEvent>>::iterator OrderEndIter = OrederListRef.end();
+	std::map<int, FieldEvent>::iterator OrderLoopIter = OrederListRef.begin();
+	std::map<int, FieldEvent>::iterator OrderEndIter = OrederListRef.end();
 
 	while (OrderLoopIter != OrderEndIter)
 	{
-		std::vector<FieldEvent>& VecListRef = (*OrderLoopIter).second;
+		FieldEvent& EventRef = (*OrderLoopIter).second;
 
-		std::vector<FieldEvent>::iterator vecLoopIter = VecListRef.begin();
-
-		while (vecLoopIter != VecListRef.end())
+		if (true == EventRef.EvenetVaild())
 		{
-			if (true == vecLoopIter->EvenetVaild())
+			EventRef.MainEvent();
+
+			if (false == EventRef.Loop)
 			{
-				vecLoopIter->MainEvent();
-			
-				if (false == vecLoopIter->Loop)
-				{
-					vecLoopIter = VecListRef.erase(vecLoopIter);
-					continue;
-				}
+				OrderLoopIter = OrederListRef.erase(OrderLoopIter);
 			}
 
-			++vecLoopIter;
+			return;
 		}
 
-		if (0 == VecListRef.size())
-		{
-			OrderLoopIter = OrederListRef.erase(OrderLoopIter);
-		}
-		else
-		{
-			++OrderLoopIter;
-		}
+		++OrderLoopIter;
 	}
 }
 
@@ -170,6 +161,16 @@ int FieldData::GetRenderFrame(const int2& _Index) const
 	return TileDatas[_Index.y][_Index.x].RenderIndex;
 }
 
+size_t FieldData::GetEventCount(const int2& _Index) const
+{
+	if (true == OverlapCheck(_Index))
+	{
+		return 0;
+	}
+
+	return TileDatas[_Index.y][_Index.x].EventList.size();
+}
+
 bool FieldData::OverlapCheck(const int2& _Index) const
 {
 	if (0 > _Index.x || _Index.x >= TileSizeX ||
@@ -179,4 +180,28 @@ bool FieldData::OverlapCheck(const int2& _Index) const
 	}
 
 	return false;
+}
+
+void FieldData::ShowEventLog(const int2& _Index) const
+{
+	if (true == OverlapCheck(_Index))
+	{
+		DebugMsgBox("Event Empty");
+	}
+
+	std::string Result;
+
+	for (const std::pair<int, FieldEvent>& Loop : TileDatas[_Index.y][_Index.x].EventList)
+	{
+		Result += "Event : " + Loop.second.Name + "\n";
+	}
+
+	if ("" == Result)
+	{
+		DebugMsgBox("Event Empty");
+	}
+	else
+	{
+		DebugMsgBox(Result);
+	}
 }

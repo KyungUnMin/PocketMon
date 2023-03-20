@@ -47,6 +47,16 @@ public:
 		MyTilemapData.EventCheck(_Index);
 	}
 
+	inline size_t GetEventCount(const int2& _Index) const
+	{
+		return MyTilemapData.GetEventCount(_Index);
+	}
+
+	inline void ShowEventLog(const int2& _Index) const
+	{
+		return MyTilemapData.ShowEventLog(_Index);
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 
