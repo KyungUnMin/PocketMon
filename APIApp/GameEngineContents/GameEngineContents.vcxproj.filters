@@ -104,6 +104,9 @@
     <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClCompile>
+    <ClCompile Include="FieldMainMenu.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -207,6 +210,9 @@
     </ClInclude>
     <ClInclude Include="TileDebugRender.h">
       <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldMainMenu.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
