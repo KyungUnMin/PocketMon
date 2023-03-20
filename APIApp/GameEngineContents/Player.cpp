@@ -67,7 +67,7 @@ void Player::Update(float _DeltaTime)
 	// Walkable 반환값 true = 이동가능 false = 이동 불가능
 	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime)))
 	{
-		SetMove(MoveDir); //STATE에서받은값으로 움직임 제어
+		SetMove(MoveDir* _DeltaTime); //STATE에서받은값으로 움직임 제어
 	}
 	UpdateState(_DeltaTime); //움직임관리
 	NPCtalkValueSet(); //NPC방향세팅용

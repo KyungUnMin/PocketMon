@@ -108,18 +108,16 @@ void Player::MoveUpdate(float _Time)
 	}
 
 	int2 IndexValue = Fieldmap::GetIndex(GetPos());
-	int2 NextIndex = int2(IndexValue.x+1 , IndexValue.y);
 
 	float4 MoveRange = Fieldmap::GetPos(IndexValue);
-	float4 NextPos = Fieldmap::GetPos(NextIndex);
+	int2 NextIndex = int2(IndexValue.x+1 , IndexValue.y);
+  	float4 NextPos = Fieldmap::GetPos(NextIndex);
 
-	//??
-	float SaveYvalue = MoveRange.y;
 	if (true == GameEngineInput::IsPress("LeftMove")) 
 	{
 		MoveRange = float4::Left;
 	}
-
+	
 
 	else if (true == GameEngineInput::IsPress("RightMove"))
 	{
@@ -136,7 +134,7 @@ void Player::MoveUpdate(float _Time)
 	}
 
 	
-	MoveDir = MoveRange;
+	MoveDir = MoveRange* MoveTile;
 
 
 }

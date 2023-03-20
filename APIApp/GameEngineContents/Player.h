@@ -84,7 +84,7 @@ private:
 
 	
 	//////////Speed&Pos//////////
-	float MoveTile = 64.0f;
+	float MoveTile = 100.0f;
 	float4 MoveDir = float4::Zero;
 	int2 MoveSet = int2::Zero;
 	
