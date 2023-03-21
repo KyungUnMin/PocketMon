@@ -82,7 +82,10 @@ void Player::IdleUpdate(float _Time)
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
 		ChangeState(PlayerState::MOVE);
+		return;
 	}
+
+
 }
 void Player::IdleEnd() {
 
@@ -91,61 +94,58 @@ void Player::IdleEnd() {
 void Player::MoveStart()
 {
 	DirCheck("Move");
+
+	int2 IndexValue = Fieldmap::GetIndex(GetPos());
+	float4 MoveRange = Fieldmap::GetPos(IndexValue);
+
+	int2 NextXplusIndex = int2(IndexValue.x + 1, IndexValue.y);
+	int2 NextXminusIndex = int2(IndexValue.x - 1, IndexValue.y);
+	int2 NextYplusIndex = int2(IndexValue.x, IndexValue.y + 1);
+	int2 NextYMinusIndex = int2(IndexValue.x, IndexValue.y - 1);
+
+	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
+	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
+	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
+	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
+
+	StartPos = GetPos();
+
+	if (true == GameEngineInput::IsPress("LeftMove"))
+	{
+		EndPos = StartPos + (MoveRange-NextPos1);
+	}
+	else if (true == GameEngineInput::IsPress("RightMove"))
+	{
+		EndPos = StartPos + (MoveRange-NextPos2);
+	}
+
+	else if (true == GameEngineInput::IsPress("UpMove"))
+	{
+		EndPos = StartPos + (MoveRange - NextPos3);
+	}
+	else if (true == GameEngineInput::IsPress("DownMove"))
+	{
+		EndPos = StartPos + (MoveRange - NextPos4);
+	}
+	
 }
 void Player::MoveUpdate(float _Time)
 {
 	DirCheck("Move");
-	if (
-		false == GameEngineInput::IsDown("LeftMove") &&
-		false == GameEngineInput::IsDown("RightMove") &&
-		false == GameEngineInput::IsDown("DownMove") &&
-		false == GameEngineInput::IsDown("UpMove")
-		)
-	{
-		ChangeState(PlayerState::IDLE);
+	PlayerTime+=_Time;
 
-		return;
-	}
+	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*2);
+	 SetPos(POS); 
+	 if (PlayerTime > 0.5f)
+	 {
+		 ChangeState(PlayerState::IDLE);
+	 }
 
-	int2 IndexValue = Fieldmap::GetIndex(GetPos());
-
-	float4 MoveRange = Fieldmap::GetPos(IndexValue);
-	int2 NextXplusIndex = int2(IndexValue.x + 1, IndexValue.y);
-	int2 NextXminusIndex = int2(IndexValue.x - 1, IndexValue.y);
-
-	int2 NextYplusIndex = int2(IndexValue.x, IndexValue.y+1);
-	int2 NextYMinusIndex = int2(IndexValue.x, IndexValue.y-1);
-
-  	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
-	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
-	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
-	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
-	//임시
-	
-		if (true == GameEngineInput::IsPress("LeftMove"))
-		{
-			SetPos(NextPos2);
-		}
-		else if (true == GameEngineInput::IsPress("RightMove"))
-		{
-			SetPos(NextPos1);
-		}
-
-		else if (true == GameEngineInput::IsPress("UpMove"))
-		{
-			SetPos(NextPos4);
-		}
-		else if (true == GameEngineInput::IsPress("DownMove"))
-		{
-			SetPos(NextPos3);
-		}
 }
-	
-
-
-	//플레이어인덱스를받고 업데이트에서돌
 
 void Player::MoveEnd()
 {
+	PlayerTime = 0.0f;
 
+	
 }

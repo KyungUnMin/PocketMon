@@ -55,27 +55,32 @@ void Player::Start()
 		BikePlayers->Off();
 
 	}
+	{
+		RedCollision = CreateCollision(CollisionOrder::Player);
+		RedCollision->SetScale({ 64, 64 });
+		RedCollision->SetPosition({ 0,0 });
+		RedCollision->On();
+		RedCollision->SetDebugRenderType(CollisionType::CT_Rect);
+	}
 	ChangeState(PlayerState::IDLE);
 }
 
 void Player::Update(float _DeltaTime)
 {
-	 ChangeLevelCheck();
+	UpdateTime += _DeltaTime;
+	
+		
 	 if (true == PlayerMoveBool)
 	 {
 		 UpdateState(_DeltaTime); //움직임관리
 	 }
-	// Walkable 반환값 true = 이동가능 false = 이동 불가능
+	
 	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime))&&true== PlayerMoveBool)
 	{
-		//SetMove(MoveDir); //STATE에서받은값으로 움직임 제어
+		//UpdateState(_DeltaTime); //움직임관리
 	}
-	if (true == PlayerMoveBool)
-	{
-		UpdateState(_DeltaTime); //움직임관리
-	}
-	
 	NPCtalkValueSet(); //NPC방향세팅용
+	ChangeLevelCheck();
 }
 
 //맵 충돌 관리        
@@ -174,4 +179,8 @@ void Player::Render(float _DeltaTime)
 		PlayerPos.iy() - 5,
 		PlayerPos.ix() + 5,
 		PlayerPos.iy() + 5);
+	if (GameEngineInput::IsPress("CollisionRender"))
+	{
+		RedCollision->DebugRender();
+	}
 }

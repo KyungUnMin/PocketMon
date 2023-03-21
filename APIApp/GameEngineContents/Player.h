@@ -66,9 +66,11 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 private:
+	//플레이어Render
 	GameEngineRender* Players = nullptr;
 	GameEngineRender* BikePlayers = nullptr;
-
+	//플레이어Collision
+	GameEngineCollision* RedCollision = nullptr;
 
 	std::string DirString = "Right_";
 	PlayerState StateValue = PlayerState::IDLE;
@@ -88,16 +90,28 @@ private:
 	void MoveEnd();
 
 	
+
+
+	//미완성 값들
 	//////////Speed&Pos//////////
 	float MoveTile = 100.0f;
 	float4 MoveDir = float4::Zero;
 	int2 MoveSet = int2::Zero;
+	/////////////////////////////
 	
 
+
+
+	float4 StartPos = float4::Zero;
+	float4 EndPos = float4::Zero;
+
+
+	//플레이어<->NPC 방향제어enum class
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
-
-
+	//플레이어 이동제어 Bool값
 	bool PlayerMoveBool = true;
 
+	float PlayerTime = 0.0f;
+	float UpdateTime = 0.0f;
 };
 
