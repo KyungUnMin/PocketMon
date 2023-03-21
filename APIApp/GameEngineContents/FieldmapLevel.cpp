@@ -17,7 +17,7 @@
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
-#include "MoveMapFadeEffect.h"
+//#include "MoveMapFadeEffect.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -226,7 +226,7 @@ void FieldmapLevel::Loading()
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
-	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
+	//MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -302,10 +302,10 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainPlayer->On();
 	}
 	
-	if (true == GameEngineInput::IsDown("FieldDialogSwitch"))
-	{
-		MainMoveMapFadeEffect->OnOffSwtich();
-	}
+	//if (true == GameEngineInput::IsDown("FieldDialogSwitch"))
+	//{
+	//	MainMoveMapFadeEffect->OnOffSwtich();
+	//}
 
 	if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
 	{
