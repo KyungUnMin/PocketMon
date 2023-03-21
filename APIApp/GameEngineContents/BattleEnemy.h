@@ -7,7 +7,7 @@ class BattleMonsterBase;
 class BattleEnemy : public BattleTrainerBase
 {
 public:
-	static BattleEnemy* NpcPtr;
+	static BattleEnemy* EnemyPtr;
 
 	BattleEnemy();
 	~BattleEnemy() override;

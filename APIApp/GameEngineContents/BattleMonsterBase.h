@@ -1,9 +1,17 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 
-class PokeDataBase;
 class GameEngineLevel;
+class GameEngineRender;
+class PokeDataBase;
 enum class PokeNumber;
+
+enum class BattleMonsterType
+{
+	PlayerMon,
+	WildMon,
+	NPCMon,
+};
 
 class BattleMonsterBase : public GameEngineActor
 {
@@ -11,17 +19,15 @@ public:
 	static BattleMonsterBase* CreateMonster(
 		GameEngineLevel* _Level, 
 		PokeNumber _MonType,
-		bool _IsPlayerMonster);
+		BattleMonsterType _OwnerType);
 
 	BattleMonsterBase();
-	~BattleMonsterBase() override;
+	virtual ~BattleMonsterBase() = 0;
 
 	BattleMonsterBase(const BattleMonsterBase& _Other) = delete;
 	BattleMonsterBase(BattleMonsterBase&& _Other) noexcept = delete;
 	BattleMonsterBase& operator=(const BattleMonsterBase& _Other) = delete;
 	BattleMonsterBase& operator=(const BattleMonsterBase&& _Other) noexcept = delete;
-
-	virtual void Init(bool _IsPlayerMonster) = 0;
 
 	inline PokeDataBase* GetDB()
 	{
@@ -31,14 +37,32 @@ public:
 protected:
 	void Update(float _DeltaTime) override;
 
-private:
-	PokeDataBase* DbPtr = nullptr;
-	bool IsPlayerMonter = true;
-	const float4 Offset = float4{ 0.f, -50.f };
-
-	inline void SetTeam(bool _IsPlayerMonter)
+	inline GameEngineRender* SetShadow(GameEngineRender* _ShadowRender)
 	{
-		IsPlayerMonter = _IsPlayerMonter;
+		AppearRender = _ShadowRender;
 	}
+
+	
+
+private:
+	BattleMonsterType OwnerType = BattleMonsterType::WildMon;
+	PokeDataBase* DbPtr = nullptr;
+
+	GameEngineRender* AppearRender = nullptr;
+	const float4 StartAlpha = float4{ 100.f, 0.f };
+
+	enum class State
+	{
+		Move,
+		Appear,
+		Ready
+	};
+
+	State CurState = State::Appear;
+	float AppearTime = 0.f;
+
+	void RenderCreate();
+	void Update_Move();
+	void Update_Appear();
 };
 

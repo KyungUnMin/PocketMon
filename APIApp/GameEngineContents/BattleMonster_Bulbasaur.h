@@ -14,12 +14,9 @@ public:
 	BattleMonster_Bulbasaur& operator=(const BattleMonster_Bulbasaur& _Other) = delete;
 	BattleMonster_Bulbasaur& operator=(const BattleMonster_Bulbasaur&& _Other) noexcept = delete;
 
-	void Init(bool _IsPlayerMonster) override;
-
 protected:
 
-
 private:
-	GameEngineRender* RenderPtr = nullptr;
+	
 };
 

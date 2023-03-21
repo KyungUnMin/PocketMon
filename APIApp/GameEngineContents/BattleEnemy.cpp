@@ -7,18 +7,18 @@
 #include "BattleMonsterBase.h"
 #include "PokeDataBase.h"
 
-BattleEnemy* BattleEnemy::NpcPtr = nullptr;
+BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 
 BattleEnemy::BattleEnemy()
 {
-	NpcPtr = this;
+	EnemyPtr = this;
 }
 
 BattleEnemy::~BattleEnemy()
 {
-	if (this == NpcPtr)
+	if (this == EnemyPtr)
 	{
-		NpcPtr = nullptr;
+		EnemyPtr = nullptr;
 	}
 }
 
@@ -94,5 +94,5 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	//Monster = BattleMonsterBase::CreateMonster(GetLevel(), MonsterNumsters[MonIndex], false);
 
 	//юс╫ц
-	Monster = BattleMonsterBase::CreateMonster(GetLevel(), PokeNumber::Bulbasaur, false);
+	Monster = BattleMonsterBase::CreateMonster(GetLevel(), PokeNumber::Bulbasaur, BattleMonsterType::WildMon);
 }

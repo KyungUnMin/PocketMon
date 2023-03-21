@@ -51,9 +51,9 @@ void CenterLevel::Loading()
 		Dir.Move("Monster");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurBack.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurFront.bmp"));
-
-
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurShadow.bmp"));
 		
+
 		Dir.MoveParentToDirectory("Battle");
 	}
 
