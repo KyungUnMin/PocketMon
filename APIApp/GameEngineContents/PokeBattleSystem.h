@@ -2,6 +2,14 @@
 
 #include "PokeDataBase.h"
 
+enum class BattleScript
+{
+	Nothing,          // 아무것도 아님 (노말)
+	Insignificant,    // 효과는 미미했다!
+	Critical,         // 급소에 맞았다!
+	Amazing,          // 효과는 굉장했다!
+};
+
 // 설명 :
 class PokeBattleSystem
 {
@@ -16,13 +24,14 @@ public:
 	PokeBattleSystem& operator=(const PokeBattleSystem& _Other) = delete;
 	PokeBattleSystem& operator=(PokeBattleSystem&& _Other) noexcept = delete;
 
-	static void Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static BattleScript Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 
 protected:
 
 private:
 	static int Damage;
 	static bool IsSpecial;
+	static BattleScript ScriptValue;
 
 	static float Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 

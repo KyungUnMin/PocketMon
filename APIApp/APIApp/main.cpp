@@ -19,7 +19,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	int b = NewP1->GetMonsterMaxHP_int();
 	int bb = NewP1->GetMonsterCurrentHP();
 
-	PokeBattleSystem::Battle(NewP2, 3, NewP1);
+	BattleScript aa = PokeBattleSystem::Battle(NewP2, 1, NewP1);
 
 	int bbc = NewP1->GetMonsterCurrentHP();
 

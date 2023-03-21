@@ -9,6 +9,7 @@
 
 int PokeBattleSystem::Damage = 0;
 bool PokeBattleSystem::IsSpecial = false;
+BattleScript PokeBattleSystem::ScriptValue = BattleScript::Nothing;
 
 PokeBattleSystem::PokeBattleSystem() 
 {
@@ -18,12 +19,16 @@ PokeBattleSystem::~PokeBattleSystem()
 {
 }
 
-void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
 {
+	Damage = 0;
+	IsSpecial = false;
+	ScriptValue = BattleScript::Nothing;
+
 	if (_AttackerSkillNumber > 4 || _AttackerSkillNumber <= 0)
 	{
 		MsgAssert("스킬은 1, 2, 3, 4번만 사용할 수 있습니다.");
-		return;
+		return ScriptValue;
 	}
 
 	float Cal1 = (_Attacker->GetMonsterLevel_float() * 2 / 5) + 2;
@@ -64,6 +69,8 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 	Damage = static_cast<int>(round(step7 / 50));
 
 	_Defender->MinusMonsterCurrentHP(Damage);
+
+	return ScriptValue;
 }
 
 float PokeBattleSystem::Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
@@ -430,6 +437,7 @@ float PokeBattleSystem::CriticalRand()
 	if (1 == Rand)
 	{
 		Criticalvalue = 1.5f;
+		ScriptValue = BattleScript::Critical;
 	}
 	else
 	{
@@ -485,6 +493,7 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 6:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -498,9 +507,11 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 6:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 11:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -514,15 +525,19 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 2:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 6:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 9:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 11:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -536,9 +551,11 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 2:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 9:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -552,15 +569,19 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 6:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 9:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 10:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 11:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -574,15 +595,19 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 6:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 9:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 10:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 11:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -596,15 +621,19 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 6:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 9:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 10:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 11:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		default:
 			correctionvalue = 1.f;
@@ -618,18 +647,23 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 		{
 		case 2:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 6:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 9:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		case 10:
 			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
 			break;
 		case 11:
 			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
 			break;
 		default:
 			correctionvalue = 1.f;
