@@ -41,8 +41,10 @@ public:
 	void Render(float _DeltaTime);
 	void NPCtalkValueSet();
 	void ChangeLevelCheck();
+
 	void PlayerKeyLoad();
-	void PlayerImageLoad();
+	void PlayerRenderLoad();
+	void PlayerCollisionSet();
 
 	float GetPlayerMoveTile()
 	{
