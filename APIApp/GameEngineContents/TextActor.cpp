@@ -30,7 +30,6 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 			Str[_Str.size() - 1 - i] = _Str[i];
 		}
 	}
-
 	for (size_t y = 0; y < TextRender.size(); y++)
 	{
 		for (size_t x = 0; x < TextRender[y].size(); x++)
@@ -63,43 +62,36 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 				}
 				else
 				{
-					//switch (Str[StrIndex])
-					//{
-					//case '!':
-					//	break;
-					//case '?':
-					//	break;
-					//case '/':
-					//	break;
-					//case '-':
-					//	break;
-					//case '"':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//case '!':
-					//	break;
-					//default:
-					//	break;
-					//}
-
-					MsgAssert("아직 생각해보지 않은 글자입니다.");
+					switch (Str[StrIndex])
+					{
+					case '!':
+						TextRender[y][x]->SetFrame(81);
+						break;
+					case '?':
+						TextRender[y][x]->SetFrame(82);
+						break;
+					case '/':
+						TextRender[y][x]->SetFrame(85);
+						break;
+					case '-':
+						TextRender[y][x]->SetFrame(86);
+						break;
+						//case '…':
+						//	TextRender[y][x]->SetFrame(91);
+						//	break;
+					case '.':
+						TextRender[y][x]->SetFrame(92);
+						break;
+					case ',':
+						TextRender[y][x]->SetFrame(93);
+						break;
+					case '@':
+						TextRender[y][x]->SetFrame(94);
+						break;
+					default:
+						MsgAssert("아직 생각해보지 않은 글자입니다.");
+						break;
+					}
 				}
 			}
 			StrIndex++;
@@ -148,12 +140,18 @@ bool TextActor::IsAnimationEnd()
 
 void TextActor::SetFont(const std::string_view& _Font, int _Order)
 {
-	TextRender.resize(LineCount);
-	LineRenderIndex.resize(LineCount);
+	if (LineCount != TextRender.size())
+	{
+		TextRender.resize(LineCount);
+		LineRenderIndex.resize(LineCount);
+	}
 
 	for (size_t y = 0; y < TextRender.size(); y++)
 	{
-		TextRender[y].resize(OneLineSize);
+		if (OneLineSize != TextRender[y].size())
+		{
+			TextRender[y].resize(OneLineSize);
+		}
 		for (size_t x = 0; x < TextRender[y].size(); x++)
 		{
 			TextRender[y][x] = CreateRender(_Font, _Order);

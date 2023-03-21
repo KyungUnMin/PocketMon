@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 enum class BagSpace
 {
@@ -22,13 +23,14 @@ private:
 	{
 		friend PlayerBag;
 	public:
-		Item(std::string_view _Name, std::string_view _Information, int _ItemCode)
-		:Name(_Name), Information(_Information), ItemCode(_ItemCode){}
+		Item(std::string_view _Name, std::string_view _Information, int _ItemCode, bool _IsBattleItem)
+		:Name(_Name), Information(_Information), ItemCode(_ItemCode), IsBattleItem(_IsBattleItem){}
 
 		std::string_view Name;
 		std::string_view Information;
 		int ItemCode;
 		int Num = 1;	// 개수
+		bool IsBattleItem;	// 배틀때 사용가능여부
 	};
 public:
 	// constructer destructer
@@ -42,6 +44,7 @@ public:
 	}
 	void AddItem(int _ItemCode);
 	void RemoveItem(int _ItemCode);
+	void BattleOn();
 
 	// delete Function
 	PlayerBag(const PlayerBag& _Other) = delete;
@@ -57,10 +60,14 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
 	GameEngineLevel* PrevLevel = nullptr;
+	BagSpace CurrentSpace = BagSpace::Items;
 	const int CancelCode = 29;
+	int ItemCode = 0;
+	size_t CurrentCursor = 0;
+	size_t CurrentSelectCursor = 0;
+	size_t SelectSize = 0;
 	bool IsBattle = false;
 	bool IsItemSelect = false;
-	BagSpace CurrentSpace = BagSpace::Items;
 	
 
 	// _____________Renders
@@ -76,6 +83,7 @@ private:
 	GameEngineRender* UpArrow = nullptr;		// 아이템 목록 - 위 화살표
 	GameEngineRender* DownArrow = nullptr;		// 아이템 목록 - 아래 화살표
 	GameEngineRender* CursorRender = nullptr;	// 아이템 목록 - 선택중인 아이템 표시
+	GameEngineRender* SelectCursorRender = nullptr;
 
 	std::vector<Item> Items = std::vector<Item>();
 	std::vector<Item> KeyItems = std::vector<Item>();
@@ -88,8 +96,10 @@ private:
 	TextActor* SelectText = nullptr;
 	TextActor* ItemInfo = nullptr;
 
-	size_t CurrentCursor = 0;
-	int ItemCode = 0;
+	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(4);
+
+
+
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();
@@ -100,6 +110,14 @@ private:
 	void CursorMove();
 	void CursorMove(int _Cursor);
 
-	void ItemSelect();
 	void ItemUse();
+
+	void SelectOn();
+	void SelectOff();
+	void SelectUp();
+	void SelectDown();
+	void SelectMove();
+	void SelectMenu();
+
+	void Cancel();
 };

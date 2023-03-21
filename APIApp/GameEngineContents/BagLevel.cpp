@@ -20,11 +20,12 @@ void BagLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("LevelChange1"))
 	{
 		PlayerBag::MainBag->AddItem(0);
+		PlayerBag::MainBag->AddItem(25);
 		return;
 	}
-	if (true == GameEngineInput::IsDown("LevelChange1"))
+	if (true == GameEngineInput::IsDown("LevelChange2"))
 	{
-		PlayerBag::MainBag->RemoveItem(0);
+		PlayerBag::MainBag->BattleOn();
 		return;
 	}
 }
