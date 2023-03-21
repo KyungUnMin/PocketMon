@@ -547,6 +547,7 @@ void PlayerBag::ItemUse()
 	{
 	case BagSpace::Items:
 		// 포켓몬 레벨로
+		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 		break;
 	case BagSpace::KeyItems:
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
@@ -561,6 +562,8 @@ void PlayerBag::ItemUse()
 }
 void PlayerBag::ItemGive()
 {
+	// 포켓몬 레벨로
+	PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 }
 void PlayerBag::Cancel()
 {

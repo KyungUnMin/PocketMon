@@ -169,7 +169,7 @@ void CenterLevel::Loading()
 	{
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
-		Dir.Move("FieldUI_KKH");
+		Dir.Move("BagUI");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_Back.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_CurrentArrow.bmp"))->Cut(2,1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bag_LeftArrow.bmp"));
@@ -184,6 +184,25 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBox.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Items.bmp"))->Cut(15,2);
+
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
+		Dir.Move("PokemonUI");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonUI_Back.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("HPBar.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBar.bmp"))->Cut(1,2);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CancelButton.bmp"))->Cut(2,1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gender.bmp"))->Cut(2,1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainPokemon.bmp"))->Cut(2,1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SubPokemon.bmp"))->Cut(2,1);
+		Dir.Move("Pokemon");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mankey_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle_mini.bmp"))->Cut(2, 1);
 	}
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
