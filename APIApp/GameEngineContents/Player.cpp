@@ -61,9 +61,10 @@ void Player::Start()
 void Player::Update(float _DeltaTime)
 {
 	 ChangeLevelCheck();
-	
-
-	
+	 if (true == PlayerMoveBool)
+	 {
+		 UpdateState(_DeltaTime); //움직임관리
+	 }
 	// Walkable 반환값 true = 이동가능 false = 이동 불가능
 	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime))&&true== PlayerMoveBool)
 	{
@@ -73,6 +74,7 @@ void Player::Update(float _DeltaTime)
 	{
 		UpdateState(_DeltaTime); //움직임관리
 	}
+	
 	NPCtalkValueSet(); //NPC방향세팅용
 }
 
