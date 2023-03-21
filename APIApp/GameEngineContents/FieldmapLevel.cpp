@@ -64,7 +64,7 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapDoubleDoor>("PewterCityToGym", "PewterCity", int2(15, 16), "MoveGym");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToMarket", "PewterCity", int2(28, 18), "MoveMarket");
 			CreateDoor<FieldmapEmptyDoor>("PewterCityToMuseum", "PewterCity", int2(17, 7), "MoveMuseum");
-			CreateDoor<FieldmapWoodDoor>("PewterCityToHouse001", "PewterCity", int2(11, 13), "MoveHouse001");
+			CreateDoor<FieldmapWoodDoor>("PewterCityToHouse001", "PewterCity", int2(33, 11), "MoveHouse001");
 			CreateDoor<FieldmapWoodDoor>("PewterCityToHouser002", "PewterCity", int2(9, 30), "MoveHouse002");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToPoketmonCenter", "PewterCity", int2(17, 25), "MovePokemonCenter");
 		}
@@ -158,58 +158,58 @@ void FieldmapLevel::Loading()
 		}
 
 		{
-			LinkDoor("PalletTownToHouse", "");
-			LinkDoor("PalletTownToHome", "");
-			LinkDoor("PalletTownToOffice", "");
-
-			LinkDoor("ViridianCityToHouse001", "");
-			LinkDoor("ViridianCityToHouse002", "");
-			LinkDoor("ViridianCityToMarket", "");
-			LinkDoor("ViridianCityToPokemonCenter", "");
-
-			LinkDoor("Route2DownToViridianForest001", "");
-			LinkDoor("Route2DownToViridianForest002", "");
-			LinkDoor("Route2UpToViridianForest001", "");
-			LinkDoor("Route2UpToViridianForest002", "");
-
-			LinkDoor("PewterCityToGym", "");
-			LinkDoor("PewterCityToMarket", "");
-			LinkDoor("PewterCityToMuseum", "");
-			LinkDoor("PewterCityToHouse001", "");
-			LinkDoor("PewterCityToHouser002", "");
-			LinkDoor("PewterCityToPoketmonCenter", "");
-
-			LinkDoor("HomeToPalletTown", "");
-			LinkDoor("HomeToSecond", "");
-			LinkDoor("HomeSecondToFirst", "");
-
-			LinkDoor("OfficeToPalletTown", "");
-
-			LinkDoor("House001ToPalletTown", "");
-
-			LinkDoor("PokemonCenterToViridianCity", "");
-			LinkDoor("MarketToViridianCity", "");
-			LinkDoor("House001ToViridianCity", "");
-			LinkDoor("House002ToViridianCity", "");
-
-			LinkDoor("ViridianForestToRoute2Up001", "");
-			LinkDoor("ViridianForestToRoute2Up002", "");
-			LinkDoor("ViridianForestToRoute2Up003", "");
-
-			LinkDoor("ViridianForestToRoute2Down001", "");
-			LinkDoor("ViridianForestToRoute2Down002", "");
-			LinkDoor("ViridianForestToRoute2Down003", "");
-
-			LinkDoor("GymToPewterCity", "");
-			LinkDoor("MarketToPewterCity", "");
-			LinkDoor("Museum1FToPewterCity", "");
-
-			LinkDoor("Museum1FToMuseum2F", "");
-			LinkDoor("Museum2FToMuseum1F", "");
-
-			LinkDoor("House001ToPewterCity", "");
-			LinkDoor("House002ToPewterCity", "");
-			LinkDoor("PokemonCenterToPewterCity", "");
+			LinkDoor("PalletTownToHouse", "House001ToPalletTown");
+			LinkDoor("PalletTownToHome", "HomeToPalletTown");
+			LinkDoor("PalletTownToOffice", "OfficeToPalletTown");
+			
+			LinkDoor("ViridianCityToHouse001", "House001ToViridianCity");
+			LinkDoor("ViridianCityToHouse002", "House002ToViridianCity");
+			LinkDoor("ViridianCityToMarket", "MarketToViridianCity");
+			LinkDoor("ViridianCityToPokemonCenter", "PokemonCenterToViridianCity");
+			
+			LinkDoor("Route2DownToViridianForest001", "ViridianForestToRoute2Down002");
+			LinkDoor("Route2DownToViridianForest002", "ViridianForestToRoute2Down002");
+			LinkDoor("Route2UpToViridianForest001", "ViridianForestToRoute2Up002");
+			LinkDoor("Route2UpToViridianForest002", "ViridianForestToRoute2Up002");
+			
+			LinkDoor("PewterCityToGym", "GymToPewterCity");
+			LinkDoor("PewterCityToMarket", "MarketToPewterCity");
+			LinkDoor("PewterCityToMuseum", "Museum1FToPewterCity");
+			LinkDoor("PewterCityToHouse001", "House001ToPewterCity");
+			LinkDoor("PewterCityToHouser002", "House002ToPewterCity");
+			LinkDoor("PewterCityToPoketmonCenter", "PokemonCenterToPewterCity");
+			
+			LinkDoor("HomeToPalletTown", "PalletTownToHome");
+			LinkDoor("HomeToSecond", "HomeSecondToFirst");
+			LinkDoor("HomeSecondToFirst", "HomeToSecond");
+			
+			LinkDoor("OfficeToPalletTown", "PalletTownToOffice");
+			
+			LinkDoor("House001ToPalletTown", "PalletTownToHouse");
+			
+			LinkDoor("PokemonCenterToViridianCity", "ViridianCityToPokemonCenter");
+			LinkDoor("MarketToViridianCity", "ViridianCityToMarket");
+			LinkDoor("House001ToViridianCity", "ViridianCityToHouse001");
+			LinkDoor("House002ToViridianCity", "ViridianCityToHouse002");
+			
+			LinkDoor("ViridianForestToRoute2Up001", "Route2UpToViridianForest002");
+			LinkDoor("ViridianForestToRoute2Up002", "Route2UpToViridianForest002");
+			LinkDoor("ViridianForestToRoute2Up003", "Route2UpToViridianForest002");
+			
+			LinkDoor("ViridianForestToRoute2Down001", "Route2DownToViridianForest002");
+			LinkDoor("ViridianForestToRoute2Down002", "Route2DownToViridianForest002");
+			LinkDoor("ViridianForestToRoute2Down003", "Route2DownToViridianForest002");
+			
+			LinkDoor("GymToPewterCity", "PewterCityToGym");
+			LinkDoor("MarketToPewterCity", "PewterCityToMarket");
+			LinkDoor("Museum1FToPewterCity", "PewterCityToMuseum");
+			
+			LinkDoor("Museum1FToMuseum2F", "Museum2FToMuseum1F");
+			LinkDoor("Museum2FToMuseum1F", "Museum1FToMuseum2F");
+			
+			LinkDoor("House001ToPewterCity", "PewterCityToHouse001");
+			LinkDoor("House002ToPewterCity", "PewterCityToHouser002");
+			LinkDoor("PokemonCenterToPewterCity", "PewterCityToPoketmonCenter");
 		}
 	}
 

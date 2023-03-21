@@ -131,6 +131,21 @@
     <ClCompile Include="PokemonUI.cpp">
       <Filter>FieldUI\PokemonUI</Filter>
     </ClCompile>
+    <ClCompile Include="FieldmapDoubleDoor.cpp">
+      <Filter>Map\Actor\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="DoorActorBase.cpp">
+      <Filter>Map\Actor\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapWoodDoor.cpp">
+      <Filter>Map\Actor\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapSingleDoor.cpp">
+      <Filter>Map\Actor\Door</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapEmptyDoor.cpp">
+      <Filter>Map\Actor\Door</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -262,6 +277,21 @@
     <ClInclude Include="PokemonUI.h">
       <Filter>FieldUI\PokemonUI</Filter>
     </ClInclude>
+    <ClInclude Include="FieldmapDoubleDoor.h">
+      <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="DoorActorBase.h">
+      <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapWoodDoor.h">
+      <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapSingleDoor.h">
+      <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapEmptyDoor.h">
+      <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -365,6 +395,9 @@
     </Filter>
     <Filter Include="FieldUI\PokemonUI">
       <UniqueIdentifier>{7e22dfe8-052b-418b-9be5-5686949ffa94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\Door">
+      <UniqueIdentifier>{871d9329-15a4-4282-998c-b242e92f1c7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
