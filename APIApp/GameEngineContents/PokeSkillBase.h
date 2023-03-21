@@ -162,21 +162,22 @@ public:
 protected:
 
 private:
-	PokeSkill Skills = PokeSkill::Tackle;         // 스킬 종류
-	SkillType SkillType = SkillType::Normal;      // 스킬 타입
-	std::string Name = "대폭발";					  // 스킬 이름
+	PokeSkill Skills = PokeSkill::Tackle;          // 스킬 종류
+	SkillType SkillType = SkillType::Normal;       // 스킬 타입
+	std::string Name = "대폭발";					   // 스킬 이름
 
-	bool IsAttackSkill = true;                    // 공격스킬인지 버프스킬인지
-	bool IsSpecialSkill = false;				  // 물공인지 마공인지
+	bool IsAttackSkill = true;                     // 공격스킬인지 버프스킬인지
+	bool IsSpecialSkill = false;				   // 물공인지 마공인지
 
-	int SkillDamage = 0;                          // 스킬공격력
-	int MaxSkillPowerPoint = 0;                   // 최대 스킬 파워포인트
-	int CurrentSkillPowerPoint = 0;               // 잔여 스킬 파워포인트
-	float SkillHitrate = 0.f;                     // 스킬 명중률
+	int SkillDamage = 0;                           // 스킬공격력
+	int MaxSkillPowerPoint = 0;                    // 최대 스킬 파워포인트
+	int CurrentSkillPowerPoint = 0;                // 잔여 스킬 파워포인트
+	float SkillHitrate = 0.f;                      // 스킬 명중률
 
-	void CreateSkill(PokeSkill _SkillName);
-	void InitCreateSkill(PokeSkill _SkillName);
+	void InitCreateSkill(PokeSkill _SkillName);    // 최초 몬스터 생성 시 호출되는 스킬 Init 함수
+	void ChangeSkill(PokeSkillBase* _Targetskill); // 스킬 선택 후 Change 하는 함수
 
+	// 스킬 데이터 베이스
 	void ScratchData();
 	void GrowlData();
 	void EmberData();

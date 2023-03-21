@@ -23,6 +23,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	int bbc = NewP1->GetMonsterCurrentHP();
 
+	int aaaa1212 = NewP1->GetMonsterLevel_int();
+
+	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+
+	int aaaa = NewP1->GetMonsterLevel_int();
+
 	PocketMonCore::GetInst().CoreStart(hInstance);
 	return 1;
 }

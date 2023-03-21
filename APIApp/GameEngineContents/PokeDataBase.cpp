@@ -17,6 +17,8 @@ PokeDataBase::~PokeDataBase()
 {
 }
 
+//////////////////////////////////////////////////////////////// 푸키먼 데이터 릴리즈 구조 (수정은 엄태건에게 요청)
+
 void PokeDataBase::Release()
 {
 	for (PokeSkillBase* Sk : AllSkills)
@@ -41,6 +43,8 @@ void PokeDataBase::Release()
 		Pokes = nullptr;
 	}
 }
+
+//////////////////////////////////////////////////////////////// 푸키먼 데이터 생성 함수
 
 PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 {
@@ -408,54 +412,43 @@ PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 	return PoKeCreatePtr;
 }
 
-//////////////////////////////////////////////////////////////// 푸키먼 전투
-
-void PokeDataBase::Attack()
-{
-
-}
+//////////////////////////////////////////////////////////////// 푸키먼 전투 후 경험치 획득
 
 // 몬스터를 처치하면 경험치 획득
-void PokeDataBase::PokeExperienceAcquisition(int _EXP)
+void PokeDataBase::PokeExperienceGain(PokeDataBase* _Ownerpokemon, PokeDataBase* _knockeddownpokemon)
 {
-	// 몬스터의 종류 확인
-	// 몬스터의 레벨 확인
-	// 획득 경험치 산출
-	// 자신의 경험치에 추가
-	//PoKeCreatePtr->Experience += _EXP;
+	int Basicvalue = 50;
+	int Knockpokelevel = _knockeddownpokemon->GetMonsterLevel_int();
+	int Acquisitionvalue = Basicvalue + Knockpokelevel;
+
+	_Ownerpokemon->PlusMonsterExperience(Acquisitionvalue);
+	int Newexperience = _Ownerpokemon->GetMonsterExperience();
+
+	if (100 <= Newexperience)
+	{
+		PokeLevelUp(_Ownerpokemon);
+		int Residue = Newexperience - 100;
+		_Ownerpokemon->Experience = Residue;
+	}
 }
 
 // 일정 경험치 이상을 획득할 경우 레벨이 증가
-void PokeDataBase::PokeLevelUp(int _EXP)
+void PokeDataBase::PokeLevelUp(PokeDataBase* _Ownerpokemon)
 {
-	//int AcquiExperience = _EXP;
-	//int PlusExperience = Experience + _EXP;
-	//int ResidueExperience = PlusExperience - 100;
+	_Ownerpokemon->MaxHealthPoint += 1;
+	_Ownerpokemon->AttackPower += 1;
+	_Ownerpokemon->Defense += 1;
+	_Ownerpokemon->SpecialAttackPower += 1;
+	_Ownerpokemon->SpecialDefense += 1;
+	_Ownerpokemon->Agility += 1;
 
-	//if (PlusExperience >= 100)
-	//{
-	//	PoKeCreatePtr->MonsterLevel += 1;
-	//	PoKeCreatePtr->Experience = 0;
-	//}
-
-	//PoKeCreatePtr->Experience += PlusExperience;
+	_Ownerpokemon->MonsterLevel += 1;
 }
 
-// 레벨업을 하면 체력, 공격력, 방어력, 특수공격력, 특수방어력, 민첩성이 증가
-void PokeDataBase::PokeStatusUp(PokeDataBase* _PoKeCreatePtr)
-{
-	_PoKeCreatePtr->MaxHealthPoint += 1;
-	_PoKeCreatePtr->AttackPower += 1;
-	_PoKeCreatePtr->Defense += 1;
-	_PoKeCreatePtr->SpecialAttackPower += 1;
-	_PoKeCreatePtr->SpecialDefense += 1;
-	_PoKeCreatePtr->Agility += 1;
-}
-
-//////////////////////////////////////////////////////////////// 푸키먼 데이터
+//////////////////////////////////////////////////////////////// 푸키먼 데이터 생성 보조
 
 // PokeCreate() 함수를 호출하면 해당 구역의 함수를 연계적으로 호출하여 데이터를 입력해줍니다.
-// 데이터 생성 보조 함수와 푸키먼 데이터 함수가 있습니다.
+// 데이터 생성 보조 함수와 푸키먼 데이터 함수가 있습니다 (1번부터 14번까지).
 
 // 푸키먼 스킬 이닛
 void PokeDataBase::PokeSkillInit(int _Skillslot, PokeSkill _SkillName, PokeDataBase* _PoKeCreatePtr)
@@ -492,6 +485,17 @@ void PokeDataBase::PersonalityDecision(PokeDataBase* _PoKeCreatePtr)
 
 	// 오류로 인해 임시 반환 값
 	// return PokePersonality::Adamant;
+}
+
+// 레벨 설정 시 레벨이 1보다 높다면 스탯 증가
+void PokeDataBase::PokeStatusUp(PokeDataBase* _PoKeCreatePtr)
+{
+	_PoKeCreatePtr->MaxHealthPoint += 1;
+	_PoKeCreatePtr->AttackPower += 1;
+	_PoKeCreatePtr->Defense += 1;
+	_PoKeCreatePtr->SpecialAttackPower += 1;
+	_PoKeCreatePtr->SpecialDefense += 1;
+	_PoKeCreatePtr->Agility += 1;
 }
 
 // No.1 이상해씨

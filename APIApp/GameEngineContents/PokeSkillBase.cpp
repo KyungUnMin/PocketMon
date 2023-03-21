@@ -167,8 +167,8 @@ void PokeSkillBase::InitCreateSkill(PokeSkill _SkillName)
 	}
 }
 
-// 기술머신 등에서 사용할 예정
-void PokeSkillBase::CreateSkill(PokeSkill _SkillName)
+// 스킬 선택 체인지 함수
+void PokeSkillBase::ChangeSkill(PokeSkillBase* _Targetskill)
 {
 
 }
