@@ -32,6 +32,21 @@ float4 Fieldmap::GetPos(const int2& _Index)
 	return float4(_Index.x * TileSize, _Index.y * TileSize) + CurCity->GetCityStartPos() + TileSizeFloat4Half;
 }
 
+float4 Fieldmap::GetPos(const std::string_view& _CityName, const int2& _Index)
+{
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	std::map<std::string, FieldmapCity*>::iterator FindIter = AllCitys.find(UpperName);
+
+	if (FindIter == AllCitys.end())
+	{
+		MsgAssert("존재하지 않는 필드맵 시티의 위치값을 받아오려 했습니다.");
+		return float4::Zero;
+	}
+
+	return float4(_Index.x * TileSize, _Index.y * TileSize) + FindIter->second->GetCityStartPos() + TileSizeFloat4Half;
+}
+
 int2 Fieldmap::GetIndex(const float4& _Pos)
 {
 	if (nullptr == CurCity)

@@ -113,9 +113,6 @@
     <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClCompile>
-    <ClCompile Include="FieldmapDoubleDoor.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BattleFSM.cpp">
       <Filter>Battle\03.FSM\01.FSM</Filter>
     </ClCompile>
@@ -246,9 +243,6 @@
     </ClInclude>
     <ClInclude Include="BattleMonster_Bulbasaur.h">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapDoubleDoor.h">
-      <Filter>Map\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
       <Filter>Battle\03.FSM\01.FSM</Filter>

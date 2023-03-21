@@ -24,6 +24,13 @@ public:
 
 	static float4 GetPos(const int2& _Index);
 
+	static float4 GetPos(const std::string_view& _CityName, int _x, int _y)
+	{
+		return GetPos(_CityName, int2(_x, _y));
+	}
+
+	static float4 GetPos(const std::string_view& _CityName, const int2& _Index);
+
 	static int2 GetIndex(const float _x, const float _y)
 	{
 		return GetIndex(float4(_x, _y));
