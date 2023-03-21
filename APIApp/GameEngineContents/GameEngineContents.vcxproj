@@ -181,6 +181,10 @@
     <ClCompile Include="FieldmapEmptyDoor.cpp" />
     <ClCompile Include="FieldmapSingleDoor.cpp" />
     <ClCompile Include="FieldmapWoodDoor.cpp" />
+    <ClCompile Include="MoveMapFadeEffect.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
@@ -280,6 +284,10 @@
     <ClInclude Include="FieldmapEmptyDoor.h" />
     <ClInclude Include="FieldmapSingleDoor.h" />
     <ClInclude Include="FieldmapWoodDoor.h" />
+    <ClInclude Include="MoveMapFadeEffect.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerBag.h">
       <SubType>
       </SubType>

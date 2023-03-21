@@ -146,6 +146,9 @@
     <ClCompile Include="FieldmapEmptyDoor.cpp">
       <Filter>Map\Actor\Door</Filter>
     </ClCompile>
+    <ClCompile Include="MoveMapFadeEffect.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -290,6 +293,9 @@
     </ClInclude>
     <ClInclude Include="FieldmapEmptyDoor.h">
       <Filter>Map\Actor\Door</Filter>
+    </ClInclude>
+    <ClInclude Include="MoveMapFadeEffect.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
