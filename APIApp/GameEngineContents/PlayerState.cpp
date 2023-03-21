@@ -118,7 +118,6 @@ void Player::MoveStart()
 	{
 		EndPos = StartPos + (MoveRange-NextPos2);
 	}
-
 	else if (true == GameEngineInput::IsPress("UpMove"))
 	{
 		EndPos = StartPos + (MoveRange - NextPos3);
@@ -134,10 +133,17 @@ void Player::MoveUpdate(float _Time)
 	DirCheck("Move");
 	PlayerTime+=_Time;
 
-	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*2);
+	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*4);
 	 SetPos(POS); 
-	 if (PlayerTime > 0.5f)
+	 if (PlayerTime > 0.25f)//다음타일까지의 이동시간
 	 {
+		 if (true == GameEngineInput::IsPress("DownMove") ||
+			 true == GameEngineInput::IsPress("LeftMove") ||
+			 true == GameEngineInput::IsPress("RightMove") ||
+			 true == GameEngineInput::IsPress("UpMove"))
+		 {
+			
+		 }
 		 ChangeState(PlayerState::IDLE);
 	 }
 

@@ -68,16 +68,10 @@ void Player::Start()
 void Player::Update(float _DeltaTime)
 {
 	UpdateTime += _DeltaTime;
+	UpdateState(_DeltaTime); //框流烙包府
 	
-		
-	 if (true == PlayerMoveBool)
-	 {
-		 UpdateState(_DeltaTime); //框流烙包府
-	 }
-	
-	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime))&&true== PlayerMoveBool)
+	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime)) && true == PlayerMoveBool)
 	{
-		//UpdateState(_DeltaTime); //框流烙包府
 	}
 	NPCtalkValueSet(); //NPC规氢技泼侩
 	ChangeLevelCheck();
