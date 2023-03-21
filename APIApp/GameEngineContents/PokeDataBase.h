@@ -24,70 +24,70 @@ enum class PokeNumber
 	Spearow,    // 11 깨비참
 	Geodude,    // 12 꼬마돌
 	Onix,       // 13 롱스톤
-	Max,        // max
+	Max,        // 14 max
 };
 
 // 포켓몬 타입
 enum class PokeType
 {
-	Normal,   // 노말
-	Fight,    // 격투
-	Flying,   // 비행
-	Poision,  // 독
-	Bug,      // 벌레
-	Ground,   // 땅
-	Rock,     // 바위
-	Ghost,    // 고스트
-	Steel,    // 강철
-	Fire,     // 불
-	Water,    // 물
-	Grass,    // 풀
-	Electro,  // 전기
-	Ice,      // 얼음
-	Psvchc,   // 에스퍼
-	Dragon,   // 드래곤
-	Drak,     // 악
+	Normal,   // 0 노말
+	Fight,    // 1 격투
+	Flying,   // 2 비행
+	Poision,  // 3 독
+	Bug,      // 4 벌레
+	Ground,   // 5 땅
+	Rock,     // 6 바위
+	Ghost,    // 7 고스트
+	Steel,    // 8 강철
+	Fire,     // 9 불
+	Water,    // 10 물
+	Grass,    // 11 풀
+	Electro,  // 12 전기
+	Ice,      // 13 얼음
+	Psvchc,   // 14 에스퍼
+	Dragon,   // 15드래곤
+	Drak,     // 16 악
 };
 
 // 포켓몬 성격
 enum class PokePersonality
 {
-	Lonely,   // 외로운
-	Adamant,  // 고집스러운
-	Naughty,  // 어리광부리는
-	Brave,    // 용감한
-	Bold,     // 뻔뻔한
-	Impish,   // 장난이 심한
-	Lax,      // 덜렁한
-	Relaxed,  // 느긋한
-	Modest,   // 소극적인
-	Mild,     // 대범한
-	Rash,     // 무심한
-	Quiet,    // 냉정한
-	Calm,     // 온화한
-	Gentle,   // 얌전한
-	Careful,  // 신중한
-	Sassy,    // 건방진
-	Timid,    // 겁많은
-	Hasty,    // 성급한
-	Jolly,    // 쾌활한
-	Naive,    // 순진한
-	Bashful,  // 수줍은
-	Hardy,    // 노력하는
-	Docile,   // 고분고분한
-	Quirky,   // 변덕스러운
-	Serious,  // 성실한
+	Lonely,   // 0 외로운
+	Adamant,  // 1 고집스러운
+	Naughty,  // 2 어리광부리는
+	Brave,    // 3 용감한
+	Bold,     // 4 뻔뻔한
+	Impish,   // 5 장난이 심한
+	Lax,      // 6 덜렁한
+	Relaxed,  // 7 느긋한
+	Modest,   // 8 소극적인
+	Mild,     // 9 대범한
+	Rash,     // 10 무심한
+	Quiet,    // 11 냉정한
+	Calm,     // 12 온화한
+	Gentle,   // 13 얌전한
+	Careful,  // 14 신중한
+	Sassy,    // 15 건방진
+	Timid,    // 16 겁많은
+	Hasty,    // 17 성급한
+	Jolly,    // 18 쾌활한
+	Naive,    // 19 순진한
+	Bashful,  // 20 수줍은
+	Hardy,    // 21 노력하는
+	Docile,   // 22 고분고분한
+	Quirky,   // 23 변덕스러운
+	Serious,  // 24 성실한
 };
 
 // 포켓몬 특성
 enum class PokeCharacteristic
 {
-	심록,
-	맹화,
-	급류,
-	날카로운눈,
-	근성,
-	돌머리,
+	심록,        // 0
+	맹화,        // 1
+	급류,        // 2
+	날카로운눈,   // 3
+	근성,        // 4
+	돌머리,      // 5
 };
 
 class GameEngineRender;

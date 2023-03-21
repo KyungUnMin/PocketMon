@@ -4,10 +4,10 @@
 
 enum class BattleScript
 {
-	Nothing,          // 아무것도 아님 (노말)
-	Insignificant,    // 효과는 미미했다!
-	Critical,         // 급소에 맞았다!
-	Amazing,          // 효과는 굉장했다!
+	Nothing,          // 0 아무것도 아님 (노말)
+	Insignificant,    // 1 효과는 미미했다!
+	Critical,         // 2 급소에 맞았다!
+	Amazing,          // 3 효과는 굉장했다!
 };
 
 // 설명 :
