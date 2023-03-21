@@ -10,7 +10,6 @@
 #include "FieldmapSingleDoor.h"
 #include "FieldmapDoubleDoor.h"
 #include "FieldmapEmptyDoor.h"
-#include "Player.h"
 #include "FieldDialog.h"
 #include "int2.h"
 #include "PocketMonCore.h"
@@ -18,6 +17,10 @@
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
 #include "MoveMapFadeEffect.h"
+
+//Game Actor
+#include "Player.h"
+#include "NPC1.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -266,6 +269,9 @@ void FieldmapLevel::Loading()
 	UIImageLoad();
 	
 	MainPlayer = CreateActor<Player>();
+	TestNpc=CreateActor<NPC1>();
+	TestNpc->SetPos(Fieldmap::GetPos(16, 8));
+
 	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();

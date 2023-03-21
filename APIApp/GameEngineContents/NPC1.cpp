@@ -68,19 +68,23 @@ void NPC1::Update(float _DeltaTime)
 {
 	//플레이어가 근처에있고, 상호작용키를눌렀을때, 라는 조건을추가해야함.
 	//또는 타일맵의index로 조건을바꿔서 최적화하기
-	if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue())
+	if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue()
+		&&GameEngineInput::IsDown("NpcTalk"))
 	{
 		R_NPC1->ChangeAnimation("upIdle");
 	}
-	if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue())
+	if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue()
+		&& GameEngineInput::IsDown("NpcTalk"))
 	{
 		R_NPC1->ChangeAnimation("Idle");
 	}
-	if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue())
+	if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue()
+		&& GameEngineInput::IsDown("NpcTalk"))
 	{
 		R_NPC1->ChangeAnimation("rightIdle");
 	}
-	if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue())
+	if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue()
+		&& GameEngineInput::IsDown("NpcTalk"))
 	{
 		R_NPC1->ChangeAnimation("leftIdle");
 	}
