@@ -126,8 +126,6 @@ void Player::MoveUpdate(float _Time)
 	{
 		SetPos(NextPos2);
 	}
-	
-
 	else if (true == GameEngineInput::IsPress("RightMove"))
 	{
 		SetPos(NextPos1);

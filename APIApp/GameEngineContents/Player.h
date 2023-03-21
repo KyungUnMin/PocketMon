@@ -57,6 +57,11 @@ public:
 		return TalkValue;
 	}
 
+	bool SetPlayerMoveBool(bool _PlayerMoveValue)
+	{
+		PlayerMoveBool = _PlayerMoveValue;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -92,7 +97,7 @@ private:
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
 
 
-
+	bool PlayerMoveBool = true;
 
 };
 
