@@ -1,5 +1,6 @@
 #include "FieldMainMenu.h"
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 
 FieldMainMenu* FieldMainMenu::MainFieldMainMenu = nullptr;
@@ -109,6 +110,28 @@ void FieldMainMenu::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("Menu_Down"))
 	{
 		ChangeStateNext();
+	}
+
+	if (GameEngineInput::IsDown("A"))
+	{
+		switch (State)
+		{
+		case MainMenuState::Pokemon:
+			break;
+		case MainMenuState::Bag:
+			GameEngineCore::GetInst()->ChangeLevel("BagLevel");
+			break;
+		case MainMenuState::Red:
+			break;
+		case MainMenuState::Save:
+			break;
+		case MainMenuState::Option:
+			break;
+		case MainMenuState::Exit:
+			break;
+		default:
+			break;
+		}
 	}
 }
 
