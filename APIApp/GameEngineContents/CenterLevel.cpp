@@ -96,6 +96,11 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
 		Dir.Move("FieldMap");
+		
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DoubleDoor.bmp"))->Cut(4, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SingleDoor.bmp"))->Cut(4, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Flower.bmp"))->Cut(5, 1);
+
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(8, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F_Col.bmp"));
@@ -151,6 +156,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Col.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Type.bmp"));
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
 	}
 
 	{

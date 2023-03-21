@@ -197,7 +197,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="FieldmapDoor.cpp">
+    <ClCompile Include="FieldmapDoubleDoor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -270,7 +270,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="FieldmapDoor.h">
+    <ClInclude Include="FieldmapDoubleDoor.h">
       <SubType>
       </SubType>
     </ClInclude>

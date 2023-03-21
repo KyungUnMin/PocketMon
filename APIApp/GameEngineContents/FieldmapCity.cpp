@@ -126,7 +126,8 @@ void FieldmapCity::AddActor(const int2& _Index, GameEngineActor* _Actor)
 		return;
 	}
 
-	_Actor->SetPos(Fieldmap::GetPos(_Index));
+	float TileSize = Fieldmap::TileSize;
+	_Actor->SetPos(float4(_Index.x * TileSize, _Index.y * TileSize) + GetCityStartPos() + Fieldmap::TileSizeFloat4Half);
 
 	if (true == CityActive)
 	{

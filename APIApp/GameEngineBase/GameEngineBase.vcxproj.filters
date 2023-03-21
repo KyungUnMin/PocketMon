@@ -19,9 +19,14 @@
     <ClCompile Include="GameEngineDirectory.cpp">
       <Filter>IO%28File%29</Filter>
     </ClCompile>
-    <ClCompile Include="GameEngineTime.cpp" />
     <ClCompile Include="GameEngineRandom.cpp">
       <Filter>Math</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTime.cpp">
+      <Filter>Time</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEngineTimeEvent.cpp">
+      <Filter>Time</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,9 +48,14 @@
     <ClInclude Include="GameEngineDirectory.h">
       <Filter>IO%28File%29</Filter>
     </ClInclude>
-    <ClInclude Include="GameEngineTime.h" />
     <ClInclude Include="GameEngineRandom.h">
       <Filter>Math</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTime.h">
+      <Filter>Time</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEngineTimeEvent.h">
+      <Filter>Time</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +70,9 @@
     </Filter>
     <Filter Include="IO%28File%29">
       <UniqueIdentifier>{fd2da30f-43c8-40aa-84ce-9d81d85250b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Time">
+      <UniqueIdentifier>{bd44afd3-7af0-4d5f-8f10-8e84360bef08}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

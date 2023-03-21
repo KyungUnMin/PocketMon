@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+#include "int2.h"
 
 class Player;
 class FieldDialog;
@@ -37,7 +38,11 @@ private:
 	bool IsCameraDebug = false;
 
 	void ImageLoad();
-	
+
+	void CreateFlower(const std::string_view& _CityName, const int2& _Index);
+	void CreateSingleDoor(const std::string_view& _CityName, const int2& _Index, const std::string_view& _DestCityName, const int2& _DestIndex, const std::string_view& _EventName, int _Order = 0);
+	void CreateDoubleDoor(const std::string_view& _CityName, const int2& _Index, const std::string_view& _DestCityName, const int2& _DestIndex, const std::string_view& _EventName, int _Order = 0);
+
 	// ImageName에는 .bmp를 빼고 입력
 	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
 

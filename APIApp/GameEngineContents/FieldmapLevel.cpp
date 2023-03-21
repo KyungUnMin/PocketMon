@@ -6,6 +6,7 @@
 
 #include "Fieldmap.h"
 #include "FieldmapCity.h"
+#include "FieldmapDoubleDoor.h"
 #include "Player.h"
 #include "FieldDialog.h"
 #include "int2.h"
@@ -27,7 +28,11 @@ FieldmapLevel::~FieldmapLevel()
 void FieldmapLevel::Loading()
 {
 	{
-		CreateFieldmapCity("PalletTown", "PalletTown", float4::Zero);
+		{
+			CreateFieldmapCity("PalletTown", "PalletTown", float4::Zero);
+			CreateDoubleDoor("PalletTown", int2(21, 7), "PalletTown_House1", int2(5, 8), "MovePalletTown_House1");
+		}
+
 		CreateFieldmapCity("Route1", "Route1", float4(0.0f, -2240.0f));
 		CreateFieldmapCity("ViridianCity", "ViridianCity", float4(224.0f, -4800.0f));
 		CreateFieldmapCity("Route22", "Route22", float4(-3360.0f, -4640.0f));
@@ -188,6 +193,47 @@ void FieldmapLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_5.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog.bmp"))->Cut(27, 4);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_Dialog.bmp"))->Cut(4, 1);
+}
+
+void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
+{
+}
+
+void FieldmapLevel::CreateSingleDoor(const std::string_view& _CityName, const int2& _Index, const std::string_view& _DestCityName, const int2& _DestIndex, const std::string_view & _EventName, int _Order)
+{
+	FieldmapDoubleDoor* NewDoor = CreateActor<FieldmapDoubleDoor>();
+
+	NewDoor->SetDestCity(_DestCityName);
+	NewDoor->SetDestIndex(_DestIndex);
+
+	Fieldmap::AddEvent(_CityName, _Index,
+		{
+			.Name = _EventName.data(),
+			.Order = _Order,
+			.VaildFunc = std::bind(&FieldmapDoubleDoor::VaildDoor, NewDoor),
+			.EventFunc = std::bind(&FieldmapDoubleDoor::UseDoor, NewDoor),
+			.Loop = true
+		});
+	Fieldmap::AddActor(_CityName, _Index, NewDoor);
+}
+
+void FieldmapLevel::CreateDoubleDoor(const std::string_view& _CityName, const int2& _Index, const std::string_view& _DestCityName, const int2& _DestIndex, const std::string_view& _EventName, int _Order)
+{
+	FieldmapDoubleDoor* NewDoor = CreateActor<FieldmapDoubleDoor>();
+
+	NewDoor->SetDestCity(_DestCityName);
+	NewDoor->SetDestIndex(_DestIndex);
+
+	Fieldmap::AddEvent(_CityName, _Index,
+		{
+			.Name = _EventName.data(),
+			.Order = _Order,
+			.VaildFunc = std::bind(&FieldmapDoubleDoor::VaildDoor, NewDoor),
+			.EventFunc = std::bind(&FieldmapDoubleDoor::UseDoor, NewDoor),
+			.Loop = true
+		});
+
+	Fieldmap::AddActor(_CityName, _Index, NewDoor);
 }
 
 void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos)

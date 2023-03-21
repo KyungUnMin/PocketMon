@@ -5,9 +5,11 @@ enum class RenderOrder
 	//Field
 	BackGround,		 // 0
 	Tilemap,
+	FieldBack,
 	BattleGround,
 	Monster,		 // 1
 	Player,			 // 2
+	FieldFront,
 	Particle,
 
 	DebugUI,
