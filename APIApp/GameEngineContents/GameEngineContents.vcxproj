@@ -169,6 +169,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_TalkBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_WildTalk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
@@ -253,6 +261,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_TalkBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_WildTalk.h">
       <SubType>
       </SubType>
     </ClInclude>

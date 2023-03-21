@@ -11,6 +11,7 @@ enum class BattleFieldType
 	Indoor,
 	Forest0,	//일반 숲
 	Forest1,	//상록숲
+	Forest2,	//관장한테 가기 전 까지 숲
 	Gym,
 };
 

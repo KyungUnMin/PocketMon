@@ -122,6 +122,12 @@
     <ClCompile Include="BattleStateBase.cpp">
       <Filter>Battle\03.FSM\02.State\01.Base</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_WildTalk.cpp">
+      <Filter>Battle\03.FSM\02.State\02.Talk\02.WildTalk</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_TalkBase.cpp">
+      <Filter>Battle\03.FSM\02.State\02.Talk\01.Base</Filter>
+    </ClCompile>
     <ClCompile Include="PokemonLevel.cpp">
       <Filter>FieldUI\PokemonUI</Filter>
     </ClCompile>
@@ -250,6 +256,12 @@
     <ClInclude Include="BattleStateBase.h">
       <Filter>Battle\03.FSM\02.State\01.Base</Filter>
     </ClInclude>
+    <ClInclude Include="BattleState_WildTalk.h">
+      <Filter>Battle\03.FSM\02.State\02.Talk\02.WildTalk</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_TalkBase.h">
+      <Filter>Battle\03.FSM\02.State\02.Talk\01.Base</Filter>
+    </ClInclude>
     <ClInclude Include="PokemonLevel.h">
       <Filter>FieldUI\PokemonUI</Filter>
     </ClInclude>
@@ -350,6 +362,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.State\02.Talk">
       <UniqueIdentifier>{358d893f-0905-4a37-abf6-024e885e7063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\02.Talk\01.Base">
+      <UniqueIdentifier>{eb4fec95-0ac7-4cc6-87af-2d2ffde11c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\02.Talk\02.WildTalk">
+      <UniqueIdentifier>{e72915c1-4d76-4182-9b9d-221fd7ae8751}</UniqueIdentifier>
     </Filter>
     <Filter Include="FieldUI\PokemonUI">
       <UniqueIdentifier>{7e22dfe8-052b-418b-9be5-5686949ffa94}</UniqueIdentifier>

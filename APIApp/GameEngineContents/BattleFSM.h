@@ -1,5 +1,15 @@
 #pragma once
 #include <map>
+#include <memory>
+
+enum class BattleStateType
+{
+	WildTalk,
+
+
+};
+
+class BattleStateBase;
 
 class BattleFSM
 {
@@ -12,12 +22,14 @@ public:
 	BattleFSM& operator=(const BattleFSM& _Other) = delete;
 	BattleFSM& operator=(const BattleFSM&& _Other) noexcept = delete;
 
+	void CreateState(BattleStateType _Type);
+	void ChangeState(BattleStateType _Type);
 	void Update(float _DeltaTime);
 
 protected:
 
 private:
-
-
+	std::map<BattleStateType, std::shared_ptr<BattleStateBase>> AllState;
+	std::shared_ptr<BattleStateBase> CurState = nullptr;
 };
 
