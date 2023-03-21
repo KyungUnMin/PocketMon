@@ -8,6 +8,7 @@
 #include "PlayerTestLevel.h"
 #include "TextTestLevel.h"
 #include "BagLevel.h"
+#include "PokemonLevel.h"
 PocketMonCore PocketMonCore::Core;
 
 PocketMonCore::PocketMonCore()
@@ -30,6 +31,7 @@ void PocketMonCore::Start()
 	CreateLevel<PlayerTestLevel>("PlayerLevel");
 	CreateLevel<TextTestLevel>("TextTestLevel");
 	CreateLevel<BagLevel>("BagLevel");
+	CreateLevel<PokemonLevel>("PokemonLevel");
 
 	ChangeLevel("CenterLevel");
 }

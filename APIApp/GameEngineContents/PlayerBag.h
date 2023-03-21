@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <list>
 #include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 enum class BagSpace
@@ -38,6 +39,7 @@ public:
 	~PlayerBag();
 
 	static PlayerBag* MainBag;
+	// 사용한 아이템의 코드를 받는 함수, 취소한 경우 29
 	int GetItemCode()
 	{
 		return ItemCode;
@@ -65,7 +67,7 @@ private:
 	int ItemCode = 0;
 	size_t CurrentCursor = 0;
 	size_t CurrentSelectCursor = 0;
-	size_t SelectSize = 0;
+	int SelectSize = 0;
 	bool IsBattle = false;
 	bool IsItemSelect = false;
 	
@@ -110,7 +112,7 @@ private:
 	void CursorMove();
 	void CursorMove(int _Cursor);
 
-	void ItemUse();
+
 
 	void SelectOn();
 	void SelectOff();
@@ -119,5 +121,7 @@ private:
 	void SelectMove();
 	void SelectMenu();
 
+	void ItemUse();
+	void ItemGive();
 	void Cancel();
 };

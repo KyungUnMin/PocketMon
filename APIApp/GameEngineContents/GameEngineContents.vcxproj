@@ -224,6 +224,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PokeDataBase.cpp" />
+    <ClCompile Include="PokemonLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="PokemonUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PokeSkillBase.cpp" />
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextActor.cpp" />
@@ -304,6 +312,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokeDataBase.h" />
+    <ClInclude Include="PokemonLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PokemonUI.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PokeSkillBase.h" />
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="TextActor.h" />

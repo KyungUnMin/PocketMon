@@ -258,7 +258,7 @@ void CenterLevel::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("LevelChange4"))
 	{
-		GameEngineCore::GetInst()->ChangeLevel("");
+		GameEngineCore::GetInst()->ChangeLevel("PokemonLevel");
 	}
 
 	if (GameEngineInput::IsDown("LevelChange5"))

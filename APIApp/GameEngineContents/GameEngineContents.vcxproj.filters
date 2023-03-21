@@ -122,6 +122,12 @@
     <ClCompile Include="BattleStateBase.cpp">
       <Filter>Battle\03.FSM\02.State\01.Base</Filter>
     </ClCompile>
+    <ClCompile Include="PokemonLevel.cpp">
+      <Filter>FieldUI\PokemonUI</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonUI.cpp">
+      <Filter>FieldUI\PokemonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -244,6 +250,12 @@
     <ClInclude Include="BattleStateBase.h">
       <Filter>Battle\03.FSM\02.State\01.Base</Filter>
     </ClInclude>
+    <ClInclude Include="PokemonLevel.h">
+      <Filter>FieldUI\PokemonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonUI.h">
+      <Filter>FieldUI\PokemonUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -338,6 +350,9 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.State\02.Talk">
       <UniqueIdentifier>{358d893f-0905-4a37-abf6-024e885e7063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\PokemonUI">
+      <UniqueIdentifier>{7e22dfe8-052b-418b-9be5-5686949ffa94}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

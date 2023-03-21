@@ -70,9 +70,9 @@ void PlayerBag::RemoveItem(int _ItemCode)
 	{
 		if (PokeBalls[i].ItemCode == _ItemCode)
 		{
-			if (0 >= --Items[i].Num)
+			if (0 >= --PokeBalls[i].Num)
 			{
-				PokeBalls.erase(Items.begin() + i);
+				PokeBalls.erase(PokeBalls.begin() + i);
 			}
 			return;
 		}
@@ -195,6 +195,12 @@ void PlayerBag::Start()
 
 void PlayerBag::Update(float _DeltaTime)
 {
+	GetLevel()->DebugTextPush("1 : 아이템 생성");
+	GetLevel()->DebugTextPush("2 : 배틀상태로 변경");
+	if (true == IsBattle)
+	{
+		GetLevel()->DebugTextPush("배틀중");
+	}
 	// 아이템 조작
 	if (true == IsItemSelect)
 	{
@@ -268,6 +274,7 @@ void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	{
 		IsBattle = true;
 	}
+	SelectOff();
 	ChangeSpace(BagSpace::Items);
 	CursorMove(0);
 }
@@ -420,26 +427,6 @@ void PlayerBag::CursorMove(int _Cursor)
 	CursorMove();
 }
 
-void PlayerBag::ItemUse()
-{
-	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
-	ItemCode = CurrentSpaceItems[CurrentCursor].ItemCode;
-
-	if (true == IsBattle && CurrentSpace == BagSpace::KeyItems)
-	{
-		return;
-	}
-	if (false == IsBattle && CurrentSpace == BagSpace::PokeBalls)
-	{
-		return;
-	}
-
-	if (CurrentSpace == BagSpace::PokeBalls)
-	{
-		CurrentSpaceItems[CurrentCursor].Num--;
-	}
-	PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
-}
 
 void PlayerBag::SelectOn()
 {
@@ -467,11 +454,14 @@ void PlayerBag::SelectOn()
 		if (true == CurrentSpaceItems[CurrentCursor].IsBattleItem)
 		{
 			SelectText->SetText("USE\nCANCEL");
+			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PlayerBag::ItemUse, this);
 			SelectSize = 1;
 		}
 		else
 		{
 			SelectText->SetText("CANCEL");
+			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
 			SelectSize = 0;
 		}
 	}
@@ -480,16 +470,23 @@ void PlayerBag::SelectOn()
 		switch (CurrentSpace)
 		{
 		case BagSpace::Items:
-			SelectText->SetText("USE\nGIVE\nTOSS\nCANCEL");
-			SelectSize = 3;
+			SelectText->SetText("USE\nGIVE\nCANCEL");
+			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
+			SelectFunctions[2] = std::bind(&PlayerBag::ItemUse, this);
+			SelectSize = 2;
 			break;
 		case BagSpace::KeyItems:
-			SelectText->SetText("USE\nREGISTER\nCANCEL");
-			SelectSize = 2;
+			SelectText->SetText("USE\nCANCEL");
+			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PlayerBag::ItemUse, this);
+			SelectSize = 1;
 			break;
 		case BagSpace::PokeBalls:
-			SelectText->SetText("GIVE\nTOSS\nCANCEL");
-			SelectSize = 2;
+			SelectText->SetText("GIVE\nCANCEL");
+			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
+			SelectSize = 1;
 			break;
 		default:
 			break;
@@ -516,21 +513,57 @@ void PlayerBag::SelectOff()
 
 void PlayerBag::SelectUp()
 {
+	if (SelectSize <= CurrentSelectCursor)
+	{
+		return;
+	}
+	CurrentSelectCursor++;
+	SelectMove();
 }
 
 void PlayerBag::SelectDown()
 {
+	if (0 >= CurrentSelectCursor)
+	{
+		return;
+	}
+	CurrentSelectCursor--;
+	SelectMove();
 }
 
 void PlayerBag::SelectMove()
 {
+	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * CurrentSelectCursor });
 }
 
 void PlayerBag::SelectMenu()
 {
+	SelectFunctions[CurrentSelectCursor]();
 }
 
+void PlayerBag::ItemUse()
+{
+	switch (CurrentSpace)
+	{
+	case BagSpace::Items:
+		// 포켓몬 레벨로
+		break;
+	case BagSpace::KeyItems:
+		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		break;
+	case BagSpace::PokeBalls:
+		RemoveItem(ItemCode);
+		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		break;
+	default:
+		break;
+	}
+}
+void PlayerBag::ItemGive()
+{
+}
 void PlayerBag::Cancel()
 {
+	ItemCode = CancelCode;
 	PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 }
