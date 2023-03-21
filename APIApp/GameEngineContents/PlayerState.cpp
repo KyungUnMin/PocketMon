@@ -121,8 +121,7 @@ void Player::MoveUpdate(float _Time)
 	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
 	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
 	//임시
-	if (true == PlayerMoveBool)
-	{
+	
 		if (true == GameEngineInput::IsPress("LeftMove"))
 		{
 			SetPos(NextPos2);
@@ -140,16 +139,12 @@ void Player::MoveUpdate(float _Time)
 		{
 			SetPos(NextPos3);
 		}
-	}
-	
-
-
-	//플레이어인덱스를받고 업데이트에서돌리기
-	
-	
-
-
 }
+	
+
+
+	//플레이어인덱스를받고 업데이트에서돌
+
 void Player::MoveEnd()
 {
 
