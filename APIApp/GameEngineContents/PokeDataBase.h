@@ -133,9 +133,15 @@ public:
 	}
 
 	// 포켓몬 레벨 가져오기
-	inline int GetMonsterLevel()
+	inline int GetMonsterLevel_int()
 	{
 		return MonsterLevel;
+	}
+
+	// 포켓몬 레벨 가져오기(계산용)
+	inline float GetMonsterLevel_float()
+	{
+		return static_cast<float>(MonsterLevel);
 	}
 
 	// UI용 레벨 string 반환
@@ -163,9 +169,15 @@ public:
 	}
 
 	// 포켓몬 최대 체력 가져오기
-	inline int GetMonsterMaxHP()
+	inline int GetMonsterMaxHP_int()
 	{
 		return MaxHealthPoint;
+	}
+
+	// 포켓몬 최대 체력 가져오기 (계산용)
+	inline float GetMonsterMaxHP_float()
+	{
+		return static_cast<float>(MaxHealthPoint);
 	}
 
 	// UI용 최대 체력 string 반환
@@ -187,27 +199,51 @@ public:
 	}
 
 	// 공격력 가져오기
-	inline int GetMonsterAttackPower()
+	inline int GetMonsterAttackPower_int()
 	{
 		return AttackPower;
 	}
 
+	// 공격력 가져오기 (계산용)
+	inline float GetMonsterAttackPower_float()
+	{
+		return static_cast<float>(AttackPower);
+	}
+
 	// 방어력 가져오기
-	inline int GetMonsterDefense()
+	inline int GetMonsterDefense_int()
 	{
 		return Defense;
 	}
 
+	// 방어력 가져오기 (계산용)
+	inline float GetMonsterDefense_float()
+	{
+		return static_cast<float>(Defense);
+	}
+
 	// 특수공격력 가져오기
-	inline int GetMonsterSpecialAttackPower()
+	inline int GetMonsterSpecialAttackPower_int()
 	{
 		return SpecialAttackPower;
 	}
 
+	// 특수공격력 가져오기 (계산용)
+	inline float GetMonsterSpecialAttackPower_float()
+	{
+		return static_cast<float>(SpecialAttackPower);
+	}
+
 	// 특수방어력 가져오기
-	inline int GetMonsterSpecialDefense()
+	inline int GetMonsterSpecialDefense_int()
 	{
 		return SpecialDefense;
+	}
+
+	// 특수방어력 가져오기 (계산용)
+	inline float GetMonsterSpecialDefense_float()
+	{
+		return static_cast<float>(SpecialDefense);
 	}
 
 	// 스피드 가져오기

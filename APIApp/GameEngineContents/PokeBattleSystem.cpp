@@ -26,7 +26,7 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 		return;
 	}
 
-	float Cal1 = static_cast<int>((_Attacker->GetMonsterLevel() * 2 / 5) + 2);
+	float Cal1 = (_Attacker->GetMonsterLevel_float() * 2 / 5) + 2;
 	float Cal2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
 	float Cal3 = 0;
 	float Cal4 = 0;
@@ -55,13 +55,13 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 
 	float step1 = Cal1 * Cal2;
 	float step2 = step1 * Cal3;
-	float step3 = (step2 / 50) * Cal4;
+	float step3 = (step2 / 50) / Cal4;
 	float step4 = step3 * Cal5;
 	float step5 = step4 * Cal6;
 	float step6 = step5 * Cal7;
 	float step7 = step6 * Cal8;
 
-	Damage = step7 / 100;
+	Damage = static_cast<int>(round(step7 / 50));
 
 	_Defender->MinusMonsterCurrentHP(Damage);
 }
@@ -93,31 +93,43 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, Po
 	{
 	case PokeCharacteristic::심록:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP() / 3);
-		float Roundthird = round(third);
-		if (static_cast<int>(Roundthird) <= _Attacker->GetMonsterCurrentHP())
+		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		int Roundthird = static_cast<int>(round(third));
+		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
+		}
+		else
+		{
+			CharDamage = 1.f;
 		}
 	}
 	break;
 	case PokeCharacteristic::맹화:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP() / 3);
-		float Roundthird = round(third);
-		if (static_cast<int>(Roundthird) <= _Attacker->GetMonsterCurrentHP())
+		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		int Roundthird = static_cast<int>(round(third));
+		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
+		}
+		else
+		{
+			CharDamage = 1.f;
 		}
 	}
 	break;
 	case PokeCharacteristic::급류:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP() / 3);
-		float Roundthird = round(third);
-		if (static_cast<int>(Roundthird) <= _Attacker->GetMonsterCurrentHP())
+		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		int Roundthird = static_cast<int>(round(third));
+		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
+		}
+		else
+		{
+			CharDamage = 1.f;
 		}
 	}
 	break;
@@ -169,7 +181,7 @@ float PokeBattleSystem::OtherCharacteristiccalculation(PokeDataBase* _Defender, 
 float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Attacker->GetMonsterAttackPower());
+	float step1 = static_cast<float>(_Attacker->GetMonsterAttackPower_float());
 	float step2 = OwnPersonalitycalculation_NA(_Attacker->GetMonsterPersonality()); // 성격에 따른 값 변화
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -191,7 +203,7 @@ float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
 float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase* _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Attacker->GetMonsterSpecialAttackPower());
+	float step1 = static_cast<float>(_Attacker->GetMonsterSpecialAttackPower_float());
 	float step2 = OwnPersonalitycalculation_SA(_Attacker->GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -213,7 +225,7 @@ float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase* _Attacker)
 float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase* _Defender)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Defender->GetMonsterSpecialAttackPower());
+	float step1 = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
 	float step2 = OtherPersonalitycalculation_ND(_Defender->GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -235,7 +247,7 @@ float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase* _Defender)
 float PokeBattleSystem::SpecialDeffencestatuscalculator(PokeDataBase* _Defender)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Defender->GetMonsterSpecialAttackPower());
+	float step1 = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
 	float step2 = OtherPersonalitycalculation_SD(_Defender->GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -433,9 +445,9 @@ float PokeBattleSystem::Randomvalue()
 
 	int Rand = GameEngineRandom::MainRandom.RandomInt(217, 255);
 
-	float Randv = ((Rand * 100) / 255);
+	int Randv = ((Rand * 100) / 255);
 
-	return Randv;
+	return static_cast<float>(Randv);
 }
 
 // 자속 보정
