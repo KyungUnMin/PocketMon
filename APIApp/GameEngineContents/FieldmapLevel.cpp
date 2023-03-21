@@ -17,6 +17,7 @@
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
+#include "MoveMapFadeEffect.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -225,6 +226,7 @@ void FieldmapLevel::Loading()
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
+	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -302,7 +304,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("FieldDialogSwitch"))
 	{
-		MainFieldDialog->OnOffSwtich();
+		MainMoveMapFadeEffect->OnOffSwtich();
 	}
 
 	if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
@@ -332,6 +334,8 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuUI_5.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog.bmp"))->Cut(27, 4);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_Dialog.bmp"))->Cut(4, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveMapFade1.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveMapFade2.bmp"));
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
