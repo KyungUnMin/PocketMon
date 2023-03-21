@@ -175,7 +175,7 @@ private:
 	float SkillHitrate = 0.f;                      // 스킬 명중률
 
 	void InitCreateSkill(PokeSkill _SkillName);    // 최초 몬스터 생성 시 호출되는 스킬 Init 함수
-	void ChangeSkill(PokeSkillBase* _Targetskill); // 스킬 선택 후 Change 하는 함수
+	void ChangeSkill(PokeSkill _modifyskill);       // 스킬 선택 후 Change 하는 함수
 
 	// 스킬 데이터 베이스
 	void ScratchData();

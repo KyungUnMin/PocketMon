@@ -269,7 +269,7 @@ public:
 	}
 
 	// 포켓몬 스킬 변경
-	void ChangeMonsterSkillList(int _SkillNumber)
+	void ChangeMonsterSkill(int _SkillNumber, PokeSkill _modifyskill)
 	{
 		if (_SkillNumber <= 0 || _SkillNumber >= 5)
 		{
@@ -277,7 +277,7 @@ public:
 			return;
 		}
 
-		//SkillList[_SkillNumber - 1]->ChangeSkill(SkillList[_SkillNumber - 1]);;
+		SkillList[_SkillNumber - 1]->ChangeSkill(_modifyskill);;
 	}
 
 	// 포켓몬 타입 가져오기

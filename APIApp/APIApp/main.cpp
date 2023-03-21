@@ -12,8 +12,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_ LPWSTR    lpCmdLine,
 	_In_ int       nCmdShow)
 {
-	PokeDataBase* NewP1 = PokeDataBase::PokeCreate(1, 10);
+	PokeDataBase* NewP1 = PokeDataBase::PokeCreate(1, 15);
 	PokeDataBase* NewP2 = PokeDataBase::PokeCreate(4, 8);
+
+	std::string A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName().data();
+	std::string B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName().data();
+	std::string C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName().data();
+	int CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
+	std::string D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName().data();
+
+	NewP1->ChangeMonsterSkill(3, PokeSkill::SolarBeam);
+
+	A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName().data();
+	B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName().data();
+	C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName().data();
+	CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
+	D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName().data();
 
 	int a = NewP2->GetMonsterMaxHP_int();
 	int b = NewP1->GetMonsterMaxHP_int();

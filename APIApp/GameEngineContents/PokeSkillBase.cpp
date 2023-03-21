@@ -8,6 +8,11 @@ PokeSkillBase::~PokeSkillBase()
 {
 }
 
+void PokeSkillBase::ChangeSkill(PokeSkill _modifyskill)
+{
+	InitCreateSkill(_modifyskill);
+}
+
 // PokeDataBase() 클래스에서만 이용하는 몬스터 스킬 입력 함수입니다.
 void PokeSkillBase::InitCreateSkill(PokeSkill _SkillName)
 {
@@ -165,12 +170,6 @@ void PokeSkillBase::InitCreateSkill(PokeSkill _SkillName)
 	default:
 		break;
 	}
-}
-
-// 스킬 선택 체인지 함수
-void PokeSkillBase::ChangeSkill(PokeSkillBase* _Targetskill)
-{
-
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼 스킬 데이터
