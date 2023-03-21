@@ -114,6 +114,12 @@ public:
 	//void PokeEvolution();
 	//void PokeSkillAcquisition();
 
+	// 체력깎기
+	void MinusMonsterCurrentHP(int _Value)
+	{
+		CurrentHealthPoint -= _Value;
+	}
+
 	// 포켓몬 이름 가져오기
 	std::string_view ForUI_GetMonsterName()
 	{
@@ -258,30 +264,30 @@ private:
 	static PokeDataBase Ptr;                                // 사용하지 마세요...
 
 	// 포켓몬 데이터
-	static GameEngineRender* MonsterImage;					// 포켓몬 이미지
-	static std::string Name;							    // 포켓몬 이름
+	GameEngineRender* MonsterImage;					// 포켓몬 이미지
+	std::string Name;							    // 포켓몬 이름
 
-	static std::vector<PokeSkillBase*> SkillList;			// 포켓몬 스킬리스트
-										    
-	static bool IsMan;										// 포켓몬 성별
-	static bool IsbeCaught;									// 야생포켓몬인지 잡힌 포켓몬인지
+	std::vector<PokeSkillBase*> SkillList = std::vector<PokeSkillBase*>(4);			// 포켓몬 스킬리스트
+								    
+	bool IsMan;										// 포켓몬 성별
+	bool IsbeCaught;									// 야생포켓몬인지 잡힌 포켓몬인지
 
-	static PokeNumber PokeDexNumber;					    // 포켓몬 도감 번호
-	static int MaxHealthPoint;								// 몬스터 최대 체력
-	static int CurrentHealthPoint;						    // 몬스터 잔여 체력
-	static int AttackPower;									// 몬스터 공격력
-	static int Defense;										// 몬스터 방어력
-	static int SpecialAttackPower;							// 몬스터 특수공격력
-	static int SpecialDefense;								// 몬스터 특수방어력
-	static int Agility;									    // 몬스터 민첩성
-	static int MonsterLevel;								// 몬스터 레벨
-	static int Experience;									// 몬스터 경험치
-	static int RemainingExperience;						    // 몬스터 다음 레벨까지 남은 경험치
-											    
-	static int PokeBall;									// 포켓몬이 담겨있는 포켓볼 종류
-	static PokeType Type;								    // 포켓몬 속성 타입
-	static PokePersonality Personality;			            // 포켓몬 성격
-	static PokeCharacteristic Characteristic;	            // 포켓몬 특성
+	PokeNumber PokeDexNumber;					    // 포켓몬 도감 번호
+	int MaxHealthPoint;								// 몬스터 최대 체력
+	int CurrentHealthPoint;						    // 몬스터 잔여 체력
+	int AttackPower;									// 몬스터 공격력
+	int Defense;										// 몬스터 방어력
+	int SpecialAttackPower;							// 몬스터 특수공격력
+	int SpecialDefense;								// 몬스터 특수방어력
+	int Agility;									    // 몬스터 민첩성
+	int MonsterLevel;								// 몬스터 레벨
+	int Experience;									// 몬스터 경험치
+	int RemainingExperience;						    // 몬스터 다음 레벨까지 남은 경험치
+									    
+	int PokeBall;									// 포켓몬이 담겨있는 포켓볼 종류
+	PokeType Type;								    // 포켓몬 속성 타입
+	PokePersonality Personality;			            // 포켓몬 성격
+	PokeCharacteristic Characteristic;	            // 포켓몬 특성
 
 	// 데이터 생성 보조
 	static void PersonalityDecision(PokeDataBase* _PoKeCreatePtr);                                 // 성격

@@ -58,23 +58,23 @@ enum class PokeSkill
 
 enum class SkillType
 {
-	Normal,   // 노말
-	Fight,    // 격투
-	Flying,   // 비행
-	Poision,  // 독
-	Bug,      // 벌레
-	Ground,   // 땅
-	Rock,     // 바위
-	Ghost,    // 고스트
-	Steel,    // 강철
-	Fire,     // 불
-	Water,    // 물
-	Grass,    // 풀
-	Electro,  // 전기
-	Ice,      // 얼음
-	Psvchc,   // 에스퍼
-	Dragon,   // 드래곤
-	Drak,     // 악
+	Normal,   // 0 노말 (사용)
+	Fight,    // 1 격투
+	Flying,   // 2 비행 (사용)
+	Poision,  // 3 독
+	Bug,      // 4 벌레
+	Ground,   // 5 땅   (사용)
+	Rock,     // 6 바위  (사용)
+	Ghost,    // 7 고스트
+	Steel,    // 8 강철 (사용)
+	Fire,     // 9 불  (사용)
+	Water,    // 10 물 (사용)
+	Grass,    // 11 풀 (사용)
+	Electro,  // 12 전기
+	Ice,      // 13 얼음
+	Psvchc,   // 14 에스퍼 (사용)
+	Dragon,   // 15 드래곤 (사용)
+	Drak,     // 16 악 (사용)
 };
 
 // 설명 :

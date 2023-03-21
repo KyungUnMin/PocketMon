@@ -7,6 +7,9 @@
 
 #include "PokeDataBase.h"
 
+int PokeBattleSystem::Damage = 0;
+bool PokeBattleSystem::IsSpecial = false;
+
 PokeBattleSystem::PokeBattleSystem() 
 {
 }
@@ -23,32 +26,44 @@ void PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber,
 		return;
 	}
 
-	// 데미지 = (((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × [[급소]] × 자속보정 × 타입상성 × 랜덤수 ÷ 100
-
-	int step1 = (_Attacker->GetMonsterLevel() * 2 / 5) + 2;
-	float step2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
-	float step3 = 0;
-	float step4 = 0;
+	float Cal1 = static_cast<int>((_Attacker->GetMonsterLevel() * 2 / 5) + 2);
+	float Cal2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
+	float Cal3 = 0;
+	float Cal4 = 0;
 
 	IsSpecial = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisSpecialSkill();
 
 	if (false == IsSpecial)
 	{
-		step3 = NormalAttackstatuscalculator(_Attacker) / 50;
-		step4 = NormalDeffencestatuscalculator(_Defender);
+		Cal3 = NormalAttackstatuscalculator(_Attacker);
+		Cal4 = NormalDeffencestatuscalculator(_Defender);
 	}
 	else
 	{
-		step3 = SpecialAttackstatuscalculator(_Attacker) / 50;
-		step4 = SpecialDeffencestatuscalculator(_Defender);
+		Cal3 = SpecialAttackstatuscalculator(_Attacker);
+		Cal4 = SpecialDeffencestatuscalculator(_Defender);
 	}
 
-	float step5 = CriticalRand();
-	float step6 = 0.0f; // 자속보정
-	float step7 = 0.0f; // 타입상성
-	float step8 = Randomvalue();
+	float Cal5 = CriticalRand();
+	float Cal6 = Ownpropertiescorrection(_Attacker, _AttackerSkillNumber);
+	float Cal7 = Compatibilitycorrection(_Attacker, _AttackerSkillNumber, _Defender);
+	float Cal8 = Randomvalue();
 	
-	// Damage = ((step1 * static_cast<int>(round(step2)) * static_cast<int>(round(step3)) / static_cast<int>(round(step4)) ;
+	// 데미지 = (((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × [[급소]] × 자속보정 × 타입상성 × 랜덤수 ÷ 100
+	// 모든 공식은 왼쪽에서 오른쪽 순서대로 계산하며, 각 계산을 실행하기 전에 소수점 이하를 버린다. 순서대로 계산하지 않으면 잘못된 결과가 나오므로 주의.
+	// Damage = (((Cal1 * Cal2 * Cal3 / 50) / Cal4) * Cal5 * Cal6 * Cal7 * Cal8) / 100;
+
+	float step1 = Cal1 * Cal2;
+	float step2 = step1 * Cal3;
+	float step3 = (step2 / 50) * Cal4;
+	float step4 = step3 * Cal5;
+	float step5 = step4 * Cal6;
+	float step6 = step5 * Cal7;
+	float step7 = step6 * Cal8;
+
+	Damage = step7 / 100;
+
+	_Defender->MinusMonsterCurrentHP(Damage);
 }
 
 float PokeBattleSystem::Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
@@ -423,11 +438,197 @@ float PokeBattleSystem::Randomvalue()
 	return Randv;
 }
 
-void PokeBattleSystem::Ownpropertiescorrection()
+// 자속 보정
+float PokeBattleSystem::Ownpropertiescorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber)
 {
+	int Monstervalue = static_cast<int>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillType());
+	int Monsterskillvalue = static_cast<int>(_Attacker->GetMonsterType());
 
+	float correctionvalue = 0.0f;
+
+	if (Monsterskillvalue == Monstervalue)
+	{
+		correctionvalue = 1.5f;
+	}
+	else
+	{
+		correctionvalue = 1.f;
+	}
+
+	return correctionvalue;
 }
-void PokeBattleSystem::Compatibilitycorrection()
-{
 
+// 타입 상성
+float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+{
+	int skillvalue = static_cast<int>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillType());
+	int othervalue = static_cast<int>(_Defender->GetMonsterType());
+	float correctionvalue = 0.0f;
+
+	switch (skillvalue)
+	{
+	case 0: // 노말
+	{
+		switch (othervalue)
+		{
+		case 6:
+			correctionvalue = 0.5f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 2: // 비행
+	{
+		switch (othervalue)
+		{
+		case 6:
+			correctionvalue = 0.5f;
+			break;
+		case 11:
+			correctionvalue = 2.f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 5: // 땅
+	{
+		switch (othervalue)
+		{
+		case 2:
+			correctionvalue = 0.5f;
+			break;
+		case 6:
+			correctionvalue = 2.f;
+			break;
+		case 9:
+			correctionvalue = 2.f;
+			break;
+		case 11:
+			correctionvalue = 0.5f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 6: // 바위
+	{
+		switch (othervalue)
+		{
+		case 2:
+			correctionvalue = 2.f;
+			break;
+		case 9:
+			correctionvalue = 2.f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 8: // 강철
+	{
+		switch (othervalue)
+		{
+		case 6:
+			correctionvalue = 2.f;
+			break;
+		case 9:
+			correctionvalue = 0.5f;
+			break;
+		case 10:
+			correctionvalue = 0.5f;
+			break;
+		case 11:
+			correctionvalue = 0.5f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 9: // 불
+	{
+		switch (othervalue)
+		{
+		case 6:
+			correctionvalue = 0.5f;
+			break;
+		case 9:
+			correctionvalue = 0.5f;
+			break;
+		case 10:
+			correctionvalue = 0.5f;
+			break;
+		case 11:
+			correctionvalue = 2.f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 10: // 물
+	{
+		switch (othervalue)
+		{
+		case 6:
+			correctionvalue = 2.f;
+			break;
+		case 9:
+			correctionvalue = 2.f;
+			break;
+		case 10:
+			correctionvalue = 0.5f;
+			break;
+		case 11:
+			correctionvalue = 0.5f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	case 11: // 풀
+	{
+		switch (othervalue)
+		{
+		case 2:
+			correctionvalue = 0.5f;
+			break;
+		case 6:
+			correctionvalue = 2.f;
+			break;
+		case 9:
+			correctionvalue = 0.5f;
+			break;
+		case 10:
+			correctionvalue = 2.f;
+			break;
+		case 11:
+			correctionvalue = 0.5f;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
+	break;
+	default:
+		correctionvalue = 1.f;
+	break;
+	}
+
+	return correctionvalue;
 }

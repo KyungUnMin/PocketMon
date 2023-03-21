@@ -16,33 +16,33 @@ public:
 	PokeBattleSystem& operator=(const PokeBattleSystem& _Other) = delete;
 	PokeBattleSystem& operator=(PokeBattleSystem&& _Other) noexcept = delete;
 
-	void Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static void Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 
 protected:
 
 private:
-	int Damage = 0;
-	bool IsSpecial = false;
+	static int Damage;
+	static bool IsSpecial;
 
-	float Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static float Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 
-	float OwnCharacteristiccalculation(PokeDataBase* _Attacker, PokeCharacteristic _characteristic);
-	float OtherCharacteristiccalculation(PokeDataBase* _Defender, PokeCharacteristic _characteristic);
+	static float OwnCharacteristiccalculation(PokeDataBase* _Attacker, PokeCharacteristic _characteristic);
+	static float OtherCharacteristiccalculation(PokeDataBase* _Defender, PokeCharacteristic _characteristic);
 
-	float NormalAttackstatuscalculator(PokeDataBase* _Attacker);
-	float SpecialAttackstatuscalculator(PokeDataBase* _Attacker);
-	float NormalDeffencestatuscalculator(PokeDataBase* _Defender);
-	float SpecialDeffencestatuscalculator(PokeDataBase* _Defender);
+	static float NormalAttackstatuscalculator(PokeDataBase* _Attacker);
+	static float SpecialAttackstatuscalculator(PokeDataBase* _Attacker);
+	static float NormalDeffencestatuscalculator(PokeDataBase* _Defender);
+	static float SpecialDeffencestatuscalculator(PokeDataBase* _Defender);
 
-	float OwnPersonalitycalculation_NA(PokePersonality _personality);
-	float OwnPersonalitycalculation_SA(PokePersonality _personality);
-	float OtherPersonalitycalculation_ND(PokePersonality _personality);
-	float OtherPersonalitycalculation_SD(PokePersonality _personality);
+	static float OwnPersonalitycalculation_NA(PokePersonality _personality);
+	static float OwnPersonalitycalculation_SA(PokePersonality _personality);
+	static float OtherPersonalitycalculation_ND(PokePersonality _personality);
+	static float OtherPersonalitycalculation_SD(PokePersonality _personality);
 
-	float CriticalRand();
-	float Randomvalue();
+	static float CriticalRand();
+	static float Randomvalue();
 
-	void Ownpropertiescorrection();
-	void Compatibilitycorrection();
+	static float Ownpropertiescorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber);
+	static float Compatibilitycorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 
 };

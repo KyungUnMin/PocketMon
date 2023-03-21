@@ -302,7 +302,6 @@
     <ClInclude Include="CenterActor.h" />
     <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
-    <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="EnemyHPBackground.h" />
     <ClInclude Include="FieldData.h">
       <SubType>

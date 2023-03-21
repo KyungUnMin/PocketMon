@@ -153,7 +153,6 @@
     <ClInclude Include="CenterLevel.h" />
     <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="PocketMonCore.h" />
-    <ClInclude Include="ContentsEnums.h" />
     <ClInclude Include="int2.h">
       <Filter>Base</Filter>
     </ClInclude>
