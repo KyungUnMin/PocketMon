@@ -232,6 +232,7 @@
     <ClCompile Include="int2.cpp" />
     <ClCompile Include="NPC1.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerLoad.cpp" />
     <ClCompile Include="PlayerState.cpp" />
     <ClCompile Include="PlayerTestLevel.cpp" />
     <ClCompile Include="PocketMonCore.cpp" />

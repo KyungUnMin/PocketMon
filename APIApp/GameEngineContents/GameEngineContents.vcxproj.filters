@@ -146,6 +146,9 @@
     <ClCompile Include="FieldmapEmptyDoor.cpp">
       <Filter>Map\Actor\Door</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerLoad.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>

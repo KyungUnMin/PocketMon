@@ -41,6 +41,8 @@ public:
 	void Render(float _DeltaTime);
 	void NPCtalkValueSet();
 	void ChangeLevelCheck();
+	void PlayerKeyLoad();
+	void PlayerImageLoad();
 
 	float GetPlayerMoveTile()
 	{
@@ -57,9 +59,9 @@ public:
 		return TalkValue;
 	}
 
-	bool SetPlayerMoveBool(bool _PlayerMoveValue)
+	void SetPlayerMoveBool(bool _PlayerMoveValue)
 	{
-		return PlayerMoveBool = _PlayerMoveValue;
+		PlayerMoveBool = _PlayerMoveValue;
 	}
 
 protected:
@@ -100,8 +102,7 @@ private:
 	/////////////////////////////
 	
 
-
-
+	/////////Lerf°ª///////////
 	float4 StartPos = float4::Zero;
 	float4 EndPos = float4::Zero;
 
@@ -112,6 +113,5 @@ private:
 	bool PlayerMoveBool = true;
 
 	float PlayerTime = 0.0f;
-	float UpdateTime = 0.0f;
 };
 

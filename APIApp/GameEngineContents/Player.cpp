@@ -25,6 +25,9 @@ void Player::Start()
 {
 	MainPlayer = this; 
 
+	{
+		PlayerKeyLoad();
+	}
 	SetMove(GameEngineWindow::GetScreenSize().half());  //시작하면위치는 가운데로
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	{
@@ -67,8 +70,10 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
-	UpdateTime += _DeltaTime;
-	UpdateState(_DeltaTime); //움직임관리
+	if (true == PlayerMoveBool)
+	{
+		UpdateState(_DeltaTime); //움직임관리
+	}
 	
 	if (Fieldmap::Walkable(GetPos() + (MoveDir * _DeltaTime)) && true == PlayerMoveBool)
 	{
@@ -162,8 +167,6 @@ void Player::NPCtalkValueSet()
 	}
 }
 
-
-
 void Player::Render(float _DeltaTime)
 {
 	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
@@ -177,4 +180,9 @@ void Player::Render(float _DeltaTime)
 	{
 		RedCollision->DebugRender();
 	}
+}
+
+void Player::PlayerKeyLoad()
+{
+
 }
