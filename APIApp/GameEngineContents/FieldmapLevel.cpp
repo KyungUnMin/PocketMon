@@ -40,6 +40,19 @@ void FieldmapLevel::Loading()
 		}
 
 		CreateFieldmapCity("Route1", "Route1", float4(0.0f, -2240.0f));
+		{
+			AddJumpEvent("Route1", int2(8, 30), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(16, 30), int2::Right, 12, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(24, 25), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(8, 19), int2::Right, 2, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(11, 19), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(17, 19), int2::Right, 11, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(10, 14), int2::Right, 6, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(8, 9), int2::Right, 6, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(8, 4), int2::Right, 6, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(16, 4), int2::Right, 6, PlayerDir::Down);
+		}
+
 		CreateFieldmapCity("ViridianCity", "ViridianCity", float4(224.0f, -4800.0f));
 		{
 			CreateDoor<FieldmapWoodDoor>("ViridianCityToHouse001", "ViridianCity", int2(19, 11), "MoveHouse001");
@@ -47,11 +60,36 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapSingleDoor>("ViridianCityToMarket", "ViridianCity", int2(30, 19), "MoveMarket");
 			CreateDoor<FieldmapSingleDoor>("ViridianCityToPokemonCenter", "ViridianCity", int2(20, 26), "MovePokemonCenter");
 		}
+		{
+			AddJumpEvent("ViridianCity", int2(1, 29), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("ViridianCity", int2(11, 29), int2::Right, 3, PlayerDir::Down);
+			AddJumpEvent("ViridianCity", int2(17, 29), int2::Right, 19, PlayerDir::Down);
+			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, PlayerDir::Down);
+		}
+
 		CreateFieldmapCity("Route22", "Route22", float4(-3360.0f, -4640.0f));
+		{
+			AddJumpEvent("Route22", int2(19, 24), int2::Right, 35, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(56, 24), int2::Right, 5, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(18, 18), int2::Right, 7, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(27, 18), int2::Right, 2, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(27, 11), int2::Right, 2, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(30, 17), int2::Right, 7, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(49, 17), int2::Right, 2, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(53, 17), int2::Right, 2, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(49, 12), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(54, 12), int2::Right, 3, PlayerDir::Down);
+		}
+
 		CreateFieldmapCity("Route2_Down", "Route2_Down", float4(0.0f, -7808.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest001", "Route2_Down", int2(11, 25), "MoveRoute2_Up");
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest002", "Route2_Down", int2(12, 25), "MoveRoute2_Up");
+		}
+		{
+			AddJumpEvent("Route2_Down", int2(8, 43), int2::Right, 7, PlayerDir::Down);
+			AddJumpEvent("Route2_Down", int2(17, 43), int2::Right, 3, PlayerDir::Down);
+			AddJumpEvent("Route2_Down", int2(8, 28), int2::Right, 9, PlayerDir::Down);
 		}
 
 		CreateFieldmapCity("Route2_Up", "Route2_Up",float4(0.0f, -10368.0f));
@@ -68,6 +106,12 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapWoodDoor>("PewterCityToHouse001", "PewterCity", int2(33, 11), "MoveHouse001");
 			CreateDoor<FieldmapWoodDoor>("PewterCityToHouser002", "PewterCity", int2(9, 30), "MoveHouse002");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToPoketmonCenter", "PewterCity", int2(17, 25), "MovePokemonCenter");
+		}
+		{
+			AddJumpEvent("PewterCity", int2(27, 29), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("PewterCity", int2(32, 29), int2::Right, 4, PlayerDir::Down);
+			AddJumpEvent("PewterCity", int2(9, 6), int2::Right, 7, PlayerDir::Down);
+			AddJumpEvent("PewterCity", int2(20, 6), int2::Right, 17, PlayerDir::Down);
 		}
 
 		CreateFieldmapCity("PalletTown_Home1F", "Myroom_1F", float4(0.0f, 2000.0f));
@@ -348,6 +392,59 @@ void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const 
 
 	PalletTownPtr->InitFieldRender(_CityName, _ImageName);
 	PalletTownPtr->InitPos(_Pos);
+}
+
+void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, PlayerDir _Dir)
+{
+	int2 CurIndex = _Start;
+
+	for (int i = 0; i < _Count; i++)
+	{
+		AddJumpEvent(_CityName, CurIndex, _Dir);
+		CurIndex += _Add;
+	}
+}
+
+void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Index, PlayerDir _Dir)
+{
+	switch (_Dir)
+	{
+	case PlayerDir::Up:
+		Fieldmap::AddEvent(_CityName, _Index, {
+			.Name = "JumpUp",
+			.VaildFunc = std::bind(&FieldmapLevel::PlayerUpCheck, this),
+			.EventFunc = &FieldmapLevel::TempFunc,
+			.Loop = true
+			});
+		break;
+	case PlayerDir::Down:
+		Fieldmap::AddEvent(_CityName, _Index, {
+			.Name = "JumpDown",
+			.VaildFunc = std::bind(&FieldmapLevel::PlayerDownCheck, this),
+			.EventFunc = &FieldmapLevel::TempFunc,
+			.Loop = true
+			});
+		break;
+	case PlayerDir::Left:
+		Fieldmap::AddEvent(_CityName, _Index, {
+			.Name = "JumpLeft",
+			.VaildFunc = std::bind(&FieldmapLevel::PlayerLeftCheck, this),
+			.EventFunc = &FieldmapLevel::TempFunc,
+			.Loop = true
+			});
+		break;
+	case PlayerDir::Right:
+		Fieldmap::AddEvent(_CityName, _Index, {
+			.Name = "JumpRight",
+			.VaildFunc = std::bind(&FieldmapLevel::PlayerRightCheck, this),
+			.EventFunc = &FieldmapLevel::TempFunc,
+			.Loop = true
+			});
+		break;
+	default:
+		break;
+	}
+
 }
 
 void FieldmapLevel::LinkDoor(const std::string_view& _LinkDoorName, const std::string_view& _TargetDoorName)

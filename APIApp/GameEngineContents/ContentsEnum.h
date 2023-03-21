@@ -24,6 +24,14 @@ enum class RenderOrder
 	Fade,
 };
 
+enum class PlayerDir
+{
+	Up,
+	Down,
+	Left,
+	Right
+};
+
 enum class CollisionOrder
 {
 	Player,          // 0
