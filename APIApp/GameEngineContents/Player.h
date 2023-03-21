@@ -59,7 +59,7 @@ public:
 
 	bool SetPlayerMoveBool(bool _PlayerMoveValue)
 	{
-		PlayerMoveBool = _PlayerMoveValue;
+		return PlayerMoveBool = _PlayerMoveValue;
 	}
 
 protected:

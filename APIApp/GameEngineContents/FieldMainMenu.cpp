@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "Player.h"
+
 FieldMainMenu* FieldMainMenu::MainFieldMainMenu = nullptr;
 
 FieldMainMenu::FieldMainMenu()
@@ -56,6 +58,7 @@ void FieldMainMenu::Start()
 
 void FieldMainMenu::MenuStateToRender()
 {
+	Player::MainPlayer->SetPlayerMoveBool(false);
 	for (size_t i = 0; i < FieldMainMenuRender.size(); i++)
 	{
 		if (i != static_cast<int>(State))
@@ -137,6 +140,6 @@ void FieldMainMenu::Update(float _DeltaTime)
 
 void FieldMainMenu::UpdateEnd()
 {
-	int a = 0;
+	Player::MainPlayer->SetPlayerMoveBool(true);
 }
 

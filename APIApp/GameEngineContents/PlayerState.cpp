@@ -120,25 +120,28 @@ void Player::MoveUpdate(float _Time)
 	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
 	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
 	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
+	//임시
+	if (true == PlayerMoveBool)
+	{
+		if (true == GameEngineInput::IsPress("LeftMove"))
+		{
+			SetPos(NextPos2);
+		}
+		else if (true == GameEngineInput::IsPress("RightMove"))
+		{
+			SetPos(NextPos1);
+		}
 
+		else if (true == GameEngineInput::IsPress("UpMove"))
+		{
+			SetPos(NextPos4);
+		}
+		else if (true == GameEngineInput::IsPress("DownMove"))
+		{
+			SetPos(NextPos3);
+		}
+	}
 	
-	if (true == GameEngineInput::IsPress("LeftMove")) 
-	{
-		SetPos(NextPos2);
-	}
-	else if (true == GameEngineInput::IsPress("RightMove"))
-	{
-		SetPos(NextPos1);
-	}
-
-	else if (true == GameEngineInput::IsPress("UpMove"))
-	{
-		SetPos(NextPos4);
-	}
-	else if (true == GameEngineInput::IsPress("DownMove"))
-	{
-		SetPos(NextPos3);
-	}
 
 
 	//플레이어인덱스를받고 업데이트에서돌리기
