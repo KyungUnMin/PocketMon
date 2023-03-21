@@ -21,6 +21,15 @@ BattleLevel::~BattleLevel()
 
 }
 
+#include <string_view>
+#include <GameEnginePlatform/GameEngineInput.h>
+
+std::vector<std::string_view> TestStr =
+{
+	"앗 포켓몬",
+	"야생",
+	"싸울까"
+};
 
 
 
@@ -30,6 +39,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	Init(BattleFieldType::Forest0);
 	//Init(BattleFieldType::Indoor);
 	//Init(BattleFieldType::Gym);
+
+	GameEngineInput::CreateKey("TestZ", 'Z');
 }
 
 void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
@@ -50,13 +61,15 @@ void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateActor<HpBackGroundMove>();
 	CreateActor<TestScript>();*/
 
-	CreateActor<BackTextActor>();
-	ScriptPtr = CreateActor<TestScript>();// 대사들 띄우고 뭐하고
+	//CreateActor<BackTextActor>();
+	//ScriptPtr = CreateActor<TestScript>();// 대사들 띄우고 뭐하고
 
+	Box = CreateActor<BackTextActor>();
+	Box->PushTexts(TestStr);
 
 	//띄우기 위해 조건이 필요할 때
-	CreateActor<EnemyHPBackground>();
-	CreateActor<FriendlyHPBackground>();
+	/*CreateActor<EnemyHPBackground>();
+	CreateActor<FriendlyHPBackground>();*/
 }
 
 
@@ -72,12 +85,21 @@ void BattleLevel::Update(float _DeltaTime)
 		return;
 	}
 
-	static bool IsCreate = false;
+	if (true == GameEngineInput::IsDown("TestZ"))
+	{
+		if(false == Box->WriteText())
+		{
+			int a = 10;
+		}
+		
+	}
+
+	/*static bool IsCreate = false;
 	if (false == IsCreate && (3 == ScriptPtr->GetTextCount()))
 	{
 		CreateActor<Battle_Select>()->init(ScriptPtr);
 		IsCreate = true;
-	}
+	}*/
 }
 
 

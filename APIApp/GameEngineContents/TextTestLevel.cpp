@@ -27,14 +27,14 @@ void TextTestLevel::Loading()
 {
 
 
-	CreateActor<BackTextActor>();
-	TestScript* sSSS= CreateActor<TestScript>();// 대사들 띄우고 뭐하고
+	//CreateActor<BackTextActor>();
+	//TestScript* sSSS= CreateActor<TestScript>();// 대사들 띄우고 뭐하고
 
 
 	//띄우기 위해 조건이 필요할 때
 	CreateActor<EnemyHPBackground>();
 	CreateActor<FriendlyHPBackground>();
-	CreateActor<Battle_Select>()->init(sSSS);
+	//CreateActor<Battle_Select>()->init(sSSS);
 
 
 }

@@ -5,6 +5,7 @@
 class GameEngineRender;
 class TestScript;
 class Battle_Select;
+class BackTextActor;
 
 enum class BattleFieldType
 {
@@ -50,5 +51,7 @@ private:
 
 	TestScript* ScriptPtr = nullptr;
 	Battle_Select* BattleCursor = nullptr;
+
+	BackTextActor* Box = nullptr;
 };
 
