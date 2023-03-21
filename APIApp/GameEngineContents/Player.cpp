@@ -61,7 +61,7 @@ void Player::Start()
 void Player::Update(float _DeltaTime)
 {
 	 ChangeLevelCheck();
-	 UpdateState(_DeltaTime);
+	
 
 	
 	// Walkable 반환값 true = 이동가능 false = 이동 불가능
@@ -69,7 +69,10 @@ void Player::Update(float _DeltaTime)
 	{
 		//SetMove(MoveDir); //STATE에서받은값으로 움직임 제어
 	}
-	UpdateState(_DeltaTime); //움직임관리
+	if (true == PlayerMoveBool)
+	{
+		UpdateState(_DeltaTime); //움직임관리
+	}
 	NPCtalkValueSet(); //NPC방향세팅용
 }
 
