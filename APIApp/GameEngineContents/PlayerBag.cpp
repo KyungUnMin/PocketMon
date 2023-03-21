@@ -195,6 +195,27 @@ void PlayerBag::Start()
 
 void PlayerBag::Update(float _DeltaTime)
 {
+	TimeEvent.Update(_DeltaTime);
+	switch (AnimState)
+	{
+	case BagAnim::Idle:
+		break;
+	case BagAnim::LeftTurn:
+		BagRender->SetAngleAdd(-500 * _DeltaTime);
+		break;
+	case BagAnim::RightTurn:
+		BagRender->SetAngleAdd(500 * _DeltaTime);
+		break;
+	case BagAnim::UpMove:
+		BagRender->SetMove(float4::Up * 250 * _DeltaTime);
+		break;
+	case BagAnim::DownMove:
+		BagRender->SetMove(float4::Down * 250 * _DeltaTime);
+		break;
+	default:
+		break;
+	}
+
 	GetLevel()->DebugTextPush("1 : 아이템 생성");
 	GetLevel()->DebugTextPush("2 : 배틀상태로 변경");
 	if (true == IsBattle)
@@ -269,7 +290,10 @@ void PlayerBag::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 
 void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	PrevLevel = _PrevLevel;
+	if (_PrevLevel->GetName() != "PokemonLevel")
+	{
+		PrevLevel = _PrevLevel;
+	}
 	if (PrevLevel->GetName() == "BattleLevel")
 	{
 		IsBattle = true;
@@ -277,6 +301,28 @@ void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	SelectOff();
 	ChangeSpace(BagSpace::Items);
 	CursorMove(0);
+}
+
+void PlayerBag::ChangeAnimation(BagAnim _AnimState)
+{
+	AnimState = _AnimState;
+	if (AnimState == BagAnim::Idle)
+	{
+		BagRender->SetAngle(0);
+		BagRender->SetPosition({ 168, 276 });
+	}
+	else if (AnimState == BagAnim::LeftTurn)
+	{
+		// 타임이벤트
+		TimeEvent.AddEvent(0.03f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::RightTurn), false);
+		TimeEvent.AddEvent(0.06f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::Idle), false);
+	}
+	else if (AnimState == BagAnim::UpMove)
+	{
+		// 타임 이벤트
+		TimeEvent.AddEvent(0.07f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::DownMove), false);
+		TimeEvent.AddEvent(0.14f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::Idle), false);
+	}
 }
 
 void PlayerBag::ChangeSpace(BagSpace _Space)
@@ -337,7 +383,7 @@ void PlayerBag::ChangeSpaceLeft()
 	switch (CurrentSpace)
 	{
 	case BagSpace::Items:
-		break;
+		return;
 	case BagSpace::KeyItems:
 		ChangeSpace(BagSpace::Items);
 		break;
@@ -345,8 +391,10 @@ void PlayerBag::ChangeSpaceLeft()
 		ChangeSpace(BagSpace::KeyItems);
 		break;
 	default:
-		break;
+		return;
 	}
+
+	ChangeAnimation(BagAnim::UpMove);
 }
 
 void PlayerBag::ChangeSpaceRight()
@@ -361,10 +409,12 @@ void PlayerBag::ChangeSpaceRight()
 		ChangeSpace(BagSpace::PokeBalls);
 		break;
 	case BagSpace::PokeBalls:
-		break;
+		return;
 	default:
-		break;
+		return;
 	}
+
+	ChangeAnimation(BagAnim::UpMove);
 }
 
 void PlayerBag::CursorUp()
@@ -376,6 +426,8 @@ void PlayerBag::CursorUp()
 	}
 	CurrentCursor--;
 	CursorMove();
+
+	ChangeAnimation(BagAnim::LeftTurn);
 }
 
 void PlayerBag::CursorDown()
@@ -387,6 +439,8 @@ void PlayerBag::CursorDown()
 		return;
 	}
 	CursorMove();
+
+	ChangeAnimation(BagAnim::LeftTurn);
 }
 
 void PlayerBag::CursorMove()

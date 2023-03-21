@@ -2,12 +2,21 @@
 #include <vector>
 #include <list>
 #include <functional>
+#include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEngineCore/GameEngineActor.h>
 enum class BagSpace
 {
 	Items,
 	KeyItems,
 	PokeBalls
+};
+enum class BagAnim
+{
+	Idle,
+	LeftTurn,
+	RightTurn,
+	UpMove,
+	DownMove
 };
 // 설명 : 가방을 관리하는 클래스
 // 필드, 전투중 BagLevel로 이동시 이 클래스가 아이템들을 관리합니다
@@ -62,6 +71,8 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
 	GameEngineLevel* PrevLevel = nullptr;
+	GameEngineTimeEvent TimeEvent;
+	BagAnim AnimState = BagAnim::Idle;
 	BagSpace CurrentSpace = BagSpace::Items;
 	const int CancelCode = 29;
 	int ItemCode = 0;
@@ -70,7 +81,6 @@ private:
 	int SelectSize = 0;
 	bool IsBattle = false;
 	bool IsItemSelect = false;
-	
 
 	// _____________Renders
 	GameEngineRender* BagRender = nullptr;		// 가방 이미지
@@ -101,7 +111,7 @@ private:
 	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(4);
 
 
-
+	void ChangeAnimation(BagAnim _AnimState);
 
 	void ChangeSpace(BagSpace _Space);
 	void ChangeSpaceLeft();
@@ -111,9 +121,7 @@ private:
 	void CursorDown();
 	void CursorMove();
 	void CursorMove(int _Cursor);
-
-
-
+	
 	void SelectOn();
 	void SelectOff();
 	void SelectUp();
