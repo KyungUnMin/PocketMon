@@ -72,7 +72,7 @@ void FieldDialog::Start()
 	ArrowRender->ChangeAnimation("Arrow");
 
 	//Test
-	TestScript.push_back("sdjkhfsbjk,,lsjkdghgsdjklhfsadfhsjadkfhadskjfhasdflkfhsdjfsfsadfsfsfdasfsafa");
+	TestScript.push_back("sdjkhfsbjk,,lsj");
 	TestScript.push_back("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
 	TestScript.push_back("sdjkhfsbjk,,vqqwjbfhqkasjfbaukuvbdmjvgqsj,vqvbkvbax,jga,vbhjxa.");
 
@@ -100,7 +100,7 @@ void FieldDialog::Update(float _DeltaTime)
 	}
 
 	Time += _DeltaTime;
-	if (Time >= 0.03)
+	if (Time >= PrintSpeed)
 	{
 		Time = 0;
 		if (FirstLineRenderLen != OneLineSize)

@@ -37,7 +37,7 @@ private:
 	FieldMainMenu* MainFieldMainMenu = nullptr;
 	bool IsCameraDebug = false;
 
-	void ImageLoad();
+	void UIImageLoad();
 
 	void CreateFlower(const std::string_view& _CityName, const int2& _Index);
 	void CreateSingleDoor(const std::string_view& _CityName, const int2& _Index, const std::string_view& _DestCityName, const int2& _DestIndex, const std::string_view& _EventName, int _Order = 0);

@@ -1,5 +1,17 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "ContentsEnum.h"
+
+enum class MainMenuState
+{
+	Pokemon,
+	Bag,
+	Red,
+	Save,
+	Option,
+	Exit
+};
+
 class GameEngineRender;
 class FieldMainMenu : public GameEngineActor
 {
@@ -14,11 +26,30 @@ public:
 	FieldMainMenu& operator=(const FieldMainMenu& _Other) = delete;
 	FieldMainMenu& operator=(FieldMainMenu&& _Other) noexcept = delete;
 
+	FieldMainMenu* GetFieldMainMenu()
+	{
+		return MainFieldMainMenu;
+	}
+
+	void On() override;
+	void Off() override;
+	void OnOffSwtich() override;
+
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
-	std::list<GameEngineRender*> FieldMainMenuRender = std::list<GameEngineRender*>();
+	static FieldMainMenu* MainFieldMainMenu;
 
+	std::vector<GameEngineRender*> FieldMainMenuRender = std::vector<GameEngineRender*>();
+	MainMenuState State = MainMenuState::Pokemon;
+	float4 ActorPos = {480, 320};
+
+	void UpdateStart();
+	void UpdateEnd();
+	void MenuStateToRender();
+	void ChangeStatePrev();
+	void ChangeStateNext();
 };
 

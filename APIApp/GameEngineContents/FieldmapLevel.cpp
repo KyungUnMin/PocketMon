@@ -84,7 +84,7 @@ void FieldmapLevel::Loading()
 	MainFieldRender = CreateActor<FieldmapRender>();
 	MainFieldRender->On();
 		
-	ImageLoad();
+	UIImageLoad();
 	
 	MainPlayer = CreateActor<Player>();
 	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
@@ -171,13 +171,18 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainFieldDialog->OnOffSwtich();
 	}
 
+	if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
+	{
+		MainFieldMainMenu->OnOffSwtich();
+	}
+
 	if (true == GameEngineInput::IsDown("EventCheck"))
 	{
 		Fieldmap::EventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
 }
 
-void FieldmapLevel::ImageLoad()
+void FieldmapLevel::UIImageLoad()
 {
 	GameEngineDirectory Dir;
 	Dir.MoveParentToDirectory("ContentsResources");

@@ -229,6 +229,11 @@ void CenterLevel::Loading()
 	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
 	{
 		GameEngineInput::CreateKey("FieldDialogSwitch", 'p'); //테스트용
+		GameEngineInput::CreateKeyNoToupper("FieldMainMenuSwitch", VK_RETURN);
+		GameEngineInput::CreateKeyNoToupper("Menu_Up", VK_UP);
+		GameEngineInput::CreateKeyNoToupper("Menu_Down", VK_DOWN);
+		GameEngineInput::CreateKeyNoToupper("Menu_Left", VK_LEFT);
+		GameEngineInput::CreateKeyNoToupper("Menu_Right", VK_RIGHT);
 	}
 
 	CreateActor<CenterActor>();

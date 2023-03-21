@@ -12,6 +12,7 @@ enum class RenderOrder
 	FieldFront,
 	Particle,
 
+	Field_MainMenu,
 	DebugUI,
 	DebugText,
 	Field_Dialog,

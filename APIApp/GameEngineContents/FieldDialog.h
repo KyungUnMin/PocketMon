@@ -20,6 +20,11 @@ public:
 	void Off() override;
 	void OnOffSwtich() override;
 
+	FieldDialog* GetFieldDialog()
+	{
+		return MainFieldDialog;
+	}
+
 	void ConversationStart(std::list<std::string>* _Script);
 
 protected:
@@ -40,6 +45,7 @@ private:
 	float4 FirstTextRenderPos = { -388,-28 };
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
+	float PrintSpeed = 0.03f;
 
 	std::list<std::string> TestScript = std::list<std::string>();
 
