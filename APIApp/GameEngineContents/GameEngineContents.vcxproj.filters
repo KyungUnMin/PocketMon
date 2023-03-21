@@ -116,6 +116,9 @@
     <ClCompile Include="FieldmapDoubleDoor.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleFSM.cpp">
+      <Filter>Battle\03.FSM\01.FSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -232,6 +235,9 @@
     <ClInclude Include="FieldmapDoubleDoor.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="BattleFSM.h">
+      <Filter>Battle\03.FSM\01.FSM</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -311,6 +317,21 @@
     </Filter>
     <Filter Include="Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29">
       <UniqueIdentifier>{79436394-1a67-4813-b60f-ad782b4c6989}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM">
+      <UniqueIdentifier>{0f806b4c-2533-45f5-ad65-03b15b8f3252}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.FSM">
+      <UniqueIdentifier>{a388eb5f-b1cc-4138-89c5-90a40434a5ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State">
+      <UniqueIdentifier>{d6f3624a-46a9-4d93-b2b0-949a42ef1620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\01.Base">
+      <UniqueIdentifier>{0dfaea4a-6405-4d4c-bfbe-2d726cf833d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\02.Talk">
+      <UniqueIdentifier>{358d893f-0905-4a37-abf6-024e885e7063}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
