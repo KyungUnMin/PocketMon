@@ -119,6 +119,9 @@
     <ClCompile Include="BattleFSM.cpp">
       <Filter>Battle\03.FSM\01.FSM</Filter>
     </ClCompile>
+    <ClCompile Include="BattleStateBase.cpp">
+      <Filter>Battle\03.FSM\02.State\01.Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -237,6 +240,9 @@
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
       <Filter>Battle\03.FSM\01.FSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleStateBase.h">
+      <Filter>Battle\03.FSM\02.State\01.Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -165,6 +165,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
@@ -237,6 +241,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleStateBase.h">
       <SubType>
       </SubType>
     </ClInclude>
