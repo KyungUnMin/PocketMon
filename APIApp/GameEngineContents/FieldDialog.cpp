@@ -39,7 +39,17 @@ void FieldDialog::ConversationStart(std::list<std::string>* _Script)
 	UpdateStart(_Script);
 }
 
-
+bool FieldDialog::IsScriptPrintEnd()
+{
+	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
 
 void FieldDialog::Start()
 {
@@ -89,6 +99,11 @@ void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 
 void FieldDialog::Update(float _DeltaTime)
 {
+	if (IsValid == false)
+	{
+		return;
+	}
+
 	for (size_t i = 0; i < FirstLineRenderLen; i++)
 	{
 		FieldDialogTextRender[0][i]->On();

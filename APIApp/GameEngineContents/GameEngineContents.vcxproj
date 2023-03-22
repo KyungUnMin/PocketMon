@@ -266,6 +266,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ShopUIManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
@@ -382,6 +386,10 @@
     </ClInclude>
     <ClInclude Include="PokeSkillBase.h" />
     <ClInclude Include="ShopMainMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="ShopUIManager.h">
       <SubType>
       </SubType>
     </ClInclude>

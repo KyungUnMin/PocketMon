@@ -18,6 +18,7 @@
 #include "FieldMainMenu.h"
 #include "MoveMapFadeEffect.h"
 #include "BackgroundUI.h"
+#include "ShopUIManager.h"
 
 //Game Actor
 #include "Player.h"
@@ -294,6 +295,7 @@ void FieldmapLevel::Loading()
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
 	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
+	MainShopUIManager = CreateActor<ShopUIManager>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -369,9 +371,9 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainPlayer->On();
 	}
 	
-	if (true == GameEngineInput::IsDown("FieldDialogSwitch"))
+	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		MainMoveMapFadeEffect->OnOffSwtich();
+		MainShopUIManager->OnOffSwtich();
 	}
 
 	if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
@@ -403,6 +405,8 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_Dialog.bmp"))->Cut(4, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveMapFade1.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveMapFade2.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_MainMenu.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuArrow.bmp"));
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)

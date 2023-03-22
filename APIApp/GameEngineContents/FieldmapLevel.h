@@ -12,6 +12,7 @@ class FieldDialog;
 class FieldmapRender;
 class FieldMainMenu;
 class MoveMapFadeEffect;
+class ShopUIManager;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
@@ -47,6 +48,7 @@ private:
 	FieldmapRender* MainFieldRender = nullptr;
 	FieldMainMenu* MainFieldMainMenu = nullptr;
 	MoveMapFadeEffect* MainMoveMapFadeEffect = nullptr;
+	ShopUIManager* MainShopUIManager = nullptr;
 	bool IsCameraDebug = false;
 
 	void UIImageLoad();

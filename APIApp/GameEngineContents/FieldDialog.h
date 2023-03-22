@@ -20,12 +20,15 @@ public:
 	void Off() override;
 	void OnOffSwtich() override;
 
-	FieldDialog* GetFieldDialog()
+	static FieldDialog* GetFieldDialog()
 	{
 		return MainFieldDialog;
 	}
 
 	void ConversationStart(std::list<std::string>* _Script);
+	bool IsScriptPrintEnd();
+
+	bool IsValid = true;
 
 protected:
 	void Start() override;
@@ -60,6 +63,7 @@ private:
 	float4 ArrowRenderScale = { 40, 48 };
 	float4 ArrowRenderPlusPos = { 36,0 };
 	int2 LastTextRenderIndex = { -1,-1 };
+
 
 	void UpdateStart(std::list<std::string>* _Script);
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);

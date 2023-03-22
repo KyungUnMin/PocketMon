@@ -304,7 +304,7 @@ void CenterLevel::Loading()
 	//Field_UI 관련 키
 	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
 	{
-		GameEngineInput::CreateKey("FieldDialogSwitch", 'p'); //테스트용
+		GameEngineInput::CreateKey("FieldUITestSwitch", 'p'); //테스트용
 		GameEngineInput::CreateKeyNoToupper("FieldMainMenuSwitch", VK_RETURN);
 		GameEngineInput::CreateKeyNoToupper("Menu_Up", VK_UP);
 		GameEngineInput::CreateKeyNoToupper("Menu_Down", VK_DOWN);

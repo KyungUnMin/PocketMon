@@ -14,8 +14,12 @@ enum class RenderOrder
 	Field_MainMenu,
 	DebugUI,
 	DebugText,
+	Shop_MainMenu,
+	Shop_MainMenu_Arrow,
 	Field_Dialog,
 	Field_Dialog_Text,
+
+	// Battle
 	Battle_UI,
 	Battle_Text,
 	Battle_Cursor,
