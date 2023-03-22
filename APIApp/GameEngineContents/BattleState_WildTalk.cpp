@@ -3,6 +3,7 @@
 #include "BattlePlayer.h"
 #include "BackTextActor.h"
 #include "BattleLevel.h"
+#include "Battle_Select.h"
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
@@ -39,6 +40,10 @@ void BattleState_WildTalk::Start()
 
 void BattleState_WildTalk::Update(float _DeltaTime)
 {
+	static bool IsCreated = false;
+	if (true == IsCreated)
+		return;
+
 	if (true == GameEngineInput::IsDown(BattleLevel::BattleKeyName))
 	{
 		//모든 텍스트를 출력했다면
@@ -46,9 +51,10 @@ void BattleState_WildTalk::Update(float _DeltaTime)
 			return;*/
 
 		BackUI->BattleSetText(Texts[StrIndex++]);
-		if (StrIndex == Texts.size())
+		if (StrIndex == Texts.size() && false == IsCreated)
 		{
-			int a = 10;
+			BattleLevel::BattleLevelPtr->CreateActor<Battle_Select>();
+			IsCreated = true;
 		}
 
 		/*if (nullptr == TextEvents[CurTextNum++])

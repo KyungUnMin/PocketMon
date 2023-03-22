@@ -34,9 +34,9 @@ void TextTestLevel::Loading()
 	//띄우기 위해 조건이 필요할 때
 	CreateActor<EnemyHPBackground>();
 	CreateActor<FriendlyHPBackground>();
-	//CreateActor<Battle_Select>()->init(sSSS);
+	CreateActor<BattleCommendActor>();
 
-
+	
 }
 
 void TextTestLevel::Update(float _DeltaTime)

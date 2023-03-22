@@ -173,7 +173,10 @@ void BackTextActor::Update(float _DeltaTime)
 
 	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
 	{
-		TestTextIter++;
+		if (TestText.end() == TestTextIter)
+			return;
+
+		++TestTextIter;
 		if (TestTextIter != TestTextEndIter)
 		{
 			ClearDialog();
