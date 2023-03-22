@@ -220,6 +220,12 @@ public:
 		return CurrentHealthPoint;
 	}
 
+	// 포켓몬 레벨업 시 현재체력을 맥스체력으로 갱신
+	inline void SetMonsterCurrentHP(int _MaxHP)
+	{
+		CurrentHealthPoint = _MaxHP;
+	}
+
 	// UI용 현재 체력 string 반환
 	inline std::string ForUI_GetMonsterCurrentHP()
 	{

@@ -443,6 +443,10 @@ void PokeDataBase::PokeLevelUp(PokeDataBase* _Ownerpokemon)
 	_Ownerpokemon->Agility += 1;
 
 	_Ownerpokemon->MonsterLevel += 1;
+	
+	// 현재체력 갱신 (레벨업시 Max 상태로 변경)
+	int RenewalcurrentHP = _Ownerpokemon->GetMonsterMaxHP_int();
+	_Ownerpokemon->SetMonsterCurrentHP(RenewalcurrentHP);
 }
 
 //////////////////////////////////////////////////////////////// 푸키먼 데이터 생성 보조
