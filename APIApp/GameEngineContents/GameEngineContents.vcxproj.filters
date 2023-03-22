@@ -163,12 +163,14 @@
     <ClCompile Include="ShopUIManager.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
-    <ClCompile Include="FieldmapFlower.cpp" />
     <ClCompile Include="FieldmapBattleZone.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
     </ClCompile>
     <ClCompile Include="SummaryUI.cpp">
       <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapFlower.cpp">
+      <Filter>Map\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +333,12 @@
     </ClInclude>
     <ClInclude Include="SummaryUI.h">
       <Filter>FieldUI\BagUI</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapBattleZone.h">
+      <Filter>Map\Actor\BattleZone</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapFlower.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
