@@ -33,10 +33,10 @@ void Battle_Select::Start()
 		GameEngineInput::CreateKey("InsertMove1", 'Z');
 	}
 	SetPos({720,540});
-	GameEngineRender* RenderPtr = CreateRender("Battle_Select.bmp", RenderOrder::Battle_Text);
+	GameEngineRender* RenderPtr = CreateRender("Battle_Select.bmp", BattleRenderOrder::Battle_Text);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 
-	ArrowRender = CreateRender("Battle_Arrow.bmp", RenderOrder::Battle_Cursor);
+	ArrowRender = CreateRender("Battle_Arrow.bmp", BattleRenderOrder::Battle_Cursor);
 	ArrowRender->SetScale((ArrowRender->GetImage()->GetImageScale()));
 	//back 이미지 크기 480,192   -240 ~ 240
 	//이미지 크기 50,50

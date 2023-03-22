@@ -20,7 +20,7 @@ EnemyHPBackground::~EnemyHPBackground()
 
 void EnemyHPBackground::Start()
 {
-	GameEngineRender* RenderPtr = CreateRender("EnemyHPBackground.bmp", RenderOrder::Battle_UI);
+	GameEngineRender* RenderPtr = CreateRender("EnemyHPBackground.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 	SetMovePositions({ -600,120 }, { 250,120 });
 

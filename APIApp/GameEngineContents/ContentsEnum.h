@@ -44,7 +44,9 @@ enum class BattleRenderOrder
 	Particle1,
 	
 	//이 사이에 UI 넣어주세요
-
+	Battle_UI,
+	Battle_Text,
+	Battle_Cursor,
 	//
 
 	Fade,

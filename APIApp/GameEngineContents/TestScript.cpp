@@ -14,7 +14,7 @@ TestScript::~TestScript()
 
 void TestScript::Start()
 {
-	TextRender1 = CreateRender(RenderOrder::Battle_Text);
+	TextRender1 = CreateRender(BattleRenderOrder::Battle_Text);
 	BoxScale = { 650, 300 };
 	
 	TextRender1->SetText("UNKNOWN", 40, "±¼¸²", TextAlign::Left, RGB(0, 0, 0), BoxScale);

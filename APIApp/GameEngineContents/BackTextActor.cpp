@@ -23,7 +23,7 @@ BackTextActor::~BackTextActor()
 void BackTextActor::Start()
 {
 	SetPos({480,540});
-	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", RenderOrder::Battle_UI);
+	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 
 	ScriptPtr = GetLevel()->CreateActor<TestScript>();
@@ -36,18 +36,18 @@ void BackTextActor::Start()
 	{
 		for (size_t x = 0; x < BattleTextRender[y].size(); x++)
 		{
-			BattleTextRender[y][x] = CreateRender("Font_Dialog.bmp", RenderOrder::Battle_Text);
+			BattleTextRender[y][x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
 			BattleTextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
 			BattleTextRender[y][x]->SetScale(TextRenderImageScale);
 			BattleTextRender[y][x]->SetFrame(SpaceFrameNum);
-			//BattleTextRender[y][x]->Off();
+//			BattleTextRender[y][x]->Off();
 			BattleTextRender[y][x]->EffectCameraOff();
 		}
 	}
 
 	TestText.push_back("it is test");
 	TestText.push_back("it is test2");
-
+	PushStart(&TestText);
 }
 
 void BackTextActor::PushScriptBegin(std::list<std::string>::iterator _Begin)
@@ -170,17 +170,7 @@ int2 BackTextActor::FindLastTextRenderIndex()
 }
 void BackTextActor::Update(float _DeltaTime)
 {
-	PushStart(&TestText);
 	StringToRender();
-	for (size_t i = 0; i < FirstLineRenderLen; i++)
-	{
-		BattleTextRender[0][i]->On();
-	}
-
-	for (size_t i = 0; i < SecondLineRenderLen; i++)
-	{
-		BattleTextRender[1][i]->On();
-	}
 
 	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
 	{
@@ -188,8 +178,6 @@ void BackTextActor::Update(float _DeltaTime)
 		if (TestTextIter != TestTextEndIter)
 		{
 			ClearDialog();
-			FirstLineRenderLen = 0;
-			SecondLineRenderLen = 0;
 			StringToRender();
 		}
 	
@@ -201,6 +189,7 @@ void BackTextActor::PushStart(std::list<std::string>* _Text)
 {
 	PushScriptBegin(_Text->begin());
 	PushScriptEnd(_Text->end());
+
 }
 
 

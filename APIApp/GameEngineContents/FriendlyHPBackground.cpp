@@ -20,7 +20,7 @@ FriendlyHPBackground::~FriendlyHPBackground()
 
 void FriendlyHPBackground::Start()
 {
-	GameEngineRender* RenderPtr = CreateRender("FriendlyHPBackground.bmp", RenderOrder::Battle_UI);
+	GameEngineRender* RenderPtr = CreateRender("FriendlyHPBackground.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 	SetMovePositions({1500,370 }, {730,370});
 
