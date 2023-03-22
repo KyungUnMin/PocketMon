@@ -13,6 +13,7 @@
 #include "TestScript.h"
 #include "PocketMonCore.h"
 #include "BattleFSM.h"
+#include "BagLevel.h"
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
@@ -58,24 +59,17 @@ void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	InitGroundRenders(_FieldType);
 
 	BattleFsmPtr = new BattleFSM;
-	BattleFsmPtr->Init();
-	BattleFsmPtr->CreateState(BattleStateType::WildTalk);
-
-	//야생포켓몬과 전투시
-	if (BattleNpcType::None == _NpcType)
-	{
-		BattleFsmPtr->ChangeState(BattleStateType::WildTalk);
-	}
+	BattleFsmPtr->Init(_FieldType, _NpcType);
 }
 
 void BattleLevel::InitGroundRenders(BattleFieldType _FieldType)
 {
-	CreateActor<BattleBackGround>()->Init(_FieldType);
+	CreateActor<BattleBackGround>(UpdateOrder::Battle_Actors)->Init(_FieldType);
 
-	BattlePlayer* Player = CreateActor<BattlePlayer>();
+	BattlePlayer* Player = CreateActor<BattlePlayer>(UpdateOrder::Battle_Actors);
 	Player->Init(_FieldType);
 
-	BattleEnemy* Enemy = CreateActor<BattleEnemy>();
+	BattleEnemy* Enemy = CreateActor<BattleEnemy>(UpdateOrder::Battle_Actors);
 	Enemy->Init(_FieldType);
 }
 
@@ -98,12 +92,22 @@ void BattleLevel::Update(float _DeltaTime)
 
 void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	//다음에 이동할 레벨이 전투 인벤토리 쪽이 아니라면
-	//엑터들을 지운다
+	//가방으로 이동하는 경우엔 Actor들을 삭제하지 않음
+	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
+	if (nullptr != BagUILevel)
+		return;
 
 	if (nullptr != BattleFsmPtr)
 	{
 		delete BattleFsmPtr;
 		BattleFsmPtr = nullptr;
 	}
+
+	std::vector<GameEngineActor*> Actors = GetActors(UpdateOrder::Battle_Actors);
+	for (GameEngineActor* Actor : Actors)
+	{
+		Actor->Death();
+	}
+
+	Actors.clear();
 }

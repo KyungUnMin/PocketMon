@@ -7,6 +7,7 @@ enum class RenderOrder
 	Tilemap,
 	FieldBack,
 	BattleGround,
+	Battle_Effect,
 	Monster,		 // 1
 	Player,			 // 2
 	FieldFront,

@@ -4,6 +4,7 @@
 #include "BattleLevel.h"
 #include "EnemyHPBackground.h"
 #include "BackTextActor.h"
+#include "Battle_MonsterAppearEffect.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -13,6 +14,11 @@ BattleState_TalkBase::BattleState_TalkBase()
 BattleState_TalkBase::~BattleState_TalkBase()
 {
 
+}
+
+void BattleState_TalkBase::Start()
+{
+	AppearEffect = BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
 }
 
 void BattleState_TalkBase::Update(float _DeltaTime)

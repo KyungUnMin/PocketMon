@@ -165,6 +165,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleMonsterPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleStateBase.cpp">
       <SubType>
       </SubType>
@@ -174,6 +178,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleState_WildTalk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Battle_MonsterAppearEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -269,6 +277,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleMonsterPlayer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleStateBase.h">
       <SubType>
       </SubType>
@@ -278,6 +290,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_WildTalk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Battle_MonsterAppearEffect.h">
       <SubType>
       </SubType>
     </ClInclude>

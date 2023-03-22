@@ -1,7 +1,7 @@
 #include "BattleFSM.h"
-#include "BattleStateBase.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include "BattleLevel.h"
+#include "BattleEnemy.h"
 #include "BattleState_WildTalk.h"
 
 BattleFSM::BattleFSM()
@@ -15,10 +15,46 @@ BattleFSM::~BattleFSM()
 }
 
 
-void BattleFSM::Init()
+void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
-	
+	switch (_NpcType)
+	{
+	case BattleNpcType::None:
+		WildBattleInit(_FieldType);
+		break;
+	default:
+		MsgAssert("배틀 FSM에서 아직 연결해주지 않은 전투상황입니다");
+		break;
+	}
 }
+
+void BattleFSM::WildBattleInit(BattleFieldType _FieldType)
+{
+	BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
+	CreateState(BattleStateType::WildTalk);
+
+
+	ChangeState(BattleStateType::WildTalk);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 void BattleFSM::CreateState(BattleStateType _Type)
 {
@@ -45,6 +81,11 @@ void BattleFSM::CreateState(BattleStateType _Type)
 	AllState[_Type] = NewState;
 }
 
+
+
+
+
+
 void BattleFSM::ChangeState(BattleStateType _Type)
 {
 	std::shared_ptr<BattleStateBase> PrevState = CurState;
@@ -65,6 +106,8 @@ void BattleFSM::ChangeState(BattleStateType _Type)
 
 	CurState = NextState;
 }
+
+
 
 void BattleFSM::Update(float _DeltaTime)
 {

@@ -72,6 +72,9 @@ BattleMonsterBase* BattleMonsterBase::CreateMonster(GameEngineLevel* _Level, Pok
 	return MonsterPtr;
 }
 
+
+
+
 void BattleMonsterBase::RenderCreate()
 {
 	std::string ImagePath = "Battle" + GetName();

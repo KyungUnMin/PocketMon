@@ -2,6 +2,7 @@
 #include "BattleTrainerBase.h"
 
 class GameEngineRender;
+class BattleMonsterBase;
 
 class BattlePlayer : public BattleTrainerBase
 {
@@ -17,13 +18,15 @@ public:
 	BattlePlayer& operator=(const BattlePlayer&& _Other) noexcept = delete;
 
 	void Init(BattleFieldType _FieldType);
+	void CreatePlayerMonster();
 
 protected:
 
 private:
 	GameEngineRender* PlayerRenderPtr = nullptr;
+	BattleMonsterBase* Monster = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
-	void CreatePlayer();
+	void CreatePlayerRender();
 };
 

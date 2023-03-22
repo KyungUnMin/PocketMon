@@ -22,6 +22,6 @@ protected:
 private:
 
 
-	void Test();
+	void PlayerMonsterCreate();
 };
 

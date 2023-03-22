@@ -18,11 +18,13 @@ public:
 	BattleEnemy& operator=(const BattleEnemy&& _Other) noexcept = delete;
 
 	void Init(BattleFieldType _FieldType);
+	void CreateWildMonster(BattleFieldType _FieldType);
 
 	inline BattleMonsterBase* GetMonster()
 	{
 		return Monster;
 	}
+
 
 protected:
 
@@ -33,6 +35,5 @@ private:
 
 	//아마 외부에서 호출될 것 같다 추후에 수정
 	void CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType);
-	void CreateWildMonster(BattleFieldType _FieldType);
 };
 

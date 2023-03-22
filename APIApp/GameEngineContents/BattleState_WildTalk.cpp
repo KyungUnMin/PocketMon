@@ -1,4 +1,6 @@
 #include "BattleState_WildTalk.h"
+#include "Battle_MonsterAppearEffect.h"
+#include "BattlePlayer.h"
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
@@ -21,11 +23,14 @@ BattleState_WildTalk::~BattleState_WildTalk()
 
 void BattleState_WildTalk::Start()
 {
+	BattleState_TalkBase::Start();
+
 	CreateUIText(Texts);
-	SetTextEvent(1, std::bind(&BattleState_WildTalk::Test, this));
+	SetTextEvent(1, std::bind(&BattleState_WildTalk::PlayerMonsterCreate, this));
 }
 
-void BattleState_WildTalk::Test()
+void BattleState_WildTalk::PlayerMonsterCreate()
 {
-	//MsgAssert("Hello");
+	GetAppearEffect()->Action();
+	BattlePlayer::PlayerPtr->CreatePlayerMonster();
 }
