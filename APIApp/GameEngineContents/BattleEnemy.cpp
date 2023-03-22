@@ -101,5 +101,5 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 
 	//юс╫ц
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNumber::Bulbasaur, true);
+	Monster->Init(PokeNumber::Onix, true);
 }

@@ -49,13 +49,63 @@ void CenterLevel::Loading()
 
 		Dir.MoveParentToDirectory("Field");
 		Dir.Move("Monster");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleAppearEffect.bmp"));
+
+		// ÀÌ»óÇØ¾¾
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurBack.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurFront.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurShadow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurBackLight.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurFrontLight.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleAppearEffect.bmp"));
 		
+		// ÆÄÀÌ¸®
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander\\BattleCharmanderBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander\\BattleCharmanderFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander\\BattleCharmanderShadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander\\BattleCharmanderBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander\\BattleCharmanderFrontLight.bmp"));
+
+		// ²¿¸¶µ¹
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Geodude\\BattleGeodudeBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Geodude\\BattleGeodudeFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Geodude\\BattleGeodudeShadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Geodude\\BattleGeodudeBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Geodude\\BattleGeodudeFrontLight.bmp"));
+
+		// ·Õ½ºÅæ
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Onix\\BattleOnixBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Onix\\BattleOnixFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Onix\\BattleOnixShadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Onix\\BattleOnixBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Onix\\BattleOnixFrontLight.bmp"));
+
+		// ±¸±¸
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey\\BattlePidgeyBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey\\BattlePidgeyFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey\\BattlePidgeyShadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey\\BattlePidgeyBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pidgey\\BattlePidgeyFrontLight.bmp"));
+
+		// ²¿·¿
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata\\BattleRattataBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata\\BattleRattataFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata\\BattleRattataShadow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata\\BattleRattataBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata\\BattleRattataFrontLight.bmp"));
+
+		// ±úºñÂü
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow\\BattleSpearowBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow\\BattleSpearowBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow\\BattleSpearowFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow\\BattleSpearowFrontLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow\\BattleSpearowShadow.bmp"));
+
+		// ²¿ºÎ±â
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFrontLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleShadow.bmp"));
 
 		Dir.MoveParentToDirectory("Battle");
 	}
