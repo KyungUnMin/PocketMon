@@ -93,6 +93,12 @@ public:
 	PokeSkillBase& operator=(const PokeSkillBase& _Other) = delete;
 	PokeSkillBase& operator=(PokeSkillBase&& _Other) noexcept = delete;
 
+	// 스킬이름 가져오기
+	std::string ForUI_GetSkillName()
+	{
+		return Name;
+	}
+
 	// 이것은 공격스킬입니까?
 	inline bool ItisAttackSkill()
 	{
@@ -151,12 +157,6 @@ public:
 	PokeSkill GetSkill()
 	{
 		return Skills;
-	}
-
-	// 스킬이름 가져오기
-	std::string ForUI_GetSkillName()
-	{
-		return Name;
 	}
 
 protected:
