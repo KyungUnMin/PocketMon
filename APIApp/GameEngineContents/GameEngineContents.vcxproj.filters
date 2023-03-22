@@ -167,6 +167,9 @@
     <ClCompile Include="FieldmapBattleZone.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
     </ClCompile>
+    <ClCompile Include="SummaryUI.cpp">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -326,9 +329,8 @@
     <ClInclude Include="ShopMainMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
-    <ClInclude Include="FieldmapFlower.h" />
-    <ClInclude Include="FieldmapBattleZone.h">
-      <Filter>Map\Actor\BattleZone</Filter>
+    <ClInclude Include="SummaryUI.h">
+      <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
