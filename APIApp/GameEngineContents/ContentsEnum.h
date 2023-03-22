@@ -61,6 +61,7 @@ enum class PlayerDir
 enum class CollisionOrder
 {
 	Player,          // 0
+	NPC,
 };
 
 enum class GroundType

@@ -19,6 +19,7 @@ public:
 
 
 	void ImageLoad();
+	void Render(float _DeltaTime);
 
 	int2 GetNPCindex()
 	{
@@ -29,6 +30,10 @@ protected:
 	void Update(float _DeltaTime) override;
 private:
 	GameEngineRender* R_NPC1 = nullptr;
+	GameEngineCollision* C_NPC_U = nullptr;
+	GameEngineCollision* C_NPC_D = nullptr;
+	GameEngineCollision* C_NPC_R = nullptr;
+	GameEngineCollision* C_NPC_L = nullptr;
 
 	bool NPC1ImageLoad = true;
 

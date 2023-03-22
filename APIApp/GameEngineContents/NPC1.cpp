@@ -61,6 +61,27 @@ void NPC1::Start()
 		R_NPC1->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
 		R_NPC1->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });*/
 	}
+	{
+		C_NPC_U = CreateCollision(CollisionOrder::NPC);
+		C_NPC_U->SetDebugRenderType(CollisionType::CT_Rect);
+		C_NPC_U->SetScale({ 64, 64 });
+		C_NPC_U->SetPosition({ 0,-64 });
+
+		C_NPC_D = CreateCollision(CollisionOrder::NPC);
+		C_NPC_D->SetDebugRenderType(CollisionType::CT_Rect);
+		C_NPC_D->SetScale({ 64, 64 });
+		C_NPC_D->SetPosition({ 0,64 });
+
+		C_NPC_R = CreateCollision(CollisionOrder::NPC);
+		C_NPC_R->SetDebugRenderType(CollisionType::CT_Rect);
+		C_NPC_R->SetScale({ 64, 64 });
+		C_NPC_R->SetPosition({ 64,0 });
+
+		C_NPC_L = CreateCollision(CollisionOrder::NPC);
+		C_NPC_L->SetDebugRenderType(CollisionType::CT_Rect);
+		C_NPC_L->SetScale({ 64, 64 });
+		C_NPC_L->SetPosition({ -64,0 });
+	}
 	R_NPC1->ChangeAnimation("Idle");
 }
 
@@ -97,4 +118,14 @@ void NPC1::Update(float _DeltaTime)
 	}
 }
 
+void NPC1::Render(float _DeltaTime)
+{
+	if (GameEngineInput::IsPress("CollisionRender"))
+	{
+		C_NPC_U->DebugRender();
+		C_NPC_D->DebugRender();
+		C_NPC_L->DebugRender();
+		C_NPC_R->DebugRender();
+	}
+}
 

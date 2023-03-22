@@ -12,6 +12,7 @@
 
 #include "Player.h"
 #include "Fieldmap.h"
+#include "NPC1.h"
 
 
 void Player::ChangeState(PlayerState _State)
