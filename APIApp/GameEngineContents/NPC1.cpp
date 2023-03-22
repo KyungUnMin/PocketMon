@@ -85,37 +85,44 @@ void NPC1::Start()
 	R_NPC1->ChangeAnimation("Idle");
 }
 
+
+
+
 void NPC1::Update(float _DeltaTime)
 {
+	//아직미사용
 	NPC1index= Fieldmap::GetIndex(GetPos()); //계속 index check
 
-
-
-
-
-
-	//플레이어가 근처에있고, 상호작용키를눌렀을때, 라는 조건을추가해야함.
-	//또는 타일맵의index로 조건을바꿔서 최적화하기
-	if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue()
-		&&GameEngineInput::IsDown("NpcTalk"))
+	std::vector<GameEngineCollision*> CheckCollisions;
+	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };
+	
+	if (true == C_NPC_U->Collision(CheckPlayer, CheckCollisions) ||
+		true == C_NPC_D->Collision(CheckPlayer, CheckCollisions) ||
+		true == C_NPC_L->Collision(CheckPlayer, CheckCollisions) ||
+		true == C_NPC_R->Collision(CheckPlayer, CheckCollisions))
 	{
-		R_NPC1->ChangeAnimation("upIdle");
+		if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue()
+			&& GameEngineInput::IsDown("NpcTalk"))
+		{
+			R_NPC1->ChangeAnimation("upIdle");
+		}
+		if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue()
+			&& GameEngineInput::IsDown("NpcTalk"))
+		{
+			R_NPC1->ChangeAnimation("Idle");
+		}
+		if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue()
+			&& GameEngineInput::IsDown("NpcTalk"))
+		{
+			R_NPC1->ChangeAnimation("rightIdle");
+		}
+		if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue()
+			&& GameEngineInput::IsDown("NpcTalk"))
+		{
+			R_NPC1->ChangeAnimation("leftIdle");
+		}
 	}
-	if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue()
-		&& GameEngineInput::IsDown("NpcTalk"))
-	{
-		R_NPC1->ChangeAnimation("Idle");
-	}
-	if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue()
-		&& GameEngineInput::IsDown("NpcTalk"))
-	{
-		R_NPC1->ChangeAnimation("rightIdle");
-	}
-	if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue()
-		&& GameEngineInput::IsDown("NpcTalk"))
-	{
-		R_NPC1->ChangeAnimation("leftIdle");
-	}
+	
 }
 
 void NPC1::Render(float _DeltaTime)
