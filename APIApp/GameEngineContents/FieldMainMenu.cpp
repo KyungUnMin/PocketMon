@@ -120,6 +120,7 @@ void FieldMainMenu::Update(float _DeltaTime)
 		switch (State)
 		{
 		case MainMenuState::Pokemon:
+			GameEngineCore::GetInst()->ChangeLevel("PokemonLevel");
 			break;
 		case MainMenuState::Bag:
 			GameEngineCore::GetInst()->ChangeLevel("BagLevel");
@@ -136,6 +137,11 @@ void FieldMainMenu::Update(float _DeltaTime)
 		default:
 			break;
 		}
+	}
+
+	if (GameEngineInput::IsDown("B"))
+	{
+		Off();
 	}
 }
 
