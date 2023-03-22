@@ -55,4 +55,15 @@ void FieldmapBattleZone::BattleStart()
 	int PokeNumber = static_cast<int>(PokeNumbers[RandomIndex]);
 	int RandomLevel = MianRand.RandomInt(static_cast<int>(MinLevel), static_cast<int>(MaxLevel));
 
+	std::string DebugLog;
+
+	DebugLog += "Pokemon Index : ";
+	DebugLog += std::to_string(PokeNumber);
+	DebugLog += "\n";
+	
+	DebugLog += "Pokemon Level : ";
+	DebugLog += std::to_string(RandomLevel);
+	DebugLog += "\n";
+
+	DebugMsgBox(DebugLog);
 }
