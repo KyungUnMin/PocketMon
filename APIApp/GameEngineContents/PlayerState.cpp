@@ -103,22 +103,33 @@ void Player::MoveStart()
 	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
 
 	StartPos = GetPos();
-
-	if (true == GameEngineInput::IsPress("LeftMove"))
+	if (Fieldmap::Walkable(NextXminusIndex))
 	{
-		EndPos = StartPos + (MoveRange-NextPos1);
+		if (true == GameEngineInput::IsPress("LeftMove"))
+		{
+			EndPos = StartPos + (MoveRange - NextPos1);
+		}
 	}
-	else if (true == GameEngineInput::IsPress("RightMove"))
+	if (Fieldmap::Walkable(NextXplusIndex))
 	{
-		EndPos = StartPos + (MoveRange-NextPos2);
+		if (true == GameEngineInput::IsPress("RightMove"))
+		{
+			EndPos = StartPos + (MoveRange - NextPos2);
+		}
 	}
-	else if (true == GameEngineInput::IsPress("UpMove"))
+	if (Fieldmap::Walkable(NextYMinusIndex))
 	{
-		EndPos = StartPos + (MoveRange - NextPos3);
+		if (true == GameEngineInput::IsPress("UpMove"))
+		{
+			EndPos = StartPos + (MoveRange - NextPos3);
+		}
 	}
-	else if (true == GameEngineInput::IsPress("DownMove"))
+	if (Fieldmap::Walkable(NextYplusIndex))
 	{
-		EndPos = StartPos + (MoveRange - NextPos4);
+		if (true == GameEngineInput::IsPress("DownMove"))
+		{
+			EndPos = StartPos + (MoveRange - NextPos4);
+		}
 	}
 	
 }
@@ -126,7 +137,7 @@ void Player::MoveUpdate(float _Time)
 {
 	DirCheck("Move");
 	PlayerTime+=_Time;
-
+	
 	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*4);
 	 SetPos(POS); 
 	 if (PlayerTime > 0.25f)//다음타일까지의 이동시간
