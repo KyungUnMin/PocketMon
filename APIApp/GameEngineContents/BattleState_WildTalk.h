@@ -18,9 +18,11 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
-
+	int StrIndex = 0;
+	BackTextActor* BackUI = nullptr;
 
 	void PlayerMonsterCreate();
 };

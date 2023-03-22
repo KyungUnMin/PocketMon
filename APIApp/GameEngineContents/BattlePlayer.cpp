@@ -71,4 +71,31 @@ void BattlePlayer::CreatePlayerMonster()
 {
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNumber::Bulbasaur);
+
+	IsMonsterAppear = true;
+	MoveStartTime = GetLiveTime();
+}
+
+
+
+
+
+void BattlePlayer::Update(float _DeltaTime)
+{
+	BattleTrainerBase::Update(_DeltaTime);
+
+	if (false == IsMonsterAppear)
+		return;
+
+	const static float Duration = 1.f;
+	const float4 MoveSpeed = float4::Left * 200.f;
+
+	float During = GetLiveTime() - MoveStartTime;
+	if (Duration < During)
+	{
+		IsMonsterAppear = false;
+		return;
+	}
+
+	PlayerRenderPtr->SetMove(MoveSpeed * _DeltaTime);
 }

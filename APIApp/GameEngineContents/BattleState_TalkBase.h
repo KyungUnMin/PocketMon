@@ -30,6 +30,11 @@ protected:
 		return AppearEffect;
 	}
 
+	inline BackTextActor* GetBackUI()
+	{
+		return BackUI;
+	}
+
 private:
 	BackTextActor* BackUI = nullptr;
 	Battle_MonsterAppearEffect* AppearEffect = nullptr;

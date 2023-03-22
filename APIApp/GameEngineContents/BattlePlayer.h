@@ -21,10 +21,14 @@ public:
 	void CreatePlayerMonster();
 
 protected:
+	void Update(float _DeltaTime) override;
 
 private:
 	GameEngineRender* PlayerRenderPtr = nullptr;
 	BattleMonsterPlayer* Monster = nullptr;
+
+	bool IsMonsterAppear = false;
+	float MoveStartTime = 0.f;
 
 	void CreateGround(BattleFieldType _FieldType);
 	void CreatePlayerRender();
