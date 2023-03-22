@@ -49,13 +49,6 @@ void Player::ChangeState(PlayerState _State)
 
 void Player::UpdateState(float _Time)
 {
-	if (false == GameEngineInput::IsPress("LeftMove") &&
-		false == GameEngineInput::IsPress("RightMove") &&
-		false == GameEngineInput::IsPress("DownMove") &&
-		false == GameEngineInput::IsPress("UpMove"))
-	{
-		MoveDir = float4::Zero;
-	}
 	switch (StateValue)
 	{
 	case PlayerState::IDLE:
@@ -95,13 +88,13 @@ void Player::MoveStart()
 {
 	DirCheck("Move");
 
-	int2 IndexValue = Fieldmap::GetIndex(GetPos());
-	float4 MoveRange = Fieldmap::GetPos(IndexValue);
+	Playerindex = Fieldmap::GetIndex(GetPos());
+	float4 MoveRange = Fieldmap::GetPos(Playerindex);
 
-	int2 NextXplusIndex = int2(IndexValue.x + 1, IndexValue.y);
-	int2 NextXminusIndex = int2(IndexValue.x - 1, IndexValue.y);
-	int2 NextYplusIndex = int2(IndexValue.x, IndexValue.y + 1);
-	int2 NextYMinusIndex = int2(IndexValue.x, IndexValue.y - 1);
+	int2 NextXplusIndex = int2(Playerindex.x + 1, Playerindex.y);
+	int2 NextXminusIndex = int2(Playerindex.x - 1, Playerindex.y);
+	int2 NextYplusIndex = int2(Playerindex.x, Playerindex.y + 1);
+	int2 NextYMinusIndex = int2(Playerindex.x, Playerindex.y - 1);
 
 	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
 	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);

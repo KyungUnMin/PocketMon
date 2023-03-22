@@ -66,6 +66,13 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
+	NPC1index= Fieldmap::GetIndex(GetPos()); //계속 index check
+
+
+
+
+
+
 	//플레이어가 근처에있고, 상호작용키를눌렀을때, 라는 조건을추가해야함.
 	//또는 타일맵의index로 조건을바꿔서 최적화하기
 	if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue()

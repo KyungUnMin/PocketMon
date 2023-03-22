@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineResources.h>
+#include <GameEngineContents/int2.h>
 
 
 class NPC1 : public GameEngineActor
@@ -18,6 +19,11 @@ public:
 
 
 	void ImageLoad();
+
+	int2 GetNPCindex()
+	{
+		return NPC1index;
+	}
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -25,6 +31,8 @@ private:
 	GameEngineRender* R_NPC1 = nullptr;
 
 	bool NPC1ImageLoad = true;
+
+	int2 NPC1index = int2::Zero;
 	
 };
 

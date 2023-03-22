@@ -11,6 +11,8 @@
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 
+#include "NPC1.h"
+
 Player* Player::MainPlayer;
 
 Player::Player()
@@ -114,6 +116,9 @@ void Player::DirCheck(const std::string_view& _AnimationName)
 
 void Player::NPCtalkValueSet()
 {
+	//NPC1* index;
+	//if (index->GetNPCindex() ==Player::MainPlayer->GetPos())
+
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
 		TalkValue = NPCtalkValue::RIGHT;

@@ -100,7 +100,7 @@ private:
 	//////////Speed&Pos//////////
 	float MoveTile = 100.0f;
 	float4 MoveDir = float4::Zero;
-	int2 MoveSet = int2::Zero;
+	int2 Playerindex = int2::Zero;
 	/////////////////////////////
 	
 
