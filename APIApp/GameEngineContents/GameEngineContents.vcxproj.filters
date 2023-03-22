@@ -436,5 +436,8 @@
     <Filter Include="Battle\02.Actor\03.Monster\01.MonsterBase\03.EnemyMonster">
       <UniqueIdentifier>{a9ad84d9-ae1c-4675-98ba-c43cb3fe0e31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="FieldUI\HSM\ShopUI">
+      <UniqueIdentifier>{14847dd8-3048-4e52-9aa3-0a8aeab069c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

@@ -262,6 +262,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PokeSkillBase.cpp" />
+    <ClCompile Include="ShopMainMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
@@ -377,6 +381,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokeSkillBase.h" />
+    <ClInclude Include="ShopMainMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
