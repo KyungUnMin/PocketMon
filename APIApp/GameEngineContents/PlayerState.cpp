@@ -45,7 +45,6 @@ void Player::ChangeState(PlayerState _State)
 	default:
 		break;
 	}
-
 }
 
 void Player::UpdateState(float _Time)
@@ -67,21 +66,18 @@ void Player::UpdateState(float _Time)
 void Player::IdleStart()
 {
 	DirCheck("Idle");
-
 }
 void Player::IdleUpdate(float _Time)
 {
-
 	DirCheck("Idle");
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
 		ChangeState(PlayerState::MOVE);
 		return;
 	}
-
-
 }
-void Player::IdleEnd() {
+void Player::IdleEnd() 
+{
 
 }
 
@@ -138,9 +134,9 @@ void Player::MoveUpdate(float _Time)
 	DirCheck("Move");
 	PlayerTime+=_Time;
 	
-	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*4);
+	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*5);
 	 SetPos(POS); 
-	 if (PlayerTime > 0.25f)//다음타일까지의 이동시간
+	 if (PlayerTime > 0.2f)//다음타일까지의 이동시간
 	 {
 		 if (true == GameEngineInput::IsPress("DownMove") ||
 			 true == GameEngineInput::IsPress("LeftMove") ||
@@ -157,6 +153,4 @@ void Player::MoveUpdate(float _Time)
 void Player::MoveEnd()
 {
 	PlayerTime = 0.0f;
-
-	
 }
