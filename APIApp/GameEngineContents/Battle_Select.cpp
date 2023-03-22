@@ -32,6 +32,7 @@ void Battle_Select::Start()
 
 		GameEngineInput::CreateKey("InsertMove1", 'Z');
 	}
+
 	SetPos({720,540});
 	GameEngineRender* RenderPtr = CreateRender("Battle_Select.bmp", BattleRenderOrder::Battle_Text);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
@@ -93,11 +94,15 @@ void Battle_Select::ArrowNumberCheck()
 
 void Battle_Select::ArrowInput(int _Number)
 {
+	static const float WaitTime = 0.5f;
+	if (GetLiveTime() < WaitTime)
+		return;
+
 	if (true == GameEngineInput::IsDown("InsertMove1") &&  _Number==0) {
 
 		GetLevel()->CreateActor<BattleCommendActor>();
 		Off();
-		ScriptPtr->Off();
+		//ScriptPtr->Off();
 	}
 
 
