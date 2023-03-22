@@ -212,6 +212,12 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Col.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Type.bmp"));
 
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PewterCity_Flower.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route2_Down_Flower.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianCity_Flower.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route1_Flower.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PalletTown_Flower.bmp"));
+
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.bmp"));
 	}

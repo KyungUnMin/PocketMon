@@ -7,6 +7,7 @@
 #include <GameEngineCore/GameEngineCollision.h>
 #include "Fieldmap.h"
 #include "FieldmapLevel.h"
+#include "FieldmapFlower.h"
 
 FieldmapCity::FieldmapCity()
 {
@@ -139,6 +140,38 @@ void FieldmapCity::AddActor(const int2& _Index, GameEngineActor* _Actor)
 	}
 
 	CityActors.push_back(_Actor);
+}
+
+void FieldmapCity::AddFlowerActors(const std::string_view& _FlowerImageName)
+{
+	GameEngineImage* FindImage = GameEngineResources::GetInst().ImageFind(_FlowerImageName);
+
+	if (nullptr == FindImage)
+	{
+		MsgAssert("해당 플라워 데이터 이미지파일이 존재하지 않습니다");
+	}
+
+	float4 ImageScale = FindImage->GetImageScale();
+	int2 IntImageScale = int2(ImageScale.ix(), ImageScale.iy());
+
+	GameEngineLevel* MyLevel = GetLevel();
+
+	if (nullptr == MyLevel)
+	{
+		MsgAssert("게임 레벨을 불러오는데 실패했습니다.");
+	}
+
+	for (int y = 0; y < IntImageScale.y; y++)
+	{
+		for (int x = 0; x < IntImageScale.x; x++)
+		{
+			if (RGB(0, 0, 0) == FindImage->GetPixelColor(float4(static_cast<float>(x), static_cast<float>(y)), RGB(255, 255, 255)))
+			{
+				GameEngineActor* Flower = MyLevel->CreateActor<FieldmapFlower>();
+				AddActor(int2(x, y), Flower); 
+			}
+		}
+	}
 }
 
 void FieldmapCity::AddNeighbor(FieldmapCity* _NeighborCityPtr)

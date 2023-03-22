@@ -204,6 +204,18 @@ void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, G
 	AllCitys[UpperName]->AddActor(_Index, _Actor);
 }
 
+void Fieldmap::AddFlowerActors(const std::string_view& _CityName, const std::string_view& _FlowerImageName)
+{
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() == AllCitys.find(UpperName))
+	{
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
+	}
+
+	AllCitys[UpperName]->AddFlowerActors(_FlowerImageName);
+}
+
 void Fieldmap::LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB)
 {
 	std::string CityAUpper = GameEngineString::ToUpper(_CityNameA);

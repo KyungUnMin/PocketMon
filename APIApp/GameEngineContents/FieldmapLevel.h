@@ -111,4 +111,10 @@ private:
 
 	// ImageName에는 .bmp를 빼고 입력
 	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
+
+	void CreateBattlezone_Route1(const int2& _Start, const int2& _Size);
+	void CreateBattlezone_Route2_Down(const int2& _Start, const int2& _Size);
+	void CreateBattlezone_Route2_Up(const int2& _Start, const int2& _Size);
+	void CreateBattlezone_Route22(const int2& _Start, const int2& _Size);
+	void CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size);
 };

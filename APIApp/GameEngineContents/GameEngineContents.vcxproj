@@ -194,7 +194,15 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DoorActorBase.cpp" />
+    <ClCompile Include="FieldmapBattleZone.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapEmptyDoor.cpp" />
+    <ClCompile Include="FieldmapFlower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapSingleDoor.cpp" />
     <ClCompile Include="FieldmapWoodDoor.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
@@ -318,7 +326,15 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="DoorActorBase.h" />
+    <ClInclude Include="FieldmapBattleZone.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldmapEmptyDoor.h" />
+    <ClInclude Include="FieldmapFlower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldmapSingleDoor.h" />
     <ClInclude Include="FieldmapWoodDoor.h" />
     <ClInclude Include="MoveMapFadeEffect.h">

@@ -12,12 +12,15 @@
 #include "FieldmapEmptyDoor.h"
 #include "FieldDialog.h"
 #include "int2.h"
+#include "PokeDataBase.h"
 #include "PocketMonCore.h"
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
 #include "MoveMapFadeEffect.h"
 #include "BackgroundUI.h"
+#include "FieldmapFlower.h"
+#include "FieldmapBattleZone.h"
 #include "ShopUIManager.h"
 
 //Game Actor
@@ -46,7 +49,25 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapWoodDoor>("PalletTownToOffice", "PalletTown", int2(22, 13), "MoveOffice");
 		}
 
+		{
+			Fieldmap::AddFlowerActors("PalletTown", "PalletTown_Flower.bmp");
+		}
+
 		CreateFieldmapCity("Route1", "Route1", float4(0.0f, -2240.0f));
+
+		{
+			Fieldmap::AddFlowerActors("Route1", "Route1_Flower.bmp");
+		}
+		{
+			CreateBattlezone_Route1(int2(16, 6), int2(12, 5));
+			CreateBattlezone_Route1(int2(22, 13), int2(6, 5));
+			CreateBattlezone_Route1(int2(18, 24), int2(6, 5));
+			CreateBattlezone_Route1(int2(10, 32), int2(7, 2));
+			CreateBattlezone_Route1(int2(8, 34), int2(7, 2));
+			CreateBattlezone_Route1(int2(23, 32), int2(5, 2));
+			CreateBattlezone_Route1(int2(21, 34), int2(5, 2));
+			CreateBattlezone_Route1(int2(18, 35), int2(2, 5));
+		}
 		{
 			AddJumpEvent("Route1", int2(8, 30), int2::Right, 4, PlayerDir::Down);
 			AddJumpEvent("Route1", int2(16, 30), int2::Right, 12, PlayerDir::Down);
@@ -67,6 +88,11 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapSingleDoor>("ViridianCityToMarket", "ViridianCity", int2(30, 19), "MoveMarket");
 			CreateDoor<FieldmapSingleDoor>("ViridianCityToPokemonCenter", "ViridianCity", int2(20, 26), "MovePokemonCenter");
 		}
+
+		{
+			Fieldmap::AddFlowerActors("ViridianCity", "ViridianCity_Flower.bmp");
+		}
+
 		{
 			AddJumpEvent("ViridianCity", int2(1, 29), int2::Right, 4, PlayerDir::Down);
 			AddJumpEvent("ViridianCity", int2(11, 29), int2::Right, 3, PlayerDir::Down);
@@ -75,6 +101,10 @@ void FieldmapLevel::Loading()
 		}
 
 		CreateFieldmapCity("Route22", "Route22", float4(-3360.0f, -4640.0f));
+		{
+			CreateBattlezone_Route22(int2(30, 19), int2(7, 5));
+			CreateBattlezone_Route22(int2(49, 19), int2(6, 5));
+		}
 		{
 			AddJumpEvent("Route22", int2(19, 24), int2::Right, 35, PlayerDir::Down);
 			AddJumpEvent("Route22", int2(56, 24), int2::Right, 5, PlayerDir::Down);
@@ -93,6 +123,13 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest001", "Route2_Down", int2(11, 25), "MoveRoute2_Up");
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest002", "Route2_Down", int2(12, 25), "MoveRoute2_Up");
 		}
+
+		{
+			Fieldmap::AddFlowerActors("Route2_Down", "Route2_Down_Flower.bmp");
+		}
+		{
+			CreateBattlezone_Route2_Down(int2(12, 30), int2(7, 5));
+		}
 		{
 			AddJumpEvent("Route2_Down", int2(8, 43), int2::Right, 7, PlayerDir::Down);
 			AddJumpEvent("Route2_Down", int2(17, 43), int2::Right, 3, PlayerDir::Down);
@@ -104,6 +141,9 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest001", "Route2_Up", int2(11, 13), "MoveRoute2_Down");
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest002", "Route2_Up", int2(12, 13), "MoveRoute2_Down");
 		}
+		{
+			CreateBattlezone_Route2_Up(int2(8, 2), int2(7, 7));
+		}
 
 		CreateFieldmapCity("PewterCity", "PewterCity", float4(0.0f, -12480.0f));
 		{
@@ -114,6 +154,10 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapWoodDoor>("PewterCityToHouser002", "PewterCity", int2(9, 30), "MoveHouse002");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToPoketmonCenter", "PewterCity", int2(17, 25), "MovePokemonCenter");
 		}
+		{
+			Fieldmap::AddFlowerActors("PewterCity", "PewterCity_Flower.bmp");
+		}
+
 		{
 			AddJumpEvent("PewterCity", int2(27, 29), int2::Right, 4, PlayerDir::Down);
 			AddJumpEvent("PewterCity", int2(32, 29), int2::Right, 4, PlayerDir::Down);
@@ -163,6 +207,43 @@ void FieldmapLevel::Loading()
 		}
 
 		CreateFieldmapCity("ViridianForest", "ViridianForest", float4(2000.0f, 13000.0f));
+		{
+			CreateBattlezone_VaridianForest(int2(9, 13), int2(5, 15));
+			CreateBattlezone_VaridianForest(int2(17, 12), int2(5, 14));
+			CreateBattlezone_VaridianForest(int2(17, 26), int2(7, 2));
+			CreateBattlezone_VaridianForest(int2(25, 12), int2(5, 10)); 
+
+			CreateBattlezone_VaridianForest(int2(33, 12), int2(3, 9));
+			CreateBattlezone_VaridianForest(int2(36, 12), int2(2, 10));
+			CreateBattlezone_VaridianForest(int2(38, 15), int2(1, 7));
+			CreateBattlezone_VaridianForest(int2(39, 15), int2(4, 5));
+			CreateBattlezone_VaridianForest(int2(43, 15), int2(1, 4));
+
+			CreateBattlezone_VaridianForest(int2(45, 29), int2(3, 26));
+			CreateBattlezone_VaridianForest(int2(48, 29), int2(1, 15));
+			CreateBattlezone_VaridianForest(int2(49, 30), int2(1, 13));
+			CreateBattlezone_VaridianForest(int2(37, 55), int2(11, 2));
+			CreateBattlezone_VaridianForest(int2(38, 57), int2(9, 1));
+			CreateBattlezone_VaridianForest(int2(39, 58), int2(7, 1));
+			CreateBattlezone_VaridianForest(int2(37, 43), int2(2, 12));
+			CreateBattlezone_VaridianForest(int2(9, 39), int2(15, 4));
+			CreateBattlezone_VaridianForest(int2(9, 43), int2(28, 1));
+
+			CreateBattlezone_VaridianForest(int2(18,44), int2(16,2));
+			CreateBattlezone_VaridianForest(int2(20,46), int2(3,9));
+			CreateBattlezone_VaridianForest(int2(32,46), int2(2,9));
+			CreateBattlezone_VaridianForest(int2(20,55), int2(14,2));
+			CreateBattlezone_VaridianForest(int2(21,57), int2(12,1));
+			CreateBattlezone_VaridianForest(int2(22,58), int2(10,1));
+
+			CreateBattlezone_VaridianForest(int2(9,55), int2(9,4));
+			CreateBattlezone_VaridianForest(int2(9,59), int2(8,3));
+
+			CreateBattlezone_VaridianForest(int2(51,55), int2(6,2));
+			CreateBattlezone_VaridianForest(int2(50,57), int2(7,3));
+			CreateBattlezone_VaridianForest(int2(49,60), int2(8,2));
+
+		}
 		{
 			CreateDoor<FieldmapEmptyDoor>("ViridianForestToRoute2Up001", "ViridianForest", int2(10, 9), "MoveOut");
 			CreateDoor<FieldmapEmptyDoor>("ViridianForestToRoute2Up002", "ViridianForest", int2(11, 9), "MoveOut");
@@ -495,4 +576,44 @@ void FieldmapLevel::LinkDoor(const std::string_view& _LinkDoorName, const std::s
 	}
  
 	LinkDoor->SetLinkDoor(TargetDoor);
+}
+
+void FieldmapLevel::CreateBattlezone_Route1(const int2& _Start, const int2& _Size)
+{
+	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
+
+	BattleZone->InitBattleZone("Route1", _Start, _Size, 2, 5);
+	BattleZone->AddPokemon(PokeNumber::Rattata);
+}
+
+void FieldmapLevel::CreateBattlezone_Route2_Down(const int2& _Start, const int2& _Size)
+{
+	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
+
+	BattleZone->InitBattleZone("Route2_Down", _Start, _Size, 5, 7);
+	BattleZone->AddPokemon(PokeNumber::Venusaur);
+}
+
+void FieldmapLevel::CreateBattlezone_Route2_Up(const int2& _Start, const int2& _Size)
+{
+	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
+
+	BattleZone->InitBattleZone("Route2_Up", _Start, _Size, 9, 12);
+	BattleZone->AddPokemon(PokeNumber::Blastoise);
+}
+
+void FieldmapLevel::CreateBattlezone_Route22(const int2& _Start, const int2& _Size)
+{
+	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
+
+	BattleZone->InitBattleZone("Route22", _Start, _Size, 12, 15);
+	BattleZone->AddPokemon(PokeNumber::Geodude);
+}
+
+void FieldmapLevel::CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size)
+{
+	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
+
+	BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 10);
+	BattleZone->AddPokemon(PokeNumber::Charmeleon);
 }
