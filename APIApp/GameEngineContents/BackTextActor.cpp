@@ -45,7 +45,7 @@ void BackTextActor::Start()
 		}
 	}
 	
-	PushStart(&TestText);
+	//PushStart(&TestText);
 }
 
 void BackTextActor::PushScriptBegin(std::list<std::string>::iterator _Begin)
@@ -62,7 +62,7 @@ void BackTextActor::PushScriptEnd(std::list<std::string>::iterator _End)
 
 void BackTextActor::StringToRender()
 {
-	const std::string_view& Str = TestTextIter->data();
+	const std::string Str = TestTextIter->data();
 
 	size_t StrEndIndex = Str.size() - 1;
 
@@ -168,7 +168,8 @@ int2 BackTextActor::FindLastTextRenderIndex()
 }
 void BackTextActor::Update(float _DeltaTime)
 {
-	StringToRender();
+	if (false == IsValid)
+		return;
 
 	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
 	{
@@ -192,7 +193,10 @@ void BackTextActor::PushStart(std::list<std::string>* _Text)
 
 void BackTextActor::BattleSetText(const std::string_view& _Texts)
 {
+	IsValid = true;
 	TestText.push_back(_Texts.data());
+	PushStart(&TestText);
+	StringToRender();
 }
 
 

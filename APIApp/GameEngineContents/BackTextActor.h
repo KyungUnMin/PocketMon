@@ -37,7 +37,7 @@ protected:
 
 
 private:
-
+	bool IsValid = false;
 
 	std::vector<std::vector<GameEngineRender*>> BattleTextRender = std::vector<std::vector<GameEngineRender*>>();
 	int OneLineSize = 30;

@@ -6,9 +6,9 @@
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
-	"앗 야생의 __이 나타났다!",
-	"가랏! ___!",
-	"___은 무엇을 할까?"
+	"Oops That Wild PocketMon",
+	"Go @@@",
+	"What should I Do"
 };
 
 BattleState_WildTalk::BattleState_WildTalk()
@@ -45,7 +45,7 @@ void BattleState_WildTalk::Update(float _DeltaTime)
 		/*if (false == BackUI->WriteText())
 			return;*/
 
-		//BackUI->BattleSetText(Texts[StrIndex++]);
+		BackUI->BattleSetText(Texts[StrIndex++]);
 		if (StrIndex == Texts.size())
 		{
 			int a = 10;
