@@ -2,7 +2,7 @@
 #include "BattleTrainerBase.h"
 
 class GameEngineRender;
-class BattleMonsterBase;
+class BattleMonsterPlayer;
 
 class BattlePlayer : public BattleTrainerBase
 {
@@ -24,7 +24,7 @@ protected:
 
 private:
 	GameEngineRender* PlayerRenderPtr = nullptr;
-	BattleMonsterBase* Monster = nullptr;
+	BattleMonsterPlayer* Monster = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
 	void CreatePlayerRender();

@@ -4,6 +4,7 @@
 #include "ContentsEnum.h"
 #include "BattleLevel.h"
 #include "PokeDataBase.h"
+#include "BattleMonsterPlayer.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 
@@ -68,6 +69,6 @@ void BattlePlayer::CreatePlayerRender()
 
 void BattlePlayer::CreatePlayerMonster()
 {
-	//юс╫ц
-	
+	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
+	Monster->Init(PokeNumber::Bulbasaur);
 }

@@ -15,7 +15,7 @@ public:
 	BattleMonsterPlayer& operator=(const BattleMonsterPlayer& _Other) = delete;
 	BattleMonsterPlayer& operator=(const BattleMonsterPlayer&& _Other) noexcept = delete;
 
-	void Init(PokeNumber _MonsterType) override;
+	void Init(PokeNumber _MonsterType);
 
 protected:
 	void Update(float _DeltaTime) override;

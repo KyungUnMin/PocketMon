@@ -18,6 +18,7 @@ void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
 {
 	BattleMonsterBase::Init(_MonsterType);
 	RenderCreate();
+	SetPos({ 300.f, 300.f });
 }
 
 void BattleMonsterPlayer::RenderCreate()

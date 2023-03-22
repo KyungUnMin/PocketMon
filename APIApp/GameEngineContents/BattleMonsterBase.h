@@ -28,7 +28,7 @@ public:
 	}
 
 protected:
-	virtual void Init(PokeNumber _MonsterType);
+	void Init(PokeNumber _MonsterType);
 
 private:
 	PokeDataBase* DbPtr = nullptr;
