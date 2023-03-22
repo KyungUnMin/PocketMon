@@ -20,6 +20,8 @@ public:
 
 	void On() override;
 	void Off() override;
+
+	void LeaveShop();
 	void OnOffSwtich() override;
 
 protected:
@@ -32,8 +34,9 @@ private:
 	ShopMainMenu* AcShopMainMenu = nullptr;
 
 	std::list<std::string> WelcomeScript = std::list<std::string>();
+	std::list<std::string> GoodbyeScript = std::list<std::string>();
 
 	void UpdateStart();
-
+	void UpdateEnd();
 };
 

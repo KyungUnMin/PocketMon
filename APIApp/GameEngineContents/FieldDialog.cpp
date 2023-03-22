@@ -91,6 +91,9 @@ void FieldDialog::Start()
 
 void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 {
+	ClearDialog();
+	FirstLineRenderLen = 0;
+	SecondLineRenderLen = 0;
 	PushScriptBegin(_Script->begin());
 	PushScriptEnd(_Script->end());
 	StringToRender();

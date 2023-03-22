@@ -59,6 +59,21 @@ void ShopMainMenu::Update(float _DeltaTime)
 	{
 		ChangeStateNext();
 	}
+
+	if (GameEngineInput::IsDown("A"))
+	{
+		switch (State)
+		{
+		case ShopMianMenuState::Buy:
+			break;
+		case ShopMianMenuState::Sell:
+			break;
+		case ShopMianMenuState::SeeYa:
+			break;
+		default:
+			break;
+		}
+	}
 }
 
 void ShopMainMenu::UpdateEnd()

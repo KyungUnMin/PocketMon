@@ -25,11 +25,18 @@ void ShopUIManager::Off()
 	AcShopMainMenu->Off();
 }
 
+void ShopUIManager::LeaveShop()
+{
+	GameEngineObject::Off();
+	AcShopMainMenu->Off();
+	UpdateEnd();
+}
+
 void ShopUIManager::OnOffSwtich()
 {
 	if (IsUpdate())
 	{
-		Off();
+		LeaveShop();
 	}
 	else
 	{
@@ -44,6 +51,8 @@ void ShopUIManager::Start()
 	AcFielDialog = FieldDialog::GetFieldDialog();
 
 	WelcomeScript.emplace_back("Hi, there!\nMay I help you?");
+
+	GoodbyeScript.emplace_back("Please come again!");
 	Off();
 }
 
@@ -51,6 +60,7 @@ void ShopUIManager::UpdateStart()
 {
 	AcFielDialog->ConversationStart(&WelcomeScript);
 }
+
 
 void ShopUIManager::Update(float _DeltaTime)
 {
@@ -60,4 +70,8 @@ void ShopUIManager::Update(float _DeltaTime)
 	}
 }
 
+void ShopUIManager::UpdateEnd()
+{
+	AcFielDialog->ConversationStart(&GoodbyeScript);
+}
 
