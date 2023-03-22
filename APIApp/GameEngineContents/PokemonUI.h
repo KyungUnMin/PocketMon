@@ -1,19 +1,22 @@
 #pragma once
 #include <vector>
+#include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "TextActor.h"
 
 enum class PokemonUIState
 {
-	Normal,
-	Potion,
-	Give,
-	Switch,
-	Select
+	Normal,		// 필드에서 열었을때
+	Switch,		// (필드) 위치 교환
+	Shift,		// 전투 중 교체
+	Potion,		// 가방에서 아이템 사용
+	Give,		// 가방에서 지닌물건 선택
 };
 
 // 설명 :
 class GameEngineRender;
+class PokemonLevel;
+class PokeDataBase;
 class PokemonUI : public GameEngineActor
 {
 public:
@@ -35,28 +38,33 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
 	GameEngineLevel* PrevLevel = nullptr;
-	GameEngineRender* MainPokemonBack = nullptr;
-	GameEngineRender* MainPokemonRender = nullptr;
+	PokemonLevel* CurrentLevel = nullptr;
+	std::vector<PokeDataBase*> Pokemons;
+
+	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);
+	std::vector<GameEngineRender*> PokemonRender = std::vector<GameEngineRender*>(6);
+	std::vector<GameEngineRender*> CursorRender;
 	GameEngineRender* CancelButtonRender = nullptr;
+
 	GameEngineRender* TextBarRender = nullptr;
 	GameEngineRender* SelectRender = nullptr;
 	GameEngineRender* SelectCursorRender = nullptr;
-	std::vector<GameEngineRender*> SubPokemonBack = std::vector<GameEngineRender*>(5);
-	std::vector<GameEngineRender*> SubPokemonRender = std::vector<GameEngineRender*>(5);
-	std::vector<GameEngineRender*> CursorRender = std::vector<GameEngineRender*>(7);
-	TextActor* MainPokemonNameText = nullptr;
-	TextActor* MainPokemonHPText = nullptr;
-	TextActor* MainPokemonMaxHPText = nullptr;
-	TextActor* MainPokemonLevelText = nullptr;
+
 	TextActor* SelectText = nullptr;
-	std::vector<TextActor*> SubPokemonNameText = std::vector<TextActor*>(5);
-	std::vector<TextActor*> SubPokemonHPText = std::vector<TextActor*>(5);
-	std::vector<TextActor*> SubPokemonMaxHPText = std::vector<TextActor*>(5);
-	std::vector<TextActor*> SubPokemonLevelText = std::vector<TextActor*>(5);
-	bool IsSelect = false;
+	std::vector<TextActor*> PokemonNameText = std::vector<TextActor*>(6);
+	std::vector<TextActor*> PokemonCurrentHPText = std::vector<TextActor*>(6);
+	std::vector<TextActor*> PokemonMaxHPText = std::vector<TextActor*>(6);
+	std::vector<TextActor*> PokemonLevelText = std::vector<TextActor*>(6);
+	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(5);
+
+	PokemonUIState StateValue = PokemonUIState::Normal;
 	int CurrentCursor = 0;
+	int SwitchCursor = 0;
 	int CurrentSelectCursor = 0;
 	int SelectSize = 0;
+	bool IsSelect = false;
+
+	void PokeDataSetting();
 
 	void CursorUp();
 	void CursorDown();
@@ -64,5 +72,16 @@ private:
 
 	void SelectOn();
 	void SelectOff();
+	void SelectMenu();
+	void SelectUp();
+	void SelectDown();
+	void SelectMove();
+
+	void Summary();
+	void Switch();
+	void SwitchCancel();
+	void SwitchSelect();
+	void Item();
+	void Shift();
 };
 
