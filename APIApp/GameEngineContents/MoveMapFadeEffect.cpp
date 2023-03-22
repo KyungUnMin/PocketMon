@@ -5,7 +5,7 @@ MoveMapFadeEffect* MoveMapFadeEffect::MainMoveMapFadeEffect = nullptr;
 
 MoveMapFadeEffect::MoveMapFadeEffect()
 {
-
+	MainMoveMapFadeEffect = this;
 }
 
 MoveMapFadeEffect::~MoveMapFadeEffect()
@@ -75,8 +75,11 @@ void MoveMapFadeEffect::Update(float _DeltaTime)
 
 	if (LoopCount == 1)
 	{
-		FadeDoorRender1->On();
-		FadeDoorRender2->On();
+		if (!FadeDoorRender1->IsUpdate())
+		{
+			FadeDoorRender1->On();
+			FadeDoorRender2->On();
+		}
 
 		FadeDoorRender1->SetPosition(float4::LerpClamp(FadeDoorRender1StartPos, FadeDoorRender1EndPos, Time / FadeSpeed));
 		FadeDoorRender2->SetPosition(float4::LerpClamp(FadeDoorRender2StartPos, FadeDoorRender2EndPos, Time / FadeSpeed));

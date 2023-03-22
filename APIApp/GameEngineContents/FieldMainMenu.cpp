@@ -131,6 +131,7 @@ void FieldMainMenu::Update(float _DeltaTime)
 		case MainMenuState::Option:
 			break;
 		case MainMenuState::Exit:
+			Off();
 			break;
 		default:
 			break;
