@@ -1,7 +1,7 @@
 #include "HpBackGroundMove.h"
 #include <GameEngineBase/GameEngineDebug.h>
 
-const float HpBackGroundMove::MoveDuration = 1.0f;
+const float HpBackGroundMove::MoveDuration = 1.5f;
 
 HpBackGroundMove::HpBackGroundMove()
 {

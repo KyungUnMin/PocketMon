@@ -22,10 +22,9 @@ BattleEnemy::~BattleEnemy()
 	}
 }
 
-void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleEnemy::Init(BattleFieldType _FieldType)
 {
 	CreateGround(_FieldType);
-	CreateNpc(_FieldType, _NpcType);
 }
 
 
@@ -55,6 +54,10 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 	const float4& RenderScale = GroundRender->GetScale();
 	SetMovePositions({ -RenderScale.hx(), Height }, { ScreenSize.x - RenderScale.hx(), Height });
 }
+
+
+
+
 
 void BattleEnemy::CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {

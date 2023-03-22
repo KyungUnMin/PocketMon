@@ -17,7 +17,7 @@ public:
 	BattleEnemy& operator=(const BattleEnemy& _Other) = delete;
 	BattleEnemy& operator=(const BattleEnemy&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
+	void Init(BattleFieldType _FieldType);
 
 	inline BattleMonsterBase* GetMonster()
 	{
@@ -30,8 +30,9 @@ private:
 	BattleMonsterBase* Monster = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
-	void CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType);
 
+	//아마 외부에서 호출될 것 같다 추후에 수정
+	void CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType);
 	void CreateWildMonster(BattleFieldType _FieldType);
 };
 

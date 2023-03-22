@@ -6,6 +6,7 @@ class GameEngineRender;
 class TestScript;
 class Battle_Select;
 class BackTextActor;
+class BattleFSM;
 
 enum class BattleFieldType
 {
@@ -26,6 +27,9 @@ enum class BattleNpcType
 class BattleLevel : public GameEngineLevel
 {
 public:
+	static BattleLevel* BattleLevelPtr;
+	static const std::string_view  BattleKeyName;
+
 	BattleLevel();
 	~BattleLevel() override;
 
@@ -39,8 +43,10 @@ public:
 		BattleFieldType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 
+
+
 protected:
-	void Loading() override{}
+	void Loading() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel);
 	void LevelChangeStart(GameEngineLevel* _PrevLevel);
@@ -48,10 +54,8 @@ protected:
 private:
 	GameEngineRender* FadeDownRender = nullptr;
 	GameEngineRender* FadeUpRender = nullptr;
+	BattleFSM* BattleFsmPtr = nullptr;
 
-	TestScript* ScriptPtr = nullptr;
-	Battle_Select* BattleCursor = nullptr;
-
-	BackTextActor* Box = nullptr;
+	void InitGroundRenders(BattleFieldType _FieldType);
 };
 

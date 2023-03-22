@@ -1,4 +1,5 @@
 #include "BattleLevel.h"
+#include <GameEnginePlatform/GameEngineInput.h>
 #include "BattleBackGround.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
@@ -10,27 +11,35 @@
 #include "FriendlyHPBackground.h"
 #include "HpBackGroundMove.h"
 #include "TestScript.h"
+#include "PocketMonCore.h"
+#include "BattleFSM.h"
+
+BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
+const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
 
 BattleLevel::BattleLevel()
 {
-
+	BattleLevelPtr = this;
 }
 
 BattleLevel::~BattleLevel()
 {
+	if (this == BattleLevelPtr)
+	{
+		BattleLevelPtr = nullptr;
+	}
 
+	if (nullptr != BattleFsmPtr)
+	{
+		delete BattleFsmPtr;
+		BattleFsmPtr = nullptr;
+	}
 }
 
-#include <string_view>
-#include <GameEnginePlatform/GameEngineInput.h>
-
-std::vector<std::string_view> TestStr =
+void BattleLevel::Loading()
 {
-	"앗 포켓몬",
-	"야생",
-	"싸울까"
-};
-
+	GameEngineInput::CreateKey(BattleKeyName, 'Z');
+}
 
 
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -39,11 +48,27 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	Init(BattleFieldType::Forest0);
 	//Init(BattleFieldType::Indoor);
 	//Init(BattleFieldType::Gym);
-
-	GameEngineInput::CreateKey("TestZ", 'Z');
 }
 
+
+
 void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+{
+	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
+	InitGroundRenders(_FieldType);
+
+	BattleFsmPtr = new BattleFSM;
+	BattleFsmPtr->Init();
+	BattleFsmPtr->CreateState(BattleStateType::WildTalk);
+
+	//야생포켓몬과 전투시
+	if (BattleNpcType::None == _NpcType)
+	{
+		BattleFsmPtr->ChangeState(BattleStateType::WildTalk);
+	}
+}
+
+void BattleLevel::InitGroundRenders(BattleFieldType _FieldType)
 {
 	CreateActor<BattleBackGround>()->Init(_FieldType);
 
@@ -51,31 +76,9 @@ void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	Player->Init(_FieldType);
 
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>();
-	Enemy->Init(_FieldType, _NpcType);
-
-	/*CreateActor<BackTextActor>();
-	CreateActor<Battle_Select>();
-	CreateActor<BattleCommendActor>();
-	CreateActor<EnemyHPBackground>();
-	CreateActor<FriendlyHPBackground>();
-	CreateActor<HpBackGroundMove>();
-	CreateActor<TestScript>();*/
-
-	//CreateActor<BackTextActor>();
-	//ScriptPtr = CreateActor<TestScript>();// 대사들 띄우고 뭐하고
-
-	Box = CreateActor<BackTextActor>();
-	Box->PushTexts(TestStr);
-
-	//띄우기 위해 조건이 필요할 때
-	/*CreateActor<EnemyHPBackground>();
-	CreateActor<FriendlyHPBackground>();*/
+	Enemy->Init(_FieldType);
 }
 
-
-//임시
-#include <GameEnginePlatform/GameEngineInput.h>
-#include "PocketMonCore.h"
 
 void BattleLevel::Update(float _DeltaTime)
 {
@@ -85,21 +88,7 @@ void BattleLevel::Update(float _DeltaTime)
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown("TestZ"))
-	{
-		if(false == Box->WriteText())
-		{
-			int a = 10;
-		}
-		
-	}
-
-	/*static bool IsCreate = false;
-	if (false == IsCreate && (3 == ScriptPtr->GetTextCount()))
-	{
-		CreateActor<Battle_Select>()->init(ScriptPtr);
-		IsCreate = true;
-	}*/
+	BattleFsmPtr->Update(_DeltaTime);
 }
 
 
@@ -112,5 +101,9 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	//다음에 이동할 레벨이 전투 인벤토리 쪽이 아니라면
 	//엑터들을 지운다
 
-
+	if (nullptr != BattleFsmPtr)
+	{
+		delete BattleFsmPtr;
+		BattleFsmPtr = nullptr;
+	}
 }

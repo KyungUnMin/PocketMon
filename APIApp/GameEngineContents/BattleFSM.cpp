@@ -1,6 +1,7 @@
 #include "BattleFSM.h"
 #include "BattleStateBase.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include "BattleLevel.h"
 #include "BattleState_WildTalk.h"
 
 BattleFSM::BattleFSM()
@@ -13,6 +14,11 @@ BattleFSM::~BattleFSM()
 
 }
 
+
+void BattleFSM::Init()
+{
+	
+}
 
 void BattleFSM::CreateState(BattleStateType _Type)
 {

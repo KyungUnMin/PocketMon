@@ -7,6 +7,7 @@
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
 #include "ContentsEnum.h"
+#include "EnemyHPBackground.h"
 
 BattleMonsterBase* BattleMonsterBase::CreateMonster(GameEngineLevel* _Level, PokeNumber _MonType, BattleMonsterType _OwnerType)
 {
@@ -87,6 +88,8 @@ void BattleMonsterBase::RenderCreate()
 	}
 	RenderPtr->SetScaleToImage();
 
+	GameEngineActor* UiPtr = nullptr;
+
 	//포켓몬이 등장할때 효과 이미지 생성(그림자 or 몬스터볼에서 등장할때 분홍색 빛)
 	switch (OwnerType)
 	{
@@ -95,12 +98,14 @@ void BattleMonsterBase::RenderCreate()
 		break;
 	case BattleMonsterType::WildMon:
 		AppearRender = CreateRender(ImagePath + "Shadow.bmp", RenderOrder::Monster);
+		UiPtr = GetLevel()->CreateActor<EnemyHPBackground>();
 		break;
 	case BattleMonsterType::NPCMon:
 		AppearRender = CreateRender(ImagePath + "FrontLight.bmp", RenderOrder::Monster);
 		break;
 	}
 
+	SetInfoUI(UiPtr);
 	AppearRender->SetScaleToImage(); 
 	AppearRender->SetAlpha(static_cast<int>(StartAlpha.x));
 }

@@ -34,6 +34,11 @@ public:
 		return DbPtr;
 	}
 
+	void SetInfoUI(GameEngineActor* _UI)
+	{
+		MonsterUI = _UI;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 
@@ -60,6 +65,8 @@ private:
 
 	State CurState = State::Appear;
 	float AppearTime = 0.f;
+
+	GameEngineActor* MonsterUI = nullptr;
 
 	void RenderCreate();
 	void Update_Move();
