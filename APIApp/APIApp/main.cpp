@@ -35,19 +35,22 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	int b = NewP1->GetMonsterMaxHP_int();
 	int bb = NewP1->GetMonsterCurrentHP();
 
-	BattleScript aa = PokeBattleSystem::Battle(NewP2, 1, NewP1);
-
 	int bbc = NewP1->GetMonsterCurrentHP();
 
-	int aaaa1212 = NewP1->GetMonsterLevel_int();
+	BattleScript aa = PokeBattleSystem::Battle(NewP2, 1, NewP1);
+	BattleScript aa1 = PokeBattleSystem::Battle(NewP1, 1, NewP2);
 
-	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
-	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
-	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
+
+	int aaaa1212 = NewP1->GetMonsterLevel_int();
+	int aassbbc = NewP1->GetMonsterMaxHP_int();
+	bbc = NewP1->GetMonsterCurrentHP();
+
 	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
 	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
 
 	int aaaa = NewP1->GetMonsterLevel_int();
+	aassbbc = NewP1->GetMonsterMaxHP_int();
+	bbc = NewP1->GetMonsterCurrentHP();
 
 	PocketMonCore::GetInst().CoreStart(hInstance);
 	return 1;
