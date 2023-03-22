@@ -506,6 +506,8 @@ void PokeDataBase::BulbasaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Grass;                    // 포켓몬 타입 
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록; // 포켓몬 특성
 	PoKeCreatePtr->Name = "Bulbasaur";                        // 포켓몬 디폴트 이름
+	PoKeCreatePtr->TypeName = "Grass";                        // 포켓몬 타입 이름
+	PoKeCreatePtr->NumberName = "001";                        // 포켓몬 넘버 이름
 	
 	PoKeCreatePtr->MaxHealthPoint = 45;                       // 포켓몬 기초 최대 체력
 	PoKeCreatePtr->CurrentHealthPoint = 45;                   // 포켓몬 기초 잔여 체력
@@ -533,6 +535,8 @@ void PokeDataBase::IvysaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Grass;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록;
 	PoKeCreatePtr->Name = "Ivysaur";
+	PoKeCreatePtr->TypeName = "Grass";
+	PoKeCreatePtr->NumberName = "002";
 
 	PoKeCreatePtr->MaxHealthPoint = 60;
 	PoKeCreatePtr->CurrentHealthPoint = 60;
@@ -559,6 +563,8 @@ void PokeDataBase::VenusaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Grass;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::심록;
 	PoKeCreatePtr->Name = "Venusaur";
+	PoKeCreatePtr->TypeName = "Grass";
+	PoKeCreatePtr->NumberName = "003";
 
 	PoKeCreatePtr->MaxHealthPoint = 80;
 	PoKeCreatePtr->CurrentHealthPoint = 80;
@@ -586,6 +592,8 @@ void PokeDataBase::CharmanderData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Fire;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
 	PoKeCreatePtr->Name = "Charmander";
+	PoKeCreatePtr->TypeName = "Fire";
+	PoKeCreatePtr->NumberName = "004";
 
 	PoKeCreatePtr->MaxHealthPoint = 39;
 	PoKeCreatePtr->CurrentHealthPoint = 39;
@@ -613,6 +621,8 @@ void PokeDataBase::CharmeleonData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Fire;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
 	PoKeCreatePtr->Name = "Charmeleon";
+	PoKeCreatePtr->TypeName = "Fire";
+	PoKeCreatePtr->NumberName = "005";
 
 	PoKeCreatePtr->MaxHealthPoint = 58;
 	PoKeCreatePtr->CurrentHealthPoint = 58;
@@ -640,6 +650,8 @@ void PokeDataBase::CharizardData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Fire;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::맹화;
 	PoKeCreatePtr->Name = "Charizard";
+	PoKeCreatePtr->TypeName = "Fire";
+	PoKeCreatePtr->NumberName = "006";
 
 	PoKeCreatePtr->MaxHealthPoint = 78;
 	PoKeCreatePtr->CurrentHealthPoint = 78;
@@ -667,6 +679,8 @@ void PokeDataBase::SquirtleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Water;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
 	PoKeCreatePtr->Name = "Squirtle";
+	PoKeCreatePtr->TypeName = "Water";
+	PoKeCreatePtr->NumberName = "007";
 
 	PoKeCreatePtr->MaxHealthPoint = 44;
 	PoKeCreatePtr->CurrentHealthPoint = 44;
@@ -694,6 +708,8 @@ void PokeDataBase::WartortleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Water;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
 	PoKeCreatePtr->Name = "Wartortle";
+	PoKeCreatePtr->TypeName = "Water";
+	PoKeCreatePtr->NumberName = "008";
 
 	PoKeCreatePtr->MaxHealthPoint = 59;
 	PoKeCreatePtr->CurrentHealthPoint = 59;
@@ -721,6 +737,8 @@ void PokeDataBase::BlastoiseData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Water;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::급류;
 	PoKeCreatePtr->Name = "Blastoise";
+	PoKeCreatePtr->TypeName = "Water";
+	PoKeCreatePtr->NumberName = "009";
 
 	PoKeCreatePtr->MaxHealthPoint = 79;
 	PoKeCreatePtr->CurrentHealthPoint = 79;
@@ -748,6 +766,8 @@ void PokeDataBase::PidgeyData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Flying;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::날카로운눈;
 	PoKeCreatePtr->Name = "Pidgey";
+	PoKeCreatePtr->TypeName = "Flying";
+	PoKeCreatePtr->NumberName = "010";
 
 	PoKeCreatePtr->MaxHealthPoint = 40;
 	PoKeCreatePtr->CurrentHealthPoint = 40;
@@ -775,6 +795,8 @@ void PokeDataBase::RattataData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Normal;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::근성;
 	PoKeCreatePtr->Name = "Rattata";
+	PoKeCreatePtr->TypeName = "Normal";
+	PoKeCreatePtr->NumberName = "011";
 
 	PoKeCreatePtr->MaxHealthPoint = 30;
 	PoKeCreatePtr->CurrentHealthPoint = 30;
@@ -802,6 +824,8 @@ void PokeDataBase::SpearowData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Flying;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::날카로운눈;
 	PoKeCreatePtr->Name = "Spearow";
+	PoKeCreatePtr->TypeName = "Flying";
+	PoKeCreatePtr->NumberName = "012";
 
 	PoKeCreatePtr->MaxHealthPoint = 40;
 	PoKeCreatePtr->CurrentHealthPoint = 40;
@@ -829,6 +853,8 @@ void PokeDataBase::GeodudeData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Rock;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::돌머리;
 	PoKeCreatePtr->Name = "Geodude";
+	PoKeCreatePtr->TypeName = "Rock";
+	PoKeCreatePtr->NumberName = "013";
 
 	PoKeCreatePtr->MaxHealthPoint = 40;
 	PoKeCreatePtr->CurrentHealthPoint = 40;
@@ -856,6 +882,8 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase* PoKeCreatePtr)
 	PoKeCreatePtr->Type = PokeType::Rock;
 	PoKeCreatePtr->Characteristic = PokeCharacteristic::돌머리;
 	PoKeCreatePtr->Name = "Onix";
+	PoKeCreatePtr->TypeName = "Rock";
+	PoKeCreatePtr->NumberName = "014";
 
 	PoKeCreatePtr->MaxHealthPoint = 35;
 	PoKeCreatePtr->CurrentHealthPoint = 35;

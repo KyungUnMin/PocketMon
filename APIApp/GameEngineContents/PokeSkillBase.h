@@ -154,7 +154,7 @@ public:
 	}
 
 	// 스킬이름 가져오기
-	std::string_view ForUI_GetSkillName()
+	std::string ForUI_GetSkillName()
 	{
 		return Name;
 	}

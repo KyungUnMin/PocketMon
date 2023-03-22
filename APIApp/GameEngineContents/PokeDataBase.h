@@ -120,9 +120,33 @@ public:
 	}
 
 	// 포켓몬 이름 가져오기
-	std::string_view ForUI_GetMonsterName()
+	std::string ForUI_GetMonsterName()
 	{
 		return Name;
+	}
+
+	// 포켓몬 넘버 이름 가져오기
+	std::string ForUI_GetMonsterNumberName()
+	{
+		return NumberName;
+	}
+
+	// 포켓몬 타입 이름 가져오기
+	std::string ForUI_GetMonsterTypeName()
+	{
+		return TypeName;
+	}
+
+	// 포켓몬 넘버 가져오기
+	int GetPokeNumber()
+	{
+		return (static_cast<int>(PokeDexNumber) + 1);
+	}
+
+	// 포켓몬 도감 설명 가져오기
+	std::string ForUI_GetMonsterTypeName()
+	{
+		// 데이터 찾는중
 	}
 
 	// 포켓몬 이름 수정
@@ -318,6 +342,9 @@ private:
 	// 포켓몬 데이터
 	GameEngineRender* MonsterImage = nullptr;					  // 포켓몬 이미지
 	std::string Name = "안농";							          // 포켓몬 이름
+	std::string TypeName = "Grass";							      // 포켓몬 타입 이름
+	std::string NumberName = "000";							      // 포켓몬 번호 이름
+	std::string PokeDexText = "이 포켓몬은 ~";				      // 포켓몬 이름
 
 	std::vector<PokeSkillBase*> SkillList = std::vector<PokeSkillBase*>(4);			// 포켓몬 스킬리스트
 								    
