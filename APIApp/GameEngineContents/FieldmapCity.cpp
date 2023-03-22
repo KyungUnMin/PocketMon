@@ -141,31 +141,86 @@ void FieldmapCity::AddActor(const int2& _Index, GameEngineActor* _Actor)
 	CityActors.push_back(_Actor);
 }
 
+void FieldmapCity::AddNeighbor(FieldmapCity* _NeighborCityPtr)
+{
+	for (size_t i = 0; i < NeighborCitys.size(); i++)
+	{
+		if (_NeighborCityPtr == NeighborCitys[i])
+		{
+			MsgAssert("이미 등록된 이웃시티를 중복 등록했습니다");
+		}
+	}
+
+	NeighborCitys.push_back(_NeighborCityPtr);
+}
+
 void FieldmapCity::Update(float _DeltaTime)
+{
+	FieldmapUpdate();
+}
+
+void FieldmapCity::FieldmapUpdate()
 {
 	float4 PlayerPos = FieldmapLevel::GetPlayerPos();
 
 	if (true == GameEngineCollision::CollisionRectToPoint(
 		CollisionData(GetPos(), CityScale), CollisionData(PlayerPos)))
 	{
-		if (false == CityActive)
-		{
-			CityActive = true;
-			CityRenderer->On();
+		Fieldmap::ChangeCity(this);
 
-			for (size_t i = 0; i < CityActors.size(); i++)
+		for (size_t i = 0; i < NeighborCitys.size(); i++)
+		{
+			if (nullptr == NeighborCitys[i])
 			{
-				CityActors[i]->On();
+				MsgAssert("필드맵 이웃시티의 포인터 값이 nullptr 입니다");
 			}
 
-			Fieldmap::ChangeCity(CityName);
+			NeighborCitys[i]->NeighborActive = true;
 		}
+
+		CityActive = true;
 	}
 	else
 	{
 		if (true == CityActive)
 		{
-			CityActive = false;
+			Fieldmap::ChangeCity(CityName);
+
+			for (size_t i = 0; i < NeighborCitys.size(); i++)
+			{
+				if (nullptr == NeighborCitys[i])
+				{
+					MsgAssert("필드맵 이웃시티의 포인터 값이 nullptr 입니다");
+				}
+
+				NeighborCitys[i]->NeighborActive = false;
+			}
+		}
+
+		CityActive = false;
+	}
+
+	if (true == CityActive || true == NeighborActive)
+	{
+		if (false == CityRenderer->IsUpdate())
+		{
+			CityRenderer->On();
+
+			for (size_t i = 0; i < CityActors.size(); i++)
+			{
+				if (nullptr == CityActors[i])
+				{
+					MsgAssert("필드맵 시티에 등록된 nullptr 액터를 참조하려 했습니다");
+				}
+
+				CityActors[i]->On();
+			}
+		}
+	}
+	else
+	{
+		if (true == CityRenderer->IsUpdate())
+		{
 			CityRenderer->Off();
 
 			for (size_t i = 0; i < CityActors.size(); i++)

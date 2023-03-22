@@ -105,7 +105,7 @@ private:
 		DebugMsgBox("Jump....");
 	}
 
-	void LinkDoor(const std::string_view& _LinkDoorName1, const std::string_view& _LinkDoorName2);
+	void LinkDoor(const std::string_view& _LinkDoorNameA, const std::string_view& _LinkDoorNameB);
 
 	// ImageName에는 .bmp를 빼고 입력
 	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);

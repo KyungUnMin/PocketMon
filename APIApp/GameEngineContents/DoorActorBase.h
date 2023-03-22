@@ -57,8 +57,6 @@ private:
 
 	DoorActorBase* LinkDoor = nullptr;
 
-	bool IsUse = false;
-
 	void Start() override;
 	void Update(float _DeltaTime) override;
 

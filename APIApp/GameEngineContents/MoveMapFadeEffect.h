@@ -6,6 +6,9 @@ class GameEngineRender;
 class MoveMapFadeEffect : public GameEngineActor
 {
 public:
+	static MoveMapFadeEffect* MainMoveMapFadeEffect;
+
+public:
 	MoveMapFadeEffect();
 	~MoveMapFadeEffect();
 
@@ -15,18 +18,17 @@ public:
 	MoveMapFadeEffect& operator=(const MoveMapFadeEffect& _Other) = delete;
 	MoveMapFadeEffect& operator=(MoveMapFadeEffect&& _Other) noexcept = delete;
 
+
 	void On() override;
 	void Off() override;
 
 	void OnOffSwtich() override;
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 
 private:
-	static MoveMapFadeEffect* MainMoveMapFadeEffect;
 	float4 ActorPos = { 480,320 };
 
 	GameEngineRender* FadeAlphaRender = nullptr;

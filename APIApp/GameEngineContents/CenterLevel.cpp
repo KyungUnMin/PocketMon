@@ -163,6 +163,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianForest_Type.bmp"));
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.bmp"));
 	}
 
 	{

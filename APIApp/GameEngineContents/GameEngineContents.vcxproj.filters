@@ -104,9 +104,6 @@
     <ClCompile Include="FieldMainMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
-    <ClCompile Include="BattleMonsterBase.cpp">
-      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
-    </ClCompile>
     <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClCompile>
@@ -157,6 +154,10 @@
     </ClCompile>
     <ClCompile Include="BattleMonsterPlayer.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBase.cpp" />
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>Map\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -261,9 +262,6 @@
     <ClInclude Include="FieldMainMenu.h">
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
-    <ClInclude Include="BattleMonsterBase.h">
-      <Filter>Battle\02.Actor\03.Monster\01.Base</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMonster_Bulbasaur.h">
       <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
     </ClInclude>
@@ -311,6 +309,10 @@
     </ClInclude>
     <ClInclude Include="BattleMonsterPlayer.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBase.h" />
+    <ClInclude Include="BackgroundUI.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

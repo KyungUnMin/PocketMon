@@ -122,6 +122,16 @@ void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr
 	AllCitys[UpperName] = _CityPtr;
 }
 
+void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
+{
+	if (nullptr == _CityPtr)
+	{
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
+	}
+	
+	CurCity = _CityPtr;
+}
+
 void Fieldmap::ChangeCity(const std::string_view& _CityName)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);
@@ -192,4 +202,26 @@ void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, G
 	}
 
 	AllCitys[UpperName]->AddActor(_Index, _Actor);
+}
+
+void Fieldmap::LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB)
+{
+	std::string CityAUpper = GameEngineString::ToUpper(_CityNameA);
+	std::string CityBUpper = GameEngineString::ToUpper(_CityNameB);
+
+	FieldmapCity* CityAPtr = AllCitys[CityAUpper];
+	FieldmapCity* CityBPtr = AllCitys[CityBUpper];
+
+	if (nullptr == CityAPtr)
+	{
+		MsgAssert(std::string(_CityNameA.data()) + "해당 이름의 시티가 존재하지 않씁니다");
+	}
+
+	if (nullptr == CityBPtr)
+	{
+		MsgAssert(std::string(_CityNameB.data()) + "해당 이름의 시티가 존재하지 않씁니다");
+	}
+
+	CityAPtr->AddNeighbor(CityBPtr);
+	CityBPtr->AddNeighbor(CityAPtr);
 }

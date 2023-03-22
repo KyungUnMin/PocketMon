@@ -17,6 +17,7 @@
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
 #include "MoveMapFadeEffect.h"
+#include "BackgroundUI.h"
 
 //Game Actor
 #include "Player.h"
@@ -35,6 +36,8 @@ FieldmapLevel::~FieldmapLevel()
 void FieldmapLevel::Loading()
 {
 	{
+		CreateActor<BackgroundUI>();
+
 		CreateFieldmapCity("PalletTown", "PalletTown", float4::Zero);
 		{
 			CreateDoor<FieldmapWoodDoor>("PalletTownToHouse", "PalletTown", int2(21, 7), "MoveHouse001");
@@ -259,18 +262,32 @@ void FieldmapLevel::Loading()
 			LinkDoor("House002ToPewterCity", "PewterCityToHouser002");
 			LinkDoor("PokemonCenterToPewterCity", "PewterCityToPoketmonCenter");
 		}
+
+		{
+			Fieldmap::LinkNeighbor("PalletTown", "Route1");
+			Fieldmap::LinkNeighbor("ViridianCity", "Route1");
+			Fieldmap::LinkNeighbor("ViridianCity", "Route22");
+			Fieldmap::LinkNeighbor("ViridianCity", "Route2_Down");
+			Fieldmap::LinkNeighbor("Route2_Down", "Route2_Up");
+			Fieldmap::LinkNeighbor("Route2_Up", "PewterCity");
+		}
 	}
 
 	Fieldmap::ChangeCity("PalletTown");
 
+	// Debug¿ë ·£´õ
 	MainFieldRender = CreateActor<FieldmapRender>();
 	MainFieldRender->On();
 		
 	UIImageLoad();
 	
 	MainPlayer = CreateActor<Player>();
-	TestNpc=CreateActor<NPC1>();
-	TestNpc->SetPos(Fieldmap::GetPos(16, 8));
+
+	//TestNpc=CreateActor<NPC1>();
+	//TestNpc->SetPos(Fieldmap::GetPos(16, 8));
+
+	TestNpc=CreateActor<NPC1>(); 
+	Fieldmap::AddActor("PalletTown", int2(16, 8), TestNpc);
 
 	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
 	MainPlayer->SetPlayerSpeed(500.0f);

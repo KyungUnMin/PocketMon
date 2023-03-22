@@ -1,6 +1,7 @@
 #include "DoorActorBase.h"
 #include "Fieldmap.h"
 #include "Player.h"
+#include "MoveMapFadeEffect.h"
 
 const std::string DoorActorBase::DoorIdleAnimName = "DoorIdle";
 const std::string DoorActorBase::DoorOpenAnimName = "DoorOpen";
@@ -54,15 +55,8 @@ void DoorActorBase::SetLinkDoor(DoorActorBase* _LinkDoor)
 
 void DoorActorBase::UseDoor()
 {
-	if (true == IsUse)
-	{
-		return;
-	}
-
-	IsUse = true;
-
 	DoorOpenAndClose();
-	DoorEvent.AddEvent(1.0f, std::bind(&DoorActorBase::PlayerMove, this), false);
+	DoorEvent.AddEvent(0.5f, std::bind(&DoorActorBase::PlayerMove, this), false);
 }
 
 
@@ -75,10 +69,10 @@ void DoorActorBase::DoorOpenAndClose()
 void DoorActorBase::DoorOpen()
 {
 	DoorRender->ChangeAnimation(DoorOpenAnimName, true);
+	MoveMapFadeEffect::MainMoveMapFadeEffect->On();
 }
 
 void DoorActorBase::DoorClose()
 {
 	DoorRender->ChangeAnimation(DoorCloseAnimName, true);
-	IsUse = false;
 }

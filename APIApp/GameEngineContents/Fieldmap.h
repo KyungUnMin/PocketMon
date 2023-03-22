@@ -53,6 +53,7 @@ public:
 	static GroundType GetGroundType(const int2& _Index);
 
 	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
+	static void ChangeCity(FieldmapCity* _CityPtr);
 	static void ChangeCity(const std::string_view& _CityName);
 
 	static void AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
@@ -61,6 +62,7 @@ public:
 	static void ShowEventLog(const int2& _Index);
 
 	static void AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor);
+	static void LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB);
 
 private:
 	static FieldmapCity* CurCity;
