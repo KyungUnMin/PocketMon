@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "FieldDialog.h"
+#include "ShopUIManager.h"
 
 ShopMainMenu* ShopMainMenu::AcShopMainMenu = nullptr;
 
@@ -38,6 +39,8 @@ void ShopMainMenu::Start()
 	MenuArrowRender->EffectCameraOff();
 	MenuArrowRender->SetScaleToImage();
 	MenuArrowRender->SetPosition(FirstArrowRenderPos);
+
+	AcParent = ShopUIManager::GetShopUIManager();
 }
 
 
@@ -69,6 +72,7 @@ void ShopMainMenu::Update(float _DeltaTime)
 		case ShopMianMenuState::Sell:
 			break;
 		case ShopMianMenuState::SeeYa:
+			AcParent->LeaveShop();
 			break;
 		default:
 			break;

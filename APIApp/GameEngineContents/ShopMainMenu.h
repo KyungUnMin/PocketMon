@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>	
+#include "ShopUIManager.h"
 #include "ContentsEnum.h"
 
 enum class ShopMianMenuState
@@ -32,6 +33,9 @@ protected:
 
 private:
 	static ShopMainMenu* AcShopMainMenu;
+
+	ShopUIManager* AcParent = nullptr;
+
 	float4 ActorPos = { 236, 128 };
 
 	ShopMianMenuState State = ShopMianMenuState::Buy;

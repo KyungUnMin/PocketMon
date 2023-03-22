@@ -3,9 +3,11 @@
 #include "ShopMainMenu.h"
 #include "FieldDialog.h"
 
+ShopUIManager* ShopUIManager::AcShopUIManager = nullptr;
+
 ShopUIManager::ShopUIManager()
 {
-
+	AcShopUIManager = this;
 }
 
 ShopUIManager::~ShopUIManager()

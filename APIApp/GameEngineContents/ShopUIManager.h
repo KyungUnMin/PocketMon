@@ -24,11 +24,18 @@ public:
 	void LeaveShop();
 	void OnOffSwtich() override;
 
+	static ShopUIManager* GetShopUIManager()
+	{
+		return AcShopUIManager;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
+	static ShopUIManager* AcShopUIManager;
+	
 	FieldmapLevel* ParentLevel = nullptr;
 	FieldDialog* AcFielDialog = nullptr;
 	ShopMainMenu* AcShopMainMenu = nullptr;
