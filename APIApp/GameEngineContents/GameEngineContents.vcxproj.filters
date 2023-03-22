@@ -163,6 +163,10 @@
     <ClCompile Include="ShopUIManager.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
+    <ClCompile Include="FieldmapFlower.cpp" />
+    <ClCompile Include="FieldmapBattleZone.cpp">
+      <Filter>Map\Actor\BattleZone</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -322,6 +326,10 @@
     <ClInclude Include="ShopMainMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
+    <ClInclude Include="FieldmapFlower.h" />
+    <ClInclude Include="FieldmapBattleZone.h">
+      <Filter>Map\Actor\BattleZone</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -443,6 +451,9 @@
     </Filter>
     <Filter Include="FieldUI\HSM\ShopUI">
       <UniqueIdentifier>{14847dd8-3048-4e52-9aa3-0a8aeab069c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\BattleZone">
+      <UniqueIdentifier>{3c35df5c-88ab-4617-91b2-19f9932f52cb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
