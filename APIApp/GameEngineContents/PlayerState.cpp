@@ -125,7 +125,7 @@ void Player::MoveStart()
 void Player::MoveUpdate(float _Time)
 {
 	DirCheck("Move");
-	PlayerTime+=_Time * 10.0f;
+	PlayerTime+=_Time;
 
 	 float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*4);
 	 SetPos(POS); 
