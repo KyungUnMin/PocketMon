@@ -17,6 +17,8 @@ public:
 	void PushTexts(const std::vector<std::string_view>& _Texts);
 	bool WriteText();
 
+	void BattleSetText(const std::string_view& _Texts);
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -24,6 +26,11 @@ protected:
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);
 	void PushScriptEnd(std::list<std::string>::iterator _End);
 
+	int GetNowIndex(int _Count) {
+		return IndexCount;
+	}
+
+	
 	void ClearDialog();
 
 	void StringToRender();
@@ -39,6 +46,8 @@ private:
 
 	int FirstLineRenderLen = 0;
 	int SecondLineRenderLen = 0;
+
+	int IndexCount = 0;
 
 	std::list<std::string> TestText = std::list<std::string>();
 	std::list<std::string>::iterator TestTextIter = std::list<std::string>::iterator();

@@ -44,9 +44,7 @@ void BackTextActor::Start()
 			BattleTextRender[y][x]->EffectCameraOff();
 		}
 	}
-
-	TestText.push_back("it is test");
-	TestText.push_back("it is test2");
+	
 	PushStart(&TestText);
 }
 
@@ -147,7 +145,7 @@ void BackTextActor::ClearDialog()
 		for (size_t x = 0; x < BattleTextRender[y].size(); x++)
 		{
 			BattleTextRender[y][x]->SetFrame(SpaceFrameNum);
-			BattleTextRender[y][x]->Off();
+		//	BattleTextRender[y][x]->Off();
 		}
 	}
 }
@@ -192,7 +190,10 @@ void BackTextActor::PushStart(std::list<std::string>* _Text)
 
 }
 
-
+void BackTextActor::BattleSetText(const std::string_view& _Texts)
+{
+	TestText.push_back(_Texts.data());
+}
 
 
 
@@ -231,3 +232,4 @@ bool BackTextActor::WriteText()
 	ScriptPtr->SetText(AllTexts[CurIndex++]);
 	return true;
 }
+
