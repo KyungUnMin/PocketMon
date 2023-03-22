@@ -149,6 +149,15 @@ public:
 	//	// 데이터 찾는중
 	//}
 
+	// 아이템을 가졌는지 확인 (계산용)
+	//float GetPossessionItem()
+	//{
+	//	// 공격 아이템 (1.1f)
+	//	// 방어력 아이템 (1.1f)
+	//	// 스페셜 공격력 아이템 (1.1f)
+	//	// 스페셜 방어력 아이템 (1.1f)
+	//}
+
 	// 포켓몬 이름 수정
 	void PokeNameEdit(std::string _EditName)
 	{
@@ -356,6 +365,13 @@ private:
 								    
 	bool IsMan = true;										      // 포켓몬 성별
 	bool IsbeCaught = false;									  // 야생포켓몬인지 잡힌 포켓몬인지
+
+	// 소지품
+	bool IshaveItem = false;                                      // 아이템을 가졌는지
+	bool AttackPowerItem = false;                                 // 공격력 업 아이템
+	bool DefenseItem = false;                                     // 방어력 업 아이템
+	bool SpecialAttackPowerItem = false;                          // 스페셜공격력 업 아이템
+	bool SpecialDefenseItem = false;                              // 스페셜방어력 업 아이템
 
 	PokeNumber PokeDexNumber = PokeNumber::Blastoise;			  // 포켓몬 도감 번호
 	int MaxHealthPoint = 0;								          // 몬스터 최대 체력
