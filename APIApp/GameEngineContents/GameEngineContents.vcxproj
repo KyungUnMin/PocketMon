@@ -270,6 +270,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SummaryUI.cpp" />
     <ClCompile Include="TestScript.cpp" />
     <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
@@ -393,6 +394,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SummaryUI.h" />
     <ClInclude Include="TestScript.h" />
     <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
