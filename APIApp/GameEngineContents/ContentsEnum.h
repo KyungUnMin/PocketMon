@@ -50,3 +50,9 @@ enum class GroundType
 	Beige,     // e8e8e8 [r] 232 [g] 232 [b] 232
 	Unknown    //
 };
+
+enum class UpdateOrder
+{
+	Battle_Actors,
+
+};
