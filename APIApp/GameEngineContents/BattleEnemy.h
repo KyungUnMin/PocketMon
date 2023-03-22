@@ -2,7 +2,7 @@
 #include "BattleTrainerBase.h"
 
 enum class BattleNpcType;
-class BattleMonsterBase;
+class BattleMonsterEnemy;
 
 class BattleEnemy : public BattleTrainerBase
 {
@@ -20,7 +20,7 @@ public:
 	void Init(BattleFieldType _FieldType);
 	void CreateWildMonster(BattleFieldType _FieldType);
 
-	inline BattleMonsterBase* GetMonster()
+	inline BattleMonsterEnemy* GetMonster()
 	{
 		return Monster;
 	}
@@ -29,7 +29,7 @@ public:
 protected:
 
 private:
-	BattleMonsterBase* Monster = nullptr;
+	BattleMonsterEnemy* Monster = nullptr;
 
 	void CreateGround(BattleFieldType _FieldType);
 

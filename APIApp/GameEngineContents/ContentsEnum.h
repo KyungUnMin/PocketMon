@@ -6,8 +6,6 @@ enum class RenderOrder
 	BackGround,		 // 0
 	Tilemap,
 	FieldBack,
-	BattleGround,
-	Battle_Effect,
 	Monster,		 // 1
 	Player,			 // 2
 	FieldFront,
@@ -21,6 +19,33 @@ enum class RenderOrder
 	Battle_UI,
 	Battle_Text,
 	Battle_Cursor,
+
+	Fade,
+};
+
+enum class BattleRenderOrder
+{
+	BackGround,
+	Ground,
+
+	Effect0,
+	Effect1,
+	Effect2,
+
+	Monster0,
+	Monster1,
+	Monster2,
+
+	Player0,
+	Player1,
+	Player2,
+
+	Particle0,
+	Particle1,
+	
+	//이 사이에 UI 넣어주세요
+
+	//
 
 	Fade,
 };

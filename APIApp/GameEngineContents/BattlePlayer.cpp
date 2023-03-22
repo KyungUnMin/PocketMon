@@ -3,7 +3,6 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
 #include "BattleLevel.h"
-#include "BattleMonsterBase.h"
 #include "PokeDataBase.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
@@ -50,7 +49,7 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 		break;
 	}
 
-	GameEngineRender* GroundRender = CreateRender(GroundPath, RenderOrder::BattleGround);
+	GameEngineRender* GroundRender = CreateRender(GroundPath, BattleRenderOrder::Player0);
 	GroundRender->SetScaleToImage();
 
 	const float4& RenderScale = GroundRender->GetScale();
@@ -61,7 +60,7 @@ void BattlePlayer::CreatePlayerRender()
 {
 	const float4 Offset = {0.f, -65.f};
 
-	PlayerRenderPtr = CreateRender("BattlePlayer.bmp", RenderOrder::Player);
+	PlayerRenderPtr = CreateRender("BattlePlayer.bmp", BattleRenderOrder::Player0);
 	PlayerRenderPtr->SetScaleToImage();
 	PlayerRenderPtr->SetPosition(Offset);
 }
@@ -70,6 +69,5 @@ void BattlePlayer::CreatePlayerRender()
 void BattlePlayer::CreatePlayerMonster()
 {
 	//юс╫ц
-	Monster = BattleMonsterBase::CreateMonster(GetLevel(), PokeNumber::Bulbasaur, BattleMonsterType::PlayerMon);
-	Monster->SetPos({ 500.f ,300.f });
+	
 }

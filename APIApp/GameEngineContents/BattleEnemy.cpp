@@ -4,8 +4,8 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
-#include "BattleMonsterBase.h"
 #include "PokeDataBase.h"
+#include "BattleMonsterEnemy.h"
 
 BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 
@@ -48,7 +48,7 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 		break;
 	}
 
-	GameEngineRender* GroundRender = CreateRender(GroundPath, RenderOrder::BattleGround);
+	GameEngineRender* GroundRender = CreateRender(GroundPath, BattleRenderOrder::Ground);
 	GroundRender->SetScaleToImage();
 
 	const float4& RenderScale = GroundRender->GetScale();
@@ -96,6 +96,10 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
 	//Monster = BattleMonsterBase::CreateMonster(GetLevel(), MonsterNumsters[MonIndex], false);
 
+
+	//BattleMonsterEnemy
+
 	//юс╫ц
-	Monster = BattleMonsterBase::CreateMonster(GetLevel(), PokeNumber::Bulbasaur, BattleMonsterType::WildMon);
+	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
+	Monster->Init(PokeNumber::Bulbasaur, true);
 }

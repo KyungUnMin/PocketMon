@@ -98,9 +98,6 @@
     <ClCompile Include="TileDebugRender.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="BattleMonster_Bulbasaur.cpp">
-      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
-    </ClCompile>
     <ClCompile Include="FieldMainMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
@@ -154,6 +151,10 @@
     </ClCompile>
     <ClCompile Include="BattleMonsterPlayer.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBase.cpp" />
+    <ClCompile Include="BattleMonsterEnemy.cpp">
+      <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\03.EnemyMonster</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp" />
     <ClCompile Include="BackgroundUI.cpp">
@@ -253,9 +254,6 @@
     <ClInclude Include="BattleCommendActor.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="BattleMonster_Bulbasaur.h">
-      <Filter>Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29</Filter>
-    </ClInclude>
     <ClInclude Include="TileDebugRender.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
@@ -309,6 +307,10 @@
     </ClInclude>
     <ClInclude Include="BattleMonsterPlayer.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBase.h" />
+    <ClInclude Include="BattleMonsterEnemy.h">
+      <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\03.EnemyMonster</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBase.h" />
     <ClInclude Include="BackgroundUI.h">
@@ -387,9 +389,6 @@
     </Filter>
     <Filter Include="Battle\02.Actor\03.Monster">
       <UniqueIdentifier>{00b1e797-7e06-4b1c-a3b9-87f562495ea0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\03.Monster\02.Bulbasaur%28이상해씨%29">
-      <UniqueIdentifier>{79436394-1a67-4813-b60f-ad782b4c6989}</UniqueIdentifier>
     </Filter>
     <Filter Include="Battle\03.FSM">
       <UniqueIdentifier>{0f806b4c-2533-45f5-ad65-03b15b8f3252}</UniqueIdentifier>

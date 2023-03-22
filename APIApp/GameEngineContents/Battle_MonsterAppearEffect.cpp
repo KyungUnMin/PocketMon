@@ -20,7 +20,7 @@ void Battle_MonsterAppearEffect::Start()
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	SetPos(ScreenSize.half());
 
-	WhiteFade = CreateRender("BattleAppearEffect.bmp", RenderOrder::Battle_Effect);
+	WhiteFade = CreateRender("BattleAppearEffect.bmp", BattleRenderOrder::Effect0);
 	WhiteFade->SetScaleToImage();
 	WhiteFade->Off();
 }

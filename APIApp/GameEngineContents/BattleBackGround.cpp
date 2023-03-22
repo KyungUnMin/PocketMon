@@ -44,7 +44,7 @@ void BattleBackGround::CreateField(BattleFieldType _BattleType)
 		break;
 	}
 
-	GameEngineRender* BackRender = CreateRender(BackRenderPath, RenderOrder::BackGround);
+	GameEngineRender* BackRender = CreateRender(BackRenderPath, BattleRenderOrder::BackGround);
 
 	BackRender->SetScale(ScreenSize);
 	BackRender->SetPosition(ScreenSize.half());
@@ -52,9 +52,9 @@ void BattleBackGround::CreateField(BattleFieldType _BattleType)
 
 void BattleBackGround::CreateFadeEffect()
 {
-	FadeUp = CreateRender("BattleFadeUp.bmp", RenderOrder::Fade);
+	FadeUp = CreateRender("BattleFadeUp.bmp", BattleRenderOrder::Fade);
 	FadeUp->SetScale(ScreenSize);
-	FadeDown = CreateRender("BattleFadeDown.bmp", RenderOrder::Fade);
+	FadeDown = CreateRender("BattleFadeDown.bmp", BattleRenderOrder::Fade);
 	FadeDown->SetScale(ScreenSize);
 }
 
@@ -81,7 +81,7 @@ void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 	const float OffsetY = 20.f;
 	for (size_t i = 0; i < EnterEffect.size(); ++i)
 	{
-		EnterEffect[i] = CreateRender(EffectPath, RenderOrder::Particle);
+		EnterEffect[i] = CreateRender(EffectPath, BattleRenderOrder::Particle0);
 		EnterEffect[i]->SetScaleToImage();
 
 		float4 Offset = { ScreenSize.x * i, ScreenSize.hy() + (OffsetY * i) };

@@ -169,6 +169,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleMonsterEnemy.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleMonsterPlayer.cpp">
       <SubType>
       </SubType>
@@ -206,10 +210,6 @@
     <ClCompile Include="BattleLevel.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleMonsterBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleMonster_Bulbasaur.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -289,6 +289,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleMonsterEnemy.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleMonsterPlayer.h">
       <SubType>
       </SubType>
@@ -326,10 +330,6 @@
     <ClInclude Include="BattleLevel.h" />
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattleMonsterBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleMonster_Bulbasaur.h">
       <SubType>
       </SubType>
     </ClInclude>
