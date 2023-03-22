@@ -163,6 +163,9 @@
     <ClCompile Include="ShopUIManager.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
+    <ClCompile Include="SummaryUI.cpp">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -321,6 +324,9 @@
     </ClInclude>
     <ClInclude Include="ShopMainMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SummaryUI.h">
+      <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
