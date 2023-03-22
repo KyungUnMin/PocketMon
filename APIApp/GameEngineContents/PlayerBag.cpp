@@ -313,12 +313,16 @@ void PlayerBag::ChangeAnimation(BagAnim _AnimState)
 	}
 	else if (AnimState == BagAnim::LeftTurn)
 	{
+		BagRender->SetAngle(0);
+		BagRender->SetPosition({ 168, 276 });
 		// 타임이벤트
 		TimeEvent.AddEvent(0.03f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::RightTurn), false);
 		TimeEvent.AddEvent(0.06f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::Idle), false);
 	}
 	else if (AnimState == BagAnim::UpMove)
 	{
+		BagRender->SetAngle(0);
+		BagRender->SetPosition({ 168, 276 });
 		// 타임 이벤트
 		TimeEvent.AddEvent(0.07f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::DownMove), false);
 		TimeEvent.AddEvent(0.14f, std::bind(&PlayerBag::ChangeAnimation, this, BagAnim::Idle), false);

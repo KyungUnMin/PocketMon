@@ -1,7 +1,8 @@
 #include "PokemonUI.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
-#include <GameEngineCore/GameEngineLevel.h>
+#include "PokeDataBase.h"
+#include "PokemonLevel.h"
 #include "PocketMonCore.h"
 PokemonUI::PokemonUI() 
 {
@@ -13,91 +14,80 @@ PokemonUI::~PokemonUI()
 
 void PokemonUI::Start()
 {
+	CurrentLevel = dynamic_cast<PokemonLevel*>(GetLevel());
+	//_______테스트용 포켓몬 생성
+
 	// ____________렌더 생성______________
 	{
+
 		GameEngineRender* BackUI = CreateRender("PokemonUI_Back.bmp", 0);
 		BackUI->SetScaleToImage();
 		BackUI->SetPosition(BackUI->GetScale().half());
 
 		// 포켓몬 뒷 배경
-		MainPokemonBack = CreateRender("MainPokemon.bmp", 1);
-		MainPokemonBack->SetScale({ 336, 228 });
-		MainPokemonBack->SetPosition({ 172, 196 });
-
+		PokemonBack[0] = CreateRender("MainPokemon.bmp", 1);
+		PokemonBack[0]->SetScale({ 336, 228 });
+		PokemonBack[0]->SetPosition({ 172, 196 });
 		// 포켓몬 이미지
-		MainPokemonRender = CreateRender("Bulbasaur_mini.bmp", 2);
-		float4 _RenderScale = MainPokemonRender->GetImage()->GetImageScale();
-		_RenderScale.x /= 2;
-		MainPokemonRender->SetScale(_RenderScale);
-		MainPokemonRender->SetPosition({ 52, 172 });
+		PokemonRender[0] = CreateRender(2);
+		PokemonRender[0]->SetPosition({ 52, 172 });
 
 		// 포켓몬 이름
-		GameEngineLevel* CurrentLevel = GetLevel();
-		MainPokemonNameText = CurrentLevel->CreateActor<TextActor>();
-		MainPokemonNameText->SetPos({ 108, 172 });
-		MainPokemonNameText->SetText("Bulbasaur", "Font_Dialog_White.bmp", false);
+		PokemonNameText[0] = CurrentLevel->CreateActor<TextActor>();
+		PokemonNameText[0]->SetPos({ 108, 172 });
 
 		// 포켓몬 레벨
-		MainPokemonLevelText = CurrentLevel->CreateActor<TextActor>();
-		MainPokemonLevelText->SetPos({ 212, 212 });
-		MainPokemonLevelText->SetText("10", "Font_Dialog_White.bmp", false);
+		PokemonLevelText[0] = CurrentLevel->CreateActor<TextActor>();
+		PokemonLevelText[0]->SetPos({ 212, 212 });
 
 		// 포켓몬 HP
-		MainPokemonHPText = CurrentLevel->CreateActor<TextActor>();
-		MainPokemonHPText->SetPos({ 218, 282 });
-		MainPokemonHPText->SetAligned(true);
-		MainPokemonHPText->SetText("255", "Font_Dialog_White.bmp", false);
+		PokemonCurrentHPText[0] = CurrentLevel->CreateActor<TextActor>();
+		PokemonCurrentHPText[0]->SetPos({ 218, 282 });
+		PokemonCurrentHPText[0]->SetAligned(true);
 		// 포켓몬 최대 HP
-		MainPokemonMaxHPText = CurrentLevel->CreateActor<TextActor>();
-		MainPokemonMaxHPText->SetPos({ 326, 282 });
-		MainPokemonMaxHPText->SetAligned(true);
-		MainPokemonMaxHPText->SetText("255", "Font_Dialog_White.bmp", false);
+		PokemonMaxHPText[0] = CurrentLevel->CreateActor<TextActor>();
+		PokemonMaxHPText[0]->SetPos({ 326, 282 });
+		PokemonMaxHPText[0]->SetAligned(true);
 
-		for (int i = 0; i < 5; i++)
+		for (int i = 1; i < 6; i++)
 		{
 			// 포켓몬 뒷 배경
-			SubPokemonBack[i] = CreateRender("SubPokemon.bmp", 1);
-			SubPokemonBack[i]->SetScale({ 600, 96 });
-			SubPokemonBack[i]->SetPosition({ 652, 84.0f + 96 * i });
-
+			PokemonBack[i] = CreateRender("SubPokemon.bmp", 1);
+			PokemonBack[i]->SetScale({ 600, 96 });
+			PokemonBack[i]->SetPosition({ 652, -12.0f + 96 * i });
 			// 포켓몬 이미지
-			SubPokemonRender[i] = CreateRender("Bulbasaur_mini.bmp", 2);
-			_RenderScale = SubPokemonRender[i]->GetImage()->GetImageScale();
-			_RenderScale.x /= 2;
-			SubPokemonRender[i]->SetScale(_RenderScale);
-			SubPokemonRender[i]->SetPosition({ 408, 98.0f + 96 * i });
+			PokemonRender[i] = CreateRender(2);
+			PokemonRender[i]->SetPosition({ 408, 2.0f + 96 * i });
 
 			// 포켓몬 이름
-			SubPokemonNameText[i] = CurrentLevel->CreateActor<TextActor>();
-			SubPokemonNameText[i]->SetPos({ 468, 76.0f + 96 * i });
-			SubPokemonNameText[i]->SetText("Bulbasaur", "Font_Dialog_White.bmp", 3, false);
+			PokemonNameText[i] = CurrentLevel->CreateActor<TextActor>();
+			PokemonNameText[i]->SetPos({ 468, -22.0f + 96 * i });
 
 			// 포켓몬 레벨
-			SubPokemonLevelText[i] = CurrentLevel->CreateActor<TextActor>();
-			SubPokemonLevelText[i]->SetPos({ 570, 115.0f + 96 * i });
-			SubPokemonLevelText[i]->SetText("5", "Font_Dialog_White.bmp", 3, false);
+			PokemonLevelText[i] = CurrentLevel->CreateActor<TextActor>();
+			PokemonLevelText[i]->SetPos({ 570, 19.0f + 96 * i });
 
 			// 포켓몬 HP
-			SubPokemonHPText[i] = CurrentLevel->CreateActor<TextActor>();
-			SubPokemonHPText[i]->SetPos({ 824, 112.0f + 96 * i });
-			SubPokemonHPText[i]->SetAligned(true);
-			SubPokemonHPText[i]->SetText("25", "Font_Dialog_White.bmp", 3, false);
+			PokemonCurrentHPText[i] = CurrentLevel->CreateActor<TextActor>();
+			PokemonCurrentHPText[i]->SetPos({ 824, 16.0f + 96 * i });
+			PokemonCurrentHPText[i]->SetAligned(true);
 			// 포켓몬 최대 HP
-			SubPokemonMaxHPText[i] = CurrentLevel->CreateActor<TextActor>();
-			SubPokemonMaxHPText[i]->SetPos({ 924, 112.0f + 96 * i });
-			SubPokemonMaxHPText[i]->SetAligned(true);
-			SubPokemonMaxHPText[i]->SetText("25", "Font_Dialog_White.bmp", 3, false);
+			PokemonMaxHPText[i] = CurrentLevel->CreateActor<TextActor>();
+			PokemonMaxHPText[i]->SetPos({ 924, 16.0f + 96 * i });
+			PokemonMaxHPText[i]->SetAligned(true);
 		}
+		// 취소 버튼
+		CancelButtonRender = CreateRender("CancelButton.bmp", 1);
+		CancelButtonRender->SetScale({ 216, 96 });
+		CancelButtonRender->SetPosition({ 848, 580 });
+		CancelButtonRender->SetFrame(0);
+		
 
 		TextBarRender = CreateRender("TextBar.bmp", 1);
 		TextBarRender->SetScale({ 720, 112 });
 		TextBarRender->SetPosition({ 370, 580 });
 		TextBarRender->SetFrame(0);
 
-		CancelButtonRender = CreateRender("CancelButton.bmp", 1);
-		CancelButtonRender->SetScale({ 216, 96 });
-		CancelButtonRender->SetPosition({ 848, 580 });
-		CancelButtonRender->SetFrame(0);
 
 		SelectRender = CreateRender("SelectMenu.bmp", 4);
 		SelectRender->SetScale({ 280, 376 });
@@ -115,42 +105,68 @@ void PokemonUI::Start()
 		SelectText->SetLine(4);
 		SelectText->Off();
 
-		CursorRender[0] = MainPokemonBack;
-		CursorRender[1] = SubPokemonBack[0];
-		CursorRender[2] = SubPokemonBack[1];
-		CursorRender[3] = SubPokemonBack[2];
-		CursorRender[4] = SubPokemonBack[3];
-		CursorRender[5] = SubPokemonBack[4];
-		CursorRender[6] = CancelButtonRender;
 
-		SubPokemonBack[4]->Off();
-		SubPokemonRender[4]->Off();
-		SubPokemonHPText[4]->Off();
-		SubPokemonLevelText[4]->Off();
-		SubPokemonMaxHPText[4]->Off();
-		SubPokemonNameText[4]->Off();
-
-		SubPokemonBack[3]->Off();
-		SubPokemonRender[3]->Off();
-		SubPokemonHPText[3]->Off();
-		SubPokemonLevelText[3]->Off();
-		SubPokemonMaxHPText[3]->Off();
-		SubPokemonNameText[3]->Off();
 	}
+	PokeDataSetting();
 }
 
 void PokemonUI::Update(float _DeltaTime)
 {
-
 	if (true == IsSelect)
 	{
 		if (GameEngineInput::IsDown("A"))
 		{
+			SelectMenu();
 			return;
 		}
 		if (GameEngineInput::IsDown("B"))
 		{
 			SelectOff();
+			return;
+		}
+		if (GameEngineInput::IsDown("UpMove"))
+		{
+			SelectUp();
+			return;
+		}
+		if (GameEngineInput::IsDown("DownMove"))
+		{
+			SelectDown();
+			return;
+		}
+		return;
+	}
+	if (StateValue == PokemonUIState::Switch)
+	{
+		if (GameEngineInput::IsDown("LeftMove"))
+		{
+			CurrentCursor = 0;
+			CursorMove();
+			return;
+		}
+		if (GameEngineInput::IsDown("RightMove"))
+		{
+			CursorDown();
+			return;
+		}
+		if (GameEngineInput::IsDown("UpMove"))
+		{
+			CursorUp();
+			return;
+		}
+		if (GameEngineInput::IsDown("DownMove"))
+		{
+			CursorDown();
+			return;
+		}
+		if (GameEngineInput::IsDown("A"))
+		{
+			SwitchSelect();
+			return;
+		}
+		if (GameEngineInput::IsDown("B"))
+		{
+			SwitchCancel();
 			return;
 		}
 		return;
@@ -186,6 +202,7 @@ void PokemonUI::Update(float _DeltaTime)
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		return;
 	}
+
 }
 
 void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
@@ -199,48 +216,93 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	CursorMove();
 }
 
+void PokemonUI::PokeDataSetting()
+{
+	////////////// 임시용 포켓몬
+	Pokemons = CurrentLevel->Pokemons;
+	// ____________렌더 생성______________
+	{
+		CursorRender.reserve(Pokemons.size() + 1);
+		for (int i = 0; i < Pokemons.size(); i++)
+		{
+			CursorRender.push_back(PokemonBack[i]);
+			// 포켓몬 이미지
+			std::string ImageStr = Pokemons[i]->ForUI_GetMonsterName().data();
+			ImageStr += "_mini.bmp";
+			PokemonRender[i]->SetImage(ImageStr);
+			float4 _RenderScale = PokemonRender[i]->GetImage()->GetImageScale();
+			_RenderScale.x /= 2;
+			PokemonRender[i]->SetScale(_RenderScale);
+			// 포켓몬 이름
+			PokemonNameText[i]->SetText(Pokemons[i]->ForUI_GetMonsterName(), "Font_Dialog_White.bmp", 3, false);
+			// 포켓몬 레벨
+			PokemonLevelText[i]->SetText(Pokemons[i]->ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
+			// 포켓몬 HP
+			PokemonCurrentHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
+			// 포켓몬 최대 HP
+			PokemonMaxHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
+		}
+		for (size_t i = Pokemons.size(); i < 6; i++)
+		{
+			// 포켓몬 뒷 배경
+			PokemonBack[i]->SetFrame(4);
+			PokemonRender[i]->Off();
+			PokemonNameText[i]->Off();
+			PokemonLevelText[i]->Off();
+			PokemonCurrentHPText[i]->Off();
+			PokemonMaxHPText[i]->Off();
+		}
+		CursorRender.push_back(CancelButtonRender);
+	}
+}
+
 void PokemonUI::CursorUp()
 {
-	if (0 >= CurrentCursor)
-	{
-		CurrentCursor = 7;
-	}
 	CurrentCursor--;
-	if (false == CursorRender[CurrentCursor]->IsUpdate())
+	if (CurrentCursor == -1)
 	{
-		CursorUp();
-		return;
+		CurrentCursor = static_cast<int>(CursorRender.size()) - 1;
 	}
 	CursorMove();
 }
 
 void PokemonUI::CursorDown()
 {
-	if (6 <= CurrentCursor)
-	{
-		CurrentCursor = -1;
-	}
 	CurrentCursor++;
-	if (false == CursorRender[CurrentCursor]->IsUpdate())
+	if (CurrentCursor == CursorRender.size())
 	{
-		CursorDown();
-		return;
+		CurrentCursor = 0;
 	}
 	CursorMove();
 }
 
 void PokemonUI::CursorMove()
 {
+	if (StateValue != PokemonUIState::Switch)
+	{
+		for (int i = 0; i < CursorRender.size(); i++)
+		{
+			CursorRender[i]->SetFrame(0);
+		}
+		CursorRender[CurrentCursor]->SetFrame(1);
+		return;
+	}
 	for (int i = 0; i < CursorRender.size(); i++)
 	{
 		CursorRender[i]->SetFrame(0);
 	}
-	CursorRender[CurrentCursor]->SetFrame(1);
+	CursorRender[SwitchCursor]->SetFrame(2);
+	if (CurrentCursor == CursorRender.size() - 1)
+	{
+		CursorRender[CurrentCursor]->SetFrame(1);
+		return;
+	}
+	CursorRender[CurrentCursor]->SetFrame(3);
 }
 
 void PokemonUI::SelectOn()
 {
-	if (CurrentCursor == 6)
+	if (CurrentCursor == CursorRender.size() - 1)
 	{
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		return;
@@ -251,11 +313,36 @@ void PokemonUI::SelectOn()
 	TextBarRender->SetFrame(1);
 	SelectRender->SetFrame(3);
 
-	SelectSize = 3;
+
+	// 여기서 상황을 판단
+	switch (StateValue)
+	{
+	case PokemonUIState::Normal:
+		SelectSize = 3;
+		SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
+		SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+		SelectFunctions[1] = std::bind(&PokemonUI::Item, this);
+		SelectFunctions[2] = std::bind(&PokemonUI::Switch, this);
+		SelectFunctions[3] = std::bind(&PokemonUI::Summary, this);
+		break;
+	case PokemonUIState::Shift:
+		SelectSize = 2;
+		SelectText->SetText("SHIFT\nSUMMARY\nCANCEL");
+		SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+		SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
+		SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
+		break;
+	case PokemonUIState::Potion:
+		break;
+	case PokemonUIState::Give:
+		break;
+	default:
+		break;
+	}
+	
 
 	CurrentSelectCursor = SelectSize;
 	SelectText->SetPos({ 744, 580.0f - 68 * SelectSize });
-	SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
 	SelectText->On();
 	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * SelectSize });
 }
@@ -267,4 +354,78 @@ void PokemonUI::SelectOff()
 	SelectCursorRender->Off();
 	TextBarRender->SetFrame(0);
 	SelectText->Off();
+}
+
+void PokemonUI::SelectMenu()
+{
+	SelectFunctions[CurrentSelectCursor]();
+}
+
+void PokemonUI::SelectUp()
+{
+	if (SelectSize <= CurrentSelectCursor)
+	{
+		return;
+	}
+	CurrentSelectCursor++;
+	SelectMove();
+}
+
+void PokemonUI::SelectDown()
+{
+	if (0 >= CurrentSelectCursor)
+	{
+		return;
+	}
+	CurrentSelectCursor--;
+	SelectMove();
+}
+
+void PokemonUI::SelectMove()
+{
+	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * CurrentSelectCursor });
+}
+
+void PokemonUI::Summary()
+{
+	SelectOff();
+	CurrentLevel->SummaryOn();
+}
+
+void PokemonUI::Switch()
+{
+	SelectOff();
+	SwitchCursor = CurrentCursor;
+	CursorRender[CurrentCursor]->SetFrame(3);
+	StateValue = PokemonUIState::Switch;	
+}
+
+void PokemonUI::SwitchCancel()
+{
+	StateValue = PokemonUIState::Normal;
+	CursorMove();
+}
+
+void PokemonUI::SwitchSelect()
+{
+	if (CurrentCursor == CursorRender.size() - 1)
+	{
+		SwitchCancel();
+		return;
+	}
+	PokeDataBase* _Pokemon = Pokemons[SwitchCursor];
+	Pokemons[SwitchCursor] = Pokemons[CurrentCursor];
+	Pokemons[CurrentCursor] = _Pokemon;
+	PokeDataSetting();
+	SwitchCancel();
+}
+
+void PokemonUI::Item()
+{
+	SelectOff();
+}
+
+void PokemonUI::Shift()
+{
+	SelectOff();
 }

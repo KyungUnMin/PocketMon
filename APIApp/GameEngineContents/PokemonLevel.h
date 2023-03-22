@@ -1,12 +1,20 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
+
+#include <vector>
 // Ό³Έν :
+class PokeDataBase;
 class PokemonLevel : public GameEngineLevel
 {
 public:
 	// constrcuter destructer
 	PokemonLevel();
 	~PokemonLevel();
+
+	std::vector<PokeDataBase*> Pokemons;
+
+	void SummaryOn();
+	void SummaryOff();
 
 	// delete Function
 	PokemonLevel(const PokemonLevel& _Other) = delete;
@@ -21,6 +29,8 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
+	GameEngineActor* Pokemon = nullptr;
+	GameEngineActor* Summary = nullptr;
 
 };
 
