@@ -143,6 +143,12 @@ public:
 		return (static_cast<int>(PokeDexNumber) + 1);
 	}
 
+	//// 포켓몬 도감 설명 가져오기
+	//std::string ForUI_GetMonsterTypeName()
+	//{
+	//	// 데이터 찾는중
+	//}
+
 	// 포켓몬 이름 수정
 	void PokeNameEdit(std::string _EditName)
 	{

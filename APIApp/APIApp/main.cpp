@@ -15,19 +15,21 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	PokeDataBase* NewP1 = PokeDataBase::PokeCreate(1, 15);
 	PokeDataBase* NewP2 = PokeDataBase::PokeCreate(4, 8);
 
-	std::string A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName().data();
-	std::string B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName().data();
-	std::string C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName().data();
+	std::string AAAA = NewP1->ForUI_GetMonsterName();
+
+	std::string A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName();
+	std::string B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName();
+	std::string C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName();
 	int CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
-	std::string D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName().data();
+	std::string D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName();
 
 	NewP1->ChangeMonsterSkill(3, PokeSkill::SolarBeam);
 
-	A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName().data();
-	B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName().data();
-	C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName().data();
+	A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName();
+	B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName();
+	C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName();
 	CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
-	D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName().data();
+	D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName();
 
 	int a = NewP2->GetMonsterMaxHP_int();
 	int b = NewP1->GetMonsterMaxHP_int();
