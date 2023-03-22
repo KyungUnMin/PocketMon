@@ -222,10 +222,10 @@ void PokemonUI::PokeDataSetting()
 	Pokemons = CurrentLevel->Pokemons;
 	// ____________렌더 생성______________
 	{
-		CursorRender.reserve(Pokemons.size() + 1);
+		CursorRender.resize(Pokemons.size() + 1);
 		for (int i = 0; i < Pokemons.size(); i++)
 		{
-			CursorRender.push_back(PokemonBack[i]);
+			CursorRender[i] = PokemonBack[i];
 			// 포켓몬 이미지
 			std::string ImageStr = Pokemons[i]->ForUI_GetMonsterName().data();
 			ImageStr += "_mini.bmp";
@@ -252,7 +252,7 @@ void PokemonUI::PokeDataSetting()
 			PokemonCurrentHPText[i]->Off();
 			PokemonMaxHPText[i]->Off();
 		}
-		CursorRender.push_back(CancelButtonRender);
+		CursorRender[Pokemons.size()] = CancelButtonRender;
 	}
 }
 
@@ -416,6 +416,7 @@ void PokemonUI::SwitchSelect()
 	PokeDataBase* _Pokemon = Pokemons[SwitchCursor];
 	Pokemons[SwitchCursor] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
+	CurrentLevel->Pokemons = Pokemons;
 	PokeDataSetting();
 	SwitchCancel();
 }
