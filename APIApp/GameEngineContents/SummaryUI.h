@@ -3,6 +3,7 @@
 // Ό³Έν :
 class GameEngineRender;
 class PokemonLevel;
+class TextActor;
 class SummaryUI : public GameEngineActor
 {
 public:
@@ -21,5 +22,6 @@ protected:
 	void Update(float _DeltaTime) override;
 private:
 	PokemonLevel* CurrentLevel = nullptr;
+	GameEngineRender* InfoBack = nullptr;
 };
 

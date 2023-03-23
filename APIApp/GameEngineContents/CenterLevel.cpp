@@ -251,7 +251,6 @@ void CenterLevel::Loading()
 		Dir.Move("Image");
 		Dir.Move("PokemonUI");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonUI_Back.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SummaryExample.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("HPBar.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBar.bmp"))->Cut(1,2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CancelButton.bmp"))->Cut(2,1);
@@ -266,6 +265,10 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata_mini.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow_mini.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle_mini.bmp"))->Cut(2, 1);
+		Dir.MoveParentToDirectory("PokemonUI");
+		Dir.Move("PokemonUI");
+		Dir.Move("Summary");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonInfo.bmp"));
 	}
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
