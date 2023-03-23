@@ -19,34 +19,62 @@ BattleState_TalkBase::~BattleState_TalkBase()
 void BattleState_TalkBase::Start()
 {
 	AppearEffect = BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
-}
 
-void BattleState_TalkBase::Update(float _DeltaTime)
-{
-	if (true == GameEngineInput::IsDown(BattleLevel::BattleKeyName))
-	{
-		//모든 텍스트를 출력했다면
-		if (false == BackUI->WriteText())
-			return;
-
-		if (nullptr == TextEvents[CurTextNum++])
-			return;
-
-		TextEvents[CurTextNum - 1]();
-		TextEvents[CurTextNum - 1] = nullptr;
-
-		//MsgAssert("이제 여기서 배틀의 FSM을 변경할 예정");
-		//GetFSM()->ChangeState(Battle)
-	}
+	//연출을 위한 대기시간
+	Timer = -1.6f;
 }
 
 void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Texts)
 {
-	BackUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>();
-	BackUI->PushTexts(_Texts);
+	TextEvents.resize(_Texts.size());
+	for (size_t i = 0; i < TextEvents.size(); ++i)
+	{
+		TextEvents[i].first = _Texts[i];
+	}
 
-	TextEvents.resize(_Texts.size(), nullptr);
+	BackUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+
+	//첫번째 텍스트는 미리 출력(첫번째 텍스트에서는 이벤트 불가능)
+	BackUI->BattleSetText(TextEvents.front().first);
+	++CurTextNum;
 }
+
+void BattleState_TalkBase::Update(float _DeltaTime)
+{
+	static const float ButtonOKTime = 0.5f;
+
+	//키를 빠르게 연타하는 것을 방지
+	Timer += _DeltaTime;
+	if (Timer < ButtonOKTime)
+		return;
+
+	//키를 눌렀을때만
+	if (false == GameEngineInput::IsDown(BattleLevel::BattleKeyName))
+		return;
+
+	Timer = 0.f;
+
+	//더 전달할 텍스트가 없을땐 다음 State로 이동
+	if (TextEvents.size() == CurTextNum)
+	{
+		NextStateAtLastText();
+		return;
+	}
+
+	//UI에 텍스트 전달
+	BackUI->BattleSetText(TextEvents[CurTextNum].first);
+
+	//등록된 이벤트가 없다면 return
+	std::function<void()>& EventFunc = TextEvents[CurTextNum++].second;
+	if (nullptr == EventFunc)
+		return;
+	
+	//이벤트 호출
+	EventFunc();
+	EventFunc = nullptr;
+}
+
+
 
 void BattleState_TalkBase::SetTextEvent(size_t _Index, std::function<void()> _Event)
 {
@@ -56,12 +84,12 @@ void BattleState_TalkBase::SetTextEvent(size_t _Index, std::function<void()> _Ev
 		return;
 	}
 
-	if (nullptr != TextEvents[_Index])
+	if (nullptr != TextEvents[_Index].second)
 	{
 		MsgAssert("이미 등록된 텍스트 이벤트입니다");
 		return;
 	}
 
-	TextEvents[_Index] = _Event;
+	TextEvents[_Index].second = _Event;
 }
 

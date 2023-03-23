@@ -6,6 +6,7 @@
 class BackTextActor;
 class Battle_MonsterAppearEffect;
 
+
 class BattleState_TalkBase : public BattleStateBase
 {
 public:
@@ -24,23 +25,21 @@ public:
 protected:
 	void CreateUIText(const std::vector<std::string_view>& _Texts);
 	void SetTextEvent(size_t _Index, std::function<void()> _Event);
+	virtual void NextStateAtLastText() = 0;
 
 	inline Battle_MonsterAppearEffect* GetAppearEffect()
 	{
 		return AppearEffect;
 	}
 
-	inline BackTextActor* GetBackUI()
-	{
-		return BackUI;
-	}
 
 private:
 	BackTextActor* BackUI = nullptr;
 	Battle_MonsterAppearEffect* AppearEffect = nullptr;
 
+	float Timer = 0.f;
 	int CurTextNum = 0;
-	std::vector<std::function<void()>> TextEvents;
+	std::vector<std::pair<std::string ,std::function<void()>>> TextEvents;
 };
 
 
