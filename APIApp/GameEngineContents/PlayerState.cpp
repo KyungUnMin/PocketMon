@@ -66,6 +66,7 @@ void Player::UpdateState(float _Time)
 void Player::IdleStart()
 {
 	DirCheck("Idle");
+
 }
 void Player::IdleUpdate(float _Time)
 {
@@ -127,6 +128,7 @@ void Player::MoveStart()
 			EndPos = StartPos + (MoveRange - NextPos4);
 		}
 	}
+	Fieldmap::GetGroundType(NextYplusIndex);
 	
 }
 void Player::MoveUpdate(float _Time)
@@ -134,8 +136,8 @@ void Player::MoveUpdate(float _Time)
 	DirCheck("Move");
 	PlayerTime+=_Time;
 	
-	// float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*5);
-	float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
+	float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*5);
+	//float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
 	 SetPos(POS); 
 	 if (PlayerTime > 0.2f)//다음타일까지의 이동시간
 	 {

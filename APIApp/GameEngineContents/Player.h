@@ -7,11 +7,17 @@
 #include "FieldmapCity.h"
 #include "Fieldmap.h"
 
+enum class PlayerDirs
+{
+	P_UP,
+	P_RIGHT,
+	P_LEFT,
+	P_DOWN,
+};
 enum class PlayerState
 {
 	IDLE,
 	MOVE,
-	
 };
 
 enum class NPCtalkValue
