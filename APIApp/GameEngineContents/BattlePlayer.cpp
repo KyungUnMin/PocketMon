@@ -129,12 +129,6 @@ void BattlePlayer::CreateMontser()
 
 	CurState = State::Throw;
 	PlayerRenderPtr->ChangeAnimation(ThrowAniName);
-
-	float EventTime = ThrowDuration - Battle_MonsterAppearEffect::FadeDuration;
-	BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(EventTime, [](GameEngineTimeEvent::TimeEvent _Eve, GameEngineTimeEvent* _TimeEve)
-	{
-		BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
-	}, false);
 }
 
 
@@ -146,6 +140,7 @@ void BattlePlayer::Update_Throw()
 	PlayerRenderPtr->Off();
 	CurState = State::Idle;
 
+	GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNumber::Bulbasaur);
 	Monster->SetPos(MonsterSpawnPos);

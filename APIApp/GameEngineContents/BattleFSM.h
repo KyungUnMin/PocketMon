@@ -5,7 +5,8 @@
 enum class BattleStateType
 {
 	WildTalk,
-
+	PlayerTurn,
+	EnemyTurn,
 
 };
 

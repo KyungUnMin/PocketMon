@@ -4,6 +4,7 @@
 #include "BattleLevel.h"
 #include "EnemyHPBackground.h"
 #include "BackTextActor.h"
+#include "BattleLevel.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -23,10 +24,10 @@ void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Te
 		TextEvents[i].first = _Texts[i];
 	}
 
-	BackUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+	TextInfoUI = BattleLevel::BattleLevelPtr->GetTextInfoUI();
 
 	//첫번째 텍스트는 미리 출력(첫번째 텍스트에서는 이벤트 불가능)
-	BackUI->BattleSetText(TextEvents.front().first);
+	TextInfoUI->BattleSetText(TextEvents.front().first);
 	++CurTextNum;
 }
 
@@ -53,7 +54,8 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 	}
 
 	//UI에 텍스트 전달
-	BackUI->BattleSetText(TextEvents[CurTextNum].first);
+	const std::string& Text = TextEvents[CurTextNum].first;
+	TextInfoUI->BattleSetText(Text);
 
 	//등록된 이벤트가 없다면 return
 	std::function<void()>& EventFunc = TextEvents[CurTextNum++].second;

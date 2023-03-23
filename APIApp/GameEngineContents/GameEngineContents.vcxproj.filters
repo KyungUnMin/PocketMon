@@ -181,6 +181,9 @@
     <ClCompile Include="BuyWindow.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_PlayerTurn.cpp">
+      <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -358,6 +361,9 @@
     <ClInclude Include="BuyWindow.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleState_PlayerTurn.h">
+      <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -482,6 +488,15 @@
     </Filter>
     <Filter Include="Map\Actor\BattleZone">
       <UniqueIdentifier>{3c35df5c-88ab-4617-91b2-19f9932f52cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\03.Battle">
+      <UniqueIdentifier>{09bc995f-8c05-4810-9b57-68ea9cb1c08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\03.Battle\01.PlayerTurn">
+      <UniqueIdentifier>{77ef1e8e-f53b-419b-b2fc-3888cd5224a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\03.Battle\02.EnemyTurn">
+      <UniqueIdentifier>{8c176b08-3f8e-4923-bb0c-8bdaeb7fed85}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

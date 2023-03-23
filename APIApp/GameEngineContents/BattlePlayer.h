@@ -42,8 +42,8 @@ private:
 	State CurState = State::Move;
 	float4 MoveStartPos = float4::Zero;
 	float4 MoveEndPos = float4::Zero;
-	const float4 ThrowMoveDest = float4{ -300.f, -65.f };
-	const float ThrowDuration = 1.f;
+	const float4 ThrowMoveDest = float4{ -400.f, -65.f };
+	const float ThrowDuration = 0.5f;
 	float4 MonsterSpawnPos = float4::Zero;
 
 	

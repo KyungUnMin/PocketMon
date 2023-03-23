@@ -14,9 +14,11 @@
 #include "PocketMonCore.h"
 #include "BattleFSM.h"
 #include "BagLevel.h"
+#include "BackTextActor.h"
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
+const char BattleLevel::BattleKey = 'Z';
 
 BattleLevel::BattleLevel()
 {
@@ -39,7 +41,8 @@ BattleLevel::~BattleLevel()
 
 void BattleLevel::Loading()
 {
-	GameEngineInput::CreateKey(BattleKeyName, 'Z');
+	GameEngineInput::CreateKey(BattleKeyName, BattleKey);
+	TextInfoUI = CreateActor<BackTextActor>();
 }
 
 

@@ -5,12 +5,12 @@
 #include "BattleLevel.h"
 #include "Battle_Select.h"
 #include "ContentsEnum.h"
+#include "BattleFSM.h"
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
 	"Oops That Wild PocketMon",
-	"Go @@@",
-	"What should I Do"
+	"Go @@@"
 };
 
 BattleState_WildTalk::BattleState_WildTalk()
@@ -42,5 +42,5 @@ void BattleState_WildTalk::PlayerMonsterCreate()
 
 void BattleState_WildTalk::NextStateAtLastText()
 {
-	int a = 0;
+	GetFSM()->ChangeState(BattleStateType::PlayerTurn);
 }

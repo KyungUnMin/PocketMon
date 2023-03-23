@@ -3,6 +3,7 @@
 #include "BattleLevel.h"
 #include "BattleEnemy.h"
 #include "BattleState_WildTalk.h"
+#include "BattleState_PlayerTurn.h"
 
 BattleFSM::BattleFSM()
 {
@@ -32,23 +33,11 @@ void BattleFSM::WildBattleInit(BattleFieldType _FieldType)
 {
 	BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
 	CreateState(BattleStateType::WildTalk);
+	CreateState(BattleStateType::PlayerTurn);
 
 
 	ChangeState(BattleStateType::WildTalk);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -70,6 +59,9 @@ void BattleFSM::CreateState(BattleStateType _Type)
 	{
 	case BattleStateType::WildTalk:
 		NewState = std::make_shared<BattleState_WildTalk>();
+		break;
+	case BattleStateType::PlayerTurn:
+		NewState = std::make_shared<BattleState_PlayerTurn>();
 		break;
 	default:
 		MsgAssert("아직 FSM과 해당 배틀State를 연결해주지 않았습니다");

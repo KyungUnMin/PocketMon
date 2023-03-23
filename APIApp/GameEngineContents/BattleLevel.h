@@ -7,6 +7,7 @@ class TestScript;
 class Battle_Select;
 class BackTextActor;
 class BattleFSM;
+class BackTextActor;
 
 enum class BattleFieldType
 {
@@ -43,7 +44,10 @@ public:
 		BattleFieldType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 
-
+	inline BackTextActor* GetTextInfoUI()
+	{
+		return TextInfoUI;
+	}
 
 protected:
 	void Loading() override;
@@ -52,9 +56,12 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
 private:
+	static const char BattleKey;
+
 	GameEngineRender* FadeDownRender = nullptr;
 	GameEngineRender* FadeUpRender = nullptr;
 	BattleFSM* BattleFsmPtr = nullptr;
+	BackTextActor* TextInfoUI = nullptr;
 
 	void InitGroundRenders(BattleFieldType _FieldType);
 };

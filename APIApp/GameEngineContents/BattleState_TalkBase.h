@@ -5,7 +5,6 @@
 
 class BackTextActor;
 
-
 class BattleState_TalkBase : public BattleStateBase
 {
 public:
@@ -26,7 +25,7 @@ protected:
 	virtual void NextStateAtLastText() = 0;
 
 private:
-	BackTextActor* BackUI = nullptr;
+	BackTextActor* TextInfoUI = nullptr;
 
 	float Timer = -1.6f;
 	int CurTextNum = 0;

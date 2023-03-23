@@ -3,7 +3,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include "ContentsEnum.h"
 
-const float Battle_MonsterAppearEffect::FadeDuration = 0.25f;
+const float Battle_MonsterAppearEffect::FadeDuration = 0.15f;
 
 Battle_MonsterAppearEffect::Battle_MonsterAppearEffect()
 {
