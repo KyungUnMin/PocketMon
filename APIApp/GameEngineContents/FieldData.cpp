@@ -145,7 +145,7 @@ void FieldData::SetWalkable(const int2& _Index, bool _Able)
 {
 	if (true == OverlapCheck(_Index))
 	{
-		MsgAssert("필드맵 밖의 데이터를 수정하려했습니다.");
+		return;
 	}
 
 	TileDatas[_Index.y][_Index.x].IsWalkalbe = _Able;

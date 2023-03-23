@@ -104,7 +104,7 @@ void NPC1::Start()
 void NPC1::Update(float _DeltaTime)
 {
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
-	Fieldmap::SetWalkable(NPC1index, false);
+	//Fieldmap::SetWalkable(NPC1index, false);
 
 	std::vector<GameEngineCollision*> CheckCollisions;
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };

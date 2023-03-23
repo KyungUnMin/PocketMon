@@ -45,7 +45,7 @@ public:
 	
 	static bool Walkable(const int2& _Index);
 
-	static void SetWalkable(const int2& _Index, bool _Able);
+	static void SetWalkable(const std::string_view& _CityName, const int2& _Index, bool _Able);
 
 	static GroundType GetGroundType(const float4& _Pos)
 	{

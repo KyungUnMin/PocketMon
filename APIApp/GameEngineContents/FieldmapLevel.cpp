@@ -492,7 +492,7 @@ void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& 
 
 void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos)
 {
-	FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>();
+	FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>(-9999);
 
 	PalletTownPtr->InitFieldRender(_CityName, _ImageName);
 	PalletTownPtr->InitPos(_Pos);

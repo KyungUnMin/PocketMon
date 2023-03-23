@@ -82,6 +82,7 @@ private:
 	std::vector<FieldmapCity*> NeighborCitys;
 
 	GameEngineRender* CityRenderer = nullptr;
+	GameEngineRender* CityFrontRenderer = nullptr;
 	GameEngineImage* CityColImage = nullptr;
 	GameEngineImage* CityTypeImage = nullptr;
 

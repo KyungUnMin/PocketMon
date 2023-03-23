@@ -44,11 +44,15 @@ void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std:
 	CityRenderer = CreateRender(ImageName + ".bmp", RenderOrder::Tilemap);
 	CityRenderer->SetScaleToImage();
 
+	CityFrontRenderer = CreateRender(ImageName + "_Front.bmp", RenderOrder::FieldFront);
+	CityFrontRenderer->SetScaleToImage();
+
 	CityColImage = GameEngineResources::GetInst().ImageFind(ImageName + "_Col.bmp");
 	CityTypeImage = GameEngineResources::GetInst().ImageFind(ImageName + "_Type.bmp");
 
 	CityScale = CityRenderer->GetImage()->GetImageScale();
 	CityRenderer->Off();
+	CityFrontRenderer->Off();
 
 	float TileSize = Fieldmap::TileSize;
 
@@ -241,6 +245,7 @@ void FieldmapCity::FieldmapUpdate()
 		if (false == CityRenderer->IsUpdate())
 		{
 			CityRenderer->On();
+			CityFrontRenderer->On();
 
 			for (size_t i = 0; i < CityActors.size(); i++)
 			{
@@ -258,6 +263,7 @@ void FieldmapCity::FieldmapUpdate()
 		if (true == CityRenderer->IsUpdate())
 		{
 			CityRenderer->Off();
+			CityFrontRenderer->Off();
 
 			for (size_t i = 0; i < CityActors.size(); i++)
 			{

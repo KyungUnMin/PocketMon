@@ -100,15 +100,16 @@ bool Fieldmap::Walkable(const int2& _Index)
 	return CurCity->Walkable(_Index);
 }
 
-void Fieldmap::SetWalkable(const int2& _Index, bool _Able)
+void Fieldmap::SetWalkable(const std::string_view& _CityName, const int2& _Index, bool _Able)
 {
-	if (nullptr == CurCity)
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() != AllCitys.find(UpperName))
 	{
-		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
-		return;
+		MsgAssert("같은 이름의 필드맵 시티를 중복 생성했습니다.");
 	}
 
-    CurCity->SetWalkable(_Index, _Able);
+	AllCitys[UpperName]->SetWalkable(_Index, _Able);
 }
 
 GroundType Fieldmap::GetGroundType(const int2& _Index)
