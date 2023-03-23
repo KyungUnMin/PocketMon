@@ -22,7 +22,19 @@ void BattleState_PlayerTurn::Start()
 {
 	SelectBoard = BattleLevel::BattleLevelPtr->CreateActor<Battle_Select>(UpdateOrder::Battle_Actors);
 	SelectBoard->ResizeCallBacks(4);
-	SelectBoard->SetCallBack(1, std::bind(&BattleState_PlayerTurn::SelectBagLevel, this));
+
+	//가방 레벨과 연결
+	SelectBoard->SetCallBack(1, []
+	{
+		PocketMonCore::GetInst().ChangeLevel("BagLevel");
+		PlayerBag::MainBag->BattleOn();
+	});
+
+	//필드 레벨과 연결
+	SelectBoard->SetCallBack(3, []
+	{
+		PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
+	});
 
 	SelectBoard->Off();
 }
@@ -37,8 +49,4 @@ void BattleState_PlayerTurn::EnterState()
 	SelectBoard->On();
 }
 
-void BattleState_PlayerTurn::SelectBagLevel()
-{
-	PocketMonCore::GetInst().ChangeLevel("BagLevel");
-	PlayerBag::MainBag->BattleOn();
-}
+

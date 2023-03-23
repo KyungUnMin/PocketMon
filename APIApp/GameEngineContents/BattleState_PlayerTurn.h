@@ -21,6 +21,5 @@ protected:
 private:
 	Battle_Select* SelectBoard = nullptr;
 
-	void SelectBagLevel();
 };
 
