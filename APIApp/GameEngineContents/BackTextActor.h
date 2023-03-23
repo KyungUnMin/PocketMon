@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 class TestScript;

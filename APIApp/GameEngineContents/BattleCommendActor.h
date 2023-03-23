@@ -21,9 +21,42 @@ protected:
 	void B_ArrowNumberCheck();
 	void B_ArrowInput(int _Number);
 
+
+//	void SetAndResize(std::vector<GameEngineRender*> _Render, float4 _Pos);
+	void StringToRender(std::vector<GameEngineRender*> _Render);
+
 	GameEngineRender* BattleArrowRender= nullptr;
 
 private:
+
+	std::vector<GameEngineRender*> PoketMonSkill_R1;
+	std::vector<GameEngineRender*> PoketMonSkill_R2;
+	std::vector<GameEngineRender*> PoketMonSkill_R3;
+	std::vector<GameEngineRender*> PoketMonSkill_R4;
+
+	float4 OneTextRenderPos_S = { -400,-25 };
+	float4 TwoTextRenderPos_S = { -140,-25 };
+	float4 ThreeRenderPos_S = { -400, 40 };
+	float4 FourTextRenderPos_S = { -140,40 };
+
+	float4 SkillTextRenderImageScale = { 17, 34 };
+	float4 TextRenderInterval = { 0,12 };
+	int SpaceFrameNum = 26;
+	int SkillLineMax = 12;
+
+
+	std::vector<GameEngineRender*> PPCUR_R;
+	std::vector<GameEngineRender*> PPMAX_R;
+	std::vector<GameEngineRender*> TYPE_R;
+
+	float4 PPCurRenderPos_S = { 345,-25 };
+	float4 PPMaxRenderPos_S = { 410,-25 };
+	float4 TypeRenderPos_S = { 300, 40 };
+
+	float4 PPTextRenderImageScale = { 20, 50 };
+
+	int PPLineMax = 2;
+	int TypeLineMax = 6;
 
 	int B_ArrowCheckNum = 0;
 
