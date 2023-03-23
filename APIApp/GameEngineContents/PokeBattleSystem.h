@@ -8,6 +8,7 @@ enum class BattleScript
 	Insignificant,    // 1 효과는 미미했다!
 	Critical,         // 2 급소에 맞았다!
 	Amazing,          // 3 효과는 굉장했다!
+	Buff,             // 4 이 스킬은 버프스킬입니다.
 };
 
 // 설명 :
@@ -31,6 +32,7 @@ protected:
 private:
 	static int Damage;
 	static bool IsSpecial;
+	static bool IsAttack;
 	static BattleScript ScriptValue;
 
 	static float Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);

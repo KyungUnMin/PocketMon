@@ -23,13 +23,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	int CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
 	std::string D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName();
 
-	NewP1->ChangeMonsterSkill(3, PokeSkill::SolarBeam);
+	//NewP1->ChangeMonsterSkill(3, PokeSkill::SolarBeam);
 
-	A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName();
-	B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName();
-	C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName();
-	CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
-	D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName();
+	//A = NewP1->GetMonsterSkillList(1)->ForUI_GetSkillName();
+	//B = NewP1->GetMonsterSkillList(2)->ForUI_GetSkillName();
+	//C = NewP1->GetMonsterSkillList(3)->ForUI_GetSkillName();
+	//CCC = NewP1->GetMonsterSkillList(3)->GetSkillDamage();
+	//D = NewP1->GetMonsterSkillList(4)->ForUI_GetSkillName();
 
 	int a = NewP2->GetMonsterMaxHP_int();
 	int b = NewP1->GetMonsterMaxHP_int();
@@ -37,8 +37,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	int bbc = NewP1->GetMonsterCurrentHP();
 
+	BattleScript aa1 = PokeBattleSystem::Battle(NewP1, 3, NewP2);
 	BattleScript aa = PokeBattleSystem::Battle(NewP2, 1, NewP1);
-	BattleScript aa1 = PokeBattleSystem::Battle(NewP1, 1, NewP2);
 
 
 	int aaaa1212 = NewP1->GetMonsterLevel_int();

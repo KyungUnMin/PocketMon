@@ -9,6 +9,7 @@
 
 int PokeBattleSystem::Damage = 0;
 bool PokeBattleSystem::IsSpecial = false;
+bool PokeBattleSystem::IsAttack = false;
 BattleScript PokeBattleSystem::ScriptValue = BattleScript::Nothing;
 
 PokeBattleSystem::PokeBattleSystem() 
@@ -23,6 +24,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 {
 	Damage = 0;
 	IsSpecial = false;
+	IsAttack = false;
 	ScriptValue = BattleScript::Nothing;
 
 	if (_AttackerSkillNumber > 4 || _AttackerSkillNumber <= 0)
@@ -31,44 +33,55 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 		return ScriptValue;
 	}
 
-	float Cal1 = (_Attacker->GetMonsterLevel_float() * 2 / 5) + 2;
-	float Cal2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
-	float Cal3 = 0;
-	float Cal4 = 0;
+	IsAttack = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisAttackSkill();
 
-	IsSpecial = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisSpecialSkill();
-
-	if (false == IsSpecial)
+	if (true == IsAttack)
 	{
-		Cal3 = NormalAttackstatuscalculator(_Attacker);
-		Cal4 = NormalDeffencestatuscalculator(_Defender);
+		float Cal1 = (_Attacker->GetMonsterLevel_float() * 2 / 5) + 2;
+		float Cal2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
+		float Cal3 = 0;
+		float Cal4 = 0;
+
+		IsSpecial = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisSpecialSkill();
+
+		if (false == IsSpecial)
+		{
+			Cal3 = NormalAttackstatuscalculator(_Attacker);
+			Cal4 = NormalDeffencestatuscalculator(_Defender);
+		}
+		else
+		{
+			Cal3 = SpecialAttackstatuscalculator(_Attacker);
+			Cal4 = SpecialDeffencestatuscalculator(_Defender);
+		}
+
+		float Cal5 = CriticalRand();
+		float Cal6 = Ownpropertiescorrection(_Attacker, _AttackerSkillNumber);
+		float Cal7 = Compatibilitycorrection(_Attacker, _AttackerSkillNumber, _Defender);
+		float Cal8 = Randomvalue();
+
+		// 데미지 = (((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × [[급소]] × 자속보정 × 타입상성 × 랜덤수 ÷ 100
+		// 모든 공식은 왼쪽에서 오른쪽 순서대로 계산하며, 각 계산을 실행하기 전에 소수점 이하를 버린다. 순서대로 계산하지 않으면 잘못된 결과가 나오므로 주의.
+		// Damage = (((Cal1 * Cal2 * Cal3 / 50) / Cal4) * Cal5 * Cal6 * Cal7 * Cal8) / 100;
+
+		float step1 = Cal1 * Cal2;
+		float step2 = step1 * Cal3;
+		float step3 = (step2 / 50) / Cal4;
+		float step4 = step3 * Cal5;
+		float step5 = step4 * Cal6;
+		float step6 = step5 * Cal7;
+		float step7 = step6 * Cal8;
+
+		Damage = static_cast<int>(round(step7 / 50));
+
+		_Defender->MinusMonsterCurrentHP(Damage);
 	}
 	else
 	{
-		Cal3 = SpecialAttackstatuscalculator(_Attacker);
-		Cal4 = SpecialDeffencestatuscalculator(_Defender);
+		ScriptValue = BattleScript::Buff;
+
+		int a = 1000;
 	}
-
-	float Cal5 = CriticalRand();
-	float Cal6 = Ownpropertiescorrection(_Attacker, _AttackerSkillNumber);
-	float Cal7 = Compatibilitycorrection(_Attacker, _AttackerSkillNumber, _Defender);
-	float Cal8 = Randomvalue();
-	
-	// 데미지 = (((레벨 × 2 / 5) + 2) × 위력 × 특수공격 ÷ 50) ÷ 특수방어) × [[급소]] × 자속보정 × 타입상성 × 랜덤수 ÷ 100
-	// 모든 공식은 왼쪽에서 오른쪽 순서대로 계산하며, 각 계산을 실행하기 전에 소수점 이하를 버린다. 순서대로 계산하지 않으면 잘못된 결과가 나오므로 주의.
-	// Damage = (((Cal1 * Cal2 * Cal3 / 50) / Cal4) * Cal5 * Cal6 * Cal7 * Cal8) / 100;
-
-	float step1 = Cal1 * Cal2;
-	float step2 = step1 * Cal3;
-	float step3 = (step2 / 50) / Cal4;
-	float step4 = step3 * Cal5;
-	float step5 = step4 * Cal6;
-	float step6 = step5 * Cal7;
-	float step7 = step6 * Cal8;
-
-	Damage = static_cast<int>(round(step7 / 50));
-
-	_Defender->MinusMonsterCurrentHP(Damage);
 
 	return ScriptValue;
 }
