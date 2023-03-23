@@ -65,6 +65,10 @@ public:
 	{
 		PlayerMoveBool = _PlayerMoveValue;
 	}
+	bool GetPlayerMoveBool()
+	{
+		return PlayerMoveBool;
+	}
 
 	int2 GetPlayerIndex()
 	{

@@ -26,7 +26,7 @@ public:
 	FieldMainMenu& operator=(const FieldMainMenu& _Other) = delete;
 	FieldMainMenu& operator=(FieldMainMenu&& _Other) noexcept = delete;
 
-	FieldMainMenu* GetFieldMainMenu()
+	static FieldMainMenu* GetFieldMainMenu()
 	{
 		return MainFieldMainMenu;
 	}

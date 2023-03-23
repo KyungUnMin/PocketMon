@@ -457,10 +457,6 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainShopUIManager->OnOffSwtich();
 	}
 
-	if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
-	{
-		MainFieldMainMenu->OnOffSwtich();
-	}
 
 	if (true == GameEngineInput::IsDown("EventCheck"))
 	{

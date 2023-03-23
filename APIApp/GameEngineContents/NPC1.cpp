@@ -114,33 +114,29 @@ void NPC1::Update(float _DeltaTime)
 		true == C_NPC_L->Collision(CheckPlayer, CheckCollisions) ||
 		true == C_NPC_R->Collision(CheckPlayer, CheckCollisions))
 	{
-		if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue()
-			&& GameEngineInput::IsDown("NpcTalk"))
+		if (GameEngineInput::IsDown("NpcTalk")&& true==Player::MainPlayer->GetPlayerMoveBool())
 		{
-			R_NPC1->ChangeAnimation("upIdle");
+			Player::MainPlayer->SetPlayerMoveBool(false);
+			if (NPCtalkValue::UP == Player::MainPlayer->GetPlayerNPCtalkValue())
+			{
+				R_NPC1->ChangeAnimation("upIdle");
+			}
+			if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue())
+			{
+				R_NPC1->ChangeAnimation("Idle");
+			}
+			if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue())
+			{
+				R_NPC1->ChangeAnimation("rightIdle");
+			}
+			if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue())
+			{
+				R_NPC1->ChangeAnimation("leftIdle");
+			}
 			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
+		}
 
-		}
-		if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue()
-			&& GameEngineInput::IsDown("NpcTalk"))
-		{
-			R_NPC1->ChangeAnimation("Idle");
-			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
-		}
-		if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue()
-			&& GameEngineInput::IsDown("NpcTalk"))
-		{
-			R_NPC1->ChangeAnimation("rightIdle");
-			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
-		}
-		if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue()
-			&& GameEngineInput::IsDown("NpcTalk"))
-		{
-			R_NPC1->ChangeAnimation("leftIdle");
-			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
-		}
 	}
-	
 }
 
 void NPC1::Render(float _DeltaTime)

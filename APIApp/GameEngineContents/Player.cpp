@@ -10,6 +10,7 @@
 #include "Player.h"
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
+#include "FieldMainMenu.h"
 
 Player* Player::MainPlayer;
 
@@ -24,7 +25,7 @@ Player::~Player()
 void Player::Start()
 {
 	MainPlayer = this; 
-
+	
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();
@@ -38,12 +39,12 @@ void Player::Update(float _DeltaTime)
 	if (true == PlayerMoveBool)
 	{
 		UpdateState(_DeltaTime); //움직임관리
+		NPCtalkValueSet(); //NPC방향세팅용
+		if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
+		{
+			FieldMainMenu::GetFieldMainMenu()->OnOffSwtich();
+		}
 	}
-	
-	/*if (Fieldmap::Walkable()
-	{
-	}*/
-	NPCtalkValueSet(); //NPC방향세팅용
 	ChangeLevelCheck();
 }
 
