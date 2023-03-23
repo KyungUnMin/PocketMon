@@ -178,6 +178,9 @@
     <ClCompile Include="SummaryUI.cpp">
       <Filter>FieldUI\PokemonUI</Filter>
     </ClCompile>
+    <ClCompile Include="BuyWindow.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -351,6 +354,9 @@
     </ClInclude>
     <ClInclude Include="SummaryUI.h">
       <Filter>FieldUI\PokemonUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyWindow.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
