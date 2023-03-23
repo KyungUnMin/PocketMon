@@ -104,9 +104,9 @@ void Fieldmap::SetWalkable(const std::string_view& _CityName, const int2& _Index
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);
 
-	if (AllCitys.end() != AllCitys.find(UpperName))
+	if (AllCitys.end() == AllCitys.find(UpperName))
 	{
-		MsgAssert("같은 이름의 필드맵 시티를 중복 생성했습니다.");
+		MsgAssert("해당 필드맵 시티가 존재하지 않습니다.");
 	}
 
 	AllCitys[UpperName]->SetWalkable(_Index, _Able);
