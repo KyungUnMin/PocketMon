@@ -66,6 +66,11 @@ public:
 		PlayerMoveBool = _PlayerMoveValue;
 	}
 
+	int2 GetPlayerIndex()
+	{
+		return Playerindex;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

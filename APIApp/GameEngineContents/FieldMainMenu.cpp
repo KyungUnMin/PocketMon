@@ -58,7 +58,6 @@ void FieldMainMenu::Start()
 
 void FieldMainMenu::MenuStateToRender()
 {
-	Player::MainPlayer->SetPlayerMoveBool(false);
 	for (size_t i = 0; i < FieldMainMenuRender.size(); i++)
 	{
 		if (i != static_cast<int>(State))
@@ -99,6 +98,7 @@ void FieldMainMenu::ChangeStateNext()
 
 void FieldMainMenu::UpdateStart()
 {
+	Player::MainPlayer->SetPlayerMoveBool(false);
 	State = MainMenuState::Pokemon;
 	MenuStateToRender();
 }

@@ -3,6 +3,8 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "Player.h"
+
 FieldDialog* FieldDialog::MainFieldDialog = nullptr;
 
 FieldDialog::FieldDialog()
@@ -91,6 +93,7 @@ void FieldDialog::Start()
 
 void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 {
+	Player::MainPlayer->SetPlayerMoveBool(false);
 	ClearDialog();
 	FirstLineRenderLen = 0;
 	SecondLineRenderLen = 0;
@@ -170,6 +173,7 @@ void FieldDialog::Update(float _DeltaTime)
 
 void FieldDialog::UpdateEnd()
 {
+	Player::MainPlayer->SetPlayerMoveBool(true);
 	ClearDialog();
 	FirstLineRenderLen = 0;
 	SecondLineRenderLen = 0;

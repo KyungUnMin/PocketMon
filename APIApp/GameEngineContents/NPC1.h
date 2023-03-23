@@ -38,6 +38,9 @@ private:
 	bool NPC1ImageLoad = true;
 
 	int2 NPC1index = int2::Zero;
+
+
+	std::list<std::string> Script = std::list<std::string>();
 	
 };
 

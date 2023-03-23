@@ -10,6 +10,7 @@
 #include "NPC1.h"
 #include "ContentsEnum.h"
 #include "Player.h"
+#include "FieldDialog.h"
 
 
 NPC1::NPC1()
@@ -83,6 +84,18 @@ void NPC1::Start()
 		C_NPC_L->SetPosition({ -64,0 });
 	}
 	R_NPC1->ChangeAnimation("Idle");
+
+
+
+
+	//NPCtext = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
+	//NPCtext->SetScale((NPCtext->GetImage()->GetImageScale()));
+	//NPCtext->SetPosition({ Player::MainPlayer->GetPos() + float4{-160,-95} });
+	//NPCtext->Off();
+
+	Script.push_back("aasdas");
+	Script.push_back("1231242");
+	Script.push_back("AKJSFHAKJ");
 }
 
 
@@ -105,21 +118,26 @@ void NPC1::Update(float _DeltaTime)
 			&& GameEngineInput::IsDown("NpcTalk"))
 		{
 			R_NPC1->ChangeAnimation("upIdle");
+			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
+
 		}
 		if (NPCtalkValue::DOWN == Player::MainPlayer->GetPlayerNPCtalkValue()
 			&& GameEngineInput::IsDown("NpcTalk"))
 		{
 			R_NPC1->ChangeAnimation("Idle");
+			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
 		}
 		if (NPCtalkValue::RIGHT == Player::MainPlayer->GetPlayerNPCtalkValue()
 			&& GameEngineInput::IsDown("NpcTalk"))
 		{
 			R_NPC1->ChangeAnimation("rightIdle");
+			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
 		}
 		if (NPCtalkValue::LEFT == Player::MainPlayer->GetPlayerNPCtalkValue()
 			&& GameEngineInput::IsDown("NpcTalk"))
 		{
 			R_NPC1->ChangeAnimation("leftIdle");
+			FieldDialog::GetFieldDialog()->ConversationStart(&Script);
 		}
 	}
 	
