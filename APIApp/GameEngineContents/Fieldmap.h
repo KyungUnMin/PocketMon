@@ -45,6 +45,8 @@ public:
 	
 	static bool Walkable(const int2& _Index);
 
+	static void SetWalkable(const int2& _Index, bool _Able);
+
 	static GroundType GetGroundType(const float4& _Pos)
 	{
 		return GetGroundType(GetIndex(_Pos));

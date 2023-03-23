@@ -100,6 +100,17 @@ bool Fieldmap::Walkable(const int2& _Index)
 	return CurCity->Walkable(_Index);
 }
 
+void Fieldmap::SetWalkable(const int2& _Index, bool _Able)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+		return;
+	}
+
+    CurCity->SetWalkable(_Index, _Able);
+}
+
 GroundType Fieldmap::GetGroundType(const int2& _Index)
 {
 	if (nullptr == CurCity)

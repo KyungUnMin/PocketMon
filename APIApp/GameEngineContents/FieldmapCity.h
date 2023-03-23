@@ -27,6 +27,11 @@ public:
 	// .bmp »©°í ÀÔ·Â
 	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName);
 
+	void SetWalkable(const int2& _Index, bool _Able)
+	{
+		MyTilemapData.SetWalkable(_Index, _Able);
+	}
+
 	bool Walkable(const int2& _Index) const
 	{
 		return MyTilemapData.Walkabal(_Index);

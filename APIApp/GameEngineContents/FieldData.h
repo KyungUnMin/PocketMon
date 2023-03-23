@@ -31,7 +31,6 @@ public:
 	enum class TileWalkType
 	{
 		Walk,
-		Unwalk,
 		Swim
 	};
 
@@ -40,8 +39,9 @@ public:
 	public:
 		TileWalkType WalkType = TileWalkType::Walk;
 		GroundType groundType = GroundType::Grass;
-		int RenderIndex = -1;
 
+		bool IsWalkalbe = false;
+		int RenderIndex = -1;		
 		std::map<int, FieldEvent> EventList;
 	};
 
@@ -64,7 +64,8 @@ public:
 	GroundType GetGroundType(const int2& _Index) const;
 
 	void SetRenderData(const int2& _Index, int _RenderFrame);
-	void SetWalkData(const int2& _Index, TileWalkType _WalkData);
+	void SetWalkType(const int2& _Index, TileWalkType _WalkData);
+	void SetWalkable(const int2& _Index, bool _Able);
 	void SetGroundData(const int2& _Index, GroundType _GroundData);
 
 	int GetRenderFrame(const int2& _Index) const;

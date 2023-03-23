@@ -63,13 +63,16 @@ void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std:
 		{
 			int2 Index = int2(x, y);
 
+			// Todo : 수영이 생겼을 경우 기능 수정
+			MyTilemapData.SetWalkType(Index, FieldData::TileWalkType::Walk);
+
 			if (RGB(0, 0, 0) != CityColImage->GetPixelColor(x, y, RGB(0, 0, 0)))
 			{
-				MyTilemapData.SetWalkData(Index, FieldData::TileWalkType::Walk);
+				MyTilemapData.SetWalkable(Index, true);
 			}
 			else
 			{
-				MyTilemapData.SetWalkData(Index, FieldData::TileWalkType::Unwalk);
+				MyTilemapData.SetWalkable(Index, false);
 			}
 
 			DWORD TypeColor = CityTypeImage->GetPixelColor(x, y, RGB(0, 0, 0));

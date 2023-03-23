@@ -39,7 +39,7 @@ bool FieldData::Walkabal(const int2& _Index) const
 		return true;
 	}
 
-	return TileWalkType::Walk == TileDatas[_Index.y][_Index.x].WalkType;
+	return TileWalkType::Walk == TileDatas[_Index.y][_Index.x].WalkType && TileDatas[_Index.y][_Index.x].IsWalkalbe;
 }
 
 bool FieldData::Swinable(const int2& _Index) const
@@ -49,7 +49,7 @@ bool FieldData::Swinable(const int2& _Index) const
 		return false;
 	}
 
-	return TileWalkType::Swim == TileDatas[_Index.y][_Index.x].WalkType;
+	return TileWalkType::Swim == TileDatas[_Index.y][_Index.x].WalkType && TileDatas[_Index.y][_Index.x].IsWalkalbe;
 }
 
 void FieldData::AddEvent(const int2& _Index, const FieldEventParameter& _EventParameter)
@@ -131,7 +131,7 @@ void FieldData::SetRenderData(const int2& _Index, int _RenderFrame)
 	TileDatas[_Index.y][_Index.x].RenderIndex = _RenderFrame;
 }
 
-void FieldData::SetWalkData(const int2& _Index, TileWalkType _WalkData)
+void FieldData::SetWalkType(const int2& _Index, TileWalkType _WalkData)
 {
 	if (true == OverlapCheck(_Index))
 	{
@@ -139,6 +139,16 @@ void FieldData::SetWalkData(const int2& _Index, TileWalkType _WalkData)
 	}
 
 	TileDatas[_Index.y][_Index.x].WalkType = _WalkData;
+}
+
+void FieldData::SetWalkable(const int2& _Index, bool _Able)
+{
+	if (true == OverlapCheck(_Index))
+	{
+		MsgAssert("필드맵 밖의 데이터를 수정하려했습니다.");
+	}
+
+	TileDatas[_Index.y][_Index.x].IsWalkalbe = _Able;
 }
 
 void FieldData::SetGroundData(const int2& _Index, GroundType _GroundData)
