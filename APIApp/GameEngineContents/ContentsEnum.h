@@ -19,6 +19,10 @@ enum class RenderOrder
 	Field_Dialog,
 	Field_Dialog_Text,
 
+	Shop_Text,
+	Shop_Dialog,
+	Shop_Dialog_Text,
+
 	// Battle
 	Battle_UI,
 	Battle_Text,

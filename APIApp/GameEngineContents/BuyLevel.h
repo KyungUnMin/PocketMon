@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineLevel.h>
 
+class BuyWindow;
 class BuyLevel : public GameEngineLevel
 {
 public:
@@ -21,6 +22,9 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) {}
 
 private:
+	BuyWindow* AcBuyWindow = nullptr;
+
+	void ImageLoad();
 
 };
 
