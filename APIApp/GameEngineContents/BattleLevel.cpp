@@ -15,6 +15,7 @@
 #include "BattleFSM.h"
 #include "BagLevel.h"
 #include "BackTextActor.h"
+#include "PokemonLevel.h"
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
@@ -99,6 +100,11 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
 	if (nullptr != BagUILevel)
 		return;
+
+	PokemonLevel* MonsterChangeLevel = dynamic_cast<PokemonLevel*>(_NextLevel);
+	if (nullptr != MonsterChangeLevel)
+		return;
+
 
 	if (nullptr != BattleFsmPtr)
 	{

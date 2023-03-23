@@ -2,6 +2,7 @@
 #include "BattleStateBase.h"
 
 class Battle_Select;
+class BattleCommendActor;
 
 class BattleState_PlayerTurn : public BattleStateBase
 {
@@ -20,6 +21,8 @@ protected:
 
 private:
 	Battle_Select* SelectBoard = nullptr;
+	BattleCommendActor* BattleCommand = nullptr;
 
+	void BattleCmdOpen();
 };
 
