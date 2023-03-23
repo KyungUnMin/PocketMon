@@ -140,9 +140,6 @@
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
-    <ClCompile Include="Battle_MonsterAppearEffect.cpp">
-      <Filter>Battle\02.Actor\04.Particles\01.MonsterAppearEffect</Filter>
-    </ClCompile>
     <ClCompile Include="BattleMonsterPlayer.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
     </ClCompile>
@@ -183,6 +180,15 @@
     </ClCompile>
     <ClCompile Include="BattleState_PlayerTurn.cpp">
       <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_MonsterAppearEffect.cpp">
+      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_PlayerBallParticle.cpp">
+      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_PlayerThrowBall.cpp">
+      <Filter>Battle\02.Actor\04.Effects\03.PlayerThrowBall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -320,9 +326,6 @@
     <ClInclude Include="MoveMapFadeEffect.h">
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
-    <ClInclude Include="Battle_MonsterAppearEffect.h">
-      <Filter>Battle\02.Actor\04.Particles\01.MonsterAppearEffect</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMonsterPlayer.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\02.PlayerMonster</Filter>
     </ClInclude>
@@ -363,6 +366,15 @@
     </ClInclude>
     <ClInclude Include="BattleState_PlayerTurn.h">
       <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_MonsterAppearEffect.h">
+      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_PlayerBallParticle.h">
+      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_PlayerThrowBall.h">
+      <Filter>Battle\02.Actor\04.Effects\03.PlayerThrowBall</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -465,12 +477,6 @@
     <Filter Include="Map\Actor\Door">
       <UniqueIdentifier>{871d9329-15a4-4282-998c-b242e92f1c7b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Particles">
-      <UniqueIdentifier>{7e11cee8-772b-4079-bf13-fe53fb6b7861}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\02.Actor\04.Particles\01.MonsterAppearEffect">
-      <UniqueIdentifier>{caf66618-f5b2-41ef-8b38-694440549c32}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Battle\02.Actor\03.Monster\01.MonsterBase">
       <UniqueIdentifier>{03815605-b3aa-4bc6-a2fe-fa86c28a05ac}</UniqueIdentifier>
     </Filter>
@@ -497,6 +503,21 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.State\03.Battle\02.EnemyTurn">
       <UniqueIdentifier>{8c176b08-3f8e-4923-bb0c-8bdaeb7fed85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects">
+      <UniqueIdentifier>{7e11cee8-772b-4079-bf13-fe53fb6b7861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect">
+      <UniqueIdentifier>{caf66618-f5b2-41ef-8b38-694440549c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade">
+      <UniqueIdentifier>{2aedc505-312d-4ea5-b399-ea74aeac223c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle">
+      <UniqueIdentifier>{f33d76f5-536e-4eed-998c-6fd962a8fa43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects\03.PlayerThrowBall">
+      <UniqueIdentifier>{6e7bea25-a50a-4d86-aed7-0969d7d521d5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

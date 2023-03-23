@@ -7,10 +7,13 @@
 #include "PokeDataBase.h"
 #include "BattleMonsterPlayer.h"
 #include "Battle_MonsterAppearEffect.h"
+#include "Battle_PlayerBallParticle.h"
+#include "Battle_PlayerThrowBall.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 const std::string_view BattlePlayer::IdleAniName = "Idle";
-const std::string_view BattlePlayer::ThrowAniName = "Throw";
+const std::string_view BattlePlayer::ThrowAniName = "Throw";\
+
 
 BattlePlayer::BattlePlayer()
 {
@@ -129,6 +132,7 @@ void BattlePlayer::CreateMontser()
 
 	CurState = State::Throw;
 	PlayerRenderPtr->ChangeAnimation(ThrowAniName);
+	GetLevel()->CreateActor<Battle_PlayerThrowBall>(UpdateOrder::Battle_Actors)->Init(MonsterSpawnPos, ThrowDuration);
 }
 
 
@@ -141,6 +145,7 @@ void BattlePlayer::Update_Throw()
 	CurState = State::Idle;
 
 	GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
+	GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors)->SetPos(MonsterSpawnPos);
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNumber::Bulbasaur);
 	Monster->SetPos(MonsterSpawnPos);

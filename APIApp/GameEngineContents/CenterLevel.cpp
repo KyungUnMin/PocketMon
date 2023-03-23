@@ -50,6 +50,8 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Field");
 		Dir.Move("Monster");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleAppearEffect.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleBallThrow.bmp"))->Cut(8, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleBallParticle.bmp"))->Cut(7, 1);
 
 		// ÀÌ»óÇØ¾¾
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur\\BattleBulbasaurBack.bmp"));

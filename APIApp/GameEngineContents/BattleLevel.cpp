@@ -43,13 +43,20 @@ BattleLevel::~BattleLevel()
 void BattleLevel::Loading()
 {
 	GameEngineInput::CreateKey(BattleKeyName, BattleKey);
-	TextInfoUI = CreateActor<BackTextActor>();
 }
 
 
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
+	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_PrevLevel);
+	if (nullptr != BagUILevel)
+		return;
+
+	PokemonLevel* MonsterChangeLevel = dynamic_cast<PokemonLevel*>(_PrevLevel);
+	if (nullptr != MonsterChangeLevel)
+		return;
+
 	Init(BattleFieldType::Forest0);
 	//Init(BattleFieldType::Indoor);
 	//Init(BattleFieldType::Gym);
@@ -59,6 +66,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
+	TextInfoUI = CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitGroundRenders(_FieldType);
 
@@ -105,7 +114,6 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 
-
 	if (nullptr != BattleFsmPtr)
 	{
 		delete BattleFsmPtr;
@@ -119,4 +127,6 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	}
 
 	Actors.clear();
+
+	TextInfoUI = nullptr;
 }

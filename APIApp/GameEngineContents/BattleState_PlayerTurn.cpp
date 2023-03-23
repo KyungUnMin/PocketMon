@@ -64,6 +64,7 @@ void BattleState_PlayerTurn::EnterState()
 
 void BattleState_PlayerTurn::BattleCmdOpen()
 {
+	BattleLevel::BattleLevelPtr->GetTextInfoUI()->Off();
 	BattleCommand->On();
 	SelectBoard->Off();
 }

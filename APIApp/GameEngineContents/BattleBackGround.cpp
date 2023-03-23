@@ -60,7 +60,7 @@ void BattleBackGround::CreateFadeEffect()
 
 void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 {
-	size_t EffectCount = 5;
+	size_t EffectCount = 10;
 	EnterEffect.resize(EffectCount, nullptr);
 	EffectSpeed = (ScreenSize.x * EffectCount);
 
@@ -78,13 +78,14 @@ void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 		break;
 	}
 
+	const float Height = ScreenSize.hy() - 100.f;
 	const float OffsetY = 20.f;
 	for (size_t i = 0; i < EnterEffect.size(); ++i)
 	{
 		EnterEffect[i] = CreateRender(EffectPath, BattleRenderOrder::Particle0);
 		EnterEffect[i]->SetScaleToImage();
 
-		float4 Offset = { ScreenSize.x * i, ScreenSize.hy() + (OffsetY * i) };
+		float4 Offset = { ScreenSize.x * i, Height + (OffsetY * i) };
 		EnterEffect[i]->SetPosition(Offset);
 	}
 

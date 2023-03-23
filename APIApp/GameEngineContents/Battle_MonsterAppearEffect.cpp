@@ -1,4 +1,5 @@
 #include "Battle_MonsterAppearEffect.h"
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include "ContentsEnum.h"
@@ -26,7 +27,6 @@ void Battle_MonsterAppearEffect::Start()
 	WhiteFade->SetScaleToImage();
 }
 
-
 void Battle_MonsterAppearEffect::Update(float _DeltaTime)
 {
 	if (FadeState::FadeIn == CurState)
@@ -45,7 +45,6 @@ void Battle_MonsterAppearEffect::Update(float _DeltaTime)
 		Death();
 	}
 }
-
 
 bool Battle_MonsterAppearEffect::Update_Fade(float _StartAlpha, float _DestAlpha)
 {
