@@ -14,8 +14,6 @@ public:
 	BackTextActor& operator=(const BackTextActor& _Other) = delete;
 	BackTextActor& operator=(BackTextActor&& _Other) noexcept = delete;
 
-	void PushTexts(const std::vector<std::string_view>& _Texts);
-	bool WriteText();
 
 	void BattleSetText(const std::string_view& _Texts);
 
