@@ -49,6 +49,11 @@ public:
 		return TextInfoUI;
 	}
 
+	inline BattleFSM* GetBattleFSM()
+	{
+		return BattleFsmPtr;
+	}
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
@@ -60,6 +65,7 @@ private:
 
 	GameEngineRender* FadeDownRender = nullptr;
 	GameEngineRender* FadeUpRender = nullptr;
+
 	BattleFSM* BattleFsmPtr = nullptr;
 	BackTextActor* TextInfoUI = nullptr;
 

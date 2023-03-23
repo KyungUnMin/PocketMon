@@ -196,6 +196,9 @@
     <ClCompile Include="Battle_SkillEffect.cpp">
       <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_EnemyTurn.cpp">
+      <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -384,6 +387,9 @@
     </ClInclude>
     <ClInclude Include="Battle_SkillEffect.h">
       <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_EnemyTurn.h">
+      <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

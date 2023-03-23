@@ -185,6 +185,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_EnemyTurn.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_PlayerTurn.cpp">
       <SubType>
       </SubType>
@@ -343,6 +347,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_EnemyTurn.h">
       <SubType>
       </SubType>
     </ClInclude>

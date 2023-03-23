@@ -16,12 +16,15 @@ public:
 	BattleState_PlayerTurn& operator=(const BattleState_PlayerTurn&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
 	void EnterState() override;
+	void ExitState() override;
 
 private:
 	Battle_Select* SelectBoard = nullptr;
 	BattleCommendActor* BattleCommand = nullptr;
+
+	void BindSelectBoard();
+	void BindBattleCommand();
 
 	void BattleCmdOpen();
 };

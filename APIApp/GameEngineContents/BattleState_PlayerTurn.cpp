@@ -8,6 +8,7 @@
 #include "PlayerBag.h"
 #include "PocketMonCore.h"
 #include "BattleCommendActor.h"
+#include "BattleFSM.h"
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -19,12 +20,24 @@ BattleState_PlayerTurn::~BattleState_PlayerTurn()
 
 }
 
-void BattleState_PlayerTurn::Start()
+void BattleState_PlayerTurn::EnterState()
 {
+	const std::string_view PlayerTurnText = "What should I Do";
+
+	BackTextActor* TextInfo = BattleLevel::BattleLevelPtr->GetTextInfoUI();
+	TextInfo->BattleSetText(PlayerTurnText);
+
 	BattleCommand = BattleLevel::BattleLevelPtr->CreateActor<BattleCommendActor>(UpdateOrder::Battle_Actors);
+	BindBattleCommand();
 	BattleCommand->Off();
 
 	SelectBoard = BattleLevel::BattleLevelPtr->CreateActor<Battle_Select>(UpdateOrder::Battle_Actors);
+	BindSelectBoard();
+}
+
+
+void BattleState_PlayerTurn::BindSelectBoard()
+{
 	SelectBoard->ResizeCallBacks(4);
 
 	//가방 레벨과 연결
@@ -48,18 +61,31 @@ void BattleState_PlayerTurn::Start()
 	{
 		PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
 	});
-
-	SelectBoard->Off();
 }
 
-void BattleState_PlayerTurn::EnterState()
+
+void BattleState_PlayerTurn::BindBattleCommand()
 {
-	const std::string_view PlayerTurnText = "What should I Do";
+	const float EventTime = 3.f;
 
-	BackTextActor* TextInfo = BattleLevel::BattleLevelPtr->GetTextInfoUI();
-	TextInfo->BattleSetText(PlayerTurnText);
+	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> EventCallBack = nullptr;
+	EventCallBack = [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
+	{
+		BattleFSM* Fsm = BattleLevel::BattleLevelPtr->GetBattleFSM();
+		Fsm->ChangeState(BattleStateType::EnemyTurn);
+	};
 
-	SelectBoard->On();
+	BattleCommand->SetCallBack(0, [=]
+	{
+		BackTextActor* TextInfo = BattleLevel::BattleLevelPtr->GetTextInfoUI();
+		TextInfo->BattleSetText("Player Attack");
+		TextInfo->On();
+
+		SelectBoard->Off();
+		BattleCommand->Off();
+
+		BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(EventTime, EventCallBack);
+	});
 }
 
 void BattleState_PlayerTurn::BattleCmdOpen()
@@ -68,5 +94,15 @@ void BattleState_PlayerTurn::BattleCmdOpen()
 	BattleCommand->On();
 	SelectBoard->Off();
 }
+
+
+void BattleState_PlayerTurn::ExitState()
+{
+	SelectBoard->Death();
+	BattleCommand->Death();
+}
+
+
+
 
 

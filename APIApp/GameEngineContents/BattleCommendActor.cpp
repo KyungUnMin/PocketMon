@@ -107,6 +107,9 @@ void BattleCommendActor::Start()
 
 void BattleCommendActor::Update(float _DeltaTime)
 {
+	if (true == IsSelected)
+		return;
+
 	B_ArrowNumberCheck();
 
 	if (B_ArrowCheckNum == 0) {
@@ -131,6 +134,8 @@ void BattleCommendActor::Update(float _DeltaTime)
 	StringToRender(PPCUR_R);
 	StringToRender(PPMAX_R);
 	StringToRender(TYPE_R);
+
+	B_ArrowInput();
 }
 
 
@@ -158,27 +163,36 @@ void BattleCommendActor::B_ArrowNumberCheck()
 	}
 }
 
-void BattleCommendActor::B_ArrowInput(int _Number)
+void BattleCommendActor::B_ArrowInput(/*int _Number*/)
 {
-	if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 0) {
+	if (false == GameEngineInput::IsDown("InsertMove1"))
+		return;
 
-		// 대사가 나오며 전투쪽으로 무슨 값 전달하기
-	}
-	if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 1) {
+	if (nullptr == CallBacks[B_ArrowCheckNum])
+		return;
 
-		// 대사가 나오며 전투쪽으로 무슨 값 전달하기
+	CallBacks[B_ArrowCheckNum]();
+	IsSelected = true;
 
-	}
-	if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 2) {
+	//if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 0) {
+	//	int a = 10;
+	//	// 대사가 나오며 전투쪽으로 무슨 값 전달하기
+	//}
+	//if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 1) {
+	//	int a = 10;
+	//	// 대사가 나오며 전투쪽으로 무슨 값 전달하기
 
-		// 대사가 나오며 전투쪽으로 무슨 값 전달하기
+	//}
+	//if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 2) {
+	//	int a = 10;
+	//	// 대사가 나오며 전투쪽으로 무슨 값 전달하기
 
-	}
-	if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 3) {
+	//}
+	//if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 3) {
+	//	int a = 10;
+	//	// 대사가 나오며 전투쪽으로 무슨 값 전달하기
 
-		// 대사가 나오며 전투쪽으로 무슨 값 전달하기
-
-	}
+	//}
 }
 
 

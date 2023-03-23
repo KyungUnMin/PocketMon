@@ -26,6 +26,7 @@ protected:
 	virtual void Update(float _DeltaTime) {}
 	virtual void ExitState() {}
 
+
 private:
 	BattleFSM* FsmPtr = nullptr;
 };

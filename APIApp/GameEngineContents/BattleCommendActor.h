@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <functional>
 
 // Ό³Έν :
 class BattleCommendActor : public GameEngineActor
@@ -15,11 +16,17 @@ public:
 	BattleCommendActor& operator=(const BattleCommendActor& _Other) = delete;
 	BattleCommendActor& operator=(BattleCommendActor&& _Other) noexcept = delete;
 
+
+	inline void SetCallBack(size_t _Index, std::function<void()> _CallBack)
+	{
+		CallBacks[_Index] = _CallBack;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void B_ArrowNumberCheck();
-	void B_ArrowInput(int _Number);
+	void B_ArrowInput(/*int _Number*/);
 
 
 //	void SetAndResize(std::vector<GameEngineRender*> _Render, float4 _Pos);
@@ -60,5 +67,6 @@ private:
 
 	int B_ArrowCheckNum = 0;
 
+	bool IsSelected = false;
+	std::vector<std::function<void()>> CallBacks = std::vector<std::function<void()>>(4);
 };
-
