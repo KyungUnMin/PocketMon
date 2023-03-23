@@ -20,9 +20,11 @@ public:
 	
 
 protected:
+	void EnterState() override;
+	void ExitState() override;
+
 	void CreateUIText(const std::vector<std::string_view>& _Texts);
 	void SetTextEvent(size_t _Index, std::function<void()> _Event);
-	virtual void NextStateAtLastText() = 0;
 
 private:
 	BackTextActor* TextInfoUI = nullptr;

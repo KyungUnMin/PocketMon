@@ -5,7 +5,6 @@
 class GameEngineRender;
 class TestScript;
 class Battle_Select;
-class BackTextActor;
 class BattleFSM;
 class BackTextActor;
 
@@ -44,11 +43,6 @@ public:
 		BattleFieldType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 
-	inline BackTextActor* GetTextInfoUI()
-	{
-		return TextInfoUI;
-	}
-
 	inline BattleFSM* GetBattleFSM()
 	{
 		return BattleFsmPtr;
@@ -67,7 +61,6 @@ private:
 	GameEngineRender* FadeUpRender = nullptr;
 
 	BattleFSM* BattleFsmPtr = nullptr;
-	BackTextActor* TextInfoUI = nullptr;
 
 	void InitGroundRenders(BattleFieldType _FieldType);
 };

@@ -3,6 +3,7 @@
 
 class Battle_Select;
 class BattleCommendActor;
+class BackTextActor;
 
 class BattleState_PlayerTurn : public BattleStateBase
 {
@@ -22,6 +23,7 @@ protected:
 private:
 	Battle_Select* SelectBoard = nullptr;
 	BattleCommendActor* BattleCommand = nullptr;
+	BackTextActor* TextInfo = nullptr;
 
 	void BindSelectBoard();
 	void BindBattleCommand();

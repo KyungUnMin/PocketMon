@@ -24,7 +24,7 @@ void BattleState_PlayerTurn::EnterState()
 {
 	const std::string_view PlayerTurnText = "What should I Do";
 
-	BackTextActor* TextInfo = BattleLevel::BattleLevelPtr->GetTextInfoUI();
+	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText(PlayerTurnText);
 
 	BattleCommand = BattleLevel::BattleLevelPtr->CreateActor<BattleCommendActor>(UpdateOrder::Battle_Actors);
@@ -77,9 +77,9 @@ void BattleState_PlayerTurn::BindBattleCommand()
 
 	BattleCommand->SetCallBack(0, [=]
 	{
-		BackTextActor* TextInfo = BattleLevel::BattleLevelPtr->GetTextInfoUI();
+		TextInfo->Death();
+		TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 		TextInfo->BattleSetText("Player Attack");
-		TextInfo->On();
 
 		SelectBoard->Off();
 		BattleCommand->Off();
@@ -90,7 +90,7 @@ void BattleState_PlayerTurn::BindBattleCommand()
 
 void BattleState_PlayerTurn::BattleCmdOpen()
 {
-	BattleLevel::BattleLevelPtr->GetTextInfoUI()->Off();
+	TextInfo->Off();
 	BattleCommand->On();
 	SelectBoard->Off();
 }
@@ -100,6 +100,11 @@ void BattleState_PlayerTurn::ExitState()
 {
 	SelectBoard->Death();
 	BattleCommand->Death();
+	TextInfo->Death();
+
+	SelectBoard = nullptr;
+	BattleCommand = nullptr;
+	TextInfo = nullptr;
 }
 
 

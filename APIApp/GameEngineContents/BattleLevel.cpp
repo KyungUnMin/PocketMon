@@ -14,7 +14,6 @@
 #include "PocketMonCore.h"
 #include "BattleFSM.h"
 #include "BagLevel.h"
-#include "BackTextActor.h"
 #include "PokemonLevel.h"
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
@@ -66,8 +65,6 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
-	TextInfoUI = CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitGroundRenders(_FieldType);
 
@@ -127,6 +124,4 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	}
 
 	Actors.clear();
-
-	TextInfoUI = nullptr;
 }

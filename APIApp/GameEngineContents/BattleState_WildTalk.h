@@ -1,8 +1,6 @@
 #pragma once
 #include "BattleState_TalkBase.h"
 
-class BackTextActor;
-
 class BattleState_WildTalk : public BattleState_TalkBase
 {
 public:
@@ -17,12 +15,10 @@ public:
 	BattleState_WildTalk& operator=(const BattleState_WildTalk&& _Other) noexcept = delete;
 
 protected:
-	void Start() override;
-	void NextStateAtLastText() override;
+	void EnterState() override;
 
 private:
 	int StrIndex = 0;
-	BackTextActor* BackUI = nullptr;
 
 	void PlayerMonsterCreate();
 };

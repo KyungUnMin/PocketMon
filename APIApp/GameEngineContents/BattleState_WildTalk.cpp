@@ -23,9 +23,9 @@ BattleState_WildTalk::~BattleState_WildTalk()
 
 }
 
-void BattleState_WildTalk::Start()
+void BattleState_WildTalk::EnterState()
 {
-	BattleState_TalkBase::Start();
+	BattleState_TalkBase::EnterState();
 
 	//UI에 들어갈 텍스트 등록
 	CreateUIText(Texts);
@@ -35,12 +35,10 @@ void BattleState_WildTalk::Start()
 }
 
 
+
 void BattleState_WildTalk::PlayerMonsterCreate()
 {
 	BattlePlayer::PlayerPtr->CreateMontser();
 }
 
-void BattleState_WildTalk::NextStateAtLastText()
-{
-	GetFSM()->ChangeState(BattleStateType::PlayerTurn);
-}
+

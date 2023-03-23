@@ -5,6 +5,7 @@
 #include "EnemyHPBackground.h"
 #include "BackTextActor.h"
 #include "BattleLevel.h"
+#include "BattleFSM.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -16,6 +17,13 @@ BattleState_TalkBase::~BattleState_TalkBase()
 
 }
 
+void BattleState_TalkBase::EnterState()
+{
+	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+}
+
+
+
 void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Texts)
 {
 	TextEvents.resize(_Texts.size());
@@ -23,8 +31,6 @@ void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Te
 	{
 		TextEvents[i].first = _Texts[i];
 	}
-
-	TextInfoUI = BattleLevel::BattleLevelPtr->GetTextInfoUI();
 
 	//첫번째 텍스트는 미리 출력(첫번째 텍스트에서는 이벤트 불가능)
 	TextInfoUI->BattleSetText(TextEvents.front().first);
@@ -49,7 +55,7 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 	//더 전달할 텍스트가 없을땐 다음 State로 이동
 	if (TextEvents.size() == CurTextNum)
 	{
-		NextStateAtLastText();
+		GetFSM()->ChangeState(BattleStateType::PlayerTurn);
 		return;
 	}
 
@@ -67,6 +73,11 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 	EventFunc = nullptr;
 }
 
+void BattleState_TalkBase::ExitState()
+{
+	TextInfoUI->Death();
+	TextInfoUI = nullptr;
+}
 
 
 void BattleState_TalkBase::SetTextEvent(size_t _Index, std::function<void()> _Event)
