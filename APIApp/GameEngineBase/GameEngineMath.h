@@ -220,6 +220,29 @@ public:
 		return Lerp(Start, End, Ratio);
 	}
 
+	static float4 Bezier(const float4& Start, const float4 Middle, const float4& End, float Ratio)
+	{
+		return Start*((1.0f - Ratio) * (1.0f - Ratio))+ Middle*(2*((1.0f - Ratio)*Ratio))+End*(Ratio*Ratio);
+	}
+
+	static float4 BezierClamp(const float4& Start, const float4& End, float Ratio)
+	{
+		float4 Middle = { ((End + Start).x)/2, ((End + Start).y)/2 -64.0f }; //이거y값 수정해야함
+
+		if (0 >= Ratio)
+		{
+			Ratio = 0.0f;
+		}
+
+		if (1.0f <= Ratio)
+		{
+			Ratio = 1.0f;
+		}
+
+		return Bezier(Start, Middle ,End, Ratio);
+	}
+
+
 	float4 operator *(const float _Value) const
 	{
 		float4 Return;
