@@ -1,4 +1,5 @@
 #include "ShopMainMenu.h"
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "FieldDialog.h"
@@ -68,6 +69,7 @@ void ShopMainMenu::Update(float _DeltaTime)
 		switch (State)
 		{
 		case ShopMianMenuState::Buy:
+			GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 			break;
 		case ShopMianMenuState::Sell:
 			break;
