@@ -3,6 +3,7 @@
 #include <map>
 #include <vector>
 
+#include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEngineBase/GameEngineMath.h>
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineObject.h>
@@ -19,6 +20,8 @@ class GameEngineLevel : public GameEngineObject
 	friend GameEngineCollision;
 
 public:
+	GameEngineTimeEvent LevelEvent;
+
 	// constrcuter destructer
 	GameEngineLevel();
 	virtual ~GameEngineLevel() = 0;

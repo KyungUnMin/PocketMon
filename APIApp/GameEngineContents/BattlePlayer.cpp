@@ -1,10 +1,12 @@
 #include "BattlePlayer.h"
+#include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
 #include "BattleLevel.h"
 #include "PokeDataBase.h"
 #include "BattleMonsterPlayer.h"
+#include "Battle_MonsterAppearEffect.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 const std::string_view BattlePlayer::IdleAniName = "Idle";
@@ -63,8 +65,6 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 
 void BattlePlayer::CreatePlayerRender()
 {
-	const float4 Offset = {0.f, -65.f};
-
 	PlayerRenderPtr = CreateRender(BattleRenderOrder::Player0);
 	PlayerRenderPtr->CreateAnimation
 	({
@@ -88,7 +88,7 @@ void BattlePlayer::CreatePlayerRender()
 
 	PlayerRenderPtr->ChangeAnimation(IdleAniName);
 	PlayerRenderPtr->SetScale(PlayerRenderScale);
-	PlayerRenderPtr->SetPosition(Offset);
+	PlayerRenderPtr->SetPosition(PlayerRenderOffset);
 }
 
 
@@ -125,22 +125,28 @@ void BattlePlayer::Update_Move()
 
 void BattlePlayer::CreateMontser()
 {
-	BattleTrainerBase::CreateMontser();
-
-	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNumber::Bulbasaur);
-	Monster->SetPos(GetPos());
+	MonsterSpawnPos = GetPos();
 
 	CurState = State::Throw;
 	PlayerRenderPtr->ChangeAnimation(ThrowAniName);
+
+	float EventTime = ThrowDuration - Battle_MonsterAppearEffect::FadeDuration;
+	BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(EventTime, [](GameEngineTimeEvent::TimeEvent _Eve, GameEngineTimeEvent* _TimeEve)
+	{
+		BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
+	}, false);
 }
 
 
 void BattlePlayer::Update_Throw()
 {
-	if (true == Update_LerpMoveComponent(PlayerRenderPtr, float4::Zero, float4::Left * ThrowMoveLen, ThrowDuration))
+	if (true == Update_LerpMoveComponent(PlayerRenderPtr, PlayerRenderOffset, ThrowMoveDest, ThrowDuration))
 		return;
 
 	PlayerRenderPtr->Off();
 	CurState = State::Idle;
+
+	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
+	Monster->Init(PokeNumber::Bulbasaur);
+	Monster->SetPos(MonsterSpawnPos);
 }

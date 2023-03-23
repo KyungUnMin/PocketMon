@@ -3,6 +3,8 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include "ContentsEnum.h"
 
+const float Battle_MonsterAppearEffect::FadeDuration = 0.25f;
+
 Battle_MonsterAppearEffect::Battle_MonsterAppearEffect()
 {
 
@@ -47,10 +49,8 @@ void Battle_MonsterAppearEffect::Update(float _DeltaTime)
 
 bool Battle_MonsterAppearEffect::Update_Fade(float _StartAlpha, float _DestAlpha)
 {
-	static const float Duration = 0.25f;
-
 	float NowTime = GetLiveTime() - FadeTime;
-	float Ratio = (NowTime / Duration);
+	float Ratio = (NowTime / FadeDuration);
 
 	float4 StartAlpha = float4::Right * _StartAlpha;
 	float4 DestAlpha = float4::Right * _DestAlpha;

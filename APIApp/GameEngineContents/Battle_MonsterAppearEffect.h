@@ -6,6 +6,8 @@ class GameEngineRender;
 class Battle_MonsterAppearEffect : public GameEngineActor
 {
 public:
+	static const float FadeDuration;
+
 	Battle_MonsterAppearEffect();
 	~Battle_MonsterAppearEffect() override;
 

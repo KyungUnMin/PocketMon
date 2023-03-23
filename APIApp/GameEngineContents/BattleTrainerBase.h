@@ -18,8 +18,6 @@ public:
 	BattleTrainerBase& operator=(const BattleTrainerBase& _Other) = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
 
-	virtual void CreateMontser();
-
 protected:
 	bool Update_LerpMoveActor(const float4 _StartPos, const float4 _EndPos, float _Duration);
 	bool Update_LerpMoveComponent(GameEngineComponent* _Component, const float4 _StartPos, const float4 _EndPos, float _Duration);

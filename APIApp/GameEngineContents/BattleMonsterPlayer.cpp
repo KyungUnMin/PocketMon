@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleMonsterBase.h"
 #include "ContentsEnum.h"
+#include "Battle_MonsterAppearEffect.h"
 
 
 BattleMonsterPlayer::BattleMonsterPlayer()
@@ -33,7 +34,7 @@ void BattleMonsterPlayer::RenderCreate()
 	ImagePath = "Battle" + Name + "BackLight.bmp";
 	AppearRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	AppearRender->SetScale(float4::Zero);
-	AppearRender->SetAlpha(100);
+	AppearRender->SetAlpha(200);
 }
 
 
@@ -53,11 +54,8 @@ void BattleMonsterPlayer::Update(float _DeltaTime)
 
 void BattleMonsterPlayer::Update_Appear()
 {
-	//등장 이펙트가 동작할 시간
-	static const float Duration = 0.2f;
-
 	//알파값 조정
-	float Ratio = (GetLiveTime() / Duration);
+	float Ratio = (GetLiveTime() / Battle_MonsterAppearEffect::FadeDuration);
 
 	float4 DestScale = MonsterRender->GetScale();
 	float4 NowScale = float4::LerpClamp(float4::Zero, DestScale, Ratio);

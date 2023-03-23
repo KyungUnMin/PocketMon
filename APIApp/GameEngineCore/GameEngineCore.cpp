@@ -1,5 +1,6 @@
 #include "GameEngineCore.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "GameEngineLevel.h"
@@ -63,6 +64,7 @@ void GameEngineCore::GlobalUpdate()
 		return;
 	}
 
+	Core->MainLevel->LevelEvent.Update(TimeDeltaTime);
 	Core->MainLevel->Update(TimeDeltaTime);
 	Core->MainLevel->ActorsUpdate(TimeDeltaTime);
 	GameEngineWindow::DoubleBufferClear();

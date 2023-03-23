@@ -18,9 +18,7 @@ public:
 	BattlePlayer& operator=(const BattlePlayer&& _Other) noexcept = delete;
 
 	void Init(BattleFieldType _FieldType);
-	void CreateMontser() override;
-
-
+	void CreateMontser();
 
 protected:
 	void Update(float _DeltaTime) override;
@@ -39,12 +37,14 @@ private:
 	GameEngineRender* PlayerRenderPtr = nullptr;
 	BattleMonsterPlayer* Monster = nullptr;
 	const float4 PlayerRenderScale = float4{ 256.f, 196.f };
+	const float4 PlayerRenderOffset = float4{ 0.f, -65.f };
 
 	State CurState = State::Move;
 	float4 MoveStartPos = float4::Zero;
 	float4 MoveEndPos = float4::Zero;
-	const float ThrowDuration = 0.5f;
-	const float ThrowMoveLen = 300.f;
+	const float4 ThrowMoveDest = float4{ -300.f, -65.f };
+	const float ThrowDuration = 1.f;
+	float4 MonsterSpawnPos = float4::Zero;
 
 	
 	void CreateGround(BattleFieldType _FieldType);

@@ -60,11 +60,6 @@ bool BattleTrainerBase::Update_LerpMoveComponent(GameEngineComponent* _Component
 }
 
 
-void BattleTrainerBase::CreateMontser()
-{
-	GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
-}
-
 
 
 
