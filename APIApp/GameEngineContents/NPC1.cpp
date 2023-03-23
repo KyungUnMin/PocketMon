@@ -93,9 +93,9 @@ void NPC1::Start()
 	//NPCtext->SetPosition({ Player::MainPlayer->GetPos() + float4{-160,-95} });
 	//NPCtext->Off();
 
-	Script.push_back("aasdas");
-	Script.push_back("1231242");
-	Script.push_back("AKJSFHAKJ");
+	Script.push_back("Hi");
+	Script.push_back("Im your rival");
+	Script.push_back("bye bye");
 }
 
 
