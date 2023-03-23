@@ -7,6 +7,11 @@ bool GameEngineInput::IsAnyKeyValue = false;
 
 void GameEngineInput::GameEngineKey::Update(float _DeltaTime)
 {
+	if (NULL == GetFocus())
+	{
+		return;
+	}
+
 	if (true == KeyCheck())
 	{
 		PressTime += _DeltaTime;
