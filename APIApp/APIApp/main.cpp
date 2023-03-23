@@ -44,6 +44,9 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	int aaaa1212 = NewP1->GetMonsterLevel_int();
 	int aassbbc = NewP1->GetMonsterMaxHP_int();
 	bbc = NewP1->GetMonsterCurrentHP();
+	NewP1->ForInven_UsePotion();
+	NewP1->ForInven_UsePotion();
+	NewP1->ForInven_UsePotion();
 
 	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
 	PokeDataBase::PokeExperienceGain(NewP1, NewP2);
