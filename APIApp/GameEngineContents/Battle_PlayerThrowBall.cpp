@@ -27,6 +27,7 @@ void Battle_PlayerThrowBall::Start()
 	({
 		.AnimationName = "Roll",
 		.ImageName = "BattleBallThrow.bmp",
+		.InterTime = 0.05f,
 		.FrameIndex = FrameIndex
 	});
 

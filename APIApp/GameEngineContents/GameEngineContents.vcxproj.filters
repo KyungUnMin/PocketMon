@@ -188,7 +188,13 @@
       <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
     </ClCompile>
     <ClCompile Include="Battle_PlayerThrowBall.cpp">
-      <Filter>Battle\02.Actor\04.Effects\03.PlayerThrowBall</Filter>
+      <Filter>Battle\02.Actor\04.Effects\02.PlayerThrowBall</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterSkillConverter.cpp">
+      <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_SkillEffect.cpp">
+      <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -374,7 +380,10 @@
       <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
     </ClInclude>
     <ClInclude Include="Battle_PlayerThrowBall.h">
-      <Filter>Battle\02.Actor\04.Effects\03.PlayerThrowBall</Filter>
+      <Filter>Battle\02.Actor\04.Effects\02.PlayerThrowBall</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_SkillEffect.h">
+      <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -516,8 +525,11 @@
     <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle">
       <UniqueIdentifier>{f33d76f5-536e-4eed-998c-6fd962a8fa43}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\03.PlayerThrowBall">
+    <Filter Include="Battle\02.Actor\04.Effects\02.PlayerThrowBall">
       <UniqueIdentifier>{6e7bea25-a50a-4d86-aed7-0969d7d521d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Effects\03.SkillEffect">
+      <UniqueIdentifier>{2f8bd4a6-449c-484d-a556-e08696778645}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

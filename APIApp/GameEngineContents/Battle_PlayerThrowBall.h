@@ -27,6 +27,6 @@ private:
 	float4 DestPosX = float4::Zero;
 
 	float VerticalSpeed = -100.f;
-	const float GravityAcc = 1200.f;
+	const float GravityAcc = 2000.f;
 };
 
