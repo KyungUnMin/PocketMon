@@ -1,7 +1,8 @@
 #include "SummaryUI.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
-#include "PokemonLevel.h"
+#include <GameEngineCore/GameEngineLevel.h>
+#include "PocketMonCore.h"
 #include "TextActor.h"
 SummaryUI::SummaryUI() 
 {
@@ -13,7 +14,7 @@ SummaryUI::~SummaryUI()
 
 void SummaryUI::Start()
 {
-	CurrentLevel = dynamic_cast<PokemonLevel*>(GetLevel());
+	CurrentLevel = GetLevel();
 
 	InfoBack = CreateRender("PokemonInfo.bmp", 14);
 	InfoBack->SetScaleToImage();
@@ -28,7 +29,7 @@ void SummaryUI::Update(float _DeltaTime)
 {
 	if (GameEngineInput::IsDown("B"))
 	{
-		CurrentLevel->SummaryOff();
+		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 	}
 }
 

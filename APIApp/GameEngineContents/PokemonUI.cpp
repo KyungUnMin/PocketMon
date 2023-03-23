@@ -1,8 +1,8 @@
 #include "PokemonUI.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineLevel.h>
 #include "PokeDataBase.h"
-#include "PokemonLevel.h"
 #include "PocketMonCore.h"
 PokemonUI::PokemonUI() 
 {
@@ -14,9 +14,14 @@ PokemonUI::~PokemonUI()
 
 void PokemonUI::Start()
 {
-	CurrentLevel = dynamic_cast<PokemonLevel*>(GetLevel());
+	CurrentLevel = GetLevel();
 	//_______테스트용 포켓몬 생성
-
+	Pokemons.resize(5);
+	Pokemons[0] = PokeDataBase::PokeCreate(1, 5);
+	Pokemons[1] = PokeDataBase::PokeCreate(4, 5);
+	Pokemons[2] = PokeDataBase::PokeCreate(7, 5);
+	Pokemons[3] = PokeDataBase::PokeCreate(10, 2);
+	Pokemons[4] = PokeDataBase::PokeCreate(11, 3);
 	// ____________렌더 생성______________
 	{
 
@@ -211,15 +216,19 @@ void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 
 void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (_PrevLevel->GetName() == "SummaryLevel")
+	{
+		SelectOff();
+		return;
+	}
 	PrevLevel = _PrevLevel;
 	CurrentCursor = 0;
 	CursorMove();
+	SelectOff();
 }
 
 void PokemonUI::PokeDataSetting()
 {
-	////////////// 임시용 포켓몬
-	Pokemons = CurrentLevel->Pokemons;
 	// ____________렌더 생성______________
 	{
 		CursorRender.resize(Pokemons.size() + 1);
@@ -388,8 +397,7 @@ void PokemonUI::SelectMove()
 
 void PokemonUI::Summary()
 {
-	SelectOff();
-	CurrentLevel->SummaryOn();
+	PocketMonCore::GetInst().ChangeLevel("SummaryLevel");
 }
 
 void PokemonUI::Switch()
@@ -416,7 +424,6 @@ void PokemonUI::SwitchSelect()
 	PokeDataBase* _Pokemon = Pokemons[SwitchCursor];
 	Pokemons[SwitchCursor] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
-	CurrentLevel->Pokemons = Pokemons;
 	PokeDataSetting();
 	SwitchCancel();
 }

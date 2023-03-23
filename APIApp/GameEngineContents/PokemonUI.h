@@ -15,7 +15,6 @@ enum class PokemonUIState
 
 // Ό³Έν :
 class GameEngineRender;
-class PokemonLevel;
 class PokeDataBase;
 class PokemonUI : public GameEngineActor
 {
@@ -38,7 +37,7 @@ protected:
 	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 private:
 	GameEngineLevel* PrevLevel = nullptr;
-	PokemonLevel* CurrentLevel = nullptr;
+	GameEngineLevel* CurrentLevel = nullptr;
 	std::vector<PokeDataBase*> Pokemons;
 
 	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);

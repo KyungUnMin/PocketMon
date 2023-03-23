@@ -2,7 +2,6 @@
 #include <GameEngineCore/GameEngineActor.h>
 // Ό³Έν :
 class GameEngineRender;
-class PokemonLevel;
 class TextActor;
 class SummaryUI : public GameEngineActor
 {
@@ -21,7 +20,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 private:
-	PokemonLevel* CurrentLevel = nullptr;
+	GameEngineLevel* CurrentLevel = nullptr;
 	GameEngineRender* InfoBack = nullptr;
 };
 
