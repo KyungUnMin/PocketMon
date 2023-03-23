@@ -22,6 +22,7 @@ BattleState_PlayerTurn::~BattleState_PlayerTurn()
 
 void BattleState_PlayerTurn::EnterState()
 {
+	BattleLevel::Debug_LevelChanged = false;
 	const std::string_view PlayerTurnText = "What should I Do";
 
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
@@ -71,6 +72,9 @@ void BattleState_PlayerTurn::BindBattleCommand()
 	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> EventCallBack = nullptr;
 	EventCallBack = [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
 	{
+		if (true == BattleLevel::Debug_LevelChanged)
+			return;
+		
 		BattleFSM* Fsm = BattleLevel::BattleLevelPtr->GetBattleFSM();
 		Fsm->ChangeState(BattleStateType::EnemyTurn);
 	};
@@ -79,7 +83,7 @@ void BattleState_PlayerTurn::BindBattleCommand()
 	{
 		TextInfo->Death();
 		TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-		TextInfo->BattleSetText("Player Attack");
+		TextInfo->BattleSetText("Player Attacking...");
 
 		SelectBoard->Off();
 		BattleCommand->Off();

@@ -19,6 +19,7 @@
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
 const char BattleLevel::BattleKey = 'Z';
+bool BattleLevel::Debug_LevelChanged = false;
 
 BattleLevel::BattleLevel()
 {
@@ -89,6 +90,7 @@ void BattleLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		Debug_LevelChanged = true;
 		return;
 	}
 

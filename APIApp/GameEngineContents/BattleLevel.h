@@ -29,6 +29,7 @@ class BattleLevel : public GameEngineLevel
 public:
 	static BattleLevel* BattleLevelPtr;
 	static const std::string_view  BattleKeyName;
+	static bool Debug_LevelChanged;
 
 	BattleLevel();
 	~BattleLevel() override;

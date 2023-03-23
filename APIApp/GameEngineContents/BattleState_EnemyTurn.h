@@ -1,6 +1,8 @@
 #pragma once
 #include "BattleStateBase.h"
 
+class BackTextActor;
+
 class BattleState_EnemyTurn : public BattleStateBase
 {
 public:
@@ -14,8 +16,9 @@ public:
 
 protected:
 	void EnterState() override;
+	void ExitState() override;
 
 private:
-
+	BackTextActor* TextInfoUI = nullptr;
 };
 
