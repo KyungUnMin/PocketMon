@@ -7,13 +7,6 @@
 #include "FieldmapCity.h"
 #include "Fieldmap.h"
 
-enum class PlayerDirs
-{
-	P_UP,
-	P_RIGHT,
-	P_LEFT,
-	P_DOWN,
-};
 enum class PlayerState
 {
 	IDLE,
@@ -81,6 +74,23 @@ public:
 		return Playerindex;
 	}
 
+	bool IsPlayerDirUp()
+	{
+		return IsPlayerDirUP;
+	}
+	bool IsPlayerDirDown()
+	{
+		return IsPlayerDirDOWN;
+	}
+	bool IsPlayerDirRight()
+	{
+		return IsPlayerDirRIGHT;
+	}
+	bool IsPlayerDirLeft()
+	{
+		return IsPlayerDirLEFT;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -126,9 +136,16 @@ private:
 
 	//플레이어<->NPC 방향제어enum class
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
+
 	//플레이어 이동제어 Bool값
 	bool PlayerMoveBool = true;
 
+	bool IsPlayerDirUP = true;
+	bool IsPlayerDirDOWN = true;
+	bool IsPlayerDirLEFT = true;
+	bool IsPlayerDirRIGHT = true;
+
+	////////////////////////
 	float PlayerTime = 0.0f;
 };
 
