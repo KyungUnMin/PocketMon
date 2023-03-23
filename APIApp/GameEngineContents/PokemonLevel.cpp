@@ -17,7 +17,6 @@ void PokemonLevel::Loading()
 
 void PokemonLevel::Update(float _DeltaTime)
 {
-	DebugTextPush(GetMousePos().ToString());
 }
 
 void PokemonLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

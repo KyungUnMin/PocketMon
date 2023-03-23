@@ -218,7 +218,6 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	if (_PrevLevel->GetName() == "SummaryLevel")
 	{
-		SelectOff();
 		return;
 	}
 	PrevLevel = _PrevLevel;

@@ -257,6 +257,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gender.bmp"))->Cut(2,1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MainPokemon.bmp"))->Cut(2,2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SubPokemon.bmp"))->Cut(5,1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Types.bmp"))->Cut(3,6);
 		Dir.Move("Pokemon");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bulbasaur_mini.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Charmander_mini.bmp"))->Cut(2, 1);
@@ -269,6 +270,10 @@ void CenterLevel::Loading()
 		Dir.Move("PokemonUI");
 		Dir.Move("Summary");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonInfo.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonSkills.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonMoves.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonMovesSwitch.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveSelect.bmp"))->Cut(1, 2);
 	}
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{

@@ -15,6 +15,7 @@ void SummaryLevel::Loading()
 
 void SummaryLevel::Update(float _DeltaTime)
 {
+	DebugTextPush(GetMousePos().ToString());
 }
 
 void SummaryLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
