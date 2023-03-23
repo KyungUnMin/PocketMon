@@ -529,6 +529,8 @@ void PokeDataBase::BulbasaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "From birth, they carry plant seeds on their back.";
 }
 
 // No.2 ÀÌ»óÇØÇ®
@@ -558,6 +560,8 @@ void PokeDataBase::IvysaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "As nutrients are absorbed, flower buds grow.";
 }
 // No.3 ÀÌ»óÇØ²É
 void PokeDataBase::VenusaurData(int _Level, PokeDataBase* PoKeCreatePtr)
@@ -586,6 +590,8 @@ void PokeDataBase::VenusaurData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "A captivating fragrance spreads from the flowers, soothing the spirits of those who fight.";
 }
 
 // No.4 ÆÄÀÌ¸®
@@ -615,6 +621,8 @@ void PokeDataBase::CharmanderData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "The enchanting fragrance of flowers relieves people's fatigue.";
 }
 
 // No.5 ¸®ÀÚµå
@@ -644,6 +652,8 @@ void PokeDataBase::CharmeleonData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "It attacks with its strong tail and sharp claws.";
 }
 
 // No.6 ¸®ÀÚ¸ù
@@ -673,6 +683,8 @@ void PokeDataBase::CharizardData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "It can fly up to 1400 m above the ground using its wings.";
 }
 
 // No.7 ²¿ºÎ±â
@@ -702,6 +714,8 @@ void PokeDataBase::SquirtleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "It hides its head inside its shell and fires a powerful water cannon.";
 }
 
 // No.8 ¾î´ÏºÎ±â
@@ -731,6 +745,8 @@ void PokeDataBase::WartortleData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "They are popular as pets. The tail is a symbol of longevity.";
 }
 
 // No.9 °ÅºÏ¿Õ
@@ -760,6 +776,8 @@ void PokeDataBase::BlastoiseData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "Fires water from a cannon attached to its back.";
 }
 
 // No.10 ±¸±¸
@@ -789,6 +807,8 @@ void PokeDataBase::PidgeyData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "Doesn't like to fight. It hunts small bugs hiding in the grass.";
 }
 
 // No.11 ²¿·¿
@@ -818,6 +838,8 @@ void PokeDataBase::RattataData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "Its long canines grow throughout its life and must be sharpened periodically.";
 }
 
 // No.12 ±úºñÂü
@@ -847,6 +869,8 @@ void PokeDataBase::SpearowData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "It flies all over the place without stopping.";
 }
 
 // No.13 ²¿¸¶µ¹
@@ -876,6 +900,8 @@ void PokeDataBase::GeodudeData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "Because it is round and easy to hold, it can be thrown at opponents.";
 }
 
 // No.14 ·Õ½ºÅæ
@@ -905,4 +931,6 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase* PoKeCreatePtr)
 	}
 
 	PoKeCreatePtr->MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr->PokeDexText = "They usually live in the soil. It can travel at 80 km/h inside the soil.";
 }

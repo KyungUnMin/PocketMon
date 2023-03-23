@@ -143,11 +143,11 @@ public:
 		return (static_cast<int>(PokeDexNumber) + 1);
 	}
 
-	//// 포켓몬 도감 설명 가져오기
-	//std::string ForUI_GetMonsterTypeName()
-	//{
-	//	// 데이터 찾는중
-	//}
+	// 포켓몬 도감 설명 가져오기
+	std::string ForUI_GetPokeDexText()
+	{
+		return PokeDexText;
+	}
 
 	// 아이템을 가졌는지 확인 (계산용)
 	//float GetPossessionItem()
