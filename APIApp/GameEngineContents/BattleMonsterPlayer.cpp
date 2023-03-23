@@ -33,7 +33,7 @@ void BattleMonsterPlayer::RenderCreate()
 	ImagePath = "Battle" + Name + "BackLight.bmp";
 	AppearRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	AppearRender->SetScale(float4::Zero);
-	AppearRender->SetAlpha(100.f);
+	AppearRender->SetAlpha(100);
 }
 
 

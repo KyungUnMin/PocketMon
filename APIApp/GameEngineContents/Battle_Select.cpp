@@ -11,6 +11,8 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineBase/GameEngineDirectory.h>
 #include "ContentsEnum.h"
+
+
 Battle_Select::Battle_Select()
 {
 }
@@ -43,7 +45,6 @@ void Battle_Select::Start()
 	//이미지 크기 50,50
 	// 위 아래 간의 y격차는 75  초기지점 -190,-25  >이동 x+240 밑으로 이동 +65
 	ArrowRender->SetPosition({ -190,-25 });
-	
 }
 
 void Battle_Select::Update(float _DeltaTime)
@@ -98,10 +99,16 @@ void Battle_Select::ArrowInput(int _Number)
 	if (GetLiveTime() < WaitTime)
 		return;
 
-	if (true == GameEngineInput::IsDown("InsertMove1") &&  _Number==0) {
+	if (true == GameEngineInput::IsDown("InsertMove1")) 
+	{
+		if (nullptr != Callbacks[ArrowCheckNum])
+		{
+			Callbacks[ArrowCheckNum]();
+			return;
+		}
 
-		GetLevel()->CreateActor<BattleCommendActor>();
-		Off();
+		/*GetLevel()->CreateActor<BattleCommendActor>();
+		Off();*/
 		//ScriptPtr->Off();
 	}
 

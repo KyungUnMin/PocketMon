@@ -20,6 +20,8 @@ public:
 	void Init(BattleFieldType _FieldType);
 	void CreateMontser() override;
 
+
+
 protected:
 	void Update(float _DeltaTime) override;
 
