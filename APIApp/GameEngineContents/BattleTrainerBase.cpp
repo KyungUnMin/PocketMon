@@ -1,5 +1,9 @@
 #include "BattleTrainerBase.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineComponent.h>
+#include "Battle_MonsterAppearEffect.h"
+#include "ContentsEnum.h"
 
 const float BattleTrainerBase::MoveDuration = 1.5f;
 
@@ -13,33 +17,52 @@ BattleTrainerBase::~BattleTrainerBase()
 
 }
 
-void BattleTrainerBase::Start()
+bool BattleTrainerBase::Update_LerpMoveActor(const float4 _StartPos, const float4 _EndPos, float _Duration)
 {
-
-}
-
-void BattleTrainerBase::Update(float _DeltaTime)
-{
-	BattleStartMove();
-}
-
-
-void BattleTrainerBase::BattleStartMove()
-{
-	//지금은 이미지를 움직이지만 나중엔 Render를 움직이자
-	float LiveTime = GetLiveTime();
-	if (MoveDuration < LiveTime)
-		return;
-
-	if (MoveStartPos.IsZero() && MoveEndPos.IsZero())
+	if (false == IsMove)
 	{
-		MsgAssert("트레이너들의 이동 위치를 설정해주지 않았습니다");
-		return;
+		MoveStartTime = GetLiveTime();
+		IsMove = true;
 	}
 
-	float Ratio = (LiveTime / MoveDuration);
-	float4 NowPos = float4::LerpClamp(MoveStartPos, MoveEndPos, Ratio);
+	float NowTime = GetLiveTime() - MoveStartTime;
+	if (_Duration < NowTime)
+	{
+		IsMove = false;
+		return IsMove;
+	}
+
+	float Ratio = (NowTime / _Duration);
+	float4 NowPos = float4::LerpClamp(_StartPos, _EndPos, Ratio);
 	SetPos(NowPos);
+	return IsMove;
+}
+
+bool BattleTrainerBase::Update_LerpMoveComponent(GameEngineComponent* _Component, const float4 _StartPos, const float4 _EndPos, float _Duration)
+{
+	if (false == IsMove)
+	{
+		MoveStartTime = GetLiveTime();
+		IsMove = true;
+	}
+
+	float NowTime = GetLiveTime() - MoveStartTime;
+	if (_Duration < NowTime)
+	{
+		IsMove = false;
+		return IsMove;
+	}
+
+	float Ratio = (NowTime / _Duration);
+	float4 NowPos = float4::LerpClamp(_StartPos, _EndPos, Ratio);
+	_Component->SetPosition(NowPos);
+	return IsMove;
+}
+
+
+void BattleTrainerBase::CreateMontser()
+{
+	GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
 }
 
 

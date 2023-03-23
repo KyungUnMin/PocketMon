@@ -1,6 +1,5 @@
 #include "BattleState_WildTalk.h"
 #include <GameEnginePlatform/GameEngineInput.h>
-#include "Battle_MonsterAppearEffect.h"
 #include "BattlePlayer.h"
 #include "BackTextActor.h"
 #include "BattleLevel.h"
@@ -38,8 +37,7 @@ void BattleState_WildTalk::Start()
 
 void BattleState_WildTalk::PlayerMonsterCreate()
 {
-	GetAppearEffect()->Action();//이걸 TalkFSM에서 하는게 맞을까? 플레이어가 몬스터를 생성할때 하는게 맞지 않아?
-	BattlePlayer::PlayerPtr->CreatePlayerMonster();
+	BattlePlayer::PlayerPtr->CreateMontser();
 }
 
 void BattleState_WildTalk::NextStateAtLastText()

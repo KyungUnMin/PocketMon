@@ -14,8 +14,6 @@ public:
 	Battle_MonsterAppearEffect& operator=(const Battle_MonsterAppearEffect& _Other) = delete;
 	Battle_MonsterAppearEffect& operator=(const Battle_MonsterAppearEffect&& _Other) noexcept = delete;
 
-	void Action();
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -27,9 +25,7 @@ private:
 		FadeOut,
 	};
 
-	bool IsActive = false;
-	float ActiveTime = 0.f;
-	const float Duration = 0.25f;
+	float FadeTime = 0.f;
 	FadeState CurState = FadeState::FadeIn;
 
 	GameEngineRender* WhiteFade = nullptr;

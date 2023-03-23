@@ -4,7 +4,6 @@
 #include "BattleLevel.h"
 #include "EnemyHPBackground.h"
 #include "BackTextActor.h"
-#include "Battle_MonsterAppearEffect.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -14,14 +13,6 @@ BattleState_TalkBase::BattleState_TalkBase()
 BattleState_TalkBase::~BattleState_TalkBase()
 {
 
-}
-
-void BattleState_TalkBase::Start()
-{
-	AppearEffect = BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
-
-	//연출을 위한 대기시간
-	Timer = -1.6f;
 }
 
 void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Texts)

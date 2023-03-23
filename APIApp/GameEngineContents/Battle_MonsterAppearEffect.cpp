@@ -22,45 +22,34 @@ void Battle_MonsterAppearEffect::Start()
 
 	WhiteFade = CreateRender("BattleAppearEffect.bmp", BattleRenderOrder::Effect0);
 	WhiteFade->SetScaleToImage();
-	WhiteFade->Off();
-}
-
-void Battle_MonsterAppearEffect::Action()
-{
-	IsActive = true;
-	ActiveTime = GetLiveTime();
-	CurState = FadeState::FadeIn;
-	WhiteFade->On();
 }
 
 
 void Battle_MonsterAppearEffect::Update(float _DeltaTime)
 {
-	if (false == IsActive)
-		return;
-
 	if (FadeState::FadeIn == CurState)
 	{
 		if (false == Update_Fade(0.f, 255.f))
 			return;
 
 		CurState = FadeState::FadeOut;
-		ActiveTime = GetLiveTime();
+		FadeTime = GetLiveTime();
 	}
 	else if (FadeState::FadeOut == CurState)
 	{
 		if (false == Update_Fade(255.f, 0.f))
 			return;
 
-		IsActive = false;
-		WhiteFade->Off();
+		Death();
 	}
 }
 
 
 bool Battle_MonsterAppearEffect::Update_Fade(float _StartAlpha, float _DestAlpha)
 {
-	float NowTime = GetLiveTime() - ActiveTime;
+	static const float Duration = 0.25f;
+
+	float NowTime = GetLiveTime() - FadeTime;
 	float Ratio = (NowTime / Duration);
 
 	float4 StartAlpha = float4::Right * _StartAlpha;

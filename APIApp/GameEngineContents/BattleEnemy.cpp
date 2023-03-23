@@ -52,7 +52,8 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 	GroundRender->SetScaleToImage();
 
 	const float4& RenderScale = GroundRender->GetScale();
-	SetMovePositions({ -RenderScale.hx(), Height }, { ScreenSize.x - RenderScale.hx(), Height });
+	MoveStartPos = float4{ -RenderScale.hx(), Height };
+	MoveEndPos = float4{ ScreenSize.x - RenderScale.hx(), Height };
 }
 
 
@@ -73,6 +74,8 @@ void BattleEnemy::CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType)
 		break;
 	}
 }
+
+
 
 void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 {
@@ -102,4 +105,33 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	//юс╫ц
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNumber::Onix, true);
+}
+
+
+
+
+
+
+
+
+
+void BattleEnemy::Update(float _DeltaTime)
+{
+	switch (CurState)
+	{
+	case BattleEnemy::State::Move:
+		Update_Move();
+		break;
+	case BattleEnemy::State::Idle:
+		break;
+	}
+}
+
+
+void BattleEnemy::Update_Move()
+{
+	if (true == Update_LerpMoveActor(MoveStartPos, MoveEndPos, BattleTrainerBase::MoveDuration))
+		return;
+
+	CurState = State::Idle;
 }

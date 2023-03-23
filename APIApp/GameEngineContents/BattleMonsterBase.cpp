@@ -1,6 +1,7 @@
 #include "BattleMonsterBase.h"
+#include <GameEngineCore/GameEngineLevel.h>
 #include "PokeDataBase.h"
-
+#include "ContentsEnum.h"
 
 
 
@@ -13,7 +14,6 @@ BattleMonsterBase::~BattleMonsterBase()
 {
 
 }
-
 
 
 

@@ -17,8 +17,8 @@ BattleMonsterPlayer::~BattleMonsterPlayer()
 void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
 {
 	BattleMonsterBase::Init(_MonsterType);
+
 	RenderCreate();
-	SetPos({ 300.f, 300.f });
 }
 
 void BattleMonsterPlayer::RenderCreate()
@@ -28,10 +28,12 @@ void BattleMonsterPlayer::RenderCreate()
 	std::string ImagePath = "Battle" + Name + "Back.bmp";
 	MonsterRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	MonsterRender->SetScaleToImage();
+	MonsterRender->Off();
 
 	ImagePath = "Battle" + Name + "BackLight.bmp";
 	AppearRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	AppearRender->SetScale(float4::Zero);
+	AppearRender->SetAlpha(100.f);
 }
 
 
@@ -56,13 +58,16 @@ void BattleMonsterPlayer::Update_Appear()
 
 	//알파값 조정
 	float Ratio = (GetLiveTime() / Duration);
-	//TODO
+
+	float4 DestScale = MonsterRender->GetScale();
+	float4 NowScale = float4::LerpClamp(float4::Zero, DestScale, Ratio);
+	AppearRender->SetScale(NowScale);
 
 	//Duration 시간이 지났다면
 	if (Ratio <= 1.f)
 		return;
 
 	CurState = State::Ready;
-	AppearRender->Death();
-	AppearRender = nullptr;
+	AppearRender->Off();
+	MonsterRender->On();
 }

@@ -2,10 +2,12 @@
 #include <GameEngineCore/GameEngineActor.h>
 
 enum class BattleFieldType;
+class GameEngineComponent;
 
 class BattleTrainerBase : public GameEngineActor
 {
 public:
+	//BattlePlayer와 BattleEnemy에서 사용
 	static const float MoveDuration;
 
 	BattleTrainerBase();
@@ -16,26 +18,15 @@ public:
 	BattleTrainerBase& operator=(const BattleTrainerBase& _Other) = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
 
-	virtual void PocketBallThrow(){}
-
-	virtual void MonsterCreate(){}
-
+	virtual void CreateMontser();
 
 protected:
-	void Start() override;
-	void Update(float _DeltaTime) override;
-	void Render(float _DeltaTime) override{}
-
-	inline void SetMovePositions(const float4 _StartPos, const float4 _EndPos)
-	{
-		MoveStartPos = _StartPos;
-		MoveEndPos = _EndPos;
-	}
+	bool Update_LerpMoveActor(const float4 _StartPos, const float4 _EndPos, float _Duration);
+	bool Update_LerpMoveComponent(GameEngineComponent* _Component, const float4 _StartPos, const float4 _EndPos, float _Duration);
+	
 
 private:
-	float4 MoveStartPos = float4::Zero;
-	float4 MoveEndPos = float4::Zero;
-	
-	void BattleStartMove();
+	bool IsMove = false;
+	float MoveStartTime = 0.f;
 };
 
