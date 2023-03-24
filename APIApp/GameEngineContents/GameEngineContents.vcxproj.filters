@@ -217,6 +217,19 @@
     <ClCompile Include="BattleFSMBase.cpp">
       <Filter>Battle\03.FSM\01.Battle\01.FSM\01.Base</Filter>
     </ClCompile>
+    <ClCompile Include="CountItemMenu.cpp" />
+    <ClCompile Include="EndingLevel.cpp">
+      <Filter>Ending\Level</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingFade.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingPokeballBackground.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingPokemonRender.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -429,6 +442,19 @@
     </ClInclude>
     <ClInclude Include="BattleFSMBase.h">
       <Filter>Battle\03.FSM\01.Battle\01.FSM\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="CountItemMenu.h" />
+    <ClInclude Include="EndingLevel.h">
+      <Filter>Ending\Level</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingFade.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingPokeballBackground.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingPokemonRender.h">
+      <Filter>Ending\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
