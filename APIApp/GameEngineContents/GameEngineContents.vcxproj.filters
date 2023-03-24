@@ -208,6 +208,9 @@
     <ClCompile Include="EndingPlayActor.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="ItemDataBase.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
     <ClCompile Include="BattlePlayerFSM.cpp">
       <Filter>Battle\03.FSM\01.Battle\01.FSM\03.Player</Filter>
     </ClCompile>
@@ -417,6 +420,9 @@
     </ClInclude>
     <ClInclude Include="EndingPlayActor.h">
       <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemDataBase.h">
+      <Filter>Base</Filter>
     </ClInclude>
     <ClInclude Include="BattlePlayerFSM.h">
       <Filter>Battle\03.FSM\01.Battle\01.FSM\03.Player</Filter>

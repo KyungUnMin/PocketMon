@@ -6,6 +6,7 @@
 
 #include <GameEngineBase/GameEngineDebug.h>
 #include "PokeSkillBase.h"
+#include "ContentsEnum.h"
 
 // 도감번호는 +1로 표시
 enum class PokeNumber
@@ -91,7 +92,6 @@ enum class PokeCharacteristic
 };
 
 class GameEngineRender;
-// class PokeSkillBase;
 
 // 설명 :
 class PokeDataBase
@@ -142,6 +142,18 @@ public:
 		SpecialAttackPowerItem = false;
 		SpecialDefenseItem = false;
 		IshaveItem = false;
+	}
+
+	// 소지한 아이템 코드
+	ItemCode GetPossession()
+	{
+		return Possession;
+	}
+
+	// 아이템 코드 수정
+	void SetPossession(ItemCode _enumnumber)
+	{
+		Possession = _enumnumber;
 	}
 
 	// 공격 아이템 들기
@@ -394,7 +406,8 @@ public:
 	{
 		return Ptr;
 	}
-	static void Release();
+	
+	void Release();
 
 	// 아이템을 가졌는지 확인 (계산용)
 	//float GetPossessionItem()
@@ -405,17 +418,17 @@ public:
 	//	// 스페셜 방어력 아이템 (1.1f)
 	//}
 
-	void usepokeball(int _ball)
-	{
-		if (true)
-		{
+	//void usepokeball(int _ball)
+	//{
+	//	if (true)
+	//	{
 
-		}
-		else
-		{
+	//	}
+	//	else
+	//	{
 
-		}
-	}
+	//	}
+	//}
 
 protected:
 
@@ -438,6 +451,8 @@ private:
 	bool IsbeCaught = false;									  // 야생포켓몬인지 잡힌 포켓몬인지
 
 	// 소지품
+	ItemCode Possession = ItemCode::Cancel;
+
 	bool IshaveItem = false;                                      // 아이템을 가졌는지
 	bool AttackPowerItem = false;                                 // 공격력 업 아이템
 	bool DefenseItem = false;                                     // 방어력 업 아이템

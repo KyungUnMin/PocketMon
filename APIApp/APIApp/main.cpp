@@ -2,10 +2,12 @@
 #include <GameEngineContents/PocketMonCore.h>
 
 #include <vector>
+#include <string>
 #include <iostream>
 
 #include <GameEngineContents/PokeDataBase.h>
 #include <GameEngineContents/PokeBattleSystem.h>
+#include <GameEngineContents/ItemDataBase.h>
 
 int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	_In_opt_ HINSTANCE hPrevInstance,
@@ -55,6 +57,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	aassbbc = NewP1->GetMonsterMaxHP_int();
 	bbc = NewP1->GetMonsterCurrentHP();
 
+	ItemDataBase* AAAAAA0 = ItemDataBase::ItemCreate(ItemCode::Potion);
+	ItemDataBase* AAAAAA1 = ItemDataBase::ItemCreate(ItemCode::Potion);
+	ItemDataBase* AAAAAA2 = ItemDataBase::ItemCreate(ItemCode::Potion);
+	ItemDataBase* AAAAAA3 = ItemDataBase::ItemCreate(ItemCode::Potion);
+	ItemDataBase* AAAAAA4 = ItemDataBase::ItemCreate(ItemCode::Potion);
+	
+	std::string sfdf = AAAAAA4->ForUI_GetItemName();
+	std::string sfd13132f = AAAAAA4->ForUI_GetItemExplanation();
+	
 	PocketMonCore::GetInst().CoreStart(hInstance);
 	return 1;
 }
