@@ -148,7 +148,7 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 void BattleLevel::PassPlayerTurn()
 {
-	BattleStateType NowFsmType = BattleFsmPtr->GetNowState();
+	BattleStateType NowFsmType = BattleFsmPtr->GetNowState<BattleStateType>();
 
 	if (BattleStateType::PlayerTurn != NowFsmType)
 	{

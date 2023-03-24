@@ -102,7 +102,7 @@
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleFSM.cpp">
-      <Filter>Battle\03.FSM\01.Battle\01.FSM</Filter>
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\02.Battle</Filter>
     </ClCompile>
     <ClCompile Include="BattleStateBase.cpp">
       <Filter>Battle\03.FSM\01.Battle\02.State\01.Base</Filter>
@@ -208,6 +208,12 @@
     <ClCompile Include="EndingPlayActor.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattlePlayerFSM.cpp">
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\03.Player</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleFSMBase.cpp">
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\01.Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -309,7 +315,7 @@
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
-      <Filter>Battle\03.FSM\01.Battle\01.FSM</Filter>
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\02.Battle</Filter>
     </ClInclude>
     <ClInclude Include="BattleStateBase.h">
       <Filter>Battle\03.FSM\01.Battle\02.State\01.Base</Filter>
@@ -411,6 +417,12 @@
     </ClInclude>
     <ClInclude Include="EndingPlayActor.h">
       <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattlePlayerFSM.h">
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\03.Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFSMBase.h">
+      <Filter>Battle\03.FSM\01.Battle\01.FSM\01.Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -546,9 +558,6 @@
     <Filter Include="Battle\03.FSM\01.Battle">
       <UniqueIdentifier>{715dd0cd-c77d-4f6c-886f-8870d2cd4278}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\01.Battle\01.FSM">
-      <UniqueIdentifier>{a388eb5f-b1cc-4138-89c5-90a40434a5ba}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Battle\03.FSM\01.Battle\02.State">
       <UniqueIdentifier>{d6f3624a-46a9-4d93-b2b0-949a42ef1620}</UniqueIdentifier>
     </Filter>
@@ -576,17 +585,17 @@
     <Filter Include="Battle\03.FSM\01.Battle\02.State\04.ThrowMonsterBall">
       <UniqueIdentifier>{db7dc803-454b-48c6-b689-5622e8ed80fb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\02.Player">
-      <UniqueIdentifier>{4e2b555a-654a-417a-a106-471163df26c5}</UniqueIdentifier>
+    <Filter Include="Battle\03.FSM\01.Battle\01.FSM">
+      <UniqueIdentifier>{3df510ce-a305-4291-afca-ba52298ea4ab}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\03.Enemy">
-      <UniqueIdentifier>{215642f8-23c4-407f-a49e-a11539a8bd38}</UniqueIdentifier>
+    <Filter Include="Battle\03.FSM\01.Battle\01.FSM\01.Base">
+      <UniqueIdentifier>{9c6c430b-c9cd-4da9-9e70-292191362e67}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\02.Player\01.FSM">
+    <Filter Include="Battle\03.FSM\01.Battle\01.FSM\03.Player">
       <UniqueIdentifier>{7474bcc0-4978-43e8-be17-0226f89ba329}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\02.Player\02.State">
-      <UniqueIdentifier>{36f4766a-2409-4417-99d8-ad3a955d56c6}</UniqueIdentifier>
+    <Filter Include="Battle\03.FSM\01.Battle\01.FSM\02.Battle">
+      <UniqueIdentifier>{a388eb5f-b1cc-4138-89c5-90a40434a5ba}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

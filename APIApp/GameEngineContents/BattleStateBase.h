@@ -1,11 +1,11 @@
 #pragma once
 
-class BattleFSM;
+class BattleFSMBase;
 
 class BattleStateBase
 {
 public:
-	friend BattleFSM;
+	friend BattleFSMBase;
 
 	BattleStateBase();
 	virtual ~BattleStateBase() = 0;
@@ -16,7 +16,7 @@ public:
 	BattleStateBase& operator=(const BattleStateBase&& _Other) noexcept = delete;
 
 protected:
-	inline BattleFSM* GetFSM()
+	inline BattleFSMBase* GetFSM()
 	{
 		return FsmPtr;
 	}
@@ -27,6 +27,6 @@ protected:
 
 
 private:
-	BattleFSM* FsmPtr = nullptr;
+	BattleFSMBase* FsmPtr = nullptr;
 };
 

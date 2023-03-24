@@ -14,21 +14,15 @@ BattleFSM::BattleFSM()
 
 BattleFSM::~BattleFSM()
 {
-	for (size_t i = 0; i < AllState.size(); ++i)
-	{
-		if (nullptr == AllState[i])
-			continue;
-
-		delete AllState[i];
-		AllState[i] = nullptr;
-	}
+	
 }
 
 
 void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
-	AllState.resize(static_cast<size_t>(BattleStateType::COUNT), nullptr);
-	for (size_t i = 0; i < AllState.size(); ++i)
+	ResizeStates(BattleStateType::COUNT);
+	size_t Size = static_cast<size_t>(BattleStateType::COUNT);
+	for (size_t i = 0; i < Size; ++i)
 	{
 		CreateState(static_cast<BattleStateType>(i));
 	}
@@ -73,51 +67,7 @@ void BattleFSM::CreateState(BattleStateType _Type)
 		return;
 	}
 
-	NewState->FsmPtr = this;
-	AllState[static_cast<size_t>(_Type)] = NewState;
-}
-
-
-
-
-
-
-void BattleFSM::ChangeState(BattleStateType _NextStateType)
-{
-	BattleStateBase* PrevState = nullptr;
-	if (BattleStateType::COUNT != CurStateType)
-	{
-		PrevState = AllState[static_cast<size_t>(CurStateType)];
-	}
-
-	BattleStateBase* NextState = AllState[static_cast<size_t>(_NextStateType)];
-
-	if (nullptr == NextState)
-	{
-		MsgAssert("바꾸려는 배틀 State는 만들어준 적이 없습니다");
-		return;
-	}
-
-	if (nullptr != PrevState)
-	{
-		PrevState->ExitState();
-	}
-
-	NextState->EnterState();
-
-	CurStateType = _NextStateType;
-}
-
-
-
-void BattleFSM::Update(float _DeltaTime)
-{
-	if (BattleStateType::COUNT == CurStateType)
-	{
-		MsgAssert("현재 배틀 상태를 설정해주지 않았습니다");
-	}
-
-	AllState[static_cast<size_t>(CurStateType)]->Update(_DeltaTime);
+	SetState(static_cast<size_t>(_Type), NewState);
 }
 
 

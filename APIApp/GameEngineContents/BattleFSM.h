@@ -1,6 +1,5 @@
 #pragma once
-#include <vector>
-#include <memory>
+#include "BattleFSMBase.h"
 
 enum class BattleStateType
 {
@@ -12,37 +11,23 @@ enum class BattleStateType
 	COUNT,
 };
 
-class BattleStateBase;
-class GameEngineLevel;
-enum class BattleFieldType;
-enum class BattleNpcType;
 
-class BattleFSM
+class BattleFSM : public BattleFSMBase
 {
 public:
 	BattleFSM();
-	~BattleFSM();
+	~BattleFSM() override;
 
 	BattleFSM(const BattleFSM& _Other) = delete;
 	BattleFSM(BattleFSM&& _Other) noexcept = delete;
 	BattleFSM& operator=(const BattleFSM& _Other) = delete;
 	BattleFSM& operator=(const BattleFSM&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
-	void ChangeState(BattleStateType _Type);
-	void Update(float _DeltaTime);
+	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType) override;
 	
-	inline BattleStateType GetNowState()
-	{
-		return CurStateType;
-	}
-
 protected:
 
 private:
-	std::vector<BattleStateBase*> AllState;
-	BattleStateType CurStateType = BattleStateType::COUNT;
-
 	void CreateState(BattleStateType _Type);
 };
 
