@@ -35,9 +35,9 @@ void Battle_PlayerThrowBall::Start()
 	RenderPtr->ChangeAnimation("Roll");
 }
 
-void Battle_PlayerThrowBall::Init(const float4& _DestPos, float _Duration)
+void Battle_PlayerThrowBall::Init(const float4& _DestPos, float _Duration, float _OffsetX)
 {
-	const float4 StartOffset = float4{ -100.f, -200.f };
+	const float4 StartOffset = float4{ _OffsetX, -200.f };
 
 	StartPosX.x = _DestPos.x + StartOffset.x;
 	DestPosX.x = _DestPos.x;

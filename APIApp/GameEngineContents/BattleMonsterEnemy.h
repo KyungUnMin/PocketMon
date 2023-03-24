@@ -23,6 +23,9 @@ private:
 		Move,
 		Appear,
 		Ready,
+		LockOn,
+		Lock,
+		//°¥¾Æ¾þ¾î?
 	};
 
 	bool IsWildMonster = false;

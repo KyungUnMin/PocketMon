@@ -45,6 +45,7 @@ BattleLevel::~BattleLevel()
 void BattleLevel::Loading()
 {
 	GameEngineInput::CreateKey(BattleKeyName, BattleKey);
+	GameEngineInput::CreateKey("Test_ThrowMonsterBall", 'H');
 }
 
 
@@ -89,16 +90,29 @@ void BattleLevel::InitGroundRenders(BattleFieldType _FieldType)
 
 void BattleLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		Debug_LevelChanged = true;
+	if (true == TestKeyUpdate())
 		return;
-	}
 
 	BattleFsmPtr->Update(_DeltaTime);
 }
 
+bool BattleLevel::TestKeyUpdate()
+{
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	{
+		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
+		Debug_LevelChanged = true;
+		return true;
+	}
+
+	if (true == GameEngineInput::IsDown("Test_ThrowMonsterBall"))
+	{
+		BattleFsmPtr->ChangeState(BattleStateType::ThrowMonsterBall);
+		return false;
+	}
+
+	return false;
+}
 
 
 
@@ -154,3 +168,4 @@ void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 {
 
 }
+

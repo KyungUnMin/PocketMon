@@ -202,6 +202,12 @@
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
       <Filter>Battle\03.FSM\02.State\04.ThrowMonsterBall</Filter>
     </ClCompile>
+    <ClCompile Include="BattleFSMBase.cpp">
+      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleFSM_StateBase.cpp">
+      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
+    </ClCompile>
     <ClCompile Include="EndingPlayerAnimActor.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
@@ -406,6 +412,12 @@
     <ClInclude Include="Item.h">
       <Filter>FieldUI\BagUI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleFSMBase.h">
+      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFSM_StateBase.h">
+      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
+    </ClInclude>
     <ClInclude Include="EndingPlayerAnimActor.h">
       <Filter>Ending\Actor</Filter>
     </ClInclude>
@@ -563,6 +575,9 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.State\04.ThrowMonsterBall">
       <UniqueIdentifier>{db7dc803-454b-48c6-b689-5622e8ed80fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.FSM\01.FSMBase">
+      <UniqueIdentifier>{4091ce49-d548-43f1-bf02-f45ca008093f}</UniqueIdentifier>
     </Filter>
     <Filter Include="Ending">
       <UniqueIdentifier>{366894d5-fde8-4465-893e-b842605cf9ff}</UniqueIdentifier>

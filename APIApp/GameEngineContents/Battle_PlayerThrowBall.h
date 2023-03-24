@@ -12,7 +12,12 @@ public:
 	Battle_PlayerThrowBall& operator=(const Battle_PlayerThrowBall& _Other) = delete;
 	Battle_PlayerThrowBall& operator=(const Battle_PlayerThrowBall&& _Other) noexcept = delete;
 
-	void Init(const float4& _DestPos, float _Duration);
+	void Init(const float4& _DestPos, float _Duration, float _OffsetX = -100.f);
+
+	inline void SetGravityAcc(float _Acc)
+	{
+		GravityAcc = _Acc;
+	}
 
 protected:
 	void Start() override;
@@ -27,6 +32,6 @@ private:
 	float4 DestPosX = float4::Zero;
 
 	float VerticalSpeed = -100.f;
-	const float GravityAcc = 2000.f;
+	float GravityAcc = 2000.f;
 };
 

@@ -12,7 +12,7 @@
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 const std::string_view BattlePlayer::IdleAniName = "Idle";
-const std::string_view BattlePlayer::ThrowAniName = "Throw";\
+const std::string_view BattlePlayer::ThrowAniName = "Throw";
 
 
 BattlePlayer::BattlePlayer()
