@@ -2,6 +2,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class BuyWindow;
+class CountItemMenu;
 class BuyLevel : public GameEngineLevel
 {
 public:
@@ -23,6 +24,7 @@ protected:
 
 private:
 	BuyWindow* AcBuyWindow = nullptr;
+	CountItemMenu* AcCountItemMenu = nullptr;
 
 	void ImageLoad();
 

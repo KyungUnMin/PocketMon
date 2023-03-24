@@ -27,12 +27,20 @@ public:
 	BuyWindow& operator=(BuyWindow&& _Other) noexcept = delete;
 
 	void ChangeState(int _State);
+	bool IsValid = true;
+
+	static BuyWindow* GetBuyWindow()
+	{
+		return AcBuyWindow;
+	}
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
+	static BuyWindow* AcBuyWindow;
+
 	BuyLevel* ParentLevel = nullptr;
 	
 	float4 ActorPos = { 480, 320 };
@@ -53,6 +61,7 @@ private:
 	float4 LineInterval = { 0, 64 };
 
 	int State = 0;
+
 
 	void StateToRender();
 	void ChangeStatePrev();

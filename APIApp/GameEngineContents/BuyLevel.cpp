@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include "BuyWindow.h"
 #include "ShopUIManager.h"
+#include "CountItemMenu.h"
 
 BuyLevel::BuyLevel()
 {
@@ -18,6 +19,7 @@ void BuyLevel::Loading()
 {
 	ImageLoad();
 	AcBuyWindow = CreateActor<BuyWindow>();
+	AcCountItemMenu = CreateActor<CountItemMenu>();
 }
 
 void BuyLevel::Update(float _DeltaTime)
@@ -43,5 +45,6 @@ void BuyLevel::ImageLoad()
 	Dir.Move("FieldUI_HSM");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Buy.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressMenuArrow.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CountSelectItem.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SmallNum.bmp"))->Cut(10,1);
 }

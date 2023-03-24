@@ -3,10 +3,13 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "BuyLevel.h"
+#include "CountItemMenu.h"
+
+BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
 BuyWindow::BuyWindow()
 {
-
+	AcBuyWindow = this;
 }
 
 BuyWindow::~BuyWindow()
@@ -70,6 +73,11 @@ void BuyWindow::Start()
 
 void BuyWindow::Update(float _DeltaTime)
 {
+	if (!IsValid)
+	{
+		return;
+	}
+
 	if (GameEngineInput::IsDown("Menu_Up"))
 	{
 		ChangeStatePrev();
@@ -85,6 +93,7 @@ void BuyWindow::Update(float _DeltaTime)
 		switch (State)
 		{
 		case 0:
+			CountItemMenu::GetCountItemMenu()->On();
 			break;
 		case 1:
 			break;
