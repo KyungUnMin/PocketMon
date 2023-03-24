@@ -43,7 +43,6 @@ private:
 	Player* MainPlayer = nullptr;
 	NPC1* TestNpc = nullptr;
 
-
 	FieldDialog* MainFieldDialog = nullptr;
 	FieldmapRender* MainFieldRender = nullptr;
 	FieldMainMenu* MainFieldMainMenu = nullptr;

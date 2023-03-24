@@ -26,6 +26,7 @@
 //Game Actor
 #include "Player.h"
 #include "NPC1.h"
+#include "EndingPlayActor.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -355,6 +356,8 @@ void FieldmapLevel::Loading()
 		}
 	}
 
+	CreateActor<EndingPlayActor>();
+
 	Fieldmap::ChangeCity("PalletTown");
 
 	// Debug¿ë ·£´õ
@@ -381,6 +384,11 @@ void FieldmapLevel::Loading()
 
 void FieldmapLevel::Update(float _DeltaTime)
 {
+	if (true == EndingPlayActor::IsEndingPlay)
+	{
+		return;
+	}
+
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
@@ -404,6 +412,11 @@ void FieldmapLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("EventLog"))
 	{
 		Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
+	}
+
+	if (true == GameEngineInput::IsDown("PlayEnding"))
+	{
+		EndingPlayActor::MainEndingPlayActor->PlayEnding();
 	}
 
 	if (true == GameEngineInput::IsDown("FreeCamera"))

@@ -240,8 +240,16 @@ void CenterLevel::Loading()
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.bmp"));
+
 	}
 
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
+		Dir.Move("Ending");
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingWalk.bmp"))->Cut(6, 1);
+	}
 	{
 		//Dir.MoveParentToDirectory("Image");
 		//Dir.Move("Image");
@@ -326,6 +334,7 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKeyNoToupper("EventDebug", VK_F4);
 		GameEngineInput::CreateKeyNoToupper("EventCheck", VK_F5);
 		GameEngineInput::CreateKeyNoToupper("EventLog", VK_F6);
+		GameEngineInput::CreateKeyNoToupper("PlayEnding", VK_F7);
 
 		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
 		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);

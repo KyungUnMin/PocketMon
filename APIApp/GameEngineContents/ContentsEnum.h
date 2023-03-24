@@ -28,6 +28,10 @@ enum class RenderOrder
 	Battle_Text,
 	Battle_Cursor,
 
+	EndingBack,
+	EndingMiddle,
+	EndingFront,
+
 	Fade,
 };
 

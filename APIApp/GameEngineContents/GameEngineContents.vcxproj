@@ -230,6 +230,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DoorActorBase.cpp" />
+    <ClCompile Include="EndingPlayActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingPlayerAnimActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapBattleZone.cpp">
       <SubType>
       </SubType>
@@ -399,6 +407,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="DoorActorBase.h" />
+    <ClInclude Include="EndingPlayActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingPlayerAnimActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="FieldmapBattleZone.h">
       <SubType>
       </SubType>
