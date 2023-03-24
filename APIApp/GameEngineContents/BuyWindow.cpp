@@ -1,4 +1,5 @@
 #include "BuyWindow.h"
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "BuyLevel.h"
 
@@ -35,7 +36,7 @@ void BuyWindow::Start()
 		{
 			ItemNameRenders[i]->SetText("CANCLE");
 		}
-		ItemNameRenders[i]->SetPos(NameRenderFirstPos + float4{ 0, 64 } *static_cast<float>(i));
+		ItemNameRenders[i]->SetPos(NameRenderFirstPos + LineInterval *static_cast<float>(i));
 	}
 
 	for (size_t i = 0; i < 6; i++)
@@ -44,6 +45,49 @@ void BuyWindow::Start()
 		ItemPriceRenders[i].SetImage("SmallNum.bmp", ItemPriceRenderScale, static_cast<int>(RenderOrder::Shop_Text), RGB(255, 0, 255));
 		ItemPriceRenders[i].SetAlign(Align::Right);
 		ItemPriceRenders[i].SetValue(1000);
-		ItemPriceRenders[i].SetRenderPos(FirstItemPriceRenderPos + float4{ 0, 64 } *static_cast<float>(i));
+		ItemPriceRenders[i].SetRenderPos(FirstItemPriceRenderPos + LineInterval *static_cast<float>(i));
 	}
+
+	ArrowRender = CreateRender("MenuArrow.bmp", RenderOrder::Shop_Text);
+	ArrowRender->SetScaleToImage();
+	ArrowRender->EffectCameraOff();
+	ArrowRender->SetPosition(FirstArrowRenderPos);
+}
+
+void BuyWindow::Update(float _DeltaTime)
+{
+	if (GameEngineInput::IsDown("Menu_Up"))
+	{
+		ChangeStatePrev();
+	}
+
+	if (GameEngineInput::IsDown("Menu_Down"))
+	{
+		ChangeStateNext();
+	}
+}
+
+void BuyWindow::StateToRender()
+{
+	ArrowRender->SetPosition(FirstArrowRenderPos + LineInterval * State);
+}
+
+void BuyWindow::ChangeStatePrev()
+{
+	State--;
+	if (State < 0)
+	{
+		State = 5;
+	}
+	StateToRender();
+}
+
+void BuyWindow::ChangeStateNext()
+{
+	State++;
+	if (State > 5)
+	{
+		State = 0;
+	}
+	StateToRender();
 }

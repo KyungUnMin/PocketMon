@@ -28,6 +28,7 @@ public:
 
 protected:
 	void Start() override;
+	void Update(float _DeltaTime) override;
 
 private:
 	BuyLevel* ParentLevel = nullptr;
@@ -44,5 +45,15 @@ private:
 	float4 ItemPriceRenderScale = { 20,32 };
 	float4 FirstItemPriceRenderPos = { 392,-248 };
 
+	GameEngineRender* ArrowRender = nullptr;
+	float4 FirstArrowRenderPos = { -108,-252 };
+
+	float4 LineInterval = { 0, 64 };
+
+	int State = 0;
+
+	void StateToRender();
+	void ChangeStatePrev();
+	void ChangeStateNext();
 };
 

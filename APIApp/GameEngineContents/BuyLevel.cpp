@@ -31,5 +31,6 @@ void BuyLevel::ImageLoad()
 	Dir.Move("Image");
 	Dir.Move("FieldUI_HSM");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Buy.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressMenuArrow.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SmallNum.bmp"))->Cut(10,1);
 }
