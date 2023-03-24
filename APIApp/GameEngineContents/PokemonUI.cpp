@@ -518,8 +518,8 @@ void PokemonUI::SwitchSelect()
 
 void PokemonUI::Item()
 {
-	Pokemons[CurrentCursor]->ForInven_ItemRelease();
-	PlayerBag::MainBag->AddItem(ItemCode::Potion);
+	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor]->GetPossession());
+	Pokemons[CurrentCursor]->SetPossession(ItemCode::Cancel);
 	PokeDataSetting();
 	SelectOff();
 }
@@ -579,8 +579,9 @@ void PokemonUI::SetBarText()
 
 void PokemonUI::GiveItem()
 {
-	Pokemons[CurrentCursor]->ForInven_AttackItemPossession();
+	Pokemons[CurrentCursor]->SetPossession(CurrentItemCode);
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
+
 	PocketMonCore::GetInst().ChangeLevel("BagLevel");
 	PokeDataSetting();
 }
