@@ -405,6 +405,18 @@ public:
 	//	// 스페셜 방어력 아이템 (1.1f)
 	//}
 
+	void usepokeball(int _ball)
+	{
+		if (true)
+		{
+
+		}
+		else
+		{
+
+		}
+	}
+
 protected:
 
 private:
