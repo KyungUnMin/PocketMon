@@ -389,6 +389,8 @@ void FieldmapLevel::Update(float _DeltaTime)
 		return;
 	}
 
+	Fieldmap::FieldUpdate();
+
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
@@ -418,6 +420,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 	{
 		MainPlayer->Off();
 		EndingPlayActor::MainEndingPlayActor->PlayEnding();
+		return;
 	}
 
 	if (true == GameEngineInput::IsDown("FreeCamera"))

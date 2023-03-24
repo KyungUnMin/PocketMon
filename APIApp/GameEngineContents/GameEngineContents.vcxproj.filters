@@ -230,6 +230,12 @@
     <ClCompile Include="EndingPokemonRender.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="EndingEndLogo.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingTextActor.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -454,6 +460,12 @@
       <Filter>Ending\Actor</Filter>
     </ClInclude>
     <ClInclude Include="EndingPokemonRender.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingEndLogo.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingTextActor.h">
       <Filter>Ending\Actor</Filter>
     </ClInclude>
   </ItemGroup>

@@ -67,6 +67,8 @@ public:
 	static void AddFlowerActors(const std::string_view& _CityName, const std::string_view& _FlowerImageName);
 	static void LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB);
 
+	static void FieldUpdate();
+
 private:
 	static FieldmapCity* CurCity;
 	static std::map<std::string, FieldmapCity*> AllCitys;

@@ -5,9 +5,12 @@
 #include "EndingPokeballBackground.h"
 #include "EndingPokemonRender.h"
 #include "EndingFade.h"
+#include "EndingTextActor.h"
+
 
 EndingPokeballBackground::PokeColor EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Green;
 std::string EndingLevel::PokemonRenderImageName = "EndingPokemon002.bmp";
+bool EndingLevel::LastEffect = false;
 
 EndingLevel::EndingLevel()
 {
@@ -37,10 +40,22 @@ void EndingLevel::Loading()
 	Fade->SetPos(WindowSizeHalf);
 	Fade->SetSpeed(2.0f);
 	Fade->Off();
+
+	LastLogo = CreateActor<EndingTextActor>();
+	LastLogo->SetPos(WindowSizeHalf);
+	LastLogo->Off();
 }
 
 void EndingLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	if (true == LastEffect)
+	{
+		Fade->SetProgress(1.0f);
+		Fade->On();
+		LastLogo->On();
+		return;
+	}
+
 	PokemonRender->On();
 	PokemonRender->PlayAnim(PokemonRenderImageName);
 

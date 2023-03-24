@@ -4,6 +4,7 @@
 
 class EndingPokemonRender;
 class EndingFade;
+class EndingTextActor;
 class EndingLevel : public GameEngineLevel
 {
 public:
@@ -18,6 +19,8 @@ public:
 	static EndingPokeballBackground::PokeColor PokeballColor;
 	static std::string PokemonRenderImageName;
 
+	static bool LastEffect;
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override {}
@@ -29,4 +32,5 @@ private:
 	EndingPokeballBackground* PokeBackActor = nullptr;
 	EndingPokemonRender* PokemonRender = nullptr;
 	EndingFade* Fade = nullptr;
+	EndingTextActor* LastLogo = nullptr;
 };

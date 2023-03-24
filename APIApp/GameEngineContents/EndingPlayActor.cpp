@@ -35,32 +35,37 @@ void EndingPlayActor::PlayEnding()
 	MainTextActor->SetText(
 		"Game Design",
 		"Font_Dialog_White.bmp",
-		static_cast<int>(RenderOrder::EndingFront),
+		static_cast<int>(RenderOrder::EndingMiddle),
 		false);
 
 	SubTextActor->SetLine(1);
 	SubTextActor->SetText(
 		"UTG",
 		"Font_Dialog_White.bmp",
-		static_cast<int>(RenderOrder::EndingFront),
+		static_cast<int>(RenderOrder::EndingMiddle),
 		false);
 
 	MainTextActor->On();
 	SubTextActor->On();
 
-	GetLevel()->LevelEvent.AddEvent(3.0f, std::bind(
+	CameraMoveDir = float4::Down;
+	CameraSpeed = 128.0f;
+
+	AddCameraMoveEvent("PewterCity", int2(15, 10));
+
+	GetLevel()->LevelEvent.AddEvent(5.0f, std::bind(
 		[](EndingPlayActor* _This){
 			_This->MainTextActor->SetText(
 				"Player Design",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			_This->SubTextActor->SetLine(1);
 			_This->SubTextActor->SetText(
 				"YDM",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			EndingLevel::PokemonRenderImageName = "EndingPokemon001.bmp";
@@ -68,21 +73,22 @@ void EndingPlayActor::PlayEnding()
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
-			Fieldmap::ChangeCity("PalletTown");
+			_This->AddCameraMoveEvent("ViridianForest", int2(10, 5));
+
 		}, this), false); // 회색 시티
-	GetLevel()->LevelEvent.AddEvent(6.0f, std::bind(
+	GetLevel()->LevelEvent.AddEvent(10.0f, std::bind(
 		[](EndingPlayActor* _This) {
 			_This->MainTextActor->SetText(
 				"Map Design",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			_This->SubTextActor->SetLine(1);
 			_This->SubTextActor->SetText(
 				"KKS",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			EndingLevel::PokemonRenderImageName = "EndingPokemon002.bmp";
@@ -90,21 +96,22 @@ void EndingPlayActor::PlayEnding()
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
-			Fieldmap::ChangeCity("PalletTown");
+			_This->AddCameraMoveEvent("ViridianCity", int2(10, 5));
+
 		}, this), false); // 상록 숲
-	GetLevel()->LevelEvent.AddEvent(9.0f, std::bind(
+	GetLevel()->LevelEvent.AddEvent(15.0f, std::bind(
 		[](EndingPlayActor* _This) {
 			_This->MainTextActor->SetText(
 				"UI Design",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			_This->SubTextActor->SetLine(3);
 			_This->SubTextActor->SetText(
 				"KKH\nHSM\nKMS",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			EndingLevel::PokemonRenderImageName = "EndingPokemon003.bmp";
@@ -112,21 +119,22 @@ void EndingPlayActor::PlayEnding()
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
-			Fieldmap::ChangeCity("PalletTown");
+			_This->AddCameraMoveEvent("Route1", int2(10, 5));
+
 		}, this), false); // 상록 시티
-	GetLevel()->LevelEvent.AddEvent(12.0f, std::bind(
+	GetLevel()->LevelEvent.AddEvent(20.0f, std::bind(
 		[](EndingPlayActor* _This) {
 			_This->MainTextActor->SetText(
 				"Battle Design",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			_This->SubTextActor->SetLine(1);
 			_This->SubTextActor->SetText(
 				"MKU",
 				"Font_Dialog_White.bmp",
-				static_cast<int>(RenderOrder::EndingFront),
+				static_cast<int>(RenderOrder::EndingMiddle),
 				false);
 
 			EndingLevel::PokemonRenderImageName = "EndingPokemon004.bmp";
@@ -134,12 +142,23 @@ void EndingPlayActor::PlayEnding()
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
-			Fieldmap::ChangeCity("PalletTown");
+			_This->AddCameraMoveEvent("PalletTown", int2(10, 5));
 		}, this), false); // 1번 도로
-	GetLevel()->LevelEvent.AddEvent(15.0f, std::bind(
+	GetLevel()->LevelEvent.AddEvent(25.0f, std::bind(
 		[](EndingPlayActor* _This) {
-			// 게임 끝 텍스트...
+			EndingLevel::LastEffect = true;
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 		}, this), false); // 태초마을 카메라
+}
+
+void EndingPlayActor::AddCameraMoveEvent(const std::string_view& _CityName, const int2& _CityIndex)
+{
+	GetLevel()->LevelEvent.AddEvent(0.0f, std::bind(
+		[=](EndingPlayActor* _This) {
+			Fieldmap::ChangeCity(_CityName);
+			_This->GetLevel()->SetCameraPos(Fieldmap::GetPos(_CityIndex));
+			_This->CameraMoveDir = float4::Down;
+		}, this), false); // 상록 시티
 }
 
 void EndingPlayActor::Start()
@@ -175,4 +194,17 @@ void EndingPlayActor::Start()
 	SubTextActor = GetLevel()->CreateActor<TextActor>();
 	SubTextActor->SetPos(float4(150, 230));
 	SubTextActor->Off();
+
+	//MainFakeTextActor = GetLevel()->CreateActor<TextActor>();
+	//MainFakeTextActor->SetPos(float4(35, 170));
+	//MainFakeTextActor->Off();
+	//
+	//SubFakeTextActor = GetLevel()->CreateActor<TextActor>();
+	//SubFakeTextActor->SetPos(float4(150, 230));
+	//SubFakeTextActor->Off();
+}
+
+void EndingPlayActor::Update(float _DeltaTime)
+{
+	GetLevel()->SetCameraMove(CameraMoveDir * _DeltaTime * CameraSpeed);
 }

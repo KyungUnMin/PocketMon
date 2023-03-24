@@ -34,6 +34,7 @@ enum class RenderOrder
 	EndingFront,
 
 	Fade,
+	EndingLastText,
 };
 
 enum class BattleRenderOrder

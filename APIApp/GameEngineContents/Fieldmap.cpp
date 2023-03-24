@@ -141,7 +141,13 @@ void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 	
+	if (nullptr != CurCity)
+	{
+		CurCity->DisableCity();
+	}
+
 	CurCity = _CityPtr;
+	CurCity->ActiveCity();
 }
 
 void Fieldmap::ChangeCity(const std::string_view& _CityName)
@@ -153,7 +159,18 @@ void Fieldmap::ChangeCity(const std::string_view& _CityName)
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
+	if (nullptr != CurCity)
+	{
+		CurCity->DisableCity();
+	}
+
 	CurCity = AllCitys[UpperName];
+	CurCity->ActiveCity();
+
+	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
+	{
+		CityRef.second->CityActiveUpdate();
+	}
 }
 
 void Fieldmap::AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
@@ -248,4 +265,17 @@ void Fieldmap::LinkNeighbor(const std::string_view& _CityNameA, const std::strin
 
 	CityAPtr->AddNeighbor(CityBPtr);
 	CityBPtr->AddNeighbor(CityAPtr);
+}
+
+void Fieldmap::FieldUpdate()
+{
+	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
+	{
+		CityRef.second->CityColUpdate();
+	}
+
+	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
+	{
+		CityRef.second->CityActiveUpdate();
+	}
 }

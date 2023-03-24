@@ -254,6 +254,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballYellow.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballGreen.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingRing.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndLogo.bmp"));
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon001.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon002.bmp"))->Cut(2, 1);

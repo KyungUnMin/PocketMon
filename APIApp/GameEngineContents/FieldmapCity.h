@@ -67,10 +67,13 @@ public:
 	void AddFlowerActors(const std::string_view& _FlowerImageName);
 	void AddNeighbor(FieldmapCity* _NeighborCityPtr);
 
-	void FieldmapUpdate();
+	void CityColUpdate();
+	void CityActiveUpdate();
+
+	void ActiveCity();
+	void DisableCity();
 
 protected:
-	void Update(float _DeltaTime) override;
 
 private:
 	std::string CityName;

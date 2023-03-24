@@ -242,6 +242,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DoorActorBase.cpp" />
+    <ClCompile Include="EndingEndLogo.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EndingFade.cpp">
       <SubType>
       </SubType>
@@ -263,6 +267,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="EndingPokemonRender.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingTextActor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -451,6 +459,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="DoorActorBase.h" />
+    <ClInclude Include="EndingEndLogo.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EndingFade.h">
       <SubType>
       </SubType>
@@ -472,6 +484,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EndingPokemonRender.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingTextActor.h">
       <SubType>
       </SubType>
     </ClInclude>
