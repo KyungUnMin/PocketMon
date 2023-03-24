@@ -4,6 +4,9 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "ContentsEnum.h"
+#include "BattlePlayer.h"
+#include "BattleMonsterPlayer.h"
+
 BattleCommendActor::BattleCommendActor()
 {
 }
@@ -103,6 +106,8 @@ void BattleCommendActor::Start()
 		TYPE_R[x]->EffectCameraOff();
 	}
 
+
+
 }
 
 void BattleCommendActor::Update(float _DeltaTime)
@@ -114,26 +119,34 @@ void BattleCommendActor::Update(float _DeltaTime)
 
 	if (B_ArrowCheckNum == 0) {
 		BattleArrowRender->SetPosition({ -430,-25 });
+		StringToRender(PPCUR_R, CURPP_1);
+		StringToRender(PPMAX_R, MAXPP_1);
 	}
 	if (B_ArrowCheckNum == 1) {
 		BattleArrowRender->SetPosition({ -170,-25 });
+		StringToRender(PPCUR_R, CURPP_2);
+		StringToRender(PPMAX_R, MAXPP_2);
 	}
 	if (B_ArrowCheckNum == 2) {
 		BattleArrowRender->SetPosition({ -430,40 });
+		StringToRender(PPCUR_R, CURPP_3);
+		StringToRender(PPMAX_R, MAXPP_3);
 	}
 	if (B_ArrowCheckNum == 3) {
 		BattleArrowRender->SetPosition({ -170,40 });
+		StringToRender(PPCUR_R, CURPP_4);
+		StringToRender(PPMAX_R, MAXPP_4);
 	}
 
 	//SKILL
-	StringToRender(PoketMonSkill_R1);
-	StringToRender(PoketMonSkill_R2);
-	StringToRender(PoketMonSkill_R3);
-	StringToRender(PoketMonSkill_R4);
+	StringToRender(PoketMonSkill_R1 , Skill_1);
+	StringToRender(PoketMonSkill_R2, Skill_2);
+	StringToRender(PoketMonSkill_R3, Skill_3);
+	StringToRender(PoketMonSkill_R4, Skill_4);
 	//PP
-	StringToRender(PPCUR_R);
-	StringToRender(PPMAX_R);
-	StringToRender(TYPE_R);
+	//StringToRender(PPCUR_R, CURPP);
+	//StringToRender(PPMAX_R, MAXPP);
+	StringToRender(TYPE_R, Type);
 
 	B_ArrowInput();
 }
@@ -173,7 +186,7 @@ void BattleCommendActor::B_ArrowInput(/*int _Number*/)
 
 	CallBacks[B_ArrowCheckNum]();
 	IsSelected = true;
-
+	
 	//if (true == GameEngineInput::IsDown("InsertMove1") && _Number == 0) {
 	//	int a = 10;
 	//	// 대사가 나오며 전투쪽으로 무슨 값 전달하기
@@ -196,25 +209,78 @@ void BattleCommendActor::B_ArrowInput(/*int _Number*/)
 }
 
 
-//void BattleCommendActor::SetAndResize(std::vector<GameEngineRender*> _Render,  float4 _Pos)
-//{
-//
-//	for (size_t x = 0; x < _Render.size(); x++)
-//	{
-//		_Render[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-//		_Render[x]->SetPosition(_Pos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
-//		_Render[x]->SetScale(TextRenderImageScale);
-//		_Render[x]->SetFrame(SpaceFrameNum);
-//		_Render[x]->EffectCameraOff();
-//	}
-//
-//}
 
-void BattleCommendActor::StringToRender(std::vector<GameEngineRender*> _Render)
+void BattleCommendActor::StringToRender(std::vector<GameEngineRender*> _Render ,std::string_view _Str)
 {
+	size_t StrEndIndex = _Str.size() - 1;
+	int StrIndex = 0;
+	std::string Str = _Str.data();
+	
+		for (size_t x = 0; x < _Render.size(); x++)
+		{
+			if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
+			{
+				_Render[x]->SetFrame(SpaceFrameNum);
+			}
+			else
+			{
+				if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
+				{
+					_Render[x]->SetFrame(Str[StrIndex] - 'A');
+				}
+				else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
+				{
+					_Render[x]->SetFrame(Str[StrIndex] - 'a' + 27);
+				}
+				else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
+				{
+					_Render[x]->SetFrame(Str[StrIndex] - '0' + 54);
+				}
+				else if (Str[StrIndex] == '\n')
+				{
+					while (x < _Render.size())
+					{
+						_Render[x]->SetFrame(SpaceFrameNum);
+						x++;
+					}
+				}
+				else
+				{
+					switch (Str[StrIndex])
+					{
+					case '!':
+						_Render[x]->SetFrame(81);
+						break;
+					case '?':
+						_Render[x]->SetFrame(82);
+						break;
+					case '/':
+						_Render[x]->SetFrame(85);
+						break;
+					case '-':
+						_Render[x]->SetFrame(86);
+						break;
+						//case '…':
+						//	TextRender[y][x]->SetFrame(91);
+						//	break;
+					case '.':
+						_Render[x]->SetFrame(92);
+						break;
+					case ',':
+						_Render[x]->SetFrame(93);
+						break;
+					case '@':
+						_Render[x]->SetFrame(94);
+						break;
+					default:
+						MsgAssert("아직 생각해보지 않은 글자입니다.");
+						break;
+					}
+				}
+			}
+			StrIndex++;
+		}
+	
 
-	for (size_t x = 0; x < _Render.size(); x++) {
-		_Render[x]->SetFrame(1);
-	}
 }
 
