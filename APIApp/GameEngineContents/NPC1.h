@@ -4,6 +4,8 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineContents/int2.h>
 
+#include <functional>
+
 
 class NPC1 : public GameEngineActor
 {
@@ -20,6 +22,11 @@ public:
 
 	void ImageLoad();
 	void Render(float _DeltaTime);
+
+	void MovePattern1();
+	void MovePattern2();
+	void MovePattern3();
+	void MovePattern4();
 
 	int2 GetNPCindex()
 	{
@@ -42,5 +49,11 @@ private:
 
 	std::list<std::string> Script = std::list<std::string>();
 	
+
+	bool NPC1MoveValue;
+
+	float DefaultMoveTime = 0.0f;
+	float4 MoveStartPos = float4::Zero;
+	float4 MoveEndPos = float4::Zero;
 };
 

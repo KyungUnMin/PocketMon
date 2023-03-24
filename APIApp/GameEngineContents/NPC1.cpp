@@ -85,14 +85,6 @@ void NPC1::Start()
 	}
 	R_NPC1->ChangeAnimation("Idle");
 
-
-
-
-	//NPCtext = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
-	//NPCtext->SetScale((NPCtext->GetImage()->GetImageScale()));
-	//NPCtext->SetPosition({ Player::MainPlayer->GetPos() + float4{-160,-95} });
-	//NPCtext->Off();
-
 	Script.push_back("Hi");
 	Script.push_back("Im your rival");
 	Script.push_back("bye bye");
@@ -103,6 +95,9 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
+	DefaultMoveTime += _DeltaTime;
+
+
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
 	Fieldmap::SetWalkable("PalletTown", NPC1index, false);
 
@@ -149,4 +144,19 @@ void NPC1::Render(float _DeltaTime)
 		C_NPC_R->DebugRender();
 	}
 }
+
+void NPC1::MovePattern1()
+{
+	
+
+	if (true==NPC1MoveValue)
+	{
+		//float4 POS = float4::LerpClamp(MoveStartPos, MoveEndPos, DefaultMoveTime * 5);
+		//float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
+		//SetPos(POS);
+	}
+}
+void MovePattern2();
+void MovePattern3();
+void MovePattern4();
 
