@@ -81,10 +81,6 @@ void PlayerBag::BattleOn()
 	IsBattle = true;
 }
 
-void PlayerBag::PotionUse()
-{
-	RemoveItem(CurrentItemCode);
-}
 
 void PlayerBag::Start()
 {

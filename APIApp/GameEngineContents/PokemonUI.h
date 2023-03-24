@@ -47,6 +47,7 @@ private:
 
 	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);
 	std::vector<GameEngineRender*> PokemonRender = std::vector<GameEngineRender*>(6);
+	std::vector<GameEngineRender*> PokemonItem = std::vector<GameEngineRender*>(6);
 	std::vector<GameEngineRender*> CursorRender;
 	GameEngineRender* CancelButtonRender = nullptr;
 
@@ -71,6 +72,7 @@ private:
 	bool IsBattle = false;
 	bool IsPotionUse = false;
 	bool IsPotionUseEnd = false;
+	ItemCode CurrentItemCode = ItemCode::Cancel;
 
 	void PokeDataSetting();
 

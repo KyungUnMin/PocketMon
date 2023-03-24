@@ -45,7 +45,6 @@ public:
 	void AddItem(ItemCode _ItemCode);
 	void RemoveItem(ItemCode _ItemCode);
 	void BattleOn();
-	void PotionUse();
 	bool GetIsBattle() {
 		return IsBattle;
 	}

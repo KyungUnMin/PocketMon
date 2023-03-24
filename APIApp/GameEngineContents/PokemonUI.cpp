@@ -17,10 +17,12 @@ PokemonUI::~PokemonUI()
 void PokemonUI::SetState_ItemUse(ItemCode _ItemCode)
 {
 	StateValue = PokemonUIState::Potion;
+	CurrentItemCode = _ItemCode;
 }
 void PokemonUI::SetState_ItemGive(ItemCode _ItemCode)
 {
 	StateValue = PokemonUIState::Give;
+	CurrentItemCode = _ItemCode;
 }
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
@@ -50,6 +52,11 @@ void PokemonUI::Start()
 		PokemonRender[0] = CreateRender(2);
 		PokemonRender[0]->SetPosition({ 52, 172 });
 
+		// 지닌 물건
+		PokemonItem[0] = CreateRender("PokemonItem.bmp", 2);
+		PokemonItem[0]->SetScaleToImage();
+		PokemonItem[0]->SetPosition({ 72, 206 });
+
 		// 포켓몬 이름
 		PokemonNameText[0] = CurrentLevel->CreateActor<TextActor>();
 		PokemonNameText[0]->SetPos({ 108, 172 });
@@ -73,9 +80,15 @@ void PokemonUI::Start()
 			PokemonBack[i] = CreateRender("SubPokemon.bmp", 1);
 			PokemonBack[i]->SetScale({ 600, 96 });
 			PokemonBack[i]->SetPosition({ 652, -12.0f + 96 * i });
+
 			// 포켓몬 이미지
 			PokemonRender[i] = CreateRender(2);
 			PokemonRender[i]->SetPosition({ 408, 2.0f + 96 * i });
+
+			// 지닌 물건
+			PokemonItem[i] = CreateRender("PokemonItem.bmp", 2);
+			PokemonItem[i]->SetScaleToImage();
+			PokemonItem[i]->SetPosition({ 428, 24.0f + 96 * i });
 
 			// 포켓몬 이름
 			PokemonNameText[i] = CurrentLevel->CreateActor<TextActor>();
@@ -105,6 +118,7 @@ void PokemonUI::Start()
 		TextBarRender->SetScale({ 720, 112 });
 		TextBarRender->SetPosition({ 370, 580 });
 		TextBarRender->SetFrame(0);
+
 		BarText = CurrentLevel->CreateActor<TextActor>();
 		BarText->SetPos({ 52, 580 });
 		BarText->SetLine(1);
@@ -232,6 +246,10 @@ void PokemonUI::Update(float _DeltaTime)
 
 void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 {
+	if (_PrevLevel->GetName() == "SummaryLevel")
+	{
+		return;
+	}
 	StateValue = PokemonUIState::Normal;
 }
 
@@ -245,13 +263,18 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	{
 		IsBattle = PlayerBag::MainBag->GetIsBattle();
 	}
+	if (_PrevLevel->GetName() == "BattleLevel")
+	{
+		IsBattle = true;
+		StateValue = PokemonUIState::Shift;
+	}
 	PrevLevel = _PrevLevel;
 	CurrentCursor = 0;
 	CursorMove();
 	SelectOff();
 	IsPotionUse = false;
 	IsPotionUseEnd = false;
-	
+	PokeDataSetting();
 	SetBarText();
 }
 
@@ -278,6 +301,8 @@ void PokemonUI::PokeDataSetting()
 			PokemonCurrentHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 최대 HP
 			PokemonMaxHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
+			// 지닌 물건
+			Pokemons[i]->IsPokemonItemPossession() == true ? PokemonItem[i]->On() : PokemonItem[i]->Off();
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
@@ -288,6 +313,7 @@ void PokemonUI::PokeDataSetting()
 			PokemonLevelText[i]->Off();
 			PokemonCurrentHPText[i]->Off();
 			PokemonMaxHPText[i]->Off();
+			PokemonItem[i]->Off();
 		}
 		CursorRender[Pokemons.size()] = CancelButtonRender;
 	}
@@ -349,20 +375,45 @@ void PokemonUI::SelectOn()
 	switch (StateValue)
 	{
 	case PokemonUIState::Normal:
-		SelectSize = 3;
-		SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
-		SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
-		SelectFunctions[1] = std::bind(&PokemonUI::Item, this);
-		SelectFunctions[2] = std::bind(&PokemonUI::Switch, this);
-		SelectFunctions[3] = std::bind(&PokemonUI::Summary, this);
+	{
+		if (true == Pokemons[CurrentCursor]->IsPokemonItemPossession())
+		{
+			SelectSize = 3;
+			SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
+			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PokemonUI::Item, this);
+			SelectFunctions[2] = std::bind(&PokemonUI::Switch, this);
+			SelectFunctions[3] = std::bind(&PokemonUI::Summary, this);
+		}
+		else
+		{
+			SelectSize = 2;
+			SelectText->SetText("SUMMARY\nSWITCH\nCANCEL");
+			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PokemonUI::Switch, this);
+			SelectFunctions[2] = std::bind(&PokemonUI::Summary, this);
+		}
 		break;
+	}
 	case PokemonUIState::Shift:
-		SelectSize = 2;
-		SelectText->SetText("SHIFT\nSUMMARY\nCANCEL");
-		SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
-		SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
-		SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
+	{
+		if (CurrentCursor == 0)
+		{
+			SelectSize = 1;
+			SelectText->SetText("SUMMARY\nCANCEL");
+			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
+		}
+		else
+		{
+			SelectSize = 2;
+			SelectText->SetText("SHIFT\nSUMMARY\nCANCEL");
+			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
+			SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
+			SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
+		}
 		break;
+	}
 	case PokemonUIState::Potion:
 		PotionUse();
 		return;
@@ -378,7 +429,7 @@ void PokemonUI::SelectOn()
 	SelectCursorRender->On();
 	TextBarRender->SetFrame(1);
 	TextBarRender->SetOrder(3);
-	SelectRender->SetFrame(3);
+	SelectRender->SetFrame(SelectSize);
 
 	
 
@@ -467,18 +518,24 @@ void PokemonUI::SwitchSelect()
 
 void PokemonUI::Item()
 {
+	Pokemons[CurrentCursor]->ForInven_ItemRelease();
+	PlayerBag::MainBag->AddItem(ItemCode::Potion);
+	PokeDataSetting();
 	SelectOff();
 }
 
 void PokemonUI::Shift()
 {
-	SelectOff();
+	PokeDataBase* _Pokemon = Pokemons[0];
+	Pokemons[0] = Pokemons[CurrentCursor];
+	Pokemons[CurrentCursor] = _Pokemon;
+	PocketMonCore::GetInst().ChangeLevel("BattleLevel");
 }
 
 void PokemonUI::PotionUse()
 {
 	Pokemons[CurrentCursor]->ForInven_UsePotion();
-	PlayerBag::MainBag->PotionUse();
+	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 	PokeDataSetting();
 	IsPotionUse = true;
 
@@ -522,4 +579,8 @@ void PokemonUI::SetBarText()
 
 void PokemonUI::GiveItem()
 {
+	Pokemons[CurrentCursor]->ForInven_AttackItemPossession();
+	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
+	PocketMonCore::GetInst().ChangeLevel("BagLevel");
+	PokeDataSetting();
 }
