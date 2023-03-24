@@ -7,6 +7,9 @@ class TestScript;
 class Battle_Select;
 class BattleFSM;
 class BackTextActor;
+enum class PokeNumber;
+enum class ItemCode;
+
 
 enum class BattleFieldType
 {
@@ -23,6 +26,7 @@ enum class BattleNpcType
 
 	Woong
 };
+
 
 class BattleLevel : public GameEngineLevel
 {
@@ -48,6 +52,12 @@ public:
 	{
 		return BattleFsmPtr;
 	}
+
+	void PassPlayerTurn();
+
+	void UseMonsterBall(ItemCode _MonsterBallType);
+
+	void ChangePlayerMonster(PokeNumber _NextMonster);
 
 protected:
 	void Loading() override;

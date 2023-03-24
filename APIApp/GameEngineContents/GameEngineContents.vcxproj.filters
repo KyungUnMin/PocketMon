@@ -182,22 +182,25 @@
       <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
     </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp">
-      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
+      <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
     </ClCompile>
     <ClCompile Include="Battle_PlayerBallParticle.cpp">
-      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
+      <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
     </ClCompile>
     <ClCompile Include="Battle_PlayerThrowBall.cpp">
-      <Filter>Battle\02.Actor\04.Effects\02.PlayerThrowBall</Filter>
+      <Filter>Battle\02.Actor\05.Effects\02.PlayerThrowBall</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterSkillConverter.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClCompile>
-    <ClCompile Include="Battle_SkillEffect.cpp">
-      <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
-    </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp">
       <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkillBase.cpp">
+      <Filter>Battle\02.Actor\04.Skills\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
+      <Filter>Battle\03.FSM\02.State\04.ThrowMonsterBall</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -377,19 +380,22 @@
       <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
     </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h">
-      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
+      <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
     </ClInclude>
     <ClInclude Include="Battle_PlayerBallParticle.h">
-      <Filter>Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
+      <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\02.PlayerBallParticle</Filter>
     </ClInclude>
     <ClInclude Include="Battle_PlayerThrowBall.h">
-      <Filter>Battle\02.Actor\04.Effects\02.PlayerThrowBall</Filter>
-    </ClInclude>
-    <ClInclude Include="Battle_SkillEffect.h">
-      <Filter>Battle\02.Actor\04.Effects\03.SkillEffect</Filter>
+      <Filter>Battle\02.Actor\05.Effects\02.PlayerThrowBall</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h">
       <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkillBase.h">
+      <Filter>Battle\02.Actor\04.Skills\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_ThrowMonsterBall.h">
+      <Filter>Battle\03.FSM\02.State\04.ThrowMonsterBall</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>FieldUI\BagUI</Filter>
@@ -522,23 +528,29 @@
     <Filter Include="Battle\03.FSM\02.State\03.Battle\02.EnemyTurn">
       <UniqueIdentifier>{8c176b08-3f8e-4923-bb0c-8bdaeb7fed85}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects">
+    <Filter Include="Battle\02.Actor\05.Effects">
       <UniqueIdentifier>{7e11cee8-772b-4079-bf13-fe53fb6b7861}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect">
+    <Filter Include="Battle\02.Actor\05.Effects\01.MonsterAppearEffect">
       <UniqueIdentifier>{caf66618-f5b2-41ef-8b38-694440549c32}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect\01.EffectFade">
+    <Filter Include="Battle\02.Actor\05.Effects\01.MonsterAppearEffect\01.EffectFade">
       <UniqueIdentifier>{2aedc505-312d-4ea5-b399-ea74aeac223c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\01.MonsterAppearEffect\02.PlayerBallParticle">
+    <Filter Include="Battle\02.Actor\05.Effects\01.MonsterAppearEffect\02.PlayerBallParticle">
       <UniqueIdentifier>{f33d76f5-536e-4eed-998c-6fd962a8fa43}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\02.PlayerThrowBall">
+    <Filter Include="Battle\02.Actor\05.Effects\02.PlayerThrowBall">
       <UniqueIdentifier>{6e7bea25-a50a-4d86-aed7-0969d7d521d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\02.Actor\04.Effects\03.SkillEffect">
-      <UniqueIdentifier>{2f8bd4a6-449c-484d-a556-e08696778645}</UniqueIdentifier>
+    <Filter Include="Battle\02.Actor\04.Skills">
+      <UniqueIdentifier>{29f92032-b9c0-4488-ab13-b2433e80beef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\04.Skills\01.Base">
+      <UniqueIdentifier>{f4d782c3-67b7-4289-aa60-b345e469113f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.State\04.ThrowMonsterBall">
+      <UniqueIdentifier>{db7dc803-454b-48c6-b689-5622e8ed80fb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -16,6 +16,7 @@
 #include "BagLevel.h"
 #include "PokemonLevel.h"
 
+
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
 const char BattleLevel::BattleKey = 'Z';
@@ -39,6 +40,7 @@ BattleLevel::~BattleLevel()
 		BattleFsmPtr = nullptr;
 	}
 }
+
 
 void BattleLevel::Loading()
 {
@@ -126,4 +128,29 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	}
 
 	Actors.clear();
+}
+
+
+
+void BattleLevel::PassPlayerTurn()
+{
+	BattleStateType NowFsmType = BattleFsmPtr->GetNowState();
+
+	if (BattleStateType::PlayerTurn != NowFsmType)
+	{
+		MsgAssert("현재 배틀 FSM은 Player차례가 아닙니다");
+		return;
+	}
+
+	BattleFsmPtr->ChangeState(BattleStateType::EnemyTurn);
+}
+
+void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
+{
+	//TODO
+}
+
+void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
+{
+
 }

@@ -3,6 +3,8 @@
 
 class GameEngineRender;
 class BattleMonsterPlayer;
+enum class PokeSkill;
+//enum class PokeD
 
 class BattlePlayer : public BattleTrainerBase
 {
@@ -19,6 +21,15 @@ public:
 
 	void Init(BattleFieldType _FieldType);
 	void CreateMontser();
+
+	PokeSkill GetSlotSkillType(size_t _Index);
+
+	inline BattleMonsterPlayer* GetMonster()
+	{
+		return Monster;
+	}
+
+
 
 protected:
 	void Update(float _DeltaTime) override;
@@ -53,4 +64,3 @@ private:
 	void Update_Move();
 	void Update_Throw();
 };
-

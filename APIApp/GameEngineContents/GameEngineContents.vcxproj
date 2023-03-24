@@ -181,6 +181,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkillBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleStateBase.cpp">
       <SubType>
       </SubType>
@@ -197,6 +201,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_WildTalk.cpp">
       <SubType>
       </SubType>
@@ -210,10 +218,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Battle_PlayerThrowBall.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Battle_SkillEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -346,6 +350,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkillBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleStateBase.h">
       <SubType>
       </SubType>
@@ -362,6 +370,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleState_ThrowMonsterBall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_WildTalk.h">
       <SubType>
       </SubType>
@@ -375,10 +387,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Battle_PlayerThrowBall.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Battle_SkillEffect.h">
       <SubType>
       </SubType>
     </ClInclude>

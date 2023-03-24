@@ -91,20 +91,18 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 		//이상해씨, 파이리, 꼬부기
 		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Bulbasaur, PokeNumber::Charmander, PokeNumber::Squirtle };
 		break;
+	case BattleFieldType::Forest2:
+		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Geodude, PokeNumber::Spearow };
+		break;
 	default:
 		MsgAssert("해당 지역에서는 야생포켓몬과 싸울수 없습니다");
 		break;
 	}
 
 	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
-	//Monster = BattleMonsterBase::CreateMonster(GetLevel(), MonsterNumsters[MonIndex], false);
-
-
-	//BattleMonsterEnemy
-
-	//임시
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNumber::Onix, true);
+	Monster->Init(static_cast<PokeNumber>(MonsterNumsters[MonIndex]), true);
+	//Monster->Init(PokeNumber::Onix, true);
 }
 
 

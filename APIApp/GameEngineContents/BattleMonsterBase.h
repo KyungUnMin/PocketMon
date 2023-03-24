@@ -5,6 +5,7 @@ class PokeDataBase;
 enum class PokeNumber;
 enum class PokeSkill;
 class GameEngineRender;
+class BattleSkillBase;
 
 enum class BattleMonsterType
 {
@@ -33,16 +34,12 @@ public:
 
 protected:
 	void Init(PokeNumber _MonsterType);
-	GameEngineRender* DamageBySkill(PokeSkill _SkillType);
+	BattleSkillBase* CreateSkill(PokeSkill _SkillType, BattleMonsterBase* _Owner);
 
 private:
 	static const std::vector<std::string_view> NameEnumToString;
 	static const std::vector<std::string_view> SkiilEnumToString;
-	//static const std::vector<int> SkiilAniFrame;
-
 
 	PokeDataBase* DbPtr = nullptr;
-
-	GameEngineRender* CreateSkiilEffect(PokeSkill _SkillType);
 };
 

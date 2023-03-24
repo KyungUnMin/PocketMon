@@ -150,3 +150,17 @@ void BattlePlayer::Update_Throw()
 	Monster->Init(PokeNumber::Bulbasaur);
 	Monster->SetPos(MonsterSpawnPos);
 }
+
+
+PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
+{
+	if (3 < _Index)
+	{
+		MsgAssert("스킬 슬롯의 최대 크기는 4 입니다.");
+	}
+
+	PokeDataBase* MonsterDB = Monster->GetDB();
+	PokeSkillBase* SkillBase = MonsterDB->GetMonsterSkillList(static_cast<int>(_Index + 1));
+	return SkillBase->GetSkill();
+}
+

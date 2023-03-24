@@ -115,3 +115,27 @@ void BattleFSM::Update(float _DeltaTime)
 
 	CurState->Update(_DeltaTime);
 }
+
+BattleStateType BattleFSM::GetNowState()
+{
+	BattleStateType ReturnType = BattleStateType::UNKNOWN;
+
+	auto StartIter = AllState.begin();
+	auto EndIter = AllState.end();
+
+	while (StartIter != EndIter)
+	{
+		const std::shared_ptr<BattleStateBase>& FindPtr =  StartIter->second;
+		
+		if (FindPtr != CurState)
+		{
+			++StartIter;
+			continue;
+		}
+
+		ReturnType = StartIter->first;
+		break;
+	}
+
+	return ReturnType;
+}

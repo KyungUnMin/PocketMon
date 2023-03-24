@@ -91,6 +91,7 @@ enum class GroundType
 
 enum class UpdateOrder
 {
+	Default,
 	Battle_Actors,
 
 };

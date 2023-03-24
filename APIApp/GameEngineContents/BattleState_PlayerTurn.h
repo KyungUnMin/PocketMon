@@ -4,6 +4,8 @@
 class Battle_Select;
 class BattleCommendActor;
 class BackTextActor;
+class BattleSkillBase;
+enum class PokeSkill;
 
 class BattleState_PlayerTurn : public BattleStateBase
 {
@@ -26,7 +28,7 @@ private:
 	BackTextActor* TextInfo = nullptr;
 
 	void BindSelectBoard();
-	void BindBattleCommand();
+	void BindBattleCommand(size_t _SlotIndex);
 
 	void BattleCmdOpen();
 };

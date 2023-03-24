@@ -8,6 +8,7 @@ enum class BattleStateType
 	PlayerTurn,
 	EnemyTurn,
 
+	UNKNOWN,
 };
 
 class BattleStateBase;
@@ -30,6 +31,8 @@ public:
 	void ChangeState(BattleStateType _Type);
 	void Update(float _DeltaTime);
 	
+	BattleStateType GetNowState();
+
 protected:
 
 private:

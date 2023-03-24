@@ -9,6 +9,9 @@
 #include "PocketMonCore.h"
 #include "BattleCommendActor.h"
 #include "BattleFSM.h"
+#include "BattlePlayer.h"
+#include "BattleMonsterPlayer.h"
+#include "PokeSkillBase.h"
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -29,8 +32,15 @@ void BattleState_PlayerTurn::EnterState()
 	TextInfo->BattleSetText(PlayerTurnText);
 
 	BattleCommand = BattleLevel::BattleLevelPtr->CreateActor<BattleCommendActor>(UpdateOrder::Battle_Actors);
-	BindBattleCommand();
 	BattleCommand->Off();
+	for (size_t i = 0; i < 4; ++i)
+	{
+		PokeSkill SkillType = BattlePlayer::PlayerPtr->GetSlotSkillType(i);
+		if (PokeSkill::Unknown == SkillType)
+			continue;
+
+		BindBattleCommand(i);
+	}
 
 	SelectBoard = BattleLevel::BattleLevelPtr->CreateActor<Battle_Select>(UpdateOrder::Battle_Actors);
 	BindSelectBoard();
@@ -65,7 +75,7 @@ void BattleState_PlayerTurn::BindSelectBoard()
 }
 
 
-void BattleState_PlayerTurn::BindBattleCommand()
+void BattleState_PlayerTurn::BindBattleCommand(size_t _SlotIndex)
 {
 	const float EventTime = 3.f;
 
@@ -75,11 +85,15 @@ void BattleState_PlayerTurn::BindBattleCommand()
 		if (true == BattleLevel::Debug_LevelChanged)
 			return;
 		
+		//데미지 처리에 따라 FSM 변경시키자
+
 		BattleFSM* Fsm = BattleLevel::BattleLevelPtr->GetBattleFSM();
 		Fsm->ChangeState(BattleStateType::EnemyTurn);
 	};
 
-	BattleCommand->SetCallBack(0, [=]
+
+	//슬롯의 스킬 발동
+	BattleCommand->SetCallBack(_SlotIndex, [=]
 	{
 		TextInfo->Death();
 		TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
@@ -88,8 +102,13 @@ void BattleState_PlayerTurn::BindBattleCommand()
 		SelectBoard->Off();
 		BattleCommand->Off();
 
+
+		//TODO
+
 		BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(EventTime, EventCallBack);
 	});
+
+
 }
 
 void BattleState_PlayerTurn::BattleCmdOpen()
