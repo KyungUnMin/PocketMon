@@ -97,6 +97,11 @@ void NPC1::Update(float _DeltaTime)
 {
 	DefaultMoveTime += _DeltaTime;
 
+	if (DefaultMoveTime < 0.2f)
+	{
+
+		DefaultMoveTime = 0.0f;
+	}
 
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
 	Fieldmap::SetWalkable("PalletTown", NPC1index, false);

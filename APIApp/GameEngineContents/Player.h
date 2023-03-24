@@ -147,5 +147,12 @@ private:
 
 	////////////////////////
 	float PlayerTime = 0.0f;
+
+
+
+	float4 NextPos1 = float4::Zero;
+	float4 NextPos2 = float4::Zero;
+	float4 NextPos3 = float4::Zero;
+	float4 NextPos4 = float4::Zero;
 };
 

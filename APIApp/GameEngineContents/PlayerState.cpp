@@ -55,7 +55,7 @@ void Player::UpdateState(float _Time)
 		IdleUpdate(_Time);
 		break;
 	case PlayerState::MOVE:
-		MoveUpdate(_Time);
+			MoveUpdate(_Time);
 		break;
 	default:
 		break;
@@ -71,7 +71,10 @@ void Player::IdleStart()
 void Player::IdleUpdate(float _Time)
 {
 	DirCheck("Idle");
-	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
+	if (GameEngineInput::IsPress("LeftMove") ||
+		GameEngineInput::IsPress("RightMove") ||
+		GameEngineInput::IsPress("DownMove") ||
+		GameEngineInput::IsPress("UpMove"))
 	{
 		ChangeState(PlayerState::MOVE);
 		return;
@@ -94,10 +97,10 @@ void Player::MoveStart()
 	int2 NextYplusIndex = int2(Playerindex.x, Playerindex.y + 1);
 	int2 NextYMinusIndex = int2(Playerindex.x, Playerindex.y - 1);
 
-	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
-	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
-	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
-	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
+	NextPos1 = Fieldmap::GetPos(NextXplusIndex);
+	NextPos2 = Fieldmap::GetPos(NextXminusIndex);
+	NextPos3 = Fieldmap::GetPos(NextYplusIndex);
+	NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
 
 	StartPos = GetPos();
 	if (Fieldmap::Walkable(NextXminusIndex))
@@ -137,25 +140,21 @@ void Player::MoveUpdate(float _Time)
 	PlayerTime+=_Time;
 	
 	float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime*5);
-	//float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
+	float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
 	 SetPos(POS); 
+	/*if (POS.x < EndPos.x)
+	{
+		PlayerMoveBool = false;
+	}*/
 	
+
 	 if (PlayerTime > 0.2f)//다음타일까지의 이동시간
 	 {
-		 if (true == GameEngineInput::IsPress("DownMove") ||
-			 true == GameEngineInput::IsPress("LeftMove") ||
-			 true == GameEngineInput::IsPress("RightMove") ||
-			 true == GameEngineInput::IsPress("UpMove"))
-		 {
-			 
-		 }
 		 ChangeState(PlayerState::IDLE);
 	 }
-
 }
 
 void Player::MoveEnd()
 {
 	PlayerTime = 0.0f;
-	
 }

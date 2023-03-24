@@ -25,7 +25,7 @@ Player::~Player()
 void Player::Start()
 {
 	MainPlayer = this; 
-	
+
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();
@@ -36,6 +36,8 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	
+
 	if (true == PlayerMoveBool)
 	{
 		UpdateState(_DeltaTime); //움직임관리
