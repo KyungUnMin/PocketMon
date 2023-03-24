@@ -5,6 +5,7 @@
 #include "PokeDataBase.h"
 #include "PocketMonCore.h"
 #include "PlayerBag.h"
+#include "TextActor.h"
 PokemonUI::PokemonUI() 
 {
 }
@@ -13,11 +14,14 @@ PokemonUI::~PokemonUI()
 {
 }
 
-void PokemonUI::ItemUse(ItemCode _ItemCode)
+void PokemonUI::SetState_ItemUse(ItemCode _ItemCode)
 {
 	StateValue = PokemonUIState::Potion;
 }
-
+void PokemonUI::SetState_ItemGive(ItemCode _ItemCode)
+{
+	StateValue = PokemonUIState::Give;
+}
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 void PokemonUI::Start()
@@ -101,7 +105,9 @@ void PokemonUI::Start()
 		TextBarRender->SetScale({ 720, 112 });
 		TextBarRender->SetPosition({ 370, 580 });
 		TextBarRender->SetFrame(0);
-
+		BarText = CurrentLevel->CreateActor<TextActor>();
+		BarText->SetPos({ 52, 580 });
+		BarText->SetLine(1);
 
 		SelectRender = CreateRender("SelectMenu.bmp", 4);
 		SelectRender->SetScale({ 280, 376 });
@@ -126,6 +132,11 @@ void PokemonUI::Start()
 
 void PokemonUI::Update(float _DeltaTime)
 {
+	if (true == IsPotionUse)
+	{
+		PotionUpdate(_DeltaTime);
+		return;
+	}
 	if (true == IsSelect)
 	{
 		if (GameEngineInput::IsDown("A"))
@@ -230,10 +241,18 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	{
 		return;
 	}
+	if (_PrevLevel->GetName() == "BagLevel")
+	{
+		IsBattle = PlayerBag::MainBag->GetIsBattle();
+	}
 	PrevLevel = _PrevLevel;
 	CurrentCursor = 0;
 	CursorMove();
 	SelectOff();
+	IsPotionUse = false;
+	IsPotionUseEnd = false;
+	
+	SetBarText();
 }
 
 void PokemonUI::PokeDataSetting()
@@ -345,13 +364,11 @@ void PokemonUI::SelectOn()
 		SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
 		break;
 	case PokemonUIState::Potion:
-	{
 		PotionUse();
 		return;
-	}
-		break;
 	case PokemonUIState::Give:
-		break;
+		GiveItem();
+		return;
 	default:
 		break;
 	}
@@ -360,8 +377,8 @@ void PokemonUI::SelectOn()
 	SelectRender->On();
 	SelectCursorRender->On();
 	TextBarRender->SetFrame(1);
+	TextBarRender->SetOrder(3);
 	SelectRender->SetFrame(3);
-
 
 	
 
@@ -377,6 +394,7 @@ void PokemonUI::SelectOff()
 	SelectRender->Off();
 	SelectCursorRender->Off();
 	TextBarRender->SetFrame(0);
+	TextBarRender->SetOrder(1);
 	SelectText->Off();
 }
 
@@ -421,11 +439,15 @@ void PokemonUI::Switch()
 	SwitchCursor = CurrentCursor;
 	CursorRender[CurrentCursor]->SetFrame(3);
 	StateValue = PokemonUIState::Switch;	
+
+	SetBarText();
 }
 
 void PokemonUI::SwitchCancel()
 {
 	StateValue = PokemonUIState::Normal;
+
+	SetBarText();
 	CursorMove();
 }
 
@@ -456,5 +478,48 @@ void PokemonUI::Shift()
 void PokemonUI::PotionUse()
 {
 	Pokemons[CurrentCursor]->ForInven_UsePotion();
+	PlayerBag::MainBag->PotionUse();
 	PokeDataSetting();
+	IsPotionUse = true;
+
+	BarText->SetText(Pokemons[CurrentCursor]->ForUI_GetMonsterName() + " HP was restored.", true);
+
+	return;
+
+	
+}
+
+void PokemonUI::PotionUpdate(float _DeltaTime)
+{
+	// Lerp를 통해 체력바 회복
+	// 회복이 끝나면 텍스트가 나오고 확인버튼 눌러서 이전 레벨로 이동
+
+}
+
+void PokemonUI::SetBarText()
+{
+
+	switch (StateValue)
+	{
+	case PokemonUIState::Normal:
+		BarText->SetText("Choose a POK@MON.", "Font_Dialog.bmp", 2);
+		break;
+	case PokemonUIState::Switch:
+		BarText->SetText("Move to where?", "Font_Dialog.bmp", 2);
+		break;
+	case PokemonUIState::Shift:
+		break;
+	case PokemonUIState::Potion:
+		BarText->SetText("Use on which POK@MON.", "Font_Dialog.bmp", 2);
+		break;
+	case PokemonUIState::Give:
+		BarText->SetText("Give to which POK@MON?", "Font_Dialog.bmp", 2);
+		break;
+	default:
+		break;
+	}
+}
+
+void PokemonUI::GiveItem()
+{
 }

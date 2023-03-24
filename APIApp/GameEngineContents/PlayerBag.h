@@ -45,7 +45,10 @@ public:
 	void AddItem(ItemCode _ItemCode);
 	void RemoveItem(ItemCode _ItemCode);
 	void BattleOn();
-
+	void PotionUse();
+	bool GetIsBattle() {
+		return IsBattle;
+	}
 	// delete Function
 	PlayerBag(const PlayerBag& _Other) = delete;
 	PlayerBag(PlayerBag&& _Other) = delete;

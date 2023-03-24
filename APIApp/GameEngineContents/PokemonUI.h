@@ -2,7 +2,6 @@
 #include <vector>
 #include <functional>
 #include <GameEngineCore/GameEngineActor.h>
-#include "TextActor.h"
 #include "Item.h"
 enum class PokemonUIState
 {
@@ -16,6 +15,7 @@ enum class PokemonUIState
 // Ό³Έν :
 class GameEngineRender;
 class PokeDataBase;
+class TextActor;
 class PokemonUI : public GameEngineActor
 {
 public:
@@ -25,7 +25,8 @@ public:
 
 	static PokemonUI* MainPokemon;
 
-	void ItemUse(ItemCode _ItemCode);
+	void SetState_ItemUse(ItemCode _ItemCode);
+	void SetState_ItemGive(ItemCode _ItemCode);
 
 	// delete Function
 	PokemonUI(const PokemonUI& _Other) = delete;
@@ -53,6 +54,7 @@ private:
 	GameEngineRender* SelectRender = nullptr;
 	GameEngineRender* SelectCursorRender = nullptr;
 
+	TextActor* BarText = nullptr;
 	TextActor* SelectText = nullptr;
 	std::vector<TextActor*> PokemonNameText = std::vector<TextActor*>(6);
 	std::vector<TextActor*> PokemonCurrentHPText = std::vector<TextActor*>(6);
@@ -66,6 +68,9 @@ private:
 	int CurrentSelectCursor = 0;
 	int SelectSize = 0;
 	bool IsSelect = false;
+	bool IsBattle = false;
+	bool IsPotionUse = false;
+	bool IsPotionUseEnd = false;
 
 	void PokeDataSetting();
 
@@ -87,6 +92,9 @@ private:
 	void Item();
 	void Shift();
 
+	void SetBarText();
+	void GiveItem();
 	void PotionUse();
+	void PotionUpdate(float _DeltaTime);
 };
 

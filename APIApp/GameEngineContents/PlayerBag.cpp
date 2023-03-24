@@ -81,6 +81,11 @@ void PlayerBag::BattleOn()
 	IsBattle = true;
 }
 
+void PlayerBag::PotionUse()
+{
+	RemoveItem(CurrentItemCode);
+}
+
 void PlayerBag::Start()
 {
 	// 싱글톤
@@ -602,8 +607,8 @@ void PlayerBag::ItemUse()
 	{
 	case BagSpace::Items:
 		// 포켓몬 레벨로
+		PokemonUI::MainPokemon->SetState_ItemUse(CurrentItemCode);
 		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
-		PokemonUI::MainPokemon->ItemUse(CurrentItemCode);
 		break;
 	case BagSpace::KeyItems:
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
@@ -619,6 +624,7 @@ void PlayerBag::ItemUse()
 void PlayerBag::ItemGive()
 {
 	// 포켓몬 레벨로
+	PokemonUI::MainPokemon->SetState_ItemGive(CurrentItemCode);
 	PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 }
 void PlayerBag::Cancel()

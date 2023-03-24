@@ -16,7 +16,6 @@ public:
 	void SetInterver(const float4& _Interval);
 	void SetAlpha(int _Alpha);
 	void SkipAnimation();
-	bool IsAnimationEnd();
 	void Clear();
 	// delete Function
 	TextActor(const TextActor& _Other) = delete;

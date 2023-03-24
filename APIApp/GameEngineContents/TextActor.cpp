@@ -137,18 +137,6 @@ void TextActor::SkipAnimation()
 	}
 }
 
-bool TextActor::IsAnimationEnd()
-{
-	for (size_t y = 0; y < LineRenderIndex.size(); y++)
-	{
-		if (LineRenderIndex[y] < OneLineSize)
-		{
-			return false;
-		}
-	}
-	return true;
-}
-
 void TextActor::SetFont(const std::string_view& _Font, int _Order)
 {
 	if (LineCount != TextRender.size())
