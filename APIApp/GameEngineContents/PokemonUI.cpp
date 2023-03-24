@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "PokeDataBase.h"
 #include "PocketMonCore.h"
+#include "PlayerBag.h"
 PokemonUI::PokemonUI() 
 {
 }
@@ -22,6 +23,7 @@ PokemonUI* PokemonUI::MainPokemon = nullptr;
 void PokemonUI::Start()
 {
 	CurrentLevel = GetLevel();
+	MainPokemon = this;
 	//_______테스트용 포켓몬 생성
 	Pokemons.resize(5);
 	Pokemons[0] = PokeDataBase::PokeCreate(1, 5);
@@ -219,6 +221,7 @@ void PokemonUI::Update(float _DeltaTime)
 
 void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 {
+	StateValue = PokemonUIState::Normal;
 }
 
 void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -322,12 +325,6 @@ void PokemonUI::SelectOn()
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		return;
 	}
-	IsSelect = true;
-	SelectRender->On();
-	SelectCursorRender->On();
-	TextBarRender->SetFrame(1);
-	SelectRender->SetFrame(3);
-
 
 	// 여기서 상황을 판단
 	switch (StateValue)
@@ -348,12 +345,24 @@ void PokemonUI::SelectOn()
 		SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
 		break;
 	case PokemonUIState::Potion:
+	{
+		PotionUse();
+		return;
+	}
 		break;
 	case PokemonUIState::Give:
 		break;
 	default:
 		break;
 	}
+
+	IsSelect = true;
+	SelectRender->On();
+	SelectCursorRender->On();
+	TextBarRender->SetFrame(1);
+	SelectRender->SetFrame(3);
+
+
 	
 
 	CurrentSelectCursor = SelectSize;
@@ -442,4 +451,10 @@ void PokemonUI::Item()
 void PokemonUI::Shift()
 {
 	SelectOff();
+}
+
+void PokemonUI::PotionUse()
+{
+	Pokemons[CurrentCursor]->ForInven_UsePotion();
+	PokeDataSetting();
 }

@@ -2,6 +2,8 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "PocketMonCore.h"
 #include "PlayerBag.h"
+
+#include "ContentsEnum.h"
 BagLevel::BagLevel() {
 
 }

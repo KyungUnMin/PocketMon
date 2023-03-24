@@ -86,5 +86,7 @@ private:
 	void SwitchSelect();
 	void Item();
 	void Shift();
+
+	void PotionUse();
 };
 

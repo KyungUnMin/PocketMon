@@ -1,23 +1,7 @@
 #pragma once
 #include <string>
 
-enum class ItemCode
-{
-	Potion,			// 0. 상처약
-	Repel,			// 1. 벌레퇴치스프레이
-	Revive,			// 2. 기력의 조각
-	RareCandy,		// 3. 이상한사탕
-	Ether,			// 4. PP에이드
-	WiseGlasses,	// 5. 박식안경	(특공 상승)
-	MuscleBand,		// 6. 힘의 띠 (물공 상승)
-	ChoiceBand,		// 7. 머리띠 (방어 상승)
-	ChoiceScarf,	// 8. 스카프 (특방 상승)
-	Bike,			// 9. 자전거
-	MonsterBall,	// 10. 몬스터볼 
-	MasterBall,		// 11. 마스터볼 
-	Cancel			// 12. 취소
-};
-
+#include "ContentsEnum.h"
 // 설명 :
 class Item
 {
@@ -26,7 +10,8 @@ public:
 	Item(ItemCode _Code)
 		: Code(_Code)
 	{
-
+		// 임시용 코드
+		IsBattleItem = true;
 	}
 	~Item() {}
 
