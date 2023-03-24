@@ -70,7 +70,6 @@ void Player::IdleStart()
 }
 void Player::IdleUpdate(float _Time)
 {
-	DirCheck("Idle");
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
 		ChangeState(PlayerState::MOVE);
@@ -100,9 +99,9 @@ void Player::MoveStart()
 	NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
 
 	StartPos = GetPos();
-	if (Fieldmap::Walkable(NextXminusIndex))
+	if (true == GameEngineInput::IsPress("LeftMove"))
 	{
-		if (true == GameEngineInput::IsPress("LeftMove"))
+		if (Fieldmap::Walkable(NextXminusIndex))
 		{
 			EndPos = StartPos + (MoveRange - NextPos1);
 		}
@@ -114,22 +113,22 @@ void Player::MoveStart()
 			EndPos = StartPos + (MoveRange - NextPos2);
 		}
 	}
-	else if(true == GameEngineInput::IsPress("UpMove"))
+	else if (true == GameEngineInput::IsPress("UpMove"))
 	{
 		if (true == Fieldmap::Walkable(NextYMinusIndex))
 		{
 			EndPos = StartPos + (MoveRange - NextPos3);
 		}
 	}
-	else if(true == GameEngineInput::IsPress("DownMove"))
+	else if (true == GameEngineInput::IsPress("DownMove"))
 	{
 		if (true == Fieldmap::Walkable(NextYplusIndex))
 		{
 			EndPos = StartPos + (MoveRange - NextPos4);
 		}
 	}
-	Fieldmap::GetGroundType(NextYplusIndex);
-	
+
+	Fieldmap::GetGroundType(NextYplusIndex);	
 }
 void Player::MoveUpdate(float _Time)
 {
