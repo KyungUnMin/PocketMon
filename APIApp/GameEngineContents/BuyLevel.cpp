@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineDirectory.h>
 #include <GameEngineCore/GameEngineResources.h>
 #include "BuyWindow.h"
+#include "ShopUIManager.h"
 
 BuyLevel::BuyLevel()
 {
@@ -21,6 +22,16 @@ void BuyLevel::Loading()
 
 void BuyLevel::Update(float _DeltaTime)
 {
+}
+
+void BuyLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
+{
+	ShopUIManager::GetShopUIManager()->ReturnMainStart();
+}
+
+void BuyLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	AcBuyWindow->ChangeState(0);
 }
 
 void BuyLevel::ImageLoad()

@@ -46,6 +46,12 @@ void ShopUIManager::OnOffSwtich()
 	}
 }
 
+void ShopUIManager::ReturnMainStart()
+{
+	AcShopMainMenu->Off();
+	AcFielDialog->ConversationStart(&ReturnMainScript);
+}
+
 void ShopUIManager::Start()
 {
 	ParentLevel = dynamic_cast<FieldmapLevel*>(GetLevel());
@@ -53,7 +59,7 @@ void ShopUIManager::Start()
 	AcFielDialog = FieldDialog::GetFieldDialog();
 
 	WelcomeScript.emplace_back("Hi, there!\nMay I help you?");
-
+	ReturnMainScript.emplace_back("Is there anything else I can do?");
 	GoodbyeScript.emplace_back("Please come again!");
 	Off();
 }

@@ -29,6 +29,8 @@ public:
 		return AcShopUIManager;
 	}
 
+	void ReturnMainStart();
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -41,9 +43,11 @@ private:
 	ShopMainMenu* AcShopMainMenu = nullptr;
 
 	std::list<std::string> WelcomeScript = std::list<std::string>();
+	std::list<std::string> ReturnMainScript = std::list<std::string>();
 	std::list<std::string> GoodbyeScript = std::list<std::string>();
 
 	void UpdateStart();
 	void UpdateEnd();
+	
 };
 

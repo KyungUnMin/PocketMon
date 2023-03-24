@@ -42,7 +42,7 @@ private:
 	GameEngineRender* FieldDialogFrame = nullptr;
 
 	std::vector<std::vector<GameEngineRender*>> FieldDialogTextRender = std::vector<std::vector<GameEngineRender*>>();
-	int OneLineSize = 30;
+	int OneLineSize = 32;
 	int LineCount = 2;
 	float4 TextRenderImageScale = { 24, 48 };
 	float4 FirstTextRenderPos = { -388,-28 };

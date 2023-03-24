@@ -467,8 +467,8 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		//MainShopUIManager->OnOffSwtich();
-		GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
+		MainShopUIManager->OnOffSwtich();
+		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 	}
 
 

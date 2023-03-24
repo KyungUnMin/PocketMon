@@ -26,6 +26,8 @@ public:
 	BuyWindow& operator=(const BuyWindow& _Other) = delete;
 	BuyWindow& operator=(BuyWindow&& _Other) noexcept = delete;
 
+	void ChangeState(int _State);
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -41,7 +43,7 @@ private:
 	
 	//NumberRenderObject ItemPriceRender = NumberRenderObject();
 	//std::vector<NumberRenderObject> ItemPriceRenders = std::vector<NumberRenderObject>();
-	NumberRenderObject ItemPriceRenders[6] = {};
+	NumberRenderObject ItemPriceRenders[5] = {};
 	float4 ItemPriceRenderScale = { 20,32 };
 	float4 FirstItemPriceRenderPos = { 392,-248 };
 
@@ -55,5 +57,11 @@ private:
 	void StateToRender();
 	void ChangeStatePrev();
 	void ChangeStateNext();
+
+	void Cancle();
+
+	std::list<TestItem> ItemList = std::list<TestItem>();
+
+	void ItemPushBack();
 };
 

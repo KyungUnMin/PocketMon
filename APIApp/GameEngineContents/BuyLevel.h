@@ -18,8 +18,8 @@ public:
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
-	void LevelChangeEnd(GameEngineLevel* _NextLevel) {}
-	void LevelChangeStart(GameEngineLevel* _PrevLevel) {}
+	void LevelChangeEnd(GameEngineLevel* _NextLevel);
+	void LevelChangeStart(GameEngineLevel* _PrevLevel);
 
 private:
 	BuyWindow* AcBuyWindow = nullptr;
