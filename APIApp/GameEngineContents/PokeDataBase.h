@@ -137,6 +137,7 @@ public:
 	// 소지한 아이템 코드
 	ItemCode GetPossession()
 	{
+
 		return Possession;
 	}
 
