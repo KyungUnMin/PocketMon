@@ -104,7 +104,7 @@ ItemDataBase* ItemDataBase::ItemCreate(ItemCode _ItemNumber)
 // 0. 상처약
 void ItemDataBase::PotionData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;              // 사용 가능 아이템?
+	_ItemPtr->IsBattle = true;              // 사용 가능 아이템?
 
 	_ItemPtr->Name = "POTION";                  // 아이템 이름
 	_ItemPtr->ItemExplanation = "A spray-type sound medicine. It restores the HP of one POK@MON ny 20 points."; // 아이템 설명
@@ -116,7 +116,7 @@ void ItemDataBase::PotionData(ItemDataBase* _ItemPtr)
 // 1. 벌레퇴치 스프레이
 void ItemDataBase::RepelData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;
+	_ItemPtr->IsBattle = true;
 
 	_ItemPtr->Name = "REPEL";
 	_ItemPtr->ItemExplanation = "Prevents weak wild POK@MON from appearing for 100 steps.";
@@ -128,7 +128,7 @@ void ItemDataBase::RepelData(ItemDataBase* _ItemPtr)
 // 2. 기력의 조각
 void ItemDataBase::ReviveData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "REVIVE";
 	_ItemPtr->ItemExplanation = "Recovers a fainted POK@MON's HP by half.";
@@ -140,7 +140,7 @@ void ItemDataBase::ReviveData(ItemDataBase* _ItemPtr)
 // 3. 이상한 사탕
 void ItemDataBase::RareCandyData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;
+	_ItemPtr->IsBattle = true;
 
 	_ItemPtr->Name = "RARECANDY";
 	_ItemPtr->ItemExplanation = "A candy that is packed with energy, It raises the level of a POK@MON by one.";
@@ -152,7 +152,7 @@ void ItemDataBase::RareCandyData(ItemDataBase* _ItemPtr)
 // 4. pp 에이드
 void ItemDataBase::EtherData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;
+	_ItemPtr->IsBattle = true;
 
 	_ItemPtr->Name = "ETHER";
 	_ItemPtr->ItemExplanation = "Restores 10 PP for one skill.";
@@ -164,7 +164,7 @@ void ItemDataBase::EtherData(ItemDataBase* _ItemPtr)
 // 5. 박식의 안경 (특공)
 void ItemDataBase::WiseGlassesData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "WISEGLASSES";
 	_ItemPtr->ItemExplanation = "Increases the special attack power of the POK@MON holding this item.";
@@ -176,7 +176,7 @@ void ItemDataBase::WiseGlassesData(ItemDataBase* _ItemPtr)
 // 6. 힘의 띠 (물공)
 void ItemDataBase::MuscleBandData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "MUSLEBAND";
 	_ItemPtr->ItemExplanation = "Increases the attack power of the POK@MON holding this item.";
@@ -188,7 +188,7 @@ void ItemDataBase::MuscleBandData(ItemDataBase* _ItemPtr)
 // 7. 머리띠 (방어)
 void ItemDataBase::ChoiceBandData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "CHOICEBAND";
 	_ItemPtr->ItemExplanation = "Increases the defense of the POK@MON holding this item.";
@@ -200,7 +200,7 @@ void ItemDataBase::ChoiceBandData(ItemDataBase* _ItemPtr)
 // 8. 스카프 (특방)
 void ItemDataBase::ChoiceScarfData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "CHOICESCARF";
 	_ItemPtr->ItemExplanation = "Increases the special defense of the POK@MON holding this item.";
@@ -212,7 +212,7 @@ void ItemDataBase::ChoiceScarfData(ItemDataBase* _ItemPtr)
 // 9. 자전거
 void ItemDataBase::BikeData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "BIKE";
 	_ItemPtr->ItemExplanation = "A folding bike that allows faster movement than the WalKING.";
@@ -224,7 +224,7 @@ void ItemDataBase::BikeData(ItemDataBase* _ItemPtr)
 // 10. 몬스터볼
 void ItemDataBase::MonsterBallData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;
+	_ItemPtr->IsBattle = true;
 
 	_ItemPtr->Name = "POK@BALL";
 	_ItemPtr->ItemExplanation = "A BALL throw to catch a wild POK@MON. It is designed in a capsule style.";
@@ -236,7 +236,7 @@ void ItemDataBase::MonsterBallData(ItemDataBase* _ItemPtr)
 // 11. 마스터볼
 void ItemDataBase::MasterBallData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = true;
+	_ItemPtr->IsBattle = true;
 
 	_ItemPtr->Name = "MASTERBALL";
 	_ItemPtr->ItemExplanation = "You can definitely catch a wild POK@MON.";
@@ -248,7 +248,7 @@ void ItemDataBase::MasterBallData(ItemDataBase* _ItemPtr)
 // 12, 취소
 void ItemDataBase::CancelData(ItemDataBase* _ItemPtr)
 {
-	_ItemPtr->IsActiveitem = false;
+	_ItemPtr->IsBattle = false;
 
 	_ItemPtr->Name = "CANCLE";
 	_ItemPtr->ItemExplanation = "Quite";
