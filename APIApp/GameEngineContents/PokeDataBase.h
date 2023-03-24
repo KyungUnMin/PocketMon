@@ -415,6 +415,7 @@ public:
 		SpecialDefenseStack -= 1;
 	}
 
+	// 배틀 종료 or 포켓몬 체인지시 해당 함수 호출
 	void Resetbuffstack()
 	{
 		AttackStack = 0;
