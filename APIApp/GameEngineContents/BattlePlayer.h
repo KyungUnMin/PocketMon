@@ -4,7 +4,7 @@
 class GameEngineRender;
 class BattleMonsterPlayer;
 enum class PokeSkill;
-//enum class PokeD
+class PokeDataBase;
 
 class BattlePlayer : public BattleTrainerBase
 {
@@ -29,7 +29,7 @@ public:
 		return Monster;
 	}
 
-
+	PokeDataBase* GetMonsterDB();
 
 protected:
 	void Update(float _DeltaTime) override;

@@ -101,6 +101,8 @@ void BattlePlayer::CreatePlayerRender()
 
 
 
+
+
 void BattlePlayer::Update(float _DeltaTime)
 {
 	switch (CurState)
@@ -164,3 +166,7 @@ PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
 	return SkillBase->GetSkill();
 }
 
+PokeDataBase* BattlePlayer::GetMonsterDB()
+{
+	return Monster->GetDB();
+}
