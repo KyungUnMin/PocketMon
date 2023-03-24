@@ -159,6 +159,25 @@ public:
 		return Skills;
 	}
 
+	// pp 1 감소
+	void MinusPowerPoint()
+	{
+		if (0 < CurrentSkillPowerPoint)
+		{
+			CurrentSkillPowerPoint -= 1;
+		}
+		else
+		{
+			CurrentSkillPowerPoint = -1;
+		}
+	}
+
+	// pp가 0입니까?
+	bool IsPowerPointZero()
+	{
+		return 0 == CurrentSkillPowerPoint;
+	}
+
 protected:
 
 private:

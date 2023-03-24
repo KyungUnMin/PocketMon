@@ -9,6 +9,7 @@ enum class BattleScript
 	Critical,         // 2 급소에 맞았다!
 	Amazing,          // 3 효과는 굉장했다!
 	Buff,             // 4 이 스킬은 버프스킬입니다.
+	PPiszero,         // 5 PP가 0입니다. 배틀 불가능
 };
 
 // 설명 :
