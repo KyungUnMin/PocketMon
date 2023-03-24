@@ -147,7 +147,7 @@ void Player::MoveUpdate(float _Time)
 			 true == GameEngineInput::IsPress("RightMove") ||
 			 true == GameEngineInput::IsPress("UpMove"))
 		 {
-			 return;
+			 
 		 }
 		 ChangeState(PlayerState::IDLE);
 	 }
