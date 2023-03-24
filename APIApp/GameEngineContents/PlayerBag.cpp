@@ -39,11 +39,11 @@ void PlayerBag::AddItem(ItemCode _ItemCode)
 	}
 	else if (_ItemCode == ItemCode::Bike)
 	{
-		KeyItems.insert(Items.begin(), Item(_ItemCode));
+		KeyItems.insert(KeyItems.begin(), Item(_ItemCode));
 	}
 	else
 	{
-		PokeBalls.insert(Items.begin(), Item(_ItemCode));
+		PokeBalls.insert(PokeBalls.begin(), Item(_ItemCode));
 	}
 }
 
