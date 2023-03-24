@@ -3,7 +3,7 @@
 #include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "TextActor.h"
-
+#include "Item.h"
 enum class PokemonUIState
 {
 	Normal,		// 필드에서 열었을때
@@ -22,6 +22,10 @@ public:
 	// constrcuter destructer
 	PokemonUI();
 	~PokemonUI();
+
+	static PokemonUI* MainPokemon;
+
+	void ItemUse(ItemCode _ItemCode);
 
 	// delete Function
 	PokemonUI(const PokemonUI& _Other) = delete;

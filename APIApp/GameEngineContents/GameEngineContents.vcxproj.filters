@@ -391,6 +391,9 @@
     <ClInclude Include="BattleState_EnemyTurn.h">
       <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">

@@ -12,6 +12,13 @@ PokemonUI::~PokemonUI()
 {
 }
 
+void PokemonUI::ItemUse(ItemCode _ItemCode)
+{
+	StateValue = PokemonUIState::Potion;
+}
+
+PokemonUI* PokemonUI::MainPokemon = nullptr;
+
 void PokemonUI::Start()
 {
 	CurrentLevel = GetLevel();

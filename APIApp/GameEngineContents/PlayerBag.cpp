@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 #include "TextActor.h"
 #include "PocketMonCore.h"
+#include "PokemonUI.h"
 #include "ContentsEnum.h"
 PlayerBag* PlayerBag::MainBag = nullptr;
 
@@ -11,14 +12,13 @@ PlayerBag::PlayerBag() {
 }
 
 PlayerBag::~PlayerBag() {
-
 }
 
-void PlayerBag::AddItem(int _ItemCode)
+void PlayerBag::AddItem(ItemCode _ItemCode)
 {
 	for (size_t i = 0; i < Items.size(); i++)
 	{
-		if (Items[i].ItemCode == _ItemCode)
+		if (Items[i].GetItemCode() == _ItemCode)
 		{
 			Items[i].Num++;
 			return;
@@ -26,36 +26,33 @@ void PlayerBag::AddItem(int _ItemCode)
 	}
 	for (size_t i = 0; i < PokeBalls.size(); i++)
 	{
-		if (PokeBalls[i].ItemCode == _ItemCode)
+		if (PokeBalls[i].GetItemCode() == _ItemCode)
 		{
 			PokeBalls[i].Num++;
 			return;
 		}
 	}
-	switch (_ItemCode)
+
+	if (_ItemCode < ItemCode::Bike)
 	{
-	case 0:
-		Items.insert(Items.begin(), Item("POTION", "A sparytype wound medicine\nIt restores the HP of one\nPoK@Mon by 20 points.", _ItemCode, true));
-		break;
-	case 11:
-		Items.insert(Items.begin(), Item("Candy", "good", _ItemCode, false));
-		break;
-	case 25:
-		PokeBalls.insert(PokeBalls.begin(), Item("POK@ BALL", "A BALL thrown to catch a wild\nPOK@MON It is designed in a\ncapsule style", _ItemCode, true));
-		break;
-	case 26:
-		PokeBalls.insert(PokeBalls.begin(), Item("GREAT BALL", "A good quality BALL that offers a higher POK@MON catch rate than a standard POK@ BALL", _ItemCode, true));
-		break;
-	default:
-		break;
+		Items.insert(Items.begin(), Item(_ItemCode));
+	}
+	else if (_ItemCode == ItemCode::Bike)
+	{
+		KeyItems.insert(Items.begin(), Item(_ItemCode));
+	}
+	else
+	{
+		PokeBalls.insert(Items.begin(), Item(_ItemCode));
 	}
 }
 
-void PlayerBag::RemoveItem(int _ItemCode)
+
+void PlayerBag::RemoveItem(ItemCode _ItemCode)
 {
 	for (size_t i = 0; i < Items.size(); i++)
 	{
-		if (Items[i].ItemCode == _ItemCode)
+		if (Items[i].GetItemCode() == _ItemCode)
 		{
 			
 			if (0 >= --Items[i].Num)
@@ -68,7 +65,7 @@ void PlayerBag::RemoveItem(int _ItemCode)
 	}
 	for (size_t i = 0; i < PokeBalls.size(); i++)
 	{
-		if (PokeBalls[i].ItemCode == _ItemCode)
+		if (PokeBalls[i].GetItemCode() == _ItemCode)
 		{
 			if (0 >= --PokeBalls[i].Num)
 			{
@@ -182,12 +179,12 @@ void PlayerBag::Start()
 	// 아이템 생성
 	{
 		Items.reserve(5);
-		Items.push_back(Item("CANCEL", "CLOSE BAG", 29, true));
+		Items.push_back(Item(ItemCode::Cancel));
 		KeyItems.reserve(2);
-		KeyItems.push_back(Item("BIKE", "Bike Information", 24, false));
-		KeyItems.push_back(Item("CANCEL", "CLOSE BAG", 29, true));
+		KeyItems.push_back(Item(ItemCode::Bike));
+		KeyItems.push_back(Item(ItemCode::Cancel));
 		PokeBalls.reserve(5);
-		PokeBalls.push_back(Item("CANCEL", "CLOSE BAG", 29, true));
+		PokeBalls.push_back(Item(ItemCode::Cancel));
 	}
 	// 가방위치 지정
 	ChangeSpace(BagSpace::Items);
@@ -361,8 +358,8 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
 	for (int i = 0; i < CurrentSpaceItems.size(); i++)
 	{
-		ItemName[i]->SetText(CurrentSpaceItems[i].Name);
-		if (CurrentSpaceItems[i].ItemCode == CancelCode)
+		ItemName[i]->SetText(CurrentSpaceItems[i].GetName());
+		if (CurrentSpaceItems[i].GetItemCode() == ItemCode::Cancel)
 		{
 			ItemNumSign[i]->Off();
 			ItemNum[i]->Clear();
@@ -455,8 +452,8 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(Items[CurrentCursor].Information, "Font_Dialog_White.bmp", 2, false);
-		IconRender->SetFrame(Items[CurrentCursor].ItemCode);
+		ItemInfo->SetText(Items[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp", 2, false);
+		IconRender->SetFrame(Items[CurrentCursor].GetItemCodeInt());
 	}
 	else if (CurrentSpace == BagSpace::KeyItems)
 	{
@@ -464,8 +461,8 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(KeyItems[CurrentCursor].Information, "Font_Dialog_White.bmp",2, false);
-		IconRender->SetFrame(KeyItems[CurrentCursor].ItemCode);
+		ItemInfo->SetText(KeyItems[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp", 2, false);
+		IconRender->SetFrame(KeyItems[CurrentCursor].GetItemCodeInt());
 	}
 	else if (CurrentSpace == BagSpace::PokeBalls)
 	{
@@ -473,8 +470,8 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(PokeBalls[CurrentCursor].Information, "Font_Dialog_White.bmp",2, false);
-		IconRender->SetFrame(PokeBalls[CurrentCursor].ItemCode);
+		ItemInfo->SetText(PokeBalls[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp",2, false);
+		IconRender->SetFrame(PokeBalls[CurrentCursor].GetItemCodeInt());
 	}
 	CursorRender->SetPosition({ 372, 68.0f + 64 * CurrentCursor });
 }
@@ -489,8 +486,8 @@ void PlayerBag::CursorMove(int _Cursor)
 void PlayerBag::SelectOn()
 {
 	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
-	ItemCode = CurrentSpaceItems[CurrentCursor].ItemCode;
-	if (ItemCode == CancelCode)
+	CurrentItemCode = CurrentSpaceItems[CurrentCursor].GetItemCode();
+	if (CurrentItemCode == ItemCode::Cancel)
 	{
 		Cancel();
 		return;
@@ -499,7 +496,7 @@ void PlayerBag::SelectOn()
 	ItemInfo->Off();
 	TextBox->On();
 	SelectBox->On();
-	ItemSelectText->SetText(CurrentSpaceItems[CurrentCursor].Name.data() + std::string(" is\nselected."));
+	ItemSelectText->SetText(CurrentSpaceItems[CurrentCursor].GetName() + std::string(" is\nselected."));
 	ItemSelectText->On();
 	SelectText->On();
 	SelectCursorRender->On();
@@ -509,7 +506,7 @@ void PlayerBag::SelectOn()
 	// 전투 중 일때
 	if (true == IsBattle)
 	{
-		if (true == CurrentSpaceItems[CurrentCursor].IsBattleItem)
+		if (true == CurrentSpaceItems[CurrentCursor].GetIsBattleItem())
 		{
 			SelectText->SetText("USE\nCANCEL");
 			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
@@ -606,12 +603,13 @@ void PlayerBag::ItemUse()
 	case BagSpace::Items:
 		// 포켓몬 레벨로
 		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
+		PokemonUI::MainPokemon->ItemUse(CurrentItemCode);
 		break;
 	case BagSpace::KeyItems:
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		break;
 	case BagSpace::PokeBalls:
-		RemoveItem(ItemCode);
+		RemoveItem(CurrentItemCode);
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 		break;
 	default:
@@ -625,6 +623,6 @@ void PlayerBag::ItemGive()
 }
 void PlayerBag::Cancel()
 {
-	ItemCode = CancelCode;
+	CurrentItemCode = ItemCode::Cancel;
 	PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
 }

@@ -402,6 +402,10 @@
     </ClInclude>
     <ClInclude Include="FieldmapSingleDoor.h" />
     <ClInclude Include="FieldmapWoodDoor.h" />
+    <ClInclude Include="Item.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="MoveMapFadeEffect.h">
       <SubType>
       </SubType>

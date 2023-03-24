@@ -4,6 +4,7 @@
 #include <functional>
 #include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEngineCore/GameEngineActor.h>
+#include "Item.h"
 enum class BagSpace
 {
 	Items,
@@ -29,19 +30,7 @@ class TextActor;
 class PlayerBag : public GameEngineActor
 {
 private:
-	class Item
-	{
-		friend PlayerBag;
-	public:
-		Item(std::string_view _Name, std::string_view _Information, int _ItemCode, bool _IsBattleItem)
-		:Name(_Name), Information(_Information), ItemCode(_ItemCode), IsBattleItem(_IsBattleItem){}
-
-		std::string_view Name;
-		std::string_view Information;
-		int ItemCode;
-		int Num = 1;	// 개수
-		bool IsBattleItem;	// 배틀때 사용가능여부
-	};
+	
 public:
 	// constructer destructer
 	PlayerBag();
@@ -49,12 +38,12 @@ public:
 
 	static PlayerBag* MainBag;
 	// 사용한 아이템의 코드를 받는 함수, 취소한 경우 29
-	int GetItemCode()
+	ItemCode GetItemCode()
 	{
-		return ItemCode;
+		return CurrentItemCode;
 	}
-	void AddItem(int _ItemCode);
-	void RemoveItem(int _ItemCode);
+	void AddItem(ItemCode _ItemCode);
+	void RemoveItem(ItemCode _ItemCode);
 	void BattleOn();
 
 	// delete Function
@@ -74,8 +63,7 @@ private:
 	GameEngineTimeEvent TimeEvent;
 	BagAnim AnimState = BagAnim::Idle;
 	BagSpace CurrentSpace = BagSpace::Items;
-	const int CancelCode = 29;
-	int ItemCode = 0;
+	ItemCode CurrentItemCode = ItemCode::Cancel;
 	size_t CurrentCursor = 0;
 	size_t CurrentSelectCursor = 0;
 	int SelectSize = 0;
