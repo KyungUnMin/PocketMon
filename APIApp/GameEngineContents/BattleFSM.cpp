@@ -14,34 +14,36 @@ BattleFSM::BattleFSM()
 
 BattleFSM::~BattleFSM()
 {
+	for (size_t i = 0; i < AllState.size(); ++i)
+	{
+		if (nullptr == AllState[i])
+			continue;
 
+		delete AllState[i];
+		AllState[i] = nullptr;
+	}
 }
 
 
 void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
+	AllState.resize(static_cast<size_t>(BattleStateType::COUNT), nullptr);
+	for (size_t i = 0; i < AllState.size(); ++i)
+	{
+		CreateState(static_cast<BattleStateType>(i));
+	}
+
 	switch (_NpcType)
 	{
 	case BattleNpcType::None:
-		WildBattleInit(_FieldType);
+		BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
+		ChangeState(BattleStateType::WildTalk);
 		break;
 	default:
 		MsgAssert("배틀 FSM에서 아직 연결해주지 않은 전투상황입니다");
 		break;
 	}
 }
-
-void BattleFSM::WildBattleInit(BattleFieldType _FieldType)
-{
-	BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
-	CreateState(BattleStateType::WildTalk);
-	CreateState(BattleStateType::PlayerTurn);
-	CreateState(BattleStateType::EnemyTurn);
-	CreateState(BattleStateType::ThrowMonsterBall);
-
-	ChangeState(BattleStateType::WildTalk);
-}
-
 
 
 
@@ -50,27 +52,21 @@ void BattleFSM::WildBattleInit(BattleFieldType _FieldType)
 
 void BattleFSM::CreateState(BattleStateType _Type)
 {
-	if (AllState.end() != AllState.find(_Type))
-	{
-		MsgAssert("이미 만들어진 배틀State입니다");
-		return;
-	}
-	
-	std::shared_ptr<BattleStateBase> NewState = nullptr;
+	BattleStateBase* NewState = nullptr;
 
 	switch (_Type)
 	{
 	case BattleStateType::WildTalk:
-		NewState = std::make_shared<BattleState_WildTalk>();
+		NewState = new BattleState_WildTalk;
 		break;
 	case BattleStateType::PlayerTurn:
-		NewState = std::make_shared<BattleState_PlayerTurn>();
+		NewState = new BattleState_PlayerTurn;
 		break;
 	case BattleStateType::EnemyTurn:
-		NewState = std::make_shared<BattleState_EnemyTurn>();
+		NewState = new BattleState_EnemyTurn;
 		break;
 	case BattleStateType::ThrowMonsterBall:
-		NewState = std::make_shared<BattleState_ThrowMonsterBall>();
+		NewState = new BattleState_ThrowMonsterBall;
 		break;
 	default:
 		MsgAssert("아직 FSM과 해당 배틀State를 연결해주지 않았습니다");
@@ -78,8 +74,7 @@ void BattleFSM::CreateState(BattleStateType _Type)
 	}
 
 	NewState->FsmPtr = this;
-	NewState->Start();
-	AllState[_Type] = NewState;
+	AllState[static_cast<size_t>(_Type)] = NewState;
 }
 
 
@@ -87,10 +82,15 @@ void BattleFSM::CreateState(BattleStateType _Type)
 
 
 
-void BattleFSM::ChangeState(BattleStateType _Type)
+void BattleFSM::ChangeState(BattleStateType _NextStateType)
 {
-	std::shared_ptr<BattleStateBase> PrevState = CurState;
-	std::shared_ptr<BattleStateBase> NextState = AllState[_Type];
+	BattleStateBase* PrevState = nullptr;
+	if (BattleStateType::COUNT != CurStateType)
+	{
+		PrevState = AllState[static_cast<size_t>(CurStateType)];
+	}
+
+	BattleStateBase* NextState = AllState[static_cast<size_t>(_NextStateType)];
 
 	if (nullptr == NextState)
 	{
@@ -105,41 +105,19 @@ void BattleFSM::ChangeState(BattleStateType _Type)
 
 	NextState->EnterState();
 
-	CurState = NextState;
+	CurStateType = _NextStateType;
 }
 
 
 
 void BattleFSM::Update(float _DeltaTime)
 {
-	if (nullptr == CurState)
+	if (BattleStateType::COUNT == CurStateType)
 	{
 		MsgAssert("현재 배틀 상태를 설정해주지 않았습니다");
 	}
 
-	CurState->Update(_DeltaTime);
+	AllState[static_cast<size_t>(CurStateType)]->Update(_DeltaTime);
 }
 
-BattleStateType BattleFSM::GetNowState()
-{
-	BattleStateType ReturnType = BattleStateType::UNKNOWN;
 
-	auto StartIter = AllState.begin();
-	auto EndIter = AllState.end();
-
-	while (StartIter != EndIter)
-	{
-		const std::shared_ptr<BattleStateBase>& FindPtr =  StartIter->second;
-		
-		if (FindPtr != CurState)
-		{
-			++StartIter;
-			continue;
-		}
-
-		ReturnType = StartIter->first;
-		break;
-	}
-
-	return ReturnType;
-}

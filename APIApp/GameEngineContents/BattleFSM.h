@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include <vector>
 #include <memory>
 
 enum class BattleStateType
@@ -9,7 +9,7 @@ enum class BattleStateType
 	EnemyTurn,
 	ThrowMonsterBall,
 
-	UNKNOWN,
+	COUNT,
 };
 
 class BattleStateBase;
@@ -32,15 +32,17 @@ public:
 	void ChangeState(BattleStateType _Type);
 	void Update(float _DeltaTime);
 	
-	BattleStateType GetNowState();
+	inline BattleStateType GetNowState()
+	{
+		return CurStateType;
+	}
 
 protected:
 
 private:
-	std::map<BattleStateType, std::shared_ptr<BattleStateBase>> AllState;
-	std::shared_ptr<BattleStateBase> CurState = nullptr;
+	std::vector<BattleStateBase*> AllState;
+	BattleStateType CurStateType = BattleStateType::COUNT;
 
 	void CreateState(BattleStateType _Type);
-	void WildBattleInit(BattleFieldType _FieldType);
 };
 

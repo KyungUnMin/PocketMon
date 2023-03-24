@@ -102,16 +102,16 @@
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleFSM.cpp">
-      <Filter>Battle\03.FSM\01.FSM</Filter>
+      <Filter>Battle\03.FSM\01.Battle\01.FSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleStateBase.cpp">
-      <Filter>Battle\03.FSM\02.State\01.Base</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="BattleState_WildTalk.cpp">
-      <Filter>Battle\03.FSM\02.State\02.Talk\02.WildTalk</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\02.Talk\02.WildTalk</Filter>
     </ClCompile>
     <ClCompile Include="BattleState_TalkBase.cpp">
-      <Filter>Battle\03.FSM\02.State\02.Talk\01.Base</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\02.Talk\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="PokemonLevel.cpp">
       <Filter>FieldUI\PokemonUI</Filter>
@@ -179,7 +179,7 @@
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
     <ClCompile Include="BattleState_PlayerTurn.cpp">
-      <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\03.Battle\01.PlayerTurn</Filter>
     </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp">
       <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
@@ -194,19 +194,13 @@
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp">
-      <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\03.Battle\02.EnemyTurn</Filter>
     </ClCompile>
     <ClCompile Include="BattleSkillBase.cpp">
       <Filter>Battle\02.Actor\04.Skills\01.Base</Filter>
     </ClCompile>
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
-      <Filter>Battle\03.FSM\02.State\04.ThrowMonsterBall</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleFSMBase.cpp">
-      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleFSM_StateBase.cpp">
-      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\04.ThrowMonsterBall</Filter>
     </ClCompile>
     <ClCompile Include="EndingPlayerAnimActor.cpp">
       <Filter>Ending\Actor</Filter>
@@ -315,16 +309,16 @@
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
-      <Filter>Battle\03.FSM\01.FSM</Filter>
+      <Filter>Battle\03.FSM\01.Battle\01.FSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleStateBase.h">
-      <Filter>Battle\03.FSM\02.State\01.Base</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_WildTalk.h">
-      <Filter>Battle\03.FSM\02.State\02.Talk\02.WildTalk</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\02.Talk\02.WildTalk</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_TalkBase.h">
-      <Filter>Battle\03.FSM\02.State\02.Talk\01.Base</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\02.Talk\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="PokemonLevel.h">
       <Filter>FieldUI\PokemonUI</Filter>
@@ -389,7 +383,7 @@
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_PlayerTurn.h">
-      <Filter>Battle\03.FSM\02.State\03.Battle\01.PlayerTurn</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\03.Battle\01.PlayerTurn</Filter>
     </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h">
       <Filter>Battle\02.Actor\05.Effects\01.MonsterAppearEffect\01.EffectFade</Filter>
@@ -401,22 +395,16 @@
       <Filter>Battle\02.Actor\05.Effects\02.PlayerThrowBall</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h">
-      <Filter>Battle\03.FSM\02.State\03.Battle\02.EnemyTurn</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\03.Battle\02.EnemyTurn</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkillBase.h">
       <Filter>Battle\02.Actor\04.Skills\01.Base</Filter>
     </ClInclude>
     <ClInclude Include="BattleState_ThrowMonsterBall.h">
-      <Filter>Battle\03.FSM\02.State\04.ThrowMonsterBall</Filter>
+      <Filter>Battle\03.FSM\01.Battle\02.State\04.ThrowMonsterBall</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>FieldUI\BagUI</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleFSMBase.h">
-      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleFSM_StateBase.h">
-      <Filter>Battle\03.FSM\01.FSM\01.FSMBase</Filter>
     </ClInclude>
     <ClInclude Include="EndingPlayerAnimActor.h">
       <Filter>Ending\Actor</Filter>
@@ -501,24 +489,6 @@
     <Filter Include="Battle\03.FSM">
       <UniqueIdentifier>{0f806b4c-2533-45f5-ad65-03b15b8f3252}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\01.FSM">
-      <UniqueIdentifier>{a388eb5f-b1cc-4138-89c5-90a40434a5ba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State">
-      <UniqueIdentifier>{d6f3624a-46a9-4d93-b2b0-949a42ef1620}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\01.Base">
-      <UniqueIdentifier>{0dfaea4a-6405-4d4c-bfbe-2d726cf833d1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\02.Talk">
-      <UniqueIdentifier>{358d893f-0905-4a37-abf6-024e885e7063}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\02.Talk\01.Base">
-      <UniqueIdentifier>{eb4fec95-0ac7-4cc6-87af-2d2ffde11c4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\02.Talk\02.WildTalk">
-      <UniqueIdentifier>{e72915c1-4d76-4182-9b9d-221fd7ae8751}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FieldUI\PokemonUI">
       <UniqueIdentifier>{7e22dfe8-052b-418b-9be5-5686949ffa94}</UniqueIdentifier>
     </Filter>
@@ -543,15 +513,6 @@
     <Filter Include="Map\Actor\BattleZone">
       <UniqueIdentifier>{3c35df5c-88ab-4617-91b2-19f9932f52cb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\02.State\03.Battle">
-      <UniqueIdentifier>{09bc995f-8c05-4810-9b57-68ea9cb1c08b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\03.Battle\01.PlayerTurn">
-      <UniqueIdentifier>{77ef1e8e-f53b-419b-b2fc-3888cd5224a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\02.State\03.Battle\02.EnemyTurn">
-      <UniqueIdentifier>{8c176b08-3f8e-4923-bb0c-8bdaeb7fed85}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Battle\02.Actor\05.Effects">
       <UniqueIdentifier>{7e11cee8-772b-4079-bf13-fe53fb6b7861}</UniqueIdentifier>
     </Filter>
@@ -573,12 +534,6 @@
     <Filter Include="Battle\02.Actor\04.Skills\01.Base">
       <UniqueIdentifier>{f4d782c3-67b7-4289-aa60-b345e469113f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\02.State\04.ThrowMonsterBall">
-      <UniqueIdentifier>{db7dc803-454b-48c6-b689-5622e8ed80fb}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Battle\03.FSM\01.FSM\01.FSMBase">
-      <UniqueIdentifier>{4091ce49-d548-43f1-bf02-f45ca008093f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Ending">
       <UniqueIdentifier>{366894d5-fde8-4465-893e-b842605cf9ff}</UniqueIdentifier>
     </Filter>
@@ -587,6 +542,51 @@
     </Filter>
     <Filter Include="Ending\Level">
       <UniqueIdentifier>{1d97bbcf-0f8c-4884-9498-d5e3aaf84291}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle">
+      <UniqueIdentifier>{715dd0cd-c77d-4f6c-886f-8870d2cd4278}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\01.FSM">
+      <UniqueIdentifier>{a388eb5f-b1cc-4138-89c5-90a40434a5ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State">
+      <UniqueIdentifier>{d6f3624a-46a9-4d93-b2b0-949a42ef1620}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\01.Base">
+      <UniqueIdentifier>{0dfaea4a-6405-4d4c-bfbe-2d726cf833d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\02.Talk">
+      <UniqueIdentifier>{358d893f-0905-4a37-abf6-024e885e7063}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\02.Talk\01.Base">
+      <UniqueIdentifier>{eb4fec95-0ac7-4cc6-87af-2d2ffde11c4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\02.Talk\02.WildTalk">
+      <UniqueIdentifier>{e72915c1-4d76-4182-9b9d-221fd7ae8751}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\03.Battle">
+      <UniqueIdentifier>{09bc995f-8c05-4810-9b57-68ea9cb1c08b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\03.Battle\01.PlayerTurn">
+      <UniqueIdentifier>{77ef1e8e-f53b-419b-b2fc-3888cd5224a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\03.Battle\02.EnemyTurn">
+      <UniqueIdentifier>{8c176b08-3f8e-4923-bb0c-8bdaeb7fed85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\01.Battle\02.State\04.ThrowMonsterBall">
+      <UniqueIdentifier>{db7dc803-454b-48c6-b689-5622e8ed80fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Player">
+      <UniqueIdentifier>{4e2b555a-654a-417a-a106-471163df26c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\03.Enemy">
+      <UniqueIdentifier>{215642f8-23c4-407f-a49e-a11539a8bd38}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Player\01.FSM">
+      <UniqueIdentifier>{7474bcc0-4978-43e8-be17-0226f89ba329}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Player\02.State">
+      <UniqueIdentifier>{36f4766a-2409-4417-99d8-ad3a955d56c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
