@@ -80,7 +80,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 	{
 		ScriptValue = BattleScript::Buff;
 
-		int a = 1000;
+		Bufflogic(_Attacker, _AttackerSkillNumber, _Defender);
 	}
 
 	return ScriptValue;
@@ -95,12 +95,11 @@ float PokeBattleSystem::Damagecalculator(PokeDataBase* _Attacker, int _AttackerS
 	}
 
 	float step1 = static_cast<float>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillDamage());
-	//int step2 = _Attacker->GetPossessionItem();
 	float step3 = OwnCharacteristiccalculation(_Attacker, _Attacker->GetMonsterCharacteristic());
 	float step4 = OtherCharacteristiccalculation(_Defender, _Defender->GetMonsterCharacteristic());
 
 	// 기술위력 × 도구보정 × 특성보정 × 상대특성보정
-	float DamageCal = step1 /** step2*/ * step3 * step4;
+	float DamageCal = step1 * step3 * step4;
 
 	return DamageCal;
 }
@@ -201,7 +200,7 @@ float PokeBattleSystem::OtherCharacteristiccalculation(PokeDataBase* _Defender, 
 float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Attacker->GetMonsterAttackPower_float());
+	float step1 = Attackbuff(_Attacker);
 	float step2 = OwnPersonalitycalculation_NA(_Attacker->GetMonsterPersonality()); // 성격에 따른 값 변화
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -223,7 +222,7 @@ float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
 float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase* _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Attacker->GetMonsterSpecialAttackPower_float());
+	float step1 = Specialattackbuff(_Attacker);
 	float step2 = OwnPersonalitycalculation_SA(_Attacker->GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
@@ -462,8 +461,6 @@ float PokeBattleSystem::CriticalRand()
 
 float PokeBattleSystem::Randomvalue()
 {
-	// 랜덤수 = ((217~255 사이의 랜덤한 수 x 100) / 255), 소수점 이하 버림, 즉 85~100 사이의 수가 나온다.
-
 	int Rand = GameEngineRandom::MainRandom.RandomInt(217, 255);
 
 	int Randv = ((Rand * 100) / 255);
@@ -690,4 +687,165 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 	}
 
 	return correctionvalue;
+}
+
+
+void PokeBattleSystem::Bufflogic(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+{
+	PokeSkill buffskill = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkill();
+
+	switch (buffskill)
+	{
+	case PokeSkill::Growl:      // 울음소리 : 방깎
+		_Defender->MinusDefensebuffstack();
+		_Defender->MinusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::Leer:       // 째려보기 : 공깎
+		_Defender->MinusAttackbuffstack();
+		_Defender->MinusSpcialAttackbuffstack();
+		break;
+	case PokeSkill::TailWhip:   // 꼬리흔들기 : 방깎
+		_Defender->MinusDefensebuffstack();
+		_Defender->MinusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::Withdraw:   // 껍질에 숨기 : 방증
+		_Attacker->PlusDefensebuffstack();
+		_Attacker->PlusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::FastMove:   // 고속이동 : 방증, 공증
+		_Attacker->PlusAttackbuffstack();
+		_Attacker->PlusSpcialAttackbuffstack();
+		_Attacker->PlusDefensebuffstack();
+		_Attacker->PlusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::DefenseCurl:// 웅크리기 : 방증
+		_Attacker->PlusDefensebuffstack();
+		_Attacker->PlusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::RockPolish: // 록커트 : 방깎
+		_Defender->MinusDefensebuffstack();
+		_Defender->MinusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::Magnitude:  // 매그니튜드 : 방증, 공증
+		_Attacker->PlusAttackbuffstack();
+		_Attacker->PlusSpcialAttackbuffstack();
+		_Attacker->PlusDefensebuffstack();
+		_Attacker->PlusSpcialDefensebuffstack();
+		break;
+	case PokeSkill::SuperFang:  // 분노의앞니 : 공증
+		_Attacker->PlusAttackbuffstack();
+		_Attacker->PlusSpcialAttackbuffstack();
+		break;
+	default:
+		MsgAssert("제대로된 값(버프)이 아닙니다. PokeDatabase.cpp를 살펴보세요");
+		break;
+	}
+}
+
+// 공증 결과
+float PokeBattleSystem::Attackbuff(PokeDataBase* _Attacker)
+{
+	int stack = _Attacker->GetAttackbuffstack();
+	float focusvalue = static_cast<float>(_Attacker->GetMonsterAttackPower_float());
+	float stackvalue = 1.f;
+
+	if (stack < 0)
+	{
+		while (0 > stack)
+		{
+			stackvalue -= 0.1f;
+			++stack;
+		}
+	}
+	else if (stack > 0)
+	{
+		while (0 < stack)
+		{
+			stackvalue += 0.1f;
+			--stack;
+		}
+	}
+
+	return focusvalue * stackvalue;
+}
+
+// 스공증 결과
+float PokeBattleSystem::Specialattackbuff(PokeDataBase* _Attacker)
+{
+	int stack = _Attacker->GetSpcialAttackbuffstack();
+	float focusvalue = static_cast<float>(_Attacker->GetMonsterSpecialAttackPower_float());
+	float stackvalue = 1.f;
+
+	if (stack < 0)
+	{
+		while (0 > stack)
+		{
+			stackvalue -= 0.1f;
+			++stack;
+		}
+	}
+	else if (stack > 0)
+	{
+		while (0 < stack)
+		{
+			stackvalue += 0.1f;
+			--stack;
+		}
+	}
+
+	return focusvalue * stackvalue;
+}
+
+// 방증 결과
+float PokeBattleSystem::Defensekbuff(PokeDataBase* _Defender)
+{
+	int stack = _Defender->GetDefensebuffstack();
+	float focusvalue = static_cast<float>(_Defender->GetMonsterDefense_float());
+	float stackvalue = 1.f;
+
+	if (stack < 0)
+	{
+		while (0 > stack)
+		{
+			stackvalue -= 0.1f;
+			++stack;
+		}
+	}
+	else if (stack > 0)
+	{
+		while (0 < stack)
+		{
+			stackvalue += 0.1f;
+			--stack;
+		}
+	}
+
+	return focusvalue * stackvalue;
+}
+
+// 스방증 결과
+float PokeBattleSystem::Specialdefensekbuff(PokeDataBase* _Defender)
+{
+	int stack = _Defender->GetSpcialDefensekbuffstack();
+	float focusvalue = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
+	float stackvalue = 1.f;
+
+	if (stack < 0)
+	{
+		while (0 > stack)
+		{
+			stackvalue -= 0.1f;
+			++stack;
+		}
+	}
+	else if (stack > 0)
+	{
+		while (0 < stack)
+		{
+			stackvalue += 0.1f;
+			--stack;
+		}
+	}
+
+	return focusvalue * stackvalue;
 }

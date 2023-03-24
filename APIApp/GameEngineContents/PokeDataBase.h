@@ -362,6 +362,67 @@ public:
 		return Characteristic;
 	}
 
+	// 전투보조
+	int GetAttackbuffstack()
+	{
+		return AttackStack;
+	}
+	void PlusAttackbuffstack()
+	{
+		AttackStack += 1;
+	}
+	void MinusAttackbuffstack()
+	{
+		AttackStack -= 1;
+	}
+
+	int GetDefensebuffstack()
+	{
+		return DefenseStack;
+	}
+	void PlusDefensebuffstack()
+	{
+		DefenseStack += 1;
+	}
+	void MinusDefensebuffstack()
+	{
+		DefenseStack -= 1;
+	}
+
+	int GetSpcialAttackbuffstack()
+	{
+		return SpecialAttackStack;
+	}
+	void PlusSpcialAttackbuffstack()
+	{
+		SpecialAttackStack += 1;
+	}
+	void MinusSpcialAttackbuffstack()
+	{
+		SpecialAttackStack -= 1;
+	}
+
+	int GetSpcialDefensekbuffstack()
+	{
+		return SpecialDefenseStack;
+	}
+	void PlusSpcialDefensebuffstack()
+	{
+		SpecialDefenseStack += 1;
+	}
+	void MinusSpcialDefensebuffstack()
+	{
+		SpecialDefenseStack -= 1;
+	}
+
+	void Resetbuffstack()
+	{
+		AttackStack = 0;
+		DefenseStack = 0;
+		SpecialAttackStack = 0;
+		SpecialDefenseStack = 0;
+	}
+
 	/// <summary>
 	/// 메모리 해제용 포인터 Get 함수입니다. 호출해서 사용하지 마세요. 터집니다.
 	/// </summary>
@@ -417,6 +478,12 @@ private:
 	PokeType Type = PokeType::Bug;								  // 포켓몬 속성 타입
 	PokePersonality Personality = PokePersonality::Adamant;		  // 포켓몬 성격
 	PokeCharacteristic Characteristic = PokeCharacteristic::근성; // 포켓몬 특성
+
+	// 전투 보조
+	int AttackStack = 0;
+	int DefenseStack = 0;
+	int SpecialAttackStack = 0;
+	int SpecialDefenseStack = 0;
 
 	// 데이터 생성 보조
 	static void PersonalityDecision(PokeDataBase* _PoKeCreatePtr);                                 // 성격

@@ -56,4 +56,12 @@ private:
 	static float Ownpropertiescorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber);
 	static float Compatibilitycorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
 
+	static void Bufflogic(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+
+	static float Attackbuff(PokeDataBase* _Attacker);
+	static float Specialattackbuff(PokeDataBase* _Attacker);
+	static float Defensekbuff(PokeDataBase* _Defender);
+	static float Specialdefensekbuff(PokeDataBase* _Defender);
+
 };
+

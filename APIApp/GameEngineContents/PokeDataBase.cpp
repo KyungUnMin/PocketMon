@@ -81,17 +81,17 @@ PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		
-		if (PoKeCreatePtr->MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
+			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr->MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
+			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
 		else
 		{
@@ -106,17 +106,17 @@ PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr->MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
+			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr->MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
+			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
 		else
 		{
@@ -131,17 +131,17 @@ PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr->MonsterLevel >= 7)
+		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
-			PokeSkillInit(3, PokeSkill::LeechSeed, PoKeCreatePtr);
+			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr->MonsterLevel >= 9)
+		if (PoKeCreatePtr->MonsterLevel >= 12)
 		{
-			PokeSkillInit(4, PokeSkill::VineWhip, PoKeCreatePtr);
+			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
 		else
 		{
@@ -304,7 +304,7 @@ PokeDataBase* PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PidgeyData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
-		PokeSkillInit(2, PokeSkill::SandAttack, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
 		if (PoKeCreatePtr->MonsterLevel >= 8)
 		{
