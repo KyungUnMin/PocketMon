@@ -1,6 +1,7 @@
 #pragma once
 #include "HpBackGroundMove.h"
 #include "BattleCommendActor.h"
+#include <vector>
 
 // Ό³Έν :
 class FriendlyHPBackground : public GameEngineActor
@@ -19,7 +20,7 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
-
+	void DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick);
 
 
 private:
@@ -31,7 +32,7 @@ private:
 	std::vector<GameEngineRender*> PoketMonHPCUR_R;
 	std::vector<GameEngineRender*> PoketMonHPMAX_R;
 
-
+	GameEngineRender* HPRenderPtr = nullptr;
 
 	float4 TextRenderImageScale = { 20, 40 };
 
@@ -49,5 +50,9 @@ private:
 	int PoketMonNameMax = 12;
 	int PoketMonLevelMax = 2;
 
+
+	std::vector<float> DamegeTick;
+
+	
 };
 
