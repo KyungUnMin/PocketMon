@@ -2,6 +2,8 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <functional>
 #include <GameEngineContents/PokeDataBase.h>
+#include "BattlePlayer.h"
+#include "BattleMonsterPlayer.h"
 
 class PokeSkillBase;
 // 설명 :
@@ -69,32 +71,7 @@ private:
 
 	int B_ArrowCheckNum = 0;
 
-	//포켓몬 스킬
-	PokeDataBase* MyPoketMon = PokeDataBase::PokeCreate(1, 15);
-
-	std::string_view TestText = "AAAAA";
-
-	std::string Skill_1 = MyPoketMon->GetMonsterSkillList(1)->ForUI_GetSkillName();
-	std::string Skill_2 = MyPoketMon->GetMonsterSkillList(2)->ForUI_GetSkillName();
-	std::string Skill_3 = MyPoketMon->GetMonsterSkillList(3)->ForUI_GetSkillName();
-	std::string Skill_4 = MyPoketMon->GetMonsterSkillList(4)->ForUI_GetSkillName();
-
-	std::string Type = MyPoketMon->ForUI_GetMonsterTypeName();
-
-	//스킬 PP  CUR PP는 실시간으로 바뀔 예정인데 어떻게 하면될까 일단 임시로 만들자
-	//첫번째 스킬
-	std::string CURPP_1 = MyPoketMon->GetMonsterSkillList(1)->ForUI_GetCurrentSkillPowerPoint();
-	std::string MAXPP_1 = MyPoketMon->GetMonsterSkillList(1)->ForUI_GetMaxSkillPowerPoint();
-	//두번째 스킬
-	std::string CURPP_2 = MyPoketMon->GetMonsterSkillList(2)->ForUI_GetCurrentSkillPowerPoint();
-	std::string MAXPP_2 = MyPoketMon->GetMonsterSkillList(2)->ForUI_GetMaxSkillPowerPoint();
-	//세번째 스킬
-	std::string CURPP_3 = MyPoketMon->GetMonsterSkillList(3)->ForUI_GetCurrentSkillPowerPoint();
-	std::string MAXPP_3 = MyPoketMon->GetMonsterSkillList(3)->ForUI_GetMaxSkillPowerPoint();
-	//네번째 스킬
-	std::string CURPP_4 = MyPoketMon->GetMonsterSkillList(4)->ForUI_GetCurrentSkillPowerPoint();
-	std::string MAXPP_4 = MyPoketMon->GetMonsterSkillList(4)->ForUI_GetMaxSkillPowerPoint();
-
+	
 
 
 	bool IsSelected = false;
