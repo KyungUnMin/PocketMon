@@ -95,13 +95,32 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
-	DefaultMoveTime += _DeltaTime;
+	/*DefaultMoveTime += _DeltaTime;
 
-	if (DefaultMoveTime < 0.2f)
-	{
+	float4 MoveRange = Fieldmap::GetPos(NPC1index);
 
-		DefaultMoveTime = 0.0f;
-	}
+	int2 NextXplusIndex = int2(NPC1index.x + 1, NPC1index.y);
+	int2 NextXminusIndex = int2(NPC1index.x - 1, NPC1index.y);
+	int2 NextYplusIndex = int2(NPC1index.x, NPC1index.y + 1);
+	int2 NextYMinusIndex = int2(NPC1index.x, NPC1index.y - 1);
+
+	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
+	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
+	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
+	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
+	
+	
+	
+	MoveStartPos = GetPos();
+	MoveEndPos = MoveStartPos + (MoveRange - NextPos1);
+	float4 NextNpcPos = float4::LerpClamp(MoveStartPos, MoveEndPos, DefaultMoveTime*0.001f);
+	SetPos(NextNpcPos);
+	
+		
+	
+	*/
+
+
 
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
 	Fieldmap::SetWalkable("PalletTown", NPC1index, false);
@@ -153,13 +172,6 @@ void NPC1::Render(float _DeltaTime)
 void NPC1::MovePattern1()
 {
 	
-
-	if (true==NPC1MoveValue)
-	{
-		//float4 POS = float4::LerpClamp(MoveStartPos, MoveEndPos, DefaultMoveTime * 5);
-		//float4 POS = float4::BezierClamp(StartPos, EndPos, PlayerTime * 5);
-		//SetPos(POS);
-	}
 }
 void MovePattern2();
 void MovePattern3();

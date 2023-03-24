@@ -140,6 +140,8 @@ private:
 	//플레이어 이동제어 Bool값
 	bool PlayerMoveBool = true;
 
+	bool Istrue = true;
+
 	bool IsPlayerDirUP = true;
 	bool IsPlayerDirDOWN = true;
 	bool IsPlayerDirLEFT = true;
