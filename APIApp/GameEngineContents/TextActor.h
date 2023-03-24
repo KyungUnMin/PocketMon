@@ -14,6 +14,7 @@ public:
 	void SetText(const std::string_view& _Str, bool _Animation = false);
 	void SetLine(int _LineCount);
 	void SetInterver(const float4& _Interval);
+	void SetAlpha(int _Alpha);
 	void SkipAnimation();
 	bool IsAnimationEnd();
 	void Clear();

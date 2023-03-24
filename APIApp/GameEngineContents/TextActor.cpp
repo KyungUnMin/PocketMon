@@ -118,6 +118,17 @@ void TextActor::SetInterver(const float4& _Interval)
 	TextRenderInterval = _Interval;
 }
 
+void TextActor::SetAlpha(int _Alpha)
+{
+	for (size_t y = 0; y < TextRender.size(); y++)
+	{
+		for (size_t x = 0; x < TextRender[y].size(); x++)
+		{
+			TextRender[y][x]->SetAlpha(_Alpha);
+		}
+	}
+}
+
 void TextActor::SkipAnimation()
 {
 	for (size_t y = 0; y < LineRenderIndex.size(); y++)
