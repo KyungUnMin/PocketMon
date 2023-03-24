@@ -12,6 +12,7 @@
 #include "PokemonLevel.h"
 #include "SummaryLevel.h"
 #include "BuyLevel.h"
+#include "EndingLevel.h"
 
 PocketMonCore PocketMonCore::Core;
 
@@ -38,7 +39,7 @@ void PocketMonCore::Start()
 	CreateLevel<PokemonLevel>("PokemonLevel");
 	CreateLevel<SummaryLevel>("SummaryLevel");
 	CreateLevel<BuyLevel>("BuyLevel");
-	
+	CreateLevel<EndingLevel>("EndingLevel");
 
 	ChangeLevel("CenterLevel");
 }

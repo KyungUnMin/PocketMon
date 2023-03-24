@@ -416,6 +416,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 
 	if (true == GameEngineInput::IsDown("PlayEnding"))
 	{
+		MainPlayer->Off();
 		EndingPlayActor::MainEndingPlayActor->PlayEnding();
 	}
 
@@ -470,7 +471,6 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainShopUIManager->OnOffSwtich();
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 	}
-
 
 	if (true == GameEngineInput::IsDown("EventCheck"))
 	{

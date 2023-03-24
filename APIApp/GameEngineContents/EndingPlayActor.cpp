@@ -2,9 +2,13 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include "ContentsEnum.h"
 #include "EndingPlayerAnimActor.h"
 #include "TextActor.h"
+#include "EndingLevel.h"
+#include "EndingPokeballBackground.h"
+#include "Fieldmap.h"
 
 EndingPlayActor* EndingPlayActor::MainEndingPlayActor = nullptr;
 bool EndingPlayActor::IsEndingPlay = false;
@@ -29,21 +33,113 @@ void EndingPlayActor::PlayEnding()
 	IsEndingPlay = true;
 
 	MainTextActor->SetText(
-		"GGGG DDDDDDDD",
+		"Game Design",
+		"Font_Dialog_White.bmp",
+		static_cast<int>(RenderOrder::EndingFront),
+		false);
+
+	SubTextActor->SetLine(1);
+	SubTextActor->SetText(
+		"UTG",
 		"Font_Dialog_White.bmp",
 		static_cast<int>(RenderOrder::EndingFront),
 		false);
 
 	MainTextActor->On();
-
-	SubTextActor->SetLine(5);
-	SubTextActor->SetText(
-		"GGGG DDDDDDDD\nSDFLJ SDLFKJDSF\nSDFKLJSDFL SDLKFJDSF\n\nSDFLKJ SDFLKJ",
-		"Font_Dialog_White.bmp",
-		static_cast<int>(RenderOrder::EndingFront),
-		false);
-
 	SubTextActor->On();
+
+	GetLevel()->LevelEvent.AddEvent(3.0f, std::bind(
+		[](EndingPlayActor* _This){
+			_This->MainTextActor->SetText(
+				"Player Design",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			_This->SubTextActor->SetLine(1);
+			_This->SubTextActor->SetText(
+				"YDM",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			EndingLevel::PokemonRenderImageName = "EndingPokemon001.bmp";
+			EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Red;
+
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+
+			Fieldmap::ChangeCity("PalletTown");
+		}, this), false); // 회색 시티
+	GetLevel()->LevelEvent.AddEvent(6.0f, std::bind(
+		[](EndingPlayActor* _This) {
+			_This->MainTextActor->SetText(
+				"Map Design",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			_This->SubTextActor->SetLine(1);
+			_This->SubTextActor->SetText(
+				"KKS",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			EndingLevel::PokemonRenderImageName = "EndingPokemon002.bmp";
+			EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Green;
+
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+
+			Fieldmap::ChangeCity("PalletTown");
+		}, this), false); // 상록 숲
+	GetLevel()->LevelEvent.AddEvent(9.0f, std::bind(
+		[](EndingPlayActor* _This) {
+			_This->MainTextActor->SetText(
+				"UI Design",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			_This->SubTextActor->SetLine(3);
+			_This->SubTextActor->SetText(
+				"KKH\nHSM\nKMS",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			EndingLevel::PokemonRenderImageName = "EndingPokemon003.bmp";
+			EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Blue;
+
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+
+			Fieldmap::ChangeCity("PalletTown");
+		}, this), false); // 상록 시티
+	GetLevel()->LevelEvent.AddEvent(12.0f, std::bind(
+		[](EndingPlayActor* _This) {
+			_This->MainTextActor->SetText(
+				"Battle Design",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			_This->SubTextActor->SetLine(1);
+			_This->SubTextActor->SetText(
+				"MKU",
+				"Font_Dialog_White.bmp",
+				static_cast<int>(RenderOrder::EndingFront),
+				false);
+
+			EndingLevel::PokemonRenderImageName = "EndingPokemon004.bmp";
+			EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Yellow;
+
+			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+
+			Fieldmap::ChangeCity("PalletTown");
+		}, this), false); // 1번 도로
+	GetLevel()->LevelEvent.AddEvent(15.0f, std::bind(
+		[](EndingPlayActor* _This) {
+			// 게임 끝 텍스트...
+		}, this), false); // 태초마을 카메라
 }
 
 void EndingPlayActor::Start()

@@ -249,6 +249,16 @@ void CenterLevel::Loading()
 		Dir.Move("Ending");
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingWalk.bmp"))->Cut(6, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballBlue.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballRed.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballYellow.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballGreen.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingRing.bmp"));
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon001.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon002.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon003.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon004.bmp"))->Cut(2, 1);
 	}
 	{
 		//Dir.MoveParentToDirectory("Image");
@@ -312,6 +322,7 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange4", '4');
 		GameEngineInput::CreateKey("LevelChange5", '5');
 		GameEngineInput::CreateKey("LevelChange6", '6');
+		GameEngineInput::CreateKey("LevelChange7", '7');
 
 		//플레이어이동
 		GameEngineInput::CreateKey("LeftMove", VK_LEFT);
@@ -390,6 +401,10 @@ void CenterLevel::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("LevelChange6"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("TextTestLevel");
+	}
+	if (GameEngineInput::IsDown("LevelChange7"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 	}
 }
 

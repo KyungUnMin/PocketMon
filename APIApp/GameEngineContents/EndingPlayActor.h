@@ -28,4 +28,8 @@ private:
 	GameEngineRender* BackgroundRender = nullptr;
 	TextActor* MainTextActor = nullptr;
 	TextActor* SubTextActor = nullptr;
+
+	float4 CameraStartPos = float4::Zero;
+	float4 CameraDestPos = float4::Zero;
+
 };

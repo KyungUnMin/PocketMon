@@ -242,11 +242,27 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DoorActorBase.cpp" />
+    <ClCompile Include="EndingFade.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EndingPlayActor.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="EndingPlayerAnimActor.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingPokeballBackground.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="EndingPokemonRender.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -435,11 +451,27 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="DoorActorBase.h" />
+    <ClInclude Include="EndingFade.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EndingPlayActor.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="EndingPlayerAnimActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingPokeballBackground.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingPokemonRender.h">
       <SubType>
       </SubType>
     </ClInclude>

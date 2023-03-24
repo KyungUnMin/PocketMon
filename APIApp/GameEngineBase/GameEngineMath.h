@@ -20,6 +20,21 @@ public:
 	static const float DegToRad;
 	static const float RadToDeg;
 
+	static float Lerp(const float& Start, const float& End, float Ratio)
+	{
+		if (0 >= Ratio)
+		{
+			Ratio = 0.0f;
+		}
+
+		if (1.0f <= Ratio)
+		{
+			Ratio = 1.0f;
+		}
+
+
+		return Start * (1.0f - Ratio) + (End * Ratio);
+	}
 private:
 	virtual ~GameEngineMath() = 0;
 };
