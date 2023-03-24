@@ -10,6 +10,8 @@ class PokeSkillBase;
 class BattleCommendActor : public GameEngineActor
 {
 public:
+	static BattleCommendActor* BattleCommendActorPtr;
+
 	// constrcuter destructer
 	BattleCommendActor();
 	~BattleCommendActor();
@@ -19,6 +21,7 @@ public:
 	BattleCommendActor(BattleCommendActor&& _Other) noexcept = delete;
 	BattleCommendActor& operator=(const BattleCommendActor& _Other) = delete;
 	BattleCommendActor& operator=(BattleCommendActor&& _Other) noexcept = delete;
+	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 
 	inline void SetCallBack(size_t _Index, std::function<void()> _CallBack)
@@ -34,7 +37,6 @@ protected:
 
 
 //	void SetAndResize(std::vector<GameEngineRender*> _Render, float4 _Pos);
-	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 	GameEngineRender* BattleArrowRender= nullptr;
 
@@ -54,6 +56,7 @@ private:
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
 	int SkillLineMax = 12;
+
 
 
 	std::vector<GameEngineRender*> PPCUR_R;
