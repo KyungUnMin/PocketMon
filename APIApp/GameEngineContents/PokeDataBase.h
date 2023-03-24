@@ -134,16 +134,6 @@ public:
 		}
 	}
 
-	// 아이템 해제
-	void ForInven_ItemRelease()
-	{
-		AttackPowerItem = false;
-		DefenseItem = false;
-		SpecialAttackPowerItem = false;
-		SpecialDefenseItem = false;
-		IshaveItem = false;
-	}
-
 	// 소지한 아이템 코드
 	ItemCode GetPossession()
 	{
@@ -154,34 +144,6 @@ public:
 	void SetPossession(ItemCode _enumnumber)
 	{
 		Possession = _enumnumber;
-	}
-
-	// 공격 아이템 들기
-	void ForInven_AttackItemPossession()
-	{
-		AttackPowerItem = true;
-		IshaveItem = true;
-	}
-	
-	// 방어 아이템 들기
-	void ForInven_DefenseItemPossession()
-	{
-		DefenseItem = true;
-		IshaveItem = true;
-	}
-
-	// 스페셜 공격 아이템 들기
-	void ForInven_Spe_AttackItemPossession()
-	{
-		SpecialAttackPowerItem = true;
-		IshaveItem = true;
-	}
-
-	// 스페셜 방어 아이템 들기
-	void ForInven_Spe_DefenseItemPossession()
-	{
-		SpecialDefenseItem = true;
-		IshaveItem = true;
 	}
 
 	// 체력깎기
@@ -408,27 +370,6 @@ public:
 	}
 	
 	void Release();
-
-	// 아이템을 가졌는지 확인 (계산용)
-	//float GetPossessionItem()
-	//{
-	//	// 공격 아이템 (1.1f)
-	//	// 방어력 아이템 (1.1f)
-	//	// 스페셜 공격력 아이템 (1.1f)
-	//	// 스페셜 방어력 아이템 (1.1f)
-	//}
-
-	//void usepokeball(int _ball)
-	//{
-	//	if (true)
-	//	{
-
-	//	}
-	//	else
-	//	{
-
-	//	}
-	//}
 
 protected:
 
