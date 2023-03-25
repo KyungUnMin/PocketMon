@@ -14,6 +14,7 @@
 #include "int2.h"
 #include "PokeDataBase.h"
 #include "PocketMonCore.h"
+#include "FieldmapCutableTree.h"
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
@@ -126,6 +127,9 @@ void FieldmapLevel::Loading()
 		}
 
 		{
+			Fieldmap::AddActor("Route2_Down", int2(21, 36), CreateActor<FieldmapCutableTree>(), false);
+			Fieldmap::AddActor("Route2_Down", int2(21, 43), CreateActor<FieldmapCutableTree>(), false);
+
 			Fieldmap::AddFlowerActors("Route2_Down", "Route2_Down_Flower.bmp");
 		}
 		{
@@ -137,10 +141,14 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("Route2_Down", int2(8, 28), int2::Right, 9, PlayerDir::Down);
 		}
 
+
 		CreateFieldmapCity("Route2_Up", "Route2_Up",float4(0.0f, -10368.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest001", "Route2_Up", int2(11, 13), "MoveRoute2_Down");
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest002", "Route2_Up", int2(12, 13), "MoveRoute2_Down");
+		}
+		{
+			Fieldmap::AddActor("Route2_Up", int2(17, 13), CreateActor<FieldmapCutableTree>(), false);
 		}
 		{
 			CreateBattlezone_Route2_Up(int2(8, 2), int2(7, 7));

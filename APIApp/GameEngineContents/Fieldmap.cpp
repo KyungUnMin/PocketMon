@@ -258,7 +258,7 @@ void Fieldmap::ShowEventLog(const int2& _Index)
 	CurCity->ShowEventLog(_Index);
 }
 
-void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor)
+void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor, bool _Walkalbe)
 {
 	if (nullptr == _Actor)
 	{
@@ -273,7 +273,13 @@ void Fieldmap::AddActor(const std::string_view& _CityName, const int2& _Index, G
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	AllCitys[UpperName]->AddActor(_Index, _Actor);
+	FieldmapCity* FindCity = AllCitys[UpperName];
+	FindCity->AddActor(_Index, _Actor);
+
+	if (false == _Walkalbe)
+	{
+		FindCity->SetWalkable(_Index, false);
+	}
 }
 
 void Fieldmap::AddFlowerActors(const std::string_view& _CityName, const std::string_view& _FlowerImageName)

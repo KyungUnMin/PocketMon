@@ -241,7 +241,7 @@ void CenterLevel::Loading()
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.bmp"));
-
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CutableTree.bmp"));
 	}
 
 	{

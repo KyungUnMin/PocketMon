@@ -248,6 +248,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="FieldmapCutableTree.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapEmptyDoor.cpp" />
     <ClCompile Include="FieldmapFlower.cpp">
       <SubType>
@@ -426,6 +430,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="FieldmapBattleZone.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="FieldmapCutableTree.h">
       <SubType>
       </SubType>
     </ClInclude>

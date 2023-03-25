@@ -268,6 +268,9 @@
     <ClCompile Include="BattleZoneBushParticle.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="FieldmapCutableTree.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -530,6 +533,9 @@
       <Filter>Battle\03.FSM\02.Battle\02.State\04.ThrowBall</Filter>
     </ClInclude>
     <ClInclude Include="BattleZoneBushParticle.h">
+      <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapCutableTree.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>

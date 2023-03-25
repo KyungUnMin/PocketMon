@@ -8,6 +8,7 @@ enum class RenderOrder
 	FieldBack,
 	Monster,		 // 1
 	Player,			 // 2
+	FieldMiddle,
 	FieldFront,
 	Particle,
 

@@ -69,7 +69,7 @@ public:
 	static size_t GetEventCount(const int2& _Index);
 	static void ShowEventLog(const int2& _Index);
 
-	static void AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor);
+	static void AddActor(const std::string_view& _CityName, const int2& _Index, GameEngineActor* _Actor, bool _Walkalbe = true);
 	static void AddFlowerActors(const std::string_view& _CityName, const std::string_view& _FlowerImageName);
 	static void LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB);
 
