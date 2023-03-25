@@ -3,6 +3,8 @@
 #include "BattleLevel.h"
 #include "Battle_PlayerThrowBall.h"
 #include "BattleEnemy.h"
+#include "BattleMonsterEnemy.h"
+#include "BattleEnemyMonsterFSM.h"
 
 BattleState_ThrowMonsterBall::BattleState_ThrowMonsterBall()
 {
@@ -19,10 +21,14 @@ void BattleState_ThrowMonsterBall::EnterState()
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfoUI->BattleSetText("You are mine");
 
-	float4 Dest = BattleEnemy::EnemyPtr->GetPos();
+	BattleEnemy* Enemy = BattleEnemy::EnemyPtr;
+	float4 Dest = Enemy->GetPos();
 	Battle_PlayerThrowBall* MonsterBall = BattleLevel::BattleLevelPtr->CreateActor<Battle_PlayerThrowBall>(UpdateOrder::Battle_Actors);
 	MonsterBall->Init(Dest, 1.f, -Dest.x);
 	MonsterBall->SetGravityAcc(400.f);
+
+	BattleEnemyMonsterFSM* EnemyMonsterFSM = Enemy->GetMonster()->GetFSM();
+	//EnemyMonsterFSM->ChangeState(BattleEnemyMonster_StateType::)
 }
 
 void BattleState_ThrowMonsterBall::ExitState()

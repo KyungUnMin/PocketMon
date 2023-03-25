@@ -90,6 +90,7 @@ void BattleLevel::InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _N
 
 void BattleLevel::Update(float _DeltaTime)
 {
+	//테스트용
 	if (true == TestKeyUpdate())
 		return;
 
@@ -107,7 +108,7 @@ bool BattleLevel::TestKeyUpdate()
 
 	if (true == GameEngineInput::IsDown("Test_ThrowMonsterBall"))
 	{
-		BattleFsmPtr->ChangeState(BattleStateType::ThrowMonsterBall);
+		UseMonsterBall(ItemCode::MasterBall);
 		return false;
 	}
 
@@ -161,7 +162,10 @@ void BattleLevel::PassPlayerTurn()
 
 void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
 {
-	//TODO
+	if (BattleStateType::PlayerTurn != BattleFsmPtr->GetNowState<BattleStateType>())
+		return;
+
+	BattleFsmPtr->ChangeState(BattleStateType::ThrowMonsterBall);
 }
 
 void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)

@@ -726,5 +726,8 @@
     <Filter Include="Battle\03.FSM\02.Battle\02.State\04.ThrowBall">
       <UniqueIdentifier>{4f0d6c28-db15-4eb3-9c16-02c4bb8c5900}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Battle\03.FSM\06.EnemyMonster\03.Lock">
+      <UniqueIdentifier>{e44707e2-7b3d-4f10-8c30-101e2a1e7bcc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

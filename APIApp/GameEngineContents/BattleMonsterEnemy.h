@@ -16,6 +16,11 @@ public:
 
 	void Init(PokeNumber _MonsterType, bool _IsWildMonster = false);
 
+	inline BattleEnemyMonsterFSM* GetFSM()
+	{
+		return FsmPtr;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 

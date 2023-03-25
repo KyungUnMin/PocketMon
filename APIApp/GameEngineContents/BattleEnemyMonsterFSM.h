@@ -5,6 +5,7 @@ enum class BattleEnemyMonster_StateType
 {
 	Shadow,
 	Idle,
+	Lock,
 
 	COUNT,
 };
