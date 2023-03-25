@@ -165,70 +165,36 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleFSMBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleMonsterEnemy.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleMonsterPlayer.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleMonsterSkillConverter.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattlePlayerFSM.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleSkillBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleStateBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleState_EnemyTurn.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleState_PlayerTurn.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleState_TalkBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattleState_WildTalk.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Battle_MonsterAppearEffect.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Battle_PlayerBallParticle.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="Battle_PlayerThrowBall.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="BattleBackGround.cpp" />
+    <ClCompile Include="BattleEnemy.cpp" />
+    <ClCompile Include="BattleEnemyFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonsterFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
+    <ClCompile Include="BattleEnemy_MoveState.cpp" />
+    <ClCompile Include="BattleFSM.cpp" />
+    <ClCompile Include="BattleFSMBase.cpp" />
+    <ClCompile Include="BattleLevel.cpp" />
+    <ClCompile Include="BattleMonsterBase.cpp" />
+    <ClCompile Include="BattleMonsterEnemy.cpp" />
+    <ClCompile Include="BattleMonsterPlayer.cpp" />
+    <ClCompile Include="BattleMonsterSkillConverter.cpp" />
+    <ClCompile Include="BattlePlayer.cpp" />
+    <ClCompile Include="BattlePlayerFSM.cpp" />
+    <ClCompile Include="BattlePlayerMonsterFSM.cpp" />
+    <ClCompile Include="BattlePlayerMonster_CreateState.cpp" />
+    <ClCompile Include="BattlePlayer_MoveState.cpp" />
+    <ClCompile Include="BattlePlayer_ThrowState.cpp" />
+    <ClCompile Include="BattleStateBase.cpp" />
+    <ClCompile Include="BattleStateIdle.cpp" />
+    <ClCompile Include="BattleState_EnemyTurn.cpp" />
+    <ClCompile Include="BattleState_PlayerTurn.cpp" />
+    <ClCompile Include="BattleState_TalkBase.cpp" />
+    <ClCompile Include="BattleState_ThrowMonsterBall.cpp" />
+    <ClCompile Include="BattleState_WildTalk.cpp" />
+    <ClCompile Include="BattleTrainerBase.cpp" />
+    <ClCompile Include="Battle_MonsterAppearEffect.cpp" />
+    <ClCompile Include="Battle_PlayerBallParticle.cpp" />
+    <ClCompile Include="Battle_PlayerThrowBall.cpp" />
     <ClCompile Include="BuyLevel.cpp">
       <SubType>
       </SubType>
@@ -297,16 +263,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleBackGround.cpp" />
     <ClCompile Include="BattleCommendActor.cpp" />
-    <ClCompile Include="BattleLevel.cpp" />
-    <ClCompile Include="BattleEnemy.cpp" />
-    <ClCompile Include="BattleMonsterBase.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="BattlePlayer.cpp" />
-    <ClCompile Include="BattleTrainerBase.cpp" />
     <ClCompile Include="Battle_Select.cpp" />
     <ClCompile Include="CenterActor.cpp" />
     <ClCompile Include="CenterLevel.cpp" />
@@ -386,66 +343,35 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BattleFSM.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleFSMBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleMonsterEnemy.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleMonsterPlayer.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattlePlayerFSM.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleSkillBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleStateBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_EnemyTurn.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_PlayerTurn.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_TalkBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_ThrowMonsterBall.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_WildTalk.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Battle_MonsterAppearEffect.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Battle_PlayerBallParticle.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="Battle_PlayerThrowBall.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
+    <ClInclude Include="BattleBackGround.h" />
+    <ClInclude Include="BattleEnemy.h" />
+    <ClInclude Include="BattleEnemyFSM.h" />
+    <ClInclude Include="BattleEnemyMonsterFSM.h" />
+    <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
+    <ClInclude Include="BattleEnemy_MoveState.h" />
+    <ClInclude Include="BattleFSM.h" />
+    <ClInclude Include="BattleFSMBase.h" />
+    <ClInclude Include="BattleLevel.h" />
+    <ClInclude Include="BattleMonsterBase.h" />
+    <ClInclude Include="BattleMonsterEnemy.h" />
+    <ClInclude Include="BattleMonsterPlayer.h" />
+    <ClInclude Include="BattlePlayer.h" />
+    <ClInclude Include="BattlePlayerFSM.h" />
+    <ClInclude Include="BattlePlayerMonsterFSM.h" />
+    <ClInclude Include="BattlePlayerMonster_CreateState.h" />
+    <ClInclude Include="BattlePlayer_MoveState.h" />
+    <ClInclude Include="BattlePlayer_ThrowState.h" />
+    <ClInclude Include="BattleStateBase.h" />
+    <ClInclude Include="BattleStateIdle.h" />
+    <ClInclude Include="BattleState_EnemyTurn.h" />
+    <ClInclude Include="BattleState_PlayerTurn.h" />
+    <ClInclude Include="BattleState_TalkBase.h" />
+    <ClInclude Include="BattleState_ThrowMonsterBall.h" />
+    <ClInclude Include="BattleState_WildTalk.h" />
+    <ClInclude Include="BattleTrainerBase.h" />
+    <ClInclude Include="Battle_MonsterAppearEffect.h" />
+    <ClInclude Include="Battle_PlayerBallParticle.h" />
+    <ClInclude Include="Battle_PlayerThrowBall.h" />
     <ClInclude Include="BuyLevel.h">
       <SubType>
       </SubType>
@@ -518,16 +444,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BattleBackGround.h" />
     <ClInclude Include="BattleCommendActor.h" />
-    <ClInclude Include="BattleLevel.h" />
-    <ClInclude Include="BattleEnemy.h" />
-    <ClInclude Include="BattleMonsterBase.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattlePlayer.h" />
-    <ClInclude Include="BattleTrainerBase.h" />
     <ClInclude Include="Battle_Select.h" />
     <ClInclude Include="CenterActor.h" />
     <ClInclude Include="CenterLevel.h" />

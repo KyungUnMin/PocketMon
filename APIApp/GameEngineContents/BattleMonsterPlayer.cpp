@@ -3,16 +3,21 @@
 #include "BattleMonsterBase.h"
 #include "ContentsEnum.h"
 #include "Battle_MonsterAppearEffect.h"
+#include "BattlePlayerMonsterFSM.h"
 
 
 BattleMonsterPlayer::BattleMonsterPlayer()
 {
-
+	FsmPtr = new BattlePlayerMonsterFSM;
 }
 
 BattleMonsterPlayer::~BattleMonsterPlayer()
 {
-
+	if (nullptr != FsmPtr)
+	{
+		delete FsmPtr;
+		FsmPtr = nullptr;
+	}
 }
 
 void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
@@ -20,6 +25,7 @@ void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
 	BattleMonsterBase::Init(_MonsterType);
 
 	RenderCreate();
+	FsmPtr->Init();
 }
 
 void BattleMonsterPlayer::RenderCreate()
@@ -27,45 +33,36 @@ void BattleMonsterPlayer::RenderCreate()
 	std::string Name = GetName();
 
 	std::string ImagePath = "Battle" + Name + "Back.bmp";
-	MonsterRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
-	MonsterRender->SetScaleToImage();
-	MonsterRender->Off();
+	RenderPtr = CreateRender(ImagePath, BattleRenderOrder::Monster0);
+	RenderPtr->SetScaleToImage();
 
-	ImagePath = "Battle" + Name + "BackLight.bmp";
+	/*ImagePath = "Battle" + Name + "BackLight.bmp";
 	AppearRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	AppearRender->SetScale(float4::Zero);
-	AppearRender->SetAlpha(200);
+	AppearRender->SetAlpha(200);*/
 }
 
 
 void BattleMonsterPlayer::Update(float _DeltaTime)
 {
-	switch (CurState)
-	{
-	case BattleMonsterPlayer::State::Appear:
-		Update_Appear();
-		break;
-	case BattleMonsterPlayer::State::Ready:
-		//Ready일땐 아무것도 하지 않는다.
-		break;
-	}
+	FsmPtr->Update(_DeltaTime);
 }
 
-
-void BattleMonsterPlayer::Update_Appear()
-{
-	//알파값 조정
-	float Ratio = (GetLiveTime() / Battle_MonsterAppearEffect::FadeDuration);
-
-	float4 DestScale = MonsterRender->GetScale();
-	float4 NowScale = float4::LerpClamp(float4::Zero, DestScale, Ratio);
-	AppearRender->SetScale(NowScale);
-
-	//Duration 시간이 지났다면
-	if (Ratio <= 1.f)
-		return;
-
-	CurState = State::Ready;
-	AppearRender->Off();
-	MonsterRender->On();
-}
+//
+//void BattleMonsterPlayer::Update_Appear()
+//{
+//	//알파값 조정
+//	float Ratio = (GetLiveTime() / Battle_MonsterAppearEffect::FadeDuration);
+//
+//	float4 DestScale = MonsterRender->GetScale();
+//	float4 NowScale = float4::LerpClamp(float4::Zero, DestScale, Ratio);
+//	AppearRender->SetScale(NowScale);
+//
+//	//Duration 시간이 지났다면
+//	if (Ratio <= 1.f)
+//		return;
+//
+//	CurState = State::Ready;
+//	AppearRender->Off();
+//	MonsterRender->On();
+//}

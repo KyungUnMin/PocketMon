@@ -22,19 +22,6 @@ BattleFSMBase::~BattleFSMBase()
 
 
 
-void BattleFSMBase::SetState(size_t _Index, BattleStateBase* _State)
-{
-	if (AllState.size() <= _Index)
-	{
-		MsgAssert("설정해주려는 State가 벡터의 범위를 넘어갔습니다.\n ResizeStates함수를 호출해주어야 합니다");
-		return;
-	 }
-
-	_State->FsmPtr = this;
-	AllState[_Index] = _State;
-}
-
-
 
 void BattleFSMBase::ChangeState(size_t _NextIndex)
 {
@@ -54,7 +41,7 @@ void BattleFSMBase::ChangeState(size_t _NextIndex)
 
 	if (nullptr == NextState)
 	{
-		MsgAssert("바꾸려는 배틀 State는 만들어준 적이 없습니다");
+		MsgAssert("바꾸려는 배틀 State를 만들어준 적이 없습니다");
 		return;
 	}
 
@@ -66,6 +53,20 @@ void BattleFSMBase::ChangeState(size_t _NextIndex)
 	NextState->EnterState();
 
 	CurIndex = _NextIndex;
+}
+
+
+
+void BattleFSMBase::InitState(BattleStateBase* _State, size_t _Index)
+{
+	if (AllState.size() <= _Index)
+	{
+		MsgAssert("설정해주려는 State가 벡터의 범위를 넘어갔습니다.\n ResizeStates함수를 호출해주어야 합니다");
+		return;
+	}
+
+	_State->FsmPtr = this;
+	AllState[_Index] = _State;
 }
 
 

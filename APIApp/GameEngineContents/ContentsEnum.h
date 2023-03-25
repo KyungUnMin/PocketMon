@@ -54,6 +54,8 @@ enum class BattleRenderOrder
 	Player1,
 	Player2,
 
+	CreateEffect,
+
 	SkillEffect,
 	Particle0,
 	Particle1,

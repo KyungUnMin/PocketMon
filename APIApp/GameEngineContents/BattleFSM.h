@@ -28,6 +28,5 @@ public:
 protected:
 
 private:
-	void CreateState(BattleStateType _Type);
 };
 
