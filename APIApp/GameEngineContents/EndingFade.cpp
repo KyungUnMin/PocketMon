@@ -21,6 +21,7 @@ void EndingFade::Start()
 	FadeRender = CreateRender("Background.bmp", RenderOrder::Fade);
 	FadeRender->SetScaleToImage();
 	FadeRender->SetAlpha(0);
+	FadeRender->EffectCameraOff();
 }
 
 void EndingFade::Update(float _DeltaTime)

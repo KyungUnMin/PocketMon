@@ -356,7 +356,8 @@ void FieldmapLevel::Loading()
 		}
 	}
 
-	CreateActor<EndingPlayActor>();
+	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
+	EndActor->Off();
 
 	Fieldmap::ChangeCity("PalletTown");
 
@@ -418,7 +419,6 @@ void FieldmapLevel::Update(float _DeltaTime)
 
 	if (true == GameEngineInput::IsDown("PlayEnding"))
 	{
-		MainPlayer->Off();
 		EndingPlayActor::MainEndingPlayActor->PlayEnding();
 		return;
 	}

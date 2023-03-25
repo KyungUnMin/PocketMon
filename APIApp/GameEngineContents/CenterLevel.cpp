@@ -255,6 +255,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndPokeballGreen.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingRing.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndLogo.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingGround.bmp"));
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon001.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingPokemon002.bmp"))->Cut(2, 1);
@@ -284,6 +285,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectMenu.bmp"))->Cut(5, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBox.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Black.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Items.bmp"))->Cut(7,2);
 
 		Dir.MoveParentToDirectory("Image");

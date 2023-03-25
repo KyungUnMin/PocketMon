@@ -11,6 +11,7 @@
 EndingPokeballBackground::PokeColor EndingLevel::PokeballColor = EndingPokeballBackground::PokeColor::Green;
 std::string EndingLevel::PokemonRenderImageName = "EndingPokemon002.bmp";
 bool EndingLevel::LastEffect = false;
+std::vector<std::function<void()>> EndingLevel::EndCallFunctions;
 
 EndingLevel::EndingLevel()
 {
@@ -61,14 +62,16 @@ void EndingLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 	Fade->SetProgress(0.0f);
 
-	LevelEvent.AddEvent(1.8f, std::bind([](EndingLevel* _This) {
+	LevelEvent.AddEvent(1.8f, std::bind([](EndingLevel* _This) 
+		{
 		_This->PokeBackActor->On();
 		_This->PokeBackActor->PlayPokeballAnim(PokeballColor);
 		}, this),
 		false);
 
-	LevelEvent.AddEvent(3.5f, std::bind([](EndingLevel* _This) {
-		_This->Fade->On();
+	LevelEvent.AddEvent(3.5f, std::bind([](EndingLevel* _This) 
+		{		
+		_This->Fade->Off();
 		}, this),
 		false);
 
@@ -82,6 +85,13 @@ void EndingLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 void EndingLevel::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 {
+	for (size_t i = 0; i < EndCallFunctions.size(); i++)
+	{
+		EndCallFunctions[i]();
+	}
+
+	EndCallFunctions.clear();
+
 	PokeBackActor->Off();
 	PokemonRender->Off();
 	Fade->Off();

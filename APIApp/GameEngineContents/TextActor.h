@@ -17,6 +17,7 @@ public:
 	void SetAlpha(int _Alpha);
 	void SkipAnimation();
 	void Clear();
+
 	// delete Function
 	TextActor(const TextActor& _Other) = delete;
 	TextActor(TextActor&& _Other) = delete;
@@ -43,6 +44,5 @@ private:
 	std::list<std::string> TestScript = std::list<std::string>();
 
 	void SetFont(const std::string_view& _Font, int _Order);
-	
 };
 

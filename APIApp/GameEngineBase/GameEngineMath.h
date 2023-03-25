@@ -207,7 +207,7 @@ public:
 	}
 
 	// 자기가 길이 1로 줄어든 애를 리턴해주는것.
-	float4 NormalizeReturn()
+	float4 NormalizeReturn() const
 	{
 		float4 Result = *this;
 		Result.Normalize();
