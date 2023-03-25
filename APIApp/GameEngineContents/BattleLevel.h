@@ -73,7 +73,7 @@ private:
 
 	BattleFSM* BattleFsmPtr = nullptr;
 
-	void InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType);
+	void InitGroundRenders(BattleFieldType _FieldType);
 
 	bool TestKeyUpdate();
 };

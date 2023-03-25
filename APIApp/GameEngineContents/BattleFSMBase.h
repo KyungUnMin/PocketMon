@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <GameEngineBase/GameEngineDebug.h>
 
 class BattleStateBase;
 enum class BattleFieldType;
@@ -17,6 +16,7 @@ public:
 	BattleFSMBase& operator=(const BattleFSMBase& _Other) = delete;
 	BattleFSMBase& operator=(const BattleFSMBase&& _Other) noexcept = delete;
 
+	virtual void Init(BattleFieldType _FieldType, BattleNpcType _NpcType) = 0;
 
 	template <typename EnumType>
 	void ChangeState(EnumType _Type)
@@ -32,8 +32,6 @@ public:
 
 	void Update(float _DeltaTime);
 
-	virtual void Init(BattleFieldType _FieldType, BattleNpcType _NpcType) = 0;
-
 protected:
 	template <typename EnumType>
 	void ResizeStates(EnumType _Count)
@@ -41,12 +39,7 @@ protected:
 		ResizeStates(static_cast<size_t>(_Count));
 	}
 
-	template <typename StateType, typename EnumType>
-	void CreateState(EnumType _Index)
-	{
-		BattleStateBase* NewState = new StateType;
-		InitState(NewState, static_cast<size_t>(_Index));
-	}
+	void SetState(size_t _Index, BattleStateBase* _State);
 
 private:
 	std::vector<BattleStateBase*> AllState;
@@ -58,7 +51,5 @@ private:
 	{
 		AllState.resize(_Size);
 	}
-
-	void InitState(BattleStateBase* _State, size_t _Index);
 };
 

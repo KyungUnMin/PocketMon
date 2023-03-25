@@ -6,7 +6,6 @@
 #include "Battle_Select.h"
 #include "ContentsEnum.h"
 #include "BattleFSM.h"
-#include "BattlePlayerFSM.h"
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
@@ -39,7 +38,7 @@ void BattleState_WildTalk::EnterState()
 
 void BattleState_WildTalk::PlayerMonsterCreate()
 {
-	BattlePlayer::PlayerPtr->GetFSM()->ChangeState(BattlePlayer_StateType::Throw);
+	BattlePlayer::PlayerPtr->CreateMontser();
 }
 
 

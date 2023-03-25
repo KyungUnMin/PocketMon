@@ -1,8 +1,8 @@
 #pragma once
 #include "BattleMonsterBase.h"
 
+enum class PokeNumber;
 class GameEngineRender;
-class BattlePlayerMonsterFSM;
 
 class BattleMonsterPlayer : public BattleMonsterBase
 {
@@ -17,23 +17,25 @@ public:
 
 	void Init(PokeNumber _MonsterType);
 
-	inline GameEngineRender* GetRender()
-	{
-		return RenderPtr;
-	}
-
-	inline BattlePlayerMonsterFSM* GetFSM()
-	{
-		return FsmPtr;
-	}
-
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	GameEngineRender* RenderPtr = nullptr;
-	BattlePlayerMonsterFSM* FsmPtr = nullptr;
+	enum class State
+	{
+		Appear,
+		Ready,
+	};
+
+	State CurState = State::Appear;
+
+	GameEngineRender* MonsterRender = nullptr;
+	GameEngineRender* AppearRender = nullptr;
+
 
 	void RenderCreate();
+	void Update_Appear();
+	
+
 };
 

@@ -1,8 +1,6 @@
 #pragma once
 #include "BattleMonsterBase.h"
 
-class BattleEnemyMonsterFSM;
-
 class BattleMonsterEnemy : public BattleMonsterBase
 {
 public:
@@ -14,16 +12,33 @@ public:
 	BattleMonsterEnemy& operator=(const BattleMonsterEnemy& _Other) = delete;
 	BattleMonsterEnemy& operator=(const BattleMonsterEnemy&& _Other) noexcept = delete;
 
-	void Init(PokeNumber _MonsterType, bool _IsWildMonster = false);
+	void Init(PokeNumber _MonsterType, bool _IsWildMonster);
 
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
-	BattleEnemyMonsterFSM* FsmPtr = nullptr;
+	enum class State
+	{
+		Move,
+		Appear,
+		Ready,
+		LockOn,
+		Lock,
+		//°¥¾Æ¾þ¾î?
+	};
 
+	bool IsWildMonster = false;
+	State CurState = State::Appear;
 	GameEngineRender* MonsterRender = nullptr;
+	GameEngineRender* AppearRender = nullptr;
+	const float4 StartAlpha = float4{ 100.f, 0.f };
+
+	float AppearTime = 0.f;
 
 	void RenderCreate();
+	void Update_Move();
+	void Update_WildAppear();
+	void Update_NPCAppear();
 };
 

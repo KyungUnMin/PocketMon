@@ -1,16 +1,10 @@
 #pragma once
 #include "BattleTrainerBase.h"
-#include <string_view>
 
 class GameEngineRender;
 class BattleMonsterPlayer;
-
-class BattlePlayerFSM;
-class PokeDataBase;
 enum class PokeSkill;
-enum class BattleNpcType;
-enum class BattleFieldType;
-enum class BattlePlayer_StateType;
+class PokeDataBase;
 
 class BattlePlayer : public BattleTrainerBase
 {
@@ -25,8 +19,7 @@ public:
 	BattlePlayer& operator=(const BattlePlayer& _Other) = delete;
 	BattlePlayer& operator=(const BattlePlayer&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
-
+	void Init(BattleFieldType _FieldType);
 	void CreateMontser();
 
 	PokeSkill GetSlotSkillType(size_t _Index);
@@ -38,26 +31,36 @@ public:
 
 	PokeDataBase* GetMonsterDB();
 
-	inline GameEngineRender* GetPlayerRender()
-	{
-		return PlayerRenderPtr;
-	}
-
-	BattlePlayer_StateType GetNowState();
-
-	inline BattlePlayerFSM* GetFSM()
-	{
-		return FsmPtr;
-	}
-	
 protected:
-
 	void Update(float _DeltaTime) override;
 
 private:
+	static const std::string_view IdleAniName;
+	static const std::string_view ThrowAniName;
+
+	enum class State
+	{
+		Move,
+		Idle,
+		Throw
+	};
+
 	GameEngineRender* PlayerRenderPtr = nullptr;
 	BattleMonsterPlayer* Monster = nullptr;
-	BattlePlayerFSM* FsmPtr = nullptr;
+	const float4 PlayerRenderScale = float4{ 256.f, 196.f };
+	const float4 PlayerRenderOffset = float4{ 0.f, -65.f };
+
+	State CurState = State::Move;
+	float4 MoveStartPos = float4::Zero;
+	float4 MoveEndPos = float4::Zero;
+	const float4 ThrowMoveDest = float4{ -400.f, -65.f };
+	const float ThrowDuration = 0.5f;
+	float4 MonsterSpawnPos = float4::Zero;
+
 	
 	void CreateGround(BattleFieldType _FieldType);
+	void CreatePlayerRender();
+
+	void Update_Move();
+	void Update_Throw();
 };

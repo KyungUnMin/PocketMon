@@ -9,16 +9,15 @@
 #include "Battle_MonsterAppearEffect.h"
 #include "Battle_PlayerBallParticle.h"
 #include "Battle_PlayerThrowBall.h"
-#include "BattlePlayerFSM.h"
-
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
+const std::string_view BattlePlayer::IdleAniName = "Idle";
+const std::string_view BattlePlayer::ThrowAniName = "Throw";
 
 
 BattlePlayer::BattlePlayer()
 {
 	PlayerPtr = this;
-	FsmPtr = new BattlePlayerFSM;
 }
 
 BattlePlayer::~BattlePlayer()
@@ -27,26 +26,15 @@ BattlePlayer::~BattlePlayer()
 	{
 		PlayerPtr = nullptr;
 	}
-
-	if (nullptr != FsmPtr)
-	{
-		delete FsmPtr;
-		FsmPtr = nullptr;
-	}
 }
 
 
-void BattlePlayer::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattlePlayer::Init(BattleFieldType _FieldType)
 {
-	const float4 RenderScale = float4{ 256.f, 196.f };
-	const float4 RenderOffset = float4{ 0.f, -65.f };
-	PlayerRenderPtr = CreateRender(BattleRenderOrder::Player0);
-	PlayerRenderPtr->SetScale(RenderScale);
-	PlayerRenderPtr->SetPosition(RenderOffset);
-
-	FsmPtr->Init(_FieldType, _NpcType);
 	CreateGround(_FieldType);
+	CreatePlayerRender();
 }
+
 
 
 void BattlePlayer::CreateGround(BattleFieldType _FieldType)
@@ -62,7 +50,6 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 		break;
 	case BattleFieldType::Forest0:
 	case BattleFieldType::Forest1:
-	case BattleFieldType::Forest2:
 		GroundPath = "BattleForestPlayerGround.bmp";
 		break;
 	case BattleFieldType::Gym:
@@ -73,35 +60,99 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 	GameEngineRender* GroundRender = CreateRender(GroundPath, BattleRenderOrder::Ground);
 	GroundRender->SetScaleToImage();
 
+	//State에 따른 움직임 위치 설정
+	const float4& RenderScale = GroundRender->GetScale();
+	MoveStartPos = float4{ ScreenSize.x + RenderScale.hx(), Height };
+	MoveEndPos = float4{ RenderScale.hx(), Height };
 }
+
+void BattlePlayer::CreatePlayerRender()
+{
+	PlayerRenderPtr = CreateRender(BattleRenderOrder::Player0);
+	PlayerRenderPtr->CreateAnimation
+	({
+		.AnimationName = IdleAniName,
+		.ImageName = "BattlePlayer.bmp",
+		.Start = 0,
+		.End = 0,
+		.InterTime = FLT_MAX,
+		.Loop = true
+	});
+
+	PlayerRenderPtr->CreateAnimation
+	({
+		.AnimationName = ThrowAniName,
+		.ImageName = "BattlePlayer.bmp",
+		.Start = 1,
+		.End = 4,
+		.InterTime = 0.1f,
+		.Loop = false
+	});
+
+	PlayerRenderPtr->ChangeAnimation(IdleAniName);
+	PlayerRenderPtr->SetScale(PlayerRenderScale);
+	PlayerRenderPtr->SetPosition(PlayerRenderOffset);
+}
+
+
+
+
+
+
+
+
 
 
 void BattlePlayer::Update(float _DeltaTime)
 {
-	FsmPtr->Update(_DeltaTime);
+	switch (CurState)
+	{
+	case BattlePlayer::State::Move:
+		Update_Move();
+		break;
+	case BattlePlayer::State::Idle:
+		break;
+	case BattlePlayer::State::Throw:
+		Update_Throw();
+		break;
+	}
+
 }
 
+
+void BattlePlayer::Update_Move()
+{
+	if (true == Update_LerpMoveActor(MoveStartPos, MoveEndPos, BattleTrainerBase::MoveDuration))
+		return;
+
+	CurState = State::Idle;
+}
 
 void BattlePlayer::CreateMontser()
 {
+	MonsterSpawnPos = GetPos();
+
+	CurState = State::Throw;
+	PlayerRenderPtr->ChangeAnimation(ThrowAniName);
+	GetLevel()->CreateActor<Battle_PlayerThrowBall>(UpdateOrder::Battle_Actors)->Init(MonsterSpawnPos, ThrowDuration);
+}
+
+
+void BattlePlayer::Update_Throw()
+{
+	if (true == Update_LerpMoveComponent(PlayerRenderPtr, PlayerRenderOffset, ThrowMoveDest, ThrowDuration))
+		return;
+
+	PlayerRenderPtr->Off();
+	CurState = State::Idle;
+
+	GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
+	GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors)->SetPos(MonsterSpawnPos);
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNumber::Bulbasaur);
-	//GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
+	Monster->SetPos(MonsterSpawnPos);
 }
 
-
-
-BattlePlayer_StateType BattlePlayer::GetNowState()
-{
-	return FsmPtr->GetNowState<BattlePlayer_StateType>();
-}
-
-
-
-PokeDataBase* BattlePlayer::GetMonsterDB()
-{
-	return Monster->GetDB();
-}
 
 PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
 {
@@ -115,3 +166,7 @@ PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
 	return SkillBase->GetSkill();
 }
 
+PokeDataBase* BattlePlayer::GetMonsterDB()
+{
+	return Monster->GetDB();
+}
