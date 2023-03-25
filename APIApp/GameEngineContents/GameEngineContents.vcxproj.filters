@@ -265,6 +265,9 @@
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\04.ThrowBall</Filter>
     </ClCompile>
+    <ClCompile Include="BattleZoneBushParticle.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -525,6 +528,9 @@
     </ClInclude>
     <ClInclude Include="BattleState_ThrowMonsterBall.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\04.ThrowBall</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleZoneBushParticle.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -14,7 +14,7 @@ void Player::PlayerRenderLoad()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	{
 		Players = CreateRender(RenderOrder::Player);
-		Players->SetScale({ 50,50 });
+		Players->SetScale({ 50,64 });
 		Players->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "IdleRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "IdleLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "IdleUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });

@@ -157,6 +157,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SingleDoor.bmp"))->Cut(4, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WoodDoor.bmp"))->Cut(4, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Flower.bmp"))->Cut(5, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BushEffect.bmp"))->Cut(4, 1);
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DebugTilemap.bmp"))->Cut(8, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Center_1F.bmp"));

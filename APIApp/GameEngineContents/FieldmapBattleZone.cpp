@@ -1,6 +1,10 @@
 #include "FieldmapBattleZone.h"
 #include <GameEngineBase/GameEngineRandom.h>
+#include <GameEngineCore/GameEngineLevel.h>
 #include "Fieldmap.h"
+#include "Player.h"
+#include "BattleZoneBushParticle.h"
+
 
 FieldmapBattleZone::FieldmapBattleZone()
 {
@@ -50,6 +54,9 @@ void FieldmapBattleZone::AddPokemon(PokeNumber _Number)
 void FieldmapBattleZone::BattleStart()
 {
 	GameEngineRandom& MianRand = GameEngineRandom::MainRandom;
+
+	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();
+	Particle->SetPos(Fieldmap::GetPos(Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
 
 	int RandomIndex = MianRand.RandomInt(0, static_cast<int>(PokeNumbers.size() - 1));
 	int PokeNumber = static_cast<int>(PokeNumbers[RandomIndex]);

@@ -192,6 +192,10 @@
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp" />
     <ClCompile Include="BattleState_WildTalk.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
+    <ClCompile Include="BattleZoneBushParticle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp" />
     <ClCompile Include="Battle_PlayerBallParticle.cpp" />
     <ClCompile Include="Battle_PlayerThrowBall.cpp" />
@@ -369,6 +373,10 @@
     <ClInclude Include="BattleState_ThrowMonsterBall.h" />
     <ClInclude Include="BattleState_WildTalk.h" />
     <ClInclude Include="BattleTrainerBase.h" />
+    <ClInclude Include="BattleZoneBushParticle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h" />
     <ClInclude Include="Battle_PlayerBallParticle.h" />
     <ClInclude Include="Battle_PlayerThrowBall.h" />
