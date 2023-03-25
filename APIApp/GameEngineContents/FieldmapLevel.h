@@ -65,7 +65,7 @@ private:
 		NewDoor->SetDoorCity(_CityName);
 		NewDoor->SetDoorIndex(_Index);
 
-		Fieldmap::AddEvent(_CityName, _Index,
+		Fieldmap::AddStartEvent(_CityName, _Index,
 			{
 				.Name = _EventName.data(),
 				.Order = _Order,

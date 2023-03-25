@@ -147,8 +147,7 @@ void Player::MoveUpdate(float _Time)
 	 {
 		 PlayerTime = 0.0f;
 		 ChangeState(PlayerState::IDLE);
-	 }
-	 
+	 }	 
 }
 
 void Player::MoveEnd()

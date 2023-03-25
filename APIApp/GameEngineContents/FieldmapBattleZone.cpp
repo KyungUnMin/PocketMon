@@ -28,7 +28,7 @@ void FieldmapBattleZone::InitBattleZone(const std::string_view& _CityName, const
 	{
 		for (size_t x = 0; x < ZoneSize.x; x++)
 		{
-			Fieldmap::AddEvent(CityName, ZoneIndex, {.Name = "Battle",
+			Fieldmap::AddStartEvent(CityName, ZoneIndex, {.Name = "Battle",
 				.Order = 10,
 				.VaildFunc = []() {return true;},
 				.EventFunc = std::bind(&FieldmapBattleZone::BattleStart, this),

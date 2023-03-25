@@ -42,14 +42,34 @@ public:
 		return MyTilemapData.GetGroundType(_Index);
 	}
 
-	inline void AddEvent(const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+	inline void AddStartEvent(const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
 	{
-		MyTilemapData.AddEvent(_Index, _Parameter);
+		MyTilemapData.AddStartEvent(_Index, _Parameter);
 	}
 
-	inline void EventCheck(const int2& _Index)
+	inline void AddUpdateEvent(const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
 	{
-		MyTilemapData.EventCheck(_Index);
+		MyTilemapData.AddUpdateEvent(_Index, _Parameter);
+	}
+
+	inline void AddEndEvent(const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+	{
+		MyTilemapData.AddEndEvent(_Index, _Parameter);
+	}
+
+	inline void StartEventCheck(const int2& _Index)
+	{
+		MyTilemapData.StartEventCheck(_Index);
+	}
+
+	inline void UpdateEventCheck(const int2& _Index)
+	{
+		MyTilemapData.UpdateEventCheck(_Index);
+	}
+
+	inline void EndEventCheck(const int2& _Index)
+	{
+		MyTilemapData.EndEventCheck(_Index);
 	}
 
 	inline size_t GetEventCount(const int2& _Index) const

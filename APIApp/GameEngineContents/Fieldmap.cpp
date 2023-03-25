@@ -173,7 +173,7 @@ void Fieldmap::ChangeCity(const std::string_view& _CityName)
 	}
 }
 
-void Fieldmap::AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+void Fieldmap::AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);
 
@@ -182,17 +182,60 @@ void Fieldmap::AddEvent(const std::string_view& _CityName, const int2& _Index, c
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	AllCitys[UpperName]->AddEvent(_Index, _Parameter);
+	AllCitys[UpperName]->AddStartEvent(_Index, _Parameter);
 }
 
-void Fieldmap::EventCheck(const int2& _Index)
+void Fieldmap::AddUpdateEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+{
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() == AllCitys.find(UpperName))
+	{
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
+	}
+
+	AllCitys[UpperName]->AddUpdateEvent(_Index, _Parameter);
+}
+
+void Fieldmap::AddEndEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)
+{
+	std::string UpperName = GameEngineString::ToUpper(_CityName);
+
+	if (AllCitys.end() == AllCitys.find(UpperName))
+	{
+		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
+	}
+
+	AllCitys[UpperName]->AddEndEvent(_Index, _Parameter);
+}
+void Fieldmap::StartEventCheck(const int2& _Index)
 {
 	if (nullptr == CurCity)
 	{
 		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
 	}
 
-	CurCity->EventCheck(_Index);
+	CurCity->StartEventCheck(_Index);
+}
+
+void Fieldmap::UpdateEventCheck(const int2& _Index)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+	}
+
+	CurCity->UpdateEventCheck(_Index);
+}
+
+void Fieldmap::EndEventCheck(const int2& _Index)
+{
+	if (nullptr == CurCity)
+	{
+		MsgAssert("필드맵 데이터를 설정하지 않고 사용하려 했습니다.");
+	}
+
+	CurCity->EndEventCheck(_Index);
 }
 
 size_t Fieldmap::GetEventCount(const int2& _Index)

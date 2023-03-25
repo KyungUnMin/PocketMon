@@ -42,7 +42,9 @@ public:
 
 		bool IsWalkalbe = false;
 		int RenderIndex = -1;		
-		std::map<int, FieldEvent> EventList;
+		std::map<int, FieldEvent> StartEvents;
+		std::map<int, FieldEvent> UpdateEvents;
+		std::map<int, FieldEvent> EndEvents;
 	};
 
 public:
@@ -58,8 +60,13 @@ public:
 	bool Walkabal(const int2& _Index) const;
 	bool Swinable(const int2& _Index) const;
 
-	void AddEvent(const int2& _Index, const FieldEventParameter& _EventParameter);
-	void EventCheck(const int2& _Index);
+	void AddStartEvent(const int2& _Index, const FieldEventParameter& _EventParameter);
+	void AddUpdateEvent(const int2& _Index, const FieldEventParameter& _EventParameter);
+	void AddEndEvent(const int2& _Index, const FieldEventParameter& _EventParameter);
+
+	void StartEventCheck(const int2& _Index);
+	void UpdateEventCheck(const int2& _Index);
+	void EndEventCheck(const int2& _Index);
 
 	GroundType GetGroundType(const int2& _Index) const;
 
@@ -92,4 +99,7 @@ private:
 
 	size_t TileSizeX = 0;
 	size_t TileSizeY = 0;
+
+	void AddEvent(std::map<int, FieldEvent>& _Events, const FieldEventParameter& _EventParameter);
+	void CheckEvent(std::map<int, FieldEvent>& _Events);
 };

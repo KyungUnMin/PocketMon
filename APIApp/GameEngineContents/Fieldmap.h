@@ -58,8 +58,14 @@ public:
 	static void ChangeCity(FieldmapCity* _CityPtr);
 	static void ChangeCity(const std::string_view& _CityName);
 
-	static void AddEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
-	static void EventCheck(const int2& _Index);
+	static void AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
+	static void AddUpdateEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
+	static void AddEndEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
+
+	static void StartEventCheck(const int2& _Index);
+	static void UpdateEventCheck(const int2& _Index);
+	static void EndEventCheck(const int2& _Index);
+
 	static size_t GetEventCount(const int2& _Index);
 	static void ShowEventLog(const int2& _Index);
 

@@ -475,9 +475,17 @@ void FieldmapLevel::Update(float _DeltaTime)
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 	}
 
-	if (true == GameEngineInput::IsDown("EventCheck"))
+	if (true == GameEngineInput::IsDown("StartEventCheck"))
 	{
-		Fieldmap::EventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
+		Fieldmap::StartEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
+	}
+	if (true == GameEngineInput::IsDown("UpdateEventCheck"))
+	{
+		Fieldmap::UpdateEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
+	}
+	if (true == GameEngineInput::IsDown("EndEventCheck"))
+	{
+		Fieldmap::EndEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
 }
 
@@ -531,7 +539,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	switch (_Dir)
 	{
 	case PlayerDir::Up:
-		Fieldmap::AddEvent(_CityName, _Index, {
+		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpUp",
 			.VaildFunc = std::bind(&FieldmapLevel::PlayerUpCheck, this),
 			.EventFunc = &FieldmapLevel::TempFunc,
@@ -539,7 +547,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			});
 		break;
 	case PlayerDir::Down:
-		Fieldmap::AddEvent(_CityName, _Index, {
+		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpDown",
 			.VaildFunc = std::bind(&FieldmapLevel::PlayerDownCheck, this),
 			.EventFunc = &FieldmapLevel::TempFunc,
@@ -547,7 +555,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			});
 		break;
 	case PlayerDir::Left:
-		Fieldmap::AddEvent(_CityName, _Index, {
+		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpLeft",
 			.VaildFunc = std::bind(&FieldmapLevel::PlayerLeftCheck, this),
 			.EventFunc = &FieldmapLevel::TempFunc,
@@ -555,7 +563,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			});
 		break;
 	case PlayerDir::Right:
-		Fieldmap::AddEvent(_CityName, _Index, {
+		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpRight",
 			.VaildFunc = std::bind(&FieldmapLevel::PlayerRightCheck, this),
 			.EventFunc = &FieldmapLevel::TempFunc,
@@ -565,7 +573,6 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	default:
 		break;
 	}
-
 }
 
 void FieldmapLevel::LinkDoor(const std::string_view& _LinkDoorName, const std::string_view& _TargetDoorName)
