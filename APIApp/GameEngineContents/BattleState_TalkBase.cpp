@@ -6,6 +6,8 @@
 #include "BackTextActor.h"
 #include "BattleLevel.h"
 #include "BattleFSM.h"
+#include "BattlePlayer.h"
+#include "BattlePlayerFSM.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -37,6 +39,7 @@ void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Te
 	++CurTextNum;
 }
 
+
 void BattleState_TalkBase::Update(float _DeltaTime)
 {
 	static const float ButtonOKTime = 0.5f;
@@ -50,14 +53,18 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 	if (false == GameEngineInput::IsDown(BattleLevel::BattleKeyName))
 		return;
 
-	Timer = 0.f;
-
 	//더 전달할 텍스트가 없을땐 다음 State로 이동
 	if (TextEvents.size() == CurTextNum)
 	{
 		GetFSM()->ChangeState(BattleStateType::PlayerTurn);
 		return;
 	}
+
+	BattlePlayer_StateType PlayerState = BattlePlayer::PlayerPtr->GetNowState();
+	if (BattlePlayer_StateType::Move == PlayerState)
+		return;
+
+	Timer = 0.f;
 
 	//UI에 텍스트 전달
 	const std::string& Text = TextEvents[CurTextNum].first;

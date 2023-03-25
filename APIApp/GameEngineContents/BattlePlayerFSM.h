@@ -1,25 +1,20 @@
 #pragma once
-#include <vector>
+#include "BattleFSMBase.h"
 
 enum class BattlePlayer_StateType
 {
 	Move,
 	Idle,
 	Throw,
-	//플레이어보다 플레이어의 몬스터가 FSM을 가지는게 맞는거 아냐?
 
 	COUNT,
 };
 
-enum class BattleFieldType;
-enum class BattleNpcType;
-class BattlePlayer_StateBase;
-
-class BattlePlayerFSM
+class BattlePlayerFSM : public BattleFSMBase
 {
 public:
 	BattlePlayerFSM();
-	~BattlePlayerFSM();
+	~BattlePlayerFSM() override;
 
 	BattlePlayerFSM(const BattlePlayerFSM& _Other) = delete;
 	BattlePlayerFSM(BattlePlayerFSM&& _Other) noexcept = delete;
@@ -31,6 +26,5 @@ public:
 protected:
 
 private:
-
 };
 

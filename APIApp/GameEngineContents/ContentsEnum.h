@@ -50,6 +50,8 @@ enum class BattleRenderOrder
 	Monster1,
 	Monster2,
 
+	CreateEffect,
+
 	Player0,
 	Player1,
 	Player2,

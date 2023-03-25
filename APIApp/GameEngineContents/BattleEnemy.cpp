@@ -6,12 +6,14 @@
 #include "ContentsEnum.h"
 #include "PokeDataBase.h"
 #include "BattleMonsterEnemy.h"
+#include "BattleEnemyFSM.h"
 
 BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 
 BattleEnemy::BattleEnemy()
 {
 	EnemyPtr = this;
+	FsmPtr = new BattleEnemyFSM;
 }
 
 BattleEnemy::~BattleEnemy()
@@ -20,10 +22,17 @@ BattleEnemy::~BattleEnemy()
 	{
 		EnemyPtr = nullptr;
 	}
+
+	if (nullptr != FsmPtr)
+	{
+		delete FsmPtr;
+		FsmPtr = nullptr;
+	}
 }
 
-void BattleEnemy::Init(BattleFieldType _FieldType)
+void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
+	FsmPtr->Init(_FieldType, _NpcType);
 	CreateGround(_FieldType);
 }
 
@@ -50,10 +59,6 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 
 	GameEngineRender* GroundRender = CreateRender(GroundPath, BattleRenderOrder::Ground);
 	GroundRender->SetScaleToImage();
-
-	const float4& RenderScale = GroundRender->GetScale();
-	MoveStartPos = float4{ -RenderScale.hx(), Height };
-	MoveEndPos = float4{ ScreenSize.x - RenderScale.hx(), Height };
 }
 
 
@@ -79,6 +84,7 @@ void BattleEnemy::CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType)
 
 void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 {
+	const float4 CreateOffset = float4::Up * 100.f;
 	std::vector<PokeNumber> MonsterNumsters;
 
 	switch (_FieldType)
@@ -102,34 +108,11 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(static_cast<PokeNumber>(MonsterNumsters[MonIndex]), true);
-	//Monster->Init(PokeNumber::Onix, true);
 }
-
-
-
-
-
-
 
 
 
 void BattleEnemy::Update(float _DeltaTime)
 {
-	switch (CurState)
-	{
-	case BattleEnemy::State::Move:
-		Update_Move();
-		break;
-	case BattleEnemy::State::Idle:
-		break;
-	}
-}
-
-
-void BattleEnemy::Update_Move()
-{
-	if (true == Update_LerpMoveActor(MoveStartPos, MoveEndPos, BattleTrainerBase::MoveDuration))
-		return;
-
-	CurState = State::Idle;
+	FsmPtr->Update(_DeltaTime);
 }

@@ -165,6 +165,18 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleEnemyFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleEnemyMonsterFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleEnemy_MoveState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleFSM.cpp">
       <SubType>
       </SubType>
@@ -185,15 +197,35 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleEnemyMonster_ShadowState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattlePlayerFSM.cpp">
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleSkillBase.cpp">
+    <ClCompile Include="BattlePlayerMonsterFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattlePlayerMonster_CreateState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer_MoveState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattlePlayer_ThrowState.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleStateBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleStateIdle.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -386,6 +418,18 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleEnemyFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleEnemyMonsterFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleEnemy_MoveState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleFSM.h">
       <SubType>
       </SubType>
@@ -402,15 +446,35 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleEnemyMonster_ShadowState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattlePlayerFSM.h">
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BattleSkillBase.h">
+    <ClInclude Include="BattlePlayerMonsterFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattlePlayerMonster_CreateState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer_MoveState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattlePlayer_ThrowState.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleStateBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleStateIdle.h">
       <SubType>
       </SubType>
     </ClInclude>

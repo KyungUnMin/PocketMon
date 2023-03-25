@@ -70,21 +70,21 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
-	InitGroundRenders(_FieldType);
+	InitGroundRenders(_FieldType, _NpcType);
 
 	BattleFsmPtr = new BattleFSM;
 	BattleFsmPtr->Init(_FieldType, _NpcType);
 }
 
-void BattleLevel::InitGroundRenders(BattleFieldType _FieldType)
+void BattleLevel::InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	CreateActor<BattleBackGround>(UpdateOrder::Battle_Actors)->Init(_FieldType);
 
 	BattlePlayer* Player = CreateActor<BattlePlayer>(UpdateOrder::Battle_Actors);
-	Player->Init(_FieldType);
+	Player->Init(_FieldType, _NpcType);
 
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>(UpdateOrder::Battle_Actors);
-	Enemy->Init(_FieldType);
+	Enemy->Init(_FieldType, _NpcType);
 }
 
 
