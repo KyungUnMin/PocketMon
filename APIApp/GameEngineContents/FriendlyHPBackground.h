@@ -17,10 +17,10 @@ public:
 	FriendlyHPBackground& operator=(const FriendlyHPBackground& _Other) = delete;
 	FriendlyHPBackground& operator=(FriendlyHPBackground&& _Other) noexcept = delete;
 
+	void DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime , int _tickNum , float4 _pos);
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
-	void DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick);
 
 
 private:
@@ -53,6 +53,7 @@ private:
 
 	std::vector<float> DamegeTick;
 
-	
+	float NextTickTime = 0.0f;
+	int TickNumber = 0;
 };
 

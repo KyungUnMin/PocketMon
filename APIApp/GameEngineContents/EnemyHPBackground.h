@@ -2,6 +2,9 @@
 #include "BattleCommendActor.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
+#include "BattleCommendActor.h"
+#include "FriendlyHPBackground.h"
+
 // Ό³Έν :
 class EnemyHPBackground : public GameEngineActor
 {
@@ -35,6 +38,10 @@ private:
 	int SpaceFrameNum = 26;
 	int PoketMonNameMax = 12;
 	int PoketMonLevelMax = 2;
+
+
+	GameEngineRender* EnemyHPRenderPtr = nullptr;
+	std::vector<float> EnemyDamegeTick;
 
 };
 

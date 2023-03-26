@@ -37,8 +37,8 @@ void FriendlyHPBackground::Start()
 	// START END Ratio (현재/최대) 
 
 	HPRenderPtr = CreateRender("FriendlyHPBar.bmp", BattleRenderOrder::Battle_Text);
-	HPRenderPtr->SetScale((HPRenderPtr->GetImage()->GetImageScale()));
-	HPRenderPtr->SetPosition({ 560,360 });
+	//HPRenderPtr->SetScale((HPRenderPtr->GetImage()->GetImageScale()));
+	//HPRenderPtr->SetPosition({ 560,360 });
 	//러프로 hp바 어떻게해야할까
 	//float4::Zero;
 	//float4 Xpos = float4::LerpClamp(float4{ 0,0 }, float4{ 192,0 }, (20 / 100));
@@ -59,9 +59,9 @@ void FriendlyHPBackground::Start()
 
 	//데미지
 	float damege = GameEngineMath::Lerp(192.0f, 0.0f, hpcur);
-	HPRenderPtr->SetScale(float4{ damege, 172 });
-	HPRenderPtr->SetPosition({ 560 - (192.0f-damege) / 2, 360 });
-	//DamegeTick.resize(4);
+	HPRenderPtr->SetScale(float4{ 192, 172 });
+	HPRenderPtr->SetPosition({ 560, 360 });
+	////DamegeTick.resize(4);
 
 
 
@@ -69,9 +69,9 @@ void FriendlyHPBackground::Start()
 
 
 
-	//for (int i = 3; i >= 0; i--) {
-	//	DamegeTick.push_back(damege + ((192.0f-damege))/4*i); /*현재 HP - (데미지 / 4 *)1*/
-	//}
+	for (int i = 10; i >= 0; i--) {
+		DamegeTick.push_back(damege + ((192.0f-damege))/ 10 *i); /*현재 HP - (데미지 / 10 *)1*/
+	}
 
 	
 	PoketMonName_R.resize(PoketMonNameMax);
@@ -124,19 +124,25 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
-	//DamegeTicks(HPRenderPtr, DamegeTick);
+	DamegeTicks(HPRenderPtr, DamegeTick , _DeltaTime,9,float4{560,360});
 
 }
 
-void FriendlyHPBackground::DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick)
+void FriendlyHPBackground::DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime ,int _tickNum, float4 _pos)
 {
-	
 	for (size_t x = 0; x < _Tick.size(); x++)
-	{
+		{
+		if (TickNumber <= _tickNum) {
 
-		_Render->SetScale(float4{ _Tick[x], 172});
-		_Render->SetPosition({ 560 - (_Tick[x] / 2) , 360 });
+			NextTickTime += _DeltaTime;
+			if(NextTickTime >1.0f)
+			{
+				_Render->SetScale(float4{ _Tick[TickNumber], 172 });
+				_Render->SetPosition({ _pos.x - (192.0f - _Tick[TickNumber]) / 2 , _pos.y});
+				NextTickTime = 0.0f;	
+				TickNumber++;
 
+			}
+		}
 	}
-
 }
