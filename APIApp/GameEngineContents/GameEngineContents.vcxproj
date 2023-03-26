@@ -267,6 +267,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
@@ -336,6 +340,10 @@
     <ClCompile Include="TextActor.cpp" />
     <ClCompile Include="TextTestLevel.cpp" />
     <ClCompile Include="TileDebugRender.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="WhiteBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -456,6 +464,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="PlayerBag.h">
       <SubType>
       </SubType>
@@ -524,6 +536,10 @@
     <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
     <ClInclude Include="TileDebugRender.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="WhiteBox.h">
       <SubType>
       </SubType>
     </ClInclude>

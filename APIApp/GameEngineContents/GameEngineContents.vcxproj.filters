@@ -271,6 +271,12 @@
     <ClCompile Include="FieldmapCutableTree.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="OpeningLevel.cpp">
+      <Filter>Opening</Filter>
+    </ClCompile>
+    <ClCompile Include="WhiteBox.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -538,6 +544,12 @@
     <ClInclude Include="FieldmapCutableTree.h">
       <Filter>Map\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="OpeningLevel.h">
+      <Filter>Opening</Filter>
+    </ClInclude>
+    <ClInclude Include="WhiteBox.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -740,6 +752,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\06.EnemyMonster\03.Lock">
       <UniqueIdentifier>{e44707e2-7b3d-4f10-8c30-101e2a1e7bcc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Opening">
+      <UniqueIdentifier>{8c13a4fb-cb55-4280-9529-3f4afbfffc0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Opening\Actor">
+      <UniqueIdentifier>{8b656fb5-ebb5-49a3-ad04-f6cb5ba085f1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
