@@ -75,8 +75,9 @@ void EnemyHPBackground::Start()
 }
 void EnemyHPBackground::Update(float _DeltaTime)
 {
+	
 	//일단 현제거 받자
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(EnemyPoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(EnemyPoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
-	FriendlyHPBackground::FriendlyPtr->DamegeTicks(EnemyHPRenderPtr, EnemyDamegeTick, _DeltaTime,9 ,float4{ 324,160 });
+	FriendlyHPBackground::FriendlyPtr->	RenderTick(EnemyHPRenderPtr, EnemyDamegeTick, _DeltaTime,192.0f,9 ,float4{ 324,160 });
 }

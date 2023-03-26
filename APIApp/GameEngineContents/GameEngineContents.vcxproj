@@ -278,6 +278,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="LevelUpStatUI.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <SubType>
       </SubType>
@@ -490,6 +491,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="LevelUpStatUI.h" />
     <ClInclude Include="MoveMapFadeEffect.h">
       <SubType>
       </SubType>

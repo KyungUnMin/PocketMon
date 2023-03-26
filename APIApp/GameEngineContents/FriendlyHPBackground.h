@@ -17,10 +17,12 @@ public:
 	FriendlyHPBackground& operator=(const FriendlyHPBackground& _Other) = delete;
 	FriendlyHPBackground& operator=(FriendlyHPBackground&& _Other) noexcept = delete;
 
-	void DamegeTicks(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime , int _tickNum , float4 _pos);
+	void RenderTick(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime , float _RenderPos, int _tickNum , float4 _pos);
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void Render(float _DeltaTime) override;
+
 
 
 private:
@@ -33,6 +35,9 @@ private:
 	std::vector<GameEngineRender*> PoketMonHPMAX_R;
 
 	GameEngineRender* HPRenderPtr = nullptr;
+
+	GameEngineRender* EXPRenderPtr = nullptr;
+
 
 	float4 TextRenderImageScale = { 20, 40 };
 
@@ -52,6 +57,9 @@ private:
 
 
 	std::vector<float> DamegeTick;
+
+
+	std::vector<float> EXPTick;
 
 	float NextTickTime = 0.0f;
 	int TickNumber = 0;

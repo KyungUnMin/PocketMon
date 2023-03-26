@@ -228,9 +228,30 @@
     <ClCompile Include="BattleMonsterBall_ThrowToCreate.cpp">
       <Filter>Battle\03.FSM\07.MonsterBall\02.State\01.Throw\02.ToCreate</Filter>
     </ClCompile>
-    <ClCompile Include="BattleSkillBase.cpp" />
     <ClCompile Include="CountItemMenu.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleEnemyFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonsterFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
+    <ClCompile Include="BattleEnemy_MoveState.cpp" />
+    <ClCompile Include="BattlePlayerMonsterFSM.cpp" />
+    <ClCompile Include="BattlePlayerMonster_CreateState.cpp" />
+    <ClCompile Include="BattlePlayer_MoveState.cpp" />
+    <ClCompile Include="BattlePlayer_ThrowState.cpp" />
+    <ClCompile Include="BattleStateIdle.cpp" />
+    <ClCompile Include="BattleZoneBushParticle.cpp" />
+    <ClCompile Include="EndingEndLogo.cpp" />
+    <ClCompile Include="EndingFade.cpp" />
+    <ClCompile Include="EndingLevel.cpp" />
+    <ClCompile Include="EndingPokeballBackground.cpp" />
+    <ClCompile Include="EndingPokemonRender.cpp" />
+    <ClCompile Include="EndingTextActor.cpp" />
+    <ClCompile Include="FieldmapCutableTree.cpp" />
+    <ClCompile Include="OpeningLevel.cpp" />
+    <ClCompile Include="WhiteBox.cpp" />
+    <ClCompile Include="LevelUpStatUI.cpp">
+      <Filter>BattleUI\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -456,9 +477,30 @@
     <ClInclude Include="BattleMonsterBall_ThrowToCreate.h">
       <Filter>Battle\03.FSM\07.MonsterBall\02.State\01.Throw\02.ToCreate</Filter>
     </ClInclude>
-    <ClInclude Include="BattleSkillBase.h" />
     <ClInclude Include="CountItemMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleEnemyFSM.h" />
+    <ClInclude Include="BattleEnemyMonsterFSM.h" />
+    <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
+    <ClInclude Include="BattleEnemy_MoveState.h" />
+    <ClInclude Include="BattlePlayerMonsterFSM.h" />
+    <ClInclude Include="BattlePlayerMonster_CreateState.h" />
+    <ClInclude Include="BattlePlayer_MoveState.h" />
+    <ClInclude Include="BattlePlayer_ThrowState.h" />
+    <ClInclude Include="BattleStateIdle.h" />
+    <ClInclude Include="BattleZoneBushParticle.h" />
+    <ClInclude Include="EndingEndLogo.h" />
+    <ClInclude Include="EndingFade.h" />
+    <ClInclude Include="EndingLevel.h" />
+    <ClInclude Include="EndingPokeballBackground.h" />
+    <ClInclude Include="EndingPokemonRender.h" />
+    <ClInclude Include="EndingTextActor.h" />
+    <ClInclude Include="FieldmapCutableTree.h" />
+    <ClInclude Include="OpeningLevel.h" />
+    <ClInclude Include="WhiteBox.h" />
+    <ClInclude Include="LevelUpStatUI.h">
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
