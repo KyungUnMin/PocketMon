@@ -153,25 +153,6 @@
     <ClCompile Include="ItemDataBase.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="CountItemMenu.cpp" />
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>Ending\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingFade.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingPokeballBackground.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingPokemonRender.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingEndLogo.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingTextActor.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp">
       <Filter>Battle</Filter>
     </ClCompile>
@@ -211,9 +192,6 @@
     <ClCompile Include="BattleStateBase.cpp">
       <Filter>Battle\03.FSM\01.Base\02.StateBase</Filter>
     </ClCompile>
-    <ClCompile Include="BattleStateIdle.cpp">
-      <Filter>Battle\03.FSM\01.Base\02.StateBase</Filter>
-    </ClCompile>
     <ClCompile Include="BattleFSMBase.cpp">
       <Filter>Battle\03.FSM\01.Base\01.FSMBase</Filter>
     </ClCompile>
@@ -222,30 +200,6 @@
     </ClCompile>
     <ClCompile Include="BattlePlayerFSM.cpp">
       <Filter>Battle\03.FSM\03.Player\01.FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="BattlePlayer_MoveState.cpp">
-      <Filter>Battle\03.FSM\03.Player\02.State\01.Move</Filter>
-    </ClCompile>
-    <ClCompile Include="BattlePlayer_ThrowState.cpp">
-      <Filter>Battle\03.FSM\03.Player\02.State\02.Throw</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemyFSM.cpp">
-      <Filter>Battle\03.FSM\04.Enemy\01.FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemy_MoveState.cpp">
-      <Filter>Battle\03.FSM\04.Enemy\02.Move</Filter>
-    </ClCompile>
-    <ClCompile Include="BattlePlayerMonsterFSM.cpp">
-      <Filter>Battle\03.FSM\05.PlayerMonster\01.FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="BattlePlayerMonster_CreateState.cpp">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemyMonsterFSM.cpp">
-      <Filter>Battle\03.FSM\06.EnemyMonster\01.FSM</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleEnemyMonster_ShadowState.cpp">
-      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\01.Shadow</Filter>
     </ClCompile>
     <ClCompile Include="BattleFSM.cpp">
       <Filter>Battle\03.FSM\02.Battle\01.FSM</Filter>
@@ -265,17 +219,9 @@
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\04.ThrowBall</Filter>
     </ClCompile>
-    <ClCompile Include="BattleZoneBushParticle.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapCutableTree.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="OpeningLevel.cpp">
-      <Filter>Opening</Filter>
-    </ClCompile>
-    <ClCompile Include="WhiteBox.cpp">
-      <Filter>Opening\Actor</Filter>
+    <ClCompile Include="BattleSkillBase.cpp" />
+    <ClCompile Include="CountItemMenu.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -429,25 +375,6 @@
     <ClInclude Include="ItemDataBase.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="CountItemMenu.h" />
-    <ClInclude Include="EndingLevel.h">
-      <Filter>Ending\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingFade.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingPokeballBackground.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingPokemonRender.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingEndLogo.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingTextActor.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMonsterBase.h">
       <Filter>Battle</Filter>
     </ClInclude>
@@ -481,9 +408,6 @@
     <ClInclude Include="BattleMonsterPlayer.h">
       <Filter>Battle\02.Actor\03.Monster\03.Player</Filter>
     </ClInclude>
-    <ClInclude Include="BattleStateIdle.h">
-      <Filter>Battle\03.FSM\01.Base\02.StateBase</Filter>
-    </ClInclude>
     <ClInclude Include="BattleStateBase.h">
       <Filter>Battle\03.FSM\01.Base\02.StateBase</Filter>
     </ClInclude>
@@ -495,30 +419,6 @@
     </ClInclude>
     <ClInclude Include="BattlePlayerFSM.h">
       <Filter>Battle\03.FSM\03.Player\01.FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="BattlePlayer_MoveState.h">
-      <Filter>Battle\03.FSM\03.Player\02.State\01.Move</Filter>
-    </ClInclude>
-    <ClInclude Include="BattlePlayer_ThrowState.h">
-      <Filter>Battle\03.FSM\03.Player\02.State\02.Throw</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemyFSM.h">
-      <Filter>Battle\03.FSM\04.Enemy\01.FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemy_MoveState.h">
-      <Filter>Battle\03.FSM\04.Enemy\02.Move</Filter>
-    </ClInclude>
-    <ClInclude Include="BattlePlayerMonsterFSM.h">
-      <Filter>Battle\03.FSM\05.PlayerMonster\01.FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="BattlePlayerMonster_CreateState.h">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemyMonsterFSM.h">
-      <Filter>Battle\03.FSM\06.EnemyMonster\01.FSM</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleEnemyMonster_ShadowState.h">
-      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\01.Shadow</Filter>
     </ClInclude>
     <ClInclude Include="BattleFSM.h">
       <Filter>Battle\03.FSM\02.Battle\01.FSM</Filter>
@@ -538,17 +438,9 @@
     <ClInclude Include="BattleState_ThrowMonsterBall.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\04.ThrowBall</Filter>
     </ClInclude>
-    <ClInclude Include="BattleZoneBushParticle.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapCutableTree.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="OpeningLevel.h">
-      <Filter>Opening</Filter>
-    </ClInclude>
-    <ClInclude Include="WhiteBox.h">
-      <Filter>Opening\Actor</Filter>
+    <ClInclude Include="BattleSkillBase.h" />
+    <ClInclude Include="CountItemMenu.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

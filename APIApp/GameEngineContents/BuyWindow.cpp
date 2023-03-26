@@ -93,7 +93,8 @@ void BuyWindow::Update(float _DeltaTime)
 		switch (State)
 		{
 		case 0:
-			CountItemMenu::GetCountItemMenu()->On();
+			ParentLevel->GetCountItemMenu()->On();
+			//CountItemMenu::GetCountItemMenu()->On();
 			break;
 		case 1:
 			break;

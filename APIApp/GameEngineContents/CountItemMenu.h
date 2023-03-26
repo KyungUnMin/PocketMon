@@ -22,17 +22,17 @@ public:
 
 	void OnOffSwtich() override;
 
-	static CountItemMenu* GetCountItemMenu()
-	{
-		return AcCountItemMenu;
-	}
+	//static CountItemMenu* GetCountItemMenu()
+	//{
+	//	return AcCountItemMenu;
+	//}
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
-	static CountItemMenu* AcCountItemMenu;
+	//static CountItemMenu* AcCountItemMenu;
 
 	float4 ActorPos = { 736, 352 }; // 129 65 (516, 260) 220 92
 	GameEngineRender* CountItemMenuRender = nullptr;
@@ -43,7 +43,10 @@ private:
 	float4 CountNumRenderPos = { -144, 8 }; // 17 21 // 68 84
 
 	GameEngineRender* Up_ArrowRender = nullptr;
+	float4 Up_Pos = { -130, -70 }; // -92 + 22
 	GameEngineRender* Down_ArrowRender = nullptr;
+	float4 Down_Pos = { -130, 70 };
+	float4 ArrowRenderScale = {56,44};
 
 	void UpdateStart();
 	void UpdateEnd();

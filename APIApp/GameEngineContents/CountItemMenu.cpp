@@ -3,11 +3,11 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "BuyWindow.h"
 
-CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
+//CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
 
 CountItemMenu::CountItemMenu()
 {
-	AcCountItemMenu = this;
+	//AcCountItemMenu = this;
 }
 
 CountItemMenu::~CountItemMenu()
@@ -52,6 +52,21 @@ void CountItemMenu::Start()
 	CountNum.SetAlign(Align::Left);
 	CountNum.SetValue(Count);
 	CountNum.SetRenderPos(CountNumRenderPos);
+
+	Up_ArrowRender = CreateRender(RenderOrder::Shop_CountItemMenu_Arrow);
+	Up_ArrowRender->EffectCameraOff();
+	Up_ArrowRender->CreateAnimation({ .AnimationName = "Arrow", .ImageName = "Arrow_CountItem_Up.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	Up_ArrowRender->SetScale(ArrowRenderScale);
+	Up_ArrowRender->SetPosition(Up_Pos);
+	Up_ArrowRender->ChangeAnimation("Arrow");
+
+	Down_ArrowRender = CreateRender(RenderOrder::Shop_CountItemMenu_Arrow);
+	Down_ArrowRender->EffectCameraOff();
+	Down_ArrowRender->CreateAnimation({ .AnimationName = "Arrow", .ImageName = "Arrow_CountItem_Down.bmp", .Start = 0, .End = 3, .InterTime = 0.1f });
+	Down_ArrowRender->SetScale(ArrowRenderScale);
+	Down_ArrowRender->SetPosition(Down_Pos);
+	Down_ArrowRender->ChangeAnimation("Arrow");
+
 
 	Off();
 }

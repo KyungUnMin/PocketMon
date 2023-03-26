@@ -22,6 +22,7 @@ enum class RenderOrder
 
 	Shop_Text,
 	Shop_CountItemMenu,
+	Shop_CountItemMenu_Arrow,
 	Shop_Dialog,
 	Shop_Dialog_Text,
 

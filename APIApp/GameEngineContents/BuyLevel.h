@@ -16,6 +16,11 @@ public:
 	BuyLevel& operator=(const BuyLevel& _Other) = delete;
 	BuyLevel& operator=(BuyLevel&& _Other) noexcept = delete;
 
+	CountItemMenu* GetCountItemMenu()
+	{
+		return AcCountItemMenu;
+	}
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
