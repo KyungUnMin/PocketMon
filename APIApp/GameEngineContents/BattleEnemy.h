@@ -6,6 +6,7 @@ class BattleMonsterEnemy;
 class BattleEnemyFSM;
 enum class BattleNpcType;
 enum class BattleFieldType;
+class PokeDataBase;
 
 class BattleEnemy : public BattleTrainerBase
 {
