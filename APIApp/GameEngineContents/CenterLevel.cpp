@@ -324,6 +324,29 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonMovesSwitch.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MoveSelect.bmp"))->Cut(1, 2);
 	}
+
+	// Ending
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
+		Dir.Move("Opening");
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Back1.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Back2.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Back3.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Backeffect.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Charizard.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Fireredversion.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Gamefreakinc.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Pokemon.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_PressStart.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Freaklogo.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_largeST.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_smallST.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Star.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Text.bmp"));
+	}
+
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
 		GameEngineInput::CreateKey("LevelChange1", '1');
