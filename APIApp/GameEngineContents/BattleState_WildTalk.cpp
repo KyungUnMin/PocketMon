@@ -32,14 +32,9 @@ void BattleState_WildTalk::EnterState()
 	CreateUIText(Texts);
 	
 	//텍스트가 나올때마다 실행될 이벤트 등록
-	SetTextEvent(1, std::bind(&BattleState_WildTalk::PlayerMonsterCreate, this));
+	SetTextEvent(1, []
+	{
+		BattlePlayer::PlayerPtr->ThrowBallToCreate();
+	});
 }
-
-
-
-void BattleState_WildTalk::PlayerMonsterCreate()
-{
-	BattlePlayer::PlayerPtr->GetFSM()->ChangeState(BattlePlayer_StateType::Throw);
-}
-
 

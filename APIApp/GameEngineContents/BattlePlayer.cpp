@@ -6,11 +6,9 @@
 #include "BattleLevel.h"
 #include "PokeDataBase.h"
 #include "BattleMonsterPlayer.h"
-#include "Battle_MonsterAppearEffect.h"
 #include "Battle_PlayerBallParticle.h"
-#include "Battle_PlayerThrowBall.h"
 #include "BattlePlayerFSM.h"
-
+#include "BattleMonsterBall.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 
@@ -76,18 +74,15 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 }
 
 
+
+
 void BattlePlayer::Update(float _DeltaTime)
 {
 	FsmPtr->Update(_DeltaTime);
 }
 
 
-void BattlePlayer::CreateMontser()
-{
-	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNumber::Bulbasaur);
-	//GetLevel()->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
-}
+
 
 
 
@@ -115,3 +110,24 @@ PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
 	return SkillBase->GetSkill();
 }
 
+
+
+
+
+void BattlePlayer::ThrowBallToCreate()
+{
+	const float OffsetY = 200.f;
+
+	FsmPtr->ChangeState(BattlePlayer_StateType::Throw);
+	BattleMonsterBall* Ball = BattleLevel::BattleLevelPtr->CreateActor<BattleMonsterBall>(UpdateOrder::Battle_Actors);
+	Ball->Init(BattleBallType::Create_MonsterBall);
+	Ball->SetPos(GetPos() + float4::Up * OffsetY);
+}
+
+void BattlePlayer::CreateMontser()
+{
+	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
+	Monster->Init(PokeNumber::Bulbasaur);
+	Battle_PlayerBallParticle* Particle = GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors);
+	Particle->SetPos(GetPos());
+}

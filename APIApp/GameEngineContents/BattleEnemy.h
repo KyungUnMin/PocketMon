@@ -30,6 +30,7 @@ public:
 		return Monster;
 	}
 
+	PokeDataBase* GetMonsterDB();
 
 protected:
 	void Update(float _DeltaTime) override;

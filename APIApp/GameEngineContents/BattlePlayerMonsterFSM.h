@@ -20,7 +20,6 @@ public:
 	BattlePlayerMonsterFSM& operator=(const BattlePlayerMonsterFSM& _Other) = delete;
 	BattlePlayerMonsterFSM& operator=(const BattlePlayerMonsterFSM&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType) override{}
 	void Init();
 
 protected:

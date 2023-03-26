@@ -112,7 +112,14 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 
 
 
+
 void BattleEnemy::Update(float _DeltaTime)
 {
 	FsmPtr->Update(_DeltaTime);
+}
+
+
+PokeDataBase* BattleEnemy::GetMonsterDB()
+{
+	return Monster->GetDB();
 }

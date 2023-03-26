@@ -12,6 +12,7 @@ BattleEnemyMonsterFSM::~BattleEnemyMonsterFSM()
 
 }
 
+
 void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 {
 	ResizeStates(BattleEnemyMonster_StateType::COUNT);

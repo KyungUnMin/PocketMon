@@ -174,6 +174,22 @@
     <ClCompile Include="BattleFSM.cpp" />
     <ClCompile Include="BattleFSMBase.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
+    <ClCompile Include="BattleMonsterBall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBallFSM.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_ThrowBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_ThrowToCreate.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp" />
     <ClCompile Include="BattleMonsterEnemy.cpp" />
     <ClCompile Include="BattleMonsterPlayer.cpp" />
@@ -198,7 +214,6 @@
     </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp" />
     <ClCompile Include="Battle_PlayerBallParticle.cpp" />
-    <ClCompile Include="Battle_PlayerThrowBall.cpp" />
     <ClCompile Include="BuyLevel.cpp">
       <SubType>
       </SubType>
@@ -368,6 +383,22 @@
     <ClInclude Include="BattleFSM.h" />
     <ClInclude Include="BattleFSMBase.h" />
     <ClInclude Include="BattleLevel.h" />
+    <ClInclude Include="BattleMonsterBall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBallFSM.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_ThrowBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_ThrowToCreate.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleMonsterBase.h" />
     <ClInclude Include="BattleMonsterEnemy.h" />
     <ClInclude Include="BattleMonsterPlayer.h" />
@@ -391,7 +422,6 @@
     </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h" />
     <ClInclude Include="Battle_PlayerBallParticle.h" />
-    <ClInclude Include="Battle_PlayerThrowBall.h" />
     <ClInclude Include="BuyLevel.h">
       <SubType>
       </SubType>

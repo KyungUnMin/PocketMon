@@ -57,6 +57,7 @@ enum class BattleRenderOrder
 	Player2,
 
 	CreateEffect,
+	MonsterBall,
 
 	SkillEffect,
 	Particle0,

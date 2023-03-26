@@ -82,3 +82,8 @@ void BattleFSMBase::Update(float _DeltaTime)
 
 	AllState[CurIndex]->Update(_DeltaTime);
 }
+
+void BattleFSMBase::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+{
+	MsgAssert("이 함수를 오버라이딩 하지 않았거나 오버로딩 하지 않았습니다");
+}

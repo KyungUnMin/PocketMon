@@ -2,7 +2,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleLevel.h"
 #include "BattlePlayer.h"
-#include "Battle_PlayerThrowBall.h"
+#include "BattleMonsterBall.h"
 #include "BattlePlayerFSM.h"
 
 BattlePlayer_ThrowState::BattlePlayer_ThrowState()
@@ -17,7 +17,8 @@ BattlePlayer_ThrowState::~BattlePlayer_ThrowState()
 
 void BattlePlayer_ThrowState::EnterState()
 {
-	PlayerRender = BattlePlayer::PlayerPtr->GetPlayerRender();
+	BattlePlayer* Player = BattlePlayer::PlayerPtr;
+	PlayerRender = Player->GetPlayerRender();
 	PlayerRender->CreateAnimation
 	({
 		.AnimationName = "Throw",
@@ -30,8 +31,7 @@ void BattlePlayer_ThrowState::EnterState()
 
 	PlayerRender->ChangeAnimation("Throw");
 
-	Battle_PlayerThrowBall* Ball = BattleLevel::BattleLevelPtr->CreateActor<Battle_PlayerThrowBall>(UpdateOrder::Battle_Actors);
-	Ball->Init(BattlePlayer::PlayerPtr->GetPos(), ThrowDuration);
+	
 }
 
 void BattlePlayer_ThrowState::Update(float _DeltaTime)
@@ -40,6 +40,7 @@ void BattlePlayer_ThrowState::Update(float _DeltaTime)
 
 	if (ThrowDuration < Timer)
 	{
+		PlayerRender->Off();
 		GetFSM()->ChangeState(BattlePlayer_StateType::Idle);
 		return;
 	}
@@ -49,5 +50,4 @@ void BattlePlayer_ThrowState::Update(float _DeltaTime)
 
 void BattlePlayer_ThrowState::ExitState()
 {
-	BattlePlayer::PlayerPtr->CreateMontser();
 }

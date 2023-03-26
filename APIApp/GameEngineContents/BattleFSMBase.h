@@ -32,7 +32,7 @@ public:
 
 	void Update(float _DeltaTime);
 
-	virtual void Init(BattleFieldType _FieldType, BattleNpcType _NpcType) = 0;
+	virtual void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
 
 protected:
 	template <typename EnumType>

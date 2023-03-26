@@ -1,7 +1,6 @@
 #include "BattleState_ThrowMonsterBall.h"
 #include "BackTextActor.h"
 #include "BattleLevel.h"
-#include "Battle_PlayerThrowBall.h"
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleEnemyMonsterFSM.h"
@@ -23,9 +22,7 @@ void BattleState_ThrowMonsterBall::EnterState()
 
 	BattleEnemy* Enemy = BattleEnemy::EnemyPtr;
 	float4 Dest = Enemy->GetPos();
-	Battle_PlayerThrowBall* MonsterBall = BattleLevel::BattleLevelPtr->CreateActor<Battle_PlayerThrowBall>(UpdateOrder::Battle_Actors);
-	MonsterBall->Init(Dest, 1.f, -Dest.x);
-	MonsterBall->SetGravityAcc(400.f);
+	
 
 	BattleEnemyMonsterFSM* EnemyMonsterFSM = Enemy->GetMonster()->GetFSM();
 	//EnemyMonsterFSM->ChangeState(BattleEnemyMonster_StateType::)

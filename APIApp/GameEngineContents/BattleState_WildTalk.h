@@ -18,8 +18,5 @@ protected:
 	void EnterState() override;
 
 private:
-	int StrIndex = 0;
-
-	void PlayerMonsterCreate();
 };
 

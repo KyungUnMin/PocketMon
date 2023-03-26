@@ -27,7 +27,6 @@ public:
 
 	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
 
-	void CreateMontser();
 
 	PokeSkill GetSlotSkillType(size_t _Index);
 
@@ -49,6 +48,9 @@ public:
 	{
 		return FsmPtr;
 	}
+
+	void ThrowBallToCreate();
+	void CreateMontser();
 	
 protected:
 

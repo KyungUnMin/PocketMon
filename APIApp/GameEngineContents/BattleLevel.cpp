@@ -163,7 +163,10 @@ void BattleLevel::PassPlayerTurn()
 void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
 {
 	if (BattleStateType::PlayerTurn != BattleFsmPtr->GetNowState<BattleStateType>())
+	{
+		MsgAssert("[배틀error] : 플레이어 차례가 아닌 경우에 몬스터볼을 사용할 수 없습니다");
 		return;
+	}
 
 	BattleFsmPtr->ChangeState(BattleStateType::ThrowMonsterBall);
 }
