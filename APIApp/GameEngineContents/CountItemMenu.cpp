@@ -15,10 +15,10 @@ CountItemMenu::~CountItemMenu()
 
 }
 
-void CountItemMenu::On()
+void CountItemMenu::CountStart(TestItem& _Item)
 {
-	GameEngineObject::On();
-	UpdateStart();
+	On();
+	UpdateStart(_Item);
 }
 
 void CountItemMenu::Off()
@@ -27,17 +27,17 @@ void CountItemMenu::Off()
 	UpdateEnd();
 }
 
-void CountItemMenu::OnOffSwtich()
-{
-	if (IsUpdate())
-	{
-		Off();
-	}
-	else
-	{
-		On();
-	}
-}
+//void CountItemMenu::OnOffSwtich()
+//{
+//	if (IsUpdate())
+//	{
+//		Off();
+//	}
+//	else
+//	{
+//		CountStart();
+//	}
+//}
 
 void CountItemMenu::Start()
 {
@@ -48,10 +48,16 @@ void CountItemMenu::Start()
 
 	CountNum.SetOwner(this);
 	CountNum.SetNumOfDigits(2);
-	CountNum.SetImage("SmallNum.bmp", CountNumRenderScale, static_cast<int>(RenderOrder::Shop_Dialog_Text), RGB(255,0,255));
+	CountNum.SetImage("SmallNum.bmp", NumRenderScale, static_cast<int>(RenderOrder::Shop_Dialog_Text), RGB(255,0,255));
 	CountNum.SetAlign(Align::Left);
 	CountNum.SetValue(Count);
 	CountNum.SetRenderPos(CountNumRenderPos);
+
+	PriceNum.SetOwner(this);
+	PriceNum.SetImage("SmallNum.bmp", NumRenderScale, static_cast<int>(RenderOrder::Shop_Dialog_Text), RGB(255, 0, 255));
+	PriceNum.SetAlign(Align::Right);
+	PriceNum.SetValue(Price);
+	PriceNum.SetRenderPos(PriceNumRenderPos);
 
 	Up_ArrowRender = CreateRender(RenderOrder::Shop_CountItemMenu_Arrow);
 	Up_ArrowRender->EffectCameraOff();
@@ -67,13 +73,14 @@ void CountItemMenu::Start()
 	Down_ArrowRender->SetPosition(Down_Pos);
 	Down_ArrowRender->ChangeAnimation("Arrow");
 
-
 	Off();
 }
 
-void CountItemMenu::UpdateStart()
+void CountItemMenu::UpdateStart(TestItem& _Item)
 {
-	CountNum.SetValue(1);
+	SetCount(1);
+	SetPrice(_Item.Price);
+	PriceNum.SetValue(Price * Count);
 	BuyWindow::GetBuyWindow()->IsValid = false;
 }
 
@@ -122,6 +129,7 @@ void CountItemMenu::AddCount()
 		Count = 1;
 	}
 	CountNum.SetValue(Count);
+	PriceNum.SetValue(Price* Count);
 }
 
 void CountItemMenu::AddCount10()
@@ -134,6 +142,7 @@ void CountItemMenu::AddCount10()
 	}
 	Count = CountSave;
 	CountNum.SetValue(Count);
+	PriceNum.SetValue(Price * Count);
 }
 
 void CountItemMenu::SubCount()
@@ -144,6 +153,7 @@ void CountItemMenu::SubCount()
 		Count = 99;
 	}
 	CountNum.SetValue(Count);
+	PriceNum.SetValue(Price * Count);
 }
 
 void CountItemMenu::SubCount10()
@@ -156,6 +166,19 @@ void CountItemMenu::SubCount10()
 	}
 	Count = CountSave;
 	CountNum.SetValue(Count);
+	PriceNum.SetValue(Price * Count);
+}
+
+void CountItemMenu::SetCount(int _ItemCount)
+{
+	Count = _ItemCount;
+	CountNum.SetValue(Count);
+	PriceNum.SetValue(Price * Count);
+}
+
+void CountItemMenu::SetPrice(int _ItemPrice)
+{
+	Price = _ItemPrice;
 }
 
 

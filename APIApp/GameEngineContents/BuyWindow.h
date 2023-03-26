@@ -69,7 +69,7 @@ private:
 
 	void Cancle();
 
-	std::list<TestItem> ItemList = std::list<TestItem>();
+	std::vector<TestItem> ItemList = std::vector<TestItem>();
 
 	void ItemPushBack();
 };

@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "BuyLevel.h"
 #include "CountItemMenu.h"
+#include "BuyWindow.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -93,16 +94,20 @@ void BuyWindow::Update(float _DeltaTime)
 		switch (State)
 		{
 		case 0:
-			ParentLevel->GetCountItemMenu()->On();
+			ParentLevel->GetCountItemMenu()->CountStart(ItemList[0]);
 			//CountItemMenu::GetCountItemMenu()->On();
 			break;
 		case 1:
+			ParentLevel->GetCountItemMenu()->CountStart(ItemList[1]);
 			break;
 		case 2:
+			ParentLevel->GetCountItemMenu()->CountStart(ItemList[2]);
 			break;
 		case 3:
+			ParentLevel->GetCountItemMenu()->CountStart(ItemList[3]);
 			break;
 		case 4:
+			ParentLevel->GetCountItemMenu()->CountStart(ItemList[4]);
 			break;
 		case 5:
 			Cancle();
@@ -155,6 +160,7 @@ void BuyWindow::Cancle()
 
 void BuyWindow::ItemPushBack()
 {
+	ItemList.reserve(5);
 	ItemList.push_back({"POK@ BALL", 200, "EXPLANE"});
 	ItemList.push_back({"POTION", 200, "EXPLANE"});
 	ItemList.push_back({"REPEL", 350, "EXPLANE"});
