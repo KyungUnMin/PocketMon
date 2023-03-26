@@ -356,6 +356,7 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange5", '5');
 		GameEngineInput::CreateKey("LevelChange6", '6');
 		GameEngineInput::CreateKey("LevelChange7", '7');
+		GameEngineInput::CreateKey("LevelChange8", '8');
 
 		//플레이어이동
 		GameEngineInput::CreateKey("LeftMove", VK_LEFT);
@@ -440,6 +441,11 @@ void CenterLevel::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("LevelChange7"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
+	}
+
+	if (GameEngineInput::IsDown("LevelChange8"))
+	{
+		GameEngineCore::GetInst()->ChangeLevel("OpeningLevel");
 	}
 }
 
