@@ -1,10 +1,11 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include "BuyWindow.h"
 #include "ContentsEnum.h"
 
 class GameEngineRender;
-struct TestItem;
+//struct TestItem;
 class BuyLevelDialog;
 class BuyUIManager;
 class CountItemMenu : public GameEngineActor
@@ -56,7 +57,10 @@ private:
 	float4 Down_Pos = { -130, 70 };
 	float4 ArrowRenderScale = {56,44};
 
-	std::list<std::string> Script = std::list<std::string>();
+	TestItem Item = TestItem();
+
+	std::string Script = std::string();
+	std::list<std::string> Scripts = std::list<std::string>();
 
 	void UpdateStart(TestItem& _Item);
 	void UpdateEnd();

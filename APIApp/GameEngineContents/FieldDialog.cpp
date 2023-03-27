@@ -104,6 +104,7 @@ void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 	IsValid = true;
 }
 
+
 void FieldDialog::Update(float _DeltaTime)
 {
 	

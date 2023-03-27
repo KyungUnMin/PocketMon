@@ -65,7 +65,7 @@ void CountItemMenu::Start()
 	Down_ArrowRender->SetPosition(Down_Pos);
 	Down_ArrowRender->ChangeAnimation("Arrow");
 
-	Script.push_back("Defalt Script");
+	Script = "Defalt Script";
 	
 	Off();
 }
@@ -73,6 +73,7 @@ void CountItemMenu::Start()
 void CountItemMenu::UpdateStart(TestItem& _Item)
 {
 	SetCount(1);
+	Item = _Item;
 	SetPrice(_Item.Price);
 	PriceNum.SetValue(Price * Count);
 	BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
@@ -111,7 +112,9 @@ void CountItemMenu::Update(float _DeltaTime)
 		AcParent->Off();
 		Off();
 		BuyYesNoMenu::GetBuyYesNoMenu()->On();
-		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Script);
+		Script = std::string(Item.Name + "? Certainly.\nHow many would you like?");
+		Scripts.push_back(Script);
+		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Scripts);
 		BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
 		BuyWindow::GetBuyWindow()->IsValid = false;
 	}
@@ -124,6 +127,10 @@ void CountItemMenu::UpdateEnd()
 		return;
 	}
 	BuyWindow::GetBuyWindow()->IsValid = true;
+	if (Scripts.size() != 0)
+	{
+		Scripts.pop_back();
+	}
 }
 
 void CountItemMenu::AddCount()
