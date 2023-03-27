@@ -224,6 +224,36 @@ public:
 		return std::to_string(Experience);
 	}
 
+	// UI용 공격력 string 반환
+	inline std::string ForUI_GetMonsterAttackPower()
+	{
+		return std::to_string(AttackPower);
+	}
+
+	// UI용 방어력 string 반환
+	inline std::string ForUI_GetMonsterDefense()
+	{
+		return std::to_string(Defense);
+	}
+
+	// UI용 특수공격력 string 반환
+	inline std::string ForUI_GetMonsterSpecialAttackPower()
+	{
+		return std::to_string(SpecialAttackPower);
+	}
+
+	// UI용 특수방어력 string 반환
+	inline std::string ForUI_GetMonsterSpecialDefense()
+	{
+		return std::to_string(SpecialDefense);
+	}
+
+	// UI용 스피드 string 반환
+	inline std::string ForUI_GetMonsterAgility()
+	{
+		return std::to_string(Agility);
+	}
+
 	// 포켓몬 성별 가져오기
 	inline int GetMonsterGender()
 	{
