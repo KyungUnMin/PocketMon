@@ -1,6 +1,7 @@
 #pragma once
 #include "BattleStateBase.h"
 #include <GameEngineBase/GameEngineMath.h>
+#include "PokeDataBase.h"
 
 class BattleMonsterBallFSM;
 class BattleMonsterBall;

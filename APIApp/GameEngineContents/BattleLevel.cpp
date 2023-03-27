@@ -59,33 +59,33 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 	
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
 	//Init_Level(BattleFieldType::Forest);
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 }
 
 void BattleLevel::Init(
-	const std::vector<PokeDataBase*>& _EnemyMonsters, 
+	const std::vector<PokeDataBase>& _EnemyMonsters, 
 	GroundType _FieldType, BattleNpcType _NpcType)
 {
-	for (PokeDataBase* EnemyMonster : _EnemyMonsters)
-	{
-		//TODO
-	}
-
-	Init_Level(FieldConvertor(_FieldType), _NpcType);
+	Init_Level(_EnemyMonsters, FieldConvertor(_FieldType), _NpcType);
 }
 
-void BattleLevel::Init_Level(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleLevel::Init_Level(
+	const std::vector<PokeDataBase>& _EnemyMonsters, 
+	BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
-	InitGroundRenders(_FieldType, _NpcType);
+	InitGroundRenders(_FieldType, _NpcType, _EnemyMonsters);
 
 	BattleFsmPtr = new BattleFSM;
 	BattleFsmPtr->Init(_FieldType, _NpcType);
 }
 
-void BattleLevel::InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleLevel::InitGroundRenders(
+	BattleFieldType _FieldType, BattleNpcType _NpcType, 
+	const std::vector<PokeDataBase>& _EnemyMonsters)
 {
 	CreateActor<BattleBackGround>(UpdateOrder::Battle_Actors)->Init(_FieldType);
 
@@ -93,7 +93,7 @@ void BattleLevel::InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _N
 	Player->Init(_FieldType, _NpcType);
 
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>(UpdateOrder::Battle_Actors);
-	Enemy->Init(_FieldType, _NpcType);
+	Enemy->Init(_FieldType, _NpcType, _EnemyMonsters);
 }
 
 

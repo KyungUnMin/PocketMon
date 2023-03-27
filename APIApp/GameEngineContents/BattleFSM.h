@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleFSMBase.h"
+#include "PokeDataBase.h"
 
 enum class BattleStateType
 {
@@ -30,5 +31,6 @@ public:
 protected:
 
 private:
+
 };
 

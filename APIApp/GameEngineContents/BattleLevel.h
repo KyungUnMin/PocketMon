@@ -44,7 +44,7 @@ public:
 
 	//맵 레벨에서 배틀레벨로 전환될때 호출해주시면 됩니다.
 	void Init(
-		const std::vector<PokeDataBase*>& _EnemyMonsters,
+		const std::vector<PokeDataBase>& _EnemyMonsters,
 		GroundType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 
@@ -75,11 +75,12 @@ private:
 
 	BattleFSM* BattleFsmPtr = nullptr;
 
-	void InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType);
+	void InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
 	bool TestKeyUpdate();
 
 	void Init_Level(
+		const std::vector<PokeDataBase>& _EnemyMonsters,
 		BattleFieldType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 

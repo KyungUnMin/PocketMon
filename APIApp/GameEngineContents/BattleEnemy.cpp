@@ -30,8 +30,10 @@ BattleEnemy::~BattleEnemy()
 	}
 }
 
-void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters)
 {
+	MonsterDatas = _EnemyMonsters;
+
 	FsmPtr->Init(_FieldType, _NpcType);
 	CreateGround(_FieldType);
 	RenderCreate(_NpcType);
@@ -98,7 +100,7 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	
 	//const float4 CreateOffset = float4::Up * 100.f;
 	
-	int PokeNum = MonsterDatas[CurIndex]->GetPokeNumber();
+	int PokeNum = MonsterDatas[CurIndex].GetPokeNumber();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(static_cast<PokeNumber>(PokeNum - 1), true);
 }

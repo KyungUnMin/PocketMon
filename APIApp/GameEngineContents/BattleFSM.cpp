@@ -11,7 +11,7 @@
 
 BattleFSM::BattleFSM()
 {
-
+	
 }
 
 BattleFSM::~BattleFSM()

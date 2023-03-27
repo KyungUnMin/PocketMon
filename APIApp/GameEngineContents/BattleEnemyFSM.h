@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleFSMBase.h"
+#include "PokeDataBase.h"
 
 enum class BattleEnemy_StateType
 {

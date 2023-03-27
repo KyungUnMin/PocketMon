@@ -18,6 +18,5 @@ protected:
 	void ExitExcute() override;
 
 private:
-
 };
 

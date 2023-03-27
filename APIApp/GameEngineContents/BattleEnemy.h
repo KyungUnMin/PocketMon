@@ -23,7 +23,7 @@ public:
 	BattleEnemy& operator=(const BattleEnemy& _Other) = delete;
 	BattleEnemy& operator=(const BattleEnemy&& _Other) noexcept = delete;
 
-	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
+	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
 	//Enemy FSM쪽에서 호출됨
 	void CreateWildMonster(BattleFieldType _FieldType);
@@ -42,7 +42,7 @@ public:
 		return EnemyRender;
 	}
 
-	inline void PushMonsterDatas(const std::vector<PokeDataBase*>& _Monsters)
+	inline void PushMonsterDatas(const std::vector<PokeDataBase>& _Monsters)
 	{
 		MonsterDatas = _Monsters;
 	}
@@ -56,7 +56,7 @@ private:
 	GameEngineRender* EnemyRender = nullptr;
 
 	size_t CurIndex = 0;
-	std::vector<PokeDataBase*> MonsterDatas;
+	std::vector<PokeDataBase> MonsterDatas;
 
 	
 
