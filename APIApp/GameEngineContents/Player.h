@@ -97,7 +97,7 @@ public:
 	{
 		return IsRide;
 	}
-	bool SetRideValue(bool _truefalse)
+	void SetRideValue(bool _truefalse)
 	{
 		IsRide = _truefalse;
 	}

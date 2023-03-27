@@ -6,6 +6,7 @@
 #include "PocketMonCore.h"
 #include "PokemonUI.h"
 #include "ContentsEnum.h"
+#include "Player.h"
 PlayerBag* PlayerBag::MainBag = nullptr;
 
 PlayerBag::PlayerBag() {
@@ -645,6 +646,7 @@ void PlayerBag::ItemUse()
 		break;
 	case BagSpace::KeyItems:
 		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		Player::MainPlayer->SetRideValue(!Player::MainPlayer->GetIsRideValue());
 		break;
 	case BagSpace::PokeBalls:
 		RemoveItem(CurrentItemCode);
