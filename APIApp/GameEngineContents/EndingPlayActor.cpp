@@ -129,7 +129,7 @@ void EndingPlayActor::PlayEnding()
 		}, this), false);
 
 	LevelTimeEvent.AddEvent(18.0f, std::bind(
-		[](EndingPlayActor* _This) 
+		[](EndingPlayActor* _This) // this call
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon003.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Blue);

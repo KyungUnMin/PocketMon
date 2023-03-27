@@ -1,5 +1,6 @@
 #include "FieldmapBattleZone.h"
 #include <GameEngineBase/GameEngineRandom.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "Fieldmap.h"
 #include "Player.h"
@@ -55,8 +56,11 @@ void FieldmapBattleZone::AddPokemon(PokeNumber _Number)
 
 void FieldmapBattleZone::BattleStart()
 {
+	float4 PlayerPos = Player::MainPlayer->GetPos();
+	int2 PlayerIndex = Fieldmap::GetIndex(PlayerPos);
+
 	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();
-	Particle->SetPos(Fieldmap::GetPos(Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
+	Particle->SetPos(PlayerPos);
 
 	if (0 < GameEngineRandom::MainRandom.RandomInt(0, 10))
 	{
@@ -69,9 +73,12 @@ void FieldmapBattleZone::BattleStart()
 	int PokeNumber = static_cast<int>(PokeNumbers[RandomIndex]);
 	int RandomLevel = MianRand.RandomInt(static_cast<int>(MinLevel), static_cast<int>(MaxLevel));
 
-	//BattleFieldType _Type;
+	GroundType MyGroundType = Fieldmap::GetGroundType(PlayerIndex);
 
-	//BattleLevel::BattleLevelPtr->Init();
+	std::vector<PokeDataBase> PoekDatas;
+	PoekDatas.push_back(PokeDataBase::PokeCreate(RandomIndex + 1, RandomLevel));
+
+	BattleLevel::BattleLevelPtr->Init(PoekDatas, MyGroundType);
 
 	InputControllHandle = InputControll::UseControll();
 
@@ -80,7 +87,7 @@ void FieldmapBattleZone::BattleStart()
 		[](FieldmapBattleZone* _this)
 		{
 			_this->InputControllHandle = InputControll::ResetControll(_this->InputControllHandle);
-			DebugMsgBox("배틀 시작");
+			GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
 		},
 		this));
 	Fade->On();

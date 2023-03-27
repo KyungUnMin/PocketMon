@@ -59,7 +59,7 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 	
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
 	//Init_Level(BattleFieldType::Forest);
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
