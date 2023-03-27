@@ -35,9 +35,6 @@ public:
 	Player& operator=(const Player& _Other) = delete;
 	Player& operator=(Player&& _Other) noexcept = delete;
 
-	void Movecalculation(float _DeltaTime);
-	void CollisionCheck(float _DeltaTime);
-	void Render(float _DeltaTime);
 	void NPCtalkValueSet();
 	void ChangeLevelCheck();
 
@@ -74,6 +71,11 @@ public:
 		return Playerindex;
 	}
 
+	bool VaildJumpUp();
+	bool VaildJumpDown();
+	bool VaildJumpLeft();
+	bool VaildJumpRight();
+
 	bool IsPlayerDirUp()
 	{
 		return IsPlayerDirUP;
@@ -94,6 +96,7 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void Render(float _DeltaTime) override;
 private:
 	//플레이어Render
 	GameEngineRender* Players = nullptr;
@@ -117,10 +120,7 @@ private:
 	void MoveStart();
 	void MoveUpdate(float _Time);
 	void MoveEnd();
-
 	
-
-
 	//미완성 값들
 	//////////Speed&Pos//////////
 	float MoveTile = 100.0f;
@@ -132,7 +132,6 @@ private:
 	/////////Lerf값///////////
 	float4 StartPos = float4::Zero;
 	float4 EndPos = float4::Zero;
-
 
 	//플레이어<->NPC 방향제어enum class
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
@@ -149,12 +148,5 @@ private:
 
 	////////////////////////
 	float PlayerTime = 0.0f;
-
-
-
-	float4 NextPos1 = float4::Zero;
-	float4 NextPos2 = float4::Zero;
-	float4 NextPos3 = float4::Zero;
-	float4 NextPos4 = float4::Zero;
 };
 

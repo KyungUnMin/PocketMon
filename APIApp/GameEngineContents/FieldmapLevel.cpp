@@ -400,8 +400,6 @@ void FieldmapLevel::Update(float _DeltaTime)
 		return;
 	}
 
-	Fieldmap::FieldUpdate();
-
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");

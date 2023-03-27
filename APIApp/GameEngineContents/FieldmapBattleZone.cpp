@@ -53,6 +53,11 @@ void FieldmapBattleZone::AddPokemon(PokeNumber _Number)
 
 void FieldmapBattleZone::BattleStart()
 {
+	if (0 < GameEngineRandom::MainRandom.RandomInt(0, 10))
+	{
+		return;
+	}
+
 	GameEngineRandom& MianRand = GameEngineRandom::MainRandom;
 
 	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();

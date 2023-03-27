@@ -22,6 +22,26 @@ Player::~Player()
 {
 }
 
+bool Player::VaildJumpUp()
+{
+	return false;
+}
+
+bool Player::VaildJumpDown()
+{
+	return false;
+}
+
+bool Player::VaildJumpLeft()
+{
+	return false;
+}
+
+bool Player::VaildJumpRight()
+{
+	return false;
+}
+
 void Player::Start()
 {
 	MainPlayer = this; 
@@ -29,15 +49,12 @@ void Player::Start()
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();
-	
-	
+		
 	ChangeState(PlayerState::IDLE);
 }
 
 void Player::Update(float _DeltaTime)
 {
-	
-
 	if (true == PlayerMoveBool)
 	{
 		UpdateState(_DeltaTime); //框流烙包府
@@ -50,16 +67,19 @@ void Player::Update(float _DeltaTime)
 	ChangeLevelCheck();
 }
 
-//甘 面倒 包府        
-void Player::Movecalculation(float _DeltaTime)
+void Player::Render(float _DeltaTime)
 {
-	
-}
+	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
 
-//collision 眉农
-void Player::CollisionCheck(float _DeltaTime)
-{
-	
+	Rectangle(GameEngineWindow::GetWindowBackBufferHdc(),
+		PlayerPos.ix() - 5,
+		PlayerPos.iy() - 5,
+		PlayerPos.ix() + 5,
+		PlayerPos.iy() + 5);
+	if (GameEngineInput::IsPress("CollisionRender"))
+	{
+		RedCollision->DebugRender();
+	}
 }
 
 void Player::ChangeLevelCheck()
@@ -90,23 +110,6 @@ void Player::DirCheck(const std::string_view& _AnimationName)
 	std::string PrevDirString = DirString;
 	Players->ChangeAnimation(DirString + _AnimationName.data());
 	BikePlayers->ChangeAnimation(DirString + _AnimationName.data());
-
-	if (GameEngineInput::IsPress("LeftMove"))
-	{
-		DirString = "Left_";
-	}
-	else if (GameEngineInput::IsPress("RightMove"))
-	{
-		DirString = "Right_";
-	}
-	else if (GameEngineInput::IsPress("UpMove"))
-	{
-		DirString = "Up_";
-	}
-	else if (GameEngineInput::IsPress("DownMove"))
-	{
-		DirString = "Down_";
-	}
 
 	if (PrevDirString != DirString)
 	{
@@ -151,19 +154,3 @@ void Player::NPCtalkValueSet()
 		IsPlayerDirRIGHT = false;
 	}
 }
-
-void Player::Render(float _DeltaTime)
-{
-	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
-
-	Rectangle(GameEngineWindow::GetWindowBackBufferHdc(),
-		PlayerPos.ix() - 5,
-		PlayerPos.iy() - 5,
-		PlayerPos.ix() + 5,
-		PlayerPos.iy() + 5);
-	if (GameEngineInput::IsPress("CollisionRender"))
-	{
-		RedCollision->DebugRender();
-	}
-}
-

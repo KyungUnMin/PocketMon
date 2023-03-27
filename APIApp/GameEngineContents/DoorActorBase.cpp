@@ -40,6 +40,7 @@ void DoorActorBase::PlayerMove()
 	}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(LinkDoor->DoorCity, LinkDoor->DoorIndex));
+	Fieldmap::FieldUpdate();
 	LinkDoor->DoorOpenAndClose();
 }
 

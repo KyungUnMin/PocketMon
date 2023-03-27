@@ -60,7 +60,7 @@ private:
 	template<typename DoorClass>
 	void CreateDoor(const std::string_view& _DoorName, const std::string_view& _CityName, const int2& _Index, const std::string_view& _EventName, int _Order = 0)
 	{
-		DoorActorBase* NewDoor = CreateActor<DoorClass>();
+		DoorActorBase* NewDoor = CreateActor<DoorClass>(10000);
 
 		std::string UpperDoorName = GameEngineString::ToUpper(_DoorName);
 

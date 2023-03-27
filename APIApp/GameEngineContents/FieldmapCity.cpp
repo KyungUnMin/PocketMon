@@ -8,6 +8,7 @@
 #include "Fieldmap.h"
 #include "FieldmapLevel.h"
 #include "FieldmapFlower.h"
+#include "Player.h"
 
 FieldmapCity::FieldmapCity()
 {
@@ -196,7 +197,7 @@ void FieldmapCity::AddNeighbor(FieldmapCity* _NeighborCityPtr)
 
 void FieldmapCity::CityColUpdate()
 {
-	float4 PlayerPos = FieldmapLevel::GetPlayerPos();
+	float4 PlayerPos = Player::MainPlayer->GetPos();
 
 	if (true == GameEngineCollision::CollisionRectToPoint(
 		CollisionData(GetPos(), CityScale), CollisionData(PlayerPos)))
