@@ -2,6 +2,8 @@
 #include "BuyLevel.h"
 #include "BuyLevelDialog.h"
 #include "CountItemMenu.h"
+#include "BuyWindow.h"
+#include "Item.h"
 
 BuyUIManager* BuyUIManager::AcBuyUIManager = nullptr;
 
@@ -15,7 +17,7 @@ BuyUIManager::~BuyUIManager()
 
 }
 
-void BuyUIManager::On(TestItem& _Item)
+void BuyUIManager::On(Item& _Item)
 {
 	GameEngineObject::On();
 	UpdateStart(_Item);
@@ -32,21 +34,23 @@ void BuyUIManager::Start()
 	Parent = dynamic_cast<BuyLevel*>(GetLevel());
 	AcBuyLevelDialog = BuyLevelDialog::GetBuyLevelDialog();
 	AcCountItemMenu = Parent->CreateActor<CountItemMenu>();
-	CountMenuScript.push_back("asdasdasdasdsa");
+	Script = "Default Script";
 	Off();
 }
 
-void BuyUIManager::UpdateStart(TestItem& _Item)
+void BuyUIManager::UpdateStart(Item& _Item)
 {
-	Item = &_Item;
-	AcBuyLevelDialog->ConversationStart(&CountMenuScript);
+	SelectItem = &_Item;
+	Script = std::string(SelectItem->GetItemName().data() + std::string("? Certainly.\nHow many would you like?"));
+	Scripts.push_back(Script);
+	AcBuyLevelDialog->ConversationStart(&Scripts);
 }
 
 void BuyUIManager::Update(float _DeltaTime)
 {
 	if (AcBuyLevelDialog->IsScriptPrintEnd() && !AcCountItemMenu->IsUpdate())
 	{
-		AcCountItemMenu->CountStart(*Item);
+		AcCountItemMenu->CountStart(*SelectItem);
 	}
 }
 
@@ -54,4 +58,8 @@ void BuyUIManager::UpdateEnd()
 {
 	AcBuyLevelDialog->Off();
 	AcCountItemMenu->Off();
+	if (Scripts.size() != 0)
+	{
+		Scripts.pop_back();
+	}
 }

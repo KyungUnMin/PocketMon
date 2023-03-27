@@ -88,6 +88,8 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 					case '@':
 						TextRender[y][x]->SetFrame(94);
 						break;
+					case '\'':
+						break;
 					default:
 						MsgAssert("아직 생각해보지 않은 글자입니다.");
 						break;

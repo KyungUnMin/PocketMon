@@ -16,7 +16,6 @@ class TextActor;
 class PokeDataBase;
 class SummaryUI : public GameEngineActor
 {
-	friend class PlayerBag;
 public:
 	// constrcuter destructer
 	SummaryUI();
@@ -31,6 +30,7 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void LevelChangeStart(GameEngineLevel* _Prev) override;
 private:
 
 	GameEngineLevel* CurrentLevel = nullptr;
@@ -91,5 +91,7 @@ private:
 	void NextPokemon();
 	void PrevPokemon();
 	void MovePokemon();
+
+	void SetPokemonData();
 };
 

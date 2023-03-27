@@ -18,6 +18,7 @@ class PokeDataBase;
 class TextActor;
 class PokemonUI : public GameEngineActor
 {
+	friend class SummaryUI;
 public:
 	// constrcuter destructer
 	PokemonUI();
@@ -27,6 +28,7 @@ public:
 
 	void SetState_ItemUse(ItemCode _ItemCode);
 	void SetState_ItemGive(ItemCode _ItemCode);
+	void SetState_Shift();
 
 	// delete Function
 	PokemonUI(const PokemonUI& _Other) = delete;

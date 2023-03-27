@@ -6,6 +6,9 @@
 #include "PocketMonCore.h"
 #include "PlayerBag.h"
 #include "TextActor.h"
+
+PokemonUI* PokemonUI::MainPokemon = nullptr;
+
 PokemonUI::PokemonUI() 
 {
 }
@@ -24,7 +27,11 @@ void PokemonUI::SetState_ItemGive(ItemCode _ItemCode)
 	StateValue = PokemonUIState::Give;
 	CurrentItemCode = _ItemCode;
 }
-PokemonUI* PokemonUI::MainPokemon = nullptr;
+void PokemonUI::SetState_Shift()
+{
+	StateValue = PokemonUIState::Shift;
+}
+
 
 void PokemonUI::Start()
 {
@@ -302,7 +309,7 @@ void PokemonUI::PokeDataSetting()
 			// 포켓몬 최대 HP
 			PokemonMaxHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
 			// 지닌 물건
-			Pokemons[i]->IsPokemonItemPossession() == true ? PokemonItem[i]->On() : PokemonItem[i]->Off();
+			Pokemons[i]->GetPossession() != ItemCode::Cancel ? PokemonItem[i]->On() : PokemonItem[i]->Off();
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
@@ -376,7 +383,7 @@ void PokemonUI::SelectOn()
 	{
 	case PokemonUIState::Normal:
 	{
-		if (true == Pokemons[CurrentCursor]->IsPokemonItemPossession())
+		if (ItemCode::Cancel != Pokemons[CurrentCursor]->GetPossession())
 		{
 			SelectSize = 3;
 			SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");

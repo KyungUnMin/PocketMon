@@ -38,12 +38,12 @@ void BuyWindow::Start()
 		ItemNameRenders[i] = ParentLevel->CreateActor<TextActor>();
 		if (i < ItemNameRenders.size() - 1)
 		{
-			ItemNameRenders[i]->SetText(Iter->Name, "Font_Dialog.bmp", static_cast<int>(RenderOrder::Shop_Text));
+			ItemNameRenders[i]->SetText(Iter->GetItemName(), "Font_Dialog.bmp", static_cast<int>(RenderOrder::Shop_Text));
 
 			ItemPriceRenders[i].SetOwner(this);
 			ItemPriceRenders[i].SetImage("SmallNum.bmp", ItemPriceRenderScale, static_cast<int>(RenderOrder::Shop_Text), RGB(255, 0, 255));
 			ItemPriceRenders[i].SetAlign(Align::Right);
-			ItemPriceRenders[i].SetValue(Iter->Price);
+			ItemPriceRenders[i].SetValue(Iter->GetPrice());
 			ItemPriceRenders[i].SetRenderPos(FirstItemPriceRenderPos + LineInterval * static_cast<float>(i));
 			
 			Iter++;
@@ -170,9 +170,9 @@ void BuyWindow::Cancle()
 void BuyWindow::ItemPushBack()
 {
 	ItemList.reserve(5);
-	ItemList.push_back({"POK@ BALL", 200, "EXPLANE"});
-	ItemList.push_back({"POTION", 200, "EXPLANE"});
-	ItemList.push_back({"REPEL", 350, "EXPLANE"});
-	ItemList.push_back({"MASTER BALL", 10, "EXPLANE"});
-	ItemList.push_back({"RARE CANDY", 10, "EXPLANE"});
+	ItemList.push_back(Item::GetItem(ItemCode::MonsterBall));
+	ItemList.push_back(Item::GetItem(ItemCode::Potion));
+	ItemList.push_back(Item::GetItem(ItemCode::Repel));
+	ItemList.push_back(Item::GetItem(ItemCode::MasterBall));
+	ItemList.push_back(Item::GetItem(ItemCode::RareCandy));
 }

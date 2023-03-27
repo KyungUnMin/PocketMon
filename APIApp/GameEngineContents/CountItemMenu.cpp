@@ -5,6 +5,7 @@
 #include "BuyYesNoMenu.h"
 #include "BuyLevelDialog.h"
 #include "BuyUIManager.h"
+#include "Item.h"
 //CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
 
 CountItemMenu::CountItemMenu()
@@ -17,7 +18,7 @@ CountItemMenu::~CountItemMenu()
 
 }
 
-void CountItemMenu::CountStart(TestItem& _Item)
+void CountItemMenu::CountStart(Item& _Item)
 {
 	On();
 	UpdateStart(_Item);
@@ -70,11 +71,11 @@ void CountItemMenu::Start()
 	Off();
 }
 
-void CountItemMenu::UpdateStart(TestItem& _Item)
+void CountItemMenu::UpdateStart(Item& _Item)
 {
 	SetCount(1);
-	Item = _Item;
-	SetPrice(_Item.Price);
+	SelectItem = &_Item;
+	SetPrice(_Item.GetPrice());
 	PriceNum.SetValue(Price * Count);
 	BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
 }
@@ -112,7 +113,8 @@ void CountItemMenu::Update(float _DeltaTime)
 		AcParent->Off();
 		Off();
 		BuyYesNoMenu::GetBuyYesNoMenu()->On();
-		Script = std::string(Item.Name + "? Certainly.\nHow many would you like?");
+		BuyYesNoMenu::GetBuyYesNoMenu()->SetItemAndCount(*SelectItem, Count);
+		Script = std::string(SelectItem->GetItemName().data() + std::string(", and you want ") + std::to_string(Count) + ".\nThat will be $" + std::to_string(Count * Price) + ". Okay?");
 		Scripts.push_back(Script);
 		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Scripts);
 		BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;

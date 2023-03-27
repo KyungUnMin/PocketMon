@@ -108,7 +108,7 @@ Item Item::RareCandyData()
 
 	NewItem.IsBattle = true;
 
-	NewItem.Name = "RARECANDY";
+	NewItem.Name = "RARE CANDY";
 	NewItem.ItemExplanation = "A candy that is packed with energy, It raises the level of a POK@MON by one.";
 
 	NewItem.CodeNumber = ItemCode::RareCandy;
@@ -140,7 +140,7 @@ Item Item::WiseGlassesData()
 
 	NewItem.IsBattle = false;
 
-	NewItem.Name = "WISEGLASSES";
+	NewItem.Name = "WISE GLASSES";
 	NewItem.ItemExplanation = "Increases the special attack power of the POK@MON holding this item.";
 
 	NewItem.CodeNumber = ItemCode::WiseGlasses;
@@ -156,7 +156,7 @@ Item Item::MuscleBandData()
 
 	NewItem.IsBattle = false;
 
-	NewItem.Name = "MUSLEBAND";
+	NewItem.Name = "MUSLE BAND";
 	NewItem.ItemExplanation = "Increases the attack power of the POK@MON holding this item.";
 
 	NewItem.CodeNumber = ItemCode::MuscleBand;
@@ -172,7 +172,7 @@ Item Item::ChoiceBandData()
 
 	NewItem.IsBattle = false;
 
-	NewItem.Name = "CHOICEBAND";
+	NewItem.Name = "CHOICE BAND";
 	NewItem.ItemExplanation = "Increases the defense of the POK@MON holding this item.";
 
 	NewItem.CodeNumber = ItemCode::ChoiceBand;
@@ -188,7 +188,7 @@ Item Item::ChoiceScarfData()
 
 	NewItem.IsBattle = false;
 
-	NewItem.Name = "CHOICESCARF";
+	NewItem.Name = "CHOICE SCARF";
 	NewItem.ItemExplanation = "Increases the special defense of the POK@MON holding this item.";
 
 	NewItem.CodeNumber = ItemCode::ChoiceScarf;
@@ -220,7 +220,7 @@ Item Item::MonsterBallData()
 
 	NewItem.IsBattle = true;
 
-	NewItem.Name = "POK@BALL";
+	NewItem.Name = "POK@ BALL";
 	NewItem.ItemExplanation = "A BALL throw to catch a wild POK@MON. It is designed in a capsule style.";
 
 	NewItem.CodeNumber = ItemCode::MonsterBall;
@@ -236,7 +236,7 @@ Item Item::MasterBallData()
 
 	NewItem.IsBattle = true;
 
-	NewItem.Name = "MASTERBALL";
+	NewItem.Name = "MASTER BALL";
 	NewItem.ItemExplanation = "You can definitely catch a wild POK@MON.";
 
 	NewItem.CodeNumber = ItemCode::MasterBall;

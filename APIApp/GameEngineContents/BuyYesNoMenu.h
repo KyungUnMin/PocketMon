@@ -9,6 +9,7 @@ enum class MenuState
 };
 
 class GameEngineRender;
+class Item;
 class BuyYesNoMenu : public GameEngineActor
 {
 public:
@@ -29,6 +30,12 @@ public:
 	{
 		return AcBuyYesNoMenu;
 	}
+	
+	void SetItemAndCount(Item& _Item, int _Count)
+	{
+		SetItem(_Item);
+		SetCount(_Count);
+	}
 
 protected:
 	void Start() override;
@@ -37,16 +44,28 @@ protected:
 private:
 	static BuyYesNoMenu* AcBuyYesNoMenu;
 
-	float4 ActorPos = { 480,320 };
+	float4 ActorPos = { 764,352 };
 	std::vector<GameEngineRender*> MenuRenders = std::vector<GameEngineRender*>();
 
 	MenuState State = MenuState::Yes;
+
+	Item* SelectItem = nullptr;
+	int Count = 0;
 
 	void UpdateStart();
 	void UpdateEnd();
 
 	void StateToRender();
 	void ChangeState();
-
+	
+	void SetItem(Item& _Item)
+	{
+		SelectItem = &_Item;
+	}
+	
+	void SetCount(int _Count)
+	{
+		Count = _Count;
+	}
 };
 
