@@ -241,10 +241,6 @@
     <ClCompile Include="LevelUpStatUI.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="BuyLevelDialog.cpp" />
-    <ClCompile Include="BuyUIManager.cpp" />
-    <ClCompile Include="BuyYesNoMenu.cpp" />
-    <ClCompile Include="YesNoMenu.cpp" />
     <ClCompile Include="Battle_CatchMonsterParticle.cpp">
       <Filter>Battle</Filter>
     </ClCompile>
@@ -325,6 +321,18 @@
     </ClCompile>
     <ClCompile Include="Item.cpp">
       <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyLevelDialog.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyUIManager.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyYesNoMenu.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="YesNoMenu.cpp">
+      <Filter>FieldUI\HSM</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -563,10 +571,6 @@
     <ClInclude Include="LevelUpStatUI.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="BuyLevelDialog.h" />
-    <ClInclude Include="BuyUIManager.h" />
-    <ClInclude Include="BuyYesNoMenu.h" />
-    <ClInclude Include="YesNoMenu.h" />
     <ClInclude Include="Battle_CatchMonsterParticle.h">
       <Filter>Battle</Filter>
     </ClInclude>
@@ -644,6 +648,18 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyTackle.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyLevelDialog.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyUIManager.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyYesNoMenu.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="YesNoMenu.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
