@@ -48,7 +48,10 @@ void EndingPlayActor::PlayEnding()
 
 	AddCameraMoveEvent("PewterCity", int2(10, 12), float4::Zero);
 
-	GetLevel()->LevelEvent.AddEvent(1.5f, std::bind(
+	GameEngineLevel* Level = GetLevel();
+	GameEngineTimeEvent& LevelTimeEvent = Level->LevelEvent;
+
+	LevelTimeEvent.AddEvent(1.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			float4 AnimPos = _This->PlayerAnim->GetPos();
@@ -57,7 +60,7 @@ void EndingPlayActor::PlayEnding()
 			_This->PlayerAnim->On();
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(2.0f, std::bind(
+	LevelTimeEvent.AddEvent(2.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -71,14 +74,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(1, 1).NormalizeReturn());
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(7.5f, std::bind(
+	LevelTimeEvent.AddEvent(7.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		},this), false);
 
-	GetLevel()->LevelEvent.AddEvent(8.0f, std::bind(
+	LevelTimeEvent.AddEvent(8.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon001.bmp");
@@ -94,14 +97,14 @@ void EndingPlayActor::PlayEnding()
 		}, this), false); // 회색 시티
 
 
-	GetLevel()->LevelEvent.AddEvent(12.5f, std::bind(
+	LevelTimeEvent.AddEvent(12.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(13.0f, std::bind(
+	LevelTimeEvent.AddEvent(13.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon002.bmp");
@@ -118,14 +121,14 @@ void EndingPlayActor::PlayEnding()
 		}, this), false); // 상록 숲
 
 
-	GetLevel()->LevelEvent.AddEvent(17.5f, std::bind(
+	LevelTimeEvent.AddEvent(17.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(18.0f, std::bind(
+	LevelTimeEvent.AddEvent(18.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon003.bmp");
@@ -142,14 +145,14 @@ void EndingPlayActor::PlayEnding()
 		}, this), false); // 상록 시티
 
 
-	GetLevel()->LevelEvent.AddEvent(22.5f, std::bind(
+	LevelTimeEvent.AddEvent(22.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(23.0f, std::bind(
+	LevelTimeEvent.AddEvent(23.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon004.bmp");
@@ -165,7 +168,7 @@ void EndingPlayActor::PlayEnding()
 
 		}, this), false); // 1번 도로
 
-	GetLevel()->LevelEvent.AddEvent(25.0f, std::bind(
+	LevelTimeEvent.AddEvent(25.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			EndingPlayerAnimActor* AnimPtr = _This->PlayerAnim;
@@ -177,13 +180,13 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4::Zero);
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(26.0f, std::bind(
+	LevelTimeEvent.AddEvent(26.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->Fade->On();
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(27.5f, std::bind(
+	LevelTimeEvent.AddEvent(27.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->Fade->On();
@@ -191,7 +194,7 @@ void EndingPlayActor::PlayEnding()
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	GetLevel()->LevelEvent.AddEvent(28.0f, std::bind(
+	LevelTimeEvent.AddEvent(28.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::PlayLastEffect();
