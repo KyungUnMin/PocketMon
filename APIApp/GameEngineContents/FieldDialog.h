@@ -66,6 +66,8 @@ private:
 	float4 ArrowRenderPlusPos = { 36,0 };
 	int2 LastTextRenderIndex = { -1,-1 };
 
+	//int InputControllHandle = -1;
+
 	void UpdateStart(std::list<std::string>* _Script);
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);
 	void PushScriptEnd(std::list<std::string>::iterator _End);

@@ -99,10 +99,10 @@ void FieldMainMenu::ChangeStateNext()
 
 void FieldMainMenu::UpdateStart()
 {
-	if (!InputControll::CanControll())
-	{
-		return;
-	}
+	//if (!InputControll::CanControll())
+	//{
+	//	return;
+	//}
 
 	InputControlHandle = InputControll::UseControll();
 	//Player::MainPlayer->SetPlayerMoveBool(false);
@@ -112,7 +112,9 @@ void FieldMainMenu::UpdateStart()
 
 void FieldMainMenu::Update(float _DeltaTime)
 {
-	if (false == InputControll::CanControll())
+	bool a = InputControll::CanControll(InputControlHandle);
+	
+	if (false == InputControll::CanControll(InputControlHandle))
 	{
 		return;
 	}

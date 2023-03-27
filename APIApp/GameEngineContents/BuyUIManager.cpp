@@ -4,6 +4,7 @@
 #include "CountItemMenu.h"
 #include "BuyWindow.h"
 #include "Item.h"
+#include "InputControll.h"
 
 BuyUIManager* BuyUIManager::AcBuyUIManager = nullptr;
 
@@ -44,6 +45,7 @@ void BuyUIManager::UpdateStart(Item& _Item)
 	Script = std::string(SelectItem->GetItemName().data() + std::string("? Certainly.\nHow many would you like?"));
 	Scripts.push_back(Script);
 	AcBuyLevelDialog->ConversationStart(&Scripts);
+	InputControllHandle = InputControll::UseControll();
 }
 
 void BuyUIManager::Update(float _DeltaTime)
@@ -62,4 +64,5 @@ void BuyUIManager::UpdateEnd()
 	{
 		Scripts.pop_back();
 	}
+	InputControllHandle = InputControll::ResetControll(InputControllHandle);
 }

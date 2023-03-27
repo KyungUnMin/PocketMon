@@ -21,7 +21,7 @@ public:
 	BuyWindow& operator=(BuyWindow&& _Other) noexcept = delete;
 
 	void ChangeState(int _State);
-	bool IsValid = true;
+	//bool IsValid = true;
 
 	static BuyWindow* GetBuyWindow()
 	{

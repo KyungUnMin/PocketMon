@@ -88,16 +88,26 @@ void BuyWindow::Start()
 
 void BuyWindow::Update(float _DeltaTime)
 {
-	if (BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
+	//if (BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
+	//{
+	//	IsValid = false;
+	//}
+	//else
+	//{
+	//	IsValid = true;
+	//}
+
+	if (false == InputControll::CanControll())
 	{
-		IsValid = false;
+		ArrowRender->SetImage("PressMenuArrow.bmp");
+		return;
 	}
 	else
 	{
-		IsValid = true;
+		ArrowRender->SetImage("MenuArrow.bmp");
 	}
 
-	//if (false == InputControll::CanControll())
+	//if (!IsValid)
 	//{
 	//	ArrowRender->SetImage("PressMenuArrow.bmp");
 	//	return;

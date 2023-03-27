@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
+//#include "InputControll.h"
 
 #include "Player.h"
 
@@ -94,6 +95,7 @@ void FieldDialog::Start()
 void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 {
 	Player::MainPlayer->SetPlayerMoveBool(false);
+	//InputControllHandle = InputControll::UseControll();
 	ClearDialog();
 	FirstLineRenderLen = 0;
 	SecondLineRenderLen = 0;
@@ -152,7 +154,7 @@ void FieldDialog::Update(float _DeltaTime)
 		}
 	}
 
-	if (IsValid == false)
+	if (IsValid = false/*InputControll::CanControll() == false*/)
 	{
 		return;
 	}
@@ -177,6 +179,7 @@ void FieldDialog::Update(float _DeltaTime)
 
 void FieldDialog::UpdateEnd()
 {
+	//InputControllHandle = InputControll::ResetControll(InputControllHandle);
 	Player::MainPlayer->SetPlayerMoveBool(true);
 	ClearDialog();
 	FirstLineRenderLen = 0;

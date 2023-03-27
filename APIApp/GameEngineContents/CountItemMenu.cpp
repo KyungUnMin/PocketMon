@@ -6,6 +6,7 @@
 #include "BuyLevelDialog.h"
 #include "BuyUIManager.h"
 #include "Item.h"
+#include "InputControll.h"
 //CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
 
 CountItemMenu::CountItemMenu()
@@ -118,7 +119,7 @@ void CountItemMenu::Update(float _DeltaTime)
 		Scripts.push_back(Script);
 		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Scripts);
 		BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
-		BuyWindow::GetBuyWindow()->IsValid = false;
+		//BuyWindow::GetBuyWindow()->IsValid = false;
 	}
 }
 
@@ -128,7 +129,7 @@ void CountItemMenu::UpdateEnd()
 	{
 		return;
 	}
-	BuyWindow::GetBuyWindow()->IsValid = true;
+	//BuyWindow::GetBuyWindow()->IsValid = true;
 	if (Scripts.size() != 0)
 	{
 		Scripts.pop_back();
