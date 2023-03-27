@@ -42,6 +42,8 @@ protected:
 
 private:
 
+	PokeDataBase NewTestMon2 = PokeDataBase::PokeCreate(4, 15);
+
 	std::vector<GameEngineRender*> PoketMonSkill_R1;
 	std::vector<GameEngineRender*> PoketMonSkill_R2;
 	std::vector<GameEngineRender*> PoketMonSkill_R3;

@@ -33,10 +33,10 @@ void TextTestLevel::Loading()
 
 
 	//띄우기 위해 조건이 필요할 때
+	CreateActor<EnemyHPBackground>();
+	CreateActor<FriendlyHPBackground>();
 
-
-	CreateActor<LevelUpStatUI>();
-	CreateActor<LevelUpStatUI_2>();
+	CreateActor<BattleCommendActor>();
 
 }
 
@@ -49,8 +49,10 @@ void TextTestLevel::Update(float _DeltaTime)
 	}
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		CreateActor<EnemyHPBackground>();
-		CreateActor<FriendlyHPBackground>();
+		
+		CreateActor<LevelUpStatUI>();
+		CreateActor<LevelUpStatUI_2>();
+
 	}
 }
 

@@ -25,6 +25,9 @@ protected:
 
 
 private:
+
+	PokeDataBase NewTestMon1 = PokeDataBase::PokeCreate(4, 15);
+
 	std::vector<GameEngineRender*> EnemyPoketMonName_R;
 	std::vector<GameEngineRender*> EnemyPoketMonLevel_R;
 

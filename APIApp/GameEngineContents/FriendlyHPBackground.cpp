@@ -127,8 +127,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonLevel_R, NewTestMon.ForUI_GetMonsterLevel());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPCUR_R, NewTestMon.ForUI_GetMonsterCurrentHP());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPMAX_R, NewTestMon.ForUI_GetMonsterMaxHP());
-	RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
-	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
+	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
+//	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
 
 	NextTickTime += _DeltaTime;
 	if (NextTickTime > 0.1f) {

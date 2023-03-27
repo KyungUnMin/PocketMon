@@ -29,11 +29,11 @@ void Battle_Select::init(GameEngineActor* Script)
 
 void Battle_Select::Start()
 {
-	if (false == GameEngineInput::IsKey("InsertMove1"))
-	{
+	//if (false == GameEngineInput::IsKey("InsertMove1"))
+	//{
 
-		GameEngineInput::CreateKey("InsertMove1", 'Z');
-	}
+	//	GameEngineInput::CreateKey("InsertMove1", 'Z');
+	//}
 
 	SetPos({720,540});
 	GameEngineRender* RenderPtr = CreateRender("Battle_Select.bmp", BattleRenderOrder::Battle_Text);
