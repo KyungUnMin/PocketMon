@@ -38,6 +38,16 @@ void SummaryUI::Start()
 	PokemonLevel = CurrentLevel->CreateActor<TextActor>();
 	PokemonLevel->SetPos({ 72, 100 });
 
+	CurrentSkillSelect = CreateRender("MoveSelect.bmp", 5);
+	CurrentSkillSelect->SetScale({ 480, 116 });
+	CurrentSkillSelect->SetPosition({ 720, 132 });
+	CurrentSkillSelect->Off();
+
+	SkillSelect = CreateRender("MoveSelect.bmp", 5);
+	SkillSelect->SetScale({ 480, 116 });
+	SkillSelect->SetPosition({ 720, 132 });
+	SkillSelect->Off();
+
 	// 포켓몬 정보 창
 	{
 		Info_Back = CreateRender("PokemonInfo.bmp", 0);
@@ -166,11 +176,6 @@ void SummaryUI::Start()
 
 void SummaryUI::Update(float _DeltaTime)
 {
-
-	if (CurrentPage == SummaryPage::MovesSwitch)
-	{
-
-	}
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
 		PrevPage();
@@ -181,7 +186,16 @@ void SummaryUI::Update(float _DeltaTime)
 		NextPage();
 		return;
 	}
-	
+	if (GameEngineInput::IsDown("UpMove"))
+	{
+		PrevPokemon();
+		return;
+	}
+	if (GameEngineInput::IsDown("DownMove"))
+	{
+		NextPokemon();
+		return;
+	}
 	if (GameEngineInput::IsDown("A"))
 	{
 		Select();
@@ -310,9 +324,10 @@ void SummaryUI::Select()
 	case SummaryPage::Skills:
 		break;
 	case SummaryPage::Moves:
-		CurrentPage = SummaryPage::MovesSwitch;
+		MovesSwitchOn();
 		break;
 	case SummaryPage::MovesSwitch:
+		MovesSwitchSelect();
 		break;
 	default:
 		break;
@@ -329,6 +344,7 @@ void SummaryUI::Cancel()
 		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 		break;
 	case SummaryPage::MovesSwitch:
+		MovesSwitchCancle();
 		break;
 	default:
 		break;
@@ -337,10 +353,50 @@ void SummaryUI::Cancel()
 
 void SummaryUI::NextPokemon()
 {
+	switch (CurrentPage)
+	{
+	case SummaryPage::Info:
+	case SummaryPage::Skills:
+	case SummaryPage::Moves:
+	{
+		if (CurrentPokemon == Pokemons.size() - 1)
+		{
+			return;
+		}
+		CurrentPokemon++;
+		SetPokemonData();
+	}
+		break;
+	case SummaryPage::MovesSwitch:
+		MovesSwitchDown();
+		break;
+	default:
+		break;
+	}
 }
 
 void SummaryUI::PrevPokemon()
 {
+	switch (CurrentPage)
+	{
+	case SummaryPage::Info:
+	case SummaryPage::Skills:
+	case SummaryPage::Moves:
+	{
+		if (CurrentPokemon == 0)
+		{
+			return;
+		}
+		CurrentPokemon--;
+		SetPokemonData();
+	}
+	break;
+	case SummaryPage::MovesSwitch:
+		MovesSwitchUp();
+		break;
+	default:
+		break;
+	}
 }
 
 void SummaryUI::MovePokemon()
@@ -349,14 +405,14 @@ void SummaryUI::MovePokemon()
 
 void SummaryUI::SetPokemonData()
 {
-	PokeDataBase* Pokemon = Pokemons[CurrentPokemon];
-	PokemonRender->SetImage("Battle" + Pokemon->ForUI_GetMonsterName() + "Front.bmp");
-	PokemonName->SetText(Pokemon->ForUI_GetMonsterName(), "Font_Dialog_White.bmp",  false);
-	PokemonLevel->SetText(Pokemon->ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", false);
-	Info_Number->SetText(Pokemon->ForUI_GetMonsterNumberName(), "Font_Dialog_Black2.bmp", false);
-	Info_Name->SetText(Pokemon->ForUI_GetMonsterName(), "Font_Dialog_Black2.bmp", false);
-	Info_Type->SetFrame(static_cast<int>(Pokemon->GetMonsterType()));
-	ItemCode Pokemon_ItemCode = Pokemon->GetPossession();
+	PokeDataBase Pokemon = Pokemons[CurrentPokemon];
+	PokemonRender->SetImage("Battle" + Pokemon.ForUI_GetMonsterName() + "Front.bmp");
+	PokemonName->SetText(Pokemon.ForUI_GetMonsterName(), "Font_Dialog_White.bmp",  false);
+	PokemonLevel->SetText(Pokemon.ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", false);
+	Info_Number->SetText(Pokemon.ForUI_GetMonsterNumberName(), "Font_Dialog_Black2.bmp", false);
+	Info_Name->SetText(Pokemon.ForUI_GetMonsterName(), "Font_Dialog_Black2.bmp", false);
+	Info_Type->SetFrame(static_cast<int>(Pokemon.GetMonsterType()));
+	ItemCode Pokemon_ItemCode = Pokemon.GetPossession();
 	if (ItemCode::Potion <= Pokemon_ItemCode && ItemCode::Cancel >= Pokemon_ItemCode)
 	{
 		Info_Item->SetText(Item::GetItem(Pokemon_ItemCode).GetItemName(), "Font_Dialog_Black2.bmp", false);
@@ -365,23 +421,70 @@ void SummaryUI::SetPokemonData()
 	{
 		Info_Item->SetText("NONE", "Font_Dialog_Black2.bmp", false);
 	}
-	Info_Memo->SetText(Pokemon->ForUI_GetPokeDexText(), "Font_Dialog_Black2.bmp", false);
+	Info_Memo->SetText(Pokemon.ForUI_GetPokeDexText(), "Font_Dialog_Black2.bmp", false);
 
-	Skill_HP->SetText(Pokemon->ForUI_GetMonsterCurrentHP() + "/" + Pokemon->ForUI_GetMonsterMaxHP(), "Font_Dialog_Black2.bmp", false);
-	Skill_ATK->SetText(std::to_string(Pokemon->GetMonsterAttackPower_int()), "Font_Dialog_Black2.bmp", false);
-	Skill_DEF->SetText(std::to_string(Pokemon->GetMonsterDefense_int()), "Font_Dialog_Black2.bmp", false);
-	Skill_SPATK->SetText(std::to_string(Pokemon->GetMonsterSpecialAttackPower_int()), "Font_Dialog_Black2.bmp", false);
-	Skill_SPDEF->SetText(std::to_string(Pokemon->GetMonsterSpecialDefense_int()), "Font_Dialog_Black2.bmp", false);
-	Skill_Speed->SetText(std::to_string(Pokemon->GetMonsterAgility()), "Font_Dialog_Black2.bmp", false);
-	Skill_EXP->SetText(Pokemon->ForUI_GetMonsterExperience(), "Font_Dialog_Black2.bmp", false);
-	Skill_NextEXP->SetText(std::to_string(100 - Pokemon->GetMonsterExperience()), "Font_Dialog_Black2.bmp", false);
+	Skill_HP->SetText(Pokemon.ForUI_GetMonsterCurrentHP() + "/" + Pokemon.ForUI_GetMonsterMaxHP(), "Font_Dialog_Black2.bmp", false);
+	Skill_ATK->SetText(std::to_string(Pokemon.GetMonsterAttackPower_int()), "Font_Dialog_Black2.bmp", false);
+	Skill_DEF->SetText(std::to_string(Pokemon.GetMonsterDefense_int()), "Font_Dialog_Black2.bmp", false);
+	Skill_SPATK->SetText(std::to_string(Pokemon.GetMonsterSpecialAttackPower_int()), "Font_Dialog_Black2.bmp", false);
+	Skill_SPDEF->SetText(std::to_string(Pokemon.GetMonsterSpecialDefense_int()), "Font_Dialog_Black2.bmp", false);
+	Skill_Speed->SetText(std::to_string(Pokemon.GetMonsterAgility()), "Font_Dialog_Black2.bmp", false);
+	Skill_EXP->SetText(Pokemon.ForUI_GetMonsterExperience(), "Font_Dialog_Black2.bmp", false);
+	Skill_NextEXP->SetText(std::to_string(100 - Pokemon.GetMonsterExperience()), "Font_Dialog_Black2.bmp", false);
 
-	//PokeSkillBase* Skills = Pokemon->GetMonsterSkillList();
+	SkillSize = 0;
 	for (int i = 0; i < 4; i++)
 	{
-		Move_Moves[i].Type->SetFrame(17);
-		Move_Moves[i].Name->SetText(" ");
-		Move_Moves[i].PP->SetText("-  ");
+		PokeSkillBase Skill = Pokemon.GetMonsterSkillList(i+1);
+		if (Skill.GetSkill() == PokeSkill::Unknown)
+		{
+			Move_Moves[i].Type->SetFrame(17);
+			Move_Moves[i].Name->SetText(" ");
+			Move_Moves[i].PP->SetText("-  ", "Font_Dialog_Black2.bmp", false);
+			continue;
+		}
+		SkillSize++;
+		Move_Moves[i].Type->SetFrame(static_cast<int>(Skill.GetSkillType()));
+		Move_Moves[i].Name->SetText(Skill.ForUI_GetSkillName(), "Font_Dialog_Black2.bmp", false);
+		Move_Moves[i].PP->SetText(Skill.ForUI_GetCurrentSkillPowerPoint() + "/" + Skill.ForUI_GetMaxSkillPowerPoint(), "Font_Dialog_Black2.bmp", false);
 	}
+}
+
+void SummaryUI::MovesSwitchOn()
+{
+	CurrentSkillSelect->On();
+	CurrentPage = SummaryPage::MovesSwitch;
+}
+
+void SummaryUI::MovesSwitchOff()
+{
+}
+
+void SummaryUI::MovesSwitchUp()
+{
+	if (CurrentSkillCursor == 0)
+	{
+		return;
+	}
+	CurrentSkillCursor--;
+	CurrentSkillSelect->SetPosition({ 720, 132.0f + 108 * CurrentSkillCursor });
+}
+
+void SummaryUI::MovesSwitchDown()
+{
+	if (CurrentSkillCursor == SkillSize - 1)
+	{
+		return;
+	}
+	CurrentSkillCursor++;
+	CurrentSkillSelect->SetPosition({ 720, 132.0f + 108 * CurrentSkillCursor });
+}
+
+void SummaryUI::MovesSwitchSelect()
+{
+}
+
+void SummaryUI::MovesSwitchCancle()
+{
 }
 

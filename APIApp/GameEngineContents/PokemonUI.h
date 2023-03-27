@@ -45,7 +45,7 @@ protected:
 private:
 	GameEngineLevel* PrevLevel = nullptr;
 	GameEngineLevel* CurrentLevel = nullptr;
-	std::vector<PokeDataBase*> Pokemons;
+	std::vector<PokeDataBase> Pokemons;
 
 	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);
 	std::vector<GameEngineRender*> PokemonRender = std::vector<GameEngineRender*>(6);

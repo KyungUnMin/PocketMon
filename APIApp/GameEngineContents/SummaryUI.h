@@ -35,8 +35,10 @@ private:
 
 	GameEngineLevel* CurrentLevel = nullptr;
 
-	std::vector<PokeDataBase*> Pokemons;
+	std::vector<PokeDataBase> Pokemons;
 	GameEngineRender* PokemonRender = nullptr;
+	GameEngineRender* CurrentSkillSelect = nullptr;
+	GameEngineRender* SkillSelect = nullptr;
 	TextActor* PokemonName = nullptr;
 	TextActor* PokemonLevel = nullptr;
 
@@ -78,6 +80,9 @@ private:
 	TextActor* Move_Effect = nullptr;
 
 	int CurrentPokemon = 0;
+	int CurrentSkillCursor = 0;
+	int SelectSkillCursor = 0;
+	int SkillSize = 0;
 
 	void NextPage();
 	void PrevPage();
@@ -93,5 +98,12 @@ private:
 	void MovePokemon();
 
 	void SetPokemonData();
+
+	void MovesSwitchOn();
+	void MovesSwitchOff();
+	void MovesSwitchUp();
+	void MovesSwitchDown();
+	void MovesSwitchSelect();
+	void MovesSwitchCancle();
 };
 

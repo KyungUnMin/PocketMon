@@ -294,22 +294,22 @@ void PokemonUI::PokeDataSetting()
 		{
 			CursorRender[i] = PokemonBack[i];
 			// 포켓몬 이미지
-			std::string ImageStr = Pokemons[i]->ForUI_GetMonsterName().data();
+			std::string ImageStr = Pokemons[i].ForUI_GetMonsterName().data();
 			ImageStr += "_mini.bmp";
 			PokemonRender[i]->SetImage(ImageStr);
 			float4 _RenderScale = PokemonRender[i]->GetImage()->GetImageScale();
 			_RenderScale.x /= 2;
 			PokemonRender[i]->SetScale(_RenderScale);
 			// 포켓몬 이름
-			PokemonNameText[i]->SetText(Pokemons[i]->ForUI_GetMonsterName(), "Font_Dialog_White.bmp", 3, false);
+			PokemonNameText[i]->SetText(Pokemons[i].ForUI_GetMonsterName(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 레벨
-			PokemonLevelText[i]->SetText(Pokemons[i]->ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
+			PokemonLevelText[i]->SetText(Pokemons[i].ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 HP
-			PokemonCurrentHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
+			PokemonCurrentHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 최대 HP
-			PokemonMaxHPText[i]->SetText(Pokemons[i]->ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
+			PokemonMaxHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
 			// 지닌 물건
-			Pokemons[i]->GetPossession() != ItemCode::Cancel ? PokemonItem[i]->On() : PokemonItem[i]->Off();
+			Pokemons[i].GetPossession() != ItemCode::Cancel ? PokemonItem[i]->On() : PokemonItem[i]->Off();
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
@@ -383,7 +383,7 @@ void PokemonUI::SelectOn()
 	{
 	case PokemonUIState::Normal:
 	{
-		if (ItemCode::Cancel != Pokemons[CurrentCursor]->GetPossession())
+		if (ItemCode::Cancel != Pokemons[CurrentCursor].GetPossession())
 		{
 			SelectSize = 3;
 			SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
@@ -516,7 +516,7 @@ void PokemonUI::SwitchSelect()
 		SwitchCancel();
 		return;
 	}
-	PokeDataBase* _Pokemon = Pokemons[SwitchCursor];
+	PokeDataBase _Pokemon = Pokemons[SwitchCursor];
 	Pokemons[SwitchCursor] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
 	PokeDataSetting();
@@ -525,15 +525,15 @@ void PokemonUI::SwitchSelect()
 
 void PokemonUI::Item()
 {
-	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor]->GetPossession());
-	Pokemons[CurrentCursor]->SetPossession(ItemCode::Cancel);
+	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor].GetPossession());
+	Pokemons[CurrentCursor].SetPossession(ItemCode::Cancel);
 	PokeDataSetting();
 	SelectOff();
 }
 
 void PokemonUI::Shift()
 {
-	PokeDataBase* _Pokemon = Pokemons[0];
+	PokeDataBase _Pokemon = Pokemons[0];
 	Pokemons[0] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
 	PocketMonCore::GetInst().ChangeLevel("BattleLevel");
@@ -541,12 +541,12 @@ void PokemonUI::Shift()
 
 void PokemonUI::PotionUse()
 {
-	Pokemons[CurrentCursor]->ForInven_UsePotion();
+	Pokemons[CurrentCursor].ForInven_UsePotion();
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 	PokeDataSetting();
 	IsPotionUse = true;
 
-	BarText->SetText(Pokemons[CurrentCursor]->ForUI_GetMonsterName() + " HP was restored.", true);
+	BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 
 	return;
 
@@ -586,7 +586,7 @@ void PokemonUI::SetBarText()
 
 void PokemonUI::GiveItem()
 {
-	Pokemons[CurrentCursor]->SetPossession(CurrentItemCode);
+	Pokemons[CurrentCursor].SetPossession(CurrentItemCode);
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
 	PocketMonCore::GetInst().ChangeLevel("BagLevel");
