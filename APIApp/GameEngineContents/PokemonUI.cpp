@@ -288,6 +288,7 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void PokemonUI::PokeDataSetting()
 {
 	// ____________렌더 생성______________
+	/*
 	{
 		CursorRender.resize(Pokemons.size() + 1);
 		for (int i = 0; i < Pokemons.size(); i++)
@@ -295,6 +296,7 @@ void PokemonUI::PokeDataSetting()
 			CursorRender[i] = PokemonBack[i];
 			// 포켓몬 이미지
 			std::string ImageStr = Pokemons[i].ForUI_GetMonsterName().data();
+			ImageStr = "Bulbasaur";
 			ImageStr += "_mini.bmp";
 			PokemonRender[i]->SetImage(ImageStr);
 			float4 _RenderScale = PokemonRender[i]->GetImage()->GetImageScale();
@@ -324,6 +326,7 @@ void PokemonUI::PokeDataSetting()
 		}
 		CursorRender[Pokemons.size()] = CancelButtonRender;
 	}
+	*/
 }
 
 void PokemonUI::CursorUp()
