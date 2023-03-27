@@ -351,6 +351,51 @@
     <ClCompile Include="LevelUpStatUI_2.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="Logo_Pokemon.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_PressStart.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Back1.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Back2.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Back3.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Backeffect.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Charizard.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Fireredversion.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Gamefreakinc.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_Freaklogo.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_largeST.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_smallST.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_Star.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_Text.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BlackBox.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -690,6 +735,51 @@
     </ClInclude>
     <ClInclude Include="LevelUpStatUI_2.h">
       <Filter>BattleUI\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Gamefreakinc.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Pokemon.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_PressStart.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Back1.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Back2.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Back3.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Backeffect.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Charizard.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Fireredversion.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_Freaklogo.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_largeST.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_smallST.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_Star.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_Text.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BlackBox.h">
+      <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

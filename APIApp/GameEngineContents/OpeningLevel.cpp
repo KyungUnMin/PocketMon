@@ -1,6 +1,6 @@
 #include "OpeningLevel.h"
 
-//#include "Opening_Text.h"
+#include "Opening_Text.h"
 
 OpeningLevel::OpeningLevel() 
 {
@@ -12,7 +12,7 @@ OpeningLevel::~OpeningLevel()
 
 void OpeningLevel::Loading()
 {
-	//CreateActor<Opening_Text>();
+	CreateActor<Opening_Text>();
 }
 void OpeningLevel::Update(float _DeltaTime)
 {

@@ -276,6 +276,7 @@
     </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp" />
     <ClCompile Include="Battle_PlayerBallParticle.cpp" />
+    <ClCompile Include="BlackBox.cpp" />
     <ClCompile Include="BuyLevel.cpp">
       <SubType>
       </SubType>
@@ -356,6 +357,15 @@
     </ClCompile>
     <ClCompile Include="LevelUpStatUI.cpp" />
     <ClCompile Include="LevelUpStatUI_2.cpp" />
+    <ClCompile Include="Logo_Back1.cpp" />
+    <ClCompile Include="Logo_Back2.cpp" />
+    <ClCompile Include="Logo_Back3.cpp" />
+    <ClCompile Include="Logo_Backeffect.cpp" />
+    <ClCompile Include="Logo_Charizard.cpp" />
+    <ClCompile Include="Logo_Fireredversion.cpp" />
+    <ClCompile Include="Logo_Gamefreakinc.cpp" />
+    <ClCompile Include="Logo_Pokemon.cpp" />
+    <ClCompile Include="Logo_PressStart.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <SubType>
       </SubType>
@@ -364,6 +374,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Opening_Freaklogo.cpp" />
+    <ClCompile Include="Opening_largeST.cpp" />
+    <ClCompile Include="Opening_smallST.cpp" />
+    <ClCompile Include="Opening_Star.cpp" />
+    <ClCompile Include="Opening_Text.cpp" />
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
       </SubType>
@@ -564,6 +579,7 @@
     </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h" />
     <ClInclude Include="Battle_PlayerBallParticle.h" />
+    <ClInclude Include="BlackBox.h" />
     <ClInclude Include="BuyLevel.h">
       <SubType>
       </SubType>
@@ -647,6 +663,15 @@
     </ClInclude>
     <ClInclude Include="LevelUpStatUI.h" />
     <ClInclude Include="LevelUpStatUI_2.h" />
+    <ClInclude Include="Logo_Back1.h" />
+    <ClInclude Include="Logo_Back2.h" />
+    <ClInclude Include="Logo_Back3.h" />
+    <ClInclude Include="Logo_Backeffect.h" />
+    <ClInclude Include="Logo_Charizard.h" />
+    <ClInclude Include="Logo_Fireredversion.h" />
+    <ClInclude Include="Logo_Gamefreakinc.h" />
+    <ClInclude Include="Logo_Pokemon.h" />
+    <ClInclude Include="Logo_PressStart.h" />
     <ClInclude Include="MoveMapFadeEffect.h">
       <SubType>
       </SubType>
@@ -655,6 +680,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Opening_Freaklogo.h" />
+    <ClInclude Include="Opening_largeST.h" />
+    <ClInclude Include="Opening_smallST.h" />
+    <ClInclude Include="Opening_Star.h" />
+    <ClInclude Include="Opening_Text.h" />
     <ClInclude Include="PlayerBag.h">
       <SubType>
       </SubType>
