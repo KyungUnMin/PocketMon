@@ -179,8 +179,8 @@ void BattleCommendActor::B_ArrowNumberCheck()
 
 void BattleCommendActor::B_ArrowInput(/*int _Number*/)
 {
-	/*if (false == GameEngineInput::IsDown("InsertMove1"))
-		return;*/
+	if (false == GameEngineInput::IsDown("BattleSelect1111"))
+		return;
 
 	if (nullptr == CallBacks[B_ArrowCheckNum])
 		return;
