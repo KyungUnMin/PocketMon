@@ -22,3 +22,8 @@ void Opening_Text::Update(float _Deltatime)
 {
 
 }
+
+void Opening_Text::AlphaControl()
+{
+
+}

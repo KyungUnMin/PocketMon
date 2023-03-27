@@ -3,9 +3,12 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 // Ό³Έν :
+class Opening_Text;
 class OpeningLevel : public GameEngineLevel
 {
 public:
+	GameEngineTimeEvent LevelEvent;
+
 	// constrcuter destructer
 	OpeningLevel();
 	~OpeningLevel();
@@ -24,6 +27,7 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
 private:
+	Opening_Text* OpeningText = nullptr;
 
 };
 
