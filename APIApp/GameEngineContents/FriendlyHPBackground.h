@@ -62,6 +62,10 @@ private:
 	std::vector<float> EXPTick;
 
 	float NextTickTime = 0.0f;
+	float NextTickTime_1 = 0.0f;
+
 	int TickNumber = 0;
+	int TickNumber_1 = 0;
+
 };
 

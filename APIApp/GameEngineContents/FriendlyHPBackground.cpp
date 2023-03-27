@@ -46,7 +46,7 @@ void FriendlyHPBackground::Start()
 	}
 	//예시코드
 
-	float hpcur = 20.0f / 100.0f;
+	float hpcur = 100.0f / 100.0f;
 
 
 	//데미지
@@ -127,10 +127,29 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
-	
-	
-		RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9 , float4{ 560,360 });
-		RenderTick(EXPRenderPtr, EXPTick, _DeltaTime,256.0f, 9, float4{ 528,360 });
+//	RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
+//	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
+
+	NextTickTime += _DeltaTime;
+	if (NextTickTime > 0.1f) {
+		NextTickTime = 0;
+		if(TickNumber!=10){
+		HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
+		HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber] )/ 2 , 360.0f });
+		TickNumber++;
+		}
+	}
+
+	NextTickTime_1 += _DeltaTime;
+	if (NextTickTime_1 > 0.1f) {
+		NextTickTime_1 = 0;
+		if (TickNumber_1 != 10) {
+			EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
+			EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
+			TickNumber_1++;
+		}
+	}
+
 }
 
 
@@ -140,21 +159,15 @@ void FriendlyHPBackground::Render(float _DeltaTime)
 }
 void FriendlyHPBackground::RenderTick(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime,float _RenderPos ,int _tickNum, float4 _pos)
 {
+	//1초가 지나면 들어와
+
+	
 	for (size_t x = 0; x < _Tick.size(); x++)
 		{
-	//	if (TickNumber <= _tickNum) {
 
-			//NextTickTime += _DeltaTime;
-			//if(NextTickTime >2.0f)
-			{
 				_Render->SetScale(float4{ _Tick[x], 172 });
 				_Render->SetPosition({ _pos.x - (_RenderPos - _Tick[x]) / 2 , _pos.y});
-			//	NextTickTime = 0.0f;	
-			//	TickNumber++;
-
-			//}
 		}
-	}
 }
 
 

@@ -38,8 +38,8 @@ private:
 	int SpaceFrameNum = 26;
 	int PoketMonNameMax = 12;
 	int PoketMonLevelMax = 2;
-
-
+	float NextTickTime_2 = 0.0f;
+	int TickNumber_2 = 0;
 	GameEngineRender* EnemyHPRenderPtr = nullptr;
 	std::vector<float> EnemyDamegeTick;
 

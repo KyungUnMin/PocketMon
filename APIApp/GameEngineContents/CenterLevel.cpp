@@ -143,6 +143,8 @@ void CenterLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\TextFrame1.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\Battle_Arrow.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\BattleStatus.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\BattleStatusTwo.bmp"));
+
 
 
 	{

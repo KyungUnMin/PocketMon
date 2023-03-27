@@ -5,7 +5,8 @@
 #include "EnemyHPBackground.h"
 #include "Battle_Select.h"
 #include "BattleCommendActor.h"
-
+#include "LevelUpStatUI.h"
+#include "LevelUpStatUI_2.h"
 
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
@@ -32,10 +33,11 @@ void TextTestLevel::Loading()
 
 
 	//띄우기 위해 조건이 필요할 때
-	CreateActor<EnemyHPBackground>();
-	CreateActor<FriendlyHPBackground>();
 
-	
+
+	CreateActor<LevelUpStatUI>();
+	CreateActor<LevelUpStatUI_2>();
+
 }
 
 void TextTestLevel::Update(float _DeltaTime)
@@ -44,6 +46,11 @@ void TextTestLevel::Update(float _DeltaTime)
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
 		return;
+	}
+	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
+	{
+		CreateActor<EnemyHPBackground>();
+		CreateActor<FriendlyHPBackground>();
 	}
 }
 
