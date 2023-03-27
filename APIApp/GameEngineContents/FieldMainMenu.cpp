@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "InputControll.h"
 #include "Player.h"
 
 FieldMainMenu* FieldMainMenu::MainFieldMainMenu = nullptr;
@@ -98,7 +99,13 @@ void FieldMainMenu::ChangeStateNext()
 
 void FieldMainMenu::UpdateStart()
 {
-	Player::MainPlayer->SetPlayerMoveBool(false);
+	if (!InputControll::CanControll())
+	{
+		return;
+	}
+
+	InputControlHandle = InputControll::UseControll();
+	//Player::MainPlayer->SetPlayerMoveBool(false);
 	State = MainMenuState::Pokemon;
 	MenuStateToRender();
 }
@@ -147,6 +154,7 @@ void FieldMainMenu::Update(float _DeltaTime)
 
 void FieldMainMenu::UpdateEnd()
 {
-	Player::MainPlayer->SetPlayerMoveBool(true);
+	InputControlHandle = InputControll::ResetControll(InputControlHandle);
+	//Player::MainPlayer->SetPlayerMoveBool(true);
 }
 

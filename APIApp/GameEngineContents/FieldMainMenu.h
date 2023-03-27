@@ -46,6 +46,8 @@ private:
 	MainMenuState State = MainMenuState::Pokemon;
 	float4 ActorPos = {480, 320};
 
+	int InputControlHandle = -1;
+
 	void UpdateStart();
 	void UpdateEnd();
 	void MenuStateToRender();
