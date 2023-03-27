@@ -58,9 +58,7 @@ void BattlePlayer::CreateGround(BattleFieldType _FieldType)
 	case BattleFieldType::Indoor:
 		GroundPath = "BattleIndoorPlayerGround.bmp";
 		break;
-	case BattleFieldType::Forest0:
-	case BattleFieldType::Forest1:
-	case BattleFieldType::Forest2:
+	case BattleFieldType::Forest:
 		GroundPath = "BattleForestPlayerGround.bmp";
 		break;
 	case BattleFieldType::Gym:

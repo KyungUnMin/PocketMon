@@ -6,6 +6,7 @@ class BattleCommendActor;
 class BackTextActor;
 class BattleSkillBase;
 enum class PokeSkill;
+enum class BattlePlayerMonster_StateType;
 
 class BattleState_PlayerTurn : public BattleStateBase
 {
@@ -28,8 +29,10 @@ private:
 	BackTextActor* TextInfo = nullptr;
 
 	void BindSelectBoard();
-	void BindBattleCommand(size_t _SlotIndex);
+	void BindBattleCommand(int _SlotIndex);
 
 	void BattleCmdOpen();
+
+	BattlePlayerMonster_StateType ConvertSkill(PokeSkill _SkillType);
 };
 

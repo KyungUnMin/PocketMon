@@ -4,6 +4,7 @@
 #include "BattleMonsterEnemy.h"
 #include "ContentsEnum.h"
 
+
 BattleSkill_PlayerTackle::BattleSkill_PlayerTackle()
 {
 
@@ -13,6 +14,20 @@ BattleSkill_PlayerTackle::~BattleSkill_PlayerTackle()
 {
 
 }
+
+//#include "PokeDataBase.h"
+//#include "PokeBattleSystem.h"
+
+/*int HP = GetEnemyMonster()->GetDB()->GetMonsterMaxHP_int();
+int CurHP = GetEnemyMonster()->GetDB()->GetMonsterCurrentHP();
+
+PokeDataBase* DB = GetPlayerMonster()->GetDB();
+PokeBattleSystem::Battle(DB, 1, GetEnemyMonster()->GetDB());
+
+HP = GetEnemyMonster()->GetDB()->GetMonsterMaxHP_int();
+CurHP = GetEnemyMonster()->GetDB()->GetMonsterCurrentHP();*/
+
+
 
 void BattleSkill_PlayerTackle::EnterState()
 {

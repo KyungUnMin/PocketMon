@@ -35,8 +35,7 @@ void BattleBackGround::CreateField(BattleFieldType _BattleType)
 	case BattleFieldType::Indoor:
 		BackRenderPath = "BattleIndoorField.bmp";
 		break;
-	case BattleFieldType::Forest0:
-	case BattleFieldType::Forest1:
+	case BattleFieldType::Forest:
 		BackRenderPath = "BattleForestField.bmp";
 		break;
 	case BattleFieldType::Gym:
@@ -70,7 +69,7 @@ void BattleBackGround::CreateEnterEffect(BattleFieldType _BattleType)
 	case BattleFieldType::Indoor:
 		EffectPath = "BattleIndoorIntro.bmp";
 		break;
-	case BattleFieldType::Forest0:
+	case BattleFieldType::Forest:
 		EffectPath = "BattleForestIntro.bmp";
 		break;
 	case BattleFieldType::Gym:

@@ -228,12 +228,23 @@
     <ClCompile Include="CountItemMenu.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
+    <ClCompile Include="BattleZoneBushParticle.cpp" />
+    <ClCompile Include="EndingEndLogo.cpp" />
+    <ClCompile Include="EndingFade.cpp" />
+    <ClCompile Include="EndingLevel.cpp" />
+    <ClCompile Include="EndingPokeballBackground.cpp" />
+    <ClCompile Include="EndingPokemonRender.cpp" />
+    <ClCompile Include="EndingTextActor.cpp" />
+    <ClCompile Include="FieldmapCutableTree.cpp" />
+    <ClCompile Include="OpeningLevel.cpp" />
+    <ClCompile Include="WhiteBox.cpp" />
     <ClCompile Include="LevelUpStatUI.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Battle_CatchMonsterParticle.cpp">
-      <Filter>Battle</Filter>
-    </ClCompile>
+    <ClCompile Include="BuyLevelDialog.cpp" />
+    <ClCompile Include="BuyUIManager.cpp" />
+    <ClCompile Include="BuyYesNoMenu.cpp" />
+    <ClCompile Include="YesNoMenu.cpp" />
     <ClCompile Include="BattleEnemyFSM.cpp">
       <Filter>Battle\03.FSM\04.Enemy\01.FSM</Filter>
     </ClCompile>
@@ -309,53 +320,11 @@
     <ClCompile Include="BattleSkill_EnemyTackle.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>FieldUI\BagUI</Filter>
+    <ClCompile Include="BattleState_PlayerSkillConvertor.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\02.PlayerTurn</Filter>
     </ClCompile>
-    <ClCompile Include="BuyLevelDialog.cpp">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClCompile>
-    <ClCompile Include="BuyUIManager.cpp">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClCompile>
-    <ClCompile Include="BuyYesNoMenu.cpp">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClCompile>
-    <ClCompile Include="YesNoMenu.cpp">
-      <Filter>FieldUI\HSM</Filter>
-    </ClCompile>
-    <ClCompile Include="BattleZoneBushParticle.cpp">
-      <Filter>Map\Actor\BattleZone</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingEndLogo.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingFade.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingTextActor.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingPokemonRender.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingPokeballBackground.cpp">
-      <Filter>Ending\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="EndingLevel.cpp">
-      <Filter>Ending\Level</Filter>
-    </ClCompile>
-    <ClCompile Include="OpeningLevel.cpp">
-      <Filter>Opening</Filter>
-    </ClCompile>
-    <ClCompile Include="WhiteBox.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapCutableTree.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="InputControll.cpp">
-      <Filter>Base</Filter>
+    <ClCompile Include="BattleLevel_FieldConvertor.cpp">
+      <Filter>Battle\01.Level</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -581,12 +550,23 @@
     <ClInclude Include="CountItemMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleZoneBushParticle.h" />
+    <ClInclude Include="EndingEndLogo.h" />
+    <ClInclude Include="EndingFade.h" />
+    <ClInclude Include="EndingLevel.h" />
+    <ClInclude Include="EndingPokeballBackground.h" />
+    <ClInclude Include="EndingPokemonRender.h" />
+    <ClInclude Include="EndingTextActor.h" />
+    <ClInclude Include="FieldmapCutableTree.h" />
+    <ClInclude Include="OpeningLevel.h" />
+    <ClInclude Include="WhiteBox.h" />
     <ClInclude Include="LevelUpStatUI.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Battle_CatchMonsterParticle.h">
-      <Filter>Battle</Filter>
-    </ClInclude>
+    <ClInclude Include="BuyLevelDialog.h" />
+    <ClInclude Include="BuyUIManager.h" />
+    <ClInclude Include="BuyYesNoMenu.h" />
+    <ClInclude Include="YesNoMenu.h" />
     <ClInclude Include="BattleEnemyFSM.h">
       <Filter>Battle\03.FSM\04.Enemy\01.FSM</Filter>
     </ClInclude>
@@ -661,51 +641,6 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyTackle.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyLevelDialog.h">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyUIManager.h">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClInclude>
-    <ClInclude Include="BuyYesNoMenu.h">
-      <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClInclude>
-    <ClInclude Include="YesNoMenu.h">
-      <Filter>FieldUI\HSM</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleZoneBushParticle.h">
-      <Filter>Map\Actor\BattleZone</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingFade.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingEndLogo.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingTextActor.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingPokemonRender.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingPokeballBackground.h">
-      <Filter>Ending\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="EndingLevel.h">
-      <Filter>Ending\Level</Filter>
-    </ClInclude>
-    <ClInclude Include="OpeningLevel.h">
-      <Filter>Opening</Filter>
-    </ClInclude>
-    <ClInclude Include="WhiteBox.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapCutableTree.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="InputControll.h">
-      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

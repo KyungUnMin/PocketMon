@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "ContentsEnum.h"
 
@@ -9,13 +10,12 @@ class BattleFSM;
 class BackTextActor;
 enum class PokeNumber;
 enum class ItemCode;
+class PokeDataBase;
 
 enum class BattleFieldType
 {
 	Indoor,
-	Forest0,	//일반 숲
-	Forest1,	//상록숲
-	Forest2,	//관장한테 가기 전 까지 숲
+	Forest,	
 	Gym,
 };
 
@@ -44,7 +44,8 @@ public:
 
 	//맵 레벨에서 배틀레벨로 전환될때 호출해주시면 됩니다.
 	void Init(
-		BattleFieldType _FieldType,
+		const std::vector<PokeDataBase*>& _EnemyMonsters,
+		GroundType _FieldType,
 		BattleNpcType _NpcType = BattleNpcType::None);
 
 	inline BattleFSM* GetBattleFSM()
@@ -77,5 +78,11 @@ private:
 	void InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType);
 
 	bool TestKeyUpdate();
+
+	void Init_Level(
+		BattleFieldType _FieldType,
+		BattleNpcType _NpcType = BattleNpcType::None);
+
+	BattleFieldType FieldConvertor(GroundType _FieldType);
 };
 

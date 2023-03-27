@@ -49,8 +49,7 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 	case BattleFieldType::Indoor:
 		GroundPath = "BattleIndoorEnemyGround.bmp";
 		break;
-	case BattleFieldType::Forest0:
-	case BattleFieldType::Forest1:
+	case BattleFieldType::Forest:
 		GroundPath = "BattleForestEnemyGround.bmp";
 		break;
 	case BattleFieldType::Gym:
@@ -96,16 +95,9 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 
 	switch (_FieldType)
 	{
-	case BattleFieldType::Forest0:
+	case BattleFieldType::Forest:
 		//꼬렛, 구구
 		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Rattata, PokeNumber::Pidgey };
-		break;
-	case BattleFieldType::Forest1:
-		//이상해씨, 파이리, 꼬부기
-		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Bulbasaur, PokeNumber::Charmander, PokeNumber::Squirtle };
-		break;
-	case BattleFieldType::Forest2:
-		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Geodude, PokeNumber::Spearow };
 		break;
 	default:
 		MsgAssert("해당 지역에서는 야생포켓몬과 싸울수 없습니다");

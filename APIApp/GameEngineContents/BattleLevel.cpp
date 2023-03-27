@@ -59,14 +59,24 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 	
-	Init(BattleFieldType::Forest0);
+	Init_Level(BattleFieldType::Forest);
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 }
 
+void BattleLevel::Init(
+	const std::vector<PokeDataBase*>& _EnemyMonsters, 
+	GroundType _FieldType, BattleNpcType _NpcType)
+{
+	for (PokeDataBase* EnemyMonster : _EnemyMonsters)
+	{
+		//TODO
+	}
 
+	Init_Level(FieldConvertor(_FieldType), _NpcType);
+}
 
-void BattleLevel::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleLevel::Init_Level(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitGroundRenders(_FieldType, _NpcType);
@@ -142,6 +152,8 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 	Actors.clear();
 }
+
+
 
 
 
