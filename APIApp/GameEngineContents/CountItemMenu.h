@@ -1,11 +1,10 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
-#include "BuyWindow.h"
 #include "ContentsEnum.h"
 
 class GameEngineRender;
-//struct TestItem;
+class Item;
 class BuyLevelDialog;
 class BuyUIManager;
 class CountItemMenu : public GameEngineActor
@@ -23,7 +22,7 @@ public:
 
 	void Off() override;
 
-	void CountStart(TestItem& _Item);
+	void CountStart(Item& _Item);
 
 	//static CountItemMenu* GetCountItemMenu()
 	//{
@@ -57,12 +56,12 @@ private:
 	float4 Down_Pos = { -130, 70 };
 	float4 ArrowRenderScale = {56,44};
 
-	TestItem Item = TestItem();
+	Item* SelectItem = nullptr;
 
 	std::string Script = std::string();
 	std::list<std::string> Scripts = std::list<std::string>();
 
-	void UpdateStart(TestItem& _Item);
+	void UpdateStart(Item& _Item);
 	void UpdateEnd();
 
 	void AddCount();

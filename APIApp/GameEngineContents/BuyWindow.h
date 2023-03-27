@@ -3,13 +3,7 @@
 #include <GameEngineCore/NumberRenderObject.h>
 #include "TextActor.h"
 #include "ContentsEnum.h"
-
-struct TestItem
-{
-	std::string Name = "abcd";
-	int Price = 100;
-	std::string Explain = "ASDLASJDLdsadasdasda";
-};
+#include "Item.h"
 
 class BuyLevel;
 class GameEngineRender;
@@ -67,7 +61,7 @@ private:
 
 	void Cancle();
 
-	std::vector<TestItem> ItemList = std::vector<TestItem>();
+	std::vector<Item> ItemList = std::vector<Item>();
 
 	void ItemPushBack();
 };

@@ -1,10 +1,11 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "ContentsEnum.h"
 
 class BuyLevel;
 class BuyLevelDialog;
 class CountItemMenu;
-struct TestItem;
+class Item;
 class BuyUIManager : public GameEngineActor
 {
 public:
@@ -18,7 +19,7 @@ public:
 	BuyUIManager& operator=(const BuyUIManager& _Other) = delete;
 	BuyUIManager& operator=(BuyUIManager&& _Other) noexcept = delete;
 
-	void On(TestItem& _Item);
+	void On(Item& _Item);
 	void Off() override;
 
 	static BuyUIManager* GetBuyUIManager()
@@ -37,11 +38,12 @@ private:
 	BuyLevelDialog* AcBuyLevelDialog = nullptr;
 	CountItemMenu* AcCountItemMenu = nullptr;
 
-	std::list<std::string> CountMenuScript = std::list<std::string>();
+	std::string Script = std::string();
+	std::list<std::string> Scripts = std::list<std::string>();
 
-	TestItem* Item = nullptr;
+	Item* SelectItem = nullptr;
 
-	void UpdateStart(TestItem& _Item);
+	void UpdateStart(Item& _Item);
 	void UpdateEnd();
 
 };
