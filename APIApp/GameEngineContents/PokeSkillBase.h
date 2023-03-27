@@ -88,10 +88,10 @@ public:
 	~PokeSkillBase();
 
 	// delete Function
-	PokeSkillBase(const PokeSkillBase& _Other) = delete;
-	PokeSkillBase(PokeSkillBase&& _Other) noexcept = delete;
-	PokeSkillBase& operator=(const PokeSkillBase& _Other) = delete;
-	PokeSkillBase& operator=(PokeSkillBase&& _Other) noexcept = delete;
+	// PokeSkillBase(const PokeSkillBase& _Other) = delete;
+	// PokeSkillBase(PokeSkillBase&& _Other) noexcept = delete;
+	// PokeSkillBase& operator=(const PokeSkillBase& _Other) = delete;
+	// PokeSkillBase& operator=(PokeSkillBase&& _Other) noexcept = delete;
 
 	// 스킬이름 가져오기
 	std::string ForUI_GetSkillName()

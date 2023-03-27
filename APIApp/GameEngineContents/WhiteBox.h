@@ -1,7 +1,9 @@
 #pragma once
 
+#include <GameEngineCore/GameEngineActor.h>
+
 // Ό³Έν :
-class WhiteBox
+class WhiteBox : public GameEngineActor
 {
 public:
 	// constrcuter destructer
@@ -15,6 +17,8 @@ public:
 	WhiteBox& operator=(WhiteBox&& _Other) noexcept = delete;
 
 protected:
+	void Start() override;
+	void Update(float _Deltatime) override;
 
 private:
 

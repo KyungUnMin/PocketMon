@@ -26,7 +26,7 @@ public:
 	PokeBattleSystem& operator=(const PokeBattleSystem& _Other) = delete;
 	PokeBattleSystem& operator=(PokeBattleSystem&& _Other) noexcept = delete;
 
-	static BattleScript Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static BattleScript Battle(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
 
 protected:
 
@@ -36,15 +36,15 @@ private:
 	static bool IsAttack;
 	static BattleScript ScriptValue;
 
-	static float Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static float Damagecalculator(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
 
-	static float OwnCharacteristiccalculation(PokeDataBase* _Attacker, PokeCharacteristic _characteristic);
-	static float OtherCharacteristiccalculation(PokeDataBase* _Defender, PokeCharacteristic _characteristic);
+	static float OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic);
+	static float OtherCharacteristiccalculation(PokeDataBase& _Defender, PokeCharacteristic _characteristic);
 
-	static float NormalAttackstatuscalculator(PokeDataBase* _Attacker);
-	static float SpecialAttackstatuscalculator(PokeDataBase* _Attacker);
-	static float NormalDeffencestatuscalculator(PokeDataBase* _Defender);
-	static float SpecialDeffencestatuscalculator(PokeDataBase* _Defender);
+	static float NormalAttackstatuscalculator(PokeDataBase& _Attacker);
+	static float SpecialAttackstatuscalculator(PokeDataBase& _Attacker);
+	static float NormalDeffencestatuscalculator(PokeDataBase& _Defender);
+	static float SpecialDeffencestatuscalculator(PokeDataBase& _Defender);
 
 	static float OwnPersonalitycalculation_NA(PokePersonality _personality);
 	static float OwnPersonalitycalculation_SA(PokePersonality _personality);
@@ -54,15 +54,15 @@ private:
 	static float CriticalRand();
 	static float Randomvalue();
 
-	static float Ownpropertiescorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber);
-	static float Compatibilitycorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static float Ownpropertiescorrection(PokeDataBase& _Attacker, int _AttackerSkillNumber);
+	static float Compatibilitycorrection(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
 
-	static void Bufflogic(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender);
+	static void Bufflogic(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
 
-	static float Attackbuff(PokeDataBase* _Attacker);
-	static float Specialattackbuff(PokeDataBase* _Attacker);
-	static float Defensekbuff(PokeDataBase* _Defender);
-	static float Specialdefensekbuff(PokeDataBase* _Defender);
+	static float Attackbuff(PokeDataBase& _Attacker);
+	static float Specialattackbuff(PokeDataBase& _Attacker);
+	static float Defensekbuff(PokeDataBase& _Defender);
+	static float Specialdefensekbuff(PokeDataBase& _Defender);
 
 };
 

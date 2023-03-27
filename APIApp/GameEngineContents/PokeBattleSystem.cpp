@@ -20,7 +20,7 @@ PokeBattleSystem::~PokeBattleSystem()
 {
 }
 
-BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender)
 {
 	Damage = 0;
 	IsSpecial = false;
@@ -33,9 +33,9 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 		return ScriptValue;
 	}
 
-	IsAttack = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisAttackSkill();
+	IsAttack = _Attacker.GetMonsterSkillList(_AttackerSkillNumber).ItisAttackSkill();
 
-	bool Start = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->IsPowerPointZero();
+	bool Start = _Attacker.GetMonsterSkillList(_AttackerSkillNumber).IsPowerPointZero();
 
 	if (true == Start)
 	{
@@ -43,16 +43,16 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 	}
 	else
 	{
-		_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->MinusPowerPoint();
+		_Attacker.GetMonsterSkillList(_AttackerSkillNumber).MinusPowerPoint();
 
 		if (true == IsAttack)
 		{
-			float Cal1 = (_Attacker->GetMonsterLevel_float() * 2 / 5) + 2;
+			float Cal1 = (_Attacker.GetMonsterLevel_float() * 2 / 5) + 2;
 			float Cal2 = Damagecalculator(_Attacker, _AttackerSkillNumber, _Defender);
 			float Cal3 = 0;
 			float Cal4 = 0;
 
-			IsSpecial = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->ItisSpecialSkill();
+			IsSpecial = _Attacker.GetMonsterSkillList(_AttackerSkillNumber).ItisSpecialSkill();
 
 			if (false == IsSpecial)
 			{
@@ -84,7 +84,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 
 			Damage = static_cast<int>(round(step7 / 50));
 
-			_Defender->MinusMonsterCurrentHP(Damage);
+			_Defender.MinusMonsterCurrentHP(Damage);
 		}
 		else
 		{
@@ -98,17 +98,17 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase* _Attacker, int _AttackerSkil
 	return ScriptValue;
 }
 
-float PokeBattleSystem::Damagecalculator(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+float PokeBattleSystem::Damagecalculator(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender)
 {
-	if (PokeSkill::Unknown == _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkill())
+	if (PokeSkill::Unknown == _Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkill())
 	{
 		MsgAssert("1, 2, 3, 4번 중 Unknown이 아닌 스킬만 사용할 수 있습니다.");
 		return -1;
 	}
 
-	float step1 = static_cast<float>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillDamage());
-	float step3 = OwnCharacteristiccalculation(_Attacker, _Attacker->GetMonsterCharacteristic());
-	float step4 = OtherCharacteristiccalculation(_Defender, _Defender->GetMonsterCharacteristic());
+	float step1 = static_cast<float>(_Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkillDamage());
+	float step3 = OwnCharacteristiccalculation(_Attacker, _Attacker.GetMonsterCharacteristic());
+	float step4 = OtherCharacteristiccalculation(_Defender, _Defender.GetMonsterCharacteristic());
 
 	// 기술위력 × 도구보정 × 특성보정 × 상대특성보정
 	float DamageCal = step1 * step3 * step4;
@@ -116,7 +116,7 @@ float PokeBattleSystem::Damagecalculator(PokeDataBase* _Attacker, int _AttackerS
 	return DamageCal;
 }
 
-float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, PokeCharacteristic _characteristic)
+float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic)
 {
 	float CharDamage = 0.0f;
 
@@ -124,9 +124,9 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, Po
 	{
 	case PokeCharacteristic::심록:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		float third = static_cast<float>(_Attacker.GetMonsterMaxHP_float() / 3);
 		int Roundthird = static_cast<int>(round(third));
-		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
+		if (Roundthird >= _Attacker.GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
 		}
@@ -138,9 +138,9 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, Po
 	break;
 	case PokeCharacteristic::맹화:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		float third = static_cast<float>(_Attacker.GetMonsterMaxHP_float() / 3);
 		int Roundthird = static_cast<int>(round(third));
-		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
+		if (Roundthird >= _Attacker.GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
 		}
@@ -152,9 +152,9 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, Po
 	break;
 	case PokeCharacteristic::급류:
 	{
-		float third = static_cast<float>(_Attacker->GetMonsterMaxHP_float() / 3);
+		float third = static_cast<float>(_Attacker.GetMonsterMaxHP_float() / 3);
 		int Roundthird = static_cast<int>(round(third));
-		if (Roundthird >= _Attacker->GetMonsterCurrentHP())
+		if (Roundthird >= _Attacker.GetMonsterCurrentHP())
 		{
 			CharDamage = 1.5f;
 		}
@@ -187,7 +187,7 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase* _Attacker, Po
 	return CharDamage;
 }
 
-float PokeBattleSystem::OtherCharacteristiccalculation(PokeDataBase* _Defender, PokeCharacteristic _characteristic)
+float PokeBattleSystem::OtherCharacteristiccalculation(PokeDataBase& _Defender, PokeCharacteristic _characteristic)
 {
 	float CharDamage = 0.0f;
 
@@ -209,11 +209,11 @@ float PokeBattleSystem::OtherCharacteristiccalculation(PokeDataBase* _Defender, 
 }
 
 // 노말 공격 데미지 계산
-float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
+float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase& _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = Attackbuff(_Attacker);
-	float step2 = OwnPersonalitycalculation_NA(_Attacker->GetMonsterPersonality()); // 성격에 따른 값 변화
+	float step2 = OwnPersonalitycalculation_NA(_Attacker.GetMonsterPersonality()); // 성격에 따른 값 변화
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
 	//if (true == _Attacker->GetPossessionItem())
@@ -231,11 +231,11 @@ float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase* _Attacker)
 }
 
 // 특수 공격 데미지 계산
-float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase* _Attacker)
+float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase& _Attacker)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = Specialattackbuff(_Attacker);
-	float step2 = OwnPersonalitycalculation_SA(_Attacker->GetMonsterPersonality());
+	float step2 = OwnPersonalitycalculation_SA(_Attacker.GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
 	//if (true == _Attacker->GetPossessionItem())
@@ -253,11 +253,11 @@ float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase* _Attacker)
 }
 
 // 노말 방어 데미지 게산(상대)
-float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase* _Defender)
+float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase& _Defender)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
-	float step2 = OtherPersonalitycalculation_ND(_Defender->GetMonsterPersonality());
+	float step1 = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
+	float step2 = OtherPersonalitycalculation_ND(_Defender.GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
 	//if (true == _Attacker->GetPossessionItem())
@@ -275,11 +275,11 @@ float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase* _Defender)
 }
 
 // 특수 방어 데미지 게산(상대)
-float PokeBattleSystem::SpecialDeffencestatuscalculator(PokeDataBase* _Defender)
+float PokeBattleSystem::SpecialDeffencestatuscalculator(PokeDataBase& _Defender)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
-	float step2 = OtherPersonalitycalculation_SD(_Defender->GetMonsterPersonality());
+	float step1 = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
+	float step2 = OtherPersonalitycalculation_SD(_Defender.GetMonsterPersonality());
 	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
 
 	//if (true == _Attacker->GetPossessionItem())
@@ -481,10 +481,10 @@ float PokeBattleSystem::Randomvalue()
 }
 
 // 자속 보정
-float PokeBattleSystem::Ownpropertiescorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber)
+float PokeBattleSystem::Ownpropertiescorrection(PokeDataBase& _Attacker, int _AttackerSkillNumber)
 {
-	int Monstervalue = static_cast<int>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillType());
-	int Monsterskillvalue = static_cast<int>(_Attacker->GetMonsterType());
+	int Monstervalue = static_cast<int>(_Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkillType());
+	int Monsterskillvalue = static_cast<int>(_Attacker.GetMonsterType());
 
 	float correctionvalue = 0.0f;
 
@@ -501,10 +501,10 @@ float PokeBattleSystem::Ownpropertiescorrection(PokeDataBase* _Attacker, int _At
 }
 
 // 타입 상성
-float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+float PokeBattleSystem::Compatibilitycorrection(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender)
 {
-	int skillvalue = static_cast<int>(_Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkillType());
-	int othervalue = static_cast<int>(_Defender->GetMonsterType());
+	int skillvalue = static_cast<int>(_Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkillType());
+	int othervalue = static_cast<int>(_Defender.GetMonsterType());
 	float correctionvalue = 0.0f;
 
 	switch (skillvalue)
@@ -702,51 +702,51 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase* _Attacker, int _At
 }
 
 
-void PokeBattleSystem::Bufflogic(PokeDataBase* _Attacker, int _AttackerSkillNumber, PokeDataBase* _Defender)
+void PokeBattleSystem::Bufflogic(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender)
 {
-	PokeSkill buffskill = _Attacker->GetMonsterSkillList(_AttackerSkillNumber)->GetSkill();
+	PokeSkill buffskill = _Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkill();
 
 	switch (buffskill)
 	{
 	case PokeSkill::Growl:      // 울음소리 : 방깎
-		_Defender->MinusDefensebuffstack();
-		_Defender->MinusSpcialDefensebuffstack();
+		_Defender.MinusDefensebuffstack();
+		_Defender.MinusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::Leer:       // 째려보기 : 공깎
-		_Defender->MinusAttackbuffstack();
-		_Defender->MinusSpcialAttackbuffstack();
+		_Defender.MinusAttackbuffstack();
+		_Defender.MinusSpcialAttackbuffstack();
 		break;
 	case PokeSkill::TailWhip:   // 꼬리흔들기 : 방깎
-		_Defender->MinusDefensebuffstack();
-		_Defender->MinusSpcialDefensebuffstack();
+		_Defender.MinusDefensebuffstack();
+		_Defender.MinusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::Withdraw:   // 껍질에 숨기 : 방증
-		_Attacker->PlusDefensebuffstack();
-		_Attacker->PlusSpcialDefensebuffstack();
+		_Attacker.PlusDefensebuffstack();
+		_Attacker.PlusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::FastMove:   // 고속이동 : 방증, 공증
-		_Attacker->PlusAttackbuffstack();
-		_Attacker->PlusSpcialAttackbuffstack();
-		_Attacker->PlusDefensebuffstack();
-		_Attacker->PlusSpcialDefensebuffstack();
+		_Attacker.PlusAttackbuffstack();
+		_Attacker.PlusSpcialAttackbuffstack();
+		_Attacker.PlusDefensebuffstack();
+		_Attacker.PlusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::DefenseCurl:// 웅크리기 : 방증
-		_Attacker->PlusDefensebuffstack();
-		_Attacker->PlusSpcialDefensebuffstack();
+		_Attacker.PlusDefensebuffstack();
+		_Attacker.PlusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::RockPolish: // 록커트 : 방깎
-		_Defender->MinusDefensebuffstack();
-		_Defender->MinusSpcialDefensebuffstack();
+		_Defender.MinusDefensebuffstack();
+		_Defender.MinusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::Magnitude:  // 매그니튜드 : 방증, 공증
-		_Attacker->PlusAttackbuffstack();
-		_Attacker->PlusSpcialAttackbuffstack();
-		_Attacker->PlusDefensebuffstack();
-		_Attacker->PlusSpcialDefensebuffstack();
+		_Attacker.PlusAttackbuffstack();
+		_Attacker.PlusSpcialAttackbuffstack();
+		_Attacker.PlusDefensebuffstack();
+		_Attacker.PlusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::SuperFang:  // 분노의앞니 : 공증
-		_Attacker->PlusAttackbuffstack();
-		_Attacker->PlusSpcialAttackbuffstack();
+		_Attacker.PlusAttackbuffstack();
+		_Attacker.PlusSpcialAttackbuffstack();
 		break;
 	default:
 		MsgAssert("제대로된 값(버프)이 아닙니다. PokeDatabase.cpp를 살펴보세요");
@@ -755,10 +755,10 @@ void PokeBattleSystem::Bufflogic(PokeDataBase* _Attacker, int _AttackerSkillNumb
 }
 
 // 공증 결과
-float PokeBattleSystem::Attackbuff(PokeDataBase* _Attacker)
+float PokeBattleSystem::Attackbuff(PokeDataBase& _Attacker)
 {
-	int stack = _Attacker->GetAttackbuffstack();
-	float focusvalue = static_cast<float>(_Attacker->GetMonsterAttackPower_float());
+	int stack = _Attacker.GetAttackbuffstack();
+	float focusvalue = static_cast<float>(_Attacker.GetMonsterAttackPower_float());
 	float stackvalue = 1.f;
 
 	if (stack < 0)
@@ -782,10 +782,10 @@ float PokeBattleSystem::Attackbuff(PokeDataBase* _Attacker)
 }
 
 // 스공증 결과
-float PokeBattleSystem::Specialattackbuff(PokeDataBase* _Attacker)
+float PokeBattleSystem::Specialattackbuff(PokeDataBase& _Attacker)
 {
-	int stack = _Attacker->GetSpcialAttackbuffstack();
-	float focusvalue = static_cast<float>(_Attacker->GetMonsterSpecialAttackPower_float());
+	int stack = _Attacker.GetSpcialAttackbuffstack();
+	float focusvalue = static_cast<float>(_Attacker.GetMonsterSpecialAttackPower_float());
 	float stackvalue = 1.f;
 
 	if (stack < 0)
@@ -809,10 +809,10 @@ float PokeBattleSystem::Specialattackbuff(PokeDataBase* _Attacker)
 }
 
 // 방증 결과
-float PokeBattleSystem::Defensekbuff(PokeDataBase* _Defender)
+float PokeBattleSystem::Defensekbuff(PokeDataBase& _Defender)
 {
-	int stack = _Defender->GetDefensebuffstack();
-	float focusvalue = static_cast<float>(_Defender->GetMonsterDefense_float());
+	int stack = _Defender.GetDefensebuffstack();
+	float focusvalue = static_cast<float>(_Defender.GetMonsterDefense_float());
 	float stackvalue = 1.f;
 
 	if (stack < 0)
@@ -836,10 +836,10 @@ float PokeBattleSystem::Defensekbuff(PokeDataBase* _Defender)
 }
 
 // 스방증 결과
-float PokeBattleSystem::Specialdefensekbuff(PokeDataBase* _Defender)
+float PokeBattleSystem::Specialdefensekbuff(PokeDataBase& _Defender)
 {
-	int stack = _Defender->GetSpcialDefensekbuffstack();
-	float focusvalue = static_cast<float>(_Defender->GetMonsterSpecialDefense_float());
+	int stack = _Defender.GetSpcialDefensekbuffstack();
+	float focusvalue = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
 	float stackvalue = 1.f;
 
 	if (stack < 0)
