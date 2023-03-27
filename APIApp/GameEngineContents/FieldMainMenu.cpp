@@ -105,7 +105,7 @@ void FieldMainMenu::UpdateStart()
 	//}
 
 	InputControlHandle = InputControll::UseControll();
-	//Player::MainPlayer->SetPlayerMoveBool(false);
+	Player::MainPlayer->SetPlayerMoveBool(false);
 	State = MainMenuState::Pokemon;
 	MenuStateToRender();
 }
@@ -162,6 +162,6 @@ void FieldMainMenu::Update(float _DeltaTime)
 void FieldMainMenu::UpdateEnd()
 {
 	InputControlHandle = InputControll::ResetControll(InputControlHandle);
-	//Player::MainPlayer->SetPlayerMoveBool(true);
+	Player::MainPlayer->SetPlayerMoveBool(true);
 }
 
