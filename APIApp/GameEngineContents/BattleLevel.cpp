@@ -58,9 +58,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	PokemonLevel* MonsterChangeLevel = dynamic_cast<PokemonLevel*>(_PrevLevel);
 	if (nullptr != MonsterChangeLevel)
 		return;
-
-	//Init(BattleFieldType::Forest0);
-	Init(BattleFieldType::Indoor, BattleNpcType::Rival);
+	
+	Init(BattleFieldType::Forest0);
+	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 }
 
