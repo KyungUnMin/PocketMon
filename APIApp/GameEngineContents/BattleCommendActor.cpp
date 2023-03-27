@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "ContentsEnum.h"
+
 BattleCommendActor* BattleCommendActor::BattleCommendActorPtr = nullptr;
 
 BattleCommendActor::BattleCommendActor()
@@ -121,33 +122,33 @@ void BattleCommendActor::Update(float _DeltaTime)
 
 	if (B_ArrowCheckNum == 0) {
 		BattleArrowRender->SetPosition({ -430,-25 });
-		StringToRender(PPCUR_R, NewTestMon2.GetMonsterSkillList(1).ForUI_GetCurrentSkillPowerPoint());
-		StringToRender(PPMAX_R, NewTestMon2.GetMonsterSkillList(1).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetCurrentSkillPowerPoint());
+		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetMaxSkillPowerPoint());
 	}
 	if (B_ArrowCheckNum == 1) {
 		BattleArrowRender->SetPosition({ -170,-25 });
-		StringToRender(PPCUR_R, NewTestMon2.GetMonsterSkillList(2).ForUI_GetCurrentSkillPowerPoint());
-		StringToRender(PPMAX_R, NewTestMon2.GetMonsterSkillList(2).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetCurrentSkillPowerPoint());
+		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetMaxSkillPowerPoint());
 	}																						 
 	if (B_ArrowCheckNum == 2) {
 		BattleArrowRender->SetPosition({ -430,40 });
-		StringToRender(PPCUR_R, NewTestMon2.GetMonsterSkillList(3).ForUI_GetCurrentSkillPowerPoint());
-		StringToRender(PPMAX_R, NewTestMon2.GetMonsterSkillList(3).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetCurrentSkillPowerPoint());
+		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetMaxSkillPowerPoint());
 	}
 	if (B_ArrowCheckNum == 3) {
 		BattleArrowRender->SetPosition({ -170,40 });										 
-		StringToRender(PPCUR_R, NewTestMon2.GetMonsterSkillList(4).ForUI_GetCurrentSkillPowerPoint());
-		StringToRender(PPMAX_R, NewTestMon2.GetMonsterSkillList(4).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetCurrentSkillPowerPoint());
+		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetMaxSkillPowerPoint());
 	}
 	//SKILL
-	StringToRender(PoketMonSkill_R1 , NewTestMon2.GetMonsterSkillList(1).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R2, NewTestMon2.GetMonsterSkillList(2).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R3, NewTestMon2.GetMonsterSkillList(3).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R4, NewTestMon2.GetMonsterSkillList(4).ForUI_GetSkillName());
+	StringToRender(PoketMonSkill_R1 , BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetSkillName());
+	StringToRender(PoketMonSkill_R2, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetSkillName());
+	StringToRender(PoketMonSkill_R3, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetSkillName());
+	StringToRender(PoketMonSkill_R4, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetSkillName());
 	
 	//StringToRender(PPCUR_R, CURPP);
 	//StringToRender(PPMAX_R, MAXPP);
-	StringToRender(TYPE_R, NewTestMon2.ForUI_GetMonsterTypeName());
+	StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterTypeName());
 
 	B_ArrowInput();
 }
