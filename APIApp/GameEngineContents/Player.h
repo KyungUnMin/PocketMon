@@ -93,6 +93,15 @@ public:
 		return IsPlayerDirLEFT;
 	}
 
+	bool GetIsRideValue()
+	{
+		return IsRide;
+	}
+	bool SetRideValue(bool _truefalse)
+	{
+		IsRide = _truefalse;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -149,6 +158,8 @@ private:
 
 	////////////////////////
 	float PlayerTime = 0.0f;
+
+	bool IsRide = false;
 
 };
 

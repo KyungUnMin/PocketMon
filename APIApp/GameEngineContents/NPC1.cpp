@@ -36,6 +36,10 @@ void NPC1::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Right.bmp"))->Cut(1, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Up.bmp"))->Cut(1, 1);
 
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Walk_Left.bmp"))->Cut(3, 1);
+	//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Up.bmp"))->Cut(1, 1);
+	//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Up.bmp"))->Cut(1, 1);
+	//GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green_Idle_Up.bmp"))->Cut(1, 1);
 
 
 }
@@ -56,11 +60,11 @@ void NPC1::Start()
 		R_NPC1->CreateAnimation({ .AnimationName = "rightIdle",  .ImageName = "Green_Idle_Right.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		R_NPC1->CreateAnimation({ .AnimationName = "upIdle",  .ImageName = "Green_Idle_Up.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		
-	/*
-		R_NPC1->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "WalkRight.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
+	
+		R_NPC1->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "Green_Walk_Left.bmp", .Start = 0, .End = 2, .InterTime = 0.1f });
 		R_NPC1->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
 		R_NPC1->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
-		R_NPC1->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });*/
+		R_NPC1->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.1f });
 	}
 	{
 		C_NPC_U = CreateCollision(CollisionOrder::NPC);
@@ -95,35 +99,17 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
-	/*DefaultMoveTime += _DeltaTime;
 
-	float4 MoveRange = Fieldmap::GetPos(NPC1index);
 
-	int2 NextXplusIndex = int2(NPC1index.x + 1, NPC1index.y);
-	int2 NextXminusIndex = int2(NPC1index.x - 1, NPC1index.y);
-	int2 NextYplusIndex = int2(NPC1index.x, NPC1index.y + 1);
-	int2 NextYMinusIndex = int2(NPC1index.x, NPC1index.y - 1);
 
-	float4 NextPos1 = Fieldmap::GetPos(NextXplusIndex);
-	float4 NextPos2 = Fieldmap::GetPos(NextXminusIndex);
-	float4 NextPos3 = Fieldmap::GetPos(NextYplusIndex);
-	float4 NextPos4 = Fieldmap::GetPos(NextYMinusIndex);
-	
-	
-	
-	MoveStartPos = GetPos();
-	MoveEndPos = MoveStartPos + (MoveRange - NextPos1);
-	float4 NextNpcPos = float4::LerpClamp(MoveStartPos, MoveEndPos, DefaultMoveTime*0.001f);
-	SetPos(NextNpcPos);
-	
-		
-	
-	*/
+
+
 
 
 
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
 	Fieldmap::SetWalkable("PalletTown", NPC1index, false);
+	
 
 	std::vector<GameEngineCollision*> CheckCollisions;
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };

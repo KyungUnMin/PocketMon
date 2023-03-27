@@ -108,6 +108,16 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	if (IsRide==true)
+	{
+		Players->Off();
+		BikePlayers->On();
+	}
+	else if(IsRide==false)
+	{
+		Players->On();
+		BikePlayers->Off();
+	}
 	if (true == PlayerMoveBool)
 	{
 		UpdateState(_DeltaTime); //움직임관리
@@ -131,7 +141,7 @@ void Player::Render(float _DeltaTime)
 		PlayerPos.iy() + 5);
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		RedCollision->DebugRender();
+		//RedCollision->DebugRender();
 	}
 }
 
