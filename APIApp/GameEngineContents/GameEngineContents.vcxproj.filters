@@ -357,6 +357,9 @@
     <ClCompile Include="InputControll.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="LevelUpStatUI_2.cpp">
+      <Filter>BattleUI\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -706,6 +709,9 @@
     </ClInclude>
     <ClInclude Include="InputControll.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelUpStatUI_2.h">
+      <Filter>BattleUI\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
