@@ -3,8 +3,8 @@
 #include <GameEngineCore/GameEngineCore.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "BuyLevel.h"
-#include "CountItemMenu.h"
 #include "BuyWindow.h"
+#include "BuyUIManager.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -76,7 +76,12 @@ void BuyWindow::Update(float _DeltaTime)
 {
 	if (!IsValid)
 	{
+		ArrowRender->SetImage("PressMenuArrow.bmp");
 		return;
+	}
+	else
+	{
+		ArrowRender->SetImage("MenuArrow.bmp");
 	}
 
 	if (GameEngineInput::IsDown("Menu_Up"))
@@ -94,20 +99,24 @@ void BuyWindow::Update(float _DeltaTime)
 		switch (State)
 		{
 		case 0:
-			ParentLevel->GetCountItemMenu()->CountStart(ItemList[0]);
-			//CountItemMenu::GetCountItemMenu()->On();
+			BuyUIManager::GetBuyUIManager()->On(ItemList[0]);
+			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 1:
-			ParentLevel->GetCountItemMenu()->CountStart(ItemList[1]);
+			BuyUIManager::GetBuyUIManager()->On(ItemList[1]);
+			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 2:
-			ParentLevel->GetCountItemMenu()->CountStart(ItemList[2]);
+			BuyUIManager::GetBuyUIManager()->On(ItemList[2]);
+			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 3:
-			ParentLevel->GetCountItemMenu()->CountStart(ItemList[3]);
+			BuyUIManager::GetBuyUIManager()->On(ItemList[3]);
+			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 4:
-			ParentLevel->GetCountItemMenu()->CountStart(ItemList[4]);
+			BuyUIManager::GetBuyUIManager()->On(ItemList[4]);
+			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 5:
 			Cancle();

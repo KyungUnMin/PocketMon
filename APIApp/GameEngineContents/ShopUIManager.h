@@ -41,7 +41,7 @@ private:
 	FieldmapLevel* ParentLevel = nullptr;
 	FieldDialog* AcFielDialog = nullptr;
 	ShopMainMenu* AcShopMainMenu = nullptr;
-
+	
 	std::list<std::string> WelcomeScript = std::list<std::string>();
 	std::list<std::string> ReturnMainScript = std::list<std::string>();
 	std::list<std::string> GoodbyeScript = std::list<std::string>();

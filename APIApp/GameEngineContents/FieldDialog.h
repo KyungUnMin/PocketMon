@@ -1,9 +1,11 @@
 #pragma once
+#include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 #include "ContentsEnum.h"
 
 class GameEngineRender;
+struct TestItem;
 class FieldDialog : public GameEngineActor
 {
 public:
@@ -63,7 +65,6 @@ private:
 	float4 ArrowRenderScale = { 40, 48 };
 	float4 ArrowRenderPlusPos = { 36,0 };
 	int2 LastTextRenderIndex = { -1,-1 };
-
 
 	void UpdateStart(std::list<std::string>* _Script);
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);

@@ -43,7 +43,7 @@ void FieldDialog::ConversationStart(std::list<std::string>* _Script)
 
 bool FieldDialog::IsScriptPrintEnd()
 {
-	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate())
+	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && IsLastScript())
 	{
 		return true;
 	}
@@ -101,14 +101,12 @@ void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 	PushScriptEnd(_Script->end());
 	StringToRender();
 	ArrowRender->Off();
+	IsValid = true;
 }
 
 void FieldDialog::Update(float _DeltaTime)
 {
-	if (IsValid == false)
-	{
-		return;
-	}
+	
 
 	for (size_t i = 0; i < FirstLineRenderLen; i++)
 	{
@@ -151,6 +149,11 @@ void FieldDialog::Update(float _DeltaTime)
 		{
 			return;
 		}
+	}
+
+	if (IsValid == false)
+	{
+		return;
 	}
 
 	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게

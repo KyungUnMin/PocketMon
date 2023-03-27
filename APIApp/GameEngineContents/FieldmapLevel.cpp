@@ -23,6 +23,7 @@
 #include "FieldmapFlower.h"
 #include "FieldmapBattleZone.h"
 #include "ShopUIManager.h"
+#include "YesNoMenu.h"
 
 //Game Actor
 #include "Player.h"
@@ -388,7 +389,8 @@ void FieldmapLevel::Loading()
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
 	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
-	MainShopUIManager = CreateActor<ShopUIManager>();
+	MainShopUIManager = CreateActor<ShopUIManager>(); 
+	MainYesNoMenu = CreateActor<YesNoMenu>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -519,6 +521,7 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("MenuArrow.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_CountItem_Up.bmp"))->Cut(4, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_CountItem_Down.bmp"))->Cut(4, 1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("YesNoMenu.bmp"));
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)

@@ -2,7 +2,9 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "BuyWindow.h"
-
+#include "BuyYesNoMenu.h"
+#include "BuyLevelDialog.h"
+#include "BuyUIManager.h"
 //CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
 
 CountItemMenu::CountItemMenu()
@@ -27,20 +29,10 @@ void CountItemMenu::Off()
 	UpdateEnd();
 }
 
-//void CountItemMenu::OnOffSwtich()
-//{
-//	if (IsUpdate())
-//	{
-//		Off();
-//	}
-//	else
-//	{
-//		CountStart();
-//	}
-//}
-
 void CountItemMenu::Start()
 {
+	AcParent = BuyUIManager::GetBuyUIManager();
+
 	SetPos(ActorPos);
 	CountItemMenuRender = CreateRender("CountSelectItem.bmp", RenderOrder::Shop_CountItemMenu);
 	CountItemMenuRender->EffectCameraOff();
@@ -73,6 +65,8 @@ void CountItemMenu::Start()
 	Down_ArrowRender->SetPosition(Down_Pos);
 	Down_ArrowRender->ChangeAnimation("Arrow");
 
+	Script.push_back("Defalt Script");
+	
 	Off();
 }
 
@@ -81,7 +75,7 @@ void CountItemMenu::UpdateStart(TestItem& _Item)
 	SetCount(1);
 	SetPrice(_Item.Price);
 	PriceNum.SetValue(Price * Count);
-	BuyWindow::GetBuyWindow()->IsValid = false;
+	BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
 }
 
 void CountItemMenu::Update(float _DeltaTime)
@@ -108,7 +102,18 @@ void CountItemMenu::Update(float _DeltaTime)
 
 	if (GameEngineInput::IsDown("B"))
 	{
+		AcParent->Off();
 		Off();
+	}
+
+	if (GameEngineInput::IsDown("A"))
+	{
+		AcParent->Off();
+		Off();
+		BuyYesNoMenu::GetBuyYesNoMenu()->On();
+		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Script);
+		BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
+		BuyWindow::GetBuyWindow()->IsValid = false;
 	}
 }
 

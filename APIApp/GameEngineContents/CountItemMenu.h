@@ -5,6 +5,8 @@
 
 class GameEngineRender;
 struct TestItem;
+class BuyLevelDialog;
+class BuyUIManager;
 class CountItemMenu : public GameEngineActor
 {
 public:
@@ -34,6 +36,8 @@ protected:
 private:
 	//static CountItemMenu* AcCountItemMenu;
 
+	BuyUIManager* AcParent = nullptr;
+
 	float4 ActorPos = { 736, 352 }; // 129 65 (516, 260) 220 92
 	GameEngineRender* CountItemMenuRender = nullptr;
 	int Count = 0;
@@ -52,6 +56,7 @@ private:
 	float4 Down_Pos = { -130, 70 };
 	float4 ArrowRenderScale = {56,44};
 
+	std::list<std::string> Script = std::list<std::string>();
 
 	void UpdateStart(TestItem& _Item);
 	void UpdateEnd();

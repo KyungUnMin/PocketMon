@@ -2,7 +2,9 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 class BuyWindow;
-class CountItemMenu;
+class BuyYesNoMenu;
+class BuyLevelDialog;
+class BuyUIManager;
 class BuyLevel : public GameEngineLevel
 {
 public:
@@ -16,10 +18,12 @@ public:
 	BuyLevel& operator=(const BuyLevel& _Other) = delete;
 	BuyLevel& operator=(BuyLevel&& _Other) noexcept = delete;
 
-	CountItemMenu* GetCountItemMenu()
-	{
-		return AcCountItemMenu;
-	}
+
+
+	//CountItemMenu* GetCountItemMenu()
+	//{
+	//	return AcCountItemMenu;
+	//}
 
 protected:
 	void Loading() override;
@@ -29,7 +33,9 @@ protected:
 
 private:
 	BuyWindow* AcBuyWindow = nullptr;
-	CountItemMenu* AcCountItemMenu = nullptr;
+	BuyYesNoMenu* AcBuyYesNoMenu = nullptr;
+	BuyLevelDialog* AcBuyLevelDialog = nullptr;
+	BuyUIManager* AcBuyUIManager = nullptr;
 
 	void ImageLoad();
 

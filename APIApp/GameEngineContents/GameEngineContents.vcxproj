@@ -218,7 +218,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BuyLevelDialog.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BuyUIManager.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BuyWindow.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BuyYesNoMenu.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -363,6 +375,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="YesNoMenu.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -427,7 +443,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BuyLevelDialog.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BuyUIManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BuyWindow.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BuyYesNoMenu.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -572,6 +600,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="WhiteBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="YesNoMenu.h">
       <SubType>
       </SubType>
     </ClInclude>

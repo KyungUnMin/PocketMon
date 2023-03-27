@@ -49,8 +49,6 @@ private:
 	std::vector<TextActor*> ItemNameRenders = std::vector<TextActor*>();
 	float4 NameRenderFirstPos = { 400,72 };
 	
-	//NumberRenderObject ItemPriceRender = NumberRenderObject();
-	//std::vector<NumberRenderObject> ItemPriceRenders = std::vector<NumberRenderObject>();
 	NumberRenderObject ItemPriceRenders[5] = {};
 	float4 ItemPriceRenderScale = { 20,32 };
 	float4 FirstItemPriceRenderPos = { 392,-248 };

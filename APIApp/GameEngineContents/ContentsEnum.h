@@ -26,6 +26,9 @@ enum class RenderOrder
 	Shop_Dialog,
 	Shop_Dialog_Text,
 
+	YesNoMenu,
+	YesNoMenu_Arrow,
+
 	// Battle
 	Battle_UI,
 	Battle_Text,
