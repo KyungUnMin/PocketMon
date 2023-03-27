@@ -1,8 +1,9 @@
 #include "BattleState_EnemyTurn.h"
-#include <GameEngineBase/GameEngineTimeEvent.h>
 #include "BattleLevel.h"
 #include "BackTextActor.h"
-#include "BattleFSM.h"
+#include "BattleEnemy.h"
+#include "BattleMonsterEnemy.h"
+#include "BattleEnemyMonsterFSM.h"
 
 BattleState_EnemyTurn::BattleState_EnemyTurn()
 {
@@ -16,18 +17,12 @@ BattleState_EnemyTurn::~BattleState_EnemyTurn()
 
 void BattleState_EnemyTurn::EnterState()
 {
-	BattleLevel::Debug_LevelChanged = false;
-
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfoUI->BattleSetText("Enemy Attacking...");
 
-	BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(3.f, [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
-	{
-		if (true == BattleLevel::Debug_LevelChanged)
-			return;
-
-		BattleLevel::BattleLevelPtr->GetBattleFSM()->ChangeState(BattleStateType::PlayerTurn);
-	});
+	//임시코드, 나중에 EnemyMonster에서 함수를 따로 만들어서 연동시킬 계획,
+	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
+	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Tackle);
 }
 
 void BattleState_EnemyTurn::ExitState()

@@ -12,6 +12,7 @@
 #include "BattlePlayer.h"
 #include "BattleMonsterPlayer.h"
 #include "PokeSkillBase.h"
+#include "BattlePlayerMonsterFSM.h"
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -25,7 +26,6 @@ BattleState_PlayerTurn::~BattleState_PlayerTurn()
 
 void BattleState_PlayerTurn::EnterState()
 {
-	BattleLevel::Debug_LevelChanged = false;
 	const std::string_view PlayerTurnText = "What should I Do";
 
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
@@ -77,21 +77,6 @@ void BattleState_PlayerTurn::BindSelectBoard()
 
 void BattleState_PlayerTurn::BindBattleCommand(size_t _SlotIndex)
 {
-	const float EventTime = 3.f;
-
-	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> EventCallBack = nullptr;
-	EventCallBack = [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)
-	{
-		if (true == BattleLevel::Debug_LevelChanged)
-			return;
-		
-		//데미지 처리에 따라 FSM 변경시키자
-
-		BattleFSM* Fsm = BattleLevel::BattleLevelPtr->GetBattleFSM();
-		Fsm->ChangeState(BattleStateType::EnemyTurn);
-	};
-
-
 	//슬롯의 스킬 발동
 	BattleCommand->SetCallBack(_SlotIndex, [=]
 	{
@@ -102,10 +87,11 @@ void BattleState_PlayerTurn::BindBattleCommand(size_t _SlotIndex)
 		SelectBoard->Off();
 		BattleCommand->Off();
 
-
 		//TODO
+		BattlePlayerMonsterFSM* MonsterFSM = BattlePlayer::PlayerPtr->GetMonster()->GetFSM();
+		MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_Tackle);
 
-		BattleLevel::BattleLevelPtr->LevelEvent.AddEvent(EventTime, EventCallBack);
+		//일단 임시, 나중에 PlayerMonster에서 함수를 만들어서 등록된 슬롯과 연동시킬 예정이다
 	});
 
 

@@ -23,8 +23,9 @@ enum class BattleFieldType
 enum class BattleNpcType
 {
 	None,
-
+	Rival,
 	Woong
+
 };
 
 
@@ -33,7 +34,6 @@ class BattleLevel : public GameEngineLevel
 public:
 	static BattleLevel* BattleLevelPtr;
 	static const std::string_view  BattleKeyName;
-	static bool Debug_LevelChanged;
 
 	BattleLevel();
 	~BattleLevel() override;
@@ -58,6 +58,8 @@ public:
 	void UseMonsterBall(ItemCode _MonsterBallType);
 
 	void ChangePlayerMonster(PokeNumber _NextMonster);
+
+	void LockWildPocketMon();
 
 protected:
 	void Loading() override;

@@ -34,6 +34,7 @@ void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	FsmPtr->Init(_FieldType, _NpcType);
 	CreateGround(_FieldType);
+	RenderCreate(_NpcType);
 }
 
 
@@ -62,23 +63,29 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 }
 
 
-
-
-
-void BattleEnemy::CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType)
+void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 {
+	std::string ImagePath = "BattleNPC_";
+
 	switch (_NpcType)
 	{
 	case BattleNpcType::None:
-		CreateWildMonster(_FieldType);
+		return;
+	case BattleNpcType::Rival:
+		ImagePath += "Rival.bmp";
 		break;
 	case BattleNpcType::Woong:
+		ImagePath += "Woong.bmp";
 		break;
 	default:
-		MsgAssert("아직 어떤 NPC와 싸울지 결정해주지 않았습니다");
+		MsgAssert("아직 해당 NPC를 구현하지 않았습니다");
 		break;
 	}
+
+	EnemyRender = CreateRender(ImagePath, BattleRenderOrder::Player0);
+	EnemyRender->SetScaleToImage();
 }
+
 
 
 
@@ -108,6 +115,13 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(static_cast<PokeNumber>(MonsterNumsters[MonIndex]), true);
+}
+
+void BattleEnemy::CreateMonster(PokeNumber _Number)
+{
+	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
+	Monster->Init(_Number, false);
+	Monster->SetPos(GetPos());
 }
 
 

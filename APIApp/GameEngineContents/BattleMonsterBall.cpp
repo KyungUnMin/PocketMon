@@ -5,8 +5,9 @@
 
 const std::string_view BattleMonsterBall::ThrowAniName = "Throw";
 const std::string_view BattleMonsterBall::OpenAniName = "Open";
-const std::string_view BattleMonsterBall::RollAniName = "Roll";
 const std::string_view BattleMonsterBall::IdleAniName = "Idle";
+const std::string_view BattleMonsterBall::RollAniName = "Roll";
+const std::string_view BattleMonsterBall::CatchAniName = "Catch";
 
 const std::string_view BattleMonsterBall::MasterBallName = "BattleMasterBall";
 const std::string_view BattleMonsterBall::MonsterBallName = "BattleMonsterBall";
@@ -40,7 +41,9 @@ void BattleMonsterBall::Init(BattleBallType _Type)
 
 	CreateThrowAni(Name);
 	CreateOpenAni(Name);
+	CreateIdleAni(Name);
 	CreateRollAni(Name);
+	CreateCatchAni(Name);
 
 	FsmPtr->Init(_Type, this);
 }
@@ -81,6 +84,21 @@ void BattleMonsterBall::CreateOpenAni(const std::string_view& _Name)
 	});
 }
 
+void BattleMonsterBall::CreateIdleAni(const std::string_view& _Name)
+{
+	std::string ImagePath = _Name.data() + std::string(".bmp");
+
+	RenderPtr->CreateAnimation
+	({
+		.AnimationName = IdleAniName,
+		.ImageName = ImagePath,
+		.Start= 0,
+		.End = 0,
+		.InterTime = FLT_MAX,
+		.Loop = true,
+	});
+}
+
 void BattleMonsterBall::CreateRollAni(const std::string_view& _Name)
 {
 	std::string ImagePath = _Name.data() + std::string("Roll.bmp");
@@ -94,6 +112,20 @@ void BattleMonsterBall::CreateRollAni(const std::string_view& _Name)
 		.InterTime = 0.1f,
 		.Loop = true,
 		.FrameIndex = AniFrm,
+	});
+}
+
+void BattleMonsterBall::CreateCatchAni(const std::string_view& _Name)
+{
+	std::string ImagePath = _Name.data() + std::string("Catch.bmp");
+
+	RenderPtr->CreateAnimation
+	({
+		.AnimationName = CatchAniName,
+		.ImageName = ImagePath,
+		.Loop = false,
+		.FrameIndex = std::vector<int>{0, 1, 2, 1, 2, 1, 2, 3},
+		.FrameTime = std::vector<float>{1.f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.1f, 0.5f}
 	});
 }
 

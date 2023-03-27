@@ -20,7 +20,6 @@
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
 const char BattleLevel::BattleKey = 'Z';
-bool BattleLevel::Debug_LevelChanged = false;
 
 BattleLevel::BattleLevel()
 {
@@ -60,8 +59,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 
-	Init(BattleFieldType::Forest0);
-	//Init(BattleFieldType::Indoor);
+	//Init(BattleFieldType::Forest0);
+	Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 }
 
@@ -102,13 +101,12 @@ bool BattleLevel::TestKeyUpdate()
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		Debug_LevelChanged = true;
 		return true;
 	}
 
 	if (true == GameEngineInput::IsDown("Test_ThrowMonsterBall"))
 	{
-		UseMonsterBall(ItemCode::MasterBall);
+		UseMonsterBall(ItemCode::MonsterBall);
 		return false;
 	}
 
@@ -168,11 +166,30 @@ void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
 		return;
 	}
 
+	if (ItemCode::MasterBall != _MonsterBallType && ItemCode::MonsterBall != _MonsterBallType)
+	{
+		MsgAssert("[배틀error] : 입력으로 들어온 ItemCode가 몬스터볼 종류가 아닙니다");
+		return;
+	}
+
+	bool IsMasterBall = (ItemCode::MasterBall == _MonsterBallType) ? true : false;
 	BattleFsmPtr->ChangeState(BattleStateType::ThrowMonsterBall);
+	BattlePlayer::PlayerPtr->ThrowBallToCatch(IsMasterBall);
 }
 
 void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 {
 
+}
+
+void BattleLevel::LockWildPocketMon()
+{
+	if (BattleStateType::ThrowMonsterBall != BattleFsmPtr->GetNowState<BattleStateType>())
+	{
+		MsgAssert("몬스터볼을 던졌을때만 야생포켓몬을 잡을수 있습니다");
+		return;
+	}
+
+	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
 }
 

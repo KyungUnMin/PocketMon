@@ -1,5 +1,4 @@
 #pragma once
-#include "BattleStateBase.h"
 #include "BattleMonsterBall_ThrowBase.h"
 
 class GameEngineRender;

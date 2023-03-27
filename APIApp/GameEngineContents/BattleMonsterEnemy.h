@@ -6,6 +6,9 @@ class BattleEnemyMonsterFSM;
 class BattleMonsterEnemy : public BattleMonsterBase
 {
 public:
+	//LockState와 MonsterBall OpenState에서 사용
+	static const float LockTime;
+
 	BattleMonsterEnemy();
 	~BattleMonsterEnemy() override;
 
@@ -21,14 +24,27 @@ public:
 		return FsmPtr;
 	}
 
+	inline GameEngineRender* GetRender()
+	{
+		return MonsterRender;
+	}
+
+	inline GameEngineRender* GetEffectRender()
+	{
+		return EffectRender;
+	}
+
+	void Lock();
+
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
+	bool IsWildMonster = false;
 	BattleEnemyMonsterFSM* FsmPtr = nullptr;
 
 	GameEngineRender* MonsterRender = nullptr;
+	GameEngineRender* EffectRender = nullptr;
 
 	void RenderCreate();
 };
-

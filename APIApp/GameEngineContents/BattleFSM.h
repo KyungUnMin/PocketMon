@@ -7,6 +7,8 @@ enum class BattleStateType
 	PlayerTurn,
 	EnemyTurn,
 	ThrowMonsterBall,
+	CatchWildMonster,
+	RivalTalk,
 
 	COUNT,
 };

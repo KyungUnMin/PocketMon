@@ -50,6 +50,7 @@ public:
 	}
 
 	void ThrowBallToCreate();
+	void ThrowBallToCatch(bool _IsMasterBall);
 	void CreateMontser();
 	
 protected:

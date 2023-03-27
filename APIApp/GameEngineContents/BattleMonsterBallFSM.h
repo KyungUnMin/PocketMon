@@ -8,8 +8,8 @@ enum class BattleMonsterBall_Movement
 	Opened,
 	ShakeVertical,
 	ShakeHorizon,
-	Wait,
-	Miss,
+	Catch,
+	Fade,
 
 	COUNT,
 };

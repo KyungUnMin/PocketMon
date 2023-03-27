@@ -6,6 +6,8 @@ enum class BattlePlayerMonster_StateType
 	Create,
 	Idle,
 
+	Skill_Tackle,
+
 	COUNT
 };
 

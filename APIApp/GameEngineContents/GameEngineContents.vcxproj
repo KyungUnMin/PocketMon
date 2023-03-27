@@ -169,8 +169,16 @@
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleEnemyFSM.cpp" />
     <ClCompile Include="BattleEnemyMonsterFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonster_LockState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
     <ClCompile Include="BattleEnemy_MoveState.cpp" />
+    <ClCompile Include="BattleFadeCtrl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleFSM.cpp" />
     <ClCompile Include="BattleFSMBase.cpp" />
     <ClCompile Include="BattleLevel.cpp" />
@@ -182,11 +190,35 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleMonsterBall_CatchState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_FadeState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_HorizonShake.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_OpenState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleMonsterBall_ThrowBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleMonsterBall_ThrowToCatch.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleMonsterBall_ThrowToCreate.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_VerticalShake.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -200,15 +232,47 @@
     <ClCompile Include="BattlePlayerMonster_CreateState.cpp" />
     <ClCompile Include="BattlePlayer_MoveState.cpp" />
     <ClCompile Include="BattlePlayer_ThrowState.cpp" />
+    <ClCompile Include="BattleSkill_EnemyBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyTackle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTackle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleStateBase.cpp" />
     <ClCompile Include="BattleStateIdle.cpp" />
+    <ClCompile Include="BattleState_CatchWhildMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp" />
     <ClCompile Include="BattleState_PlayerTurn.cpp" />
+    <ClCompile Include="BattleState_RivalTalk.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_SkillBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_TalkBase.cpp" />
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp" />
     <ClCompile Include="BattleState_WildTalk.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
     <ClCompile Include="BattleZoneBushParticle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Battle_CatchMonsterParticle.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -395,8 +459,16 @@
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattleEnemyFSM.h" />
     <ClInclude Include="BattleEnemyMonsterFSM.h" />
+    <ClInclude Include="BattleEnemyMonster_LockState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
     <ClInclude Include="BattleEnemy_MoveState.h" />
+    <ClInclude Include="BattleFadeCtrl.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleFSM.h" />
     <ClInclude Include="BattleFSMBase.h" />
     <ClInclude Include="BattleLevel.h" />
@@ -408,11 +480,35 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleMonsterBall_CatchState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_FadeState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_HorizonShake.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_OpenState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleMonsterBall_ThrowBase.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleMonsterBall_ThrowToCatch.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleMonsterBall_ThrowToCreate.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_VerticalShake.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -425,15 +521,47 @@
     <ClInclude Include="BattlePlayerMonster_CreateState.h" />
     <ClInclude Include="BattlePlayer_MoveState.h" />
     <ClInclude Include="BattlePlayer_ThrowState.h" />
+    <ClInclude Include="BattleSkill_EnemyBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyTackle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTackle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleStateBase.h" />
     <ClInclude Include="BattleStateIdle.h" />
+    <ClInclude Include="BattleState_CatchWhildMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
     <ClInclude Include="BattleState_PlayerTurn.h" />
+    <ClInclude Include="BattleState_RivalTalk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_SkillBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_TalkBase.h" />
     <ClInclude Include="BattleState_ThrowMonsterBall.h" />
     <ClInclude Include="BattleState_WildTalk.h" />
     <ClInclude Include="BattleTrainerBase.h" />
     <ClInclude Include="BattleZoneBushParticle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Battle_CatchMonsterParticle.h">
       <SubType>
       </SubType>
     </ClInclude>

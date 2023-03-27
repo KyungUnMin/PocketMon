@@ -6,6 +6,8 @@
 #include "BattleState_PlayerTurn.h"
 #include "BattleState_EnemyTurn.h"
 #include "BattleState_ThrowMonsterBall.h"
+#include "BattleState_CatchWhildMonster.h"
+#include "BattleState_RivalTalk.h"
 
 BattleFSM::BattleFSM()
 {
@@ -27,6 +29,8 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_PlayerTurn>(BattleStateType::PlayerTurn);
 	CreateState<BattleState_EnemyTurn>(BattleStateType::EnemyTurn);
 	CreateState<BattleState_ThrowMonsterBall>(BattleStateType::ThrowMonsterBall);
+	CreateState<BattleState_CatchWhildMonster>(BattleStateType::CatchWildMonster);
+	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
 
 
 	switch (_NpcType)
@@ -35,6 +39,10 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 		//BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
 		ChangeState(BattleStateType::WildTalk);
 		break;
+	case BattleNpcType::Rival:
+		ChangeState(BattleStateType::RivalTalk);
+		break;
+
 	default:
 		MsgAssert("배틀 FSM에서 아직 연결해주지 않은 전투상황입니다");
 		break;

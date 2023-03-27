@@ -7,6 +7,8 @@ enum class BattleEnemyMonster_StateType
 	Idle,
 	Lock,
 
+	Skill_Tackle,
+
 	COUNT,
 };
 

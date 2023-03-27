@@ -124,6 +124,16 @@ void BattlePlayer::ThrowBallToCreate()
 	Ball->SetPos(GetPos() + float4::Up * OffsetY);
 }
 
+void BattlePlayer::ThrowBallToCatch(bool _IsMasterBall)
+{
+	const float OffsetY = 200.f;
+
+	BattleMonsterBall* Ball = BattleLevel::BattleLevelPtr->CreateActor<BattleMonsterBall>(UpdateOrder::Battle_Actors);
+	_IsMasterBall ? Ball->Init(BattleBallType::Catch_MasterBall) : Ball->Init(BattleBallType::Catch_MonsterBall);
+	Ball->SetPos(float4::Down * OffsetY);
+}
+
+
 void BattlePlayer::CreateMontser()
 {
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);

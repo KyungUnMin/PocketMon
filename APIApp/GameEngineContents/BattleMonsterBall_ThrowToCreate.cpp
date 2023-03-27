@@ -44,4 +44,5 @@ void BattleMonsterBall_ThrowToCreate::Update(float _DeltaTime)
 void BattleMonsterBall_ThrowToCreate::ExitExcute()
 {
 	BattlePlayer::PlayerPtr->CreateMontser();
+	GetMonsterBall()->Death();
 }

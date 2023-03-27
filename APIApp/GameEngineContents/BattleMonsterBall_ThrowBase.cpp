@@ -38,7 +38,6 @@ void BattleMonsterBall_ThrowBase::Update(float _DeltaTime)
 	if (Duration < LiveTime)
 	{
 		ExitExcute();
-		MonsterBall->Death();
 		return;
 	}
 

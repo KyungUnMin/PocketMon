@@ -30,6 +30,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeDown.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeUp.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattlePlayer.bmp"))->Cut(5, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeWhite.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeBlack.bmp"));
 
 		Dir.Move("Field");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestEnemyGround.bmp"));
@@ -46,8 +48,13 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymPlayerGround.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymField.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gym\\BattleGymIntro.bmp"));
-
 		Dir.MoveParentToDirectory("Field");
+
+		Dir.Move("NPC");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_Rival.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_Woong.bmp"));
+		Dir.MoveParentToDirectory("NPC");
+
 		Dir.Move("Monster");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleAppearEffect.bmp"));
 
@@ -106,14 +113,21 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFront.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFrontLight.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleShadow.bmp"));
-
 		Dir.MoveParentToDirectory("Monster");
+
 
 		Dir.Move("MonsterBall");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBall.bmp"))->Cut(8, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleBallParticle.bmp"))->Cut(7, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallOpen.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallRoll.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallCatch.bmp"))->Cut(4, 1);
+		Dir.MoveParentToDirectory("MonsterBall");
+
+		Dir.Move("Skill");
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
+
+
 
 		Dir.MoveParentToDirectory("Battle");
 	}

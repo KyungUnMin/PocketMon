@@ -7,6 +7,8 @@ class BattleEnemyFSM;
 enum class BattleNpcType;
 enum class BattleFieldType;
 class PokeDataBase;
+enum class PokeNumber;
+class GameEngineRender;
 
 class BattleEnemy : public BattleTrainerBase
 {
@@ -26,6 +28,8 @@ public:
 	//Enemy FSM쪽에서 호출됨
 	void CreateWildMonster(BattleFieldType _FieldType);
 
+	void CreateMonster(PokeNumber _Number);
+
 	inline BattleMonsterEnemy* GetMonster()
 	{
 		return Monster;
@@ -33,18 +37,21 @@ public:
 
 	PokeDataBase* GetMonsterDB();
 
+	inline GameEngineRender* GetRender()
+	{
+		return EnemyRender;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
 	BattleMonsterEnemy* Monster = nullptr;
 	BattleEnemyFSM* FsmPtr = nullptr;
+	GameEngineRender* EnemyRender = nullptr;
 
 
 	void CreateGround(BattleFieldType _FieldType);
-
-	//아마 외부에서 호출될 것 같다 추후에 수정
-	void CreateNpc(BattleFieldType _FieldType, BattleNpcType _NpcType);
-
+	void RenderCreate(BattleNpcType _NpcType);
 };
 

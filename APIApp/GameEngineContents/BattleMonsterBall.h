@@ -20,6 +20,7 @@ public:
 	static const std::string_view OpenAniName;
 	static const std::string_view RollAniName;
 	static const std::string_view IdleAniName;
+	static const std::string_view CatchAniName;
 
 	static const std::string_view MasterBallName;
 	static const std::string_view MonsterBallName;
@@ -52,6 +53,8 @@ private:
 
 	void CreateThrowAni(const std::string_view& _Name);
 	void CreateOpenAni(const std::string_view& _Name);
+	void CreateIdleAni(const std::string_view& _Name);
 	void CreateRollAni(const std::string_view& _Name);
+	void CreateCatchAni(const std::string_view& _Name);
 };
 

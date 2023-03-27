@@ -1,6 +1,12 @@
 #include "BattleMonsterBallFSM.h"
 #include "BattleMonsterBall_ThrowToCreate.h"
 #include "BattleMonsterBall.h"
+#include "BattleMonsterBall_ThrowToCatch.h"
+#include "BattleMonsterBall_OpenState.h"
+#include "BattleMonsterBall_VerticalShake.h"
+#include "BattleMonsterBall_HorizonShake.h"
+#include "BattleMonsterBall_CatchState.h"
+#include "BattleMonsterBall_FadeState.h"
 
 BattleMonsterBallFSM::BattleMonsterBallFSM()
 {
@@ -36,5 +42,12 @@ void BattleMonsterBallFSM::InitToCreate()
 
 void BattleMonsterBallFSM::InitToCatch()
 {
-	//TODO
+	CreateState<BattleMonsterBall_ThrowToCatch>(BattleMonsterBall_Movement::Create);
+	CreateState<BattleMonsterBall_OpenState>(BattleMonsterBall_Movement::Opened);
+	CreateState<BattleMonsterBall_VerticalShake>(BattleMonsterBall_Movement::ShakeVertical);
+	CreateState<BattleMonsterBall_HorizonShake>(BattleMonsterBall_Movement::ShakeHorizon);
+	CreateState<BattleMonsterBall_CatchState>(BattleMonsterBall_Movement::Catch);
+	CreateState<BattleMonsterBall_FadeState>(BattleMonsterBall_Movement::Fade);
+
+	ChangeState(BattleMonsterBall_Movement::Create);
 }
