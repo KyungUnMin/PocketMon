@@ -32,5 +32,7 @@ private:
 
 	std::vector<PokeNumber> PokeNumbers;
 
+	int InputControllHandle = -1;
+
 	void BattleStart();
 };

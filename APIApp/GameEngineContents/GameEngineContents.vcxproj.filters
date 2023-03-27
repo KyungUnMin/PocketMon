@@ -228,7 +228,6 @@
     <ClCompile Include="CountItemMenu.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
-    <ClCompile Include="BattleZoneBushParticle.cpp" />
     <ClCompile Include="LevelUpStatUI.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
@@ -395,6 +394,9 @@
     </ClCompile>
     <ClCompile Include="BlackBox.cpp">
       <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleZoneBushParticle.cpp">
+      <Filter>Map\Actor\BattleZone</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -620,7 +622,6 @@
     <ClInclude Include="CountItemMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
-    <ClInclude Include="BattleZoneBushParticle.h" />
     <ClInclude Include="LevelUpStatUI.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
@@ -780,6 +781,9 @@
     </ClInclude>
     <ClInclude Include="BlackBox.h">
       <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleZoneBushParticle.h">
+      <Filter>Map\Actor\BattleZone</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

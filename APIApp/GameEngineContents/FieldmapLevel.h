@@ -84,26 +84,6 @@ private:
 	void AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, PlayerDir _Dir);
 	void AddJumpEvent(const std::string_view& _CityName, const int2& _Index, PlayerDir _Dir);
 
-	inline bool PlayerUpCheck() const
-	{
-		return true;
-	}
-
-	inline bool PlayerDownCheck() const
-	{
-		return true;
-	}
-
-	inline bool PlayerLeftCheck() const
-	{
-		return true;
-	}
-
-	inline bool PlayerRightCheck() const
-	{
-		return true;
-	}
-
 	static void TempFunc()
 	{
 		DebugMsgBox("Jump....");

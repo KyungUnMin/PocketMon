@@ -42,6 +42,8 @@ FieldmapLevel::~FieldmapLevel()
 
 void FieldmapLevel::Loading()
 {
+	MainPlayer = CreateActor<Player>();
+
 	{
 		CreateActor<BackgroundUI>();
 
@@ -368,7 +370,7 @@ void FieldmapLevel::Loading()
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
 	EndActor->Off();
 
-	Fieldmap::ChangeCity("PalletTown");
+	Fieldmap::ChangeCity("PalletTown_Home2F");
 
 	// Debug¿ë ·£´õ
 	MainFieldRender = CreateActor<FieldmapRender>();
@@ -376,15 +378,13 @@ void FieldmapLevel::Loading()
 		
 	UIImageLoad();
 	
-	MainPlayer = CreateActor<Player>();
-
 	//TestNpc=CreateActor<NPC1>();
 	//TestNpc->SetPos(Fieldmap::GetPos(16, 8));
 
 	TestNpc=CreateActor<NPC1>(); 
-	Fieldmap::AddActor("PalletTown", int2(16, 8), TestNpc);
+	Fieldmap::AddActor("PalletTown", int2(10, 6), TestNpc);
 
-	MainPlayer->SetPos(Fieldmap::GetPos(21, 8));
+	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
@@ -552,7 +552,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	case PlayerDir::Up:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpUp",
-			.VaildFunc = std::bind(&FieldmapLevel::PlayerUpCheck, this),
+			.VaildFunc = std::bind(&Player::VaildJumpUp, Player::MainPlayer),
 			.EventFunc = &FieldmapLevel::TempFunc,
 			.Loop = true
 			});
@@ -560,7 +560,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	case PlayerDir::Down:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpDown",
-			.VaildFunc = std::bind(&FieldmapLevel::PlayerDownCheck, this),
+			.VaildFunc = std::bind(&Player::VaildJumpDown, Player::MainPlayer),
 			.EventFunc = &FieldmapLevel::TempFunc,
 			.Loop = true
 			});
@@ -568,7 +568,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	case PlayerDir::Left:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpLeft",
-			.VaildFunc = std::bind(&FieldmapLevel::PlayerLeftCheck, this),
+			.VaildFunc = std::bind(&Player::VaildJumpLeft, Player::MainPlayer),
 			.EventFunc = &FieldmapLevel::TempFunc,
 			.Loop = true
 			});
@@ -576,7 +576,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	case PlayerDir::Right:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpRight",
-			.VaildFunc = std::bind(&FieldmapLevel::PlayerRightCheck, this),
+			.VaildFunc = std::bind(&Player::VaildJumpRight, Player::MainPlayer),
 			.EventFunc = &FieldmapLevel::TempFunc,
 			.Loop = true
 			});

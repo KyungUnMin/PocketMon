@@ -77,6 +77,17 @@ void Player::IdleUpdate(float _Time)
 	Playerindex = Fieldmap::GetIndex(GetPos());	
 	Fieldmap::UpdateEventCheck(Playerindex);
 
+	// 더블체크 예제 코드
+	//if (false == InputControll::IsCurFrameUsedKey() && GameEngineInput::IsPress("LeftMove"))
+	//{
+	//	InputControll::UsedKey();
+	//}
+	//
+	//if (false == InputControll::IsCurFrameUsedKey() && true == GameEngineInput::IsPress("LeftMove"))
+	//{
+	//	InputControll::UsedKey();
+	//}
+
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
 		int2 NextIndex = Playerindex;

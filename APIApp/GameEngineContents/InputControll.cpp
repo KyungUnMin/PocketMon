@@ -4,6 +4,7 @@
 
 int InputControll::InputHandle = -1;
 bool InputControll::UseHandleCheck = false;
+bool InputControll::IsDoubelCheckValue = false;
 
 InputControll::InputControll()
 {
@@ -43,4 +44,19 @@ int InputControll::ResetControll(int _Handle)
 	UseHandleCheck = false;
 
 	return InputHandle;
+}
+
+void InputControll::UsedKey()
+{
+	IsDoubelCheckValue = true;
+}
+
+bool InputControll::IsCurFrameUsedKey()
+{
+	return IsDoubelCheckValue;
+}
+
+void InputControll::ResetDoubleCheck()
+{
+	IsDoubelCheckValue = false;
 }

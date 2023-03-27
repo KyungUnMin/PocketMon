@@ -48,7 +48,7 @@ void DoorActorBase::PlayerMove()
 		[](DoorActorBase* _This)
 		{
 			_This->InputControllHandle = InputControll::ResetControll(_This->InputControllHandle);
-		}, this), false);	
+		}, this), false);
 }
 
 void DoorActorBase::SetLinkDoor(DoorActorBase* _LinkDoor)

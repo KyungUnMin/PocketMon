@@ -11,6 +11,7 @@
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 #include "FieldMainMenu.h"
+#include "InputControll.h"
 
 Player* Player::MainPlayer;
 
@@ -24,22 +25,74 @@ Player::~Player()
 
 bool Player::VaildJumpUp()
 {
-	return false;
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+	if (false == GameEngineInput::IsPress("UpMove"))
+	{
+		return false;
+	}
+
+	int2 JumpIndex = Playerindex;
+	JumpIndex.y -= 2;
+
+	return Fieldmap::Walkable(JumpIndex);
 }
 
 bool Player::VaildJumpDown()
 {
-	return false;
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+	if (false == GameEngineInput::IsPress("DownMove"))
+	{
+		return false;
+	}
+
+	int2 JumpIndex = Playerindex;
+	JumpIndex.y += 2;
+
+	return Fieldmap::Walkable(JumpIndex);
 }
 
 bool Player::VaildJumpLeft()
 {
-	return false;
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+	if (false == GameEngineInput::IsPress("LeftMove"))
+	{
+		return false;
+	}
+
+	int2 JumpIndex = Playerindex;
+	JumpIndex.x -= 2;
+
+	return Fieldmap::Walkable(JumpIndex);
 }
 
 bool Player::VaildJumpRight()
 {
-	return false;
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+	if (false == GameEngineInput::IsPress("RightMove"))
+	{
+		return false;
+	}
+
+	int2 JumpIndex = Playerindex;
+	JumpIndex.x += 2;
+
+	return Fieldmap::Walkable(JumpIndex);
 }
 
 void Player::Start()

@@ -3,6 +3,8 @@
 #include "PokeDataBase.h"
 #include "ItemDataBase.h"
 
+#include "InputControll.h"
+
 #include "CenterLevel.h"
 #include "FieldmapLevel.h"
 #include "BattleLevel.h"
@@ -48,7 +50,7 @@ void PocketMonCore::Start()
 
 void PocketMonCore::Update()
 {
-
+	InputControll::ResetDoubleCheck();
 }
 
 void PocketMonCore::End()

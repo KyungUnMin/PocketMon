@@ -18,7 +18,7 @@ void BattleZoneBushParticle::Start()
 		.ImageName = "BushEffect.bmp",
 		.Start = 0,
 		.End = 3,
-		.InterTime = 0.1f,
+		.InterTime = 0.06f,
 		.Loop = false});
 	AnimRender->ChangeAnimation("Play");
 	AnimRender->SetScale(float4(Fieldmap::TileSize, Fieldmap::TileSize));
