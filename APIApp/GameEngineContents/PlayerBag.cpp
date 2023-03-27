@@ -48,6 +48,42 @@ void PlayerBag::AddItem(ItemCode _ItemCode)
 }
 
 
+void PlayerBag::AddItem(ItemCode _ItemCode, int _Num)
+{
+	for (size_t i = 0; i < Items.size(); i++)
+	{
+		if (Items[i].GetItemCode() == _ItemCode)
+		{
+			Items[i].AddNum(_Num);
+			return;
+		}
+	}
+	for (size_t i = 0; i < PokeBalls.size(); i++)
+	{
+		if (PokeBalls[i].GetItemCode() == _ItemCode)
+		{
+			PokeBalls[i].AddNum(_Num);
+			return;
+		}
+	}
+
+	Item NewItem = Item::GetItem(_ItemCode);
+	NewItem.AddNum(_Num - 1);
+
+	if (_ItemCode < ItemCode::Bike)
+	{
+		Items.insert(Items.begin(), NewItem);
+	}
+	else if (_ItemCode == ItemCode::Bike)
+	{
+		KeyItems.insert(KeyItems.begin(), NewItem);
+	}
+	else
+	{
+		PokeBalls.insert(PokeBalls.begin(), NewItem);
+	}
+}
+
 void PlayerBag::RemoveItem(ItemCode _ItemCode)
 {
 	for (size_t i = 0; i < Items.size(); i++)

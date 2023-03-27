@@ -309,6 +309,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBox.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Black.bmp"))->Cut(27, 4);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Black2.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Items.bmp"))->Cut(7,2);
 
 		Dir.MoveParentToDirectory("Image");

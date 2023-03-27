@@ -42,7 +42,10 @@ public:
 	{
 		return CurrentItemCode;
 	}
+	// 가방에 아이템을 추가
 	void AddItem(ItemCode _ItemCode);
+	// 가방에 정해진 개수만큼 아이템을 추가
+	void AddItem(ItemCode _ItemCode, int _Num);
 	void RemoveItem(ItemCode _ItemCode);
 	void BattleOn();
 	bool GetIsBattle() {
