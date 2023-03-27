@@ -99,7 +99,7 @@ void Battle_Select::ArrowInput(int _Number)
 	if (GetLiveTime() < WaitTime)
 		return;
 
-	if (true == GameEngineInput::IsDown("InsertMove1")) 
+	if (true == GameEngineInput::IsDown("BattleSelect1111")) 
 	{
 		if (nullptr != Callbacks[ArrowCheckNum])
 		{

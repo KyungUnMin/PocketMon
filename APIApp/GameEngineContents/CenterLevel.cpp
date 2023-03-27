@@ -377,6 +377,12 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange7", '7');
 		GameEngineInput::CreateKey("LevelChange8", '8');
 
+
+
+
+		GameEngineInput::CreateKey("BattleSelect1111", 'Z');
+
+
 		//플레이어이동
 		GameEngineInput::CreateKey("LeftMove", VK_LEFT);
 		GameEngineInput::CreateKey("UpMove", VK_UP);
