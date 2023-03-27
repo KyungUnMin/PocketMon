@@ -49,6 +49,8 @@ private:
 
 	MenuState State = MenuState::Yes;
 
+	std::list<std::string> Script = std::list<std::string>();
+
 	Item* SelectItem = nullptr;
 	int Count = 0;
 
@@ -67,5 +69,7 @@ private:
 	{
 		Count = _Count;
 	}
+
+	void BuyItem();
 };
 

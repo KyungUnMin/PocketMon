@@ -1,4 +1,5 @@
 #include "BuyLevelDialog.h"
+#include "BuyWindow.h"
 
 BuyLevelDialog* BuyLevelDialog::AcBuyLevelDialog = nullptr;
 
@@ -11,6 +12,16 @@ BuyLevelDialog::~BuyLevelDialog()
 {
 
 }
+//
+//void BuyLevelDialog::Off()
+//{
+//	if (BuyWindow::GetBuyWindow() == nullptr)
+//	{
+//		return;
+//	}
+//	FieldDialog::Off();
+//	//BuyWindow::GetBuyWindow()->IsValid = true;
+//}
 
 void BuyLevelDialog::Start()
 {

@@ -5,6 +5,7 @@
 #include "BuyLevel.h"
 #include "BuyWindow.h"
 #include "BuyUIManager.h"
+#include "BuyLevelDialog.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -74,6 +75,15 @@ void BuyWindow::Start()
 
 void BuyWindow::Update(float _DeltaTime)
 {
+	if (BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
+	{
+		IsValid = false;
+	}
+	else
+	{
+		IsValid = true;
+	}
+
 	if (!IsValid)
 	{
 		ArrowRender->SetImage("PressMenuArrow.bmp");

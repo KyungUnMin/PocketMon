@@ -14,6 +14,8 @@ public:
 	BuyLevelDialog& operator=(const BuyLevelDialog& _Other) = delete;
 	BuyLevelDialog& operator=(BuyLevelDialog&& _Other) noexcept = delete;
 
+	//void Off() override;
+
 	static BuyLevelDialog* GetBuyLevelDialog()
 	{
 		return AcBuyLevelDialog;

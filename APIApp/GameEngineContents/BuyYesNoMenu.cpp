@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "BuyLevelDialog.h"
 #include "BuyWindow.h"
+#include "PlayerBag.h"
 
 
 BuyYesNoMenu* BuyYesNoMenu::AcBuyYesNoMenu = nullptr;
@@ -43,6 +44,8 @@ void BuyYesNoMenu::Start()
 		MenuRenders[i]->SetScaleToImage();
 	}
 
+	Script.push_back("Here you are!\nThank you!");
+
 	Off();
 }
 
@@ -65,10 +68,14 @@ void BuyYesNoMenu::Update(float _DeltaTime)
 		switch (State)
 		{
 		case MenuState::Yes:
-
+			BuyItem();
+			Off();
+			BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Script);
 			break;
 		case MenuState::No:
 			Off();
+			//BuyWindow::GetBuyWindow()->IsValid = true;
+			BuyLevelDialog::GetBuyLevelDialog()->Off();
 			break;
 		default:
 			break;
@@ -78,14 +85,14 @@ void BuyYesNoMenu::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("B"))
 	{
 		Off();
+		//BuyWindow::GetBuyWindow()->IsValid = true;
+		BuyLevelDialog::GetBuyLevelDialog()->Off();
 	}
 }
 
 void BuyYesNoMenu::UpdateEnd()
 {
-	BuyLevelDialog::GetBuyLevelDialog()->Off();
-	BuyLevelDialog::GetBuyLevelDialog()->IsValid = true;
-	BuyWindow::GetBuyWindow()->IsValid = true;
+
 }
 
 void BuyYesNoMenu::StateToRender()
@@ -114,5 +121,10 @@ void BuyYesNoMenu::ChangeState()
 		State = MenuState::Yes;
 	}
 	StateToRender();
+}
+
+void BuyYesNoMenu::BuyItem()
+{
+	PlayerBag::MainBag->AddItem(SelectItem->GetItemCode(), Count);
 }
 
