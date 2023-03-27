@@ -55,6 +55,8 @@ private:
 	std::string DoorCity;
 	int2 DoorIndex;
 
+	int InputControllHandle = -1;
+
 	DoorActorBase* LinkDoor = nullptr;
 
 	void Start() override;

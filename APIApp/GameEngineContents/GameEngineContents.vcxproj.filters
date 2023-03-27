@@ -354,6 +354,9 @@
     <ClCompile Include="FieldmapCutableTree.cpp">
       <Filter>Map\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="InputControll.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -700,6 +703,9 @@
     </ClInclude>
     <ClInclude Include="FieldmapCutableTree.h">
       <Filter>Map\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="InputControll.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

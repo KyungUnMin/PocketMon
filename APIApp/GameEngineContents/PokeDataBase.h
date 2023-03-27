@@ -46,7 +46,7 @@ enum class PokeType
 	Electro,  // 12 전기
 	Ice,      // 13 얼음
 	Psvchc,   // 14 에스퍼
-	Dragon,   // 15드래곤
+	Dragon,   // 15 드래곤
 	Drak,     // 16 악
 };
 

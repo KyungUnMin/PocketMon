@@ -2,6 +2,7 @@
 #include "Fieldmap.h"
 #include "Player.h"
 #include "MoveMapFadeEffect.h"
+#include "InputControll.h"
 
 const std::string DoorActorBase::DoorIdleAnimName = "DoorIdle";
 const std::string DoorActorBase::DoorOpenAnimName = "DoorOpen";
@@ -42,6 +43,12 @@ void DoorActorBase::PlayerMove()
 	MainPlayer->SetPos(Fieldmap::GetPos(LinkDoor->DoorCity, LinkDoor->DoorIndex));
 	Fieldmap::FieldUpdate();
 	LinkDoor->DoorOpenAndClose();
+
+	LinkDoor->DoorEvent.AddEvent(0.5f,std::bind(
+		[](DoorActorBase* _This)
+		{
+			_This->InputControllHandle = InputControll::ResetControll(_This->InputControllHandle);
+		}, this), false);	
 }
 
 void DoorActorBase::SetLinkDoor(DoorActorBase* _LinkDoor)
@@ -56,6 +63,13 @@ void DoorActorBase::SetLinkDoor(DoorActorBase* _LinkDoor)
 
 void DoorActorBase::UseDoor()
 {
+	if (false == InputControll::CanControll())
+	{
+		return;
+	}
+
+	InputControllHandle = InputControll::UseControll();
+
 	DoorOpenAndClose();
 	DoorEvent.AddEvent(0.5f, std::bind(&DoorActorBase::PlayerMove, this), false);
 }

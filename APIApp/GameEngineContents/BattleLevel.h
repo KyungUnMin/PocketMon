@@ -10,7 +10,6 @@ class BackTextActor;
 enum class PokeNumber;
 enum class ItemCode;
 
-
 enum class BattleFieldType
 {
 	Indoor,

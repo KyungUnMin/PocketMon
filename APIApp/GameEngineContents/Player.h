@@ -137,6 +137,7 @@ private:
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
 
 	//플레이어 이동제어 Bool값
+	int InputControlHandle = 0;
 	bool PlayerMoveBool = true;
 
 	bool Istrue = true;
@@ -148,5 +149,6 @@ private:
 
 	////////////////////////
 	float PlayerTime = 0.0f;
+
 };
 

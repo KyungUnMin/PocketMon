@@ -6,12 +6,16 @@ class InputControll
 
 public:
 	// 현재 컨트롤이 가능한지 여부
-	//static bool CanControll();
-	//static int UseControll();
-	//static void ResetControll();
+	static bool CanControll();
+
+	// 내가 컨트롤러를 사용하겠다
+	static int UseControll();
+
+	// 컨트롤러 반환
+	static int ResetControll(int _Handle);
 private:
-	//static int InputHandle;
-	//static bool UseHandleCheck;
+	static int InputHandle;
+	static bool UseHandleCheck;
 
 protected:
 

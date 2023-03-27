@@ -33,6 +33,7 @@ void BattleFadeCtrl::Init(FadeType _FadeType, const std::function<void()>& _Even
 
 	FadeRender = CreateRender(ImageName, BattleRenderOrder::Fade);
 	FadeRender->SetScaleToImage();
+	FadeRender->EffectCameraOff();
 }
 
 void BattleFadeCtrl::Update(float _DeltaTime)

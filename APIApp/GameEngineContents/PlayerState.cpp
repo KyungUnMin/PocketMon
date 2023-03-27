@@ -7,8 +7,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 
-
-
+#include "InputControll.h"
 
 #include "Player.h"
 #include "Fieldmap.h"
@@ -70,7 +69,12 @@ void Player::IdleStart()
 }
 void Player::IdleUpdate(float _Time)
 {
-	Playerindex = Fieldmap::GetIndex(GetPos());
+	if (false == InputControll::CanControll())
+	{
+		return;
+	}
+
+	Playerindex = Fieldmap::GetIndex(GetPos());	
 	Fieldmap::UpdateEventCheck(Playerindex);
 
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
@@ -104,6 +108,7 @@ void Player::IdleUpdate(float _Time)
 		{
 			EndPos = Fieldmap::GetPos(NextIndex);
 			ChangeState(PlayerState::MOVE);
+			InputControlHandle = InputControll::UseControll();
 		}
 
 		return;
@@ -131,6 +136,8 @@ void Player::MoveUpdate(float _Time)
 	 if (PlayerTime > 1.0f) //다음타일까지의 이동시간
 	 {
 		 PlayerTime = 0.0f;
+
+		 InputControlHandle = InputControll::ResetControll(InputControlHandle);
 
 		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 		 Fieldmap::FieldUpdate();

@@ -350,6 +350,7 @@
     </ClCompile>
     <ClCompile Include="FieldmapSingleDoor.cpp" />
     <ClCompile Include="FieldmapWoodDoor.cpp" />
+    <ClCompile Include="InputControll.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemDataBase.cpp">
       <SubType>
@@ -640,6 +641,7 @@
     </ClInclude>
     <ClInclude Include="FieldmapSingleDoor.h" />
     <ClInclude Include="FieldmapWoodDoor.h" />
+    <ClInclude Include="InputControll.h" />
     <ClInclude Include="Item.h">
       <SubType>
       </SubType>

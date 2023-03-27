@@ -4,7 +4,8 @@
 #include "Fieldmap.h"
 #include "Player.h"
 #include "BattleZoneBushParticle.h"
-
+#include "BattleLevel.h"
+#include "BattleFadeCtrl.h"
 
 FieldmapBattleZone::FieldmapBattleZone()
 {
@@ -53,6 +54,9 @@ void FieldmapBattleZone::AddPokemon(PokeNumber _Number)
 
 void FieldmapBattleZone::BattleStart()
 {
+	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();
+	Particle->SetPos(Fieldmap::GetPos(Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
+
 	if (0 < GameEngineRandom::MainRandom.RandomInt(0, 10))
 	{
 		return;
@@ -60,22 +64,21 @@ void FieldmapBattleZone::BattleStart()
 
 	GameEngineRandom& MianRand = GameEngineRandom::MainRandom;
 
-	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();
-	Particle->SetPos(Fieldmap::GetPos(Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
-
 	int RandomIndex = MianRand.RandomInt(0, static_cast<int>(PokeNumbers.size() - 1));
 	int PokeNumber = static_cast<int>(PokeNumbers[RandomIndex]);
 	int RandomLevel = MianRand.RandomInt(static_cast<int>(MinLevel), static_cast<int>(MaxLevel));
 
-	std::string DebugLog;
+	//BattleFieldType _Type;
 
-	DebugLog += "Pokemon Index : ";
-	DebugLog += std::to_string(PokeNumber);
-	DebugLog += "\n";
-	
-	DebugLog += "Pokemon Level : ";
-	DebugLog += std::to_string(RandomLevel);
-	DebugLog += "\n";
+	//BattleLevel::BattleLevelPtr->Init();
 
-	DebugMsgBox(DebugLog);
+	BattleFadeCtrl* Fade = GetLevel()->CreateActor<BattleFadeCtrl>();
+	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(
+		[](FieldmapBattleZone* _this)
+		{
+			DebugMsgBox("?");
+		},
+		this));
+	Fade->On();
+	//Fade->SetDuration(1.0f);
 }
