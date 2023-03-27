@@ -39,11 +39,11 @@ void PokemonUI::Start()
 	MainPokemon = this;
 	//_______테스트용 포켓몬 생성
 	Pokemons.resize(5);
-	//Pokemons[0] = PokeDataBase::PokeCreate(1, 5);
-	//Pokemons[1] = PokeDataBase::PokeCreate(4, 5);
-	//Pokemons[2] = PokeDataBase::PokeCreate(7, 5);
-	//Pokemons[3] = PokeDataBase::PokeCreate(10, 2);
-	//Pokemons[4] = PokeDataBase::PokeCreate(11, 3);
+	Pokemons[0] = PokeDataBase::PokeCreate(1, 5);
+	Pokemons[1] = PokeDataBase::PokeCreate(4, 5);
+	Pokemons[2] = PokeDataBase::PokeCreate(7, 5);
+	Pokemons[3] = PokeDataBase::PokeCreate(10, 2);
+	Pokemons[4] = PokeDataBase::PokeCreate(11, 3);
 	// ____________렌더 생성______________
 	{
 
@@ -153,6 +153,7 @@ void PokemonUI::Start()
 
 void PokemonUI::Update(float _DeltaTime)
 {
+	AnimUpdate(_DeltaTime);
 	if (true == IsPotionUse)
 	{
 		PotionUpdate(_DeltaTime);
@@ -288,7 +289,7 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 void PokemonUI::PokeDataSetting()
 {
 	// ____________렌더 생성______________
-	/*
+	
 	{
 		CursorRender.resize(Pokemons.size() + 1);
 		for (int i = 0; i < Pokemons.size(); i++)
@@ -296,7 +297,6 @@ void PokemonUI::PokeDataSetting()
 			CursorRender[i] = PokemonBack[i];
 			// 포켓몬 이미지
 			std::string ImageStr = Pokemons[i].ForUI_GetMonsterName().data();
-			ImageStr = "Bulbasaur";
 			ImageStr += "_mini.bmp";
 			PokemonRender[i]->SetImage(ImageStr);
 			float4 _RenderScale = PokemonRender[i]->GetImage()->GetImageScale();
@@ -326,7 +326,7 @@ void PokemonUI::PokeDataSetting()
 		}
 		CursorRender[Pokemons.size()] = CancelButtonRender;
 	}
-	*/
+	
 }
 
 void PokemonUI::CursorUp()
@@ -371,6 +371,7 @@ void PokemonUI::CursorMove()
 		return;
 	}
 	CursorRender[CurrentCursor]->SetFrame(3);
+
 }
 
 void PokemonUI::SelectOn()
@@ -575,6 +576,7 @@ void PokemonUI::SetBarText()
 		BarText->SetText("Move to where?", "Font_Dialog.bmp", 2);
 		break;
 	case PokemonUIState::Shift:
+		BarText->SetText("Choose a POK@MON.", "Font_Dialog.bmp", 2);
 		break;
 	case PokemonUIState::Potion:
 		BarText->SetText("Use on which POK@MON.", "Font_Dialog.bmp", 2);
@@ -594,4 +596,73 @@ void PokemonUI::GiveItem()
 
 	PocketMonCore::GetInst().ChangeLevel("BagLevel");
 	PokeDataSetting();
+}
+
+void PokemonUI::AnimUpdate(float _DeltaTime)
+{
+	if (AnimTimer > 2)
+	{
+		AnimTimer = 0;
+	}
+	else if (AnimTimer > 1)
+	{
+		for (int i = 0; i < Pokemons.size(); i++)
+		{
+			if (CurrentCursor == i)
+			{
+				if (i == 0)
+				{
+					PokemonRender[i]->SetPosition({ 52, 172 });
+				}
+				else
+				{
+					PokemonRender[i]->SetPosition({ 408, 2.0f + 96 * i });
+				}
+				continue;
+			}
+			else
+			{
+				if (i == 0)
+				{
+					PokemonRender[i]->SetPosition({ 52, 172 });
+				}
+				else
+				{
+					PokemonRender[i]->SetPosition({ 408, 2.0f + 96 * i });
+				}
+			}
+			PokemonRender[i]->SetFrame(1);
+		}
+	}
+	else
+	{
+		for (int i = 0; i < Pokemons.size(); i++)
+		{
+			if (CurrentCursor == i)
+			{
+				if (i == 0)
+				{
+					PokemonRender[i]->SetPosition({ 52, 172 - 24 });
+				}
+				else
+				{
+					PokemonRender[i]->SetPosition({ 408, -22.0f + 96 * i });
+				}
+				continue;
+			}
+			else
+			{
+				if (i == 0)
+				{
+					PokemonRender[i]->SetPosition({ 52, 172  });
+				}
+				else
+				{
+					PokemonRender[i]->SetPosition({ 408, 2.0f + 96 * i });
+				}
+			}
+			PokemonRender[i]->SetFrame(0);
+		}
+	}
+	AnimTimer += _DeltaTime * 30;
 }

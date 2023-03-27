@@ -38,7 +38,7 @@ void SummaryUI::Start()
 	PokemonLevel = CurrentLevel->CreateActor<TextActor>();
 	PokemonLevel->SetPos({ 72, 100 });
 
-	CurrentSkillSelect = CreateRender("MoveSelect.bmp", 5);
+	CurrentSkillSelect = CreateRender("MoveSelect.bmp", 6);
 	CurrentSkillSelect->SetScale({ 480, 116 });
 	CurrentSkillSelect->SetPosition({ 720, 132 });
 	CurrentSkillSelect->Off();
@@ -452,12 +452,20 @@ void SummaryUI::SetPokemonData()
 
 void SummaryUI::MovesSwitchOn()
 {
+	CurrentSkillCursor = 0;
+	SelectSkillCursor = -1;
+	CurrentSkillSelect->SetPosition({ 720, 132.0f + 108 * CurrentSkillCursor });
 	CurrentSkillSelect->On();
+	SkillSelect->Off();
 	CurrentPage = SummaryPage::MovesSwitch;
 }
 
 void SummaryUI::MovesSwitchOff()
 {
+	CurrentSkillSelect->Off();
+	SkillSelect->SetFrame(0);
+	SkillSelect->Off();
+	CurrentPage = SummaryPage::Moves;
 }
 
 void SummaryUI::MovesSwitchUp()
@@ -482,9 +490,35 @@ void SummaryUI::MovesSwitchDown()
 
 void SummaryUI::MovesSwitchSelect()
 {
+	if (SelectSkillCursor == -1)
+	{
+		SelectSkillCursor = CurrentSkillCursor;
+		SkillSelect->SetFrame(1);
+		SkillSelect->On();
+		SkillSelect->SetPosition({ 720, 132.0f + 108 * SelectSkillCursor });
+		return;
+	}
+
+	if (SelectSkillCursor == CurrentSkillCursor)
+	{
+		return;
+	}
+
+	PokeSkill Select = Pokemons[CurrentPokemon].GetMonsterSkillList(SelectSkillCursor+1).GetSkill();
+	Pokemons[CurrentPokemon].ChangeMonsterSkill(SelectSkillCursor+1, Pokemons[CurrentPokemon].GetMonsterSkillList(CurrentSkillCursor+1).GetSkill());
+	Pokemons[CurrentPokemon].ChangeMonsterSkill(CurrentSkillCursor+1, Select);
+	SetPokemonData();
+	MovesSwitchCancle();
 }
 
 void SummaryUI::MovesSwitchCancle()
 {
+	if (SelectSkillCursor == -1)
+	{
+		MovesSwitchOff();
+		return;
+	}
+	SelectSkillCursor = -1;
+	SkillSelect->Off();
 }
 

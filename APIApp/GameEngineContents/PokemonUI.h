@@ -100,5 +100,8 @@ private:
 	void GiveItem();
 	void PotionUse();
 	void PotionUpdate(float _DeltaTime);
+
+	void AnimUpdate(float _DeltaTime);
+	float AnimTimer = 0;
 };
 

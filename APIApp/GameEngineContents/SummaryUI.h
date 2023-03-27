@@ -81,7 +81,7 @@ private:
 
 	int CurrentPokemon = 0;
 	int CurrentSkillCursor = 0;
-	int SelectSkillCursor = 0;
+	int SelectSkillCursor = -1;
 	int SkillSize = 0;
 
 	void NextPage();
