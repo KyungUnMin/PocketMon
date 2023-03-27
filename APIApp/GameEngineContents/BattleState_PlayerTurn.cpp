@@ -95,7 +95,7 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		BattleCommand->Off();
 
 		PokeDataBase* EnemyMonsterDB = BattleEnemy::EnemyPtr->GetMonsterDB();
-		PokeBattleSystem::Battle(PlayerMonsterDB, _SlotIndex + 1, EnemyMonsterDB);
+		PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
 
 		//TODO
 		BattlePlayerMonsterFSM* MonsterFSM = BattlePlayer::PlayerPtr->GetMonster()->GetFSM();

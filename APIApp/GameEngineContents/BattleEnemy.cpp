@@ -90,31 +90,29 @@ void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 
 void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 {
-	const float4 CreateOffset = float4::Up * 100.f;
-	std::vector<PokeNumber> MonsterNumsters;
-
-	switch (_FieldType)
+	if (MonsterDatas.size() <= CurIndex)
 	{
-	case BattleFieldType::Forest:
-		//꼬렛, 구구
-		MonsterNumsters = std::vector<PokeNumber>{ PokeNumber::Rattata, PokeNumber::Pidgey };
-		break;
-	default:
-		MsgAssert("해당 지역에서는 야생포켓몬과 싸울수 없습니다");
-		break;
+		MsgAssert("몬스터를 넣어주지 않았습니다");
+		return;
 	}
-
-	int MonIndex = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(MonsterNumsters.size() - 1));
+	
+	//const float4 CreateOffset = float4::Up * 100.f;
+	
+	int PokeNum = MonsterDatas[CurIndex]->GetPokeNumber();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(static_cast<PokeNumber>(MonsterNumsters[MonIndex]), true);
+	Monster->Init(static_cast<PokeNumber>(PokeNum - 1), true);
 }
 
 void BattleEnemy::CreateMonster(PokeNumber _Number)
 {
+	//const float4 CreateOffset = float4::Up * 100.f;
+
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(_Number, false);
 	Monster->SetPos(GetPos());
 }
+
+
 
 
 

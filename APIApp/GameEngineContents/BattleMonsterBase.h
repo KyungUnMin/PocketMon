@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include "PokeDataBase.h"
 
 class PokeDataBase;
 enum class PokeNumber;
@@ -27,7 +28,7 @@ public:
 
 	inline PokeDataBase* GetDB()
 	{
-		return DbPtr;
+		return &DbPtr;
 	}
 
 
@@ -40,6 +41,6 @@ private:
 	static const std::vector<std::string_view> NameEnumToString;
 	static const std::vector<std::string_view> SkiilEnumToString;
 
-	PokeDataBase* DbPtr = nullptr;
+	PokeDataBase DbPtr;;
 };
 

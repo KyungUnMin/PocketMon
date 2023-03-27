@@ -42,6 +42,11 @@ public:
 		return EnemyRender;
 	}
 
+	inline void PushMonsterDatas(const std::vector<PokeDataBase*>& _Monsters)
+	{
+		MonsterDatas = _Monsters;
+	}
+
 protected:
 	void Update(float _DeltaTime) override;
 
@@ -49,6 +54,11 @@ private:
 	BattleMonsterEnemy* Monster = nullptr;
 	BattleEnemyFSM* FsmPtr = nullptr;
 	GameEngineRender* EnemyRender = nullptr;
+
+	size_t CurIndex = 0;
+	std::vector<PokeDataBase*> MonsterDatas;
+
+	
 
 
 	void CreateGround(BattleFieldType _FieldType);

@@ -104,8 +104,8 @@ PokeSkill BattlePlayer::GetSlotSkillType(size_t _Index)
 	}
 
 	PokeDataBase* MonsterDB = Monster->GetDB();
-	PokeSkillBase* SkillBase = MonsterDB->GetMonsterSkillList(static_cast<int>(_Index + 1));
-	return SkillBase->GetSkill();
+	PokeSkillBase SkillBase = MonsterDB->GetMonsterSkillList(static_cast<int>(_Index + 1));
+	return SkillBase.GetSkill();
 }
 
 

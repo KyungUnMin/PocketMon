@@ -59,7 +59,7 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 	
-	Init_Level(BattleFieldType::Forest);
+	//Init_Level(BattleFieldType::Forest);
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 }
