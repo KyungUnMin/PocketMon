@@ -14,8 +14,13 @@ InputControll::~InputControll()
 {
 }
 
-bool InputControll::CanControll()
+bool InputControll::CanControll(int _Handle = -1)
 {
+	if (InputHandle == _Handle)
+	{
+		return true;
+	}
+
 	return !UseHandleCheck;
 }
 

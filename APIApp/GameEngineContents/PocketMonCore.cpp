@@ -55,5 +55,5 @@ void PocketMonCore::Update()
 
 void PocketMonCore::End()
 {
-	// PokeDataBase::GetPtr().Release();
+	//PokeDataBase::GetPtr().Release();
 }
