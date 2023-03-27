@@ -2,6 +2,7 @@
 #include "HpBackGroundMove.h"
 #include "BattleCommendActor.h"
 #include <vector>
+#include <GameEngineContents/PokeDataBase.h>
 
 // Ό³Έν :
 class FriendlyHPBackground : public GameEngineActor
@@ -27,6 +28,9 @@ protected:
 
 private:
 
+	PokeDataBase NewTestMon = PokeDataBase::PokeCreate(4, 15);
+
+	std::string Test111 = NewTestMon.ForUI_GetMonsterName();
 
 	std::vector<GameEngineRender*> PoketMonName_R;
 	std::vector<GameEngineRender*> PoketMonLevel_R;

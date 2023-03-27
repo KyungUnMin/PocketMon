@@ -98,7 +98,7 @@ void LevelUpStatUI_2::Start()
 void LevelUpStatUI_2::Update(float _DeltaTime)
 {
 
-	BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat1_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
+	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat1_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat2_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
 	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat3_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
 	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat4_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
