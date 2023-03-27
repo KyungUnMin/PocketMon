@@ -6,7 +6,7 @@ class InputControll
 
 public:
 	// 현재 컨트롤이 가능한지 여부
-	static bool CanControll(int _Handle = -1);
+	static bool CanControll(int _Handle = -14230948);
 
 	// 내가 컨트롤러를 사용하겠다
 	static int UseControll();
