@@ -61,6 +61,8 @@ private:
 	std::string Script = std::string();
 	std::list<std::string> Scripts = std::list<std::string>();
 
+	int InputControllHandle = -1;
+
 	void UpdateStart(Item& _Item);
 	void UpdateEnd();
 

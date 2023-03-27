@@ -6,6 +6,7 @@
 #include "BuyWindow.h"
 #include "BuyUIManager.h"
 #include "BuyLevelDialog.h"
+#include "InputControll.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -17,6 +18,18 @@ BuyWindow::BuyWindow()
 BuyWindow::~BuyWindow()
 {
 
+}
+
+void BuyWindow::On()
+{
+	GameEngineObject::On();
+	UpdateStart();
+}
+
+void BuyWindow::Off()
+{
+	GameEngineObject::Off();
+	UpdateEnd();
 }
 
 void BuyWindow::Start()
@@ -84,15 +97,15 @@ void BuyWindow::Update(float _DeltaTime)
 		IsValid = true;
 	}
 
-	if (!IsValid)
-	{
-		ArrowRender->SetImage("PressMenuArrow.bmp");
-		return;
-	}
-	else
-	{
-		ArrowRender->SetImage("MenuArrow.bmp");
-	}
+	//if (false == InputControll::CanControll())
+	//{
+	//	ArrowRender->SetImage("PressMenuArrow.bmp");
+	//	return;
+	//}
+	//else
+	//{
+	//	ArrowRender->SetImage("MenuArrow.bmp");
+	//}
 
 	if (GameEngineInput::IsDown("Menu_Up"))
 	{
@@ -110,23 +123,18 @@ void BuyWindow::Update(float _DeltaTime)
 		{
 		case 0:
 			BuyUIManager::GetBuyUIManager()->On(ItemList[0]);
-			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 1:
 			BuyUIManager::GetBuyUIManager()->On(ItemList[1]);
-			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 2:
 			BuyUIManager::GetBuyUIManager()->On(ItemList[2]);
-			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 3:
 			BuyUIManager::GetBuyUIManager()->On(ItemList[3]);
-			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 4:
 			BuyUIManager::GetBuyUIManager()->On(ItemList[4]);
-			BuyWindow::GetBuyWindow()->IsValid = false;
 			break;
 		case 5:
 			Cancle();
@@ -135,6 +143,16 @@ void BuyWindow::Update(float _DeltaTime)
 			break;
 		}
 	}
+}
+
+void BuyWindow::UpdateStart()
+{
+	InputControlHandle = InputControll::UseControll();
+}
+
+void BuyWindow::UpdateEnd()
+{
+	InputControlHandle = InputControll::ResetControll(InputControlHandle);
 }
 
 void BuyWindow::StateToRender()

@@ -112,6 +112,11 @@ void FieldMainMenu::UpdateStart()
 
 void FieldMainMenu::Update(float _DeltaTime)
 {
+	if (false == InputControll::CanControll())
+	{
+		return;
+	}
+
 	if (GameEngineInput::IsDown("Menu_Up"))
 	{
 		ChangeStatePrev();

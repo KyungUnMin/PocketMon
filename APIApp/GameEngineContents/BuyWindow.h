@@ -28,6 +28,9 @@ public:
 		return AcBuyWindow;
 	}
 
+	void On() override;
+	void Off() override;
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -54,6 +57,10 @@ private:
 
 	int State = 0;
 
+	int InputControlHandle = -1;
+
+	void UpdateStart();
+	void UpdateEnd();
 
 	void StateToRender();
 	void ChangeStatePrev();
