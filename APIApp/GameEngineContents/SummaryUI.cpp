@@ -376,8 +376,7 @@ void SummaryUI::SetPokemonData()
 	Skill_EXP->SetText(Pokemon->ForUI_GetMonsterExperience(), "Font_Dialog_Black2.bmp", false);
 	Skill_NextEXP->SetText(std::to_string(100 - Pokemon->GetMonsterExperience()), "Font_Dialog_Black2.bmp", false);
 
-	PokeSkillBase* Skills = Pokemon->GetMonsterSkillList();
-	for (int i = 0; i < Skills.)
+	//PokeSkillBase* Skills = Pokemon->GetMonsterSkillList();
 	for (int i = 0; i < 4; i++)
 	{
 		Move_Moves[i].Type->SetFrame(17);
