@@ -323,6 +323,9 @@
     <ClCompile Include="BattleSkill_EnemyTackle.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>FieldUI\BagUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />

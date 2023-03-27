@@ -20,7 +20,7 @@ void PlayerBag::AddItem(ItemCode _ItemCode)
 	{
 		if (Items[i].GetItemCode() == _ItemCode)
 		{
-			Items[i].Num++;
+			Items[i].AddNum(1);
 			return;
 		}
 	}
@@ -28,22 +28,22 @@ void PlayerBag::AddItem(ItemCode _ItemCode)
 	{
 		if (PokeBalls[i].GetItemCode() == _ItemCode)
 		{
-			PokeBalls[i].Num++;
+			PokeBalls[i].AddNum(1);
 			return;
 		}
 	}
 
 	if (_ItemCode < ItemCode::Bike)
 	{
-		Items.insert(Items.begin(), Item(_ItemCode));
+		Items.insert(Items.begin(), Item::GetItem(_ItemCode));
 	}
 	else if (_ItemCode == ItemCode::Bike)
 	{
-		KeyItems.insert(KeyItems.begin(), Item(_ItemCode));
+		KeyItems.insert(KeyItems.begin(), Item::GetItem(_ItemCode));
 	}
 	else
 	{
-		PokeBalls.insert(PokeBalls.begin(), Item(_ItemCode));
+		PokeBalls.insert(PokeBalls.begin(), Item::GetItem(_ItemCode));
 	}
 }
 
@@ -54,8 +54,8 @@ void PlayerBag::RemoveItem(ItemCode _ItemCode)
 	{
 		if (Items[i].GetItemCode() == _ItemCode)
 		{
-			
-			if (0 >= --Items[i].Num)
+			Items[i].AddNum(-1);
+			if (0 >= Items[i].GetNum())
 			{
 				Items.erase(Items.begin() + i);
 				int a = 0;
@@ -67,7 +67,8 @@ void PlayerBag::RemoveItem(ItemCode _ItemCode)
 	{
 		if (PokeBalls[i].GetItemCode() == _ItemCode)
 		{
-			if (0 >= --PokeBalls[i].Num)
+			Items[i].AddNum(-1);
+			if (0 >= PokeBalls[i].GetNum())
 			{
 				PokeBalls.erase(PokeBalls.begin() + i);
 			}
@@ -180,12 +181,12 @@ void PlayerBag::Start()
 	// 아이템 생성
 	{
 		Items.reserve(5);
-		Items.push_back(Item(ItemCode::Cancel));
+		Items.push_back(Item::GetItem(ItemCode::Cancel));
 		KeyItems.reserve(2);
-		KeyItems.push_back(Item(ItemCode::Bike));
-		KeyItems.push_back(Item(ItemCode::Cancel));
+		KeyItems.push_back(Item::GetItem(ItemCode::Bike));
+		KeyItems.push_back(Item::GetItem(ItemCode::Cancel));
 		PokeBalls.reserve(5);
-		PokeBalls.push_back(Item(ItemCode::Cancel));
+		PokeBalls.push_back(Item::GetItem(ItemCode::Cancel));
 	}
 	// 가방위치 지정
 	ChangeSpace(BagSpace::Items);
@@ -359,7 +360,7 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
 	for (int i = 0; i < CurrentSpaceItems.size(); i++)
 	{
-		ItemName[i]->SetText(CurrentSpaceItems[i].GetName());
+		ItemName[i]->SetText(CurrentSpaceItems[i].GetItemName());
 		if (CurrentSpaceItems[i].GetItemCode() == ItemCode::Cancel)
 		{
 			ItemNumSign[i]->Off();
@@ -367,7 +368,7 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 			break;
 		}
 		ItemNumSign[i]->On();
-		ItemNum[i]->SetText(std::to_string(CurrentSpaceItems[i].Num));
+		ItemNum[i]->SetText(std::to_string(CurrentSpaceItems[i].GetNum()));
 	}
 	// 남은 공간이 있으면 지움
 	for (size_t i = CurrentSpaceItems.size(); i < ItemName.size(); i++)
@@ -453,7 +454,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(Items[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp", 2, false);
+		ItemInfo->SetText(Items[CurrentCursor].GetItemExplanation(), "Font_Dialog_White.bmp", 2, false);
 		IconRender->SetFrame(Items[CurrentCursor].GetItemCodeInt());
 	}
 	else if (CurrentSpace == BagSpace::KeyItems)
@@ -462,7 +463,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(KeyItems[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp", 2, false);
+		ItemInfo->SetText(KeyItems[CurrentCursor].GetItemExplanation(), "Font_Dialog_White.bmp", 2, false);
 		IconRender->SetFrame(KeyItems[CurrentCursor].GetItemCodeInt());
 	}
 	else if (CurrentSpace == BagSpace::PokeBalls)
@@ -471,7 +472,7 @@ void PlayerBag::CursorMove()
 		{
 			return;
 		}
-		ItemInfo->SetText(PokeBalls[CurrentCursor].GetInfo(), "Font_Dialog_White.bmp",2, false);
+		ItemInfo->SetText(PokeBalls[CurrentCursor].GetItemExplanation(), "Font_Dialog_White.bmp",2, false);
 		IconRender->SetFrame(PokeBalls[CurrentCursor].GetItemCodeInt());
 	}
 	CursorRender->SetPosition({ 372, 68.0f + 64 * CurrentCursor });
@@ -497,7 +498,7 @@ void PlayerBag::SelectOn()
 	ItemInfo->Off();
 	TextBox->On();
 	SelectBox->On();
-	ItemSelectText->SetText(CurrentSpaceItems[CurrentCursor].GetName() + std::string(" is\nselected."));
+	ItemSelectText->SetText(CurrentSpaceItems[CurrentCursor].GetItemName().data() + std::string(" is\nselected."));
 	ItemSelectText->On();
 	SelectText->On();
 	SelectCursorRender->On();
@@ -507,7 +508,7 @@ void PlayerBag::SelectOn()
 	// 전투 중 일때
 	if (true == IsBattle)
 	{
-		if (true == CurrentSpaceItems[CurrentCursor].GetIsBattleItem())
+		if (true == CurrentSpaceItems[CurrentCursor].IsBattleuse())
 		{
 			SelectText->SetText("USE\nCANCEL");
 			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
