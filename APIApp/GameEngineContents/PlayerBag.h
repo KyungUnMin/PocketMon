@@ -51,6 +51,19 @@ public:
 	bool GetIsBattle() {
 		return IsBattle;
 	}
+
+	int GetMoney()
+	{
+		return Money;
+	}
+	void AddMoney(int _Money)
+	{
+		Money += _Money;
+	}
+	void MinusMoney(int _Money)
+	{
+		Money -= _Money;
+	}
 	// delete Function
 	PlayerBag(const PlayerBag& _Other) = delete;
 	PlayerBag(PlayerBag&& _Other) = delete;
@@ -74,7 +87,7 @@ private:
 	int SelectSize = 0;
 	bool IsBattle = false;
 	bool IsItemSelect = false;
-
+	int Money = 10000;
 	// _____________Renders
 	GameEngineRender* BagRender = nullptr;		// 가방 이미지
 	GameEngineRender* TextBox = nullptr;		// 텍스트 상자

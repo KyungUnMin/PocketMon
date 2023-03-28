@@ -153,6 +153,11 @@ void PokemonUI::Start()
 
 void PokemonUI::Update(float _DeltaTime)
 {
+	if (GameEngineInput::IsDown("FieldUITestSwitch"))
+	{
+		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
+		PokeDataSetting();
+	}
 	AnimUpdate(_DeltaTime);
 	if (true == IsPotionUse)
 	{
@@ -306,12 +311,12 @@ void PokemonUI::PokeDataSetting()
 			PokemonNameText[i]->SetText(Pokemons[i].ForUI_GetMonsterName(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 레벨
 			PokemonLevelText[i]->SetText(Pokemons[i].ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
-			// 포켓몬 HP
-			PokemonCurrentHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
 			// 포켓몬 최대 HP
 			PokemonMaxHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterMaxHP(), "Font_Dialog_White.bmp", 3, false);
 			// 지닌 물건
 			Pokemons[i].GetPossession() != ItemCode::Cancel ? PokemonItem[i]->On() : PokemonItem[i]->Off();
+			// 포켓몬 HP
+			PokemonCurrentHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
@@ -355,23 +360,49 @@ void PokemonUI::CursorMove()
 	{
 		for (int i = 0; i < CursorRender.size(); i++)
 		{
+			if (i < Pokemons.size() && 0 >= Pokemons[i].GetMonsterCurrentHP())
+			{
+				CursorRender[i]->SetFrame(4);
+				continue;
+			}
 			CursorRender[i]->SetFrame(0);
+		}
+		if (CurrentCursor < Pokemons.size() && 0 >= Pokemons[CurrentCursor].GetMonsterCurrentHP())
+		{
+			CursorRender[CurrentCursor]->SetFrame(5);
+			return;
 		}
 		CursorRender[CurrentCursor]->SetFrame(1);
 		return;
 	}
+
 	for (int i = 0; i < CursorRender.size(); i++)
 	{
+		if (i < Pokemons.size() && 0 >= Pokemons[i].GetMonsterCurrentHP())
+		{
+			CursorRender[i]->SetFrame(4);
+			continue;
+		}
 		CursorRender[i]->SetFrame(0);
 	}
-	CursorRender[SwitchCursor]->SetFrame(2);
+	if (SwitchCursor < Pokemons.size() && 0 >= Pokemons[SwitchCursor].GetMonsterCurrentHP())
+	{
+		CursorRender[SwitchCursor]->SetFrame(5);
+	}
+	else
+	{
+		CursorRender[SwitchCursor]->SetFrame(2);
+	}
 	if (CurrentCursor == CursorRender.size() - 1)
 	{
 		CursorRender[CurrentCursor]->SetFrame(1);
 		return;
 	}
+	if (CurrentCursor < Pokemons.size() && 0 >= Pokemons[CurrentCursor].GetMonsterCurrentHP())
+	{
+		CursorRender[CurrentCursor]->SetFrame(5);
+	}
 	CursorRender[CurrentCursor]->SetFrame(3);
-
 }
 
 void PokemonUI::SelectOn()
@@ -545,13 +576,17 @@ void PokemonUI::Shift()
 
 void PokemonUI::PotionUse()
 {
-	Pokemons[CurrentCursor].ForInven_UsePotion();
-	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
-	PokeDataSetting();
 	IsPotionUse = true;
+	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
+
+	HPStart = Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float();
+	Pokemons[CurrentCursor].ForInven_UsePotion();
+	HPEnd = Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float();
 
 	BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 
+	PotionTimer = 0;
+	//PokeDataSetting();
 	return;
 
 	
@@ -561,7 +596,13 @@ void PokemonUI::PotionUpdate(float _DeltaTime)
 {
 	// Lerp를 통해 체력바 회복
 	// 회복이 끝나면 텍스트가 나오고 확인버튼 눌러서 이전 레벨로 이동
-
+	float a = std::lerp(HPStart, HPEnd, std::min<float>(1, PotionTimer));
+	if (1.5f < PotionTimer)
+	{
+		IsPotionUse = false;
+		PocketMonCore::GetInst().ChangeLevel("BagLevel");
+	}
+	PotionTimer += _DeltaTime;
 }
 
 void PokemonUI::SetBarText()

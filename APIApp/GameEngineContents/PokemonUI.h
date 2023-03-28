@@ -74,6 +74,9 @@ private:
 	bool IsBattle = false;
 	bool IsPotionUse = false;
 	bool IsPotionUseEnd = false;
+	float HPStart;
+	float HPEnd;
+	float PotionTimer;
 	ItemCode CurrentItemCode = ItemCode::Cancel;
 
 	void PokeDataSetting();
