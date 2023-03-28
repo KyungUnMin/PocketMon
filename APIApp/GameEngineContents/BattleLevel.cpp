@@ -84,7 +84,7 @@ void BattleLevel::Init_Level(
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitGroundRenders(_FieldType, _NpcType, _EnemyMonsters);
 
-	BattleFsmPtr = new BattleFSM;
+	BattleFsmPtr = new BattleFSM(nullptr);
 	BattleFsmPtr->Init(_FieldType, _NpcType);
 }
 

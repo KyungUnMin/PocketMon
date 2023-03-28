@@ -24,7 +24,7 @@ public:
 		return FsmPtr;
 	}
 
-	inline GameEngineRender* GetRender()
+	inline GameEngineRender* GetRender() override
 	{
 		return MonsterRender;
 	}
@@ -35,6 +35,8 @@ public:
 	}
 
 	void Lock();
+
+	void KillMonster();
 
 protected:
 	void Update(float _DeltaTime) override;

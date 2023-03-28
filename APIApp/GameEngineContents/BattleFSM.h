@@ -5,22 +5,29 @@
 enum class BattleStateType
 {
 	WildTalk,
+	RivalTalk,
+
 	PlayerTurn,
 	EnemyTurn,
 	ThrowMonsterBall,
 	CatchWildMonster,
-	RivalTalk,
 	CheckPlayerHP,
 	CheckEnemyHP,
+
+	StageWin,
+	StageLose,
+	BattleWin,
+	BattleLose,
 
 	COUNT,
 };
 
 
+
 class BattleFSM : public BattleFSMBase
 {
 public:
-	BattleFSM();
+	BattleFSM(class GameEngineActor* _Owner);
 	~BattleFSM() override;
 
 	BattleFSM(const BattleFSM& _Other) = delete;

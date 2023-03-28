@@ -18,7 +18,7 @@ BattlePlayer_ThrowState::~BattlePlayer_ThrowState()
 void BattlePlayer_ThrowState::EnterState()
 {
 	BattlePlayer* Player = BattlePlayer::PlayerPtr;
-	PlayerRender = Player->GetPlayerRender();
+	PlayerRender = Player->GetTrainerRender();
 	PlayerRender->CreateAnimation
 	({
 		.AnimationName = "Throw",

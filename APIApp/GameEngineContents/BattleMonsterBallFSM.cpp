@@ -8,7 +8,8 @@
 #include "BattleMonsterBall_CatchState.h"
 #include "BattleMonsterBall_FadeState.h"
 
-BattleMonsterBallFSM::BattleMonsterBallFSM()
+BattleMonsterBallFSM::BattleMonsterBallFSM(GameEngineActor* _Owner)
+	:BattleFSMBase(_Owner)
 {
 
 }

@@ -20,7 +20,7 @@ enum class BattleBallType;
 class BattleMonsterBallFSM : public BattleFSMBase
 {
 public:
-	BattleMonsterBallFSM();
+	BattleMonsterBallFSM(class GameEngineActor* _Owner);
 	~BattleMonsterBallFSM() override;
 
 	BattleMonsterBallFSM(const BattleMonsterBallFSM& _Other) = delete;

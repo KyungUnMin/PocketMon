@@ -10,8 +10,11 @@
 #include "BattleState_RivalTalk.h"
 #include "BattleState_EnemyHPCheck.h"
 #include "BattleState_PlayerHPCheck.h"
+#include "BattleState_StageWin.h"
+#include "BattleState_StageLose.h"
 
-BattleFSM::BattleFSM()
+BattleFSM::BattleFSM(GameEngineActor* _Owner)
+	:BattleFSMBase(_Owner)
 {
 	
 }
@@ -35,6 +38,8 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
 	CreateState<BattleState_PlayerHPCheck>(BattleStateType::CheckPlayerHP);
 	CreateState<BattleState_EnemyHPCheck>(BattleStateType::CheckEnemyHP);
+	CreateState<BattleState_StageWin>(BattleStateType::StageWin);
+	CreateState<BattleState_StageLose>(BattleStateType::StageLose);
 
 
 	switch (_NpcType)

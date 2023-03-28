@@ -29,7 +29,7 @@ void BattleState_EnemyHPCheck::EnterState()
 	}
 	else
 	{
-		int a = 0;
+		NextState = static_cast<int>(BattleStateType::StageWin);
 	}
 
 }
@@ -40,7 +40,7 @@ void BattleState_EnemyHPCheck::Update(float _DeltaTime)
 	if (Timer < NextStateTime)
 		return;
 
-	GetFSM()->ChangeState(static_cast<BattleStateType>(NextState));
+	GetFSM()->ChangeState(NextState);
 }
 
 void BattleState_EnemyHPCheck::ExitState()

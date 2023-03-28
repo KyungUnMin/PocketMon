@@ -5,6 +5,7 @@ enum class BattlePlayerMonster_StateType
 {
 	Create,
 	Idle,
+	Dead,
 
 	Skill_Tackle,
 
@@ -14,7 +15,7 @@ enum class BattlePlayerMonster_StateType
 class BattlePlayerMonsterFSM : public BattleFSMBase
 {
 public:
-	BattlePlayerMonsterFSM();
+	BattlePlayerMonsterFSM(class GameEngineActor* _Owner);
 	~BattlePlayerMonsterFSM() override;
 
 	BattlePlayerMonsterFSM(const BattlePlayerMonsterFSM& _Other) = delete;

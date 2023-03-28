@@ -4,7 +4,8 @@
 #include "BattleLevel.h"
 #include "BattleEnemy.h"
 
-BattleEnemyFSM::BattleEnemyFSM()
+BattleEnemyFSM::BattleEnemyFSM(GameEngineActor* _Owner)
+	:BattleFSMBase( _Owner)
 {
 
 }

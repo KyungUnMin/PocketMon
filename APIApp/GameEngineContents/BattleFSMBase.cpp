@@ -2,7 +2,8 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include "BattleStateBase.h"
 
-BattleFSMBase::BattleFSMBase()
+BattleFSMBase::BattleFSMBase(GameEngineActor* _Owner)
+	:Owner(_Owner)
 {
 
 }
@@ -45,14 +46,14 @@ void BattleFSMBase::ChangeState(size_t _NextIndex)
 		return;
 	}
 
+	CurIndex = _NextIndex;
+
 	if (nullptr != PrevState)
 	{
 		PrevState->ExitState();
 	}
 
 	NextState->EnterState();
-
-	CurIndex = _NextIndex;
 }
 
 
@@ -86,4 +87,16 @@ void BattleFSMBase::Update(float _DeltaTime)
 void BattleFSMBase::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	MsgAssert("이 함수를 오버라이딩 하지 않았거나 오버로딩 하지 않았습니다");
+}
+
+
+GameEngineActor* BattleFSMBase::GetOwner()
+{
+	if (nullptr == Owner)
+	{
+		MsgAssert("FSM의 오너를 설정해준적이 없습니다");
+		return nullptr;
+	}
+
+	return Owner;
 }

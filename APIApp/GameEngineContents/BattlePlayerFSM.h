@@ -13,7 +13,7 @@ enum class BattlePlayer_StateType
 class BattlePlayerFSM : public BattleFSMBase
 {
 public:
-	BattlePlayerFSM();
+	BattlePlayerFSM(class GameEngineActor* _Owner);
 	~BattlePlayerFSM() override;
 
 	BattlePlayerFSM(const BattlePlayerFSM& _Other) = delete;

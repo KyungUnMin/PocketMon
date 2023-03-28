@@ -16,7 +16,7 @@ BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 BattlePlayer::BattlePlayer()
 {
 	PlayerPtr = this;
-	FsmPtr = new BattlePlayerFSM;
+	FsmPtr = new BattlePlayerFSM(this);
 }
 
 BattlePlayer::~BattlePlayer()

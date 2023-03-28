@@ -14,7 +14,7 @@ const std::string_view BattleMonsterBall::MonsterBallName = "BattleMonsterBall";
 
 BattleMonsterBall::BattleMonsterBall()
 {
-	FsmPtr = new BattleMonsterBallFSM;
+	FsmPtr = new BattleMonsterBallFSM(this);
 }
 
 BattleMonsterBall::~BattleMonsterBall()

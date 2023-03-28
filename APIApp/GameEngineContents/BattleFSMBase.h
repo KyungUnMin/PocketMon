@@ -5,11 +5,12 @@
 class BattleStateBase;
 enum class BattleFieldType;
 enum class BattleNpcType;
+class GameEngineActor;
 
 class BattleFSMBase
 {
 public:
-	BattleFSMBase();
+	BattleFSMBase(GameEngineActor* _Owner);
 	virtual ~BattleFSMBase() = 0;
 
 	BattleFSMBase(const BattleFSMBase& _Other) = delete;
@@ -34,6 +35,9 @@ public:
 
 	virtual void Init(BattleFieldType _FieldType, BattleNpcType _NpcType);
 
+
+	GameEngineActor* GetOwner();
+
 protected:
 	template <typename EnumType>
 	void ResizeStates(EnumType _Count)
@@ -51,6 +55,7 @@ protected:
 private:
 	std::vector<BattleStateBase*> AllState;
 	size_t CurIndex = 999999;
+	GameEngineActor* Owner = nullptr;
 
 	void ChangeState(size_t _NextIndex);
 

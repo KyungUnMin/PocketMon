@@ -3,9 +3,11 @@
 #include "BattleStateIdle.h"
 #include "BattleEnemyMonster_LockState.h"
 #include "BattleSkill_EnemyTackle.h"
+#include "BattleState_MonsterDead.h"
 
 
-BattleEnemyMonsterFSM::BattleEnemyMonsterFSM()
+BattleEnemyMonsterFSM::BattleEnemyMonsterFSM(GameEngineActor* _Owner)
+	:BattleFSMBase(_Owner)
 {
 
 }
@@ -22,6 +24,8 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);
 	CreateState<BattleEnemyMonster_LockState>(BattleEnemyMonster_StateType::Lock);
+	CreateState<BattleState_MonsterDead>(BattleEnemyMonster_StateType::Dead);
+
 	CreateState<BattleSkill_EnemyTackle>(BattleEnemyMonster_StateType::Skill_Tackle);
 
 	if (true == _IsWildMonster)

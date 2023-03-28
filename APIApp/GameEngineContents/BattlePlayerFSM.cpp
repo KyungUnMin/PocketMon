@@ -3,7 +3,8 @@
 #include "BattleStateIdle.h"
 #include"BattlePlayer_ThrowState.h"
 
-BattlePlayerFSM::BattlePlayerFSM()
+BattlePlayerFSM::BattlePlayerFSM(GameEngineActor* _Owner)
+	:BattleFSMBase(_Owner)
 {
 
 }

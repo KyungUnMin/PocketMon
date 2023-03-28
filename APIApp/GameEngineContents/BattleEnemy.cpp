@@ -14,7 +14,7 @@ BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 BattleEnemy::BattleEnemy()
 {
 	EnemyPtr = this;
-	FsmPtr = new BattleEnemyFSM;
+	FsmPtr = new BattleEnemyFSM(this);
 }
 
 BattleEnemy::~BattleEnemy()
@@ -114,6 +114,11 @@ bool BattleEnemy::CreateMonster()
 
 	if (CurIndex == MonsterDatas.size())
 		return false;
+
+	if (nullptr != Monster)
+	{
+		Monster->Death();
+	}
 
 	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);

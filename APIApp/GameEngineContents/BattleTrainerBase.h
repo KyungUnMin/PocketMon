@@ -15,6 +15,8 @@ public:
 	BattleTrainerBase& operator=(const BattleTrainerBase& _Other) = delete;
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
 
+	virtual class GameEngineRender* GetTrainerRender() = 0;
+
 protected:
 
 private:

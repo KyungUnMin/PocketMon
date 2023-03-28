@@ -4,11 +4,13 @@
 #include "ContentsEnum.h"
 #include "Battle_MonsterAppearEffect.h"
 #include "BattlePlayerMonsterFSM.h"
+#include "BattleFSM.h"
+#include "BattleLevel.h"
 
 
 BattleMonsterPlayer::BattleMonsterPlayer()
 {
-	FsmPtr = new BattlePlayerMonsterFSM;
+	FsmPtr = new BattlePlayerMonsterFSM(this);
 }
 
 BattleMonsterPlayer::~BattleMonsterPlayer()
@@ -42,6 +44,19 @@ void BattleMonsterPlayer::RenderCreate()
 	AppearRender->SetAlpha(200);*/
 }
 
+
+void BattleMonsterPlayer::KillMonster()
+{
+	BattleFSM* GameFSM = BattleLevel::BattleLevelPtr->GetBattleFSM();
+	BattleStateType NowGameState = GameFSM->GetNowState<BattleStateType>();
+	if (BattleStateType::StageLose != NowGameState)
+	{
+		MsgAssert("플레이어가 현재 대결에서 패배한 상태일때만 플레이어 몬스터를 죽일수 있습니다");
+		return;
+	}
+
+	FsmPtr->ChangeState(BattlePlayerMonster_StateType::Dead);
+}
 
 void BattleMonsterPlayer::Update(float _DeltaTime)
 {

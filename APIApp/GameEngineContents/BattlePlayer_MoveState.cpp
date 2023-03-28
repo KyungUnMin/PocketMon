@@ -32,7 +32,7 @@ void BattlePlayer_MoveState::EnterState()
 void BattlePlayer_MoveState::CreatePlayerRender()
 {
 	Player = BattlePlayer::PlayerPtr;
-	GameEngineRender* RenderPtr = Player->GetPlayerRender();
+	GameEngineRender* RenderPtr = Player->GetTrainerRender();
 	RenderPtr->CreateAnimation
 	({
 		.AnimationName = "Idle",

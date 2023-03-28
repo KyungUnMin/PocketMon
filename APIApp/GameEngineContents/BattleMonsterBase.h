@@ -31,7 +31,7 @@ public:
 		return &DbPtr;
 	}
 
-
+	virtual class GameEngineRender* GetRender() = 0;
 
 protected:
 	void Init(PokeNumber _MonsterType);

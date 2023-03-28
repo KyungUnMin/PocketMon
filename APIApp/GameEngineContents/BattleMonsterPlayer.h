@@ -17,7 +17,7 @@ public:
 
 	void Init(PokeNumber _MonsterType);
 
-	inline GameEngineRender* GetRender()
+	inline GameEngineRender* GetRender() override
 	{
 		return RenderPtr;
 	}
@@ -26,6 +26,8 @@ public:
 	{
 		return FsmPtr;
 	}
+
+	void KillMonster();
 
 protected:
 	void Update(float _DeltaTime) override;

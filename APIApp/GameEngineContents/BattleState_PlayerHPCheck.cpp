@@ -29,7 +29,7 @@ void BattleState_PlayerHPCheck::EnterState()
 	}
 	else
 	{
-		int a = 0;
+		NextState = static_cast<int>(BattleStateType::StageLose);
 	}
 }
 
@@ -39,7 +39,7 @@ void BattleState_PlayerHPCheck::Update(float _DeltaTime)
 	if (Timer < NextStateTime)
 		return;
 
-	GetFSM()->ChangeState(static_cast<BattleStateType>(NextState));
+	GetFSM()->ChangeState(NextState);
 }
 
 
