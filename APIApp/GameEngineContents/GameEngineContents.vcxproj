@@ -383,6 +383,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="LevelChangeFade.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="LevelUpStatUI.cpp" />
     <ClCompile Include="LevelUpStatUI_2.cpp" />
     <ClCompile Include="Logo_Back1.cpp" />
@@ -718,6 +722,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ItemDataBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="LevelChangeFade.h">
       <SubType>
       </SubType>
     </ClInclude>
