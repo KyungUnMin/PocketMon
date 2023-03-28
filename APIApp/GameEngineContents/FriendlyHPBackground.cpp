@@ -66,14 +66,14 @@ void FriendlyHPBackground::Start()
 	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 380 });
 
 
-	for (int i = 10; i >= 1; i--) {
-		
-		DamegeTick.push_back(damege + ((192.0f-damege))/ 10 *i); /*현재 HP - (데미지 / 10 *)1*/
-		
-	}
-	if (damege == 0) {
+	//for (int i = 10; i >= 1; i--) {
+	//	
+	//	DamegeTick.push_back(damege + ((192.0f-damege))/ 10 *i); /*현재 HP - (데미지 / 10 *)1*/
+	//	
+	//}
+	/*if (damege == 0) {
 		DamegeTick[9] = damege;
-	}
+	}*/
 	for (int i = 1; i <= 10; i++) {
 		EXPTick.push_back((ExpNum / 10) * i);
 	}
@@ -129,27 +129,36 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
 //	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
+	HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
+//	HpUpdate(20.0f, 100.0f);
 
-	NextTickTime += _DeltaTime;
-	if (NextTickTime > 0.1f) {
-		NextTickTime = 0;
-		if(TickNumber!=10){
-		HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
-		HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber] )/ 2 , 360.0f });
-		TickNumber++;
+
+	if (BattleStartCheck == true) {
+		NextTickTime += _DeltaTime;
+		if (NextTickTime > 0.1f) {
+			NextTickTime = 0;
+			if (TickNumber != 10) {
+				HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
+				HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
+				TickNumber++;
+			}
+		}
+
+		NextTickTime_1 += _DeltaTime;
+		if (NextTickTime_1 > 0.1f) {
+			NextTickTime_1 = 0;
+			if (TickNumber_1 != 10) {
+				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
+				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
+				TickNumber_1++;
+			}
+		}
+		if (TickNumber == 10 && TickNumber_1 == 10) {
+			BattleStartCheck = false;
+			CurHpRender(HPRenderPtr, DamegeTick);
+
 		}
 	}
-
-	NextTickTime_1 += _DeltaTime;
-	if (NextTickTime_1 > 0.1f) {
-		NextTickTime_1 = 0;
-		if (TickNumber_1 != 10) {
-			EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
-			EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
-			TickNumber_1++;
-		}
-	}
-
 }
 
 
@@ -157,17 +166,49 @@ void FriendlyHPBackground::Render(float _DeltaTime)
 {
 	
 }
-void FriendlyHPBackground::RenderTick(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime,float _RenderPos ,int _tickNum, float4 _pos)
+
+void FriendlyHPBackground::CurHpRender(GameEngineRender* _Render, std::vector<float> _Tick)
 {
-	//1초가 지나면 들어와
+	_Render->SetScale(float4{ _Tick[9], 172 });
+	_Render->SetPosition({ 560.0f - (192.0f - _Tick[9]) / 2 , 360.0f });
+	Clear(DamegeTick);
 
-	
-	for (size_t x = 0; x < _Tick.size(); x++)
-		{
+}
 
-				_Render->SetScale(float4{ _Tick[x], 172 });
-				_Render->SetPosition({ _pos.x - (_RenderPos - _Tick[x]) / 2 , _pos.y});
-		}
+void FriendlyHPBackground::Clear(std::vector<float> _Tick)
+{
+	_Tick.erase(_Tick.begin(), _Tick.end());
+	int a = 0;
+}
+
+
+
+void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp)
+{
+	float Hpmag = _EnumyMonsterDamage / _MyCurHp;
+	float damege = GameEngineMath::Lerp(192.0f, 0.0f, Hpmag);
+
+	for (int i = 10; i >= 1; i--) {
+
+		DamegeTick.push_back(damege + ((192.0f - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
+
+	}
+	CurMyHP = DamegeTick[9];
+
+}
+
+
+
+bool FriendlyHPBackground::IsBattleStartCheck(bool _Value)
+{
+	BattleStartCheck = _Value;
+	return BattleStartCheck;
+}
+
+float FriendlyHPBackground::GetMonsterDamage(int _EnumyMonsterDamage)
+{
+	EnumyMonsterDamage = _EnumyMonsterDamage;
+	return EnumyMonsterDamage;
 }
 
 

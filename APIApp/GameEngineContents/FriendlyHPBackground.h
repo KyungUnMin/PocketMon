@@ -3,7 +3,7 @@
 #include "BattleCommendActor.h"
 #include <vector>
 #include <GameEngineContents/PokeDataBase.h>
-
+#include "BattleEnemy.h"
 // Ό³Έν :
 class FriendlyHPBackground : public GameEngineActor
 {
@@ -18,13 +18,17 @@ public:
 	FriendlyHPBackground& operator=(const FriendlyHPBackground& _Other) = delete;
 	FriendlyHPBackground& operator=(FriendlyHPBackground&& _Other) noexcept = delete;
 
-	void RenderTick(GameEngineRender* _Render , std::vector<float> _Tick, float _DeltaTime , float _RenderPos, int _tickNum , float4 _pos);
+
+	bool IsBattleStartCheck(bool _Value);
+	float GetMonsterDamage(int _EnumyMonsterDamage);
+	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
-
-
+	void CurHpRender(GameEngineRender* _Render, std::vector<float> _Tick);
+	void Clear(std::vector<float> _Tick);
 
 private:
 
@@ -60,12 +64,18 @@ private:
 
 	std::vector<float> DamegeTick;
 
+	bool BattleStartCheck = true;
 
 	std::vector<float> EXPTick;
 
 	float NextTickTime = 0.0f;
 	float NextTickTime_1 = 0.0f;
 
+
+	float CurMyHP = 0.0f;
+
+	float EnumyMonsterDamage = 0.0f;
+	float MyCurHp = 0.0f;
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
 

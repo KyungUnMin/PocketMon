@@ -31,7 +31,7 @@ void BackTextActor::Start()
 	{
 		for (size_t x = 0; x < BattleTextRender[y].size(); x++)
 		{
-			BattleTextRender[y][x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+			BattleTextRender[y][x] = CreateRender("Font_Dialog_White.bmp", BattleRenderOrder::Battle_Text);
 			BattleTextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
 			BattleTextRender[y][x]->SetScale(TextRenderImageScale);
 			BattleTextRender[y][x]->SetFrame(SpaceFrameNum);
