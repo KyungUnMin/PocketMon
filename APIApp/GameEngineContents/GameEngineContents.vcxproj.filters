@@ -404,6 +404,9 @@
     <ClCompile Include="BattleState_PlayerHPCheck.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\07.PlayerHPCheck</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_StageWin.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\08.StageWin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -796,6 +799,9 @@
     </ClInclude>
     <ClInclude Include="BattleState_PlayerHPCheck.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\07.PlayerHPCheck</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_StageWin.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\08.StageWin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

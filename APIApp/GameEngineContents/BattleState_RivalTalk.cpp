@@ -28,7 +28,7 @@ void BattleState_RivalTalk::EnterState()
 
 	SetTextEvent(1, []
 	{
-		BattleEnemy::EnemyPtr->CreateMonster(PokeNumber::Bulbasaur);
+		BattleEnemy::EnemyPtr->CreateMonster();
 	});
 
 	SetTextEvent(2, []

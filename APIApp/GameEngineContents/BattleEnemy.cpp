@@ -7,6 +7,7 @@
 #include "PokeDataBase.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleEnemyFSM.h"
+#include "PokeDataBase.h"
 
 BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 
@@ -37,6 +38,7 @@ void BattleEnemy::Init(BattleFieldType _FieldType, BattleNpcType _NpcType, const
 	FsmPtr->Init(_FieldType, _NpcType);
 	CreateGround(_FieldType);
 	RenderCreate(_NpcType);
+	
 }
 
 
@@ -92,26 +94,34 @@ void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 
 void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 {
+	//const float4 CreateOffset = float4::Up * 100.f;
+	
 	if (MonsterDatas.size() <= CurIndex)
 	{
 		MsgAssert("몬스터를 넣어주지 않았습니다");
 		return;
 	}
 	
-	//const float4 CreateOffset = float4::Up * 100.f;
-	
 	int PokeNum = MonsterDatas[CurIndex].GetPokeNumber();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(static_cast<PokeNumber>(PokeNum - 1), true);
+	++CurIndex;
 }
 
-void BattleEnemy::CreateMonster(PokeNumber _Number)
+bool BattleEnemy::CreateMonster()
 {
 	//const float4 CreateOffset = float4::Up * 100.f;
 
+	if (CurIndex == MonsterDatas.size())
+		return false;
+
+	int MonsterNum = MonsterDatas[CurIndex].GetPokeNumber();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(_Number, false);
+	Monster->Init(static_cast<PokeNumber>(MonsterNum - 1), false);
 	Monster->SetPos(GetPos());
+	++CurIndex;
+
+	return true;
 }
 
 

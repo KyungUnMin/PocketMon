@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleTrainerBase.h"
+#include "PokeDataBase.h"
 
 enum class BattleNpcType;
 class BattleMonsterEnemy;
@@ -28,7 +29,7 @@ public:
 	//Enemy FSM쪽에서 호출됨
 	void CreateWildMonster(BattleFieldType _FieldType);
 
-	void CreateMonster(PokeNumber _Number);
+	bool CreateMonster();
 
 	inline BattleMonsterEnemy* GetMonster()
 	{
@@ -46,6 +47,8 @@ public:
 	{
 		MonsterDatas = _Monsters;
 	}
+
+	//bool Next
 
 protected:
 	void Update(float _DeltaTime) override;

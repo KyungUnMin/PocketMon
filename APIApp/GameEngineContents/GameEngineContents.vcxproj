@@ -274,6 +274,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_StageWin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_TalkBase.cpp" />
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp" />
     <ClCompile Include="BattleState_WildTalk.cpp" />
@@ -582,6 +586,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_SkillBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_StageWin.h">
       <SubType>
       </SubType>
     </ClInclude>
