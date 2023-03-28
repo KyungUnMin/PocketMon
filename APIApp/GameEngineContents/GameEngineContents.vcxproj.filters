@@ -114,9 +114,6 @@
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp" />
-    <ClCompile Include="BackgroundUI.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClCompile>
@@ -128,9 +125,6 @@
     </ClCompile>
     <ClCompile Include="FieldmapBattleZone.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapFlower.cpp">
-      <Filter>Map\Actor</Filter>
     </ClCompile>
     <ClCompile Include="BuyLevel.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -340,9 +334,6 @@
     <ClCompile Include="InputControll.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="FieldmapCutableTree.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="LevelUpStatUI_2.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
@@ -417,6 +408,18 @@
     </ClCompile>
     <ClCompile Include="Logo_Charizard_White.cpp">
       <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapCutableTree.cpp">
+      <Filter>Map\Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapFlower.cpp">
+      <Filter>Map\Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>Map\Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="CityNameUI.cpp">
+      <Filter>Map\Actor\UI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -528,9 +531,6 @@
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBase.h" />
-    <ClInclude Include="BackgroundUI.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMonsterBase.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClInclude>
@@ -542,9 +542,6 @@
     </ClInclude>
     <ClInclude Include="FieldmapBattleZone.h">
       <Filter>Map\Actor\BattleZone</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapFlower.h">
-      <Filter>Map\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BuyLevel.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -747,9 +744,6 @@
     <ClInclude Include="InputControll.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="FieldmapCutableTree.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="LevelUpStatUI_2.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
@@ -824,6 +818,18 @@
     </ClInclude>
     <ClInclude Include="Logo_Charizard_White.h">
       <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapFlower.h">
+      <Filter>Map\Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapCutableTree.h">
+      <Filter>Map\Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundUI.h">
+      <Filter>Map\Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="CityNameUI.h">
+      <Filter>Map\Actor\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1129,6 +1135,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\11.BattleLose">
       <UniqueIdentifier>{13b6f34b-a00d-4b3b-b9f4-35c8a58c30d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\Object">
+      <UniqueIdentifier>{5113e2d0-7581-4b86-b062-e8f980155ee2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\UI">
+      <UniqueIdentifier>{fb5d7403-6ec3-43a3-9b3f-590c9f193f7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
