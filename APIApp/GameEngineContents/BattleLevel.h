@@ -61,6 +61,8 @@ public:
 
 	void LockWildPocketMon();
 
+	void ChangeFieldLevel();
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;

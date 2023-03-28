@@ -251,6 +251,14 @@
     </ClCompile>
     <ClCompile Include="BattleStateBase.cpp" />
     <ClCompile Include="BattleStateIdle.cpp" />
+    <ClCompile Include="BattleState_BattleLose.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_BattleWin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_CatchWhildMonster.cpp">
       <SubType>
       </SubType>
@@ -591,6 +599,14 @@
     </ClInclude>
     <ClInclude Include="BattleStateBase.h" />
     <ClInclude Include="BattleStateIdle.h" />
+    <ClInclude Include="BattleState_BattleLose.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_BattleWin.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_CatchWhildMonster.h">
       <SubType>
       </SubType>

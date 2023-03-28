@@ -210,3 +210,8 @@ void BattleLevel::LockWildPocketMon()
 	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
 }
 
+void BattleLevel::ChangeFieldLevel()
+{
+	PocketMonCore::GetInst().ChangeLevel("FieldLevel");
+}
+

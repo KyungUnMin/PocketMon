@@ -413,13 +413,14 @@
     <ClCompile Include="BattleState_StageLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClCompile>
-    <ClCompile Include="EffectBlackBox.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="CityNameUI.cpp" />
+    <ClCompile Include="EffectBlackBox.cpp" />
     <ClCompile Include="Logo_Charizard_White.cpp" />
-    <ClCompile Include="LevelChangeFade.cpp">
-      <Filter>FieldUI</Filter>
+    <ClCompile Include="BattleState_BattleLose.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_BattleWin.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\10.BattleWin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -823,13 +824,14 @@
     <ClInclude Include="BattleState_StageLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClInclude>
-    <ClInclude Include="EffectBlackBox.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="CityNameUI.h" />
+    <ClInclude Include="EffectBlackBox.h" />
     <ClInclude Include="Logo_Charizard_White.h" />
-    <ClInclude Include="LevelChangeFade.h">
-      <Filter>FieldUI</Filter>
+    <ClInclude Include="BattleState_BattleLose.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_BattleWin.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\10.BattleWin</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
