@@ -217,3 +217,20 @@ void Player::NPCtalkValueSet()
 		IsPlayerDirRIGHT = false;
 	}
 }
+
+void Player::JumpRight()
+{
+	ChangeState(PlayerState::JUMP);
+}
+void Player::JumpUp()
+{
+	ChangeState(PlayerState::JUMP);
+}
+void Player::JumpLeft()
+{
+	ChangeState(PlayerState::JUMP);
+}
+void Player::JumpDown()
+{
+	ChangeState(PlayerState::JUMP);
+}
