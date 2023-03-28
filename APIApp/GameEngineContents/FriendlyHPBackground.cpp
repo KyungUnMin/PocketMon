@@ -124,18 +124,14 @@ void FriendlyHPBackground::Start()
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
+	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	if (nullptr == DB)
+		return;
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
 	StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
-	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
-	if (nullptr == DB)
-		return;
 
-	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
-	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
-	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
-	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
 //	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
 	HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
