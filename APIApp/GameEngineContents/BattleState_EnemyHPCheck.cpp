@@ -31,7 +31,7 @@ void BattleState_EnemyHPCheck::EnterState()
 	{
 		NextState = static_cast<int>(BattleStateType::StageWin);
 	}
-
+	
 }
 
 void BattleState_EnemyHPCheck::Update(float _DeltaTime)

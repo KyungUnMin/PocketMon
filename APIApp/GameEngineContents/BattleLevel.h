@@ -34,6 +34,9 @@ public:
 	static BattleLevel* BattleLevelPtr;
 	static const std::string_view  BattleKeyName;
 
+	class FriendlyHPBackground* Test1 = nullptr;
+	class EnemyHPBackground* Test2 = nullptr;
+
 	BattleLevel();
 	~BattleLevel() override;
 
@@ -87,5 +90,15 @@ private:
 		BattleNpcType _NpcType = BattleNpcType::None);
 
 	BattleFieldType FieldConvertor(GroundType _FieldType);
+
+
+
+
+
+
+	
+
+
+
 };
 

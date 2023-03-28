@@ -5,6 +5,7 @@
 #include "BattlePlayer.h"
 #include "PokeDataBase.h"
 
+
 BattleState_PlayerHPCheck::BattleState_PlayerHPCheck()
 {
 
@@ -14,6 +15,9 @@ BattleState_PlayerHPCheck::~BattleState_PlayerHPCheck()
 {
 
 }
+
+#include "FriendlyHPBackground.h"
+#include "PokeBattleSystem.h"
 
 void BattleState_PlayerHPCheck::EnterState()
 {
@@ -31,6 +35,10 @@ void BattleState_PlayerHPCheck::EnterState()
 	{
 		NextState = static_cast<int>(BattleStateType::StageLose);
 	}
+
+	FriendlyHPBackground* PlayerHpUI = BattleLevel::BattleLevelPtr->Test1;
+	PlayerHpUI->IsBattleStartCheck(true);
+	PokeBattleSystem::Battle()
 }
 
 void BattleState_PlayerHPCheck::Update(float _DeltaTime)
