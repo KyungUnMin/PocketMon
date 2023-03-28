@@ -87,24 +87,27 @@ void PlayerBag::AddItem(ItemCode _ItemCode, int _Num)
 
 void PlayerBag::RemoveItem(ItemCode _ItemCode)
 {
-	for (size_t i = 0; i < Items.size(); i++)
+	if (_ItemCode < ItemCode::Bike)
 	{
-		if (Items[i].GetItemCode() == _ItemCode)
+		for (size_t i = 0; i < Items.size(); i++)
 		{
-			Items[i].AddNum(-1);
-			if (0 >= Items[i].GetNum())
+			if (Items[i].GetItemCode() == _ItemCode)
 			{
-				Items.erase(Items.begin() + i);
-				int a = 0;
+				Items[i].AddNum(-1);
+				if (0 >= Items[i].GetNum())
+				{
+					Items.erase(Items.begin() + i);
+					int a = 0;
+				}
+				return;
 			}
-			return;
 		}
 	}
 	for (size_t i = 0; i < PokeBalls.size(); i++)
 	{
 		if (PokeBalls[i].GetItemCode() == _ItemCode)
 		{
-			Items[i].AddNum(-1);
+			PokeBalls[i].AddNum(-1);
 			if (0 >= PokeBalls[i].GetNum())
 			{
 				PokeBalls.erase(PokeBalls.begin() + i);
@@ -326,14 +329,21 @@ void PlayerBag::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 
 void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	if (_PrevLevel->GetName() != "PokemonLevel")
+	if (_PrevLevel->GetName() == "PokemonLevel")
+	{
+		SelectOff();
+		ChangeSpace(CurrentSpace);
+		return;
+	}
+	else
 	{
 		PrevLevel = _PrevLevel;
+		if (PrevLevel->GetName() == "BattleLevel")
+		{
+			IsBattle = true;
+		}
 	}
-	if (PrevLevel->GetName() == "BattleLevel")
-	{
-		IsBattle = true;
-	}
+	
 	SelectOff();
 	ChangeSpace(BagSpace::Items);
 	CursorMove(0);

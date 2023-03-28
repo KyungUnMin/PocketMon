@@ -316,7 +316,7 @@ void PokemonUI::PokeDataSetting()
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
 			// 포켓몬 뒷 배경
-			PokemonBack[i]->SetFrame(4);
+			PokemonBack[i]->SetFrame(6);
 			PokemonRender[i]->Off();
 			PokemonNameText[i]->Off();
 			PokemonLevelText[i]->Off();
@@ -591,6 +591,10 @@ void PokemonUI::SetBarText()
 
 void PokemonUI::GiveItem()
 {
+	if (ItemCode::Cancel != Pokemons[CurrentCursor].GetPossession())
+	{
+		PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor].GetPossession());
+	}
 	Pokemons[CurrentCursor].SetPossession(CurrentItemCode);
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
@@ -664,5 +668,5 @@ void PokemonUI::AnimUpdate(float _DeltaTime)
 			PokemonRender[i]->SetFrame(0);
 		}
 	}
-	AnimTimer += _DeltaTime * 30;
+	AnimTimer += AnimSpeed * _DeltaTime;
 }
