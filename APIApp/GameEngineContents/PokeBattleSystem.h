@@ -28,6 +28,7 @@ public:
 	PokeBattleSystem& operator=(PokeBattleSystem&& _Other) noexcept = delete;
 
 	static BattleScript Battle(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
+
 	static int GetDamage()
 	{
 		return Damage;

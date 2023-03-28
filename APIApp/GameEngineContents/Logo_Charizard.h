@@ -22,6 +22,11 @@ public:
 	Logo_Charizard& operator=(const Logo_Charizard& _Other) = delete;
 	Logo_Charizard& operator=(Logo_Charizard&& _Other) noexcept = delete;
 
+	void GrayAnimationStart()
+	{
+		IsGrayStart = true;
+	}
+
 	void ColorGray()
 	{
 
@@ -35,7 +40,12 @@ private:
 	GameEngineRender* RenderPtr = nullptr;
 	ZardColor ColorSelect = ZardColor::Gray;
 
-	void ColorChange();
+	float GrayTime = 0.0f;
+
+	bool IsGrayStart = false;
+
+	void ChangeColor(ZardColor _Color);
+	void GaryAnimaion(float _Deltatime);
 
 };
 

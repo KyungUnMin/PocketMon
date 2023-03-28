@@ -84,6 +84,27 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 			_This->Zardlogo_White->On();
 		}, this), false);
+
+	LevelEvent.AddEvent(5.0f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo->On();
+			_This->Zardlogo->GrayAnimationStart();
+		}, this), false);
+
+	LevelEvent.AddEvent(7.5f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->BlinkStart();
+		}, this), false);
+
+	LevelEvent.AddEvent(8.0f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->BlinkStart();
+		}, this), false);
+
+	LevelEvent.AddEvent(8.5f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->OriginBlinkStart();
+		}, this), false);
 }
 
 void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

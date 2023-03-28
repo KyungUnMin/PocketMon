@@ -4,6 +4,8 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "Logo_Charizard_White.h"
+
 bool EffectBlackBox::IsDownEnd = false;
 
 EffectBlackBox::EffectBlackBox() 
@@ -64,11 +66,16 @@ void EffectBlackBox::Update(float _Deltatime)
 		RenderPtr->SetAlpha(100);
 		MoveUp_Down(_Deltatime);
 	}
+
+	if (0 == Logo_Charizard_White::ZardWhitePtr->OffCount1)
+	{
+		RenderPtr->Off();
+	}
 }
 
 void EffectBlackBox::MoveUp(float _Deltatime)
 {
-	MoveTime += _Deltatime * 0.005f;
+	MoveTime += _Deltatime * 0.01f;
 
 	float4 Pos = float4::LerpClamp(StartPos, EndPos, MoveTime);
 	SetMove(Pos);
@@ -76,7 +83,7 @@ void EffectBlackBox::MoveUp(float _Deltatime)
 
 void EffectBlackBox::MoveUp_Down(float _Deltatime)
 {
-	MoveTime += _Deltatime * 0.005f;
+	MoveTime += _Deltatime * 0.01f;
 
 	float4 Pos = float4::LerpClamp(DownStartPos, DownEndPos, MoveTime);
 
