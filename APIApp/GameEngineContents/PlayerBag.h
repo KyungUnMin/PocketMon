@@ -64,6 +64,10 @@ public:
 	{
 		Money -= _Money;
 	}
+	void SetMoney(int _Money)
+	{
+		Money = _Money;
+	}
 	// delete Function
 	PlayerBag(const PlayerBag& _Other) = delete;
 	PlayerBag(PlayerBag&& _Other) = delete;
