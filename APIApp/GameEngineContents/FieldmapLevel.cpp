@@ -106,7 +106,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, PlayerDir::Down);
 		}
 
-		CreateFieldmapCity("Route22", "Route22 22", "Route22", float4(-3360.0f, -4640.0f));
+		CreateFieldmapCity("Route22", "Route 22", "Route22", float4(-3360.0f, -4640.0f));
 		{
 			CreateBattlezone_Route22(int2(30, 19), int2(7, 5));
 			CreateBattlezone_Route22(int2(49, 19), int2(6, 5));
