@@ -50,9 +50,9 @@ private:
 	std::list<std::string> Script = std::list<std::string>();
 	
 
-	bool NPC1MoveValue;
 
-	float DefaultMoveTime = 0.0f;
+
+	
 	float NpcMoveTime = 0.0f;
 	float4 MoveStartPos = float4::Zero;
 	float4 MoveEndPos = float4::Zero;

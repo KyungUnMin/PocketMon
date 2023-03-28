@@ -99,16 +99,30 @@ void NPC1::Start()
 
 void NPC1::Update(float _DeltaTime)
 {
-
-
-
-
-
-
-
+	NpcMoveTime += _DeltaTime;
 
 	NPC1index= Fieldmap::GetIndex(GetPos()); //°è¼Ó index check
 	Fieldmap::SetWalkable("PalletTown", NPC1index, false);
+
+	int2 Nextindexs = NPC1index;
+	if (NpcMoveTime > 2.0f)
+	{
+		Nextindexs.x += 1;
+		NpcMoveTime = 0.0f;
+	}
+	float4 Start = GetPos();
+	float4 End = Fieldmap::GetPos(Nextindexs);
+
+	float4 Position=float4::LerpClamp(Start, End, NpcMoveTime);
+	SetPos(Position);
+	if (NpcMoveTime > 1.0f)
+	{
+		NpcMoveTime = 0.0f;
+	}
+
+	
+	
+	
 	
 
 	std::vector<GameEngineCollision*> CheckCollisions;

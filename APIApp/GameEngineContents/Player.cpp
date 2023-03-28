@@ -55,7 +55,7 @@ bool Player::VaildJumpDown()
 
 	int2 JumpIndex = Playerindex;
 	JumpIndex.y += 2;
-
+	ChangeState(PlayerState::JUMP);
 	return Fieldmap::Walkable(JumpIndex);
 }
 
@@ -91,7 +91,7 @@ bool Player::VaildJumpRight()
 
 	int2 JumpIndex = Playerindex;
 	JumpIndex.x += 2;
-
+	
 	return Fieldmap::Walkable(JumpIndex);
 }
 

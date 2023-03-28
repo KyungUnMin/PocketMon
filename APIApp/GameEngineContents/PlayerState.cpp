@@ -29,6 +29,9 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::MOVE:
 		MoveStart();
 		break;
+	case PlayerState::JUMP:
+		JumpStart();
+		break;
 	default:
 		break;
 	}
@@ -40,6 +43,9 @@ void Player::ChangeState(PlayerState _State)
 		break;
 	case PlayerState::MOVE:
 		MoveEnd();
+		break;
+	case PlayerState::JUMP:
+		JumpEnd();
 		break;
 	default:
 		break;
@@ -55,6 +61,9 @@ void Player::UpdateState(float _Time)
 		break;
 	case PlayerState::MOVE:
 		MoveUpdate(_Time);
+		break;
+	case PlayerState::JUMP:
+		JumpUpdate(_Time);
 		break;
 	default:
 		break;
@@ -162,4 +171,49 @@ void Player::MoveUpdate(float _Time)
 
 void Player::MoveEnd()
 {
+}
+
+void Player::JumpStart()
+{
+
+}
+void Player::JumpUpdate(float _Time)
+{
+	PlayerJumpTime += _Time*5.0f;
+
+	float4 Start = GetPos();
+	if (true==IsPlayerDirUP)
+	{
+		NextJumpIndex = { Playerindex.x,Playerindex.y - 2 };
+	}
+	if (true == IsPlayerDirDOWN)
+	{
+		NextJumpIndex = { Playerindex.x ,Playerindex.y+2 };
+	}
+	if (true == IsPlayerDirLEFT)
+	{
+		NextJumpIndex = { Playerindex.x - 2,Playerindex.y };
+	}
+	if (true == IsPlayerDirRIGHT)
+	{
+		NextJumpIndex = { Playerindex.x + 2,Playerindex.y };
+	}
+	
+
+	
+	
+	float4 End = Fieldmap::GetPos(NextJumpIndex);
+
+	float4 NextJumpPos = float4::BezierClamp(Start, End, _Time);
+	SetPos(NextJumpPos);
+
+	if (PlayerJumpTime > 1.0f)
+	{
+		PlayerJumpTime = 0.0f;
+		ChangeState(PlayerState::IDLE);
+	}
+}
+void Player::JumpEnd()
+{
+
 }

@@ -11,6 +11,7 @@ enum class PlayerState
 {
 	IDLE,
 	MOVE,
+	JUMP,
 };
 
 enum class NPCtalkValue
@@ -76,6 +77,11 @@ public:
 	bool VaildJumpLeft();
 	bool VaildJumpRight();
 
+	void JumpRight();
+	void JumpUp();
+	void JumpLeft();
+	void JumpDown();
+
 	bool IsPlayerDirUp()
 	{
 		return IsPlayerDirUP;
@@ -130,6 +136,9 @@ private:
 	void MoveUpdate(float _Time);
 	void MoveEnd();
 	
+	void JumpStart();
+	void JumpUpdate(float _Time);
+	void JumpEnd();
 	//미완성 값들
 	//////////Speed&Pos//////////
 	float MoveTile = 100.0f;
@@ -157,9 +166,16 @@ private:
 	bool IsPlayerDirRIGHT = true;
 
 	////////////////////////
+	//이동시간
+	float PlayerJumpTime = 0.0f;
 	float PlayerTime = 0.0f;
-
+	//Bike값
 	bool IsRide = false;
+	//Gold
+	int Gold = 0;
+
+
+	int2 NextJumpIndex = int2::Zero;
 
 };
 
