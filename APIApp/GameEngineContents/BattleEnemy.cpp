@@ -102,9 +102,9 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 		return;
 	}
 	
-	int PokeNum = MonsterDatas[CurIndex].GetPokeNumber();
+	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(static_cast<PokeNumber>(PokeNum - 1), true);
+	Monster->Init(PokeNum, true);
 	++CurIndex;
 }
 
@@ -115,9 +115,9 @@ bool BattleEnemy::CreateMonster()
 	if (CurIndex == MonsterDatas.size())
 		return false;
 
-	int MonsterNum = MonsterDatas[CurIndex].GetPokeNumber();
+	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(static_cast<PokeNumber>(MonsterNum - 1), false);
+	Monster->Init(PokeNum, false);
 	Monster->SetPos(GetPos());
 	++CurIndex;
 
