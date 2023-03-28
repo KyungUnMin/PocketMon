@@ -151,6 +151,9 @@ private:
 	float4 StartPos = float4::Zero;
 	float4 EndPos = float4::Zero;
 
+	float4 JumpStartPos = float4::Zero;
+	float4 JumpEndPos = float4::Zero;
+
 	//플레이어<->NPC 방향제어enum class
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
 
