@@ -179,6 +179,6 @@ private:
 
 
 	int2 NextJumpIndex = int2::Zero;
-
+	float PlayerMoveSpeed = 5.0f;
 };
 

@@ -564,7 +564,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpUp",
 			.VaildFunc = std::bind(&Player::VaildJumpUp, Player::MainPlayer),
-			.EventFunc = &FieldmapLevel::TempFunc,
+			.EventFunc = std::bind(&Player::JumpUp, Player::MainPlayer),
 			.Loop = true
 			});
 		break;
@@ -572,7 +572,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpDown",
 			.VaildFunc = std::bind(&Player::VaildJumpDown, Player::MainPlayer),
-			.EventFunc = &FieldmapLevel::TempFunc,
+			.EventFunc = std::bind(&Player::JumpDown, Player::MainPlayer),
 			.Loop = true
 			});
 		break;
@@ -580,7 +580,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpLeft",
 			.VaildFunc = std::bind(&Player::VaildJumpLeft, Player::MainPlayer),
-			.EventFunc = &FieldmapLevel::TempFunc,
+			.EventFunc = std::bind(&Player::JumpLeft, Player::MainPlayer),
 			.Loop = true
 			});
 		break;
@@ -588,7 +588,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpRight",
 			.VaildFunc = std::bind(&Player::VaildJumpRight, Player::MainPlayer),
-			.EventFunc = &FieldmapLevel::TempFunc,
+			.EventFunc = std::bind(&Player::JumpRight, Player::MainPlayer),
 			.Loop = true
 			});
 		break;

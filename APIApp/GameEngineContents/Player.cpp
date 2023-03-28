@@ -112,11 +112,13 @@ void Player::Update(float _DeltaTime)
 	{
 		Players->Off();
 		BikePlayers->On();
+		PlayerMoveSpeed = 10.0f;
 	}
 	else if(IsRide==false)
 	{
 		Players->On();
 		BikePlayers->Off();
+		PlayerMoveSpeed = 5.0f;
 	}
 	if (true == PlayerMoveBool)
 	{
@@ -220,17 +222,24 @@ void Player::NPCtalkValueSet()
 
 void Player::JumpRight()
 {
+	NextJumpIndex = { Playerindex.x + 2,Playerindex.y };
 	ChangeState(PlayerState::JUMP);
 }
 void Player::JumpUp()
 {
+	NextJumpIndex = { Playerindex.x,Playerindex.y - 2 };
 	ChangeState(PlayerState::JUMP);
 }
 void Player::JumpLeft()
 {
+	NextJumpIndex = { Playerindex.x - 2,Playerindex.y };
 	ChangeState(PlayerState::JUMP);
 }
 void Player::JumpDown()
 {
+	NextJumpIndex = { Playerindex.x ,Playerindex.y + 2 };
 	ChangeState(PlayerState::JUMP);
 }
+
+
+

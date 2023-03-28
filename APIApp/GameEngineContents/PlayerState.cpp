@@ -148,7 +148,7 @@ void Player::MoveStart()
 
 void Player::MoveUpdate(float _Time)
 {
-	PlayerTime += _Time * 5.0f;
+	PlayerTime += _Time * PlayerMoveSpeed;
 	
 	float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime);
 	SetPos(POS); 
@@ -176,29 +176,13 @@ void Player::MoveEnd()
 void Player::JumpStart()
 {
 	JumpStartPos = GetPos();
-	if (true == IsPlayerDirUP)
-	{
-		NextJumpIndex = { Playerindex.x,Playerindex.y - 2 };
-	}
-	if (true == IsPlayerDirDOWN)
-	{
-		NextJumpIndex = { Playerindex.x ,Playerindex.y + 2 };
-	}
-	if (true == IsPlayerDirLEFT)
-	{
-		NextJumpIndex = { Playerindex.x - 2,Playerindex.y };
-	}
-	if (true == IsPlayerDirRIGHT)
-	{
-		NextJumpIndex = { Playerindex.x + 2,Playerindex.y };
-	}
 	JumpEndPos = Fieldmap::GetPos(NextJumpIndex);
 }
 void Player::JumpUpdate(float _Time)
 {
 	PlayerJumpTime += _Time*5.0f;
 
-	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, _Time);
+	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
 	SetPos(NextJumpPos);
 
 	if (PlayerJumpTime > 1.0f)
