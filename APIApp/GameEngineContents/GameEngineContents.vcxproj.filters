@@ -417,6 +417,20 @@
     <ClCompile Include="BattleState_BattleWin.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\10.BattleWin</Filter>
     </ClCompile>
+    <ClCompile Include="BackGround.cpp" />
+    <ClCompile Include="LevelChangeFade.cpp" />
+    <ClCompile Include="BuyLevelDialog.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyUIManager.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="BuyYesNoMenu.cpp">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClCompile>
+    <ClCompile Include="YesNoMenu.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -822,6 +836,20 @@
     </ClInclude>
     <ClInclude Include="BattleState_BattleWin.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\10.BattleWin</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h" />
+    <ClInclude Include="LevelChangeFade.h" />
+    <ClInclude Include="BuyLevelDialog.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyUIManager.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="BuyYesNoMenu.h">
+      <Filter>FieldUI\HSM\ShopUI</Filter>
+    </ClInclude>
+    <ClInclude Include="YesNoMenu.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

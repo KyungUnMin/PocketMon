@@ -6,6 +6,7 @@
 #include "BuyYesNoMenu.h"
 #include "BuyLevelDialog.h"
 #include "BuyUIManager.h"
+#include "LevelChangeFade.h"
 
 BuyLevel::BuyLevel()
 {
@@ -24,6 +25,7 @@ void BuyLevel::Loading()
 	AcBuyWindow = CreateActor<BuyWindow>();
 	AcBuyYesNoMenu = CreateActor<BuyYesNoMenu>();
 	AcBuyUIManager = CreateActor<BuyUIManager>();
+	CreateActor<LevelChangeFade>();
 }
 
 void BuyLevel::Update(float _DeltaTime)

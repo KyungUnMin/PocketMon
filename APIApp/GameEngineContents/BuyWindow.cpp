@@ -8,6 +8,7 @@
 #include "BuyLevelDialog.h"
 #include "InputControll.h"
 #include "PlayerBag.h"
+#include "LevelChangeFade.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -243,7 +244,7 @@ void BuyWindow::ChangeState(int _State)
 
 void BuyWindow::Cancle()
 {
-	GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("FieldmapLevel");
 }
 
 void BuyWindow::ItemPushBack()
