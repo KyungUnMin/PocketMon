@@ -7,6 +7,7 @@
 #include <functional>
 
 
+
 class NPC1 : public GameEngineActor
 {
 public:
@@ -22,41 +23,17 @@ public:
 
 	void ImageLoad();
 	void Render(float _DeltaTime);
-
-	void MovePattern1();
-	void MovePattern2();
-	void MovePattern3();
-	void MovePattern4();
-
-	int2 GetNPCindex()
-	{
-		return NPC1index;
-	}
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 private:
 	GameEngineRender* R_NPC1 = nullptr;
-	GameEngineCollision* C_NPC_U = nullptr;
-	GameEngineCollision* C_NPC_D = nullptr;
+	
+
 	GameEngineCollision* C_NPC_R = nullptr;
-	GameEngineCollision* C_NPC_L = nullptr;
+	
 
 	bool NPC1ImageLoad = true;
-	bool NpcMovebool = false;
-	int2 NPC1index = int2::Zero;
-
-
-	std::list<std::string> Script = std::list<std::string>();
-	
-
-
-
-	
-	float NpcMoveTime = 0.0f;
-	float4 MoveStartPos = float4::Zero;
-	float4 MoveEndPos = float4::Zero;
-
 
 };
 

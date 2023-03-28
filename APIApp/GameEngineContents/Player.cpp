@@ -129,6 +129,13 @@ void Player::Update(float _DeltaTime)
 			FieldMainMenu::GetFieldMainMenu()->OnOffSwtich();
 		}
 	}
+	if (false == PlayerMoveBool)
+	{
+		if (false == GameEngineInput::IsDown("NpcTalk"))
+		{
+			return;
+		}
+	}
 	ChangeLevelCheck();
 }
 

@@ -381,7 +381,7 @@ void FieldmapLevel::Loading()
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
 	EndActor->Off();
 
-	Fieldmap::ChangeCity("PalletTown_Home2F");
+	Fieldmap::ChangeCity("ViridianCity_Market");
 
 	// Debug¿ë ·£´õ
 	MainFieldRender = CreateActor<FieldmapRender>();
@@ -389,11 +389,8 @@ void FieldmapLevel::Loading()
 		
 	UIImageLoad();
 	
-	//TestNpc=CreateActor<NPC1>();
-	//TestNpc->SetPos(Fieldmap::GetPos(16, 8));
-
-	TestNpc=CreateActor<NPC1>(); 
-	Fieldmap::AddActor("PalletTown", int2(10, 6), TestNpc);
+	ShopNpc=CreateActor<NPC1>(); 
+	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc);
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
