@@ -22,7 +22,7 @@ bool BattleSkill_PlayerBase::Update_CheckTime(float _DeltaTime, float _Duration)
 		return false;
 
 	BattleFSM* GameFsm = BattleLevel::BattleLevelPtr->GetBattleFSM();
-	GameFsm->ChangeState(BattleStateType::EnemyTurn);
+	GameFsm->ChangeState(BattleStateType::CheckEnemyHP);
 
 	GetFSM()->ChangeState(BattlePlayerMonster_StateType::Idle);
 

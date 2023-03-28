@@ -15,6 +15,7 @@
 #include "BattleFSM.h"
 #include "BagLevel.h"
 #include "PokemonLevel.h"
+#include "CenterLevel.h"
 
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
@@ -58,8 +59,12 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	PokemonLevel* MonsterChangeLevel = dynamic_cast<PokemonLevel*>(_PrevLevel);
 	if (nullptr != MonsterChangeLevel)
 		return;
-	
-	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
+
+	CenterLevel* ChangedCenterLevel = dynamic_cast<CenterLevel*>(_PrevLevel);
+	if (nullptr == ChangedCenterLevel)
+		return;
+
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
 	//Init_Level(BattleFieldType::Forest);
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);

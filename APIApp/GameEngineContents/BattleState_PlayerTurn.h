@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleStateBase.h"
+#include <functional>
 
 class Battle_Select;
 class BattleCommendActor;
@@ -19,6 +20,11 @@ public:
 	BattleState_PlayerTurn& operator=(const BattleState_PlayerTurn& _Other) = delete;
 	BattleState_PlayerTurn& operator=(const BattleState_PlayerTurn&& _Other) noexcept = delete;
 
+	inline void SetCallBack(const std::function<void()>& _CallBack)
+	{
+		DamageCalcFunc = _CallBack;
+	}
+
 protected:
 	void EnterState() override;
 	void ExitState() override;
@@ -27,6 +33,7 @@ private:
 	Battle_Select* SelectBoard = nullptr;
 	BattleCommendActor* BattleCommand = nullptr;
 	BackTextActor* TextInfo = nullptr;
+	std::function<void()> DamageCalcFunc = nullptr;
 
 	void BindSelectBoard();
 	void BindBattleCommand(int _SlotIndex);

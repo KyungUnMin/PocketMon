@@ -4,6 +4,8 @@
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleEnemyMonsterFSM.h"
+#include "BattlePlayer.h"
+#include "PokeBattleSystem.h"
 
 BattleState_EnemyTurn::BattleState_EnemyTurn()
 {
@@ -29,4 +31,9 @@ void BattleState_EnemyTurn::ExitState()
 {
 	TextInfoUI->Death();
 	TextInfoUI = nullptr;
+
+	//임시코드
+	PokeDataBase* EnemyDB =  BattleEnemy::EnemyPtr->GetMonsterDB();
+	PokeDataBase* PlayerDB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	PokeBattleSystem::Battle(*EnemyDB, 1, *PlayerDB);
 }

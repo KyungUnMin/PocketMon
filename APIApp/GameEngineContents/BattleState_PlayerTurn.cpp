@@ -79,6 +79,8 @@ void BattleState_PlayerTurn::BindSelectBoard()
 
 void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 {
+	BattleState_PlayerTurn* ThisPtr = this;
+
 	//슬롯의 스킬 발동
 	BattleCommand->SetCallBack(_SlotIndex, [=]
 	{
@@ -95,7 +97,12 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		BattleCommand->Off();
 
 		PokeDataBase* EnemyMonsterDB = BattleEnemy::EnemyPtr->GetMonsterDB();
-		PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
+
+		//데미지 처리는 이 State가 끝날때 하기 위해 콜백 등록
+		ThisPtr->SetCallBack([=]
+		{
+			PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
+		});
 
 		//TODO
 		BattlePlayerMonsterFSM* MonsterFSM = BattlePlayer::PlayerPtr->GetMonster()->GetFSM();
@@ -126,6 +133,12 @@ void BattleState_PlayerTurn::ExitState()
 	SelectBoard = nullptr;
 	BattleCommand = nullptr;
 	TextInfo = nullptr;
+
+	if (nullptr != DamageCalcFunc)
+	{
+		DamageCalcFunc();
+		DamageCalcFunc = nullptr;
+	}
 }
 
 

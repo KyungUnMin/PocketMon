@@ -394,6 +394,16 @@
     <ClCompile Include="BattleZoneBushParticle.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
     </ClCompile>
+    <ClCompile Include="BuyLevelDialog.cpp" />
+    <ClCompile Include="BuyUIManager.cpp" />
+    <ClCompile Include="BuyYesNoMenu.cpp" />
+    <ClCompile Include="YesNoMenu.cpp" />
+    <ClCompile Include="BattleState_EnemyHPCheck.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\06.EnemyHPCheck</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_PlayerHPCheck.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\07.PlayerHPCheck</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -777,6 +787,16 @@
     <ClInclude Include="BattleZoneBushParticle.h">
       <Filter>Map\Actor\BattleZone</Filter>
     </ClInclude>
+    <ClInclude Include="BuyLevelDialog.h" />
+    <ClInclude Include="BuyUIManager.h" />
+    <ClInclude Include="BuyYesNoMenu.h" />
+    <ClInclude Include="YesNoMenu.h" />
+    <ClInclude Include="BattleState_EnemyHPCheck.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\06.EnemyHPCheck</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_PlayerHPCheck.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\07.PlayerHPCheck</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1063,6 +1083,24 @@
     </Filter>
     <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle">
       <UniqueIdentifier>{0670e93d-2c60-4995-88c6-66ac0e7ac221}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\06.EnemyHPCheck">
+      <UniqueIdentifier>{83d80f09-e1a2-465c-9b28-cfe21c8ac42a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\07.PlayerHPCheck">
+      <UniqueIdentifier>{fb47da16-5ff7-4c75-900e-3aa187e54da7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\08.StageWin">
+      <UniqueIdentifier>{abab7d1a-1b7c-4550-9e0e-ce74676c736a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\09.StageLose">
+      <UniqueIdentifier>{dbf23716-ce90-473d-9d86-bb99736f7a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\10.BattleWin">
+      <UniqueIdentifier>{0dcdd26f-a4c9-4551-bfb4-69c216824f8d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\11.BattleLose">
+      <UniqueIdentifier>{13b6f34b-a00d-4b3b-b9f4-35c8a58c30d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

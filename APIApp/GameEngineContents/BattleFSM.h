@@ -10,6 +10,8 @@ enum class BattleStateType
 	ThrowMonsterBall,
 	CatchWildMonster,
 	RivalTalk,
+	CheckPlayerHP,
+	CheckEnemyHP,
 
 	COUNT,
 };

@@ -8,6 +8,8 @@
 #include "BattleState_ThrowMonsterBall.h"
 #include "BattleState_CatchWhildMonster.h"
 #include "BattleState_RivalTalk.h"
+#include "BattleState_EnemyHPCheck.h"
+#include "BattleState_PlayerHPCheck.h"
 
 BattleFSM::BattleFSM()
 {
@@ -31,6 +33,8 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_ThrowMonsterBall>(BattleStateType::ThrowMonsterBall);
 	CreateState<BattleState_CatchWhildMonster>(BattleStateType::CatchWildMonster);
 	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
+	CreateState<BattleState_PlayerHPCheck>(BattleStateType::CheckPlayerHP);
+	CreateState<BattleState_EnemyHPCheck>(BattleStateType::CheckEnemyHP);
 
 
 	switch (_NpcType)

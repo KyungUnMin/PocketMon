@@ -256,6 +256,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp" />
+    <ClCompile Include="BattleState_EnemyHPCheck.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_PlayerHPCheck.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_PlayerSkillConvertor.cpp" />
     <ClCompile Include="BattleState_PlayerTurn.cpp" />
     <ClCompile Include="BattleState_RivalTalk.cpp">
@@ -560,6 +568,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
+    <ClInclude Include="BattleState_EnemyHPCheck.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_PlayerHPCheck.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_PlayerTurn.h" />
     <ClInclude Include="BattleState_RivalTalk.h">
       <SubType>
