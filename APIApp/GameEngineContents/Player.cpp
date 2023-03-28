@@ -143,11 +143,11 @@ void Player::Render(float _DeltaTime)
 {
 	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
 
-	Rectangle(GameEngineWindow::GetWindowBackBufferHdc(),
+	/*Rectangle(GameEngineWindow::GetWindowBackBufferHdc(),
 		PlayerPos.ix() - 5,
 		PlayerPos.iy() - 5,
 		PlayerPos.ix() + 5,
-		PlayerPos.iy() + 5);
+		PlayerPos.iy() + 5);*/
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
 		//RedCollision->DebugRender();

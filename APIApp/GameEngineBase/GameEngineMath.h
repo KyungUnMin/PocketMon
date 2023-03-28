@@ -242,7 +242,7 @@ public:
 
 	static float4 BezierClamp(const float4& Start, const float4& End, float Ratio)
 	{
-		float4 Middle = { ((End + Start).x)/2, ((End + Start).y)/2 -128.0f }; //이거y값 수정해야함
+		float4 Middle = { ((End + Start).x)/2, ((End + Start).y)/2 -200.0f }; //이거y값 수정해야함
 
 		if (0 >= Ratio)
 		{

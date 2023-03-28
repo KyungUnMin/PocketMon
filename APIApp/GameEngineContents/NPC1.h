@@ -6,9 +6,11 @@
 
 #include <functional>
 
+#include "BaseNPC.h"
 
 
-class NPC1 : public GameEngineActor
+
+class NPC1 : public BaseNPC
 {
 public:
 	NPC1();
@@ -26,6 +28,19 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+
+	void IdleStart() override;
+	void IdleUpdate(float _DeltaTime) override;
+	void IdleEnd() override;
+
+	void MoveStart() override;
+	void MoveUpdate(float _DeltaTime) override;
+	void MoveEnd() override;
+
+	/*void InteractionStart();
+	void InteractionUpdate(float _DeltaTime);
+	void InteractionEnd();*/
+
 private:
 	GameEngineRender* R_NPC1 = nullptr;
 	
