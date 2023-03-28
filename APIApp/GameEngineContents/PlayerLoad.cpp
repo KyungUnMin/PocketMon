@@ -2,8 +2,8 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 
-
 #include "Player.h"
+#include "ContentConst.h"
 
 
 
@@ -14,7 +14,7 @@ void Player::PlayerRenderLoad()
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	{
 		Players = CreateRender(RenderOrder::Player);
-		Players->SetScale({ 50,64 });
+		Players->SetScale(ContentConst::NpcSize);
 		Players->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "IdleRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "IdleLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "IdleUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
@@ -27,7 +27,7 @@ void Player::PlayerRenderLoad()
 
 
 		BikePlayers = CreateRender(RenderOrder::Player);
-		BikePlayers->SetScale({ 50,64 });
+		BikePlayers->SetScale(ContentConst::NpcSize);
 		BikePlayers->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "BikeStopRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "BikeStopLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "BikeStopUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });

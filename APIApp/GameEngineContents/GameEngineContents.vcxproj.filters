@@ -431,6 +431,18 @@
     <ClCompile Include="YesNoMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
+    <ClCompile Include="BaseNPC.cpp">
+      <Filter>Player\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="ContentConst.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseNPC_State.cpp">
+      <Filter>Player\NPC</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonScript.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -850,6 +862,15 @@
     </ClInclude>
     <ClInclude Include="YesNoMenu.h">
       <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseNPC.h">
+      <Filter>Player\NPC</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentConst.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonScript.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

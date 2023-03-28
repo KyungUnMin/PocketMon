@@ -28,7 +28,6 @@
 
 //Game Actor
 #include "Player.h"
-#include "NPC1.h"
 #include "EndingPlayActor.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
@@ -367,6 +366,7 @@ void FieldmapLevel::Loading()
 			Fieldmap::LinkNeighbor("Route2_Up", "PewterCity");
 		}
 	}
+
 	{
 		CityNameUI* CityNameUIPtr = CreateActor<CityNameUI>();
 		

@@ -172,6 +172,10 @@ void CenterLevel::Loading()
 	}
 
 	{
+	
+	}
+
+	{
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
 		Dir.Move("FieldMap");

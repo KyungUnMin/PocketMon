@@ -165,6 +165,11 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BaseNPC.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BaseNPC_State.cpp" />
     <ClCompile Include="BattleBackGround.cpp" />
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleEnemyFSM.cpp" />
@@ -329,6 +334,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="ContentConst.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CountItemMenu.cpp">
       <SubType>
       </SubType>
@@ -470,6 +479,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PokemonScript.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="PokemonUI.cpp">
       <SubType>
       </SubType>
@@ -512,6 +525,10 @@
     </ClInclude>
     <ClInclude Include="BackTextActor.h" />
     <ClInclude Include="BagLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BaseNPC.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -676,6 +693,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="ContentConst.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="CountItemMenu.h">
       <SubType>
       </SubType>
@@ -816,6 +837,10 @@
     </ClInclude>
     <ClInclude Include="PokeDataBase.h" />
     <ClInclude Include="PokemonLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="PokemonScript.h">
       <SubType>
       </SubType>
     </ClInclude>
