@@ -134,10 +134,21 @@ public:
 		}
 	}
 
+	// 몬스터가 기절상태입니까?
+	bool IsMonsterStern()
+	{
+		return IsMonsterDeath;
+	}
+
+	// 몬스터를 기절상태로 만든다 (계산용)
+	void Stern()
+	{
+		IsMonsterDeath = true;
+	}
+
 	// 소지한 아이템 코드
 	ItemCode GetPossession()
 	{
-
 		return Possession;
 	}
 
@@ -489,6 +500,7 @@ private:
 								    
 	bool IsMan = true;										      // 포켓몬 성별
 	bool IsbeCaught = false;									  // 야생포켓몬인지 잡힌 포켓몬인지
+	bool IsMonsterDeath = false;                                  // 배틀중 몬스터 체력이 0이되면 true가 된다.
 
 	// 소지품
 	ItemCode Possession = ItemCode::Cancel;

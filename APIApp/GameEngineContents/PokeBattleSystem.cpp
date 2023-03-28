@@ -85,6 +85,15 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkil
 			Damage = static_cast<int>(round(step7 / 50));
 
 			_Defender.MinusMonsterCurrentHP(Damage);
+
+			if (0 >= _Defender.GetMonsterCurrentHP())
+			{
+				_Defender.SetMonsterCurrentHP(0);
+				_Defender.Stern();
+
+				ScriptValue = BattleScript::Stern;
+			}
+
 		}
 		else
 		{

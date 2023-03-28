@@ -17,7 +17,10 @@ void EffectBlackBox::Start()
 	Winsize_h = GameEngineWindow::GetScreenSize().half();
 
 	StartPos = float4::Zero;
-	EndPos = Winsize_h;
+	EndPos = StartPos + (float4::Up * Winsize_h.y);
+
+	DownStartPos = float4::Down * Winsize_h.y * 2;
+	DownEndPos = -DownStartPos + (float4::Up * Winsize_h.y);
 
 	RenderPtr = CreateRender("MoveMapFade1.bmp", 3);
 	SetPos(Winsize_h);
@@ -26,35 +29,29 @@ void EffectBlackBox::Start()
 
 void EffectBlackBox::Update(float _Deltatime)
 {
+	if (true == IsStart)
+	{
+		MoveUp(_Deltatime);
+	}
 
+	if (true == IsDownStart)
+	{
+		MoveUp_Down(_Deltatime);
+	}
 }
 
-void EffectBlackBox::MoveUp()
+void EffectBlackBox::MoveUp(float _Deltatime)
 {
-	GameEngineMath::Lerp(Winsize_h.x, Winsize_h.x - Winsize_h.x, 1.0f);
-	// float4 Pos = float4::LerpClamp(Start, End, Time);
-	//SetMove();
+	MoveTime += _Deltatime * 0.005f;
+
+	float4 Pos = float4::LerpClamp(StartPos, EndPos, MoveTime);
+	SetMove(Pos);
 }
 
+void EffectBlackBox::MoveUp_Down(float _Deltatime)
+{
+	MoveTime += _Deltatime * 0.005f;
 
-// float4 DownPosTitle = float4::Zero;
-
-//void EffectBlackBox::Update(float _DeltaTime)
-//{
-//
-//	if (true == GameEngineInput::IsDown("TitleScrollLeft"))
-//	{
-//		End = Start + float4(-GameEngineWindow::GetScreenSize().half().x, 0.0f);
-//	}
-//
-//	// 시작에서 끝까지 이동하는데 1초가 걸리는 함수
-//	Time += _DeltaTime * 0.5f;
-//	float4 Pos = float4::LerpClamp(Start, End, Time);
-//	SetCameraPos(Pos);
-//
-//	if (Time >= 1.0f)
-//	{
-//		ScrollStart = false;
-//		Time = 0.0f;
-//	}
-//}
+	float4 Pos = float4::LerpClamp(DownStartPos, DownEndPos, MoveTime);
+	SetMove(Pos);
+}

@@ -413,6 +413,9 @@
     <ClCompile Include="BattleState_StageLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClCompile>
+    <ClCompile Include="EffectBlackBox.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -814,6 +817,9 @@
     </ClInclude>
     <ClInclude Include="BattleState_StageLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBlackBox.h">
+      <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

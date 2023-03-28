@@ -31,6 +31,7 @@ protected:
 
 private:
 	EffectBlackBox* EffectBox = nullptr;
+	EffectBlackBox* EffectBox2 = nullptr;
 	Opening_Text* OpeningText = nullptr;
 	Logo_Charizard* Zardlogo = nullptr;
 	Logo_Charizard_White* Zardlogo_White = nullptr;
