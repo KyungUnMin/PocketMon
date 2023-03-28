@@ -4,6 +4,8 @@
 
 // Ό³Έν :
 class Opening_Text;
+class Logo_Charizard;
+class Logo_Charizard_White;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -28,6 +30,7 @@ protected:
 
 private:
 	Opening_Text* OpeningText = nullptr;
-
+	Logo_Charizard* Zardlogo = nullptr;
+	Logo_Charizard_White* Zardlogo_White = nullptr;
 };
 

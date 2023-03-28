@@ -2,6 +2,12 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class ZardColor
+{
+	Gray,
+	Origin,
+};
+
 // Ό³Έν :
 class Logo_Charizard : public GameEngineActor
 {
@@ -21,6 +27,10 @@ protected:
 	void Update(float _Deltatime) override;
 
 private:
+	GameEngineRender* RenderPtr = nullptr;
+	ZardColor ColorSelect = ZardColor::Gray;
+
+	void ColorChange();
 
 };
 

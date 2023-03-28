@@ -3,11 +3,11 @@
 enum class RenderOrder
 {
 	//Field
-	BackGround,		 // 0
+	BackGround,
 	Tilemap,
 	FieldBack,
-	Monster,		 // 1
-	Player,			 // 2
+	Monster,
+	Player,
 	FieldMiddle,
 	FieldFront,
 	Particle,

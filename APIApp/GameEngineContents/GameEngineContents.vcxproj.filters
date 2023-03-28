@@ -415,6 +415,9 @@
     <ClCompile Include="YesNoMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
+    <ClCompile Include="Logo_Charizard_White.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -818,6 +821,9 @@
     </ClInclude>
     <ClInclude Include="YesNoMenu.h">
       <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Charizard_White.h">
+      <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

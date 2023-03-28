@@ -374,6 +374,10 @@
     <ClCompile Include="Logo_Back3.cpp" />
     <ClCompile Include="Logo_Backeffect.cpp" />
     <ClCompile Include="Logo_Charizard.cpp" />
+    <ClCompile Include="Logo_Charizard_White.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Logo_Fireredversion.cpp" />
     <ClCompile Include="Logo_Gamefreakinc.cpp" />
     <ClCompile Include="Logo_Pokemon.cpp" />
@@ -692,6 +696,10 @@
     <ClInclude Include="Logo_Back3.h" />
     <ClInclude Include="Logo_Backeffect.h" />
     <ClInclude Include="Logo_Charizard.h" />
+    <ClInclude Include="Logo_Charizard_White.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Logo_Fireredversion.h" />
     <ClInclude Include="Logo_Gamefreakinc.h" />
     <ClInclude Include="Logo_Pokemon.h" />
