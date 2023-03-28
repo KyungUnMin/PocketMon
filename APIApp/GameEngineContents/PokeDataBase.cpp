@@ -514,8 +514,8 @@ void PokeDataBase::BulbasaurData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Grass";                        // 포켓몬 타입 이름
 	PoKeCreatePtr.NumberName = "001";                        // 포켓몬 넘버 이름
 	
-	PoKeCreatePtr.MaxHealthPoint = 45;                       // 포켓몬 기초 최대 체력
-	PoKeCreatePtr.CurrentHealthPoint = 45;                   // 포켓몬 기초 잔여 체력
+	PoKeCreatePtr.MaxHealthPoint = 26;                       // 포켓몬 기초 최대 체력
+	PoKeCreatePtr.CurrentHealthPoint = 26;                   // 포켓몬 기초 잔여 체력
 	PoKeCreatePtr.AttackPower = 49;                          // 포켓몬 기초 공격력
 	PoKeCreatePtr.Defense = 49;                              // 포켓몬 기초 방어력
 	PoKeCreatePtr.SpecialAttackPower = 65;                   // 포켓몬 기초 특수공격력
@@ -545,8 +545,8 @@ void PokeDataBase::IvysaurData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Grass";
 	PoKeCreatePtr.NumberName = "002";
 
-	PoKeCreatePtr.MaxHealthPoint = 60;
-	PoKeCreatePtr.CurrentHealthPoint = 60;
+	PoKeCreatePtr.MaxHealthPoint = 40;
+	PoKeCreatePtr.CurrentHealthPoint = 40;
 	PoKeCreatePtr.AttackPower = 62;
 	PoKeCreatePtr.Defense = 63;
 	PoKeCreatePtr.SpecialAttackPower = 80;
@@ -575,8 +575,8 @@ void PokeDataBase::VenusaurData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Grass";
 	PoKeCreatePtr.NumberName = "003";
 
-	PoKeCreatePtr.MaxHealthPoint = 80;
-	PoKeCreatePtr.CurrentHealthPoint = 80;
+	PoKeCreatePtr.MaxHealthPoint = 60;
+	PoKeCreatePtr.CurrentHealthPoint = 60;
 	PoKeCreatePtr.AttackPower = 82;
 	PoKeCreatePtr.Defense = 83;
 	PoKeCreatePtr.SpecialAttackPower = 100;
@@ -606,8 +606,8 @@ void PokeDataBase::CharmanderData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Fire";
 	PoKeCreatePtr.NumberName = "004";
 
-	PoKeCreatePtr.MaxHealthPoint = 39;
-	PoKeCreatePtr.CurrentHealthPoint = 39;
+	PoKeCreatePtr.MaxHealthPoint = 21;
+	PoKeCreatePtr.CurrentHealthPoint = 21;
 	PoKeCreatePtr.AttackPower = 52;
 	PoKeCreatePtr.Defense = 43;
 	PoKeCreatePtr.SpecialAttackPower = 60;
@@ -637,8 +637,8 @@ void PokeDataBase::CharmeleonData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Fire";
 	PoKeCreatePtr.NumberName = "005";
 
-	PoKeCreatePtr.MaxHealthPoint = 58;
-	PoKeCreatePtr.CurrentHealthPoint = 58;
+	PoKeCreatePtr.MaxHealthPoint = 38;
+	PoKeCreatePtr.CurrentHealthPoint = 38;
 	PoKeCreatePtr.AttackPower = 64;
 	PoKeCreatePtr.Defense = 58;
 	PoKeCreatePtr.SpecialAttackPower = 80;
@@ -668,8 +668,8 @@ void PokeDataBase::CharizardData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Fire";
 	PoKeCreatePtr.NumberName = "006";
 
-	PoKeCreatePtr.MaxHealthPoint = 78;
-	PoKeCreatePtr.CurrentHealthPoint = 78;
+	PoKeCreatePtr.MaxHealthPoint = 58;
+	PoKeCreatePtr.CurrentHealthPoint = 58;
 	PoKeCreatePtr.AttackPower = 84;
 	PoKeCreatePtr.Defense = 78;
 	PoKeCreatePtr.SpecialAttackPower = 109;
@@ -699,8 +699,8 @@ void PokeDataBase::SquirtleData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Water";
 	PoKeCreatePtr.NumberName = "007";
 
-	PoKeCreatePtr.MaxHealthPoint = 44;
-	PoKeCreatePtr.CurrentHealthPoint = 44;
+	PoKeCreatePtr.MaxHealthPoint = 24;
+	PoKeCreatePtr.CurrentHealthPoint = 24;
 	PoKeCreatePtr.AttackPower = 48;
 	PoKeCreatePtr.Defense = 65;
 	PoKeCreatePtr.SpecialAttackPower = 50;
@@ -730,8 +730,8 @@ void PokeDataBase::WartortleData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Water";
 	PoKeCreatePtr.NumberName = "008";
 
-	PoKeCreatePtr.MaxHealthPoint = 59;
-	PoKeCreatePtr.CurrentHealthPoint = 59;
+	PoKeCreatePtr.MaxHealthPoint = 39;
+	PoKeCreatePtr.CurrentHealthPoint = 39;
 	PoKeCreatePtr.AttackPower = 63;
 	PoKeCreatePtr.Defense = 80;
 	PoKeCreatePtr.SpecialAttackPower = 65;
@@ -761,8 +761,8 @@ void PokeDataBase::BlastoiseData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Water";
 	PoKeCreatePtr.NumberName = "009";
 
-	PoKeCreatePtr.MaxHealthPoint = 79;
-	PoKeCreatePtr.CurrentHealthPoint = 79;
+	PoKeCreatePtr.MaxHealthPoint = 59;
+	PoKeCreatePtr.CurrentHealthPoint = 59;
 	PoKeCreatePtr.AttackPower = 83;
 	PoKeCreatePtr.Defense = 100;
 	PoKeCreatePtr.SpecialAttackPower = 85;
@@ -792,8 +792,8 @@ void PokeDataBase::PidgeyData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Flying";
 	PoKeCreatePtr.NumberName = "010";
 
-	PoKeCreatePtr.MaxHealthPoint = 40;
-	PoKeCreatePtr.CurrentHealthPoint = 40;
+	PoKeCreatePtr.MaxHealthPoint = 25;
+	PoKeCreatePtr.CurrentHealthPoint = 25;
 	PoKeCreatePtr.AttackPower = 45;
 	PoKeCreatePtr.Defense = 40;
 	PoKeCreatePtr.SpecialAttackPower = 35;
@@ -823,8 +823,8 @@ void PokeDataBase::RattataData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Normal";
 	PoKeCreatePtr.NumberName = "011";
 
-	PoKeCreatePtr.MaxHealthPoint = 30;
-	PoKeCreatePtr.CurrentHealthPoint = 30;
+	PoKeCreatePtr.MaxHealthPoint = 18;
+	PoKeCreatePtr.CurrentHealthPoint = 18;
 	PoKeCreatePtr.AttackPower = 56;
 	PoKeCreatePtr.Defense = 35;
 	PoKeCreatePtr.SpecialAttackPower = 25;
@@ -854,8 +854,8 @@ void PokeDataBase::SpearowData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Flying";
 	PoKeCreatePtr.NumberName = "012";
 
-	PoKeCreatePtr.MaxHealthPoint = 40;
-	PoKeCreatePtr.CurrentHealthPoint = 40;
+	PoKeCreatePtr.MaxHealthPoint = 26;
+	PoKeCreatePtr.CurrentHealthPoint = 26;
 	PoKeCreatePtr.AttackPower = 60;
 	PoKeCreatePtr.Defense = 30;
 	PoKeCreatePtr.SpecialAttackPower = 31;
@@ -885,8 +885,8 @@ void PokeDataBase::GeodudeData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Rock";
 	PoKeCreatePtr.NumberName = "013";
 
-	PoKeCreatePtr.MaxHealthPoint = 40;
-	PoKeCreatePtr.CurrentHealthPoint = 40;
+	PoKeCreatePtr.MaxHealthPoint = 20;
+	PoKeCreatePtr.CurrentHealthPoint = 20;
 	PoKeCreatePtr.AttackPower = 80;
 	PoKeCreatePtr.Defense = 100;
 	PoKeCreatePtr.SpecialAttackPower = 30;
@@ -916,8 +916,8 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.TypeName = "Rock";
 	PoKeCreatePtr.NumberName = "014";
 
-	PoKeCreatePtr.MaxHealthPoint = 35;
-	PoKeCreatePtr.CurrentHealthPoint = 35;
+	PoKeCreatePtr.MaxHealthPoint = 25;
+	PoKeCreatePtr.CurrentHealthPoint = 25;
 	PoKeCreatePtr.AttackPower = 45;
 	PoKeCreatePtr.Defense = 160;
 	PoKeCreatePtr.SpecialAttackPower = 30;
