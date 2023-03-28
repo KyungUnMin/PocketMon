@@ -171,10 +171,16 @@ public:
 		return TypeName;
 	}
 
-	// 포켓몬 넘버 가져오기
-	int GetPokeNumber()
+	// 포켓몬 넘버 가져오기 (int)
+	int GetPokeNumber_int()
 	{
 		return (static_cast<int>(PokeDexNumber) + 1);
+	}
+
+	// 포켓몬 넘버 가져오기 (이넘)
+	PokeNumber GetPokeNumber_enum()
+	{
+		return PokeDexNumber;
 	}
 
 	// 포켓몬 도감 설명 가져오기
@@ -213,6 +219,7 @@ public:
 		return Experience;
 	}
 
+	// 포켓몬 경험치 획득
 	inline void PlusMonsterExperience(int _EXP)
 	{
 		Experience += _EXP;

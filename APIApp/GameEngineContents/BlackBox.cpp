@@ -13,7 +13,7 @@ BlackBox::~BlackBox()
 
 void BlackBox::Start()
 {
-	GameEngineRender* RenderPtr = CreateRender("CenterActor.bmp", 0);
+	GameEngineRender* RenderPtr = CreateRender("MoveMapFade1.bmp", 0);
 	SetPos(GameEngineWindow::GetScreenSize().half());
 	RenderPtr->SetScale(GameEngineWindow::GetScreenSize());
 }

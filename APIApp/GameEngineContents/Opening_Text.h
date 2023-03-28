@@ -16,12 +16,18 @@ public:
 	Opening_Text& operator=(const Opening_Text& _Other) = delete;
 	Opening_Text& operator=(Opening_Text&& _Other) noexcept = delete;
 
+	void AlphaControl(float _Deltatime);
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
 
 private:
-	void AlphaControl();
+	GameEngineRender* RenderPtr = nullptr;
+
+	int Alphavalue = 255;
+
+	float AlphaTime = 0.0f;
 
 };
 
