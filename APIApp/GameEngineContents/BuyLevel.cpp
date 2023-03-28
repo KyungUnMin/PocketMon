@@ -56,4 +56,5 @@ void BuyLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Yes.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_No.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Dialog_Back.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Money.bmp"));
 }

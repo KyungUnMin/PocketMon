@@ -65,6 +65,11 @@ private:
 	TextActor* ItemExplainRender = nullptr;
 	float4 ItemExplainRenderPos = { 172, 492 };//160 24 178 22 -18 2
 
+	NumberRenderObject MoneyRender = NumberRenderObject();
+	float4 MoneyRenderStartPos = { -202, -208 };
+	int Money = 0;
+	GameEngineRender* MoneySignRender = nullptr;
+
 
 	int State = 0;
 

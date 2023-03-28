@@ -7,6 +7,7 @@
 #include "BuyUIManager.h"
 #include "BuyLevelDialog.h"
 #include "InputControll.h"
+#include "PlayerBag.h"
 
 BuyWindow* BuyWindow::AcBuyWindow = nullptr;
 
@@ -59,7 +60,7 @@ void BuyWindow::Start()
 			ItemPriceRenders[i].SetAlign(Align::Right);
 			ItemPriceRenders[i].SetValue(Iter->GetPrice());
 			ItemPriceRenders[i].SetRenderPos(FirstItemPriceRenderPos + LineInterval * static_cast<float>(i));
-			
+			ItemPriceRenders[i].SetCameraEffect(false);
 			Iter++;
 			//ItemNameRenders[i]->SetText("ITEM" + std::to_string(i), "Font_Dialog.bmp", static_cast<int>(RenderOrder::Shop_Text));
 		}
@@ -94,10 +95,28 @@ void BuyWindow::Start()
 	ItemExplainRender = ParentLevel->CreateActor<TextActor>();
 	ItemExplainRender->SetText("Test Text", "Font_Dialog_White.bmp", static_cast<int>(RenderOrder::Shop_Text));
 	ItemExplainRender->SetPos(ItemExplainRenderPos);
+
+	MoneyRender.SetOwner(this);
+	MoneyRender.SetImage("SmallNum.bmp", ItemPriceRenderScale, static_cast<int>(RenderOrder::Shop_Text), RGB(255, 0, 255));
+	MoneyRender.SetAlign(Align::Right);
+	MoneyRender.SetValue(9999);
+	MoneyRender.SetRenderPos(MoneyRenderStartPos);
+	MoneyRender.SetCameraEffect(false);
+
+	MoneySignRender = CreateRender("Money.bmp", RenderOrder::Shop_Text);
+	MoneySignRender->EffectCameraOff();
+	MoneySignRender->SetScale(ItemPriceRenderScale);
 }
 
 void BuyWindow::Update(float _DeltaTime)
 {
+	if (Money != PlayerBag::MainBag->GetMoney())
+	{
+		Money = PlayerBag::MainBag->GetMoney();
+		MoneyRender.SetValue(Money);
+		MoneySignRender->SetPosition(MoneyRenderStartPos + float4::Left * ItemPriceRenderScale * static_cast<float>(GameEngineMath::GetLenth(Money)) + float4{ -8,0 });
+	}
+	
 	if (false == InputControll::CanControll(InputControlHandle) || BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
 	{
 		ArrowRender->SetImage("PressMenuArrow.bmp");

@@ -56,6 +56,9 @@ private:
 	float4 Down_Pos = { -130, 70 };
 	float4 ArrowRenderScale = {56,44};
 
+	GameEngineRender* MoneySignRender = nullptr;
+	float4 MoneySignRenderScale = { 20,32 };
+
 	Item* SelectItem = nullptr;
 
 	std::string Script = std::string();

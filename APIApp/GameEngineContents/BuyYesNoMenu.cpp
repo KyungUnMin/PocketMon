@@ -130,5 +130,6 @@ void BuyYesNoMenu::ChangeState()
 void BuyYesNoMenu::BuyItem()
 {
 	PlayerBag::MainBag->AddItem(SelectItem->GetItemCode(), Count);
+	PlayerBag::MainBag->MinusMoney(SelectItem->GetPrice() * Count);
 }
 

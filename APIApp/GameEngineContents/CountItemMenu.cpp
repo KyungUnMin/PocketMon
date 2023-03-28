@@ -7,6 +7,7 @@
 #include "BuyUIManager.h"
 #include "Item.h"
 #include "InputControll.h"
+#include "PlayerBag.h"
 //CountItemMenu* CountItemMenu::AcCountItemMenu = nullptr;
 
 CountItemMenu::CountItemMenu()
@@ -67,6 +68,10 @@ void CountItemMenu::Start()
 	Down_ArrowRender->SetPosition(Down_Pos);
 	Down_ArrowRender->ChangeAnimation("Arrow");
 
+	MoneySignRender = CreateRender("Money.bmp", RenderOrder::Shop_Dialog_Text);
+	MoneySignRender->EffectCameraOff();
+	MoneySignRender->SetScale(MoneySignRenderScale);
+
 	Script = "Defalt Script";
 	
 	Off();
@@ -83,6 +88,7 @@ void CountItemMenu::UpdateStart(Item& _Item)
 
 void CountItemMenu::Update(float _DeltaTime)
 {
+	MoneySignRender->SetPosition(PriceNumRenderPos + float4::Left * NumRenderScale * static_cast<float>(GameEngineMath::GetLenth(Price * Count)) + float4{ -8,0 });
 	if (GameEngineInput::IsDown("Menu_Up"))
 	{
 		AddCount();
@@ -141,7 +147,7 @@ void CountItemMenu::UpdateEnd()
 void CountItemMenu::AddCount()
 {
 	Count++;
-	if (Count > 99)
+	if (Count > 99 || Price * Count > PlayerBag::MainBag->GetMoney())
 	{
 		Count = 1;
 	}
@@ -153,7 +159,7 @@ void CountItemMenu::AddCount10()
 {
 	int CountSave = Count;
 	CountSave +=10;
-	if (CountSave > 99)
+	if (CountSave > 99 || CountSave*Price > PlayerBag::MainBag->GetMoney())
 	{
 		return;
 	}
@@ -167,7 +173,19 @@ void CountItemMenu::SubCount()
 	Count--;
 	if (Count < 1)
 	{
-		Count = 99;
+		if (99*Price <= PlayerBag::MainBag->GetMoney())
+		{
+			Count = 99;
+		}
+		else
+		{
+			int i = 98;
+			while (i* Price > PlayerBag::MainBag->GetMoney())
+			{
+				i--;
+			}
+			Count = i;
+		}
 	}
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price * Count);
