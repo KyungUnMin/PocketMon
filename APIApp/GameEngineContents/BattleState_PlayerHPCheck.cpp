@@ -38,7 +38,8 @@ void BattleState_PlayerHPCheck::EnterState()
 
 	FriendlyHPBackground* PlayerHpUI = BattleLevel::BattleLevelPtr->Test1;
 	PlayerHpUI->IsBattleStartCheck(true);
-	PokeBattleSystem::Battle()
+	int Damage = PokeBattleSystem::GetDamage();
+	PlayerHpUI->GetMonsterDamage(Damage);
 }
 
 void BattleState_PlayerHPCheck::Update(float _DeltaTime)

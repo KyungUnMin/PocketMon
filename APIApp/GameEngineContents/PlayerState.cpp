@@ -182,7 +182,7 @@ void Player::JumpUpdate(float _Time)
 {
 	PlayerJumpTime += _Time*5.0f;
 
-	float4 NextJumpPos = float4::Clamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
+	float4 NextJumpPos = float4::LerpClamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
 	SetPos(NextJumpPos);
 
 	if (PlayerJumpTime > 1.0f)

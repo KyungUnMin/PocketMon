@@ -123,6 +123,9 @@ void FriendlyHPBackground::Start()
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
+	if (nullptr == BattlePlayer::PlayerPtr->GetMonsterDB())
+		return;
+
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
@@ -130,7 +133,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
 //	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
 	HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
-//	HpUpdate(20.0f, 100.0f);
+	//	HpUpdate(20.0f, 100.0f);
 
 
 	if (BattleStartCheck == true) {
