@@ -22,9 +22,9 @@ protected:
 
 private:
 	GameEngineRender* MonsterRender = nullptr;
-	const float4 MoveOffset = float4{ 0.f, 100.f };
+	const float4 MoveOffset = float4{ 0.f, 50.f };
 
 	float Timer = 0.f;
-	const float Duration = 1.f;
+	const float Duration = 0.5f;
 };
 

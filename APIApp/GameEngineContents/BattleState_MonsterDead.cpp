@@ -31,10 +31,10 @@ void BattleState_MonsterDead::Update(float _DeltaTime)
 
 	float Ratio = (Timer / Duration);
 
-	float NowAlpha = 255.f * Ratio;
-	if (1.f < NowAlpha)
+	float NowAlpha = 255.f - (255.f * Ratio);
+	if (NowAlpha < 0.f)
 	{
-		NowAlpha = 1.f;
+		NowAlpha = 0.f;
 	}
 	MonsterRender->SetAlpha(static_cast<int>(NowAlpha));
 

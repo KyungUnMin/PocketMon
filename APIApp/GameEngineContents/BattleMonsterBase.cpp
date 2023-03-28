@@ -16,10 +16,10 @@ BattleMonsterBase::~BattleMonsterBase()
 
 }
 
-void BattleMonsterBase::Init(PokeNumber _MonsterType)
+void BattleMonsterBase::Init(PokeNumber _MonsterType, int _Level)
 {
 	SetName(NameEnumToString[static_cast<size_t>(_MonsterType)]);
-	DbPtr = PokeDataBase::PokeCreate(static_cast<int>(_MonsterType) + 1);
+	DbPtr = PokeDataBase::PokeCreate(static_cast<int>(_MonsterType) + 1, _Level);
 }
 
 

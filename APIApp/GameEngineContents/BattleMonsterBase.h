@@ -34,7 +34,7 @@ public:
 	virtual class GameEngineRender* GetRender() = 0;
 
 protected:
-	void Init(PokeNumber _MonsterType);
+	void Init(PokeNumber _MonsterType, int _Level = 1);
 	BattleSkillBase* CreateSkill(PokeSkill _SkillType, BattleMonsterBase* _Owner);
 
 private:

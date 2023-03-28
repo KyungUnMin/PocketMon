@@ -24,7 +24,7 @@ BattleMonsterPlayer::~BattleMonsterPlayer()
 
 void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
 {
-	BattleMonsterBase::Init(_MonsterType);
+	BattleMonsterBase::Init(_MonsterType, 10);
 
 	RenderCreate();
 	FsmPtr->Init();
