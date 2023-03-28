@@ -41,6 +41,8 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
+	void ChangeRenderOrder(RenderOrder _Order);
+
 private:
 	
 	static FieldDialog* MainFieldDialog;

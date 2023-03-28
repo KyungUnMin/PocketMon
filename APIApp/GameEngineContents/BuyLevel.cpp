@@ -52,7 +52,8 @@ void BuyLevel::ImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Buy.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PressMenuArrow.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("CountSelectItem.bmp"));
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SmallNum.bmp"))->Cut(10,1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SmallNum.bmp"))->Cut(10, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Yes.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_No.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Dialog_Back.bmp"));
 }

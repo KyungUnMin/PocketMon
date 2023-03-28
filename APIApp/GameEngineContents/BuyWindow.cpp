@@ -84,6 +84,16 @@ void BuyWindow::Start()
 	ArrowRender->SetScaleToImage();
 	ArrowRender->EffectCameraOff();
 	ArrowRender->SetPosition(FirstArrowRenderPos);
+
+	ItemImageRender = CreateRender("Items.bmp", RenderOrder::Shop_Text);
+	ItemImageRender->SetScale(ItemImageRenderScale);
+	ItemImageRender->EffectCameraOff();
+	ItemImageRender->SetPosition(ItemImageRenderPos);
+	ItemImageRender->SetFrame(0);
+
+	ItemExplainRender = ParentLevel->CreateActor<TextActor>();
+	ItemExplainRender->SetText("Test Text", "Font_Dialog_White.bmp", static_cast<int>(RenderOrder::Shop_Text));
+	ItemExplainRender->SetPos(ItemExplainRenderPos);
 }
 
 void BuyWindow::Update(float _DeltaTime)
@@ -170,6 +180,16 @@ void BuyWindow::UpdateEnd()
 void BuyWindow::StateToRender()
 {
 	ArrowRender->SetPosition(FirstArrowRenderPos + LineInterval * static_cast<const float>(State));
+	if (State >= 0 && State <= 4)
+	{
+		ItemImageRender->SetFrame(static_cast<int>(ItemList[State].GetItemCode()));
+		ItemExplainRender->SetText(ItemList[State].GetItemExplanation(), "Font_Dialog_White.bmp", false);
+	}
+	else
+	{
+		ItemImageRender->SetFrame(static_cast<int>(ItemCode::Cancel));
+		ItemExplainRender->SetText("Quit shopping.", "Font_Dialog_White.bmp", false);
+	}
 }
 
 void BuyWindow::ChangeStatePrev()

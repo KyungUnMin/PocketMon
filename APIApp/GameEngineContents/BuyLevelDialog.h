@@ -27,6 +27,10 @@ protected:
 
 private:
 	static BuyLevelDialog* AcBuyLevelDialog;
+	float4 ActorPos = {480, 544};
+
+	GameEngineRender* DialogBack = nullptr;
+	float4 DialogBackScale = {960, 192};
 	
 };
 

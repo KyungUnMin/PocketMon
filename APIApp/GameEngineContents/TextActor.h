@@ -38,7 +38,7 @@ private:
 	float4 FirstTextRenderPos = { 0, 0 };
 	float4 TextRenderImageScale = { 24, 48 };
 	float4 TextRenderInterval = { 0,12 };
-
+	
 	float Time = 0;
 	std::vector<int> LineRenderIndex = std::vector<int>(0);
 	std::list<std::string> TestScript = std::list<std::string>();

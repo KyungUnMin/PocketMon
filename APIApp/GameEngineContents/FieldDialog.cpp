@@ -173,6 +173,18 @@ void FieldDialog::Update(float _DeltaTime)
 	}
 }
 
+void FieldDialog::ChangeRenderOrder(RenderOrder _Order)
+{
+	FieldDialogFrame->SetOrder(static_cast<int>(_Order));
+	for (size_t y = 0; y < FieldDialogTextRender.size(); y++)
+	{
+		for (size_t x = 0; x < FieldDialogTextRender[y].size(); x++)
+		{
+			FieldDialogTextRender[y][x]->SetOrder(static_cast<int>(_Order) + 1);
+		}
+	}
+}
+
 void FieldDialog::UpdateEnd()
 {
 	Player::MainPlayer->SetPlayerMoveBool(true);

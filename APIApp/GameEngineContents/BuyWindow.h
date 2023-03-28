@@ -58,6 +58,14 @@ private:
 
 	float4 LineInterval = { 0, 64 };
 
+	GameEngineRender* ItemImageRender = nullptr;
+	float4 ItemImageRenderPos = {-400, 228};
+	float4 ItemImageRenderScale = { 128,128 };
+
+	TextActor* ItemExplainRender = nullptr;
+	float4 ItemExplainRenderPos = { 172, 492 };//160 24 178 22 -18 2
+
+
 	int State = 0;
 
 
