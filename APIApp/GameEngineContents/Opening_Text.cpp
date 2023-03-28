@@ -24,17 +24,24 @@ void Opening_Text::Start()
 
 void Opening_Text::Update(float _Deltatime)
 {
-	AlphaTime += _Deltatime;
-
-	AlphaControl(AlphaTime);
+	if (true == IsStart)
+	{
+		AlphaTime += _Deltatime;
+		AlphaControl(AlphaTime);
+	}
 }
 
 void Opening_Text::AlphaControl(float _Deltatime)
 {
-	if (1 <= Alphavalue && AlphaTime <= 0.1f)
+	if (1 <= Alphavalue && AlphaTime <= 0.05f)
 	{
 		AlphaTime = 0.0f;
 		--Alphavalue;
 		RenderPtr->SetAlpha(Alphavalue);
+	}
+
+	if (0 == Alphavalue)
+	{
+		RenderPtr->Death();
 	}
 }

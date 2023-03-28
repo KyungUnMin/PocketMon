@@ -21,7 +21,6 @@ void OpeningLevel::Loading()
 	CreateActor<BlackBox>();
 
 	OpeningText = CreateActor<Opening_Text>();
-	OpeningText->Off();
 }
 void OpeningLevel::Update(float _DeltaTime)
 {
@@ -32,8 +31,10 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	LevelEvent.AddEvent(2.f, std::bind([](OpeningLevel* _This)
 		{
-			_This->OpeningText->On();
+			_This->OpeningText->AlphaStart();
 		}, this), false);
+
+
 }
 
 void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
