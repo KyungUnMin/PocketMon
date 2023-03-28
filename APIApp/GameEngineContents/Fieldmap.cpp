@@ -6,6 +6,7 @@
 #include "FieldData.h"
 #include "FieldmapCity.h"
 #include "ContentsEnum.h"
+#include "CityNameUI.h"
 
 const float Fieldmap::TileSize = 64.0f;
 const float Fieldmap::TileSizeHalf = 32.0f;
@@ -136,6 +137,11 @@ void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr
 
 void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
 {
+	if (CurCity == _CityPtr)
+	{
+		return;
+	}
+
 	if (nullptr == _CityPtr)
 	{
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
@@ -148,6 +154,13 @@ void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
 
 	CurCity = _CityPtr;
 	CurCity->ActiveCity();
+
+	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
+	{
+		CityRef.second->CityActiveUpdate();
+	}
+
+	CityNameUI::FieldmapCityNameUI->PlayText(CurCity->GetUICityName());
 }
 
 void Fieldmap::ChangeCity(const std::string_view& _CityName)
@@ -159,18 +172,7 @@ void Fieldmap::ChangeCity(const std::string_view& _CityName)
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	if (nullptr != CurCity)
-	{
-		CurCity->DisableCity();
-	}
-
-	CurCity = AllCitys[UpperName];
-	CurCity->ActiveCity();
-
-	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
-	{
-		CityRef.second->CityActiveUpdate();
-	}
+	ChangeCity(AllCitys[UpperName]);
 }
 
 void Fieldmap::AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)

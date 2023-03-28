@@ -31,9 +31,10 @@ void FieldmapCity::InitPos(const float4& _CityPos)
 	CityPos = _CityPos - CityRenderer->GetScale().half();
 }
 
-void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName)
+void FieldmapCity::InitFieldRender(const std::string_view& _CityName, const std::string_view& _UIName, const std::string_view& _ImageName)
 {
 	CityName = _CityName;
+	UICityName = _UIName;
 
 	if (nullptr != CityRenderer)
 	{

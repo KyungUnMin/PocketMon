@@ -25,7 +25,7 @@ public:
 	}
 
 	// .bmp 빼고 입력
-	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _ImageName);
+	void InitFieldRender(const std::string_view& _CityName, const std::string_view& _UIName, const std::string_view& _ImageName);
 
 	void SetWalkable(const int2& _Index, bool _Able)
 	{
@@ -82,6 +82,16 @@ public:
 		return MyTilemapData.ShowEventLog(_Index);
 	}
 
+	inline std::string GetCityName() const
+	{
+		return CityName;
+	}
+
+	inline std::string GetUICityName() const
+	{
+		return UICityName;
+	}
+
 	// 인덱스 중복체크를 안하기 때문에 주의해서 사용
 	void AddActor(const int2& _Index, GameEngineActor* _Actor);
 	void AddFlowerActors(const std::string_view& _FlowerImageName);
@@ -97,6 +107,7 @@ protected:
 
 private:
 	std::string CityName;
+	std::string UICityName;
 
 	bool CityActive = false;
 	bool NeighborActive = false;

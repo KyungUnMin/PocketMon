@@ -92,7 +92,7 @@ private:
 	void LinkDoor(const std::string_view& _LinkDoorNameA, const std::string_view& _LinkDoorNameB);
 
 	// ImageName에는 .bmp를 빼고 입력
-	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos);
+	void CreateFieldmapCity(const std::string_view& _CityName, const std::string_view _UIName, const std::string_view& _ImageName, const float4& _Pos);
 
 	void CreateBattlezone_Route1(const int2& _Start, const int2& _Size);
 	void CreateBattlezone_Route2_Down(const int2& _Start, const int2& _Size);

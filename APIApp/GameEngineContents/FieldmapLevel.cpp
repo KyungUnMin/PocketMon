@@ -24,6 +24,7 @@
 #include "FieldmapBattleZone.h"
 #include "ShopUIManager.h"
 #include "YesNoMenu.h"
+#include "CityNameUI.h"
 
 //Game Actor
 #include "Player.h"
@@ -47,7 +48,7 @@ void FieldmapLevel::Loading()
 	{
 		CreateActor<BackgroundUI>();
 
-		CreateFieldmapCity("PalletTown", "PalletTown", float4::Zero);
+		CreateFieldmapCity("PalletTown", "Pallet Town", "PalletTown", float4::Zero);
 		{
 			CreateDoor<FieldmapWoodDoor>("PalletTownToHouse", "PalletTown", int2(21, 7), "MoveHouse001");
 			CreateDoor<FieldmapWoodDoor>("PalletTownToHome", "PalletTown", int2(12, 7), "MoveHome");
@@ -58,7 +59,7 @@ void FieldmapLevel::Loading()
 			Fieldmap::AddFlowerActors("PalletTown", "PalletTown_Flower.bmp");
 		}
 
-		CreateFieldmapCity("Route1", "Route1", float4(0.0f, -2240.0f));
+		CreateFieldmapCity("Route1","Route 1", "Route1", float4(0.0f, -2240.0f));
 
 		{
 			Fieldmap::AddFlowerActors("Route1", "Route1_Flower.bmp");
@@ -86,7 +87,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("Route1", int2(16, 4), int2::Right, 6, PlayerDir::Down);
 		}
 
-		CreateFieldmapCity("ViridianCity", "ViridianCity", float4(224.0f, -4800.0f));
+		CreateFieldmapCity("ViridianCity", "Viridian City", "ViridianCity", float4(224.0f, -4800.0f));
 		{
 			CreateDoor<FieldmapWoodDoor>("ViridianCityToHouse001", "ViridianCity", int2(19, 11), "MoveHouse001");
 			CreateDoor<FieldmapWoodDoor>("ViridianCityToHouse002", "ViridianCity", int2(19, 18), "MoveHouse002");
@@ -105,7 +106,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, PlayerDir::Down);
 		}
 
-		CreateFieldmapCity("Route22", "Route22", float4(-3360.0f, -4640.0f));
+		CreateFieldmapCity("Route22", "Route22 22", "Route22", float4(-3360.0f, -4640.0f));
 		{
 			CreateBattlezone_Route22(int2(30, 19), int2(7, 5));
 			CreateBattlezone_Route22(int2(49, 19), int2(6, 5));
@@ -123,7 +124,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("Route22", int2(54, 12), int2::Right, 3, PlayerDir::Down);
 		}
 
-		CreateFieldmapCity("Route2_Down", "Route2_Down", float4(0.0f, -7808.0f));
+		CreateFieldmapCity("Route2_Down", "Route 2", "Route2_Down", float4(0.0f, -7808.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest001", "Route2_Down", int2(11, 25), "MoveRoute2_Up");
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest002", "Route2_Down", int2(12, 25), "MoveRoute2_Up");
@@ -145,7 +146,7 @@ void FieldmapLevel::Loading()
 		}
 
 
-		CreateFieldmapCity("Route2_Up", "Route2_Up",float4(0.0f, -10368.0f));
+		CreateFieldmapCity("Route2_Up", "Route 2", "Route2_Up",float4(0.0f, -10368.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest001", "Route2_Up", int2(11, 13), "MoveRoute2_Down");
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest002", "Route2_Up", int2(12, 13), "MoveRoute2_Down");
@@ -157,7 +158,7 @@ void FieldmapLevel::Loading()
 			CreateBattlezone_Route2_Up(int2(8, 2), int2(7, 7));
 		}
 
-		CreateFieldmapCity("PewterCity", "PewterCity", float4(0.0f, -12480.0f));
+		CreateFieldmapCity("PewterCity", "Pewter CIty", "PewterCity", float4(0.0f, -12480.0f));
 		{
 			CreateDoor<FieldmapDoubleDoor>("PewterCityToGym", "PewterCity", int2(15, 16), "MoveGym");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToMarket", "PewterCity", int2(28, 18), "MoveMarket");
@@ -177,48 +178,48 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("PewterCity", int2(20, 6), int2::Right, 17, PlayerDir::Down);
 		}
 
-		CreateFieldmapCity("PalletTown_Home1F", "Myroom_1F", float4(0.0f, 2000.0f));
+		CreateFieldmapCity("PalletTown_Home1F", "Home 1F", "Myroom_1F", float4(0.0f, 2000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("HomeToPalletTown", "PalletTown_Home1F", int2(4, 9), "MoveOut");
 			CreateDoor<FieldmapEmptyDoor>("HomeToSecond", "PalletTown_Home1F", int2(11, 3), "MoveSecondFloor");
 		}
 
-		CreateFieldmapCity("PalletTown_Home2F", "Myroom_2F", float4(0.0f, 4000.0f));
+		CreateFieldmapCity("PalletTown_Home2F", "Home 2F", "Myroom_2F", float4(0.0f, 4000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("HomeSecondToFirst", "PalletTown_Home2F", int2(9, 3), "MoveFirstFloor");
 		}
 
-		CreateFieldmapCity("PalletTown_Office", "Office", float4(0.0f, 6000.0f));
+		CreateFieldmapCity("PalletTown_Office", "Oak Office", "Office", float4(0.0f, 6000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("OfficeToPalletTown", "PalletTown_Office", int2(7, 13), "MoveOut");
 		}
 
-		CreateFieldmapCity("PalletTown_House1", "Rivalroom", float4(0.0f, 8000.0f));
+		CreateFieldmapCity("PalletTown_House1", "House", "Rivalroom", float4(0.0f, 8000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("House001ToPalletTown", "PalletTown_House1", int2(5, 9), "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianCity_PokemonCenter", "Center_1F", float4(2000.0f, 2000.0f));
+		CreateFieldmapCity("ViridianCity_PokemonCenter", "Pokemon Center", "Center_1F", float4(2000.0f, 2000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("PokemonCenterToViridianCity", "ViridianCity_PokemonCenter", int2(8, 10), "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianCity_Market", "Market", float4(2000.0f, 4000.0f));
+		CreateFieldmapCity("ViridianCity_Market", "Market", "Market", float4(2000.0f, 4000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("MarketToViridianCity", "ViridianCity_Market", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianCity_House1", "GreyCityHouse", float4(2000.0f, 6000.0f));
+		CreateFieldmapCity("ViridianCity_House1", "House", "GreyCityHouse", float4(2000.0f, 6000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("House001ToViridianCity", "ViridianCity_House1", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianCity_House2", "GreyCityHouse", float4(2000.0f, 8000.0f));
+		CreateFieldmapCity("ViridianCity_House2", "House", "GreyCityHouse", float4(2000.0f, 8000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("House002ToViridianCity", "ViridianCity_House2", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianForest", "ViridianForest", float4(2000.0f, 13000.0f));
+		CreateFieldmapCity("ViridianForest", "Viridian Forest", "ViridianForest", float4(2000.0f, 13000.0f));
 		{
 			CreateBattlezone_VaridianForest(int2(9, 13), int2(5, 15));
 			CreateBattlezone_VaridianForest(int2(17, 12), int2(5, 14));
@@ -266,38 +267,38 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapEmptyDoor>("ViridianForestToRoute2Down003", "ViridianForest", int2(36, 62), "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_Gym", "GreyCityGym", float4(6000.0f, 2000.0f));
+		CreateFieldmapCity("PewterCity_Gym", "Gym", "GreyCityGym", float4(6000.0f, 2000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("GymToPewterCity", "PewterCity_Gym", int2(6, 14), "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_Market", "Market", float4(6000.0f, 4000.0f));
+		CreateFieldmapCity("PewterCity_Market", "Market", "Market", float4(6000.0f, 4000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("MarketToPewterCity", "PewterCity_Market", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_Museum1F", "GreyCityMuseum_1F", float4(6000.0f, 6000.0f));
+		CreateFieldmapCity("PewterCity_Museum1F", "Museum 1F", "GreyCityMuseum_1F", float4(6000.0f, 6000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Museum1FToPewterCity", "PewterCity_Museum1F", int2(15, 10), "MoveOut");
 			CreateDoor<FieldmapEmptyDoor>("Museum1FToMuseum2F", "PewterCity_Museum1F", int2(10, 9), "MoveSecondFloor");
 		}
 
-		CreateFieldmapCity("PewterCity_Museum2F", "GreyCityMuseum_2F", float4(6000.0f, 8000.0f));
+		CreateFieldmapCity("PewterCity_Museum2F", "Museum 2F", "GreyCityMuseum_2F", float4(6000.0f, 8000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("Museum2FToMuseum1F", "PewterCity_Museum2F", int2(11, 9), "MoveFirstFloor");
 		}
 
-		CreateFieldmapCity("PewterCity_House1", "GreyCityHouse", float4(6000.0f, 10000.0f));
+		CreateFieldmapCity("PewterCity_House1", "House", "GreyCityHouse", float4(6000.0f, 10000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("House001ToPewterCity", "PewterCity_House1", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_House2", "GreyCityHouse", float4(6000.0f, 12000.0f));
+		CreateFieldmapCity("PewterCity_House2", "House", "GreyCityHouse", float4(6000.0f, 12000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("House002ToPewterCity", "PewterCity_House2", int2(5, 8), "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_PokemonCenter", "Center_1F", float4(6000.0f, 14000.0f));
+		CreateFieldmapCity("PewterCity_PokemonCenter", "Pokemon Center", "Center_1F", float4(6000.0f, 14000.0f));
 		{
 			CreateDoor<FieldmapEmptyDoor>("PokemonCenterToPewterCity", "PewterCity_PokemonCenter", int2(8, 10), "MoveOut");
 		}
@@ -365,6 +366,16 @@ void FieldmapLevel::Loading()
 			Fieldmap::LinkNeighbor("Route2_Down", "Route2_Up");
 			Fieldmap::LinkNeighbor("Route2_Up", "PewterCity");
 		}
+	}
+	{
+		CityNameUI* CityNameUIPtr = CreateActor<CityNameUI>();
+		
+		float4 StartPos = float4(200, -40);
+		float4 DestPos = float4(200, 35);
+
+		CityNameUIPtr->SetPos(StartPos);
+		CityNameUIPtr->Init(StartPos, DestPos);
+		CityNameUIPtr->SetSpeed(3.0f);
 	}
 
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
@@ -526,11 +537,11 @@ void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& 
 {
 }
 
-void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view& _ImageName, const float4& _Pos)
+void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view _UIName, const std::string_view& _ImageName, const float4& _Pos)
 {
 	FieldmapCity* PalletTownPtr = CreateActor<FieldmapCity>(-9999);
 
-	PalletTownPtr->InitFieldRender(_CityName, _ImageName);
+	PalletTownPtr->InitFieldRender(_CityName, _UIName, _ImageName);
 	PalletTownPtr->InitPos(_Pos);
 }
 

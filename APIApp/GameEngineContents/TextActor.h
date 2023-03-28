@@ -17,13 +17,13 @@ public:
 	void SetAlpha(int _Alpha);
 	void SkipAnimation();
 	void Clear();
-
+	
 	// delete Function
 	TextActor(const TextActor& _Other) = delete;
 	TextActor(TextActor&& _Other) = delete;
 	TextActor& operator=(const TextActor& _Other) = delete;
 	TextActor& operator=(TextActor&& _Other) = delete;
-
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

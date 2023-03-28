@@ -309,6 +309,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="CityNameUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="CountItemMenu.cpp">
       <SubType>
       </SubType>
@@ -625,6 +629,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BuyYesNoMenu.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="CityNameUI.h">
       <SubType>
       </SubType>
     </ClInclude>
