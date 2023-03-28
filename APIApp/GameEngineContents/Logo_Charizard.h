@@ -22,6 +22,11 @@ public:
 	Logo_Charizard& operator=(const Logo_Charizard& _Other) = delete;
 	Logo_Charizard& operator=(Logo_Charizard&& _Other) noexcept = delete;
 
+	void ColorGray()
+	{
+
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;

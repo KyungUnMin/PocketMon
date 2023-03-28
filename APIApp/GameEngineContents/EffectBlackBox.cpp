@@ -4,6 +4,8 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 
+bool EffectBlackBox::IsDownEnd = false;
+
 EffectBlackBox::EffectBlackBox() 
 {
 }
@@ -19,10 +21,10 @@ void EffectBlackBox::Start()
 	StartPos = float4::Zero;
 	EndPos = StartPos + (float4::Up * Winsize_h.y);
 
-	DownStartPos = float4::Down * Winsize_h.y * 2;
-	DownEndPos = -DownStartPos + (float4::Up * Winsize_h.y);
+	DownStartPos = float4::Zero;
+	DownEndPos = DownStartPos + (float4::Up * Winsize_h.y);
 
-	RenderPtr = CreateRender("MoveMapFade1.bmp", 3);
+	RenderPtr = CreateRender("BlackBox.bmp", 3);
 	SetPos(Winsize_h);
 	RenderPtr->SetScale(GameEngineWindow::GetScreenSize());
 }
@@ -36,6 +38,30 @@ void EffectBlackBox::Update(float _Deltatime)
 
 	if (true == IsDownStart)
 	{
+		MoveUp_Down(_Deltatime);
+	}
+
+	if (true == IsStart_Alpha)
+	{
+		RenderPtr->SetAlpha(150);
+		MoveUp(_Deltatime);
+	}
+
+	if (true == IsDownStart_Alpha)
+	{
+		RenderPtr->SetAlpha(150);
+		MoveUp_Down(_Deltatime);
+	}
+
+	if (true == IsStart_Alpha2)
+	{
+		RenderPtr->SetAlpha(100);
+		MoveUp(_Deltatime);
+	}
+
+	if (true == IsDownStart_Alpha2)
+	{
+		RenderPtr->SetAlpha(100);
 		MoveUp_Down(_Deltatime);
 	}
 }
@@ -53,5 +79,13 @@ void EffectBlackBox::MoveUp_Down(float _Deltatime)
 	MoveTime += _Deltatime * 0.005f;
 
 	float4 Pos = float4::LerpClamp(DownStartPos, DownEndPos, MoveTime);
-	SetMove(Pos);
+
+	if (360.0f <= GetPos().y)
+	{
+		SetMove(Pos);
+	}
+	else
+	{
+		IsDownEnd = true;
+	}
 }

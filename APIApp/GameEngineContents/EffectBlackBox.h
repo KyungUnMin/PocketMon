@@ -26,11 +26,38 @@ public:
 		IsDownStart = true;
 	}
 
+	void MoveStart_Alpha()
+	{
+		IsStart_Alpha = true;
+	}
+
+	void MoveStart_Down_Alpha()
+	{
+		IsDownStart_Alpha = true;
+	}
+
+	void MoveStart_Alpha2()
+	{
+		IsStart_Alpha2 = true;
+	}
+
+	void MoveStart_Down_Alpha2()
+	{
+		IsDownStart_Alpha2 = true;
+	}
+
+	static bool IsEnd()
+	{
+		return IsDownEnd;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
 
 private:
+	static bool IsDownEnd;
+
 	GameEngineRender* RenderPtr = nullptr;
 
 	float4 Winsize_h = float4::Zero;
@@ -43,6 +70,10 @@ private:
 
 	bool IsStart = false;
 	bool IsDownStart = false;
+	bool IsStart_Alpha = false;
+	bool IsDownStart_Alpha = false;
+	bool IsStart_Alpha2 = false;
+	bool IsDownStart_Alpha2 = false;
 
 	void MoveUp(float _Deltatime);
 	void MoveUp_Down(float _Deltatime);

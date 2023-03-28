@@ -35,10 +35,16 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	int aaa = NewP2.GetMonsterMaxHP_int();
 	int bbb = NewP2.GetMonsterCurrentHP();
 
-	PokeBattleSystem::Battle(NewP1, 4, NewP2);
-	PokeBattleSystem::Battle(NewP1, 4, NewP2);
-	PokeBattleSystem::Battle(NewP1, 4, NewP2);
+	PokeBattleSystem::Battle(NewP1, 1, NewP2);
+	int AAAAasdfasdfasdf = PokeBattleSystem::GetDamage();
+
+	PokeBattleSystem::Battle(NewP1, 3, NewP2);
+
+	AAAAasdfasdfasdf = PokeBattleSystem::GetDamage();
+	PokeBattleSystem::Battle(NewP1, 1, NewP2);
+	AAAAasdfasdfasdf = PokeBattleSystem::GetDamage();
 	PokeBattleSystem::Battle(NewP2, 1, NewP1);
+	AAAAasdfasdfasdf = PokeBattleSystem::GetDamage();
 
 	aa = NewP1.GetMonsterMaxHP_int();
 	bb = NewP1.GetMonsterCurrentHP();

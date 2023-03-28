@@ -366,6 +366,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_smallST.bmp"))->Cut(4, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Star.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Text.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WhiteBox.bmp"));
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))

@@ -10,7 +10,7 @@ enum class BattleScript
 	Amazing,          // 3 효과는 굉장했다!
 	Buff,             // 4 이 스킬은 버프스킬입니다.
 	PPiszero,         // 5 PP가 0입니다. 배틀 불가능
-	Stern,         // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
+	Stern,            // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
 };
 
 // 설명 :
@@ -28,6 +28,10 @@ public:
 	PokeBattleSystem& operator=(PokeBattleSystem&& _Other) noexcept = delete;
 
 	static BattleScript Battle(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
+	static int GetDamage()
+	{
+		return Damage;
+	}
 
 protected:
 

@@ -2,6 +2,9 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "OpeningLevel.h"
+#include "EffectBlackBox.h"
+
 Logo_Charizard_White::Logo_Charizard_White() 
 {
 }
@@ -19,5 +22,8 @@ void Logo_Charizard_White::Start()
 
 void Logo_Charizard_White::Update(float _Deltatime)
 {
-
+	if (true == OpeningLevel::GetOpeningLevelPtr()->GetEffectBlackBox2()->IsEnd())
+	{
+		RenderPtr->Death();
+	}
 }
