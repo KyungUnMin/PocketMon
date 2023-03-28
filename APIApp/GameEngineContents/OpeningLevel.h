@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineLevel.h>
 
 // Ό³Έν :
+class EffectBlackBox;
 class Opening_Text;
 class Logo_Charizard;
 class Logo_Charizard_White;
@@ -29,6 +30,7 @@ protected:
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override;
 
 private:
+	EffectBlackBox* EffectBox = nullptr;
 	Opening_Text* OpeningText = nullptr;
 	Logo_Charizard* Zardlogo = nullptr;
 	Logo_Charizard_White* Zardlogo_White = nullptr;

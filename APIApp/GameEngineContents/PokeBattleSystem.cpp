@@ -82,7 +82,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkil
 			float step6 = step5 * Cal7;
 			float step7 = step6 * Cal8;
 
-			Damage = static_cast<int>(round(step7 / 70));
+			Damage = static_cast<int>(round(step7 / 50));
 
 			_Defender.MinusMonsterCurrentHP(Damage);
 		}

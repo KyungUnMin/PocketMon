@@ -318,6 +318,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="DoorActorBase.cpp" />
+    <ClCompile Include="EffectBlackBox.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="EndingEndLogo.cpp">
       <SubType>
       </SubType>
@@ -641,6 +645,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="DoorActorBase.h" />
+    <ClInclude Include="EffectBlackBox.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="EndingEndLogo.h">
       <SubType>
       </SubType>

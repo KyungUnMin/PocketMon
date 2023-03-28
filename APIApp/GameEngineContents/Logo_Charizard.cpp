@@ -33,8 +33,10 @@ void Logo_Charizard::ColorChange()
 	switch (ColorSelect)
 	{
 	case ZardColor::Gray:
+		RenderPtr->ChangeAnimation("Gray");
 		break;
 	case ZardColor::Origin:
+		RenderPtr->ChangeAnimation("Origin");
 		break;
 	default:
 		break;
