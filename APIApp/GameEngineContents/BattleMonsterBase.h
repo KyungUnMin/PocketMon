@@ -38,9 +38,10 @@ protected:
 	BattleSkillBase* CreateSkill(PokeSkill _SkillType, BattleMonsterBase* _Owner);
 
 private:
+	bool IsInit = false;
 	static const std::vector<std::string_view> NameEnumToString;
 	static const std::vector<std::string_view> SkiilEnumToString;
 
-	PokeDataBase DbPtr;;
+	PokeDataBase DbPtr;
 };
 

@@ -93,6 +93,9 @@ BattlePlayer_StateType BattlePlayer::GetNowState()
 
 PokeDataBase* BattlePlayer::GetMonsterDB()
 {
+	if (nullptr == Monster)
+		return nullptr;
+
 	return Monster->GetDB();
 }
 

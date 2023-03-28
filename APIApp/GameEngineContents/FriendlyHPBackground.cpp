@@ -123,7 +123,8 @@ void FriendlyHPBackground::Start()
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
-	if (nullptr == BattlePlayer::PlayerPtr->GetMonsterDB())
+	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	if (nullptr == DB)
 		return;
 
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());

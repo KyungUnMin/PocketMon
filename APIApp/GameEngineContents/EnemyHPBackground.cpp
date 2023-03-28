@@ -75,7 +75,10 @@ void EnemyHPBackground::Start()
 }
 void EnemyHPBackground::Update(float _DeltaTime)
 {
-	
+	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	if (nullptr == DB)
+		return;
+
 	//일단 현제거 받자
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(EnemyPoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	BattleCommendActor::BattleCommendActorPtr->StringToRender(EnemyPoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());

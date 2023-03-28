@@ -142,5 +142,8 @@ void BattleEnemy::Update(float _DeltaTime)
 
 PokeDataBase* BattleEnemy::GetMonsterDB()
 {
+	if (nullptr == Monster)
+		return nullptr;
+
 	return Monster->GetDB();
 }

@@ -72,9 +72,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	//Init(BattleFieldType::Gym);
 
 	Test1 = CreateActor<FriendlyHPBackground>(UpdateOrder::Battle_Actors);
-	Test1->SetPos({ 300.f, 300.f });
+	Test1->SetPos({ 400.f, 100.f });
 	Test2 = CreateActor<EnemyHPBackground>(UpdateOrder::Battle_Actors);
-	Test2->SetPos({ 600.f, 400.f });
+	Test2->SetPos({ 200.f, 100.f });
 }
 
 void BattleLevel::Init(
