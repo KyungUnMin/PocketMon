@@ -56,12 +56,14 @@ void ShopMainMenu::Update(float _DeltaTime)
 {
 	if (GameEngineInput::IsDown("Menu_Up"))
 	{
-		ChangeStatePrev();
+		ChangeState();
+		//ChangeStatePrev();
 	}
 
 	if (GameEngineInput::IsDown("Menu_Down"))
 	{
-		ChangeStateNext();
+		ChangeState();
+		//ChangeStateNext();
 	}
 
 	if (GameEngineInput::IsDown("A"))
@@ -127,4 +129,18 @@ void ShopMainMenu::ChangeStateNext()
 	}
 	State = static_cast<ShopMianMenuState>(CurState);
 	MenuStateToRender();
+}
+
+void ShopMainMenu::ChangeState()
+{
+	if (State == ShopMianMenuState::Buy)
+	{
+		State = ShopMianMenuState::SeeYa;
+		MenuStateToRender();
+	}
+	else
+	{
+		State = ShopMianMenuState::Buy;
+		MenuStateToRender();
+	}
 }

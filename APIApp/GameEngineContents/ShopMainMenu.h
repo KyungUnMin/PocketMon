@@ -53,5 +53,6 @@ private:
 
 	void ChangeStatePrev();
 	void ChangeStateNext();
+	void ChangeState();
 };
 
