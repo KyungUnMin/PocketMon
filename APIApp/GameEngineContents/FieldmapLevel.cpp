@@ -27,6 +27,7 @@
 #include "CityNameUI.h"
 
 //Game Actor
+#include "NPC1.h"
 #include "Player.h"
 #include "EndingPlayActor.h"
 
@@ -389,7 +390,7 @@ void FieldmapLevel::Loading()
 		
 	UIImageLoad();
 	
-	ShopNpc=CreateActor<NPC1>(); 
+	ShopNpc = CreateActor<NPC1>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc);
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
