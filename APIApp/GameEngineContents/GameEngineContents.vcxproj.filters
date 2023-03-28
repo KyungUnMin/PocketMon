@@ -416,6 +416,11 @@
     <ClCompile Include="EffectBlackBox.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="CityNameUI.cpp" />
+    <ClCompile Include="Logo_Charizard_White.cpp" />
+    <ClCompile Include="LevelChangeFade.cpp">
+      <Filter>FieldUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BackGround.h" />
@@ -820,6 +825,11 @@
     </ClInclude>
     <ClInclude Include="EffectBlackBox.h">
       <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="CityNameUI.h" />
+    <ClInclude Include="Logo_Charizard_White.h" />
+    <ClInclude Include="LevelChangeFade.h">
+      <Filter>FieldUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
