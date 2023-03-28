@@ -3,10 +3,10 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "TextActor.h"
-#include "PocketMonCore.h"
 #include "PokemonUI.h"
 #include "ContentsEnum.h"
 #include "Player.h"
+#include "LevelChangeFade.h"
 PlayerBag* PlayerBag::MainBag = nullptr;
 
 PlayerBag::PlayerBag() {
@@ -234,6 +234,7 @@ void PlayerBag::Start()
 
 void PlayerBag::Update(float _DeltaTime)
 {
+	if (IsStop == true) { return; }
 	TimeEvent.Update(_DeltaTime);
 	switch (AnimState)
 	{
@@ -329,6 +330,7 @@ void PlayerBag::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 
 void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	IsStop = false;
 	if (_PrevLevel->GetName() == "PokemonLevel")
 	{
 		SelectOff();
@@ -652,15 +654,18 @@ void PlayerBag::ItemUse()
 	case BagSpace::Items:
 		// 포켓몬 레벨로
 		PokemonUI::MainPokemon->SetState_ItemUse(CurrentItemCode);
-		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
+		IsStop = true;
 		break;
 	case BagSpace::KeyItems:
-		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+		IsStop = true;
 		Player::MainPlayer->SetRideValue(!Player::MainPlayer->GetIsRideValue());
 		break;
 	case BagSpace::PokeBalls:
 		RemoveItem(CurrentItemCode);
-		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+		IsStop = true;
 		break;
 	default:
 		break;
@@ -670,10 +675,12 @@ void PlayerBag::ItemGive()
 {
 	// 포켓몬 레벨로
 	PokemonUI::MainPokemon->SetState_ItemGive(CurrentItemCode);
-	PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
+	IsStop = true;
 }
 void PlayerBag::Cancel()
 {
 	CurrentItemCode = ItemCode::Cancel;
-	PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+	IsStop = true;
 }

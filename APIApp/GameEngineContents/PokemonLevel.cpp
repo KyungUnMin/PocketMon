@@ -1,6 +1,7 @@
 #include "PokemonLevel.h"
 #include "PokemonUI.h"
 #include "PokeDataBase.h"
+#include "LevelChangeFade.h"
 PokemonLevel::PokemonLevel() 
 {
 }
@@ -13,6 +14,7 @@ void PokemonLevel::Loading()
 {
 
 	CreateActor<PokemonUI>();
+	CreateActor<LevelChangeFade>();
 }
 
 void PokemonLevel::Update(float _DeltaTime)

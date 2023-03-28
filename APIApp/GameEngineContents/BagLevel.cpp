@@ -2,6 +2,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "PocketMonCore.h"
 #include "PlayerBag.h"
+#include "LevelChangeFade.h"
 
 #include "ContentsEnum.h"
 BagLevel::BagLevel() {
@@ -15,6 +16,7 @@ BagLevel::~BagLevel() {
 void BagLevel::Loading()
 {
 	CreateActor<PlayerBag>();
+	CreateActor<LevelChangeFade>();
 }
 
 void BagLevel::Update(float _DeltaTime)

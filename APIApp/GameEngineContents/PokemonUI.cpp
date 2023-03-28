@@ -3,10 +3,9 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "PokeDataBase.h"
-#include "PocketMonCore.h"
 #include "PlayerBag.h"
 #include "TextActor.h"
-
+#include "LevelChangeFade.h"
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 PokemonUI::PokemonUI() 
@@ -153,6 +152,7 @@ void PokemonUI::Start()
 
 void PokemonUI::Update(float _DeltaTime)
 {
+	if (IsStop == true) { return; }
 	if (GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
 		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
@@ -251,7 +251,9 @@ void PokemonUI::Update(float _DeltaTime)
 	}
 	if (GameEngineInput::IsDown("B"))
 	{
-		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+		IsStop = true;
 		return;
 	}
 
@@ -268,6 +270,7 @@ void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 
 void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	IsStop = false;
 	if (_PrevLevel->GetName() == "SummaryLevel")
 	{
 		return;
@@ -409,7 +412,8 @@ void PokemonUI::SelectOn()
 {
 	if (CurrentCursor == CursorRender.size() - 1)
 	{
-		PocketMonCore::GetInst().ChangeLevel(PrevLevel->GetName());
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+		IsStop = true;
 		return;
 	}
 
@@ -523,7 +527,8 @@ void PokemonUI::SelectMove()
 
 void PokemonUI::Summary()
 {
-	PocketMonCore::GetInst().ChangeLevel("SummaryLevel");
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("SummaryLevel");
+	IsStop = true;
 }
 
 void PokemonUI::Switch()
@@ -571,7 +576,8 @@ void PokemonUI::Shift()
 	PokeDataBase _Pokemon = Pokemons[0];
 	Pokemons[0] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
-	PocketMonCore::GetInst().ChangeLevel("BattleLevel");
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
+	IsStop = true;
 }
 
 void PokemonUI::PotionUse()
@@ -600,7 +606,8 @@ void PokemonUI::PotionUpdate(float _DeltaTime)
 	if (1.5f < PotionTimer)
 	{
 		IsPotionUse = false;
-		PocketMonCore::GetInst().ChangeLevel("BagLevel");
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+		IsStop = true;
 	}
 	PotionTimer += _DeltaTime;
 }
@@ -639,7 +646,8 @@ void PokemonUI::GiveItem()
 	Pokemons[CurrentCursor].SetPossession(CurrentItemCode);
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
-	PocketMonCore::GetInst().ChangeLevel("BagLevel");
+	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+	IsStop = true;
 	PokeDataSetting();
 }
 

@@ -107,5 +107,6 @@ private:
 	void AnimUpdate(float _DeltaTime);
 	float AnimTimer = 0;
 	const float AnimSpeed = 13.5f;
+	bool IsStop = false;
 };
 

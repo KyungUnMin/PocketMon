@@ -9,7 +9,7 @@ enum class BagSpace
 {
 	Items,
 	KeyItems,
-	PokeBalls
+	PokeBalls,
 };
 enum class BagAnim
 {
@@ -91,6 +91,7 @@ private:
 	int SelectSize = 0;
 	bool IsBattle = false;
 	bool IsItemSelect = false;
+	bool IsStop = false;
 	int Money = 10000;
 	// _____________Renders
 	GameEngineRender* BagRender = nullptr;		// 가방 이미지

@@ -2,7 +2,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include <GameEngineCore/GameEngineRender.h>
-#include "PocketMonCore.h"
+#include "LevelChangeFade.h"
 #include "PokeDataBase.h"
 #include "TextActor.h"
 #include "PokemonUI.h"
@@ -319,7 +319,7 @@ void SummaryUI::Select()
 	switch (CurrentPage)
 	{
 	case SummaryPage::Info:
-		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::Skills:
 		break;
@@ -341,7 +341,7 @@ void SummaryUI::Cancel()
 	case SummaryPage::Info:
 	case SummaryPage::Skills:
 	case SummaryPage::Moves:
-		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::MovesSwitch:
 		MovesSwitchCancle();
