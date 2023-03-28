@@ -30,6 +30,9 @@ protected:
 	void CurHpRender(GameEngineRender* _Render, std::vector<float> _Tick);
 	void Clear(std::vector<float> _Tick);
 
+	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
+
+
 private:
 
 	PokeDataBase NewTestMon = PokeDataBase::PokeCreate(4, 15);
@@ -79,5 +82,7 @@ private:
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
 
+
+	
 };
 

@@ -6,7 +6,7 @@
 #include "BattleMonsterPlayer.h"
 
 class PokeSkillBase;
-// Ό³Έν :
+
 class BattleCommendActor : public GameEngineActor
 {
 public:
@@ -21,7 +21,6 @@ public:
 	BattleCommendActor(BattleCommendActor&& _Other) noexcept = delete;
 	BattleCommendActor& operator=(const BattleCommendActor& _Other) = delete;
 	BattleCommendActor& operator=(BattleCommendActor&& _Other) noexcept = delete;
-	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 
 	inline void SetCallBack(size_t _Index, std::function<void()> _CallBack)
@@ -34,6 +33,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void B_ArrowNumberCheck();
 	void B_ArrowInput(/*int _Number*/);
+	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 
 //	void SetAndResize(std::vector<GameEngineRender*> _Render, float4 _Pos);

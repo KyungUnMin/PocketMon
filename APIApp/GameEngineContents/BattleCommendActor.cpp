@@ -285,4 +285,3 @@ void BattleCommendActor::StringToRender(std::vector<GameEngineRender*> _Render ,
 	
 
 }
-

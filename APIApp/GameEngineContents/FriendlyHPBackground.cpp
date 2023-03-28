@@ -14,6 +14,7 @@
 #include "ContentsEnum.h"
 
 
+
 FriendlyHPBackground* FriendlyHPBackground::FriendlyPtr = nullptr;
 
 FriendlyHPBackground::FriendlyHPBackground()
@@ -123,6 +124,10 @@ void FriendlyHPBackground::Start()
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
+	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
+	StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
+	StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
+	StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
 	if (nullptr == DB)
 		return;
@@ -183,6 +188,80 @@ void FriendlyHPBackground::Clear(std::vector<float> _Tick)
 {
 	_Tick.erase(_Tick.begin(), _Tick.end());
 	int a = 0;
+}
+
+void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)
+{
+	size_t StrEndIndex = _Str.size() - 1;
+	int StrIndex = 0;
+	std::string Str = _Str.data();
+
+	for (size_t x = 0; x < _Render.size(); x++)
+	{
+		if (StrEndIndex < StrIndex || ' ' == Str[StrIndex])
+		{
+			_Render[x]->SetFrame(SpaceFrameNum);
+		}
+		else
+		{
+			if (Str[StrIndex] >= 'A' && Str[StrIndex] <= 'Z')
+			{
+				_Render[x]->SetFrame(Str[StrIndex] - 'A');
+			}
+			else if (Str[StrIndex] >= 'a' && Str[StrIndex] <= 'z')
+			{
+				_Render[x]->SetFrame(Str[StrIndex] - 'a' + 27);
+			}
+			else if (Str[StrIndex] >= '0' && Str[StrIndex] <= '9')
+			{
+				_Render[x]->SetFrame(Str[StrIndex] - '0' + 54);
+			}
+			else if (Str[StrIndex] == '\n')
+			{
+				while (x < _Render.size())
+				{
+					_Render[x]->SetFrame(SpaceFrameNum);
+					x++;
+				}
+			}
+			else
+			{
+				switch (Str[StrIndex])
+				{
+				case '!':
+					_Render[x]->SetFrame(81);
+					break;
+				case '?':
+					_Render[x]->SetFrame(82);
+					break;
+				case '/':
+					_Render[x]->SetFrame(85);
+					break;
+				case '-':
+					_Render[x]->SetFrame(86);
+					break;
+					//case '…':
+					//	TextRender[y][x]->SetFrame(91);
+					//	break;
+				case '.':
+					_Render[x]->SetFrame(92);
+					break;
+				case ',':
+					_Render[x]->SetFrame(93);
+					break;
+				case '@':
+					_Render[x]->SetFrame(94);
+					break;
+				default:
+					MsgAssert("아직 생각해보지 않은 글자입니다.");
+					break;
+				}
+			}
+		}
+		StrIndex++;
+	}
+
+
 }
 
 

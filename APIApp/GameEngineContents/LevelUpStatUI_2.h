@@ -23,6 +23,7 @@ public:
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
+	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 
 private:
