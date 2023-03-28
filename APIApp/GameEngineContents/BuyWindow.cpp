@@ -88,16 +88,7 @@ void BuyWindow::Start()
 
 void BuyWindow::Update(float _DeltaTime)
 {
-	//if (BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
-	//{
-	//	IsValid = false;
-	//}
-	//else
-	//{
-	//	IsValid = true;
-	//}
-
-	if (false == InputControll::CanControll())
+	if (false == InputControll::CanControll(InputControlHandle) || BuyLevelDialog::GetBuyLevelDialog()->IsUpdate())
 	{
 		ArrowRender->SetImage("PressMenuArrow.bmp");
 		return;
@@ -105,6 +96,12 @@ void BuyWindow::Update(float _DeltaTime)
 	else
 	{
 		ArrowRender->SetImage("MenuArrow.bmp");
+	}
+	
+	if (InputControlHandle == -1)
+	{
+		InputControlHandle = InputControll::UseControll();
+		return;
 	}
 
 	//if (!IsValid)
@@ -127,23 +124,28 @@ void BuyWindow::Update(float _DeltaTime)
 		ChangeStateNext();
 	}
 
-	if (GameEngineInput::IsDown("A"))
+	if (false == InputControll::IsCurFrameUsedKey() && GameEngineInput::IsDown("A"))
 	{
 		switch (State)
 		{
 		case 0:
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
 			BuyUIManager::GetBuyUIManager()->On(ItemList[0]);
 			break;
 		case 1:
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
 			BuyUIManager::GetBuyUIManager()->On(ItemList[1]);
 			break;
 		case 2:
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
 			BuyUIManager::GetBuyUIManager()->On(ItemList[2]);
 			break;
 		case 3:
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
 			BuyUIManager::GetBuyUIManager()->On(ItemList[3]);
 			break;
 		case 4:
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
 			BuyUIManager::GetBuyUIManager()->On(ItemList[4]);
 			break;
 		case 5:

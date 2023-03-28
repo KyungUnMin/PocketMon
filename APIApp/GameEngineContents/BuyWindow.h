@@ -30,6 +30,9 @@ public:
 
 	void On() override;
 	void Off() override;
+	
+	int InputControlHandle = -1;
+	bool IsValid = false;
 
 protected:
 	void Start() override;
@@ -57,7 +60,6 @@ private:
 
 	int State = 0;
 
-	int InputControlHandle = -1;
 
 	void UpdateStart();
 	void UpdateEnd();

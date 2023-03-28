@@ -54,6 +54,8 @@ private:
 	Item* SelectItem = nullptr;
 	int Count = 0;
 
+	int InputControlHandle = -1;
+
 	void UpdateStart();
 	void UpdateEnd();
 

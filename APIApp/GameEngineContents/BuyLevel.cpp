@@ -33,10 +33,12 @@ void BuyLevel::Update(float _DeltaTime)
 void BuyLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	ShopUIManager::GetShopUIManager()->ReturnMainStart();
+	AcBuyWindow->Off();
 }
 
 void BuyLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	AcBuyWindow->On();
 	AcBuyWindow->ChangeState(0);
 }
 

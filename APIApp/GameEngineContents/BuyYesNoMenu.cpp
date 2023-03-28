@@ -4,6 +4,7 @@
 #include "BuyLevelDialog.h"
 #include "BuyWindow.h"
 #include "PlayerBag.h"
+#include "InputControll.h"
 
 
 BuyYesNoMenu* BuyYesNoMenu::AcBuyYesNoMenu = nullptr;
@@ -51,6 +52,7 @@ void BuyYesNoMenu::Start()
 
 void BuyYesNoMenu::UpdateStart()
 {
+	InputControlHandle = InputControll::UseControll();
 	State = MenuState::Yes;
 	StateToRender();
 }
@@ -71,6 +73,7 @@ void BuyYesNoMenu::Update(float _DeltaTime)
 			BuyItem();
 			Off();
 			BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Script);
+			BuyLevelDialog::GetBuyLevelDialog()->IsValid = true;
 			break;
 		case MenuState::No:
 			Off();
@@ -87,12 +90,13 @@ void BuyYesNoMenu::Update(float _DeltaTime)
 		Off();
 		//BuyWindow::GetBuyWindow()->IsValid = true;
 		BuyLevelDialog::GetBuyLevelDialog()->Off();
+		BuyWindow::GetBuyWindow()->InputControlHandle = InputControll::UseControll();
 	}
 }
 
 void BuyYesNoMenu::UpdateEnd()
 {
-
+	InputControlHandle = InputControll::ResetControll(InputControlHandle);
 }
 
 void BuyYesNoMenu::StateToRender()

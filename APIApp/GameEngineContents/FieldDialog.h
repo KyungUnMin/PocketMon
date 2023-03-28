@@ -32,6 +32,11 @@ public:
 
 	bool IsValid = true;
 
+	std::string_view GetCurScript()
+	{
+		return ScriptIter->data();
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -65,8 +70,6 @@ private:
 	float4 ArrowRenderScale = { 40, 48 };
 	float4 ArrowRenderPlusPos = { 36,0 };
 	int2 LastTextRenderIndex = { -1,-1 };
-
-	//int InputControllHandle = -1;
 
 	void UpdateStart(std::list<std::string>* _Script);
 	void PushScriptBegin(std::list<std::string>::iterator _Begin);

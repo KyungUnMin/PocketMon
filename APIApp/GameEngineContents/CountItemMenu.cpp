@@ -107,6 +107,7 @@ void CountItemMenu::Update(float _DeltaTime)
 	{
 		AcParent->Off();
 		Off();
+		BuyWindow::GetBuyWindow()->InputControlHandle = InputControll::UseControll();
 	}
 
 	if (GameEngineInput::IsDown("A"))
@@ -119,6 +120,7 @@ void CountItemMenu::Update(float _DeltaTime)
 		Scripts.push_back(Script);
 		BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Scripts);
 		BuyLevelDialog::GetBuyLevelDialog()->IsValid = false;
+		
 		//BuyWindow::GetBuyWindow()->IsValid = false;
 	}
 }
