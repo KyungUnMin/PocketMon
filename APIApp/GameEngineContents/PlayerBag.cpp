@@ -7,6 +7,7 @@
 #include "ContentsEnum.h"
 #include "Player.h"
 #include "LevelChangeFade.h"
+#include "BattleLevel.h"
 PlayerBag* PlayerBag::MainBag = nullptr;
 
 PlayerBag::PlayerBag() {
@@ -340,9 +341,9 @@ void PlayerBag::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	else
 	{
 		PrevLevel = _PrevLevel;
-		if (PrevLevel->GetName() == "BattleLevel")
+		if (PrevLevel->GetName() == "FieldmapLevel")
 		{
-			IsBattle = true;
+			IsBattle = false;
 		}
 	}
 	
@@ -665,6 +666,7 @@ void PlayerBag::ItemUse()
 	case BagSpace::PokeBalls:
 		RemoveItem(CurrentItemCode);
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
+		BattleLevel::BattleLevelPtr->UseMonsterBall(CurrentItemCode);
 		IsStop = true;
 		break;
 	default:

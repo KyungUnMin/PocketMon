@@ -7,6 +7,7 @@
 #include "TextActor.h"
 #include "LevelChangeFade.h"
 #include "PokemonHPBar.h"
+#include "BattleLevel.h"
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 PokemonUI::PokemonUI() 
@@ -284,14 +285,18 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	{
 		return;
 	}
-	if (_PrevLevel->GetName() == "BagLevel")
+	else if (_PrevLevel->GetName() == "BagLevel")
 	{
 		IsBattle = PlayerBag::MainBag->GetIsBattle();
 	}
-	if (_PrevLevel->GetName() == "BattleLevel")
+	else if (_PrevLevel->GetName() == "BattleLevel")
 	{
 		IsBattle = true;
 		StateValue = PokemonUIState::Shift;
+	}
+	else if (_PrevLevel->GetName() == "FieldMapLevel")
+	{
+		IsBattle = false;
 	}
 	PrevLevel = _PrevLevel;
 	CurrentCursor = 0;
@@ -592,6 +597,7 @@ void PokemonUI::Shift()
 	Pokemons[0] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
 	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
+	BattleLevel::BattleLevelPtr->ChangePlayerMonster(Pokemons[0].GetPokeNumber_enum());
 	IsStop = true;
 }
 
@@ -622,7 +628,15 @@ void PokemonUI::PotionUpdate(float _DeltaTime)
 	if (2.0f < PotionTimer)
 	{
 		IsPotionUse = false;
-		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+		if (true == IsBattle)
+		{
+			BattleLevel::BattleLevelPtr->PassPlayerTurn();
+			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
+		}
+		else
+		{
+			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+		}
 		IsStop = true;
 	}
 	PotionTimer += _DeltaTime;
