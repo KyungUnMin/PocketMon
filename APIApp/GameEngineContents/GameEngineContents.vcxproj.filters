@@ -315,9 +315,6 @@
     <ClCompile Include="OpeningLevel.cpp">
       <Filter>Opening</Filter>
     </ClCompile>
-    <ClCompile Include="WhiteBox.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="EndingEndLogo.cpp">
       <Filter>Ending\Actor</Filter>
     </ClCompile>
@@ -461,6 +458,16 @@
     </ClCompile>
     <ClCompile Include="BattleEnemyMonster_CreatedInBall.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\04.CreatedInBall</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnNPC.cpp" />
+    <ClCompile Include="Logo_Fireredversion_White.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Pokemon_White.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Opening_Back.cpp">
+      <Filter>Opening\Actor</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -766,9 +773,6 @@
     <ClInclude Include="OpeningLevel.h">
       <Filter>Opening</Filter>
     </ClInclude>
-    <ClInclude Include="WhiteBox.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="EndingEndLogo.h">
       <Filter>Ending\Actor</Filter>
     </ClInclude>
@@ -909,6 +913,16 @@
     </ClInclude>
     <ClInclude Include="BattleEnemyMonster_CreatedInBall.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\04.CreatedInBall</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnNPC.h" />
+    <ClInclude Include="Logo_Fireredversion_White.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Pokemon_White.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Opening_Back.h">
+      <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

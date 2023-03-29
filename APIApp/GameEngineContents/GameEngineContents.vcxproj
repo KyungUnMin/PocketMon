@@ -443,7 +443,9 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Logo_Fireredversion.cpp" />
+    <ClCompile Include="Logo_Fireredversion_White.cpp" />
     <ClCompile Include="Logo_Pokemon.cpp" />
+    <ClCompile Include="Logo_Pokemon_White.cpp" />
     <ClCompile Include="Logo_PressStart.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <SubType>
@@ -453,6 +455,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Opening_Back.cpp" />
     <ClCompile Include="Opening_Freaklogo.cpp" />
     <ClCompile Include="Opening_largeST.cpp" />
     <ClCompile Include="Opening_smallST.cpp" />
@@ -541,10 +544,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="TurnNPC.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
-    <ClCompile Include="WhiteBox.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -837,7 +836,9 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Logo_Fireredversion.h" />
+    <ClInclude Include="Logo_Fireredversion_White.h" />
     <ClInclude Include="Logo_Pokemon.h" />
+    <ClInclude Include="Logo_Pokemon_White.h" />
     <ClInclude Include="Logo_PressStart.h" />
     <ClInclude Include="MoveMapFadeEffect.h">
       <SubType>
@@ -847,6 +848,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Opening_Back.h" />
     <ClInclude Include="Opening_Freaklogo.h" />
     <ClInclude Include="Opening_largeST.h" />
     <ClInclude Include="Opening_smallST.h" />
@@ -934,10 +936,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="TurnNPC.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="WhiteBox.h">
       <SubType>
       </SubType>
     </ClInclude>
