@@ -30,6 +30,9 @@
 
 //Game Actor
 #include "BaseNPC.h"
+#include "StaticNPC.h"
+#include "TurnNPC.h"
+
 #include "NPC1.h"
 #include "Player.h"
 #include "EndingPlayActor.h"
@@ -410,6 +413,18 @@ void FieldmapLevel::Loading()
 	TestNpcPtr->AddScript("Test 010101 asdfoiewfojewfoij");
 	TestNpcPtr->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
 
+	StaticNPC* TestNpcPtr2 = CreateActor<StaticNPC>();
+	TestNpcPtr2->InitNPC("Test", "NPC2.bmp");
+	TestNpcPtr2->AddNPC("ViridianCity_Market", int2(7, 6));
+	TestNpcPtr2->AddScript("Test 010101 asdfoiewfojewfoij");
+	TestNpcPtr2->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
+
+	TurnNPC* TestNpcPtr3 = CreateActor<TurnNPC>();
+	TestNpcPtr3->InitNPC("Test", "NPC3.bmp");
+	TestNpcPtr3->AddNPC("ViridianCity_Market", int2(7, 4));
+	TestNpcPtr3->AddScript("Test 010101 asdfoiewfojewfoij");
+	TestNpcPtr3->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
+		
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
@@ -449,7 +464,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("EventLog"))
 	{
-		//Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
+		Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
 
 	if (true == GameEngineInput::IsDown("PlayEnding"))

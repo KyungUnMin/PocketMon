@@ -40,6 +40,7 @@ void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _Im
 
 void BaseNPC::AddNPC(const std::string_view& _CityName, int2 _Index)
 {
+	CityName = _CityName;
 	Fieldmap::AddActor(_CityName, _Index, this, false);
 }
 
@@ -63,23 +64,83 @@ void BaseNPC::Look(const float4& _NpcPos, const float4& _TargetPos)
 {
 	int2 NpcIndex = Fieldmap::GetIndex(_NpcPos);
 	int2 TargetIndex = Fieldmap::GetIndex(_NpcPos);
-	int2 DirIndex = TargetIndex - NpcIndex;
+
+	Look(NpcIndex, TargetIndex);
+}
+
+void BaseNPC::Look(const int2& _NpcIndex, const int2& _TargetPos)
+{
+	Look(GetDir(_NpcIndex, _TargetPos));
+}
+
+LookDir BaseNPC::GetDir(const int2& _ViewIndex, const int2& _TargetIndex)
+{
+	int2 DirIndex = _TargetIndex - _ViewIndex;
+
+	if (DirIndex.x != 0 && DirIndex.y != 0)
+	{
+		int SizeX = abs(DirIndex.x);
+		int SizeY = abs(DirIndex.y);
+
+		if (SizeX > SizeY)
+		{
+			DirIndex.y = 0;
+		}
+		else
+		{
+			DirIndex.x = 0;
+		}
+	}
 
 	if (0 < DirIndex.x)
 	{
-		Look(LookDir::Right);
-	}	
+		return LookDir::Right;
+	}
 	else if (0 > DirIndex.x)
 	{
-		Look(LookDir::Left);
-	}	
+		return LookDir::Left;
+	}
 	else if (0 < DirIndex.y)
 	{
-		Look(LookDir::Up);
-	}	
-	else if (0 > DirIndex.y)
+		return LookDir::Down;
+	}
+	else
 	{
-		Look(LookDir::Down);
+		return LookDir::Up;
+	}
+}
+
+LookDir BaseNPC::TurnLeftDir(LookDir _Dir)
+{
+	switch (_Dir)
+	{
+	case LookDir::Up:
+		return LookDir::Left;
+	case LookDir::Down:
+		return LookDir::Right;
+	case LookDir::Left:
+		return LookDir::Down;
+	case LookDir::Right:
+		return LookDir::Up;
+	default:
+		return _Dir;
+	}
+}
+
+LookDir BaseNPC::TurnRightDir(LookDir _Dir)
+{
+	switch (_Dir)
+	{
+	case LookDir::Up:
+		return LookDir::Right;
+	case LookDir::Down:
+		return LookDir::Left;
+	case LookDir::Left:
+		return LookDir::Up;
+	case LookDir::Right:
+		return LookDir::Down;
+	default:
+		return _Dir;
 	}
 }
 
@@ -146,16 +207,16 @@ void BaseNPC::ChangeState(NPCState _State)
 	switch (_State)
 	{
 	case BaseNPC::NPCState::Idle:
-		IdleStart();
 		AnimationName = "Idle";
+		IdleStart();
 		break;
 	case BaseNPC::NPCState::Move:
-		MoveStart();
 		AnimationName = "Move";
+		MoveStart();
 		break;
 	case BaseNPC::NPCState::interaction:
-		InteractionStart();
 		AnimationName = "Interaction";
+		InteractionStart();
 		break;
 	default:
 		MsgAssert("잘못된 NPC State 입니다");

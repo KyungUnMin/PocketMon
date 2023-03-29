@@ -2,6 +2,7 @@
 #include <string>
 #include <list>
 #include <map>
+#include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 
@@ -49,8 +50,15 @@ public:
 	void Look(LookDir _Dir);
 	void Look(const float4& _TargetPos);
 	void Look(const float4& _NpcPos, const float4& _TargetPos);
+	void Look(const int2& _NpcIndex, const int2& _TargetPos);
+
+	static LookDir GetDir(const int2& _ViewIndex, const int2& _TargetIndex);
+	static LookDir TurnLeftDir(LookDir _Dir);
+	static LookDir TurnRightDir(LookDir _Dir);
 
 protected:
+	LookDir Dir;
+
 	void Update(float _DeltaTime) override;
 
 	virtual void IdleStart();
@@ -65,24 +73,30 @@ protected:
 	virtual void InteractionUpdate(float _DeltaTime);
 	virtual void InteractionEnd();
 
-	virtual void InteractionFunc();
+	void AddInteractionFunc(std::function<void()> _Func, bool _IsLoop = true);
 
 	void PlayAnimation();
 	void ChangeState(NPCState _State);
 
 private:
 	GameEngineRender* NPCRender = nullptr;
+	std::string CityName; 
 	std::string Name; 
 	std::list<float4> MovePoints;
+
+	std::vector<std::function<void()>> InteractionFuncs;
+	std::vector<std::function<void()>> LoopInteractionFuncs;
 
 	std::list<std::string> ScriptDatas;
 
 	NPCState State = NPCState::Idle;
 
 	std::string AnimationName = "Idle";
-	LookDir Dir;
 
+	int2 MoveStartIndex = int2::Zero;
 	float4 MoveStartPos = float4::Zero;
+
+	int2 MoveEndIndex = int2::Zero;
 	float4 MoveEndPos = float4::Zero;
 	float MoveProgress = 0.0f;
 	float MoveSpeed = 1.0f;

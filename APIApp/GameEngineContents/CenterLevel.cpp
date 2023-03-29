@@ -427,11 +427,12 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKeyNoToupper("WalkableDebug", VK_F2);
 		GameEngineInput::CreateKeyNoToupper("FieldmapTypeDebug", VK_F3);
 		GameEngineInput::CreateKeyNoToupper("EventDebug", VK_F4);
-		GameEngineInput::CreateKeyNoToupper("EventLog", VK_F5);
+		GameEngineInput::CreateKeyNoToupper("EventLog", 'L');
 		GameEngineInput::CreateKeyNoToupper("StartEventCheck", VK_F6);
 		GameEngineInput::CreateKeyNoToupper("UpdateEventCheck", VK_F7);
 		GameEngineInput::CreateKeyNoToupper("EndEventCheck", VK_F8);
 		GameEngineInput::CreateKeyNoToupper("PlayEnding", VK_F9);
+		GameEngineInput::CreateKeyNoToupper("AddMove", 'M');
 
 		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
 		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);

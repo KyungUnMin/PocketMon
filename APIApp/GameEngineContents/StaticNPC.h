@@ -2,7 +2,8 @@
 #include "BaseNPC.h"
 
 // Ό³Έν :
-class StaticNPC : BaseNPC
+enum class LookDir;
+class StaticNPC : public BaseNPC
 {
 public:
 	// constrcuter destructer
@@ -15,9 +16,16 @@ public:
 	StaticNPC& operator=(const StaticNPC& _Other) = delete;
 	StaticNPC& operator=(StaticNPC&& _Other) noexcept = delete;
 
+	inline void SetBaseDir(LookDir _Dir)
+	{
+		BaseDir = _Dir;
+	}
+
 protected:
+	void MoveEnd() override;
+	void InteractionEnd() override;
 
 private:
-
+	LookDir BaseDir;
 };
 

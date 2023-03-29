@@ -18,19 +18,30 @@ void BaseNPC::IdleUpdate(float _DeltaTime)
 	
 	int Distance = NpcIndx.GetDistance(PlayerIndex);
 
-	if (1 == Distance && true == InputControll::CanControll() && true == GameEngineInput::IsDown("NpcTalk"))
+	if (1 == Distance)
 	{
-		ChangeState(NPCState::interaction);
-		return;
+		LookDir PosDir = GetDir(PlayerIndex, NpcIndx);
+		LookDir PlayerViewDir = Player::MainPlayer->GetDir();
+
+		if (PosDir == PlayerViewDir && true == InputControll::CanControll() && true == GameEngineInput::IsDown("NpcTalk"))
+		{
+			ChangeState(NPCState::interaction);
+			Look(NpcIndx, PlayerIndex);
+			return;
+		}
 	}
 
 	if (0 < MovePoints.size())
 	{
 		MoveStartPos = GetPos();
-		MoveEndPos = MovePoints.front();
-		MovePoints.pop_front();
+		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
 
-		Look(MoveStartPos, MoveEndPos);
+		MoveEndPos = MovePoints.front();
+		MoveEndIndex = Fieldmap::GetIndex(MoveEndPos);
+
+		MovePoints.pop_front();
+		Look(MoveStartIndex, MoveEndIndex);
+
 		ChangeState(NPCState::Move);
 		return;
 	}
@@ -46,6 +57,8 @@ void BaseNPC::MoveStart()
 {
 	PlayAnimation();
 	MoveProgress = 0.0f;
+
+	Fieldmap::SetWalkable(CityName, MoveEndIndex, false);
 }
 
 void BaseNPC::MoveUpdate(float _DeltaTime)
@@ -63,6 +76,7 @@ void BaseNPC::MoveUpdate(float _DeltaTime)
 void BaseNPC::MoveEnd()
 {
 	MoveProgress = 0.0f;
+	Fieldmap::SetWalkable(CityName, MoveStartIndex, true);
 }
 
 // Interaction
@@ -73,7 +87,8 @@ void BaseNPC::InteractionStart()
 	if (ScriptDatas.size() != 0)
 	{
 		FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas);
-		//InputHandle = InputControll::UseControll();
+		InputHandle = InputControll::UseControll();
+		InputControll::UsedKey();
 	}
 }
 
@@ -92,15 +107,32 @@ void BaseNPC::InteractionUpdate(float _DeltaTime)
 
 void BaseNPC::InteractionEnd()
 {
-	InteractionFunc();
+	for (const std::function<void()>& Func : InteractionFuncs)
+	{
+		Func();
+	}
+
+	InteractionFuncs.clear();
+
+	for (const std::function<void()>& Func : LoopInteractionFuncs)
+	{
+		Func();
+	}
 
 	if (InputHandle >= 0)
 	{
 		InputHandle = InputControll::ResetControll(InputHandle);
-		InputControll::UsedKey();
 	}
 }
 
-void BaseNPC::InteractionFunc()
+void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )
 {
+	if (true == _IsLoop)
+	{
+		LoopInteractionFuncs.push_back(_Func);
+	}
+	else
+	{
+		InteractionFuncs.push_back(_Func);
+	}
 }

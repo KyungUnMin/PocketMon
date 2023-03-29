@@ -22,6 +22,8 @@ enum class NPCtalkValue
 	RIGHT, //3
 	LEFT, //4
 };
+
+enum class LookDir;
 class Player : public GameEngineActor
 {
 public:
@@ -108,6 +110,11 @@ public:
 		IsRide = _truefalse;
 	}
 
+	LookDir GetDir() const
+	{
+		return Dir;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -177,6 +184,7 @@ private:
 	//Gold
 	int Gold = 0;
 
+	LookDir Dir;
 
 	int2 NextJumpIndex = int2::Zero;
 	float PlayerMoveSpeed = 5.0f;

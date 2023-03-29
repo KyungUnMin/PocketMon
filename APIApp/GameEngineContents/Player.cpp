@@ -15,7 +15,8 @@
 
 Player* Player::MainPlayer;
 
-Player::Player()
+Player::Player() :
+	Dir(LookDir::Up)
 {
 }
 
@@ -231,21 +232,25 @@ void Player::JumpRight()
 {
 	NextJumpIndex = { Playerindex.x + 2,Playerindex.y };
 	ChangeState(PlayerState::JUMP);
+	Dir = LookDir::Right;
 }
 void Player::JumpUp()
 {
 	NextJumpIndex = { Playerindex.x,Playerindex.y - 2 };
 	ChangeState(PlayerState::JUMP);
+	Dir = LookDir::Up;
 }
 void Player::JumpLeft()
 {
 	NextJumpIndex = { Playerindex.x - 2,Playerindex.y };
 	ChangeState(PlayerState::JUMP);
+	Dir = LookDir::Left;
 }
 void Player::JumpDown()
 {
 	NextJumpIndex = { Playerindex.x ,Playerindex.y + 2 };
 	ChangeState(PlayerState::JUMP);
+	Dir = LookDir::Down;
 }
 
 

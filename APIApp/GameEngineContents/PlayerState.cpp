@@ -105,21 +105,25 @@ void Player::IdleUpdate(float _Time)
 		{
 			NextIndex.x -= 1;		
 			DirString = "Left_";
+			Dir = LookDir::Left;
 		}
 		else if (true == GameEngineInput::IsPress("RightMove"))
 		{
 			NextIndex.x += 1;
 			DirString = "Right_";
+			Dir = LookDir::Right;
 		}
 		else if (true == GameEngineInput::IsPress("UpMove"))
 		{
 			NextIndex.y -= 1;
 			DirString = "Up_";
+			Dir = LookDir::Up;
 		}
 		else if (true == GameEngineInput::IsPress("DownMove"))
 		{
 			NextIndex.y += 1;
 			DirString = "Down_";
+			Dir = LookDir::Down;
 		}
 
 		DirCheck("Idle");
