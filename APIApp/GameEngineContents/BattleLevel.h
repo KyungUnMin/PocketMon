@@ -34,9 +34,6 @@ public:
 	static BattleLevel* BattleLevelPtr;
 	static const std::string_view  BattleKeyName;
 
-	class FriendlyHPBackground* Test1 = nullptr;
-	class EnemyHPBackground* Test2 = nullptr;
-
 	BattleLevel();
 	~BattleLevel() override;
 

@@ -48,9 +48,6 @@ void BattleLevel::Loading()
 	GameEngineInput::CreateKey("Test_ThrowMonsterBall", 'H');
 }
 
-#include "FriendlyHPBackground.h"
-#include "EnemyHPBackground.h"
-
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
@@ -71,10 +68,6 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
 	//Init(BattleFieldType::Gym);
 
-	Test1 = CreateActor<FriendlyHPBackground>(UpdateOrder::Battle_Actors);
-	Test1->SetPos({ 400.f, 100.f });
-	Test2 = CreateActor<EnemyHPBackground>(UpdateOrder::Battle_Actors);
-	Test2->SetPos({ 200.f, 100.f });
 }
 
 void BattleLevel::Init(
