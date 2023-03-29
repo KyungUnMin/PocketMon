@@ -39,7 +39,7 @@ void FriendlyHPBackground::Start()
 	HPRenderPtr = CreateRender("FriendlyHPBar.bmp", BattleRenderOrder::Battle_Text);
 	EXPRenderPtr = CreateRender("FriendlyHPExp.bmp", BattleRenderOrder::Battle_Text);
 
-	
+
 	if (false == GameEngineInput::IsKey("HpDebug111"))
 	{
 
@@ -107,6 +107,7 @@ void FriendlyHPBackground::Start()
 
 	}
 }
+bool IsCheckaa = true;
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
@@ -120,11 +121,15 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
 //	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
-	HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
 	//	HpUpdate(20.0f, 100.0f);
 
+//	IsBattleStartCheck(EnumyMonsterDamage);
 
 	if (BattleStartCheck == true) {
+		if(TickNumber ==0)
+		{
+			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), CurMyHP);
+		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.1f) {
 			NextTickTime = 0;
@@ -134,8 +139,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				TickNumber++;
 			}
 		}
-
-		NextTickTime_1 += _DeltaTime;
+		
+		/*NextTickTime_1 += _DeltaTime;
 		if (NextTickTime_1 > 0.1f) {
 			NextTickTime_1 = 0;
 			if (TickNumber_1 != 10) {
@@ -143,11 +148,12 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
 				TickNumber_1++;
 			}
-		}
-		if (TickNumber == 10 && TickNumber_1 == 10) {
+		}*/
+		if (TickNumber == 10 ) {
+			TickNumber = 0;
 			BattleStartCheck = false;
-			CurHpRender(HPRenderPtr, CurMyHP);
-			Clear(DamegeTick);
+
+			CurMyHP = DamegeTick[9];
 
 		}
 	}
@@ -247,17 +253,16 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 
 
 
-void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp)
+void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
+	DamegeTick.clear();
 	float Hpmag = _EnumyMonsterDamage / _MyCurHp;
-	float damege = GameEngineMath::Lerp(192.0f, 0.0f, Hpmag);
-
+	float damege = GameEngineMath::Lerp(_curpos, 0.0f, Hpmag);
 	for (int i = 10; i >= 1; i--) {
 
-		DamegeTick.push_back(damege + ((192.0f - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
+		DamegeTick.push_back(damege + ((_curpos - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
 
 	}
-	CurMyHP = DamegeTick[9];
 
 }
 

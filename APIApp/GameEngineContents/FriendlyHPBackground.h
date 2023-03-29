@@ -21,7 +21,7 @@ public:
 
 	bool IsBattleStartCheck(bool _Value);
 	float GetMonsterDamage(int _EnumyMonsterDamage);
-	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
+	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp , float _curpos );
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
@@ -67,7 +67,7 @@ private:
 
 	std::vector<float> DamegeTick;
 
-	bool BattleStartCheck = true;
+	bool BattleStartCheck = false;
 
 	std::vector<float> EXPTick;
 
@@ -75,7 +75,7 @@ private:
 	float NextTickTime_1 = 0.0f;
 
 
-	float CurMyHP = 0.0f;
+	float CurMyHP =192.0f;
 
 	float EnumyMonsterDamage = 0.0f;
 	float MyCurHp = 0.0f;

@@ -74,7 +74,7 @@ void EnemyHPBackground::Update(float _DeltaTime)
 	StringToRender(EnemyPoketMonLevel_R, BattleEnemy::EnemyPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	//FriendlyHPBackground::FriendlyPtr->	RenderTick(EnemyHPRenderPtr, EnemyDamegeTick, _DeltaTime,192.0f,9 ,float4{ 324,160 });
 
-	HpUpdate(FrinedMonsterDamage, BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP());
+	HpUpdate(2, BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP());
 	if (BattleStartCheck==true)
 	{
 		NextTickTime_2 += _DeltaTime;
