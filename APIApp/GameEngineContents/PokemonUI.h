@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <functional>
+#include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEngineCore/GameEngineActor.h>
 #include "Item.h"
 enum class PokemonUIState
@@ -67,8 +68,8 @@ private:
 	std::vector<TextActor*> PokemonMaxHPText = std::vector<TextActor*>(6);
 	std::vector<TextActor*> PokemonLevelText = std::vector<TextActor*>(6);
 	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(5);
-
-
+	
+	GameEngineTimeEvent TimeEvent;
 	PokemonUIState StateValue = PokemonUIState::Normal;
 	int CurrentCursor = 0;
 	int SwitchCursor = 0;
@@ -76,11 +77,6 @@ private:
 	int SelectSize = 0;
 	bool IsSelect = false;
 	bool IsBattle = false;
-	bool IsPotionUse = false;
-	bool IsPotionUseEnd = false;
-	float HPStart = 0;
-	float HPEnd = 0;
-	float PotionTimer = 0;
 	ItemCode CurrentItemCode = ItemCode::Cancel;
 
 	void PokeDataSetting();
@@ -106,7 +102,6 @@ private:
 	void SetBarText();
 	void GiveItem();
 	void PotionUse();
-	void PotionUpdate(float _DeltaTime);
 
 	void AnimUpdate(float _DeltaTime);
 	float AnimTimer = 0;

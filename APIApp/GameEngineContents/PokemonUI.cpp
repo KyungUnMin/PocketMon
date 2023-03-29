@@ -162,17 +162,13 @@ void PokemonUI::Start()
 
 void PokemonUI::Update(float _DeltaTime)
 {
+	TimeEvent.Update(_DeltaTime);
+	AnimUpdate(_DeltaTime);
 	if (IsStop == true) { return; }
 	if (GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
 		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
 		PokeDataSetting();
-	}
-	AnimUpdate(_DeltaTime);
-	if (true == IsPotionUse)
-	{
-		PotionUpdate(_DeltaTime);
-		return;
 	}
 	if (true == IsSelect)
 	{
@@ -302,8 +298,6 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	CurrentCursor = 0;
 	CursorMove();
 	SelectOff();
-	IsPotionUse = false;
-	IsPotionUseEnd = false;
 	PokeDataSetting();
 	SetBarText();
 }
@@ -603,43 +597,31 @@ void PokemonUI::Shift()
 
 void PokemonUI::PotionUse()
 {
-	IsPotionUse = true;
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
-	HPStart = Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float();
 	Pokemons[CurrentCursor].ForInven_UsePotion();
-	HPEnd = Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float();
-
 	BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
-
-	PotionTimer = 0;
-	//PokeDataSetting();
-	return;
-
+	PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
 	
-}
-
-void PokemonUI::PotionUpdate(float _DeltaTime)
-{
-	// Lerp를 통해 체력바 회복
-	// 회복이 끝나면 텍스트가 나오고 확인버튼 눌러서 이전 레벨로 이동
-	float Value = std::lerp(HPStart, HPEnd, std::min<float>(1, PotionTimer));
-	PokemonHPBars[CurrentCursor]->SetTargetValue(Value);
-	if (2.0f < PotionTimer)
+	IsStop = true;
+	if (true == IsBattle)
 	{
-		IsPotionUse = false;
-		if (true == IsBattle)
+		BattleLevel::BattleLevelPtr->PassPlayerTurn();
+		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
 		{
-			BattleLevel::BattleLevelPtr->PassPlayerTurn();
 			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
-		}
-		else
+		};
+		TimeEvent.AddEvent(1.5f, LevelChange, false);
+	}
+	else
+	{
+		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
 		{
 			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
-		}
-		IsStop = true;
+		};
+		TimeEvent.AddEvent(1.5f, LevelChange, false);
 	}
-	PotionTimer += _DeltaTime;
+
 }
 
 void PokemonUI::SetBarText()
