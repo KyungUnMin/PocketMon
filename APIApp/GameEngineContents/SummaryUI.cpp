@@ -176,6 +176,10 @@ void SummaryUI::Start()
 
 void SummaryUI::Update(float _DeltaTime)
 {
+	if (true == IsStop)
+	{
+		return;
+	}
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
 		PrevPage();
@@ -211,6 +215,7 @@ void SummaryUI::Update(float _DeltaTime)
 
 void SummaryUI::LevelChangeStart(GameEngineLevel* _Prev)
 {
+	IsStop = false;
 	CurrentPokemon = PokemonUI::MainPokemon->CurrentCursor;
 	SetPokemonData();
 
@@ -320,6 +325,7 @@ void SummaryUI::Select()
 	{
 	case SummaryPage::Info:
 		PokemonUI::MainPokemon->SetCursor(CurrentPokemon);
+		IsStop = true;
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::Skills:
@@ -343,6 +349,7 @@ void SummaryUI::Cancel()
 	case SummaryPage::Skills:
 	case SummaryPage::Moves:
 		PokemonUI::MainPokemon->SetCursor(CurrentPokemon);
+		IsStop = true;
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::MovesSwitch:

@@ -34,7 +34,7 @@ protected:
 private:
 
 	GameEngineLevel* CurrentLevel = nullptr;
-
+	
 	std::vector<PokeDataBase> Pokemons;
 	GameEngineRender* PokemonRender = nullptr;
 	GameEngineRender* CurrentSkillSelect = nullptr;
@@ -84,6 +84,7 @@ private:
 	int SelectSkillCursor = -1;
 	int SkillSize = 0;
 
+	bool IsStop = false;
 	void NextPage();
 	void PrevPage();
 	void MovePage();

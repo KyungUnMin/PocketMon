@@ -623,7 +623,7 @@ void PokeDataBase::CharmanderData(int _Level, PokeDataBase& PoKeCreatePtr)
 
 	PoKeCreatePtr.MonsterLevel = PlusLevel;
 
-	PoKeCreatePtr.PokeDexText = "The enchanting fragrance of flowers relieves people's fatigue.";
+	PoKeCreatePtr.PokeDexText = "The enchanting fragrance of flowers relieves people`s fatigue.";
 }
 
 // No.5 ¸®ÀÚµå
@@ -809,7 +809,7 @@ void PokeDataBase::PidgeyData(int _Level, PokeDataBase& PoKeCreatePtr)
 
 	PoKeCreatePtr.MonsterLevel = PlusLevel;
 
-	PoKeCreatePtr.PokeDexText = "Doesn't like to fight. It hunts small bugs hiding in the grass.";
+	PoKeCreatePtr.PokeDexText = "Doesn`t like to fight. It hunts small bugs hiding in the grass.";
 }
 
 // No.11 ²¿·¿
