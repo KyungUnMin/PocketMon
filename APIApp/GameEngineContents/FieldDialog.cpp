@@ -9,6 +9,10 @@ FieldDialog* FieldDialog::MainFieldDialog = nullptr;
 
 FieldDialog::FieldDialog()
 {
+	if (MainFieldDialog != nullptr)
+	{
+		return;
+	}
 	MainFieldDialog = this;
 }
 

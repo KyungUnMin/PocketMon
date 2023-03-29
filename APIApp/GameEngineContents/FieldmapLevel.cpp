@@ -509,6 +509,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 		MainSelectStartingUI->TestSelectMonster();
 		//MainShopUIManager->OnOffSwtich();
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
+		//MainFieldDialog->OnOffSwtich();
 	}
 
 	if (true == GameEngineInput::IsDown("StartEventCheck"))
