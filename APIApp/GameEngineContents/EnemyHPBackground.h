@@ -18,11 +18,6 @@ public:
 	EnemyHPBackground(EnemyHPBackground&& _Other) noexcept = delete;
 	EnemyHPBackground& operator=(const EnemyHPBackground& _Other) = delete;
 	EnemyHPBackground& operator=(EnemyHPBackground&& _Other) noexcept = delete;
-
-protected:
-	void Start() override;
-	void Update(float _DeltaTime) override;
-	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void Clear(std::vector<float> _Tick);
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 
@@ -30,6 +25,11 @@ protected:
 	bool IsBattleStartCheck(bool _Value);
 	float GetPlayerDamage(float _EnumyMonsterDamage);
 	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
+
+protected:
+	void Start() override;
+	void Update(float _DeltaTime) override;
+	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
 
 private:
