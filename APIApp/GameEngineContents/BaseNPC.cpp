@@ -5,8 +5,10 @@
 #include "ContentsEnum.h"
 #include "ContentConst.h"
 
-BaseNPC::BaseNPC()
+BaseNPC::BaseNPC() :
+	Dir(LookDir::Up)
 {
+
 }
 
 BaseNPC::~BaseNPC()
@@ -31,14 +33,54 @@ void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _Im
 	NPCRender->CreateAnimation({.AnimationName = "Move_Right", .ImageName = _ImageName, .Start = 16, .End = 19, .Loop = true});
 
 	NPCRender->CreateAnimation({.AnimationName = "Interaction_Up", .ImageName = _ImageName, .Start = 20, .End = 20, .Loop = false});
-	NPCRender->CreateAnimation({.AnimationName = "Interaction_Down", .ImageName = _ImageName, .Start = 20, .End = 20, .Loop = false});
-	NPCRender->CreateAnimation({.AnimationName = "Interaction_Left", .ImageName = _ImageName, .Start = 20, .End = 20, .Loop = false});
-	NPCRender->CreateAnimation({.AnimationName = "Interaction_Right", .ImageName = _ImageName, .Start = 20, .End = 20, .Loop = false});
+	NPCRender->CreateAnimation({.AnimationName = "Interaction_Down", .ImageName = _ImageName, .Start = 21, .End = 21, .Loop = false});
+	NPCRender->CreateAnimation({.AnimationName = "Interaction_Left", .ImageName = _ImageName, .Start = 22, .End = 22, .Loop = false});
+	NPCRender->CreateAnimation({.AnimationName = "Interaction_Right", .ImageName = _ImageName, .Start = 23, .End = 23, .Loop = false});
 }
 
 void BaseNPC::AddNPC(const std::string_view& _CityName, int2 _Index)
 {
 	Fieldmap::AddActor(_CityName, _Index, this, false);
+}
+
+void BaseNPC::AddScript(const std::string_view& _Script)
+{
+	ScriptDatas.push_back(_Script.data());
+}
+
+void BaseNPC::Look(LookDir _Dir)
+{
+	Dir = _Dir;
+	PlayAnimation();
+}
+
+void BaseNPC::Look(const float4& _TargetPos)
+{
+	Look(GetPos(), _TargetPos);
+}
+
+void BaseNPC::Look(const float4& _NpcPos, const float4& _TargetPos)
+{
+	int2 NpcIndex = Fieldmap::GetIndex(_NpcPos);
+	int2 TargetIndex = Fieldmap::GetIndex(_NpcPos);
+	int2 DirIndex = TargetIndex - NpcIndex;
+
+	if (0 < DirIndex.x)
+	{
+		Look(LookDir::Right);
+	}	
+	else if (0 > DirIndex.x)
+	{
+		Look(LookDir::Left);
+	}	
+	else if (0 < DirIndex.y)
+	{
+		Look(LookDir::Up);
+	}	
+	else if (0 > DirIndex.y)
+	{
+		Look(LookDir::Down);
+	}
 }
 
 void BaseNPC::Update(float _DeltaTime)
@@ -60,30 +102,27 @@ void BaseNPC::Update(float _DeltaTime)
 	}
 }
 
-void BaseNPC::PlayAnimation(const std::string_view& _AnimationName)
+void BaseNPC::PlayAnimation()
 {
-	std::string PlayAnimName = _AnimationName.data();
-
 	switch (Dir)
 	{
-	case BaseNPC::NPCDir::Up:
-		PlayAnimName += "_Up";
+	case LookDir::Up:
+		NPCRender->ChangeAnimation(AnimationName + "_Up");
 		break;
-	case BaseNPC::NPCDir::Down:
-		PlayAnimName += "_Down";
+	case LookDir::Down:
+		NPCRender->ChangeAnimation(AnimationName + "_Down");
 		break;
-	case BaseNPC::NPCDir::Left:
-		PlayAnimName += "_Left";
+	case LookDir::Left:
+		NPCRender->ChangeAnimation(AnimationName + "_Left");
 		break;
-	case BaseNPC::NPCDir::Right:
-		PlayAnimName += "_Right";
+	case LookDir::Right:
+		NPCRender->ChangeAnimation(AnimationName + "_Right");
 		break;
 	default:
 		MsgAssert("잘못된 NPC Dir 입니다");
 		break;
 	}
 
-	NPCRender->ChangeAnimation(PlayAnimName);
 }
 
 void BaseNPC::ChangeState(NPCState _State)
@@ -108,12 +147,15 @@ void BaseNPC::ChangeState(NPCState _State)
 	{
 	case BaseNPC::NPCState::Idle:
 		IdleStart();
+		AnimationName = "Idle";
 		break;
 	case BaseNPC::NPCState::Move:
 		MoveStart();
+		AnimationName = "Move";
 		break;
 	case BaseNPC::NPCState::interaction:
 		InteractionStart();
+		AnimationName = "Interaction";
 		break;
 	default:
 		MsgAssert("잘못된 NPC State 입니다");

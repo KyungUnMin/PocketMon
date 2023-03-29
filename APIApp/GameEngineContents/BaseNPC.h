@@ -1,20 +1,14 @@
 #pragma once
 #include <string>
 #include <list>
+#include <map>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 
+enum class LookDir;
 class GameEngineRender;
 class BaseNPC : public GameEngineActor
 {
-public:
-	enum class NPCDir
-	{
-		Up,
-		Down,
-		Left,
-		Right
-	};
 private:
 	enum class NPCState
 	{
@@ -34,7 +28,9 @@ public:
 
 	void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName);
 	void AddNPC(const std::string_view& _CityName, int2 _Index);
+	void AddScript(const std::string_view& _Script);
 
+	// NPC 이동 지점 추가
 	void AddMovePoint(const float4& _Pos)
 	{
 		MovePoints.push_back(_Pos);
@@ -50,10 +46,9 @@ public:
 		MoveSpeed = _MoveSpeed;
 	}
 
-	inline void SetInteractionTime(float _Time)
-	{
-		InteractionTime = _Time;
-	}
+	void Look(LookDir _Dir);
+	void Look(const float4& _TargetPos);
+	void Look(const float4& _NpcPos, const float4& _TargetPos);
 
 protected:
 	void Update(float _DeltaTime) override;
@@ -70,7 +65,9 @@ protected:
 	virtual void InteractionUpdate(float _DeltaTime);
 	virtual void InteractionEnd();
 
-	void PlayAnimation(const std::string_view& _AnimationName);
+	virtual void InteractionFunc();
+
+	void PlayAnimation();
 	void ChangeState(NPCState _State);
 
 private:
@@ -78,14 +75,17 @@ private:
 	std::string Name; 
 	std::list<float4> MovePoints;
 
+	std::list<std::string> ScriptDatas;
+
 	NPCState State = NPCState::Idle;
-	NPCDir Dir = NPCDir::Up;
+
+	std::string AnimationName = "Idle";
+	LookDir Dir;
 
 	float4 MoveStartPos = float4::Zero;
 	float4 MoveEndPos = float4::Zero;
 	float MoveProgress = 0.0f;
 	float MoveSpeed = 1.0f;
 
-	float InteractionTime = 1.0f;
-	float InteractionProgress = 0.0f;
+	int InputHandle = -1;
 };

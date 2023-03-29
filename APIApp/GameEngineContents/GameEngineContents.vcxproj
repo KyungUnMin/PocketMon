@@ -510,6 +510,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StaticNPC.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SummaryLevel.cpp">
       <SubType>
       </SubType>
@@ -882,6 +886,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ShopUIManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="StaticNPC.h">
       <SubType>
       </SubType>
     </ClInclude>

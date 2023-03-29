@@ -276,6 +276,22 @@ void CenterLevel::Loading()
 	{
 		Dir.MoveParentToDirectory("Image");
 		Dir.Move("Image");
+		Dir.Move("NPC");
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC1.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC2.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC3.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC4.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Nurse.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Oak.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Professor.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ung.bmp"))->Cut(4, 6);
+	}
+
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Image");
 		Dir.Move("Ending");
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("EndingWalk.bmp"))->Cut(6, 1);

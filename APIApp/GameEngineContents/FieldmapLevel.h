@@ -83,8 +83,8 @@ private:
 		AllDoors.insert(std::make_pair(UpperDoorName, NewDoor));
 	}
 
-	void AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, PlayerDir _Dir);
-	void AddJumpEvent(const std::string_view& _CityName, const int2& _Index, PlayerDir _Dir);
+	void AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, LookDir _Dir);
+	void AddJumpEvent(const std::string_view& _CityName, const int2& _Index, LookDir _Dir);
 
 	static void TempFunc()
 	{

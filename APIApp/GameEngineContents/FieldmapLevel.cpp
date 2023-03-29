@@ -12,6 +12,7 @@
 #include "FieldmapEmptyDoor.h"
 #include "FieldDialog.h"
 #include "int2.h"
+#include "PokemonScript.h"
 #include "PokeDataBase.h"
 #include "PocketMonCore.h"
 #include "FieldmapCutableTree.h"
@@ -28,6 +29,7 @@
 #include "SelectStartingUI.h"
 
 //Game Actor
+#include "BaseNPC.h"
 #include "NPC1.h"
 #include "Player.h"
 #include "EndingPlayActor.h"
@@ -44,6 +46,14 @@ FieldmapLevel::~FieldmapLevel()
 
 void FieldmapLevel::Loading()
 {
+	{
+		PokemonScript::AddScript(0);   // 태초마을 나가기 이벤트
+		PokemonScript::AddScript(100); // 스타팅 포켓몬 획득
+		PokemonScript::AddScript(200); // 라이벌 전투
+		PokemonScript::AddScript(300); // 22번 도로 전투
+		PokemonScript::AddScript(400); // 회색시티 체육관 전투
+	}
+
 	MainPlayer = CreateActor<Player>();
 
 	{
@@ -76,16 +86,16 @@ void FieldmapLevel::Loading()
 			CreateBattlezone_Route1(int2(18, 35), int2(2, 5));
 		}
 		{
-			AddJumpEvent("Route1", int2(8, 30), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(16, 30), int2::Right, 12, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(24, 25), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(8, 19), int2::Right, 2, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(11, 19), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(17, 19), int2::Right, 11, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(10, 14), int2::Right, 6, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(8, 9), int2::Right, 6, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(8, 4), int2::Right, 6, PlayerDir::Down);
-			AddJumpEvent("Route1", int2(16, 4), int2::Right, 6, PlayerDir::Down);
+			AddJumpEvent("Route1", int2(8, 30), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("Route1", int2(16, 30), int2::Right, 12, LookDir::Down);
+			AddJumpEvent("Route1", int2(24, 25), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("Route1", int2(8, 19), int2::Right, 2, LookDir::Down);
+			AddJumpEvent("Route1", int2(11, 19), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("Route1", int2(17, 19), int2::Right, 11, LookDir::Down);
+			AddJumpEvent("Route1", int2(10, 14), int2::Right, 6, LookDir::Down);
+			AddJumpEvent("Route1", int2(8, 9), int2::Right, 6, LookDir::Down);
+			AddJumpEvent("Route1", int2(8, 4), int2::Right, 6, LookDir::Down);
+			AddJumpEvent("Route1", int2(16, 4), int2::Right, 6, LookDir::Down);
 		}
 
 		CreateFieldmapCity("ViridianCity", "Viridian City", "ViridianCity", float4(224.0f, -4800.0f));
@@ -101,10 +111,10 @@ void FieldmapLevel::Loading()
 		}
 
 		{
-			AddJumpEvent("ViridianCity", int2(1, 29), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("ViridianCity", int2(11, 29), int2::Right, 3, PlayerDir::Down);
-			AddJumpEvent("ViridianCity", int2(17, 29), int2::Right, 19, PlayerDir::Down);
-			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, PlayerDir::Down);
+			AddJumpEvent("ViridianCity", int2(1, 29), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("ViridianCity", int2(11, 29), int2::Right, 3, LookDir::Down);
+			AddJumpEvent("ViridianCity", int2(17, 29), int2::Right, 19, LookDir::Down);
+			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, LookDir::Down);
 		}
 
 		CreateFieldmapCity("Route22", "Route 22", "Route22", float4(-3360.0f, -4640.0f));
@@ -113,16 +123,16 @@ void FieldmapLevel::Loading()
 			CreateBattlezone_Route22(int2(49, 19), int2(6, 5));
 		}
 		{
-			AddJumpEvent("Route22", int2(19, 24), int2::Right, 35, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(56, 24), int2::Right, 5, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(18, 18), int2::Right, 7, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(27, 18), int2::Right, 2, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(27, 11), int2::Right, 2, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(30, 17), int2::Right, 7, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(49, 17), int2::Right, 2, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(53, 17), int2::Right, 2, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(49, 12), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("Route22", int2(54, 12), int2::Right, 3, PlayerDir::Down);
+			AddJumpEvent("Route22", int2(19, 24), int2::Right, 35, LookDir::Down);
+			AddJumpEvent("Route22", int2(56, 24), int2::Right, 5, LookDir::Down);
+			AddJumpEvent("Route22", int2(18, 18), int2::Right, 7, LookDir::Down);
+			AddJumpEvent("Route22", int2(27, 18), int2::Right, 2, LookDir::Down);
+			AddJumpEvent("Route22", int2(27, 11), int2::Right, 2, LookDir::Down);
+			AddJumpEvent("Route22", int2(30, 17), int2::Right, 7, LookDir::Down);
+			AddJumpEvent("Route22", int2(49, 17), int2::Right, 2, LookDir::Down);
+			AddJumpEvent("Route22", int2(53, 17), int2::Right, 2, LookDir::Down);
+			AddJumpEvent("Route22", int2(49, 12), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("Route22", int2(54, 12), int2::Right, 3, LookDir::Down);
 		}
 
 		CreateFieldmapCity("Route2_Down", "Route 2", "Route2_Down", float4(0.0f, -7808.0f));
@@ -141,9 +151,9 @@ void FieldmapLevel::Loading()
 			CreateBattlezone_Route2_Down(int2(12, 30), int2(7, 5));
 		}
 		{
-			AddJumpEvent("Route2_Down", int2(8, 43), int2::Right, 7, PlayerDir::Down);
-			AddJumpEvent("Route2_Down", int2(17, 43), int2::Right, 3, PlayerDir::Down);
-			AddJumpEvent("Route2_Down", int2(8, 28), int2::Right, 9, PlayerDir::Down);
+			AddJumpEvent("Route2_Down", int2(8, 43), int2::Right, 7, LookDir::Down);
+			AddJumpEvent("Route2_Down", int2(17, 43), int2::Right, 3, LookDir::Down);
+			AddJumpEvent("Route2_Down", int2(8, 28), int2::Right, 9, LookDir::Down);
 		}
 
 
@@ -173,10 +183,10 @@ void FieldmapLevel::Loading()
 		}
 
 		{
-			AddJumpEvent("PewterCity", int2(27, 29), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("PewterCity", int2(32, 29), int2::Right, 4, PlayerDir::Down);
-			AddJumpEvent("PewterCity", int2(9, 6), int2::Right, 7, PlayerDir::Down);
-			AddJumpEvent("PewterCity", int2(20, 6), int2::Right, 17, PlayerDir::Down);
+			AddJumpEvent("PewterCity", int2(27, 29), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("PewterCity", int2(32, 29), int2::Right, 4, LookDir::Down);
+			AddJumpEvent("PewterCity", int2(9, 6), int2::Right, 7, LookDir::Down);
+			AddJumpEvent("PewterCity", int2(20, 6), int2::Right, 17, LookDir::Down);
 		}
 
 		CreateFieldmapCity("PalletTown_Home1F", "Home 1F", "Myroom_1F", float4(0.0f, 2000.0f));
@@ -394,6 +404,12 @@ void FieldmapLevel::Loading()
 	ShopNpc = CreateActor<NPC1>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc);
 
+	BaseNPC* TestNpcPtr = CreateActor<BaseNPC>();
+	TestNpcPtr->InitNPC("Test", "NPC1.bmp");
+	TestNpcPtr->AddNPC("ViridianCity_Market", int2(8, 8));
+	TestNpcPtr->AddScript("Test 010101 asdfoiewfojewfoij");
+	TestNpcPtr->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
+
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
@@ -433,7 +449,7 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("EventLog"))
 	{
-		Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
+		//Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
 
 	if (true == GameEngineInput::IsDown("PlayEnding"))
@@ -548,7 +564,7 @@ void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const 
 	PalletTownPtr->InitPos(_Pos);
 }
 
-void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, PlayerDir _Dir)
+void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Start, const int2& _Add, int _Count, LookDir _Dir)
 {
 	int2 CurIndex = _Start;
 
@@ -559,11 +575,11 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 	}
 }
 
-void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Index, PlayerDir _Dir)
+void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& _Index, LookDir _Dir)
 {
 	switch (_Dir)
 	{
-	case PlayerDir::Up:
+	case LookDir::Up:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpUp",
 			.VaildFunc = std::bind(&Player::VaildJumpUp, Player::MainPlayer),
@@ -571,7 +587,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			.Loop = true
 			});
 		break;
-	case PlayerDir::Down:
+	case LookDir::Down:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpDown",
 			.VaildFunc = std::bind(&Player::VaildJumpDown, Player::MainPlayer),
@@ -579,7 +595,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			.Loop = true
 			});
 		break;
-	case PlayerDir::Left:
+	case LookDir::Left:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpLeft",
 			.VaildFunc = std::bind(&Player::VaildJumpLeft, Player::MainPlayer),
@@ -587,7 +603,7 @@ void FieldmapLevel::AddJumpEvent(const std::string_view& _CityName, const int2& 
 			.Loop = true
 			});
 		break;
-	case PlayerDir::Right:
+	case LookDir::Right:
 		Fieldmap::AddUpdateEvent(_CityName, _Index, {
 			.Name = "JumpRight",
 			.VaildFunc = std::bind(&Player::VaildJumpRight, Player::MainPlayer),

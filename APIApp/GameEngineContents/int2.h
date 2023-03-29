@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <math.h>
 
 class int2
 {
@@ -82,6 +83,11 @@ public:
 		this->x = static_cast<int>(this->x * _Value);
 		this->y = static_cast<int>(this->y * _Value);
 		return *this;
+	}
+
+	int GetDistance(const int2& _Other) const
+	{
+		return abs(this->x - _Other.x) + abs(this->y - _Other.y);
 	}
 
 	std::string ToString()

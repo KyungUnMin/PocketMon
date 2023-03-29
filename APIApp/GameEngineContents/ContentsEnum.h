@@ -76,7 +76,7 @@ enum class BattleRenderOrder
 	Fade,
 };
 
-enum class PlayerDir
+enum class LookDir
 {
 	Up,
 	Down,
