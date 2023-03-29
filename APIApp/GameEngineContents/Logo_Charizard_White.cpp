@@ -20,8 +20,8 @@ Logo_Charizard_White::~Logo_Charizard_White()
 void Logo_Charizard_White::Start()
 {
 	ZardWhitePtr = this;
-	RenderPtr = CreateRender("Logo_Charizard_White.bmp", 2);
-	SetPos({ 680, 360 });
+	RenderPtr = CreateRender("Logo_Charizard_White.bmp", 3);
+	SetPos({ 740, 390 });
 	RenderPtr->SetScale({444, 396});
 }
 

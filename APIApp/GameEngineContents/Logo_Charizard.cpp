@@ -32,10 +32,10 @@ Logo_Charizard::~Logo_Charizard()
 
 void Logo_Charizard::Start()
 {
-	RenderPtr = CreateRender(RenderOrder::FieldBack);
+	RenderPtr = CreateRender(RenderOrder::Monster);
 	RenderPtr->CreateAnimation({ .AnimationName = "Gray",  .ImageName = "Logo_Charizard.bmp", .Start = 0, .End = 0, .InterTime = 0.1f });
 	RenderPtr->CreateAnimation({ .AnimationName = "Origin",  .ImageName = "Logo_Charizard.bmp", .Start = 1, .End = 1, .InterTime = 0.1f });
-	SetPos({ 680, 360 });
+	SetPos({ 740, 390 });
 	RenderPtr->SetScale({ 444, 396 });
 
 	RenderPtr->ChangeAnimation("Gray");

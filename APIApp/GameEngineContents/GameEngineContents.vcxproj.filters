@@ -113,6 +113,9 @@
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp" />
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClCompile>
@@ -124,6 +127,9 @@
     </ClCompile>
     <ClCompile Include="FieldmapBattleZone.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapFlower.cpp">
+      <Filter>Map\Actor</Filter>
     </ClCompile>
     <ClCompile Include="BuyLevel.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -333,6 +339,9 @@
     <ClCompile Include="InputControll.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="FieldmapCutableTree.cpp">
+      <Filter>Map\Actor</Filter>
+    </ClCompile>
     <ClCompile Include="LevelUpStatUI_2.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
@@ -348,9 +357,6 @@
     <ClCompile Include="Logo_Back2.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Logo_Back3.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Logo_Backeffect.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
@@ -358,9 +364,6 @@
       <Filter>Opening\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Logo_Fireredversion.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Logo_Gamefreakinc.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Opening_Freaklogo.cpp">
@@ -399,8 +402,7 @@
     <ClCompile Include="BattleState_StageLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClCompile>
-    <ClCompile Include="EffectBlackBox.cpp" />
-    <ClCompile Include="Logo_Charizard_White.cpp" />
+    <ClCompile Include="CityNameUI.cpp" />
     <ClCompile Include="BattleState_BattleLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
     </ClCompile>
@@ -433,6 +435,15 @@
     <ClCompile Include="PokemonScript.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="Logo_Charizard_White.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="EffectBlackBox.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="Logo_Back3.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
     <ClCompile Include="Battle_PlayerHpUIHandler.cpp">
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP</Filter>
     </ClCompile>
@@ -443,21 +454,8 @@
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP</Filter>
     </ClCompile>
     <ClCompile Include="PokemonHPBar.cpp" />
-    <ClCompile Include="SelectStartingUI.cpp" />
-    <ClCompile Include="BackgroundUI.cpp">
-      <Filter>Map\Actor\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="CityNameUI.cpp">
-      <Filter>Map\Actor\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapCutableTree.cpp">
-      <Filter>Map\Actor\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapFlower.cpp">
-      <Filter>Map\Actor\Object</Filter>
-    </ClCompile>
-    <ClCompile Include="StaticNPC.cpp">
-      <Filter>Player\NPC</Filter>
+    <ClCompile Include="BattleState_ItemUse.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -568,6 +566,9 @@
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBase.h" />
+    <ClInclude Include="BackgroundUI.h">
+      <Filter>Map\Actor</Filter>
+    </ClInclude>
     <ClInclude Include="BattleMonsterBase.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClInclude>
@@ -579,6 +580,9 @@
     </ClInclude>
     <ClInclude Include="FieldmapBattleZone.h">
       <Filter>Map\Actor\BattleZone</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapFlower.h">
+      <Filter>Map\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BuyLevel.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -781,11 +785,11 @@
     <ClInclude Include="InputControll.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="FieldmapCutableTree.h">
+      <Filter>Map\Actor</Filter>
+    </ClInclude>
     <ClInclude Include="LevelUpStatUI_2.h">
       <Filter>BattleUI\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Logo_Gamefreakinc.h">
-      <Filter>Opening\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Pokemon.h">
       <Filter>Opening\Actor</Filter>
@@ -797,9 +801,6 @@
       <Filter>Opening\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Back2.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Logo_Back3.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Backeffect.h">
@@ -847,8 +848,7 @@
     <ClInclude Include="BattleState_StageLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClInclude>
-    <ClInclude Include="EffectBlackBox.h" />
-    <ClInclude Include="Logo_Charizard_White.h" />
+    <ClInclude Include="CityNameUI.h" />
     <ClInclude Include="BattleState_BattleLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
     </ClInclude>
@@ -878,6 +878,15 @@
     <ClInclude Include="PokemonScript.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="Logo_Charizard_White.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="EffectBlackBox.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="Logo_Back3.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
     <ClInclude Include="Battle_HpUIHandlerBase.h">
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\01.Base</Filter>
     </ClInclude>
@@ -888,21 +897,8 @@
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP</Filter>
     </ClInclude>
     <ClInclude Include="PokemonHPBar.h" />
-    <ClInclude Include="SelectStartingUI.h" />
-    <ClInclude Include="BackgroundUI.h">
-      <Filter>Map\Actor\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="CityNameUI.h">
-      <Filter>Map\Actor\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapCutableTree.h">
-      <Filter>Map\Actor\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapFlower.h">
-      <Filter>Map\Actor\Object</Filter>
-    </ClInclude>
-    <ClInclude Include="StaticNPC.h">
-      <Filter>Player\NPC</Filter>
+    <ClInclude Include="BattleState_ItemUse.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1230,11 +1226,8 @@
     <Filter Include="Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP">
       <UniqueIdentifier>{2b9b3130-7701-4063-bc8a-fec61788575b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Map\Actor\UI">
-      <UniqueIdentifier>{c97d6618-91b7-4443-8c3d-4145b0d18b96}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Map\Actor\Object">
-      <UniqueIdentifier>{83cc6476-21fa-4b46-8087-0093c04759d2}</UniqueIdentifier>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\12.ItemUse">
+      <UniqueIdentifier>{cbdf3f53-a21f-4159-af30-97b942f17464}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

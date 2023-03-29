@@ -19,6 +19,8 @@ enum class BattleStateType
 	BattleWin,
 	BattleLose,
 
+	UseItem,
+
 	COUNT,
 };
 

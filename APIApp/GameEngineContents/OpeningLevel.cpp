@@ -8,6 +8,13 @@
 #include "Opening_Text.h"
 #include "Logo_Charizard.h"
 #include "Logo_Charizard_White.h"
+#include "Logo_Back1.h"
+#include "Logo_Back2.h"
+#include "Logo_Back3.h"
+#include "Logo_Pokemon.h"
+#include "Logo_Fireredversion.h"
+#include "Logo_PressStart.h"
+#include "Logo_Backeffect.h"
 
 OpeningLevel* OpeningLevel::OpeningLevelPtr = nullptr;
 
@@ -44,6 +51,15 @@ void OpeningLevel::Loading()
 	Zardlogo = CreateActor<Logo_Charizard>();
 	Zardlogo_White = CreateActor<Logo_Charizard_White>();
 
+	BlackBack = CreateActor<Logo_Back3>();
+	RedBack = CreateActor<Logo_Back1>();
+	GreenBack = CreateActor<Logo_Back2>();
+
+	PokemonTitle = CreateActor<Logo_Pokemon>();
+	FireV = CreateActor<Logo_Fireredversion>();
+	PressStart = CreateActor<Logo_PressStart>();
+	Burnning = CreateActor<Logo_Backeffect>();
+
 	EffectBox1->Off();
 	EffectBox2->Off();
 	EffectBox3->Off();
@@ -53,6 +69,13 @@ void OpeningLevel::Loading()
 
 	Zardlogo->Off();
 	Zardlogo_White->Off();
+	RedBack->Off();
+	GreenBack->Off();
+	BlackBack->Off();
+	PokemonTitle->Off();
+	FireV->Off();
+	PressStart->Off();
+	Burnning->Off();
 }
 void OpeningLevel::Update(float _DeltaTime)
 {
@@ -94,16 +117,23 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	LevelEvent.AddEvent(7.5f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->BlinkStart();
+			_This->GreenBack->On();
 		}, this), false);
 
 	LevelEvent.AddEvent(8.0f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->BlinkStart();
+			_This->RedBack->On();
+			_This->BlackBack->On();
 		}, this), false);
 
 	LevelEvent.AddEvent(8.5f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->OriginBlinkStart();
+			_This->PokemonTitle->On();
+			_This->FireV->On();
+			_This->PressStart->On();
+			_This->Burnning->On();
 		}, this), false);
 }
 
