@@ -19,19 +19,18 @@ public:
 	FriendlyHPBackground& operator=(FriendlyHPBackground&& _Other) noexcept = delete;
 
 
-	bool IsBattleStartCheck(bool _Value);
-	float GetMonsterDamage(int _EnumyMonsterDamage);
-	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
-
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
-	void CurHpRender(GameEngineRender* _Render, std::vector<float> _Tick);
+	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
 
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
+	bool IsBattleStartCheck(bool _Value);
+	float GetMonsterDamage(int _EnumyMonsterDamage);
+	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
 
 private:
 

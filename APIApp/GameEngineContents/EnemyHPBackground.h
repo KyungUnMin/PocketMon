@@ -4,7 +4,7 @@
 #include "BattleEnemy.h"
 #include "BattleCommendActor.h"
 #include "FriendlyHPBackground.h"
-
+#include "BattleEnemy.h"
 // Ό³Έν :
 class EnemyHPBackground : public GameEngineActor
 {
@@ -23,6 +23,12 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
+	void Clear(std::vector<float> _Tick);
+
+
+	bool IsBattleStartCheck(bool _Value);
+	float GetPlayerDamage(float _EnumyMonsterDamage);
+	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
 
 
 private:
@@ -47,5 +53,13 @@ private:
 	GameEngineRender* EnemyHPRenderPtr = nullptr;
 	std::vector<float> EnemyDamegeTick;
 
+
+
+
+	float CurMyHP = 0.0f;
+
+	float FrinedMonsterDamage = 0.0f;
+	float MyCurHp = 0.0f;
+	bool BattleStartCheck = false;
 };
 

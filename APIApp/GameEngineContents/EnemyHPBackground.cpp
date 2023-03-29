@@ -34,6 +34,7 @@ void EnemyHPBackground::Start()
 
 	//데미지
 	float damege = GameEngineMath::Lerp(192.0f, 0.0f, hpcur);
+
 	EnemyHPRenderPtr->SetScale(float4{ 192, 172 });
 	EnemyHPRenderPtr->SetPosition({ 324, 160 });
 
@@ -79,20 +80,22 @@ void EnemyHPBackground::Update(float _DeltaTime)
 	if (nullptr == DB)
 		return;
 
-	//일단 현제거 받자
-	StringToRender(EnemyPoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
-	StringToRender(EnemyPoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
+	StringToRender(EnemyPoketMonName_R, BattleEnemy::EnemyPtr->GetMonsterDB()->ForUI_GetMonsterName());
+	StringToRender(EnemyPoketMonLevel_R, BattleEnemy::EnemyPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	//FriendlyHPBackground::FriendlyPtr->	RenderTick(EnemyHPRenderPtr, EnemyDamegeTick, _DeltaTime,192.0f,9 ,float4{ 324,160 });
 
-
-	NextTickTime_2 += _DeltaTime;
-	if (NextTickTime_2 > 0.1f) {
-		NextTickTime_2 = 0;
-		if (TickNumber_2 != 10) {
-			EnemyHPRenderPtr->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
-			EnemyHPRenderPtr->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
-			TickNumber_2++;
-		}
+	HpUpdate(FrinedMonsterDamage, BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP());
+	if (BattleStartCheck==true)
+	{
+		NextTickTime_2 += _DeltaTime;
+			if (NextTickTime_2 > 0.1f) {
+				NextTickTime_2 = 0;
+				if (TickNumber_2 != 10) {
+					EnemyHPRenderPtr->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
+					EnemyHPRenderPtr->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
+					TickNumber_2++;
+				}
+			}
 	}
 }
 
@@ -166,4 +169,33 @@ void EnemyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, s
 		}
 		StrIndex++;
 	}
+}
+
+void EnemyHPBackground::Clear(std::vector<float> _Tick)
+{
+	_Tick.erase(_Tick.begin(), _Tick.end());
+}
+
+bool EnemyHPBackground::IsBattleStartCheck(bool _Value)
+{
+	return false;
+}
+
+
+float EnemyHPBackground::GetPlayerDamage(float _EnumyMonsterDamage)
+{
+	return FrinedMonsterDamage;
+}
+
+void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp)
+{
+	float Hpmag = _FriendMonsterDamage / _MyCurHp;
+	float damege = GameEngineMath::Lerp(192.0f, 0.0f, Hpmag);
+
+	for (int i = 10; i >= 1; i--) {
+
+		EnemyDamegeTick.push_back(damege + ((192.0f - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
+
+	}
+	CurMyHP = EnemyDamegeTick[9];
 }

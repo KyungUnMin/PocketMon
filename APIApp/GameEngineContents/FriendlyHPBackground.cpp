@@ -51,7 +51,6 @@ void FriendlyHPBackground::Start()
 
 
 	//데미지
-	float damege = GameEngineMath::Lerp(192.0f, 0.0f, hpcur);
 	HPRenderPtr->SetScale(float4{ 192, 172 });
 	HPRenderPtr->SetPosition({ 560, 360 });
 
@@ -59,22 +58,9 @@ void FriendlyHPBackground::Start()
 
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
 
-	/*EXPRenderPtr->SetScale(float4{ 256,172 });
-	EXPRenderPtr->SetPosition({ 528 , 360 });
-*/
-
 	EXPRenderPtr->SetScale(float4{ 0,172 });
 	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 380 });
 
-
-	//for (int i = 10; i >= 1; i--) {
-	//	
-	//	DamegeTick.push_back(damege + ((192.0f-damege))/ 10 *i); /*현재 HP - (데미지 / 10 *)1*/
-	//	
-	//}
-	/*if (damege == 0) {
-		DamegeTick[9] = damege;
-	}*/
 	for (int i = 1; i <= 10; i++) {
 		EXPTick.push_back((ExpNum / 10) * i);
 	}
@@ -160,7 +146,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		}
 		if (TickNumber == 10 && TickNumber_1 == 10) {
 			BattleStartCheck = false;
-			CurHpRender(HPRenderPtr, DamegeTick);
+			CurHpRender(HPRenderPtr, CurMyHP);
+			Clear(DamegeTick);
 
 		}
 	}
@@ -172,18 +159,16 @@ void FriendlyHPBackground::Render(float _DeltaTime)
 	
 }
 
-void FriendlyHPBackground::CurHpRender(GameEngineRender* _Render, std::vector<float> _Tick)
+void FriendlyHPBackground::CurHpRender(GameEngineRender* _Render, float _hp)
 {
-	_Render->SetScale(float4{ _Tick[9], 172 });
-	_Render->SetPosition({ 560.0f - (192.0f - _Tick[9]) / 2 , 360.0f });
-	Clear(DamegeTick);
+	_Render->SetScale(float4{ _hp, 172 });
+	_Render->SetPosition({ 560.0f - (192.0f - _hp) / 2 , 360.0f });
 
 }
 
 void FriendlyHPBackground::Clear(std::vector<float> _Tick)
 {
 	_Tick.erase(_Tick.begin(), _Tick.end());
-	int a = 0;
 }
 
 void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)
