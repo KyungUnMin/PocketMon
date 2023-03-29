@@ -24,7 +24,6 @@
 #include "FieldmapFlower.h"
 #include "FieldmapBattleZone.h"
 #include "ShopUIManager.h"
-#include "YesNoMenu.h"
 #include "CityNameUI.h"
 #include "SelectStartingUI.h"
 
@@ -431,7 +430,6 @@ void FieldmapLevel::Loading()
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
 	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
 	MainShopUIManager = CreateActor<ShopUIManager>(); 
-	MainYesNoMenu = CreateActor<YesNoMenu>();
 	MainSelectStartingUI = CreateActor<SelectStartingUI >();
 }
 

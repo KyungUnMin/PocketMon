@@ -70,6 +70,7 @@ private:
 	int Money = 0;
 	GameEngineRender* MoneySignRender = nullptr;
 
+	std::list<std::string> LackMoneyScript = std::list<std::string>();
 
 	int State = 0;
 

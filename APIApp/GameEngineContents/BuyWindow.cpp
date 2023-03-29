@@ -107,6 +107,8 @@ void BuyWindow::Start()
 	MoneySignRender = CreateRender("Money.bmp", RenderOrder::Shop_Text);
 	MoneySignRender->EffectCameraOff();
 	MoneySignRender->SetScale(ItemPriceRenderScale);
+
+	LackMoneyScript.emplace_back("You don`t have enough money.");
 }
 
 void BuyWindow::Update(float _DeltaTime)
@@ -154,28 +156,53 @@ void BuyWindow::Update(float _DeltaTime)
 		ChangeStateNext();
 	}
 
-	if (false == InputControll::IsCurFrameUsedKey() && GameEngineInput::IsDown("A"))
+	if (/*false == InputControll::IsCurFrameUsedKey() && */GameEngineInput::IsDown("A"))
 	{
 		switch (State)
 		{
 		case 0:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			if (ItemList[0].GetPrice() > Money)
+			{
+				BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&LackMoneyScript);
+				return;
+			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[0]);
 			break;
 		case 1:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			if (ItemList[1].GetPrice() > Money)
+			{
+				BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&LackMoneyScript);
+				return;
+			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[1]);
 			break;
 		case 2:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			if (ItemList[2].GetPrice() > Money)
+			{
+				BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&LackMoneyScript);
+				return;
+			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[2]);
 			break;
 		case 3:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			if (ItemList[3].GetPrice() > Money)
+			{
+				BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&LackMoneyScript);
+				return;
+			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[3]);
 			break;
 		case 4:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			if (ItemList[4].GetPrice() > Money)
+			{
+				BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&LackMoneyScript);
+				return;
+			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[4]);
 			break;
 		case 5:

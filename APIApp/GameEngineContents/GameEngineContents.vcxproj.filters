@@ -420,9 +420,6 @@
     <ClCompile Include="BuyYesNoMenu.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClCompile>
-    <ClCompile Include="YesNoMenu.cpp">
-      <Filter>FieldUI\HSM</Filter>
-    </ClCompile>
     <ClCompile Include="BaseNPC.cpp">
       <Filter>Player\NPC</Filter>
     </ClCompile>
@@ -873,9 +870,6 @@
     </ClInclude>
     <ClInclude Include="BuyYesNoMenu.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClInclude>
-    <ClInclude Include="YesNoMenu.h">
-      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BaseNPC.h">
       <Filter>Player\NPC</Filter>

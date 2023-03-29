@@ -13,7 +13,6 @@ class FieldmapRender;
 class FieldMainMenu;
 class MoveMapFadeEffect;
 class ShopUIManager;
-class YesNoMenu;
 class SelectStartingUI;
 class FieldmapLevel : public GameEngineLevel
 {
@@ -50,7 +49,6 @@ private:
 	FieldMainMenu* MainFieldMainMenu = nullptr;
 	MoveMapFadeEffect* MainMoveMapFadeEffect = nullptr;
 	ShopUIManager* MainShopUIManager = nullptr;
-	YesNoMenu* MainYesNoMenu = nullptr;
 	SelectStartingUI* MainSelectStartingUI = nullptr;
 
 	bool IsCameraDebug = false;
