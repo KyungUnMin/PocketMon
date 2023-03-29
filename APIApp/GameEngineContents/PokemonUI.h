@@ -51,6 +51,8 @@ private:
 	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);
 	std::vector<GameEngineRender*> PokemonRender = std::vector<GameEngineRender*>(6);
 	std::vector<GameEngineRender*> PokemonItem = std::vector<GameEngineRender*>(6);
+	std::vector <PokemonHPBar*> PokemonHPBars = std::vector<PokemonHPBar*>(6);
+
 	std::vector<GameEngineRender*> CursorRender;
 	GameEngineRender* CancelButtonRender = nullptr;
 
@@ -65,7 +67,6 @@ private:
 	std::vector<TextActor*> PokemonMaxHPText = std::vector<TextActor*>(6);
 	std::vector<TextActor*> PokemonLevelText = std::vector<TextActor*>(6);
 	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(5);
-	PokemonHPBar* HPBar = nullptr;
 
 
 	PokemonUIState StateValue = PokemonUIState::Normal;

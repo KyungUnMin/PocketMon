@@ -14,6 +14,13 @@ void PokemonHPBar::SetValue(float _Value)
 	StartValue = _Value;
 	CurrentValue = _Value;
 	TargetValue = _Value;
+
+	float4 Scale = { 0, 172 };
+	Scale.x = std::lerp(0, 192, CurrentValue);
+	float4 Pos = { Scale.x * 0.5f , 0 };
+
+	BarRender->SetScale(Scale);
+	BarRender->SetPosition(Pos);
 }
 
 void PokemonHPBar::SetTargetValue(float _Value)

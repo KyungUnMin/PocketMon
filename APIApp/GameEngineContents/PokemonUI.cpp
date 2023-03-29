@@ -81,6 +81,9 @@ void PokemonUI::Start()
 		PokemonMaxHPText[0]->SetPos({ 326, 282 });
 		PokemonMaxHPText[0]->SetAligned(true);
 
+		PokemonHPBars[0] = CurrentLevel->CreateActor<PokemonHPBar>();
+		PokemonHPBars[0]->SetPos({124, 256});
+
 		for (int i = 1; i < 6; i++)
 		{
 			// 포켓몬 뒷 배경
@@ -113,6 +116,9 @@ void PokemonUI::Start()
 			PokemonMaxHPText[i] = CurrentLevel->CreateActor<TextActor>();
 			PokemonMaxHPText[i]->SetPos({ 924, 16.0f + 96 * i });
 			PokemonMaxHPText[i]->SetAligned(true);
+
+			PokemonHPBars[i] = CurrentLevel->CreateActor<PokemonHPBar>();
+			PokemonHPBars[i]->SetPos({736, -14.0f + 96 * i});
 		}
 		// 취소 버튼
 		CancelButtonRender = CreateRender("CancelButton.bmp", 1);
@@ -150,12 +156,7 @@ void PokemonUI::Start()
 	}
 	PokeDataSetting();
 
-	HPBar = CurrentLevel->CreateActor<PokemonHPBar>();
-	HPBar->SetValue(0);
-	HPBar->SetTargetValue(1);
-	//HPBar->SetPos({ 124, 256 });  0번
-	//HPBar->SetPos({ 736, 82 });
-	//HPBar->SetPos({ 736, 82.0f + 96 * 1});
+	
 }
 
 void PokemonUI::Update(float _DeltaTime)
@@ -163,7 +164,7 @@ void PokemonUI::Update(float _DeltaTime)
 	if (IsStop == true) { return; }
 	if (GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		Pokemons[CurrentCursor].Stern();
+		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
 		PokeDataSetting();
 	}
 	AnimUpdate(_DeltaTime);
@@ -328,6 +329,8 @@ void PokemonUI::PokeDataSetting()
 			Pokemons[i].GetPossession() != ItemCode::Cancel ? PokemonItem[i]->On() : PokemonItem[i]->Off();
 			// 포켓몬 HP
 			PokemonCurrentHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
+
+			PokemonHPBars[i]->SetValue(Pokemons[i].GetMonsterCurrentHP() / Pokemons[i].GetMonsterMaxHP_float());
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{
@@ -339,6 +342,7 @@ void PokemonUI::PokeDataSetting()
 			PokemonCurrentHPText[i]->Off();
 			PokemonMaxHPText[i]->Off();
 			PokemonItem[i]->Off();
+			PokemonHPBars[i]->SetValue(0);
 		}
 		CursorRender[Pokemons.size()] = CancelButtonRender;
 	}
@@ -613,8 +617,9 @@ void PokemonUI::PotionUpdate(float _DeltaTime)
 {
 	// Lerp를 통해 체력바 회복
 	// 회복이 끝나면 텍스트가 나오고 확인버튼 눌러서 이전 레벨로 이동
-	float a = std::lerp(HPStart, HPEnd, std::min<float>(1, PotionTimer));
-	if (1.5f < PotionTimer)
+	float Value = std::lerp(HPStart, HPEnd, std::min<float>(1, PotionTimer));
+	PokemonHPBars[CurrentCursor]->SetTargetValue(Value);
+	if (2.0f < PotionTimer)
 	{
 		IsPotionUse = false;
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
