@@ -79,6 +79,30 @@ void NPC1::Update(float _DeltaTime)
 	}
 }
 
+void NPC1::IdleStart()
+{
+}
+
+void NPC1::IdleUpdate(float _DeltaTime)
+{
+}
+
+void NPC1::IdleEnd()
+{
+}
+
+void NPC1::MoveStart()
+{
+}
+
+void NPC1::MoveUpdate(float _DeltaTime)
+{
+}
+
+void NPC1::MoveEnd()
+{
+}
+
 void NPC1::Render(float _DeltaTime)
 {
 	if (GameEngineInput::IsPress("CollisionRender"))
