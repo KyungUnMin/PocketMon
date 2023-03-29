@@ -273,6 +273,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_ItemUse.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_MonsterDead.cpp">
       <SubType>
       </SubType>
@@ -648,6 +652,10 @@
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
     <ClInclude Include="BattleState_EnemyHPCheck.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_ItemUse.h">
       <SubType>
       </SubType>
     </ClInclude>

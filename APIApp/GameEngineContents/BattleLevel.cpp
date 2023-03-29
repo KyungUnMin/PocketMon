@@ -172,7 +172,7 @@ void BattleLevel::PassPlayerTurn()
 		return;
 	}
 
-	BattleFsmPtr->ChangeState(BattleStateType::EnemyTurn);
+	BattleFsmPtr->ChangeState(BattleStateType::UseItem);
 }
 
 void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)

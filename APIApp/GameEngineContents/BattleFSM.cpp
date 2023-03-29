@@ -12,6 +12,7 @@
 #include "BattleState_PlayerHPCheck.h"
 #include "BattleState_StageWin.h"
 #include "BattleState_StageLose.h"
+#include "BattleState_ItemUse.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -40,6 +41,7 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_EnemyHPCheck>(BattleStateType::CheckEnemyHP);
 	CreateState<BattleState_StageWin>(BattleStateType::StageWin);
 	CreateState<BattleState_StageLose>(BattleStateType::StageLose);
+	CreateState<BattleState_ItemUse>(BattleStateType::UseItem);
 
 
 	switch (_NpcType)
