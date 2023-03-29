@@ -7,6 +7,7 @@ enum class PokeNumber;
 enum class PokeSkill;
 class GameEngineRender;
 class BattleSkillBase;
+class Battle_HpUIHandlerBase;
 
 enum class BattleMonsterType
 {
@@ -33,9 +34,14 @@ public:
 
 	virtual class GameEngineRender* GetRender() = 0;
 
+	virtual Battle_HpUIHandlerBase* GetHpUI() = 0;
+
+	virtual void CreateHpUI() = 0;
+
+	virtual void DamageOnIU(int _Value) = 0;
+
 protected:
 	void Init(PokeNumber _MonsterType, int _Level = 1);
-	BattleSkillBase* CreateSkill(PokeSkill _SkillType, BattleMonsterBase* _Owner);
 
 private:
 	bool IsInit = false;

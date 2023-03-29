@@ -15,6 +15,7 @@
 #include "BattlePlayerMonsterFSM.h"
 #include "PokeBattleSystem.h"
 #include "BattleEnemy.h"
+#include "BattleMonsterEnemy.h"
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -46,6 +47,8 @@ void BattleState_PlayerTurn::EnterState()
 
 	SelectBoard = BattleLevel::BattleLevelPtr->CreateActor<Battle_Select>(UpdateOrder::Battle_Actors);
 	BindSelectBoard();
+
+	CreateHpUI();
 }
 
 
@@ -96,12 +99,15 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		SelectBoard->Off();
 		BattleCommand->Off();
 
-		PokeDataBase* EnemyMonsterDB = BattleEnemy::EnemyPtr->GetMonsterDB();
+		BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
+		PokeDataBase* EnemyMonsterDB = EnemyMonster->GetDB();
 
 		//데미지 처리는 이 State가 끝날때 하기 위해 콜백 등록
 		ThisPtr->SetCallBack([=]
 		{
 			PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
+			int Damage = PokeBattleSystem::GetDamage();
+			EnemyMonster->DamageOnIU(Damage);
 		});
 
 		//TODO
@@ -122,6 +128,24 @@ void BattleState_PlayerTurn::BattleCmdOpen()
 	BattleCommand->On();
 	SelectBoard->Off();
 }
+
+
+void BattleState_PlayerTurn::CreateHpUI()
+{
+	BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
+	if (nullptr == PlayerMonster->GetHpUI())
+	{
+		PlayerMonster->CreateHpUI();
+	}
+
+	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
+	if (nullptr == EnemyMonster->GetHpUI())
+	{
+		EnemyMonster->CreateHpUI();
+	}
+
+}
+
 
 
 void BattleState_PlayerTurn::ExitState()

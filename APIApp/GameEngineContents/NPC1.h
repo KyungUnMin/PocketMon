@@ -29,13 +29,13 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
-	void IdleStart() override;
-	void IdleUpdate(float _DeltaTime) override;
-	void IdleEnd() override;
+	void IdleStart() override{}
+	void IdleUpdate(float _DeltaTime) override{}
+	void IdleEnd() override{}
 
-	void MoveStart() override;
-	void MoveUpdate(float _DeltaTime) override;
-	void MoveEnd() override;
+	void MoveStart() override{}
+	void MoveUpdate(float _DeltaTime) override{}
+	void MoveEnd() override{}
 
 	/*void InteractionStart();
 	void InteractionUpdate(float _DeltaTime);

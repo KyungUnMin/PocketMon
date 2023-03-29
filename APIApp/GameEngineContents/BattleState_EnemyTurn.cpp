@@ -6,6 +6,7 @@
 #include "BattleEnemyMonsterFSM.h"
 #include "BattlePlayer.h"
 #include "PokeBattleSystem.h"
+#include "BattleMonsterPlayer.h"
 
 BattleState_EnemyTurn::BattleState_EnemyTurn()
 {
@@ -34,6 +35,9 @@ void BattleState_EnemyTurn::ExitState()
 
 	//임시코드
 	PokeDataBase* EnemyDB =  BattleEnemy::EnemyPtr->GetMonsterDB();
-	PokeDataBase* PlayerDB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
+	PokeDataBase* PlayerDB = PlayerMonster->GetDB();
 	PokeBattleSystem::Battle(*EnemyDB, 1, *PlayerDB);
+	int Damage = PokeBattleSystem::GetDamage();
+	PlayerMonster->DamageOnIU(Damage);
 }

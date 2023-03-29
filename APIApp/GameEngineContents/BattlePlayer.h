@@ -35,7 +35,7 @@ public:
 		return Monster;
 	}
 
-	PokeDataBase* GetMonsterDB();
+	PokeDataBase* GetMonsterDB() override;
 
 	inline GameEngineRender* GetTrainerRender() override
 	{

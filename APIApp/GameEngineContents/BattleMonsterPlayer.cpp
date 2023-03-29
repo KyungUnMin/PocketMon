@@ -6,6 +6,7 @@
 #include "BattlePlayerMonsterFSM.h"
 #include "BattleFSM.h"
 #include "BattleLevel.h"
+#include "Battle_PlayerHpUIHandler.h"
 
 
 BattleMonsterPlayer::BattleMonsterPlayer()
@@ -56,6 +57,16 @@ void BattleMonsterPlayer::KillMonster()
 	}
 
 	FsmPtr->ChangeState(BattlePlayerMonster_StateType::Dead);
+}
+
+void BattleMonsterPlayer::CreateHpUI()
+{
+	UiHandler = GetLevel()->CreateActor<Battle_PlayerHpUIHandler>(UpdateOrder::Battle_Actors);
+}
+
+void BattleMonsterPlayer::DamageOnIU(int _Value)
+{
+	UiHandler->OnDamage(_Value);
 }
 
 void BattleMonsterPlayer::Update(float _DeltaTime)

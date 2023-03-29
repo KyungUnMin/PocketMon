@@ -41,5 +41,7 @@ private:
 	void BattleCmdOpen();
 
 	BattlePlayerMonster_StateType ConvertSkill(PokeSkill _SkillType);
+
+	void CreateHpUI();
 };
 

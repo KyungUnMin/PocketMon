@@ -443,8 +443,14 @@
     <ClCompile Include="PokemonScript.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="PokemonHPBar.cpp">
-      <Filter>FieldUI\PokemonUI</Filter>
+    <ClCompile Include="Battle_PlayerHpUIHandler.cpp">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_HpUIHandlerBase.cpp">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\01.Base</Filter>
+    </ClCompile>
+    <ClCompile Include="Battle_EnemyHpUIHandler.cpp">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -875,8 +881,14 @@
     <ClInclude Include="PokemonScript.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="PokemonHPBar.h">
-      <Filter>FieldUI\PokemonUI</Filter>
+    <ClInclude Include="Battle_HpUIHandlerBase.h">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\01.Base</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_EnemyHpUIHandler.h">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP</Filter>
+    </ClInclude>
+    <ClInclude Include="Battle_PlayerHpUIHandler.h">
+      <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1188,6 +1200,21 @@
     </Filter>
     <Filter Include="Battle\03.FSM\08.Common\03.MonsterDead">
       <UniqueIdentifier>{2f094c95-6e82-424a-88e4-289a7dc09cc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler">
+      <UniqueIdentifier>{effac800-d392-4782-85b1-f9a2bd3b2bbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler\01.MonsterHpUI">
+      <UniqueIdentifier>{a818ebbe-08e9-4986-83df-0cde127c869c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler\01.MonsterHpUI\01.Base">
+      <UniqueIdentifier>{7ff08af7-66cb-4bd9-bae0-80945171c8e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP">
+      <UniqueIdentifier>{7015d211-ee32-4b9f-92e6-66e8415d8873}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP">
+      <UniqueIdentifier>{2b9b3130-7701-4063-bc8a-fec61788575b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

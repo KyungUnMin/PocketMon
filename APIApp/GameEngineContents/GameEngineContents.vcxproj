@@ -307,8 +307,20 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Battle_EnemyHpUIHandler.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="Battle_HpUIHandlerBase.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Battle_MonsterAppearEffect.cpp" />
     <ClCompile Include="Battle_PlayerBallParticle.cpp" />
+    <ClCompile Include="Battle_PlayerHpUIHandler.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BlackBox.cpp" />
     <ClCompile Include="BuyLevel.cpp">
       <SubType>
@@ -667,8 +679,20 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Battle_EnemyHpUIHandler.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="Battle_HpUIHandlerBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Battle_MonsterAppearEffect.h" />
     <ClInclude Include="Battle_PlayerBallParticle.h" />
+    <ClInclude Include="Battle_PlayerHpUIHandler.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BlackBox.h" />
     <ClInclude Include="BuyLevel.h">
       <SubType>

@@ -112,3 +112,4 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 
 	return BattlePlayerMonster_StateType::COUNT;
 }
+

@@ -2,6 +2,7 @@
 #include "BattleMonsterBase.h"
 
 class BattleEnemyMonsterFSM;
+class Battle_HpUIHandlerBase;
 
 class BattleMonsterEnemy : public BattleMonsterBase
 {
@@ -34,6 +35,15 @@ public:
 		return EffectRender;
 	}
 
+	Battle_HpUIHandlerBase* GetHpUI() override
+	{
+		return UiHandler;
+	}
+
+	void CreateHpUI() override;
+
+	void DamageOnIU(int _Value) override;
+
 	void Lock();
 
 	void KillMonster();
@@ -47,6 +57,7 @@ private:
 
 	GameEngineRender* MonsterRender = nullptr;
 	GameEngineRender* EffectRender = nullptr;
+	Battle_HpUIHandlerBase* UiHandler = nullptr;
 
 	void RenderCreate();
 };

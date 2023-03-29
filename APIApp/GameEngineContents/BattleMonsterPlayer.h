@@ -29,12 +29,22 @@ public:
 
 	void KillMonster();
 
+	Battle_HpUIHandlerBase* GetHpUI() override
+	{
+		return UiHandler;
+	}
+
+	void CreateHpUI() override;
+
+	void DamageOnIU(int _Value) override;
+
 protected:
 	void Update(float _DeltaTime) override;
 
 private:
 	GameEngineRender* RenderPtr = nullptr;
 	BattlePlayerMonsterFSM* FsmPtr = nullptr;
+	Battle_HpUIHandlerBase* UiHandler = nullptr;
 
 	void RenderCreate();
 };

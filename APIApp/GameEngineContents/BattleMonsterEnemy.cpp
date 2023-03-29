@@ -5,6 +5,7 @@
 #include "BattleEnemyMonsterFSM.h"
 #include "BattleLevel.h"
 #include "BattleFSM.h"
+#include "Battle_EnemyHpUIHandler.h"
 
 const float BattleMonsterEnemy::LockTime = 0.3f;
 
@@ -51,6 +52,7 @@ void BattleMonsterEnemy::RenderCreate()
 
 
 
+
 void BattleMonsterEnemy::Lock()
 {
 	if (false == IsWildMonster)
@@ -82,3 +84,13 @@ void BattleMonsterEnemy::Update(float _DeltaTime)
 
 
 
+void BattleMonsterEnemy::CreateHpUI()
+{
+	UiHandler = GetLevel()->CreateActor<Battle_EnemyHpUIHandler>(UpdateOrder::Battle_Actors);
+}
+
+
+void BattleMonsterEnemy::DamageOnIU(int _Value)
+{
+	UiHandler->OnDamage(_Value);
+}

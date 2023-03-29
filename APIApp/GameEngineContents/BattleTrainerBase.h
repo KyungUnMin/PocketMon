@@ -16,6 +16,7 @@ public:
 	BattleTrainerBase& operator=(const BattleTrainerBase&& _Other) noexcept = delete;
 
 	virtual class GameEngineRender* GetTrainerRender() = 0;
+	virtual class PokeDataBase* GetMonsterDB() = 0;
 
 protected:
 
