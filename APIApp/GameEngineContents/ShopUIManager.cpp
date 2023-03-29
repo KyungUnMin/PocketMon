@@ -72,7 +72,7 @@ void ShopUIManager::UpdateStart()
 
 void ShopUIManager::Update(float _DeltaTime)
 {
-	if (AcFielDialog->IsScriptPrintEnd() && !AcShopMainMenu->IsUpdate())
+	if (AcFielDialog->IsAllScriptPrintEnd() && !AcShopMainMenu->IsUpdate())
 	{
 		AcShopMainMenu->On();
 	}

@@ -501,6 +501,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PokeSkillBase.cpp" />
+    <ClCompile Include="SelectStartingUI.cpp" />
     <ClCompile Include="ShopMainMenu.cpp">
       <SubType>
       </SubType>
@@ -875,6 +876,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokeSkillBase.h" />
+    <ClInclude Include="SelectStartingUI.h" />
     <ClInclude Include="ShopMainMenu.h">
       <SubType>
       </SubType>

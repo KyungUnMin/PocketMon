@@ -38,12 +38,25 @@ void FieldDialog::OnOffSwtich()
 void FieldDialog::ConversationStart(std::list<std::string>* _Script)
 {
 	On();
+	ScriptPtr = _Script;
 	UpdateStart(_Script);
 }
 
-bool FieldDialog::IsScriptPrintEnd()
+bool FieldDialog::IsAllScriptPrintEnd()
 {
 	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && IsLastScript())
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+bool FieldDialog::IsOneScriptPrintEnd()
+{
+	if (FieldDialogTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate())
 	{
 		return true;
 	}

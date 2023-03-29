@@ -44,7 +44,7 @@ protected:
 private:
 	static BuyYesNoMenu* AcBuyYesNoMenu;
 
-	float4 ActorPos = { 764,352 };
+	float4 ActorPos = { 764,352 }; //{284 32} 
 	std::vector<GameEngineRender*> MenuRenders = std::vector<GameEngineRender*>();
 
 	MenuState State = MenuState::Yes;

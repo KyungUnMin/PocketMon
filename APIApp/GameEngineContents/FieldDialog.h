@@ -28,13 +28,19 @@ public:
 	}
 
 	void ConversationStart(std::list<std::string>* _Script);
-	bool IsScriptPrintEnd();
+	bool IsAllScriptPrintEnd();
+	bool IsOneScriptPrintEnd();
 
 	bool IsValid = true;
 
 	std::string_view GetCurScript()
 	{
 		return ScriptIter->data();
+	}
+
+	std::list<std::string>* GetCurScriptPtr() const
+	{
+		return ScriptPtr;
 	}
 
 protected:
@@ -51,7 +57,7 @@ private:
 	GameEngineRender* FieldDialogFrame = nullptr;
 
 	std::vector<std::vector<GameEngineRender*>> FieldDialogTextRender = std::vector<std::vector<GameEngineRender*>>();
-	int OneLineSize = 32;
+	int OneLineSize = 33;
 	int LineCount = 2;
 	float4 TextRenderImageScale = { 24, 48 };
 	float4 FirstTextRenderPos = { -388,-28 };
@@ -63,6 +69,8 @@ private:
 
 	std::list<std::string>::iterator ScriptIter = std::list<std::string>::iterator();
 	std::list<std::string>::iterator ScriptEndIter = std::list<std::string>::iterator();
+
+	std::list<std::string>* ScriptPtr = nullptr;
 
 	float Time = 0;
 	int FirstLineRenderLen = 0;

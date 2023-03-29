@@ -25,6 +25,7 @@
 #include "ShopUIManager.h"
 #include "YesNoMenu.h"
 #include "CityNameUI.h"
+#include "SelectStartingUI.h"
 
 //Game Actor
 #include "NPC1.h"
@@ -400,6 +401,7 @@ void FieldmapLevel::Loading()
 	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
 	MainShopUIManager = CreateActor<ShopUIManager>(); 
 	MainYesNoMenu = CreateActor<YesNoMenu>();
+	MainSelectStartingUI = CreateActor<SelectStartingUI >();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -488,7 +490,8 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		MainShopUIManager->OnOffSwtich();
+		MainSelectStartingUI->TestSelectMonster();
+		//MainShopUIManager->OnOffSwtich();
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 	}
 
@@ -529,6 +532,8 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_CountItem_Up.bmp"))->Cut(4, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Arrow_CountItem_Down.bmp"))->Cut(4, 1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("YesNoMenu.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Yes.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_No.bmp"));
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)

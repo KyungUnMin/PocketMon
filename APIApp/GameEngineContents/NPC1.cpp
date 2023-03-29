@@ -72,7 +72,8 @@ void NPC1::Update(float _DeltaTime)
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };
 	if (true == C_NPC_R->Collision(CheckPlayer, CheckCollisions))
 	{
-		if (true == GameEngineInput::IsDown("NpcTalk"))
+		FieldDialog* a = FieldDialog::GetFieldDialog();
+		if (true == GameEngineInput::IsDown("NpcTalk") && Player::MainPlayer->GetPlayerMoveBool())
 		{
 			ShopUIManager::GetShopUIManager()->On();
 		}

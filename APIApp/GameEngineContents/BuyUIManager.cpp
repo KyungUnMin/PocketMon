@@ -50,7 +50,7 @@ void BuyUIManager::UpdateStart(Item& _Item)
 
 void BuyUIManager::Update(float _DeltaTime)
 {
-	if (AcBuyLevelDialog->IsScriptPrintEnd() && !AcCountItemMenu->IsUpdate())
+	if (AcBuyLevelDialog->IsAllScriptPrintEnd() && !AcCountItemMenu->IsUpdate())
 	{
 		AcCountItemMenu->CountStart(*SelectItem);
 	}
