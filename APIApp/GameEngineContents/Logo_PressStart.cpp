@@ -19,5 +19,32 @@ void Logo_PressStart::Start()
 
 void Logo_PressStart::Update(float _Deltatime)
 {
+	if (true == IsBlinkStart)
+	{
+		Blink(_Deltatime);
+	}
+}
 
+void Logo_PressStart::Blink(float _Deltatime)
+{
+	BlinkTime += _Deltatime;
+
+	if (3.0f <= BlinkTime)
+	{
+		BlinkTime = 0.0f;
+		RenderOff = false;
+	}
+	else if (2.0f <= BlinkTime)
+	{
+		RenderOff = true;
+	}
+
+	if (false == RenderOff)
+	{
+		RenderPtr->On();
+	}
+	else
+	{
+		RenderPtr->Off();
+	}
 }

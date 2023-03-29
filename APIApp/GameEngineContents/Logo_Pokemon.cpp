@@ -2,6 +2,7 @@
 
 #include <GameEngineCore/GameEngineRender.h>
 
+#include "Logo_Pokemon_White.h"
 #include "ContentsEnum.h"
 
 Logo_Pokemon::Logo_Pokemon() 
@@ -21,9 +22,13 @@ void Logo_Pokemon::Start()
 	RenderPtr->SetScale({ 664, 236 }); // { 166, 59 } x 4
 
 	RenderPtr->ChangeAnimation("Stop");
+	RenderPtr->Off();
 }
 
 void Logo_Pokemon::Update(float _Deltatime)
 {
-
+	if (true == Logo_Pokemon_White::PokeWhitePtr->PokeBlink)
+	{
+		RenderPtr->On();
+	}
 }

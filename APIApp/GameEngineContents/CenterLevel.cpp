@@ -378,16 +378,28 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Charizard.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Charizard_White.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Fireredversion.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Fireredversion_White.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Gamefreakinc.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Pokemon.bmp"))->Cut(6, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Pokemon_White.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_PressStart.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Freaklogo.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_largeST.bmp"))->Cut(4, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_smallST.bmp"))->Cut(4, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Star.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Text.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Back.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Freaklogo.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WhiteBox.bmp"));
+	}
+
+//////////////////////////////////////////////////////////// Sound
+	{
+		Dir.MoveParentToDirectory("Image");
+		Dir.Move("Sound");
+		Dir.Move("Opening");
+
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title(recorder).mp3"));             // ¿ÀÇÁ´×(¸®ÄÚ´õ)
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title.mp3"));						  // ¿ÀÇÁ´×
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
@@ -501,10 +513,12 @@ void CenterLevel::Update(float _DeltaTime)
 
 void CenterLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-
+	BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title(recorder).mp3");
+	BGMPlayer.Volume(0.5f);
+	BGMPlayer.LoopCount(10);
 }
 
 void CenterLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-
+	BGMPlayer.Stop();
 }

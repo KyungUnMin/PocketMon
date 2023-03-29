@@ -21,6 +21,7 @@ protected:
 	void Update(float _Deltatime) override;
 
 private:
+	GameEngineRender* RenderPtr = nullptr;
 
 };
 

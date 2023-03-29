@@ -16,6 +16,11 @@ public:
 	Logo_PressStart& operator=(const Logo_PressStart& _Other) = delete;
 	Logo_PressStart& operator=(Logo_PressStart&& _Other) noexcept = delete;
 
+	void BlinkStart()
+	{
+		IsBlinkStart = true;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -23,5 +28,10 @@ protected:
 private:
 	GameEngineRender* RenderPtr = nullptr;
 
+	bool IsBlinkStart = false;
+	bool RenderOff = false;
+	float BlinkTime = 0.0f;
+
+	void Blink(float _Deltatime);
 };
 

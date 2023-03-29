@@ -1,23 +1,35 @@
 #pragma once
 
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 // Ό³Έν :
 class EffectBlackBox;
+
 class Opening_Text;
+class Opening_Back;
+class Opening_Star;
+class Opening_smallST;
+class Opening_largeST;
+class Opening_Freaklogo;
+
 class Logo_Charizard;
 class Logo_Charizard_White;
 class Logo_Back1;
 class Logo_Back2;
 class Logo_Back3;
 class Logo_Pokemon;
+class Logo_Pokemon_White;
 class Logo_Fireredversion;
+class Logo_Fireredversion_White;
 class Logo_PressStart;
 class Logo_Backeffect;
+
 class OpeningLevel : public GameEngineLevel
 {
 public:
 	GameEngineTimeEvent LevelEvent;
+	GameEngineSoundPlayer BGMPlayer;
 
 	// constrcuter destructer
 	OpeningLevel();
@@ -57,6 +69,11 @@ private:
 	EffectBlackBox* EffectBox6 = nullptr;
 
 	Opening_Text* OpeningText = nullptr;
+	Opening_Back* OpeningBack = nullptr;
+	Opening_Star* OPStart = nullptr;
+	Opening_smallST* OPStart_small = nullptr;
+	Opening_largeST* OPStart_large = nullptr;
+	Opening_Freaklogo* OPFreak = nullptr;
 	
 	Logo_Charizard* Zardlogo = nullptr;
 	Logo_Charizard_White* Zardlogo_White = nullptr;
@@ -65,7 +82,9 @@ private:
 	Logo_Back3* BlackBack = nullptr;
 
 	Logo_Pokemon* PokemonTitle = nullptr;
+	Logo_Pokemon_White* PokemonTitle_White = nullptr;
 	Logo_Fireredversion* FireV = nullptr;
+	Logo_Fireredversion_White* FireV_White = nullptr;
 	Logo_PressStart* PressStart = nullptr;
 	Logo_Backeffect* Burnning = nullptr;
 };
