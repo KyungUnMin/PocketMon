@@ -29,7 +29,7 @@ public:
 	//Enemy FSM쪽에서 호출됨
 	void CreateWildMonster(BattleFieldType _FieldType);
 
-	bool CreateMonster();
+	void CreateMonster();
 
 	inline BattleMonsterEnemy* GetMonster()
 	{
@@ -48,7 +48,7 @@ public:
 		MonsterDatas = _Monsters;
 	}
 
-	//bool Next
+	bool IsValidNextMonster();
 
 protected:
 	void Update(float _DeltaTime) override;

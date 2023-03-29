@@ -108,12 +108,15 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	++CurIndex;
 }
 
-bool BattleEnemy::CreateMonster()
+void BattleEnemy::CreateMonster()
 {
 	//const float4 CreateOffset = float4::Up * 100.f;
 
-	if (CurIndex == MonsterDatas.size())
-		return false;
+	if (false == IsValidNextMonster())
+	{
+		MsgAssert("[배틀] : 적이 더이상 꺼낼 포켓몬이 없습니다");
+		return;
+	}
 
 	if (nullptr != Monster)
 	{
@@ -125,14 +128,17 @@ bool BattleEnemy::CreateMonster()
 	Monster->Init(PokeNum, false);
 	Monster->SetPos(GetPos());
 	++CurIndex;
-
-	return true;
 }
 
 
 
 
 
+
+bool BattleEnemy::IsValidNextMonster()
+{
+	return CurIndex < MonsterDatas.size();
+}
 
 void BattleEnemy::Update(float _DeltaTime)
 {

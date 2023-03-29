@@ -45,7 +45,6 @@ BattleLevel::~BattleLevel()
 void BattleLevel::Loading()
 {
 	GameEngineInput::CreateKey(BattleKeyName, BattleKey);
-	GameEngineInput::CreateKey("Test_ThrowMonsterBall", 'H');
 }
 
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
@@ -119,11 +118,6 @@ bool BattleLevel::TestKeyUpdate()
 		return true;
 	}
 
-	if (true == GameEngineInput::IsDown("Test_ThrowMonsterBall"))
-	{
-		UseMonsterBall(ItemCode::MonsterBall);
-		return false;
-	}
 
 	return false;
 }
@@ -212,6 +206,6 @@ void BattleLevel::LockWildPocketMon()
 
 void BattleLevel::ChangeFieldLevel()
 {
-	PocketMonCore::GetInst().ChangeLevel("FieldLevel");
+	PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
 }
 
