@@ -21,6 +21,8 @@ public:
 		IsBlinkStart = true;
 	}
 
+	void BlinkEnd();
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;

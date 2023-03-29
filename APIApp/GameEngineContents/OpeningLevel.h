@@ -5,6 +5,7 @@
 
 // Ό³Έν :
 class EffectBlackBox;
+class LevelChangeBlackBox;
 
 class Opening_Text;
 class Logo_Charizard;
@@ -22,8 +23,9 @@ class Logo_Backeffect;
 class OpeningLevel : public GameEngineLevel
 {
 public:
-	GameEngineTimeEvent LevelEvent;
+	static GameEngineSoundPlayer OpeningPlayer;
 	GameEngineSoundPlayer BGMPlayer;
+	GameEngineTimeEvent LevelEvent;
 
 	// constrcuter destructer
 	OpeningLevel();
@@ -55,6 +57,14 @@ protected:
 private:
 	static OpeningLevel* OpeningLevelPtr;
 	
+	bool IsLevelChange = false;
+	bool StartTimeCheck = false;
+	int SoundCount = 1;
+	float StartTime = 0.0f;
+	float LevelChangeTime = 0.0f;
+
+	LevelChangeBlackBox* ChangeBlackBox = nullptr;
+
 	EffectBlackBox* EffectBox1 = nullptr;
 	EffectBlackBox* EffectBox2 = nullptr;
 	EffectBlackBox* EffectBox3 = nullptr;

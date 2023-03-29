@@ -25,6 +25,12 @@ void Logo_PressStart::Update(float _Deltatime)
 	}
 }
 
+void Logo_PressStart::BlinkEnd()
+{
+	RenderPtr->On();
+	IsBlinkStart = false;
+}
+
 void Logo_PressStart::Blink(float _Deltatime)
 {
 	BlinkTime += _Deltatime;

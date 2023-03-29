@@ -454,6 +454,9 @@
     <ClCompile Include="Logo_Pokemon_White.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="LevelChangeBlackBox.cpp">
+      <Filter>Opening\Actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -892,6 +895,9 @@
       <Filter>Opening\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Pokemon_White.h">
+      <Filter>Opening\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="LevelChangeBlackBox.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>

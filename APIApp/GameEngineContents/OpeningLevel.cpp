@@ -1,8 +1,11 @@
 #include "OpeningLevel.h"
 
-#include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineBase/GameEngineTimeEvent.h>
+#include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
 
+#include "LevelChangeBlackBox.h"
 #include "BlackBox.h"
 #include "EffectBlackBox.h"
 
@@ -20,6 +23,7 @@
 #include "Logo_PressStart.h"
 #include "Logo_Backeffect.h"
 
+GameEngineSoundPlayer OpeningLevel::OpeningPlayer = 0;
 OpeningLevel* OpeningLevel::OpeningLevelPtr = nullptr;
 
 OpeningLevel::OpeningLevel() 
@@ -37,6 +41,8 @@ void OpeningLevel::Loading()
 	float4 Winsize_h = GameEngineWindow::GetScreenSize().half();
 
 	CreateActor<BlackBox>();
+
+	ChangeBlackBox = CreateActor<LevelChangeBlackBox>();
 
 	EffectBox1 = CreateActor<EffectBlackBox>();
 	EffectBox2 = CreateActor<EffectBlackBox>();
@@ -90,21 +96,59 @@ void OpeningLevel::Loading()
 void OpeningLevel::Update(float _DeltaTime)
 {
 	LevelEvent.Update(_DeltaTime);
+
+	if (true == GameEngineInput::IsAnyKey() && true == IsLevelChange)
+	{
+		if (1 == SoundCount)
+		{
+			SoundCount = 0;
+			BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Growl.mp3");
+			BGMPlayer.Volume(0.9f);
+			BGMPlayer.LoopCount(1);
+
+			StartTimeCheck = true;
+		}
+	}
+
+	if (true == StartTimeCheck)
+	{
+		StartTime += _DeltaTime;
+
+		if (1.75f <= StartTime)
+		{
+			ChangeBlackBox->BlackBoxAlphaStart();
+			PressStart->BlinkEnd();
+		}
+	}
+
+	if (true == ChangeBlackBox->GetIsEnd())
+	{
+		LevelChangeTime += _DeltaTime;
+
+		if (1.0f <= LevelChangeTime)
+		{
+			OpeningLevel::OpeningPlayer.Stop();
+			GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
+		}
+	}
 }
 
 void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
-	LevelEvent.AddEvent(2.f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(2.5f, std::bind([](OpeningLevel* _This)
 		{
 			_This->OpeningText->AlphaStart();
 		}, this), false);
 
-	LevelEvent.AddEvent(3.f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(3.3f, std::bind([](OpeningLevel* _This)
 		{
-			_This->BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title.mp3");
-			_This->BGMPlayer.Volume(0.3f);
-			_This->BGMPlayer.LoopCount(10);
+			_This->OpeningPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title.mp3");
+			_This->OpeningPlayer.Volume(0.3f);
+			_This->OpeningPlayer.LoopCount(10);
+		}, this), false);
 
+	LevelEvent.AddEvent(3.5f, std::bind([](OpeningLevel* _This)
+		{
 			_This->EffectBox1->On();
 			_This->EffectBox2->On();
 			_This->EffectBox3->On();
@@ -122,20 +166,20 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 			_This->Zardlogo_White->On();
 		}, this), false);
 
-	LevelEvent.AddEvent(5.0f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(5.5f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo->On();
 			_This->Zardlogo->GrayAnimationStart();
 		}, this), false);
 
-	LevelEvent.AddEvent(7.5f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(7.9f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->BlinkStart();
 			_This->GreenBack->On();
 			_This->GreenBack->LerpStart();
 		}, this), false);
 
-	LevelEvent.AddEvent(8.0f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(8.3f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->BlinkStart();
 			_This->RedBack->On();
@@ -143,7 +187,7 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 			_This->BlackBack->On();
 		}, this), false);
 
-	LevelEvent.AddEvent(8.5f, std::bind([](OpeningLevel* _This)
+	LevelEvent.AddEvent(8.7f, std::bind([](OpeningLevel* _This)
 		{
 			_This->Zardlogo_White->OriginBlinkStart();
 			
@@ -158,9 +202,14 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 			_This->Burnning->On();
 		}, this), false);
+
+	LevelEvent.AddEvent(9.0f, std::bind([=](OpeningLevel* _This)
+		{
+			IsLevelChange = true;
+		}, this), false);
 }
 
 void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
-	BGMPlayer.Stop();
+	
 }

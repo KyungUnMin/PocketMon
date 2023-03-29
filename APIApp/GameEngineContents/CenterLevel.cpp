@@ -395,6 +395,7 @@ void CenterLevel::Loading()
 
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title(recorder).mp3"));             // 오프닝(리코더)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title.mp3"));						  // 오프닝
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Growl.mp3"));						  // 울음소리
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
