@@ -77,7 +77,7 @@ private:
 
 	BattleFSM* BattleFsmPtr = nullptr;
 
-	void InitGroundRenders(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
+	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
 	bool TestKeyUpdate();
 

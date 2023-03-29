@@ -7,6 +7,7 @@ enum class BattleEnemyMonster_StateType
 	Idle,
 	Lock,
 	Dead,
+	CreatedInBall,
 
 	Skill_Tackle,
 

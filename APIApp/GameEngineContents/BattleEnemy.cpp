@@ -68,6 +68,8 @@ void BattleEnemy::CreateGround(BattleFieldType _FieldType)
 
 void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 {
+	static const float4 Offset = float4{ 0.f, -100.f };
+
 	std::string ImagePath = "BattleNPC_";
 
 	switch (_NpcType)
@@ -87,6 +89,7 @@ void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 
 	EnemyRender = CreateRender(ImagePath, BattleRenderOrder::Player0);
 	EnemyRender->SetScaleToImage();
+	EnemyRender->SetPosition(Offset);
 }
 
 
@@ -110,7 +113,7 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 
 void BattleEnemy::CreateMonster()
 {
-	//const float4 CreateOffset = float4::Up * 100.f;
+	const float4 CreateOffset = float4::Up * 50.f;
 
 	if (false == IsValidNextMonster())
 	{
@@ -126,8 +129,10 @@ void BattleEnemy::CreateMonster()
 	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
 	Monster->Init(PokeNum, false);
-	Monster->SetPos(GetPos());
+	Monster->SetPos(GetPos() + CreateOffset);
 	++CurIndex;
+
+	FsmPtr->ChangeState(BattleEnemy_StateType::CreateMonster);
 }
 
 

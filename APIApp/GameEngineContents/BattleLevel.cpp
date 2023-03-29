@@ -62,11 +62,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr == ChangedCenterLevel)
 		return;
 
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
-	//Init_Level(BattleFieldType::Forest);
-	//Init(BattleFieldType::Indoor, BattleNpcType::Rival);
-	//Init(BattleFieldType::Gym);
-
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -81,13 +79,13 @@ void BattleLevel::Init_Level(
 	BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
-	InitGroundRenders(_FieldType, _NpcType, _EnemyMonsters);
+	InitActors(_FieldType, _NpcType, _EnemyMonsters);
 
 	BattleFsmPtr = new BattleFSM(nullptr);
 	BattleFsmPtr->Init(_FieldType, _NpcType);
 }
 
-void BattleLevel::InitGroundRenders(
+void BattleLevel::InitActors(
 	BattleFieldType _FieldType, BattleNpcType _NpcType, 
 	const std::vector<PokeDataBase>& _EnemyMonsters)
 {
@@ -99,6 +97,12 @@ void BattleLevel::InitGroundRenders(
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>(UpdateOrder::Battle_Actors);
 	Enemy->Init(_FieldType, _NpcType, _EnemyMonsters);
 }
+
+
+
+
+
+
 
 
 void BattleLevel::Update(float _DeltaTime)

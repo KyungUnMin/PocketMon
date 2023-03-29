@@ -174,11 +174,19 @@
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleEnemyFSM.cpp" />
     <ClCompile Include="BattleEnemyMonsterFSM.cpp" />
+    <ClCompile Include="BattleEnemyMonster_CreatedInBall.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemyMonster_LockState.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
+    <ClCompile Include="BattleEnemy_CreateMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemy_MoveState.cpp" />
     <ClCompile Include="BattleFadeCtrl.cpp">
       <SubType>
@@ -564,11 +572,19 @@
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattleEnemyFSM.h" />
     <ClInclude Include="BattleEnemyMonsterFSM.h" />
+    <ClInclude Include="BattleEnemyMonster_CreatedInBall.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemyMonster_LockState.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
+    <ClInclude Include="BattleEnemy_CreateMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemy_MoveState.h" />
     <ClInclude Include="BattleFadeCtrl.h">
       <SubType>
