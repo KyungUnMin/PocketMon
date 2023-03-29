@@ -2,10 +2,13 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "FieldDialog.h"
+#include "InputControll.h"
+
+SelectStartingUI* SelectStartingUI::MainSelectStartingUI = nullptr;
 
 SelectStartingUI::SelectStartingUI()
 {
-
+	MainSelectStartingUI = this;
 }
 
 SelectStartingUI::~SelectStartingUI()
@@ -13,15 +16,28 @@ SelectStartingUI::~SelectStartingUI()
 
 }
 
-void SelectStartingUI::SelectMonster(PokeNumber _Pokemon)
+void SelectStartingUI::Off()
 {
-	On();
-	UpdateStart(_Pokemon);
+	GameEngineObject::Off();
+	UpdateEnd();
 }
 
-void SelectStartingUI::TestSelectMonster()
+void SelectStartingUI::SelectMonster(PokeNumber _Pokemon)
 {
-	SelectMonster(PokeNumber::Bulbasaur);
+	if (!IsGetPokemon)
+	{
+		On();
+		UpdateStart(_Pokemon);
+	}
+	else
+	{
+		AcFieldDialog->ConversationStart(&AlreadyGetMonsterScript);
+	}
+}
+
+void SelectStartingUI::TestSelectMonster() // Test
+{
+	SelectMonster(PokeNumber::Squirtle);
 }
 
 void SelectStartingUI::Start()
@@ -30,13 +46,15 @@ void SelectStartingUI::Start()
 	BulbasaurScript.emplace_back("I see! BULBASAUR is your choice.\nIt`s very easy to raise.");
 	BulbasaurScript.emplace_back("So, RED, you want to go with\nthe GRASS POK@MON BULBASAUR?");
 
-	SquirtleScript.emplace_back("Hm! SQUIRTLE is your choice.\nIt's one worth raising.");
-	SquirtleScript.emplace_back("So, RED, you've decided on the\nWATER POK@MON SQUIRTLE?");
+	SquirtleScript.emplace_back("Hm! SQUIRTLE is your choice.\nIt`s one worth raising.");
+	SquirtleScript.emplace_back("So, RED, you`ve decided on the\nWATER POK@MON SQUIRTLE?");
 
 	CharmanderScript.emplace_back("Ah! CHARMANDER is your choice.\nYou should raise it patiently.");
-	CharmanderScript.emplace_back("So, RED, you're claiming the\nFIRE POK@MON CHARMANDER?");
+	CharmanderScript.emplace_back("So, RED, you`re claiming the\nFIRE POK@MON CHARMANDER?");
 	
-	SelectScript.emplace_back("This POK@MON is really\nquite energetic!");
+	SelectScript.emplace_back("This POK@MON is really quite\nenergetic!");
+
+	AlreadyGetMonsterScript.emplace_back("That`s PROF. OAK`s last POK@MON.");
 
 	MenuRenders.reserve(2);
 	MenuRenders.emplace_back(CreateRender("Shop_Yes.bmp", RenderOrder::YesNoMenu));
@@ -50,70 +68,104 @@ void SelectStartingUI::Start()
 		MenuRenders[i]->Off();
 	}
 
+	BulbasaurRender = CreateRender("Select_Bulbasaur.bmp", RenderOrder::YesNoMenu);
+	BulbasaurRender->SetScaleToImage();
+	BulbasaurRender->EffectCameraOff();
+	BulbasaurRender->SetPosition(SetRednerPos);
+
+	CharmanderRender = CreateRender("Select_Charmander.bmp", RenderOrder::YesNoMenu);
+	CharmanderRender->SetScaleToImage();
+	CharmanderRender->EffectCameraOff();
+	CharmanderRender->SetPosition(SetRednerPos);
+
+	SquirtleRender = CreateRender("Select_Squirtle.bmp", RenderOrder::YesNoMenu);
+	SquirtleRender->SetScaleToImage();
+	SquirtleRender->EffectCameraOff();
+	SquirtleRender->SetPosition(SetRednerPos);
+
 	Off();
 }
 
 void SelectStartingUI::Update(float _DeltaTime)
 {
-	if (State == MenuState::Null && AcFieldDialog->IsAllScriptPrintEnd() && (AcFieldDialog->GetCurScriptPtr() == &BulbasaurScript || AcFieldDialog->GetCurScriptPtr() == &SquirtleScript || AcFieldDialog->GetCurScriptPtr() == &CharmanderScript))
+	if (!IsGetPokemon)
 	{
-		State = MenuState::Yes;
-		StateToRender();
-	}
-	else if (State != MenuState::Null)
-	{
-		if (GameEngineInput::IsDown("Menu_Up") || GameEngineInput::IsDown("Menu_Down"))
+		if (State == MenuState::Null && AcFieldDialog->IsAllScriptPrintEnd() && (AcFieldDialog->GetCurScriptPtr() == &BulbasaurScript || AcFieldDialog->GetCurScriptPtr() == &SquirtleScript || AcFieldDialog->GetCurScriptPtr() == &CharmanderScript))
 		{
-			ChangeState();
+			State = MenuState::Yes;
+			StateToRender();
 		}
-
-		if (GameEngineInput::IsDown("A"))
+		else if (State != MenuState::Null)
 		{
-			switch (State)
+			if (GameEngineInput::IsDown("Menu_Up") || GameEngineInput::IsDown("Menu_Down"))
 			{
-			case MenuState::Yes:
-				//GivePoke(Select);
-				AcFieldDialog->ConversationStart(&SelectScript);
-				State = MenuState::Null;
-				StateToRender();
-				Off();
-				break;
-			case MenuState::No:
-				AcFieldDialog->IsValid = true;
-				State = MenuState::Null;
-				StateToRender();
-				Off();
-				AcFieldDialog->Off();
-				break;
-			default:
-				break;
+				ChangeState();
+			}
+
+			if (GameEngineInput::IsDown("A"))
+			{
+				switch (State)
+				{
+				case MenuState::Yes:
+					//GivePoke(Select);
+					AcFieldDialog->ConversationStart(&SelectScript);
+					State = MenuState::Null;
+					StateToRender();
+					Off();
+					IsGetPokemon = true;
+					break;
+				case MenuState::No:
+					AcFieldDialog->IsValid = true;
+					State = MenuState::Null;
+					StateToRender();
+					Off();
+					AcFieldDialog->Off();
+					IsGetPokemon = false;
+					break;
+				default:
+					break;
+				}
 			}
 		}
-	}
-	else
-	{
-		AcFieldDialog->IsValid = true;
 	}
 }
 
 void SelectStartingUI::UpdateStart(PokeNumber _Pokemon)
 {
-	Select = _Pokemon;
-	AcFieldDialog->IsValid = false;
-	switch (Select)
+	if (!IsGetPokemon)
 	{
-	case PokeNumber::Bulbasaur:
-		AcFieldDialog->ConversationStart(&BulbasaurScript);
-		break;
-	case PokeNumber::Charmander:
-		AcFieldDialog->ConversationStart(&CharmanderScript);
-		break;
-	case PokeNumber::Squirtle:
-		AcFieldDialog->ConversationStart(&SquirtleScript);
-		break;
-	default:
-		break;
+		InputControllHandle = InputControll::UseControll();
+		Select = _Pokemon;
+		AcFieldDialog->IsValid = false;
+		switch (Select)
+		{
+		case PokeNumber::Bulbasaur:
+			AcFieldDialog->ConversationStart(&BulbasaurScript);
+			BulbasaurRender->On();
+			CharmanderRender->Off();
+			SquirtleRender->Off();
+			break;
+		case PokeNumber::Charmander:
+			AcFieldDialog->ConversationStart(&CharmanderScript);
+			BulbasaurRender->Off();
+			CharmanderRender->On();
+			SquirtleRender->Off();
+			break;
+		case PokeNumber::Squirtle:
+			AcFieldDialog->ConversationStart(&SquirtleScript);
+			BulbasaurRender->Off();
+			CharmanderRender->Off();
+			SquirtleRender->On();
+			break;
+		default:
+			break;
+		}
 	}
+}
+
+void SelectStartingUI::UpdateEnd()
+{
+	InputControllHandle = InputControll::ResetControll(InputControllHandle);
 }
 
 void SelectStartingUI::StateToRender()

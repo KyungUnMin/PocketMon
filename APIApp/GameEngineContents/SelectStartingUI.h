@@ -24,14 +24,19 @@ public:
 	SelectStartingUI& operator=(const SelectStartingUI& _Other) = delete;
 	SelectStartingUI& operator=(SelectStartingUI&& _Other) noexcept = delete;
 
+	void Off() override;
+
 	void SelectMonster(PokeNumber _Pokemon);
-	void TestSelectMonster();
+	void TestSelectMonster(); // Test
+
+	static SelectStartingUI* MainSelectStartingUI;
 
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 
 private:
+
 	FieldDialog* AcFieldDialog = nullptr;
 	PokeNumber Select = PokeNumber::Bulbasaur;
 
@@ -44,8 +49,21 @@ private:
 	std::list<std::string> CharmanderScript = std::list<std::string>();
 	std::list<std::string> SquirtleScript = std::list<std::string>();
 	std::list<std::string> SelectScript = std::list<std::string>();
+	std::list<std::string> AlreadyGetMonsterScript = std::list<std::string>();
+
+	GameEngineRender* BulbasaurRender = nullptr;
+	GameEngineRender* CharmanderRender = nullptr;
+	GameEngineRender* SquirtleRender = nullptr;
+
+	float4 SetRednerPos = {476,250};
+
+	int InputControllHandle = -1;
+
+	bool IsGetPokemon = false;
+
 
 	void UpdateStart(PokeNumber _Pokemon);
+	void UpdateEnd();
 
 	void StateToRender();
 	void ChangeState();

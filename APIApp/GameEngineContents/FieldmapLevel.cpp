@@ -566,6 +566,9 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("YesNoMenu.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_Yes.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Shop_No.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Bulbasaur.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Charmander.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Squirtle.bmp"));
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
