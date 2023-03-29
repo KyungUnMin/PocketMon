@@ -24,6 +24,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void Clear(std::vector<float> _Tick);
+	void CurHpRender(GameEngineRender* _Render, float _hp);
 
 
 	bool IsBattleStartCheck(bool _Value);

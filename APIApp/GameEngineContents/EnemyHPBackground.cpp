@@ -26,23 +26,13 @@ void EnemyHPBackground::Start()
 	RenderPtr->SetPosition({ 280,160 });
 
 	EnemyHPRenderPtr = CreateRender("EnemyHPBar.bmp", BattleRenderOrder::Battle_Text);
-	float hp = 100.0f;
-	//데미지 / 현재 hp
-	float hpcur = 20.0f / 100.0f;
-	//hp 배율
-	float hpcur11 = 100.0f / 20.0f;
-
-	//데미지
-	float damege = GameEngineMath::Lerp(192.0f, 0.0f, hpcur);
-
+	
 	EnemyHPRenderPtr->SetScale(float4{ 192, 172 });
 	EnemyHPRenderPtr->SetPosition({ 324, 160 });
 
 
 
-	for (int i = 10; i >= 0; i--) {
-		EnemyDamegeTick.push_back(damege + ((192.0f - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
-	}
+
 
 	EnemyPoketMonName_R.resize(PoketMonNameMax);
 	EnemyPoketMonLevel_R.resize(PoketMonLevelMax);
@@ -94,6 +84,12 @@ void EnemyHPBackground::Update(float _DeltaTime)
 					EnemyHPRenderPtr->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
 					EnemyHPRenderPtr->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
 					TickNumber_2++;
+				}
+				if (TickNumber_2 == 10) {
+					BattleStartCheck = false;
+					CurHpRender(EnemyHPRenderPtr, CurMyHP);
+					Clear(EnemyDamegeTick);
+
 				}
 			}
 	}
@@ -174,6 +170,12 @@ void EnemyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, s
 void EnemyHPBackground::Clear(std::vector<float> _Tick)
 {
 	_Tick.erase(_Tick.begin(), _Tick.end());
+}
+
+void EnemyHPBackground::CurHpRender(GameEngineRender* _Render, float _hp)
+{
+	_Render->SetScale(float4{ _hp, 172 });
+	_Render->SetPosition({ 560.0f - (192.0f - _hp) / 2 , 360.0f });
 }
 
 bool EnemyHPBackground::IsBattleStartCheck(bool _Value)
