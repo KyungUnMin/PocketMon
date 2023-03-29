@@ -19,12 +19,11 @@ public:
 	EnemyHPBackground& operator=(const EnemyHPBackground& _Other) = delete;
 	EnemyHPBackground& operator=(EnemyHPBackground&& _Other) noexcept = delete;
 	void Clear(std::vector<float> _Tick);
-	void CurHpRender(GameEngineRender* _Render, float _hp);
 
 
 	bool IsBattleStartCheck(bool _Value);
 	float GetPlayerDamage(float _EnumyMonsterDamage);
-	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp);
+	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp, float _curpos);
 
 protected:
 	void Start() override;
@@ -57,7 +56,7 @@ private:
 
 
 
-	float CurMyHP = 0.0f;
+	float CurMyHP = 192.0f;
 
 	float FrinedMonsterDamage = 0.0f;
 	float MyCurHp = 0.0f;

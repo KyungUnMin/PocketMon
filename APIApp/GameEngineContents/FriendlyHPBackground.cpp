@@ -140,6 +140,14 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			}
 		}
 		
+		
+		if (TickNumber == 10 ) {
+			TickNumber = 0;
+			BattleStartCheck = false;
+
+			CurMyHP = DamegeTick[9];
+
+		}
 		/*NextTickTime_1 += _DeltaTime;
 		if (NextTickTime_1 > 0.1f) {
 			NextTickTime_1 = 0;
@@ -149,13 +157,6 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				TickNumber_1++;
 			}
 		}*/
-		if (TickNumber == 10 ) {
-			TickNumber = 0;
-			BattleStartCheck = false;
-
-			CurMyHP = DamegeTick[9];
-
-		}
 	}
 }
 

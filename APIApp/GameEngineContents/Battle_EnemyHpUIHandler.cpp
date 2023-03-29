@@ -37,6 +37,6 @@ void Battle_EnemyHpUIHandler::Start()
 
 void Battle_EnemyHpUIHandler::OnDamage(int _Value)
 {
-	//UI->GetMonsterDamage(_Value);
-	//UI->IsBattleStartCheck(true);
+	UI->GetPlayerDamage(_Value);
+	UI->IsBattleStartCheck(true);
 }
