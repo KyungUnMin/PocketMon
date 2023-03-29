@@ -7,11 +7,6 @@
 #include "EffectBlackBox.h"
 
 #include "Opening_Text.h"
-#include "Opening_Back.h"
-#include "Opening_Star.h"
-#include "Opening_smallST.h"
-#include "Opening_largeST.h"
-#include "Opening_Freaklogo.h"
 
 #include "Logo_Charizard.h"
 #include "Logo_Charizard_White.h"
@@ -55,16 +50,12 @@ void OpeningLevel::Loading()
 	EffectBox4->SetPos(Winsize_h + float4::Down * Winsize_h.y * 2 + float4::Down * 175);
 	EffectBox5->SetPos(Winsize_h + float4::Down * 50);
 	EffectBox6->SetPos(Winsize_h + float4::Down * Winsize_h.y * 2 + float4::Down * 150);
-	
+
 	OpeningText = CreateActor<Opening_Text>();
-	OpeningBack = CreateActor<Opening_Back>();
-	OPStart = CreateActor<Opening_Star>();
-	OPStart_small = CreateActor<Opening_smallST>();
-	OPStart_large = CreateActor<Opening_largeST>();
-	OPFreak = CreateActor<Opening_Freaklogo>();
 
 	Zardlogo = CreateActor<Logo_Charizard>();
 	Zardlogo_White = CreateActor<Logo_Charizard_White>();
+
 
 	BlackBack = CreateActor<Logo_Back3>();
 	RedBack = CreateActor<Logo_Back1>();
@@ -85,11 +76,6 @@ void OpeningLevel::Loading()
 	EffectBox4->Off();
 	EffectBox5->Off();
 	EffectBox6->Off();
-
-	OPStart->Off();
-	OPStart_small->Off();
-	OPStart_large->Off();
-	OPFreak->Off();
 
 	Zardlogo->Off();
 	Zardlogo_White->Off();
@@ -113,67 +99,65 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 			_This->OpeningText->AlphaStart();
 		}, this), false);
 
+	LevelEvent.AddEvent(3.f, std::bind([](OpeningLevel* _This)
+		{
+			_This->BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title.mp3");
+			_This->BGMPlayer.Volume(0.3f);
+			_This->BGMPlayer.LoopCount(10);
 
+			_This->EffectBox1->On();
+			_This->EffectBox2->On();
+			_This->EffectBox3->On();
+			_This->EffectBox4->On();
+			_This->EffectBox5->On();
+			_This->EffectBox6->On();
 
-	//LevelEvent.AddEvent(3.f, std::bind([](OpeningLevel* _This)
-	//	{
-	//		_This->BGMPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title.mp3");
-	//		_This->BGMPlayer.Volume(0.3f);
-	//		_This->BGMPlayer.LoopCount(10);
+			_This->EffectBox1->MoveStart();
+			_This->EffectBox2->MoveStart_Down();
+			_This->EffectBox3->MoveStart_Alpha();
+			_This->EffectBox4->MoveStart_Down_Alpha();
+			_This->EffectBox5->MoveStart_Alpha2();
+			_This->EffectBox6->MoveStart_Down_Alpha2();
 
-	//		_This->EffectBox1->On();
-	//		_This->EffectBox2->On();
-	//		_This->EffectBox3->On();
-	//		_This->EffectBox4->On();
-	//		_This->EffectBox5->On();
-	//		_This->EffectBox6->On();
+			_This->Zardlogo_White->On();
+		}, this), false);
 
-	//		_This->EffectBox1->MoveStart();
-	//		_This->EffectBox2->MoveStart_Down();
-	//		_This->EffectBox3->MoveStart_Alpha();
-	//		_This->EffectBox4->MoveStart_Down_Alpha();
-	//		_This->EffectBox5->MoveStart_Alpha2();
-	//		_This->EffectBox6->MoveStart_Down_Alpha2();
+	LevelEvent.AddEvent(5.0f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo->On();
+			_This->Zardlogo->GrayAnimationStart();
+		}, this), false);
 
-	//		_This->Zardlogo_White->On();
-	//	}, this), false);
+	LevelEvent.AddEvent(7.5f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->BlinkStart();
+			_This->GreenBack->On();
+			_This->GreenBack->LerpStart();
+		}, this), false);
 
-	//LevelEvent.AddEvent(5.0f, std::bind([](OpeningLevel* _This)
-	//	{
-	//		_This->Zardlogo->On();
-	//		_This->Zardlogo->GrayAnimationStart();
-	//	}, this), false);
+	LevelEvent.AddEvent(8.0f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->BlinkStart();
+			_This->RedBack->On();
+			_This->RedBack->LerpStart();
+			_This->BlackBack->On();
+		}, this), false);
 
-	//LevelEvent.AddEvent(7.5f, std::bind([](OpeningLevel* _This)
-	//	{
-	//		_This->Zardlogo_White->BlinkStart();
-	//		_This->GreenBack->On();
-	//		_This->GreenBack->LerpStart();
-	//	}, this), false);
+	LevelEvent.AddEvent(8.5f, std::bind([](OpeningLevel* _This)
+		{
+			_This->Zardlogo_White->OriginBlinkStart();
+			
+			_This->PokemonTitle_White->On();
+			_This->PokemonTitle_White->BlinkStart();
+			
+			_This->FireV_White->On();
+			_This->FireV_White->BlinkStart();
 
-	//LevelEvent.AddEvent(8.0f, std::bind([](OpeningLevel* _This)
-	//	{
-	//		_This->Zardlogo_White->BlinkStart();
-	//		_This->RedBack->On();
-	//		_This->RedBack->LerpStart();
-	//		_This->BlackBack->On();
-	//	}, this), false);
+			_This->PressStart->On();
+			_This->PressStart->BlinkStart();
 
-	//LevelEvent.AddEvent(8.5f, std::bind([](OpeningLevel* _This)
-	//	{
-	//		_This->Zardlogo_White->OriginBlinkStart();
-	//		
-	//		_This->PokemonTitle_White->On();
-	//		_This->PokemonTitle_White->BlinkStart();
-	//		
-	//		_This->FireV_White->On();
-	//		_This->FireV_White->BlinkStart();
-
-	//		_This->PressStart->On();
-	//		_This->PressStart->BlinkStart();
-
-	//		_This->Burnning->On();
-	//	}, this), false);
+			_This->Burnning->On();
+		}, this), false);
 }
 
 void OpeningLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)

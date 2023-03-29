@@ -363,18 +363,6 @@
     <ClCompile Include="Logo_Fireredversion.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
-    <ClCompile Include="Opening_Freaklogo.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Opening_largeST.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Opening_smallST.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Opening_Star.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="Opening_Text.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
@@ -464,9 +452,6 @@
       <Filter>Opening\Actor</Filter>
     </ClCompile>
     <ClCompile Include="Logo_Pokemon_White.cpp">
-      <Filter>Opening\Actor</Filter>
-    </ClCompile>
-    <ClCompile Include="Opening_Back.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
   </ItemGroup>
@@ -821,18 +806,6 @@
     <ClInclude Include="Logo_Fireredversion.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
-    <ClInclude Include="Opening_Freaklogo.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Opening_largeST.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Opening_smallST.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Opening_Star.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="Opening_Text.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
@@ -919,9 +892,6 @@
       <Filter>Opening\Actor</Filter>
     </ClInclude>
     <ClInclude Include="Logo_Pokemon_White.h">
-      <Filter>Opening\Actor</Filter>
-    </ClInclude>
-    <ClInclude Include="Opening_Back.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
   </ItemGroup>

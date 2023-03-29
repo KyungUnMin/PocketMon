@@ -7,12 +7,6 @@
 class EffectBlackBox;
 
 class Opening_Text;
-class Opening_Back;
-class Opening_Star;
-class Opening_smallST;
-class Opening_largeST;
-class Opening_Freaklogo;
-
 class Logo_Charizard;
 class Logo_Charizard_White;
 class Logo_Back1;
@@ -69,11 +63,6 @@ private:
 	EffectBlackBox* EffectBox6 = nullptr;
 
 	Opening_Text* OpeningText = nullptr;
-	Opening_Back* OpeningBack = nullptr;
-	Opening_Star* OPStart = nullptr;
-	Opening_smallST* OPStart_small = nullptr;
-	Opening_largeST* OPStart_large = nullptr;
-	Opening_Freaklogo* OPFreak = nullptr;
 	
 	Logo_Charizard* Zardlogo = nullptr;
 	Logo_Charizard_White* Zardlogo_White = nullptr;

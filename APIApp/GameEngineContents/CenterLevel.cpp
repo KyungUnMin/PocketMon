@@ -383,12 +383,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Pokemon.bmp"))->Cut(6, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_Pokemon_White.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Logo_PressStart.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_largeST.bmp"))->Cut(4, 1);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_smallST.bmp"))->Cut(4, 1);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Star.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Text.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Back.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Opening_Freaklogo.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BlackBox.bmp"));
 	}
 

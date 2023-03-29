@@ -455,11 +455,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Opening_Back.cpp" />
-    <ClCompile Include="Opening_Freaklogo.cpp" />
-    <ClCompile Include="Opening_largeST.cpp" />
-    <ClCompile Include="Opening_smallST.cpp" />
-    <ClCompile Include="Opening_Star.cpp" />
     <ClCompile Include="Opening_Text.cpp" />
     <ClCompile Include="PlayerBag.cpp">
       <SubType>
@@ -848,11 +843,6 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="Opening_Back.h" />
-    <ClInclude Include="Opening_Freaklogo.h" />
-    <ClInclude Include="Opening_largeST.h" />
-    <ClInclude Include="Opening_smallST.h" />
-    <ClInclude Include="Opening_Star.h" />
     <ClInclude Include="Opening_Text.h" />
     <ClInclude Include="PlayerBag.h">
       <SubType>
