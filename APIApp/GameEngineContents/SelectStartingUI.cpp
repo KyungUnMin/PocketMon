@@ -27,7 +27,7 @@ void SelectStartingUI::TestSelectMonster()
 void SelectStartingUI::Start()
 {
 	AcFieldDialog = FieldDialog::GetFieldDialog();
-	BulbasaurScript.emplace_back("I see! BULBASAUR is your choice.\nIts very easy to raise.");
+	BulbasaurScript.emplace_back("I see! BULBASAUR is your choice.\nIt`s very easy to raise.");
 	BulbasaurScript.emplace_back("So, RED, you want to go with\nthe GRASS POK@MON BULBASAUR?");
 
 	SquirtleScript.emplace_back("Hm! SQUIRTLE is your choice.\nIt's one worth raising.");

@@ -457,6 +457,10 @@
     <ClCompile Include="BattleState_ItemUse.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClCompile>
+    <ClCompile Include="StaticNPC.cpp" />
+    <ClCompile Include="SelectStartingUI.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -899,6 +903,10 @@
     <ClInclude Include="PokemonHPBar.h" />
     <ClInclude Include="BattleState_ItemUse.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticNPC.h" />
+    <ClInclude Include="SelectStartingUI.h">
+      <Filter>FieldUI\HSM</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

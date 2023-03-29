@@ -38,7 +38,7 @@ private:
 	MenuState State = MenuState::Null;
 
 	std::vector<GameEngineRender*> MenuRenders = std::vector<GameEngineRender*>();
-	float4 MenuRenderPos = { 284, 32 };
+	float4 MenuRenderPos = { 764,352 };
 
 	std::list<std::string> BulbasaurScript = std::list<std::string>();
 	std::list<std::string> CharmanderScript = std::list<std::string>();
@@ -46,7 +46,6 @@ private:
 	std::list<std::string> SelectScript = std::list<std::string>();
 
 	void UpdateStart(PokeNumber _Pokemon);
-	void UpdateEnd();
 
 	void StateToRender();
 	void ChangeState();
