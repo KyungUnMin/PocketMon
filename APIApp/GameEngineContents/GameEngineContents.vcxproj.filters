@@ -443,6 +443,9 @@
     <ClCompile Include="PokemonScript.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="PokemonHPBar.cpp">
+      <Filter>FieldUI\PokemonUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -871,6 +874,9 @@
     </ClInclude>
     <ClInclude Include="PokemonScript.h">
       <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonHPBar.h">
+      <Filter>FieldUI\PokemonUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

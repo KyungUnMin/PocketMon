@@ -6,6 +6,7 @@
 #include "PlayerBag.h"
 #include "TextActor.h"
 #include "LevelChangeFade.h"
+#include "PokemonHPBar.h"
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 PokemonUI::PokemonUI() 
@@ -148,6 +149,13 @@ void PokemonUI::Start()
 
 	}
 	PokeDataSetting();
+
+	HPBar = CurrentLevel->CreateActor<PokemonHPBar>();
+	HPBar->SetValue(0);
+	HPBar->SetTargetValue(1);
+	//HPBar->SetPos({ 124, 256 });  0¹ø
+	//HPBar->SetPos({ 736, 82 });
+	//HPBar->SetPos({ 736, 82.0f + 96 * 1});
 }
 
 void PokemonUI::Update(float _DeltaTime)
@@ -155,7 +163,7 @@ void PokemonUI::Update(float _DeltaTime)
 	if (IsStop == true) { return; }
 	if (GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
+		Pokemons[CurrentCursor].Stern();
 		PokeDataSetting();
 	}
 	AnimUpdate(_DeltaTime);
@@ -363,14 +371,14 @@ void PokemonUI::CursorMove()
 	{
 		for (int i = 0; i < CursorRender.size(); i++)
 		{
-			if (i < Pokemons.size() && 0 >= Pokemons[i].GetMonsterCurrentHP())
+			if (i < Pokemons.size() && true ==  Pokemons[i].IsMonsterStern())
 			{
 				CursorRender[i]->SetFrame(4);
 				continue;
 			}
 			CursorRender[i]->SetFrame(0);
 		}
-		if (CurrentCursor < Pokemons.size() && 0 >= Pokemons[CurrentCursor].GetMonsterCurrentHP())
+		if (CurrentCursor < Pokemons.size() &&true ==  Pokemons[CurrentCursor].IsMonsterStern())
 		{
 			CursorRender[CurrentCursor]->SetFrame(5);
 			return;
@@ -381,14 +389,14 @@ void PokemonUI::CursorMove()
 
 	for (int i = 0; i < CursorRender.size(); i++)
 	{
-		if (i < Pokemons.size() && 0 >= Pokemons[i].GetMonsterCurrentHP())
+		if (i < Pokemons.size() && true == Pokemons[i].IsMonsterStern())
 		{
 			CursorRender[i]->SetFrame(4);
 			continue;
 		}
 		CursorRender[i]->SetFrame(0);
 	}
-	if (SwitchCursor < Pokemons.size() && 0 >= Pokemons[SwitchCursor].GetMonsterCurrentHP())
+	if (SwitchCursor < Pokemons.size() && true == Pokemons[SwitchCursor].IsMonsterStern())
 	{
 		CursorRender[SwitchCursor]->SetFrame(5);
 	}
@@ -401,7 +409,7 @@ void PokemonUI::CursorMove()
 		CursorRender[CurrentCursor]->SetFrame(1);
 		return;
 	}
-	if (CurrentCursor < Pokemons.size() && 0 >= Pokemons[CurrentCursor].GetMonsterCurrentHP())
+	if (CurrentCursor < Pokemons.size() && true ==  Pokemons[CurrentCursor].IsMonsterStern())
 	{
 		CursorRender[CurrentCursor]->SetFrame(5);
 	}
@@ -443,7 +451,7 @@ void PokemonUI::SelectOn()
 	}
 	case PokemonUIState::Shift:
 	{
-		if (CurrentCursor == 0)
+		if (CurrentCursor == 0 || true == Pokemons[CurrentCursor].IsMonsterStern())
 		{
 			SelectSize = 1;
 			SelectText->SetText("SUMMARY\nCANCEL");
@@ -461,7 +469,10 @@ void PokemonUI::SelectOn()
 		break;
 	}
 	case PokemonUIState::Potion:
-		PotionUse();
+		if (false == Pokemons[CurrentCursor].IsMonsterStern())
+		{
+			PotionUse();
+		}
 		return;
 	case PokemonUIState::Give:
 		GiveItem();

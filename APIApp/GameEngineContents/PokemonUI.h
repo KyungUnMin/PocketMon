@@ -16,6 +16,7 @@ enum class PokemonUIState
 class GameEngineRender;
 class PokeDataBase;
 class TextActor;
+class PokemonHPBar;
 class PokemonUI : public GameEngineActor
 {
 	friend class SummaryUI;
@@ -64,6 +65,8 @@ private:
 	std::vector<TextActor*> PokemonMaxHPText = std::vector<TextActor*>(6);
 	std::vector<TextActor*> PokemonLevelText = std::vector<TextActor*>(6);
 	std::vector<std::function<void()>> SelectFunctions = std::vector<std::function<void()>>(5);
+	PokemonHPBar* HPBar = nullptr;
+
 
 	PokemonUIState StateValue = PokemonUIState::Normal;
 	int CurrentCursor = 0;

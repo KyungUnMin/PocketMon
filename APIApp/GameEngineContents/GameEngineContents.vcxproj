@@ -475,6 +475,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PokeDataBase.cpp" />
+    <ClCompile Include="PokemonHPBar.cpp" />
     <ClCompile Include="PokemonLevel.cpp">
       <SubType>
       </SubType>
@@ -836,6 +837,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokeDataBase.h" />
+    <ClInclude Include="PokemonHPBar.h" />
     <ClInclude Include="PokemonLevel.h">
       <SubType>
       </SubType>
