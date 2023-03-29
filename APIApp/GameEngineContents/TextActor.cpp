@@ -191,6 +191,13 @@ void TextActor::Clear()
 			TextRender[y][x]->SetFrame(SpaceFrameNum);
 			TextRender[y][x]->Off();
 		}
+
+	}
+
+	
+	for (int i = 0; i < LineRenderIndex.size(); i++)
+	{
+		LineRenderIndex[i] = 0;
 	}
 }
 

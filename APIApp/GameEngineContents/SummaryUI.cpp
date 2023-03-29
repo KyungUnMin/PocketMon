@@ -319,6 +319,7 @@ void SummaryUI::Select()
 	switch (CurrentPage)
 	{
 	case SummaryPage::Info:
+		PokemonUI::MainPokemon->SetCursor(CurrentPokemon);
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::Skills:
@@ -341,6 +342,7 @@ void SummaryUI::Cancel()
 	case SummaryPage::Info:
 	case SummaryPage::Skills:
 	case SummaryPage::Moves:
+		PokemonUI::MainPokemon->SetCursor(CurrentPokemon);
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("PokemonLevel");
 		break;
 	case SummaryPage::MovesSwitch:

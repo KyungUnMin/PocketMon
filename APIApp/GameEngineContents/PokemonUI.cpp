@@ -137,12 +137,12 @@ void PokemonUI::Start()
 		BarText->SetPos({ 52, 580 });
 		BarText->SetLine(1);
 
-		SelectRender = CreateRender("SelectMenu.bmp", 4);
+		SelectRender = CreateRender("SelectMenu.bmp", 20);
 		SelectRender->SetScale({ 280, 376 });
 		SelectRender->SetPosition({ 814, 444 });
 		SelectRender->Off();
 
-		SelectCursorRender = CreateRender("Bag_CurrentArrow.bmp", 5);
+		SelectCursorRender = CreateRender("Bag_CurrentArrow.bmp", 22);
 		SelectCursorRender->SetScale({ 24, 40 });
 		SelectCursorRender->SetFrame(0);
 		SelectCursorRender->SetPosition({ 712, 580 });
@@ -158,6 +158,14 @@ void PokemonUI::Start()
 	PokeDataSetting();
 
 	
+}
+
+void PokemonUI::SetCursor(int _Cursor)
+{
+	SelectOff();
+	CurrentCursor = _Cursor;
+	CursorMove();
+	SelectOn();
 }
 
 void PokemonUI::Update(float _DeltaTime)
@@ -436,7 +444,7 @@ void PokemonUI::SelectOn()
 		if (ItemCode::Cancel != Pokemons[CurrentCursor].GetPossession())
 		{
 			SelectSize = 3;
-			SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL");
+			SelectText->SetText("SUMMARY\nSWITCH\nITEM\nCANCEL", "Font_Dialog.bmp", 22, false);
 			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
 			SelectFunctions[1] = std::bind(&PokemonUI::Item, this);
 			SelectFunctions[2] = std::bind(&PokemonUI::Switch, this);
@@ -445,7 +453,7 @@ void PokemonUI::SelectOn()
 		else
 		{
 			SelectSize = 2;
-			SelectText->SetText("SUMMARY\nSWITCH\nCANCEL");
+			SelectText->SetText("SUMMARY\nSWITCH\nCANCEL", "Font_Dialog.bmp", 22, false);
 			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
 			SelectFunctions[1] = std::bind(&PokemonUI::Switch, this);
 			SelectFunctions[2] = std::bind(&PokemonUI::Summary, this);
@@ -457,14 +465,14 @@ void PokemonUI::SelectOn()
 		if (CurrentCursor == 0 || true == Pokemons[CurrentCursor].IsMonsterStern())
 		{
 			SelectSize = 1;
-			SelectText->SetText("SUMMARY\nCANCEL");
+			SelectText->SetText("SUMMARY\nCANCEL", "Font_Dialog.bmp", 22, false);
 			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
 			SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
 		}
 		else
 		{
 			SelectSize = 2;
-			SelectText->SetText("SHIFT\nSUMMARY\nCANCEL");
+			SelectText->SetText("SHIFT\nSUMMARY\nCANCEL", "Font_Dialog.bmp", 22, false);
 			SelectFunctions[0] = std::bind(&PokemonUI::SelectOff, this);
 			SelectFunctions[1] = std::bind(&PokemonUI::Summary, this);
 			SelectFunctions[2] = std::bind(&PokemonUI::Shift, this);
@@ -579,10 +587,18 @@ void PokemonUI::SwitchSelect()
 
 void PokemonUI::Item()
 {
+	BarText->SetText(std::string("Take the ") + Item::GetItem(Pokemons[CurrentCursor].GetPossession()).GetItemName().data() + ".", true);
 	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor].GetPossession());
 	Pokemons[CurrentCursor].SetPossession(ItemCode::Cancel);
 	PokeDataSetting();
 	SelectOff();
+	IsStop = true;
+	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> Resume = [&](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+	{
+		IsStop = false;
+		SetBarText();
+	};
+	TimeEvent.AddEvent(1.0f, Resume, false);
 }
 
 void PokemonUI::Shift()
@@ -658,9 +674,15 @@ void PokemonUI::GiveItem()
 	Pokemons[CurrentCursor].SetPossession(CurrentItemCode);
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
-	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+	BarText->SetText(std::string("Give the ") + Item::GetItem(CurrentItemCode).GetItemName().data() + ".", true);
 	IsStop = true;
 	PokeDataSetting();
+
+	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+	{
+		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+	};
+	TimeEvent.AddEvent(1.5f, LevelChange, false);
 }
 
 void PokemonUI::AnimUpdate(float _DeltaTime)

@@ -31,6 +31,7 @@ public:
 	void SetState_ItemUse(ItemCode _ItemCode);
 	void SetState_ItemGive(ItemCode _ItemCode);
 	void SetState_Shift();
+	void SetCursor(int _Cursor);
 
 	// delete Function
 	PokemonUI(const PokemonUI& _Other) = delete;
