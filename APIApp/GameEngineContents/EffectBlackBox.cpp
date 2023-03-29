@@ -26,7 +26,7 @@ void EffectBlackBox::Start()
 	DownStartPos = float4::Zero;
 	DownEndPos = DownStartPos + (float4::Up * Winsize_h.y);
 
-	RenderPtr = CreateRender("BlackBox.bmp", 3);
+	RenderPtr = CreateRender("BlackBox.bmp", 4);
 	SetPos(Winsize_h);
 	RenderPtr->SetScale(GameEngineWindow::GetScreenSize());
 }

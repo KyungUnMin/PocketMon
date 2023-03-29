@@ -7,6 +7,13 @@ class EffectBlackBox;
 class Opening_Text;
 class Logo_Charizard;
 class Logo_Charizard_White;
+class Logo_Back1;
+class Logo_Back2;
+class Logo_Back3;
+class Logo_Pokemon;
+class Logo_Fireredversion;
+class Logo_PressStart;
+class Logo_Backeffect;
 class OpeningLevel : public GameEngineLevel
 {
 public:
@@ -50,7 +57,16 @@ private:
 	EffectBlackBox* EffectBox6 = nullptr;
 
 	Opening_Text* OpeningText = nullptr;
+	
 	Logo_Charizard* Zardlogo = nullptr;
 	Logo_Charizard_White* Zardlogo_White = nullptr;
+	Logo_Back1* RedBack = nullptr;
+	Logo_Back2* GreenBack = nullptr;
+	Logo_Back3* BlackBack = nullptr;
+
+	Logo_Pokemon* PokemonTitle = nullptr;
+	Logo_Fireredversion* FireV = nullptr;
+	Logo_PressStart* PressStart = nullptr;
+	Logo_Backeffect* Burnning = nullptr;
 };
 

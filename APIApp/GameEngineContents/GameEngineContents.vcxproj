@@ -424,7 +424,10 @@
     <ClCompile Include="LevelUpStatUI_2.cpp" />
     <ClCompile Include="Logo_Back1.cpp" />
     <ClCompile Include="Logo_Back2.cpp" />
-    <ClCompile Include="Logo_Back3.cpp" />
+    <ClCompile Include="Logo_Back3.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="Logo_Backeffect.cpp" />
     <ClCompile Include="Logo_Charizard.cpp" />
     <ClCompile Include="Logo_Charizard_White.cpp">
@@ -432,7 +435,6 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="Logo_Fireredversion.cpp" />
-    <ClCompile Include="Logo_Gamefreakinc.cpp" />
     <ClCompile Include="Logo_Pokemon.cpp" />
     <ClCompile Include="Logo_PressStart.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
@@ -808,7 +810,10 @@
     <ClInclude Include="LevelUpStatUI_2.h" />
     <ClInclude Include="Logo_Back1.h" />
     <ClInclude Include="Logo_Back2.h" />
-    <ClInclude Include="Logo_Back3.h" />
+    <ClInclude Include="Logo_Back3.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Logo_Backeffect.h" />
     <ClInclude Include="Logo_Charizard.h" />
     <ClInclude Include="Logo_Charizard_White.h">
@@ -816,7 +821,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="Logo_Fireredversion.h" />
-    <ClInclude Include="Logo_Gamefreakinc.h" />
     <ClInclude Include="Logo_Pokemon.h" />
     <ClInclude Include="Logo_PressStart.h" />
     <ClInclude Include="MoveMapFadeEffect.h">
