@@ -141,6 +141,12 @@ public:
 		return std::to_string(CurrentSkillPowerPoint);
 	}
 
+	// PP max 회복
+	inline void SkillPP_MAXRecovery()
+	{
+		CurrentSkillPowerPoint = MaxSkillPowerPoint;
+	}
+
 	// 스킬 적중률 가져오기
 	inline float GetSkillHitrate()
 	{
