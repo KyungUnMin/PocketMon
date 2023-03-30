@@ -16,7 +16,7 @@ void BaseNPC::IdleStart()
 
 void BaseNPC::IdleUpdate(float _DeltaTime)
 {
-	if (true == CheckInteractionTrigger())
+	if (false == IsBattleEnd && true == CheckInteractionTrigger())
 	{
 		Look(GetDir(Fieldmap::GetIndex(GetPos()), Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
 		ChangeState(NPCState::interaction);
@@ -82,24 +82,75 @@ void BaseNPC::InteractionStart()
 {
 	PlayAnimation();
 
-	if (ScriptDatas.size() != 0)
+	InputHandle = InputControll::UseControll();
+	InputControll::UsedKey();
+
+	if (TriggerType == InteractionTriggerType::Look)
+	{
+		Player* MainPlayerPtr = Player::MainPlayer;
+
+		MoveStartPos = GetPos();
+		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
+
+		MoveEndIndex = Fieldmap::GetIndex(MainPlayerPtr->GetPos());
+		MoveEndPos = Fieldmap::GetPos(MoveEndIndex);
+
+		float4 MoveDir = (MoveStartPos - MoveEndPos);
+
+		MoveEndPos += MoveDir.NormalizeReturn() * Fieldmap::TileSize;
+
+		AnimationName = "Move";
+		PlayAnimation();
+
+		MoveDistance = MoveDir.Size() / Fieldmap::TileSize;
+		MoveProgress = 0.0f;
+
+		Fieldmap::SetWalkable(CityName, MoveStartIndex, true);
+		Fieldmap::SetWalkable(CityName, Fieldmap::GetIndex(MoveEndPos), false);
+
+	}
+	else if (ScriptDatas.size() != 0)
 	{
 		FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas);
-		InputHandle = InputControll::UseControll();
-		InputControll::UsedKey();
 	}
 }
 
 void BaseNPC::InteractionUpdate(float _DeltaTime)
 {
-	if (ScriptDatas.size() == 0)
+	if (TriggerType == InteractionTriggerType::Look)
 	{
-		ChangeState(NPCState::Idle);
-	}
+		if (false == FieldDialog::GetFieldDialog()->IsUpdate())
+		{
+			if (true == IsBattleEnd)
+			{
+				ChangeState(NPCState::Idle);
+				return;
+			}
 
-	if (false == FieldDialog::GetFieldDialog()->IsUpdate())
+			MoveProgress += _DeltaTime * MoveSpeed / MoveDistance;
+			SetPos(float4::LerpClamp(MoveStartPos, MoveEndPos, MoveProgress));
+
+			if (1.0f <= MoveProgress)
+			{
+				AnimationName = "Idle";
+				PlayAnimation();
+
+				IsBattleEnd = true;
+				FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas);
+			}
+		}
+	}
+	else
 	{
-		ChangeState(NPCState::Idle);
+		if (ScriptDatas.size() == 0)
+		{
+			ChangeState(NPCState::Idle);
+		}
+
+		if (false == FieldDialog::GetFieldDialog()->IsUpdate())
+		{
+			ChangeState(NPCState::Idle);
+		}
 	}
 }
 
@@ -131,6 +182,8 @@ void BaseNPC::InteractionEnd()
 
 	if (PokemonDatas.GetPokemonCount() != 0)
 	{
+		IsBattleEnd = true;
+
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
 		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
 

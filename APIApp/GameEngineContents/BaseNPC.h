@@ -73,6 +73,11 @@ public:
 		InteractionDir = _CheckDir;
 	}
 
+	inline void SetLookDis(int _Dis)
+	{
+		LookDistance = _Dis;
+	}
+
 	void AddPokeData(int _Index, int _Level);
 	void AddPokeData(PokeDataBase _Data);
 
@@ -136,15 +141,17 @@ private:
 	int2 MoveEndIndex = int2::Zero;
 	float4 MoveEndPos = float4::Zero;
 	float MoveProgress = 0.0f;
-	float MoveSpeed = 1.0f;
+	float MoveSpeed = 5.0f;
+	float MoveDistance = 1.0f;
 
 	// 상호작용 변수
+	bool IsBattleEnd = false;
 	int InputHandle = -1;
 	InteractionTriggerType TriggerType = InteractionTriggerType::None;
 
 	LookDir InteractionDir;
 	int2 InteractionIndex = int2::Zero;
-	int LookDistance = 1;
+	int LookDistance = 6;
 
 	
 	std::vector<std::function<void()>> InteractionFuncs;

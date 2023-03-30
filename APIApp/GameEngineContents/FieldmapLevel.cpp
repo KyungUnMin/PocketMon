@@ -427,7 +427,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PewterCity_Gym");
+	Fieldmap::ChangeCity("ViridianForest");
 	///////
 	///////
 	///////
@@ -445,6 +445,7 @@ void FieldmapLevel::Loading()
 	ShopNpcs = CreateActor<ShopNpc>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpcs);
 
+	// 태초 마을
 	{
 		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
 		MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
@@ -516,17 +517,57 @@ void FieldmapLevel::Loading()
 		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
+	
+	// 상록 숲
 
+	// Battle1
 	{
-		StaticNPC* UngPtr = CreateActor<StaticNPC>();
-		UngPtr->InitNPC("Ung", "Ung.bmp", BattleNpcType::Woong);
-		UngPtr->AddNPC("PewterCity_Gym", int2(6, 5));
-		UngPtr->AddScript("Script 040");
-		UngPtr->AddScript("Script 041");
-		UngPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 9));
-		UngPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
-		UngPtr->SetBaseDir(LookDir::Down);
-		UngPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+		BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::Woong);
+		BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
+		BaatleNpcPtr->AddScript("Script 050");
+		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+		BaatleNpcPtr->SetLookDis(10);
+	}
+
+	// Battle2
+	{
+		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC4.bmp", BattleNpcType::Woong);
+		BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
+		BaatleNpcPtr->AddScript("Script 051");
+		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+		BaatleNpcPtr->SetLookDis(10);
+	}
+
+	// Battle3
+	{
+		StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
+		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::Woong);
+		BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
+		BaatleNpcPtr->AddScript("Script 040");
+		BaatleNpcPtr->AddScript("Script 041");
+		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+		BaatleNpcPtr->SetBaseDir(LookDir::Left);
+		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+		BaatleNpcPtr->SetLookDis(10);
+	}
+
+	// 회색시티
+	{
+		StaticNPC* WoongPtr = CreateActor<StaticNPC>();
+		WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
+		WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
+		WoongPtr->AddScript("Script 040");
+		WoongPtr->AddScript("Script 041");
+		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
+		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
+		WoongPtr->SetBaseDir(LookDir::Down);
+		WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
