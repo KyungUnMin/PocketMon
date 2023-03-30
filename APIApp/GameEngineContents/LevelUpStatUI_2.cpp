@@ -23,11 +23,10 @@ LevelUpStatUI_2::~LevelUpStatUI_2()
 void LevelUpStatUI_2::Start()
 {
 
-	GameEngineRender* StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_UI);
-	StatRenderPtr->SetScale((StatRenderPtr->GetImage()->GetImageScale()));
-	StatRenderPtr->SetPosition({ 720,360 });
+	StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_Cursor);
 
-	GameEngineRender* StatRenderPtr1 = CreateRender("BattleStatusTwo.bmp", BattleRenderOrder::Battle_UI);
+
+	StatRenderPtr1 = CreateRender("BattleStatusTwo.bmp", BattleRenderOrder::Battle_UI);
 	StatRenderPtr1->SetScale((StatRenderPtr1->GetImage()->GetImageScale()));
 	StatRenderPtr1->SetPosition({ 320,360 });
 
@@ -40,7 +39,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat1_R.size(); x++)
 	{
 		LevelUpStat1_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat1_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat1_R[x]->SetPosition(LevelUpStatPos_1 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat1_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat1_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat1_R[x]->EffectCameraOff();
@@ -49,7 +48,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat2_R.size(); x++)
 	{
 		LevelUpStat2_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat2_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat2_R[x]->SetPosition(LevelUpStatPos_2 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat2_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat2_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat2_R[x]->EffectCameraOff();
@@ -58,7 +57,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat3_R.size(); x++)
 	{
 		LevelUpStat3_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat3_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat3_R[x]->SetPosition(LevelUpStatPos_3+ float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat3_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat3_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat3_R[x]->EffectCameraOff();
@@ -67,7 +66,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat4_R.size(); x++)
 	{
 		LevelUpStat4_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat4_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat4_R[x]->SetPosition(LevelUpStatPos_4 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat4_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat4_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat4_R[x]->EffectCameraOff();
@@ -76,7 +75,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat5_R.size(); x++)
 	{
 		LevelUpStat5_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat5_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat5_R[x]->SetPosition(LevelUpStatPos_5 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat5_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat5_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat5_R[x]->EffectCameraOff();
@@ -85,7 +84,7 @@ void LevelUpStatUI_2::Start()
 	for (size_t x = 0; x < LevelUpStat6_R.size(); x++)
 	{
 		LevelUpStat6_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
-		LevelUpStat6_R[x]->SetPosition(LevelUpStatPos + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
+		LevelUpStat6_R[x]->SetPosition(LevelUpStatPos_6 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat6_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat6_R[x]->SetFrame(SpaceFrameNum);
 		LevelUpStat6_R[x]->EffectCameraOff();
@@ -95,16 +94,51 @@ void LevelUpStatUI_2::Start()
 
 
 }
+bool IsCheck123 = true;
 void LevelUpStatUI_2::Update(float _DeltaTime)
 {
 
 	StringToRender(LevelUpStat1_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
-	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat2_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
-	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat3_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
-	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat4_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
-	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat5_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
-	//BattleCommendActor::BattleCommendActorPtr->StringToRender(LevelUpStat6_R, BattlePlayer::PlayerPtr->GetMonsterDB()->
-
+	StringToRender(LevelUpStat2_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterAttackPower());
+	StringToRender(LevelUpStat3_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterDefense());
+	StringToRender(LevelUpStat4_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterSpecialAttackPower());
+	StringToRender(LevelUpStat5_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterSpecialDefense());
+	StringToRender(LevelUpStat6_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterAgility());
+	CheckTime11 += _DeltaTime;
+	if (CheckTime11 > 1.0f) {
+		if (true == IsCheck123) 
+		{
+			StatRenderPtr->SetScale((StatRenderPtr->GetImage()->GetImageScale()));
+			StatRenderPtr->SetPosition({ 320,360 });
+			CheckTime11 = 0.0f;
+			IsCheck123 = false;
+		}
+		
+	}
+	CheckTime22 += _DeltaTime;
+	if (CheckTime22 > 2.0f) {
+		StatRenderPtr->Off();
+		StatRenderPtr1->Off();
+		for (size_t x = 0; x < LevelUpStat1_R.size(); x++) {
+			LevelUpStat1_R[x]->Off();
+		}
+		for (size_t x = 0; x < LevelUpStat2_R.size(); x++) {
+			LevelUpStat2_R[x]->Off();
+		}
+		for (size_t x = 0; x < LevelUpStat3_R.size(); x++) {
+			LevelUpStat3_R[x]->Off();
+		}
+		for (size_t x = 0; x < LevelUpStat4_R.size(); x++) {
+			LevelUpStat4_R[x]->Off();
+		}
+		for (size_t x = 0; x < LevelUpStat5_R.size(); x++) {
+			LevelUpStat5_R[x]->Off();
+		}
+		for (size_t x = 0; x < LevelUpStat6_R.size(); x++) {
+			LevelUpStat6_R[x]->Off();
+		}
+		
+	}
 }
 
 void LevelUpStatUI_2::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)

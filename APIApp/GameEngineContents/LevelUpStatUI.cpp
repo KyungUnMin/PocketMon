@@ -23,9 +23,7 @@ LevelUpStatUI::~LevelUpStatUI()
 void LevelUpStatUI::Start()
 {
 
-	GameEngineRender* StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_UI);
-	StatRenderPtr->SetScale((StatRenderPtr->GetImage()->GetImageScale()));
-	StatRenderPtr->SetPosition({ 720,360 });
+
 
 
 

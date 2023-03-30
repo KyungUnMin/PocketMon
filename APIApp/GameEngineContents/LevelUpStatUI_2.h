@@ -42,9 +42,17 @@ private:
 	int SpaceFrameNum = 26;
 	int PoketMonStatMax = 4;
 
-	float4 LevelUpStatPos = { 430,215 };
-	//float4 PoketMonLevel_S = { 640,317 };
+	float CheckTime11 = 0.0f;
+	float CheckTime22 = 0.0f;
 
+	float4 LevelUpStatPos_1 = { 430,215 };
+	float4 LevelUpStatPos_2 = { 430,275 };
+	float4 LevelUpStatPos_3 = { 430,335 };
+	float4 LevelUpStatPos_4 = { 430,395 };
+	float4 LevelUpStatPos_5 = { 430,455 };
+	float4 LevelUpStatPos_6 = { 430,515 };
+	GameEngineRender* StatRenderPtr = nullptr;
+	GameEngineRender* StatRenderPtr1 = nullptr;
 	GameEngineRender* LevelUpStatUIPtr_R = nullptr;
 	std::vector<float> EnemyDamegeTick;
 

@@ -33,10 +33,15 @@ void TextTestLevel::Loading()
 
 
 	//띄우기 위해 조건이 필요할 때
-	CreateActor<EnemyHPBackground>();
-	CreateActor<FriendlyHPBackground>();
+	//CreateActor<EnemyHPBackground>();
+	//CreateActor<FriendlyHPBackground>();
 
-	CreateActor<BattleCommendActor>();
+//	CreateActor<BattleCommendActor>();
+	/*LevelUpStatUI* NewAAA = CreateActor<LevelUpStatUI>();
+	NewAAA->SetPos({ 50,70 });*/
+
+	LevelUpStatUI_2* NewAAAA = CreateActor<LevelUpStatUI_2>();
+	NewAAAA->SetPos({ 450,70 });
 
 }
 
@@ -50,8 +55,8 @@ void TextTestLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
 		
-		CreateActor<LevelUpStatUI>();
-		CreateActor<LevelUpStatUI_2>();
+		
+
 
 	}
 }
