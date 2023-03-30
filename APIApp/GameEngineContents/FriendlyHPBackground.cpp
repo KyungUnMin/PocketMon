@@ -47,23 +47,19 @@ void FriendlyHPBackground::Start()
 	}
 	//예시코드
 
-	float hpcur = 100.0f / 100.0f;
-
-
 	//데미지
 	HPRenderPtr->SetScale(float4{ 192, 172 });
 	HPRenderPtr->SetPosition({ 560, 360 });
-
-
-
+	BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(40);
+	
+	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
+	EXPRenderPtr->SetScale(float4{ ExpNum,172 });
+	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 360 });
 
-	EXPRenderPtr->SetScale(float4{ 0,172 });
-	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 380 });
-
-	for (int i = 1; i <= 10; i++) {
+	/*for (int i = 1; i <= 10; i++) {
 		EXPTick.push_back((ExpNum / 10) * i);
-	}
+	}*/
 	PoketMonName_R.resize(PoketMonNameMax);
 	PoketMonLevel_R.resize(PoketMonLevelMax);
 	PoketMonHPCUR_R.resize(PoketMonLevelMax);
@@ -71,7 +67,7 @@ void FriendlyHPBackground::Start()
 
 	for (size_t x = 0; x < PoketMonName_R.size(); x++)
 	{
-		PoketMonName_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		PoketMonName_R[x] = CreateRender("Font_Dialog_Black2.bmp", BattleRenderOrder::Battle_Text);
 		PoketMonName_R[x]->SetPosition(PoketMonName_S + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		PoketMonName_R[x]->SetScale(TextRenderImageScale);
 		PoketMonName_R[x]->SetFrame(SpaceFrameNum);
@@ -81,7 +77,7 @@ void FriendlyHPBackground::Start()
 
 	for (size_t x = 0; x < PoketMonLevel_R.size(); x++)
 	{
-		PoketMonLevel_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		PoketMonLevel_R[x] = CreateRender("Font_Dialog_Black2.bmp", BattleRenderOrder::Battle_Text);
 		PoketMonLevel_R[x]->SetPosition(PoketMonLevel_S + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		PoketMonLevel_R[x]->SetScale(TextRenderImageScale);
 		PoketMonLevel_R[x]->SetFrame(SpaceFrameNum);
@@ -90,7 +86,7 @@ void FriendlyHPBackground::Start()
 	}
 	for (size_t x = 0; x < PoketMonHPCUR_R.size(); x++)
 	{
-		PoketMonHPCUR_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		PoketMonHPCUR_R[x] = CreateRender("Font_Dialog_Black2.bmp", BattleRenderOrder::Battle_Text);
 		PoketMonHPCUR_R[x]->SetPosition(PoketMonHPCUR_S + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScaleHP));
 		PoketMonHPCUR_R[x]->SetScale(TextRenderImageScaleHP);
 		PoketMonHPCUR_R[x]->SetFrame(SpaceFrameNum);
@@ -99,7 +95,7 @@ void FriendlyHPBackground::Start()
 	}
 	for (size_t x = 0; x < PoketMonHPMAX_R.size(); x++)
 	{
-		PoketMonHPMAX_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		PoketMonHPMAX_R[x] = CreateRender("Font_Dialog_Black2.bmp", BattleRenderOrder::Battle_Text);
 		PoketMonHPMAX_R[x]->SetPosition(PoketMonHPMAX_S + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScaleHP));
 		PoketMonHPMAX_R[x]->SetScale(TextRenderImageScaleHP);
 		PoketMonHPMAX_R[x]->SetFrame(SpaceFrameNum);
@@ -107,23 +103,57 @@ void FriendlyHPBackground::Start()
 
 	}
 }
-bool IsCheckaa = true;
-
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
 	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
 	if (nullptr == DB)
 		return;
+
+
+
+	// 임시로 디버깅용 현재 경험치 넣어주기 및 초깃값 셋팅
+	CurExp = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience();
+
+
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
 	StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 
-	//RenderTick(HPRenderPtr, DamegeTick, _DeltaTime, 192.0f, 9, float4{ 560,360 });
-//	RenderTick(HPRenderPtr, EXPTick, _DeltaTime, 256.0f, 9, float4{ 528,360 });
-	//	HpUpdate(20.0f, 100.0f);
 
-//	IsBattleStartCheck(EnumyMonsterDamage);
+	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
+	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
+
+
+	if (true == IsExpUP)
+	{
+	
+		NextTickTime_1 += _DeltaTime;
+		if (NextTickTime_1 > 0.1f) 
+		{
+			NextTickTime_1 = 0;
+			if (TickNumber_1 != 20)
+			{
+				if (TickNumber_1 == 0) 
+				{
+					ExpUpdate(ExpPoint, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
+				}
+				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
+				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
+				TickNumber_1++;
+			}
+			if (TickNumber_1 == 20)
+			{
+				TickNumber_1 = 0;
+				IsExpUP = false;
+			//	CurMyHP = DamegeTick[9];
+
+			}
+
+		
+		}
+	}
+
 
 	if (BattleStartCheck == true) {
 		if(TickNumber ==0)
@@ -148,15 +178,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			CurMyHP = DamegeTick[9];
 
 		}
-		/*NextTickTime_1 += _DeltaTime;
-		if (NextTickTime_1 > 0.1f) {
-			NextTickTime_1 = 0;
-			if (TickNumber_1 != 10) {
-				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
-				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
-				TickNumber_1++;
-			}
-		}*/
+		
 	}
 }
 
@@ -248,10 +270,7 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 		}
 		StrIndex++;
 	}
-
-
 }
-
 
 
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
@@ -267,6 +286,38 @@ void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp ,
 
 }
 
+void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curpos, int _CurExpPos)
+{
+
+	float Expmag = _GetExp / (100.0f - _MyCurExp);
+	/*if (Expmag>=1.0f)*/
+
+	float UpExp = GameEngineMath::Lerp(0.0f, _curpos- _CurExpPos, Expmag);
+	for (int i = 1; i <= 20; i++) {
+
+		EXPTick.push_back(_CurExpPos +(UpExp / 20 )* i); /*현재 HP - (데미지 / 10 *)1*/
+		
+
+	}
+	int j = 1;
+
+	for (size_t x = 0; x < EXPTick.size(); x++) {
+		if (EXPTick[x] > 256.0f) {
+		
+			for (int z = x; z < EXPTick.size(); z++) {
+				if (_GetExp + _MyCurExp > 100.0f) {
+					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
+					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
+					EXPTick[z] = UpExp / (EXPTick.size() - x) * j;
+					j++;
+				}
+			}
+			
+		}
+	}
+
+}
+
 
 
 bool FriendlyHPBackground::IsBattleStartCheck(bool _Value)
@@ -275,10 +326,22 @@ bool FriendlyHPBackground::IsBattleStartCheck(bool _Value)
 	return BattleStartCheck;
 }
 
-float FriendlyHPBackground::GetMonsterDamage(int _EnumyMonsterDamage)
+bool FriendlyHPBackground::IsExpUpCheck(bool _Value)
+{
+	IsExpUP = _Value;
+	return IsExpUP;
+}
+
+int FriendlyHPBackground::GetMonsterDamage(int _EnumyMonsterDamage)
 {
 	EnumyMonsterDamage = _EnumyMonsterDamage;
 	return EnumyMonsterDamage;
+}
+
+int FriendlyHPBackground::GetExpPoint(int _ExpPoint)
+{
+	ExpPoint = _ExpPoint;
+	return ExpPoint;
 }
 
 

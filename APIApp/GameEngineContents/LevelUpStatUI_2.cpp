@@ -23,7 +23,7 @@ LevelUpStatUI_2::~LevelUpStatUI_2()
 void LevelUpStatUI_2::Start()
 {
 
-	StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_LevelUI);
+	StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_LevelUI2);
 
 
 	StatRenderPtr1 = CreateRender("BattleStatusTwo.bmp", BattleRenderOrder::Battle_LevelUI);

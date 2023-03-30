@@ -73,6 +73,7 @@ enum class BattleRenderOrder
 	Battle_Cursor,
 	Battle_LevelUI,
 	Battle_LevelText,
+	Battle_LevelUI2,
 
 	//
 
