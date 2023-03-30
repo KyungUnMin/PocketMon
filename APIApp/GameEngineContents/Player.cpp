@@ -101,6 +101,11 @@ void Player::Start()
 	MainPlayer = this; 
 	//
 	PlayerPokemon = new TrainerPokemon();
+	PlayerPokemon->AddPokemon(0, 1);
+	PlayerPokemon->AddPokemon(3, 1);
+	PlayerPokemon->AddPokemon(6, 1);
+
+
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();
@@ -114,6 +119,7 @@ void Player::Update(float _DeltaTime)
 	//{
 	//	float4 NextPos = GetPos() + float4{ 64,0 };
 	//	InsertPlayerPos(NextPos);
+	//	InsertPlayerPos(NextPos + float4{ 64,0 });
 	//}
 	//PlayerAutoMove();
 	

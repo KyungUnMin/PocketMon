@@ -211,9 +211,11 @@ void Player::PlayerAutoMove()
 	{
 		std::list<float4>::iterator It;
 		StartPos = GetPos();
-		if(it= NextMovePos.Start)
-		EndPos= NextMovePos.front();
+		for (It = NextMovePos.begin(); It != NextMovePos.end() ; ++It)
+		{
+			EndPos =*It;
+			ChangeState(PlayerState::MOVE);
+		}
 
-		ChangeState(PlayerState::MOVE);
 	}
 }
