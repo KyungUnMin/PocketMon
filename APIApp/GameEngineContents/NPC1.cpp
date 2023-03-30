@@ -69,7 +69,7 @@ void NPC1::Start()
 void NPC1::Update(float _DeltaTime)
 {
 
-	AutoRightMove(_DeltaTime);
+	
 	std::vector<GameEngineCollision*> CheckCollisions;
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };
 	if (true == C_NPC_R->Collision(CheckPlayer, CheckCollisions))
@@ -91,48 +91,11 @@ void NPC1::Render(float _DeltaTime)
 		C_NPC_R->DebugRender();
 	}
 }
-bool Test1 = true;
-bool Test2 = false;
-bool Test3 = false;
-bool Test4 = false;
-void NPC1::AutoRightMove(float _DeltaTime)
-{
-		if (true == Test1)
-		{
-			MoveTime += _DeltaTime;
-			StartPos = GetPos();
-			EndPos = GetPos() + float4{ 64 ,0 };
-			Dir = LookDir::Right;
-			SetPos(float4::LerpClamp(StartPos, EndPos, MoveTime));
-			if (MoveTime > 0.1f)
-			{
-				MoveTime = 0.0f;
-				Dir = LookDir::Up;
-				Test1 = false;
-				Test2 = true;
-			}
-		}
-		if (true == Test2)
-		{
-			MoveTime += _DeltaTime*0.1;
-			StartPos = GetPos();
-			EndPos = GetPos() + float4{ 0 ,-64 };
-			Dir = LookDir::Right;
-			SetPos(float4::LerpClamp(StartPos, EndPos, MoveTime));
-			if (MoveTime > 1.0f)
-			{
-				Test2 = false;
-				Test3 = true;
-				MoveTime = 0.0f;
-				Dir = LookDir::Left;
-			}
-		}
 
 
 
 
-	
-}
+
 
 
 

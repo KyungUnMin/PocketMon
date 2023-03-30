@@ -25,7 +25,6 @@ public:
 
 	void ImageLoad();
 	void Render(float _DeltaTime);
-	void AutoRightMove(float _DeltaTime);
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
