@@ -23,10 +23,10 @@ LevelUpStatUI_2::~LevelUpStatUI_2()
 void LevelUpStatUI_2::Start()
 {
 
-	StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_Cursor);
+	StatRenderPtr = CreateRender("BattleStatus.bmp", BattleRenderOrder::Battle_LevelUI);
 
 
-	StatRenderPtr1 = CreateRender("BattleStatusTwo.bmp", BattleRenderOrder::Battle_UI);
+	StatRenderPtr1 = CreateRender("BattleStatusTwo.bmp", BattleRenderOrder::Battle_LevelUI);
 	StatRenderPtr1->SetScale((StatRenderPtr1->GetImage()->GetImageScale()));
 	StatRenderPtr1->SetPosition({ 320,360 });
 
@@ -38,7 +38,7 @@ void LevelUpStatUI_2::Start()
 	LevelUpStat6_R.resize(PoketMonStatMax);
 	for (size_t x = 0; x < LevelUpStat1_R.size(); x++)
 	{
-		LevelUpStat1_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat1_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat1_R[x]->SetPosition(LevelUpStatPos_1 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat1_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat1_R[x]->SetFrame(SpaceFrameNum);
@@ -47,7 +47,7 @@ void LevelUpStatUI_2::Start()
 	}
 	for (size_t x = 0; x < LevelUpStat2_R.size(); x++)
 	{
-		LevelUpStat2_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat2_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat2_R[x]->SetPosition(LevelUpStatPos_2 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat2_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat2_R[x]->SetFrame(SpaceFrameNum);
@@ -56,7 +56,7 @@ void LevelUpStatUI_2::Start()
 	}
 	for (size_t x = 0; x < LevelUpStat3_R.size(); x++)
 	{
-		LevelUpStat3_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat3_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat3_R[x]->SetPosition(LevelUpStatPos_3+ float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat3_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat3_R[x]->SetFrame(SpaceFrameNum);
@@ -65,7 +65,7 @@ void LevelUpStatUI_2::Start()
 	}
 	for (size_t x = 0; x < LevelUpStat4_R.size(); x++)
 	{
-		LevelUpStat4_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat4_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat4_R[x]->SetPosition(LevelUpStatPos_4 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat4_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat4_R[x]->SetFrame(SpaceFrameNum);
@@ -74,7 +74,7 @@ void LevelUpStatUI_2::Start()
 	}
 	for (size_t x = 0; x < LevelUpStat5_R.size(); x++)
 	{
-		LevelUpStat5_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat5_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat5_R[x]->SetPosition(LevelUpStatPos_5 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat5_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat5_R[x]->SetFrame(SpaceFrameNum);
@@ -83,7 +83,7 @@ void LevelUpStatUI_2::Start()
 	}
 	for (size_t x = 0; x < LevelUpStat6_R.size(); x++)
 	{
-		LevelUpStat6_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_Text);
+		LevelUpStat6_R[x] = CreateRender("Font_Dialog.bmp", BattleRenderOrder::Battle_LevelText);
 		LevelUpStat6_R[x]->SetPosition(LevelUpStatPos_6 + float4{ static_cast<float>(x) } *(TextRenderInterval + TextRenderImageScale));
 		LevelUpStat6_R[x]->SetScale(TextRenderImageScale);
 		LevelUpStat6_R[x]->SetFrame(SpaceFrameNum);

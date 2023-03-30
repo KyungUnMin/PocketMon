@@ -2,7 +2,6 @@
 #include "BattleStateBase.h"
 
 class BackTextActor;
-class LevelUpStatUI;
 class LevelUpStatUI_2;
 
 
@@ -24,11 +23,10 @@ protected:
 
 private:
 	float Timer = 0.f;
-	const float Duration = 0.5f;
+	const float Duration = 3.f;
 	size_t Step = 0;
 
 	BackTextActor* TextInfo = nullptr;
-	LevelUpStatUI* UI1 = nullptr;
-	LevelUpStatUI_2* UI2 = nullptr;
+	LevelUpStatUI_2* ResultUI = nullptr;
 };
 

@@ -71,6 +71,9 @@ enum class BattleRenderOrder
 	Battle_UI,
 	Battle_Text,
 	Battle_Cursor,
+	Battle_LevelUI,
+	Battle_LevelText,
+
 	//
 
 	Fade,

@@ -2,8 +2,7 @@
 #include "BackTextActor.h"
 #include "BattleLevel.h"
 #include "BattleFadeCtrl.h"
-//#include "LevelUpStatUI.h"
-//#include "LevelUpStatUI_2.h"
+#include "LevelUpStatUI_2.h"
 
 BattleState_BattleWin::BattleState_BattleWin()
 {
@@ -19,12 +18,14 @@ void BattleState_BattleWin::EnterState()
 {
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText("We Win");
+	ResultUI = BattleLevel::BattleLevelPtr->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
+	ResultUI->SetPos(float4{ 450.f, 70.f });
 }
 
 void BattleState_BattleWin::Update(float _DeltaTime)
 {
 	Timer += _DeltaTime;
-	if (Duration < Timer)
+	if (Timer < Duration)
 		return;
 	
 	if (0 == Step)
