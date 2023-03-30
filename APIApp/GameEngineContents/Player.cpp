@@ -224,35 +224,18 @@ void Player::NPCtalkValueSet()
 	if (GameEngineInput::IsDown("LeftMove"))
 	{
 		TalkValue = NPCtalkValue::RIGHT;
-		//±Õ¬˙¿∏¥œ±Ó ¿œ¥‹∫π∫Ÿ
-		IsPlayerDirUP = false;
-		IsPlayerDirDOWN = false;
-		IsPlayerDirLEFT = true;
-		IsPlayerDirRIGHT = false;
 	}
 	else if (GameEngineInput::IsDown("RightMove"))
 	{
 		TalkValue = NPCtalkValue::LEFT;
-		IsPlayerDirUP = false;
-		IsPlayerDirDOWN = false;
-		IsPlayerDirLEFT = false;
-		IsPlayerDirRIGHT = true;
 	}
 	else if (GameEngineInput::IsDown("UpMove"))
 	{
 		TalkValue = NPCtalkValue::DOWN;
-		IsPlayerDirUP = true;
-		IsPlayerDirDOWN = false;
-		IsPlayerDirLEFT = false;
-		IsPlayerDirRIGHT = false;
 	}
 	else if (GameEngineInput::IsDown("DownMove"))
 	{
 		TalkValue = NPCtalkValue::UP;
-		IsPlayerDirUP = false;
-		IsPlayerDirDOWN = true;
-		IsPlayerDirLEFT = false;
-		IsPlayerDirRIGHT = false;
 	}
 }
 

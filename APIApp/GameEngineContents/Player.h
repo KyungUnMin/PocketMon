@@ -133,6 +133,27 @@ public:
 		return PlayerPokemon;
 	}
 
+	void SetPlayerDirRight()
+	{
+		Dir = LookDir::Right;
+		Players->ChangeAnimation("Right_Idle");
+	}
+	void SetPlayerDirLeft()
+	{
+		Dir = LookDir::Left;
+		Players->ChangeAnimation("Left_Idle");
+	}
+	void SetPlayerDirDown()
+	{
+		Dir = LookDir::Down;
+		Players->ChangeAnimation("Down_Idle");
+	}
+	void SetPlayerDirUp()
+	{
+		Dir = LookDir::Up;
+		Players->ChangeAnimation("Up_Idle");
+	}
+
 	
 protected:
 	void Start() override;
