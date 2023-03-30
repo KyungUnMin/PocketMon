@@ -1,9 +1,12 @@
 #include "BaseNPC.h"
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineCore.h>
 #include "Fieldmap.h"
 #include "InputControll.h"
 #include "FieldDialog.h"
 #include "Player.h"
+#include "BattleLevel.h"
+#include "BattleFadeCtrl.h"
 
 // Idle
 void BaseNPC::IdleStart()
@@ -126,10 +129,37 @@ void BaseNPC::InteractionEnd()
 		Func();
 	}
 
-	if (InputHandle >= 0)
+	if (PokemonDatas.size() != 0)
+	{
+		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
+		BattleLevel::BattleLevelPtr->Init(PokemonDatas, GroundType::Grass, Type);
+
+		BattleFadeCtrl* Fade = GetLevel()->CreateActor<BattleFadeCtrl>();
+		Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(
+
+			[](BaseNPC* _this)
+			{
+				_this->InputHandle = InputControll::ResetControll(_this->InputHandle);
+				GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
+			},
+			this));
+		Fade->On();
+	}
+	else if (InputHandle >= 0)
 	{
 		InputHandle = InputControll::ResetControll(InputHandle);
 	}
+}
+
+void BaseNPC::AddPokeData(PokeDataBase _Data)
+{
+	if (6 == PokemonDatas.size())
+	{
+		MsgAssert("Npc는 6개를 초과해 포켓몬을 소지할 수 없습니다.");
+		return;
+	}
+
+	PokemonDatas.push_back(_Data);
 }
 
 void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )
@@ -147,5 +177,5 @@ void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )
 	else
 	{
 		InteractionFuncs.push_back(_Func);
-	}
+	}	
 }

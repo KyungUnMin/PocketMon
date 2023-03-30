@@ -5,8 +5,10 @@
 #include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
+#include "PokeDataBase.h"
 
 enum class LookDir;
+enum class BattleNpcType;
 class GameEngineRender;
 class BaseNPC : public GameEngineActor
 {
@@ -35,7 +37,7 @@ public:
 	BaseNPC& operator=(const BaseNPC& _Other) = delete;
 	BaseNPC& operator=(BaseNPC&& _Other) noexcept = delete;
 
-	void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName);
+	void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName, BattleNpcType _Type);
 	void AddNPC(const std::string_view& _CityName, int2 _Index);
 	void AddScript(const std::string_view& _Script);
 
@@ -69,6 +71,9 @@ public:
 	{
 		InteractionDir = _CheckDir;
 	}
+
+	void AddPokeData(PokeDataBase _Data);
+
 
 	// 상호작용 이벤트 추가
 	void AddInteractionFunc(std::function<void()> _Func, bool _IsLoop = true);
@@ -118,6 +123,7 @@ private:
 
 	// Npc 상태
 	NPCState State = NPCState::Idle;
+	BattleNpcType Type;
 
 	// Npc 무브 변수
 	std::list<float4> MovePoints;
@@ -138,10 +144,13 @@ private:
 	int2 InteractionIndex = int2::Zero;
 	int LookDistance = 1;
 
+	
 	std::vector<std::function<void()>> InteractionFuncs;
 	std::vector<std::function<void()>> LoopInteractionFuncs;
 
 	// 대사 저장
 	std::list<std::string> ScriptDatas;
 
+	// 포켓몬 데이터
+	std::vector<PokeDataBase> PokemonDatas;
 };

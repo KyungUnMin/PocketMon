@@ -4,18 +4,24 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineCore.h>
 
+// Base
+#include "int2.h"
+#include "PokeDataBase.h"
+#include "PokemonScript.h"
+#include "PocketMonCore.h"
+
+// Map
 #include "Fieldmap.h"
 #include "FieldmapCity.h"
 #include "FieldmapWoodDoor.h"
 #include "FieldmapSingleDoor.h"
 #include "FieldmapDoubleDoor.h"
 #include "FieldmapEmptyDoor.h"
-#include "FieldDialog.h"
-#include "int2.h"
-#include "PokemonScript.h"
-#include "PokeDataBase.h"
-#include "PocketMonCore.h"
 #include "FieldmapCutableTree.h"
+#include "FieldmapFlower.h"
+#include "FieldmapBattleZone.h"
+
+// Debug
 #include "FieldmapRender.h"
 #include "TileDebugRender.h"
 #include "FieldMainMenu.h"
@@ -28,17 +34,32 @@
 #include "SelectStartingUI.h"
 #include "PokemonCenterUI.h"
 
-//Game Actor
+//Level
+#include "BattleLevel.h"
+
+//NPC
 #include "BaseNPC.h"
 #include "StaticNPC.h"
 #include "TurnNPC.h"
 #include "MotherNPC.h"
 #include "OakNPC.h"
 #include "GreenNPC.h"
-
 #include "NPC1.h"
+
+// Player
 #include "Player.h"
+
+// Ending
 #include "EndingPlayActor.h"
+
+// UI
+#include "BackgroundUI.h"
+#include "ShopUIManager.h"
+#include "CityNameUI.h"
+#include "FieldMainMenu.h"
+#include "FieldDialog.h"
+#include "SelectStartingUI.h"
+#include "MoveMapFadeEffect.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 
@@ -399,7 +420,7 @@ void FieldmapLevel::Loading()
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
 	EndActor->Off();
 
-	Fieldmap::ChangeCity("PalletTown_Office");
+	Fieldmap::ChangeCity("PewterCity_Gym");
 
 	// Debug¿ë ·£´õ
 	MainFieldRender = CreateActor<FieldmapRender>();
@@ -412,7 +433,7 @@ void FieldmapLevel::Loading()
 
 	{
 		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
-		MotherNPCPtr->InitNPC("Mother", "Mother.bmp");
+		MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
 		MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
 		MotherNPCPtr->AddScript("Script 001");
 		MotherNPCPtr->AddScript("Script 002");
@@ -422,7 +443,7 @@ void FieldmapLevel::Loading()
 
 	{
 		OakNPC* OakNPCPtr = CreateActor<OakNPC>();
-		OakNPCPtr->InitNPC("Oak", "Oak.bmp");
+		OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
 		OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
 		OakNPCPtr->AddScript("Script 003");
 		OakNPCPtr->AddScript("Script 004");
@@ -432,7 +453,7 @@ void FieldmapLevel::Loading()
 
 	{
 		StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
-		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp");
+		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
 		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
 		ProfessorNPCPtr->AddScript("Script 005");
 		ProfessorNPCPtr->AddScript("Script 006");
@@ -442,7 +463,7 @@ void FieldmapLevel::Loading()
 
 	{
 		TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
-		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp");
+		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
 		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
 		ProfessorNPCPtr->AddScript("Script 007");
 		ProfessorNPCPtr->AddScript("Script 008");
@@ -451,17 +472,20 @@ void FieldmapLevel::Loading()
 	}
 	{
 		GreenNPC* ProfessorNPCPtr = CreateActor<GreenNPC>();
-		ProfessorNPCPtr->InitNPC("Green", "Green.bmp");
+		ProfessorNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
 		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
 		ProfessorNPCPtr->AddScript("Script 020");
 		ProfessorNPCPtr->AddScript("Script 021");
+		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 10));
+		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 11));
+		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 12));
 		ProfessorNPCPtr->SetBaseDir(LookDir::Down);
 		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
 
 	{
 		StaticNPC* NPCPtr = CreateActor<StaticNPC>();
-		NPCPtr->InitNPC("Npc1", "NPC1.bmp");
+		NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
 		NPCPtr->AddNPC("PalletTown", int2(11, 15));
 		NPCPtr->AddScript("Script 009");
 		NPCPtr->AddScript("Script 010");
@@ -471,12 +495,24 @@ void FieldmapLevel::Loading()
 
 	{
 		TurnNPC* NPCPtr = CreateActor<TurnNPC>();
-		NPCPtr->InitNPC("NPC4", "NPC4.bmp");
+		NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
 		NPCPtr->AddNPC("PalletTown", int2(20, 18));
 		NPCPtr->AddScript("Script 011");
 		NPCPtr->AddScript("Script 012");
 		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	{
+		StaticNPC* UngPtr = CreateActor<StaticNPC>();
+		UngPtr->InitNPC("Ung", "Ung.bmp", BattleNpcType::Woong);
+		UngPtr->AddNPC("PewterCity_Gym", int2(6, 5));
+		UngPtr->AddScript("Script 040");
+		UngPtr->AddScript("Script 041");
+		UngPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 9));
+		UngPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
+		UngPtr->SetBaseDir(LookDir::Down);
+		UngPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));

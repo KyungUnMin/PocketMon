@@ -7,21 +7,24 @@
 #include "ContentConst.h"
 #include "Player.h"
 #include "InputControll.h"
+#include "BattleLevel.h"
 
 BaseNPC::BaseNPC() :
 	Dir(LookDir::Up),
-	InteractionDir(LookDir::Right)
+	InteractionDir(LookDir::Right),
+	Type(BattleNpcType::None)
 {
-
+	PokemonDatas.reserve(6);
 }
 
 BaseNPC::~BaseNPC()
 {
 }
 
-void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _ImageName)
+void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _ImageName, BattleNpcType _NpcType)
 {
 	Name = _Name;
+	Type = _NpcType;
 
 	NPCRender = CreateRender(_ImageName, RenderOrder::Player);
 	NPCRender->SetScale(ContentConst::NpcSize);
