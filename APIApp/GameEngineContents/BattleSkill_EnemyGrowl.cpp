@@ -27,9 +27,9 @@ void BattleSkill_EnemyGrowl::EnterState()
 	GrowlRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
 	GrowlRender3 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
 
-	GrowlRender3->SetPos({ 510, 200 });
-	GrowlRender2->SetPos({ 510, 400 });
-	GrowlRender1->SetPos({ 510, 300 });
+	GrowlRender3->SetPos({ 560, 135 });
+	GrowlRender2->SetPos({ 560, 185 });
+	GrowlRender1->SetPos({ 560, 235 });
 
 	Growl3StartPos = GrowlRender3->GetPos();
 	Growl3EndPos = Growl3StartPos + float4::Up * 50 + float4::Left * 50;
@@ -159,5 +159,8 @@ void BattleSkill_EnemyGrowl::ExitState()
 
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
+	GrowlTime = 0.0f;
+	ReCount = 1;
+	ReStart = true;
 }
 

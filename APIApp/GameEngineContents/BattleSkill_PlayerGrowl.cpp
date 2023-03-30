@@ -159,5 +159,8 @@ void BattleSkill_PlayerGrowl::ExitState()
 
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
+	GrowlTime = 0.0f;
+	ReCount = 1;
+	ReStart = true;
 }
 
