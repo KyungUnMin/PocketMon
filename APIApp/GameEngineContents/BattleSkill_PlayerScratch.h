@@ -1,7 +1,9 @@
 #pragma once
+#include "BattleSkill_PlayerBase.h"
 
 // Ό³Έν :
-class BattleSkill_PlayerScratch
+class GameEngineRender;
+class BattleSkill_PlayerScratch : public BattleSkill_PlayerBase
 {
 public:
 	// constrcuter destructer
@@ -15,8 +17,14 @@ public:
 	BattleSkill_PlayerScratch& operator=(BattleSkill_PlayerScratch&& _Other) noexcept = delete;
 
 protected:
-
+	void EnterState() override;
+	void Update(float _DeltaTime) override;
+	void ExitState() override;
 private:
+	const float Duration = 1.0f;
+
+	GameEngineRender* EnemyRender = nullptr;
+	GameEngineRender* EffectRender = nullptr;
 
 };
 

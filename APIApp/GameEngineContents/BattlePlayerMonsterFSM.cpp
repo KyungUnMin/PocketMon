@@ -6,6 +6,7 @@
 
 #include "BattleSkill_PlayerGrowl.h"
 #include "BattleSkill_PlayerTest.h"
+#include "BattleSkill_PlayerScratch.h"
 
 BattlePlayerMonsterFSM::BattlePlayerMonsterFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -31,6 +32,7 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleState_MonsterDead>(BattlePlayerMonster_StateType::Dead);
 
 	CreateState<BattleSkill_PlayerTackle>(BattlePlayerMonster_StateType::Skill_Tackle);
+	CreateState<BattleSkill_PlayerScratch>(BattlePlayerMonster_StateType::Skill_Scratch);
 
 	ChangeState(BattlePlayerMonster_StateType::Create);
 }

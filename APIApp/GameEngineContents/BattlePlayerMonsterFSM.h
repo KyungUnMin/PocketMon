@@ -11,7 +11,7 @@ enum class BattlePlayerMonster_StateType
 
 	Skill_Tackle,
 	Skill_Growl,
-
+	Skill_Scratch,
 	COUNT
 };
 

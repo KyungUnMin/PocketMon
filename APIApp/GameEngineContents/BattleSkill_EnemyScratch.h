@@ -1,7 +1,7 @@
 #pragma once
-
+#include "BattleSkill_EnemyBase.h"
 // Ό³Έν :
-class BattleSkill_EnemyScratch
+class BattleSkill_EnemyScratch : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
@@ -15,8 +15,10 @@ public:
 	BattleSkill_EnemyScratch& operator=(BattleSkill_EnemyScratch&& _Other) noexcept = delete;
 
 protected:
-
+	void EnterState() override;
+	void Update(float _DeltaTime) override;
+	void ExitState() override;
 private:
-
+	const float Duration = 1.0f;
 };
 
