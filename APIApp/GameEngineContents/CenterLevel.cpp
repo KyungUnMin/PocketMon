@@ -292,6 +292,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Oak.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Professor.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ung.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mother.bmp"))->Cut(4, 6);
 	}
 
 	{

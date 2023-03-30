@@ -13,31 +13,26 @@ void BaseNPC::IdleStart()
 
 void BaseNPC::IdleUpdate(float _DeltaTime)
 {
-	int2 NpcIndx = Fieldmap::GetIndex(GetPos());
-	int2 PlayerIndex = Fieldmap::GetIndex(Player::MainPlayer->GetPos());
-	
-	int Distance = NpcIndx.GetDistance(PlayerIndex);
-
-	if (1 == Distance)
+	if (true == CheckInteractionTrigger())
 	{
-		LookDir PosDir = GetDir(PlayerIndex, NpcIndx);
-		LookDir PlayerViewDir = Player::MainPlayer->GetDir();
-
-		if (PosDir == PlayerViewDir && true == InputControll::CanControll() && true == GameEngineInput::IsDown("NpcTalk"))
-		{
-			ChangeState(NPCState::interaction);
-			Look(NpcIndx, PlayerIndex);
-			return;
-		}
+		Look(GetDir(Fieldmap::GetIndex(GetPos()), Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
+		ChangeState(NPCState::interaction);
+		return;
 	}
 
 	if (0 < MovePoints.size())
 	{
+
 		MoveStartPos = GetPos();
 		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
 
 		MoveEndPos = MovePoints.front();
 		MoveEndIndex = Fieldmap::GetIndex(MoveEndPos);
+
+		if (false == Fieldmap::Walkable(MoveEndIndex))
+		{
+			return;
+		}
 
 		MovePoints.pop_front();
 		Look(MoveStartIndex, MoveEndIndex);
@@ -109,6 +104,12 @@ void BaseNPC::InteractionEnd()
 {
 	for (const std::function<void()>& Func : InteractionFuncs)
 	{
+		if (nullptr == Func)
+		{
+			MsgAssert("nullptr func NPC 이벤트를 호출하려 했습니다");
+			return;
+		}
+
 		Func();
 	}
 
@@ -116,6 +117,12 @@ void BaseNPC::InteractionEnd()
 
 	for (const std::function<void()>& Func : LoopInteractionFuncs)
 	{
+		if (nullptr == Func)
+		{
+			MsgAssert("nullptr func NPC 이벤트를 호출하려 했습니다");
+			return;
+		}
+
 		Func();
 	}
 
@@ -127,6 +134,12 @@ void BaseNPC::InteractionEnd()
 
 void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )
 {
+	if (nullptr == _Func)
+	{
+		MsgAssert("nullptr func을 NPC 상호작용 이벤트에 등록하려 했습니다");
+		return;
+	}
+
 	if (true == _IsLoop)
 	{
 		LoopInteractionFuncs.push_back(_Func);

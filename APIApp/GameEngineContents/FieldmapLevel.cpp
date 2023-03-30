@@ -31,6 +31,9 @@
 #include "BaseNPC.h"
 #include "StaticNPC.h"
 #include "TurnNPC.h"
+#include "MotherNPC.h"
+#include "OakNPC.h"
+#include "GreenNPC.h"
 
 #include "NPC1.h"
 #include "Player.h"
@@ -395,7 +398,7 @@ void FieldmapLevel::Loading()
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
 	EndActor->Off();
 
-	Fieldmap::ChangeCity("ViridianCity_Market");
+	Fieldmap::ChangeCity("PalletTown_Office");
 
 	// Debug¿ë ·£´õ
 	MainFieldRender = CreateActor<FieldmapRender>();
@@ -406,24 +409,75 @@ void FieldmapLevel::Loading()
 	ShopNpc = CreateActor<NPC1>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc);
 
-	BaseNPC* TestNpcPtr = CreateActor<BaseNPC>();
-	TestNpcPtr->InitNPC("Test", "NPC1.bmp");
-	TestNpcPtr->AddNPC("ViridianCity_Market", int2(8, 8));
-	TestNpcPtr->AddScript("Test 010101 asdfoiewfojewfoij");
-	TestNpcPtr->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
+	{
+		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
+		MotherNPCPtr->InitNPC("Mother", "Mother.bmp");
+		MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
+		MotherNPCPtr->AddScript("Script 001");
+		MotherNPCPtr->AddScript("Script 002");
+		MotherNPCPtr->SetBaseDir(LookDir::Down);
+		MotherNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
 
-	StaticNPC* TestNpcPtr2 = CreateActor<StaticNPC>();
-	TestNpcPtr2->InitNPC("Test", "NPC2.bmp");
-	TestNpcPtr2->AddNPC("ViridianCity_Market", int2(7, 6));
-	TestNpcPtr2->AddScript("Test 010101 asdfoiewfojewfoij");
-	TestNpcPtr2->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
+	{
+		OakNPC* OakNPCPtr = CreateActor<OakNPC>();
+		OakNPCPtr->InitNPC("Oak", "Oak.bmp");
+		OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
+		OakNPCPtr->AddScript("Script 003");
+		OakNPCPtr->AddScript("Script 004");
+		OakNPCPtr->SetBaseDir(LookDir::Down);
+		OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
 
-	TurnNPC* TestNpcPtr3 = CreateActor<TurnNPC>();
-	TestNpcPtr3->InitNPC("Test", "NPC3.bmp");
-	TestNpcPtr3->AddNPC("ViridianCity_Market", int2(7, 4));
-	TestNpcPtr3->AddScript("Test 010101 asdfoiewfojewfoij");
-	TestNpcPtr3->AddScript("asdgfsdgsd 010101 asdfoiewfojewfoij");
-		
+	{
+		StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
+		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp");
+		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
+		ProfessorNPCPtr->AddScript("Script 005");
+		ProfessorNPCPtr->AddScript("Script 006");
+		ProfessorNPCPtr->SetBaseDir(LookDir::Up);
+		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	{
+		TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
+		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp");
+		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
+		ProfessorNPCPtr->AddScript("Script 007");
+		ProfessorNPCPtr->AddScript("Script 008");
+		ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+	{
+		GreenNPC* ProfessorNPCPtr = CreateActor<GreenNPC>();
+		ProfessorNPCPtr->InitNPC("Green", "Green.bmp");
+		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
+		ProfessorNPCPtr->AddScript("Script 020");
+		ProfessorNPCPtr->AddScript("Script 021");
+		ProfessorNPCPtr->SetBaseDir(LookDir::Down);
+		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	{
+		StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+		NPCPtr->InitNPC("Npc1", "NPC1.bmp");
+		NPCPtr->AddNPC("PalletTown", int2(11, 15));
+		NPCPtr->AddScript("Script 009");
+		NPCPtr->AddScript("Script 010");
+		NPCPtr->SetBaseDir(LookDir::Up);
+		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	{
+		TurnNPC* NPCPtr = CreateActor<TurnNPC>();
+		NPCPtr->InitNPC("NPC4", "NPC4.bmp");
+		NPCPtr->AddNPC("PalletTown", int2(20, 18));
+		NPCPtr->AddScript("Script 011");
+		NPCPtr->AddScript("Script 012");
+		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();

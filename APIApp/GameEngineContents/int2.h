@@ -85,9 +85,24 @@ public:
 		return *this;
 	}
 
+	bool operator==(const int2& _Other) const
+	{
+		return this->x == _Other.x && this->y == _Other.y;
+	}
+
+	bool operator!=(const int2& _Other) const
+	{
+		return !(*this == _Other);
+	}
+
 	int GetDistance(const int2& _Other) const
 	{
 		return abs(this->x - _Other.x) + abs(this->y - _Other.y);
+	}
+
+	static int GetDistance(const int2& _This, const int2& _Other)
+	{
+		return abs(_This.x - _Other.x) + abs(_This.y - _Other.y);
 	}
 
 	std::string ToString()

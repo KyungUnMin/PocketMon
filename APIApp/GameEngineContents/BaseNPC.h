@@ -10,6 +10,14 @@ enum class LookDir;
 class GameEngineRender;
 class BaseNPC : public GameEngineActor
 {
+public:
+	enum class InteractionTriggerType
+	{
+		None,
+		Talk,
+		Shop,
+		Look
+	};
 private:
 	enum class NPCState
 	{
@@ -47,6 +55,25 @@ public:
 		MoveSpeed = _MoveSpeed;
 	}
 
+	inline void SetInteractionTrigger(InteractionTriggerType _TriggerType)
+	{
+		TriggerType = _TriggerType;
+	}
+
+	inline void SetInteractionIndex(const int2& _Index)
+	{
+		InteractionIndex = _Index;
+	}	
+	
+	inline void SetInteractionDir(LookDir _CheckDir)
+	{
+		InteractionDir = _CheckDir;
+	}
+
+	// 상호작용 이벤트 추가
+	void AddInteractionFunc(std::function<void()> _Func, bool _IsLoop = true);
+
+	// Npc 회전 함수
 	void Look(LookDir _Dir);
 	void Look(const float4& _TargetPos);
 	void Look(const float4& _NpcPos, const float4& _TargetPos);
@@ -73,25 +100,27 @@ protected:
 	virtual void InteractionUpdate(float _DeltaTime);
 	virtual void InteractionEnd();
 
-	void AddInteractionFunc(std::function<void()> _Func, bool _IsLoop = true);
 
 	void PlayAnimation();
 	void ChangeState(NPCState _State);
 
+	bool CheckInteractionTrigger() const;
+
 private:
+
+	// 랜더링 관련 변수
 	GameEngineRender* NPCRender = nullptr;
+	std::string AnimationName = "Idle";
+
+	// 정보 값 저장
 	std::string CityName; 
 	std::string Name; 
-	std::list<float4> MovePoints;
 
-	std::vector<std::function<void()>> InteractionFuncs;
-	std::vector<std::function<void()>> LoopInteractionFuncs;
-
-	std::list<std::string> ScriptDatas;
-
+	// Npc 상태
 	NPCState State = NPCState::Idle;
 
-	std::string AnimationName = "Idle";
+	// Npc 무브 변수
+	std::list<float4> MovePoints;
 
 	int2 MoveStartIndex = int2::Zero;
 	float4 MoveStartPos = float4::Zero;
@@ -101,5 +130,18 @@ private:
 	float MoveProgress = 0.0f;
 	float MoveSpeed = 1.0f;
 
+	// 상호작용 변수
 	int InputHandle = -1;
+	InteractionTriggerType TriggerType = InteractionTriggerType::None;
+
+	LookDir InteractionDir;
+	int2 InteractionIndex = int2::Zero;
+	int LookDistance = 1;
+
+	std::vector<std::function<void()>> InteractionFuncs;
+	std::vector<std::function<void()>> LoopInteractionFuncs;
+
+	// 대사 저장
+	std::list<std::string> ScriptDatas;
+
 };

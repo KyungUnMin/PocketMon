@@ -30,7 +30,7 @@ public:
 	GameEngineActor& operator=(const GameEngineActor& _Other) = delete;
 	GameEngineActor& operator=(GameEngineActor&& _Other) noexcept = delete;
 
-	inline float4 GetPos()
+	inline float4 GetPos() const
 	{
 		return Pos;
 	}

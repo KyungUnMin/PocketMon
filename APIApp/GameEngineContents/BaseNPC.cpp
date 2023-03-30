@@ -1,12 +1,16 @@
 #include "BaseNPC.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "Fieldmap.h"
 #include "ContentsEnum.h"
 #include "ContentConst.h"
+#include "Player.h"
+#include "InputControll.h"
 
 BaseNPC::BaseNPC() :
-	Dir(LookDir::Up)
+	Dir(LookDir::Up),
+	InteractionDir(LookDir::Right)
 {
 
 }
@@ -224,4 +228,111 @@ void BaseNPC::ChangeState(NPCState _State)
 	}
 
 	State = _State;
+}
+
+bool BaseNPC::CheckInteractionTrigger() const
+{
+
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+
+	Player* PlayerPtr = Player::MainPlayer;
+	
+	int2 NpcIndex = Fieldmap::GetIndex(GetPos());
+	int2 PlayerIndex = Fieldmap::GetIndex(PlayerPtr->GetPos());
+
+	switch (TriggerType)
+	{
+	case BaseNPC::InteractionTriggerType::None:
+		return false;
+	case BaseNPC::InteractionTriggerType::Talk:
+	{
+		int Distance = int2::GetDistance(NpcIndex, PlayerIndex);
+	
+		if (1 != Distance)
+		{
+			return false;
+		}
+
+		LookDir PlayerLookDir = PlayerPtr->GetDir();
+
+		if (PlayerLookDir != GetDir(PlayerIndex, NpcIndex))
+		{
+			return false;
+		}
+
+		if (false == GameEngineInput::IsDown("NpcTalk"))
+		{
+			return false;
+		}
+
+		return true;
+	}
+		break;
+	case BaseNPC::InteractionTriggerType::Shop:
+	{
+		LookDir PlayerLookDir = PlayerPtr->GetDir();
+
+		if (InteractionIndex != PlayerIndex)
+		{
+			return false;
+		}
+
+		if (InteractionDir != PlayerLookDir)
+		{
+			return false;
+		}
+
+		if (false == GameEngineInput::IsDown("NpcTalk"))
+		{
+			return false;
+		}
+
+		return true;
+	}
+		break;
+	case BaseNPC::InteractionTriggerType::Look:
+	{
+		int2 CheckIndex = NpcIndex;
+
+		for (size_t i = 0; i < LookDistance; i++)
+		{
+			switch (Dir)
+			{
+			case LookDir::Up:
+				CheckIndex.y -= 1;
+				break;
+			case LookDir::Down:
+				CheckIndex.y += 1;
+				break;
+			case LookDir::Left:
+				CheckIndex.x -= 1;
+				break;
+			case LookDir::Right:
+				break;
+				CheckIndex.x += 1;
+			default:
+				break;
+			}
+
+			if (CheckIndex == PlayerIndex)
+			{
+				return true;
+			}
+
+			if (false == Fieldmap::Walkable(CheckIndex))
+			{
+				return false;
+			}
+		}
+	}
+		break;
+	default:
+		break;
+	}
+
+	return false;
 }

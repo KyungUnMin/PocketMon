@@ -22,6 +22,7 @@ public:
 	}
 
 protected:
+	void IdleUpdate(float _DeltaTime) override;
 	void MoveEnd() override;
 	void InteractionEnd() override;
 
