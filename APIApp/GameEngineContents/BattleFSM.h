@@ -6,6 +6,7 @@ enum class BattleStateType
 {
 	WildTalk,
 	RivalTalk,
+	GymTalk,
 
 	PlayerTurn,
 	EnemyTurn,

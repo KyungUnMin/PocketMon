@@ -6,6 +6,8 @@
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
 
+#include "BattleSkill_EnemyTest.h"
+
 
 BattleEnemyMonsterFSM::BattleEnemyMonsterFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -22,6 +24,9 @@ BattleEnemyMonsterFSM::~BattleEnemyMonsterFSM()
 void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 {
 	ResizeStates(BattleEnemyMonster_StateType::COUNT);
+
+	CreateState<BattleSkill_EnemyTest>(BattleEnemyMonster_StateType::Test);
+
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);
 	CreateState<BattleEnemyMonster_LockState>(BattleEnemyMonster_StateType::Lock);

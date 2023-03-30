@@ -457,6 +457,15 @@
     <ClCompile Include="LevelChangeBlackBox.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTest.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyTest.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\03.TestSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_GymTalk.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -900,6 +909,15 @@
     <ClInclude Include="LevelChangeBlackBox.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTest.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyTest.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\03.TestSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_GymTalk.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1234,6 +1252,15 @@
     </Filter>
     <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\04.CreatedInBall">
       <UniqueIdentifier>{40bcb164-5460-436e-9168-7add057072b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill">
+      <UniqueIdentifier>{f01dfd22-ccd8-4419-9c0f-4915177434d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\03.TestSkill">
+      <UniqueIdentifier>{c9cbd624-9b3c-45d9-9c67-9b0daab4c55b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk">
+      <UniqueIdentifier>{4d273083-2518-4bd0-ad1f-f74736c58fb5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

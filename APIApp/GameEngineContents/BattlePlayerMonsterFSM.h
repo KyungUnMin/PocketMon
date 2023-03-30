@@ -3,6 +3,8 @@
 
 enum class BattlePlayerMonster_StateType
 {
+	Test,
+	
 	Create,
 	Idle,
 	Dead,

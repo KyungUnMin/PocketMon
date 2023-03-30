@@ -14,6 +14,7 @@
 #include "BattleState_StageLose.h"
 #include "BattleState_ItemUse.h"
 #include "BattleState_BattleWin.h"
+#include "BattleState_GymTalk.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -43,6 +44,7 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_StageWin>(BattleStateType::StageWin);
 	CreateState<BattleState_StageLose>(BattleStateType::StageLose);
 	CreateState<BattleState_BattleWin>(BattleStateType::BattleWin);
+	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
 
 	CreateState<BattleState_ItemUse>(BattleStateType::UseItem);
 
@@ -56,7 +58,9 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	case BattleNpcType::Rival:
 		ChangeState(BattleStateType::RivalTalk);
 		break;
-
+	case BattleNpcType::Woong:
+		ChangeState(BattleStateType::GymTalk);
+		break;
 	default:
 		MsgAssert("배틀 FSM에서 아직 연결해주지 않은 전투상황입니다");
 		break;

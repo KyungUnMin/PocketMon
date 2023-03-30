@@ -3,6 +3,8 @@
 
 enum class BattleEnemyMonster_StateType
 {
+	Test,
+
 	Shadow,
 	Idle,
 	Lock,

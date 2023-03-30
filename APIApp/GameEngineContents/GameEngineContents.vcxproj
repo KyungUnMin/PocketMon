@@ -254,11 +254,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerTackle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTest.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -278,6 +286,10 @@
     </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp" />
     <ClCompile Include="BattleState_EnemyHPCheck.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_GymTalk.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -644,11 +656,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyTest.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerBase.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerTackle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTest.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -668,6 +688,10 @@
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
     <ClInclude Include="BattleState_EnemyHPCheck.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_GymTalk.h">
       <SubType>
       </SubType>
     </ClInclude>

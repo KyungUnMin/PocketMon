@@ -63,8 +63,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		return;
 
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
-	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
