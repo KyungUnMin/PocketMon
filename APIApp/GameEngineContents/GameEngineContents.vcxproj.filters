@@ -516,6 +516,9 @@
     <ClCompile Include="BattleState_PlayerDeadChange.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.PlayerDeadChange</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyGrowl.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1019,6 +1022,9 @@
     </ClInclude>
     <ClInclude Include="BattleState_PlayerDeadChange.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.PlayerDeadChange</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyGrowl.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

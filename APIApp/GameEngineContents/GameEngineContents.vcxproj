@@ -254,6 +254,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyGrowl.cpp" />
     <ClCompile Include="BattleSkill_EnemyScratch.cpp">
       <SubType>
       </SubType>
@@ -691,6 +692,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyGrowl.h" />
     <ClInclude Include="BattleSkill_EnemyScratch.h">
       <SubType>
       </SubType>
