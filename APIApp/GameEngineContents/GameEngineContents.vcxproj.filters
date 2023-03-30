@@ -504,6 +504,12 @@
     <ClCompile Include="TrainerPokemon.cpp">
       <Filter>Pokemon</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerScratch.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyScratch.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -996,6 +1002,12 @@
     <ClInclude Include="TrainerPokemon.h">
       <Filter>Pokemon</Filter>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerScratch.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyScratch.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1360,6 +1372,12 @@
     </Filter>
     <Filter Include="Battle\02.Actor\05.Effect\04.SkillActor">
       <UniqueIdentifier>{9b066b1d-cdf0-40de-8aa4-5bf985513c81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch">
+      <UniqueIdentifier>{db8183e8-a489-4d25-b97c-0ec71aac45ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch">
+      <UniqueIdentifier>{e6d2a2b0-6e74-4fa5-bd87-d9526111f612}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
