@@ -482,6 +482,7 @@ void CenterLevel::Loading()
 	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
 	{
 		GameEngineInput::CreateKey("FieldUITestSwitch", 'p'); //테스트용
+		GameEngineInput::CreateKey("MovePC", 'm'); //테스트용
 		GameEngineInput::CreateKeyNoToupper("FieldMainMenuSwitch", VK_RETURN);
 		GameEngineInput::CreateKeyNoToupper("Menu_Up", VK_UP);
 		GameEngineInput::CreateKeyNoToupper("Menu_Down", VK_DOWN);

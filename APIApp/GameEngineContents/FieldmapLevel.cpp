@@ -631,6 +631,13 @@ void FieldmapLevel::Update(float _DeltaTime)
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 		//MainFieldDialog->OnOffSwtich();
 	}
+	if (true == GameEngineInput::IsDown("MovePC"))
+	{
+		Fieldmap::ChangeCity("PewterCity_PokemonCenter");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity_PokemonCenter", int2(8, 6)));
+		Fieldmap::FieldUpdate();
+	}
+
 
 	if (true == GameEngineInput::IsDown("StartEventCheck"))
 	{
