@@ -528,6 +528,7 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="PokemonCenterNPC.cpp" />
+    <ClCompile Include="PokemonCenterUI.cpp" />
     <ClCompile Include="PokemonHPBar.cpp" />
     <ClCompile Include="PokemonLevel.cpp">
       <SubType>
@@ -944,6 +945,7 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="PokemonCenterNPC.h" />
+    <ClInclude Include="PokemonCenterUI.h" />
     <ClInclude Include="PokemonHPBar.h" />
     <ClInclude Include="PokemonLevel.h">
       <SubType>
