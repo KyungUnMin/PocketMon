@@ -23,7 +23,7 @@ public:
 	std::vector<PokeDataBase> GetPokemons();
 
 	// 다음 포켓몬을 받아온다.
-	PokeDataBase NextPokemon();
+	PokeDataBase* NextPokemon();
 
 	// 다음 포켓몬이 있다면 true를 반환합니다.
 	bool HasNextPokemon();

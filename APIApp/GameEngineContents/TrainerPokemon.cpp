@@ -33,7 +33,7 @@ std::vector<PokeDataBase> TrainerPokemon::GetPokemons()
 	return Pokemons;
 }
 
-PokeDataBase TrainerPokemon::NextPokemon()
+PokeDataBase* TrainerPokemon::NextPokemon()
 {
 	for (int i = 0; i < Pokemons.size(); i++)
 	{
@@ -45,10 +45,11 @@ PokeDataBase TrainerPokemon::NextPokemon()
 				Pokemons[i] = Pokemons[0];
 				Pokemons[0] = _Pokemon;
 			}
-			return Pokemons[0];
+			return &Pokemons[0];
 		}
 	}
-	return Pokemons[0];
+	MsgAssert("다음 포켓몬이 없습니다.");
+	return nullptr;
 }
 
 bool TrainerPokemon::HasNextPokemon()
