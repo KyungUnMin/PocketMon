@@ -22,6 +22,7 @@ Player::Player() :
 
 Player::~Player()
 {
+	delete PlayerPokemon;
 }
 
 bool Player::VaildJumpUp()
