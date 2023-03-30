@@ -29,7 +29,7 @@ public:
 
 	inline PokeDataBase* GetDB()
 	{
-		return &DbPtr;
+		return DbPtr;
 	}
 
 	virtual class GameEngineRender* GetRender() = 0;
@@ -41,13 +41,13 @@ public:
 	virtual void DamageOnIU(int _Value) = 0;
 
 protected:
-	void Init(PokeDataBase _MonsterDB);
+	void Init(PokeDataBase* _MonsterDB);
 
 private:
 	bool IsInit = false;
 	static const std::vector<std::string_view> NameEnumToString;
 	static const std::vector<std::string_view> SkiilEnumToString;
 
-	PokeDataBase DbPtr;
+	PokeDataBase* DbPtr = nullptr;
 };
 

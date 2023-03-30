@@ -23,7 +23,7 @@ BattleMonsterEnemy::~BattleMonsterEnemy()
 	}
 }
 
-void BattleMonsterEnemy::Init(PokeDataBase _MonsterDB, bool _IsWildMonster)
+void BattleMonsterEnemy::Init(PokeDataBase* _MonsterDB, bool _IsWildMonster)
 {
 	IsWildMonster = _IsWildMonster;
 	BattleMonsterBase::Init(_MonsterDB);

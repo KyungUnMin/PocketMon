@@ -107,7 +107,7 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 	
 	PokeDataBase& MonsterDB = MonsterDatas[CurIndex];
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(MonsterDB, true);
+	Monster->Init(&MonsterDB, true);
 	++CurIndex;
 }
 
@@ -128,7 +128,7 @@ void BattleEnemy::CreateMonster()
 
 	PokeDataBase& MonsterDB = MonsterDatas[CurIndex];
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(MonsterDB, false);
+	Monster->Init(&MonsterDB, false);
 	Monster->SetPos(GetPos() + CreateOffset);
 	++CurIndex;
 

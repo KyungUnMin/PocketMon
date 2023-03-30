@@ -18,7 +18,7 @@ public:
 	BattleMonsterEnemy& operator=(const BattleMonsterEnemy& _Other) = delete;
 	BattleMonsterEnemy& operator=(const BattleMonsterEnemy&& _Other) noexcept = delete;
 
-	void Init(PokeDataBase _MonsterDB, bool _IsWildMonster = false);
+	void Init(PokeDataBase* _MonsterDB, bool _IsWildMonster = false);
 
 	inline BattleEnemyMonsterFSM* GetFSM()
 	{

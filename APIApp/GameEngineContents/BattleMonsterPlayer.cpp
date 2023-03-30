@@ -33,7 +33,9 @@ void BattleMonsterPlayer::Init()
 		return;
 	}
 
-	BattleMonsterBase::Init(Monsters->NextPokemon());
+	//asdjkbd
+	PokeDataBase* DB = Monsters->NextPokemon();
+	BattleMonsterBase::Init(DB);
 
 	RenderCreate();
 	FsmPtr->Init();
