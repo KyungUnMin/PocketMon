@@ -109,6 +109,12 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("NpcTalk"))
+	{
+		float4 NextPos = GetPos() + float4{ 64,0 };
+		InsertPlayerPos(NextPos);
+	}
+		PlayerAutoMove();
 	
 	if (IsRide==true)
 	{

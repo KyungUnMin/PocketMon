@@ -164,7 +164,7 @@ void Player::MoveUpdate(float _Time)
 	 {
 		 PlayerTime = 0.0f;
 
-		 InputControlHandle = InputControll::ResetControll(InputControlHandle);
+		 //InputControlHandle = InputControll::ResetControll(InputControlHandle);
 
 		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 		 Fieldmap::FieldUpdate();
@@ -200,19 +200,18 @@ void Player::JumpEnd()
 
 }
 
-void Player::PlayerAutoRightMove(float _DeltaTime)
+void Player::InsertPlayerPos(float4 _Pos)
 {
-	PlayerAutoMoveTime += _DeltaTime;
-	StartPos = GetPos();
-	EndPos = GetPos() + float4{ 64 ,0 };
-	Dir = LookDir::Right;
-	SetPos(float4::LerpClamp(StartPos, EndPos, PlayerAutoMoveTime));
-	if (PlayerAutoMoveTime > 1.0f)
+	NextMovePos.push_back(_Pos);
+}
+
+void Player::PlayerAutoMove()
+{
+	if (NextMovePos.size() != 0)
 	{
-		PlayerAutoMoveTime = 0.0f;
-		return;
+		StartPos = GetPos();
+		EndPos= NextMovePos.front();
+
+		ChangeState(PlayerState::MOVE);
 	}
 }
-//void Player::PlayerAutoUpMove()
-//void Player::PlayerAutoLeftMove()
-//void Player::PlayerAutoDownMove()

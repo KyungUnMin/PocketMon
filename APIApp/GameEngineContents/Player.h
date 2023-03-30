@@ -6,6 +6,8 @@
 
 #include "FieldmapCity.h"
 #include "Fieldmap.h"
+#include "list"
+#include "TrainerPokemon.h"
 
 enum class PlayerState
 {
@@ -44,10 +46,9 @@ public:
 	void PlayerKeyLoad();
 	void PlayerRenderLoad();
 	void PlayerCollisionSet();
-	void PlayerAutoRightMove(float _DeltaTime);
-	void PlayerAutoUpMove();
-	void PlayerAutoLeftMove();
-	void PlayerAutoDownMove();
+
+	void PlayerAutoMove();
+	void InsertPlayerPos(float4 _Pos);
 
 	float GetPlayerMoveTile()
 	{
@@ -118,12 +119,19 @@ public:
 	{
 		return Dir;
 	}
+	TrainerPokemon* GetPlayerPokemon()
+	{
+		return PlayerPokemon;
+	}
 
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 private:
+
+	TrainerPokemon* PlayerPokemon;
 	//플레이어Render
 	GameEngineRender* Players = nullptr;
 	GameEngineRender* BikePlayers = nullptr;
@@ -195,6 +203,8 @@ private:
 
 
 	float PlayerAutoMoveTime = 0.0f;
+
+	std::list<float4> NextMovePos = std::list<float4>();
 	
 };
 
