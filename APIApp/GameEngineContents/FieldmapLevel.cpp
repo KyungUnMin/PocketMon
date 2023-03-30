@@ -44,7 +44,7 @@
 #include "MotherNPC.h"
 #include "OakNPC.h"
 #include "GreenNPC.h"
-#include "NPC1.h"
+#include "ShopNpc.h"
 
 // Player
 #include "Player.h"
@@ -442,8 +442,8 @@ void FieldmapLevel::Loading()
 		
 	UIImageLoad();
 	
-	ShopNpc = CreateActor<NPC1>();
-	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc);
+	ShopNpcs = CreateActor<ShopNpc>();
+	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpcs);
 
 	{
 		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();

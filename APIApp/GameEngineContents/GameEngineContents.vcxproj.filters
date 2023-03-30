@@ -31,7 +31,7 @@
     <ClCompile Include="PlayerTestLevel.cpp">
       <Filter>Player\PlayerTestLevel</Filter>
     </ClCompile>
-    <ClCompile Include="NPC1.cpp">
+    <ClCompile Include="ShopNpc.cpp">
       <Filter>Player\NPC</Filter>
     </ClCompile>
     <ClCompile Include="TextTestLevel.cpp">
@@ -539,7 +539,7 @@
     <ClInclude Include="PlayerTestLevel.h">
       <Filter>Player\PlayerTestLevel</Filter>
     </ClInclude>
-    <ClInclude Include="NPC1.h">
+    <ClInclude Include="ShopNpc.h">
       <Filter>Player\NPC</Filter>
     </ClInclude>
     <ClInclude Include="TextTestLevel.h">

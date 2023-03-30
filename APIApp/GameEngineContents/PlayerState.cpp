@@ -11,7 +11,7 @@
 
 #include "Player.h"
 #include "Fieldmap.h"
-#include "NPC1.h"
+#include "ShopNpc.h"
 
 
 void Player::ChangeState(PlayerState _State)
@@ -198,10 +198,7 @@ void Player::JumpEnd()
 
 }
 
-void Player::InsertPlayerPos(float4 _Pos)
-{
-	NextMovePos.push_back(_Pos);
-}
+
 
 void Player::PlayerAutoMove()
 {

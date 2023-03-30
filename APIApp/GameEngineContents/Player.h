@@ -8,6 +8,7 @@
 #include "Fieldmap.h"
 #include "list"
 #include "TrainerPokemon.h"
+#include "vector"
 
 enum class PlayerState
 {
@@ -48,7 +49,15 @@ public:
 	void PlayerCollisionSet();
 
 	void PlayerAutoMove();
-	void InsertPlayerPos(float4 _Pos);
+	void InsertPlayerPos(float4 _Pos)
+	{
+		NextMovePos.push_back(_Pos);
+	}
+	void InsertPlayerPos(int2 _index)
+	{
+		float4 M_index = Fieldmap::GetPos(_index);
+		NextMovePos.push_back(M_index);
+	}
 
 	float GetPlayerMoveTile()
 	{
@@ -130,7 +139,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
 private:
-
+	//플레이어가 지니고있는 포켓몬
 	TrainerPokemon* PlayerPokemon=nullptr;
 	//플레이어Render
 	GameEngineRender* Players = nullptr;
@@ -158,11 +167,12 @@ private:
 	void JumpStart();
 	void JumpUpdate(float _Time);
 	void JumpEnd();
-	//미완성 값들
+	
 	//////////Speed&Pos//////////
 	float MoveTile = 100.0f;
 	float4 MoveDir = float4::Zero;
 	int2 Playerindex = int2::Zero;
+	float PlayerMoveSpeed = 5.0f;
 	/////////////////////////////
 	
 
@@ -181,29 +191,24 @@ private:
 	bool PlayerMoveBool = true;
 
 	bool Istrue = true;
-
 	bool IsPlayerDirUP = true;
 	bool IsPlayerDirDOWN = true;
 	bool IsPlayerDirLEFT = true;
 	bool IsPlayerDirRIGHT = true;
 
-	////////////////////////
+	
 	//이동시간
 	float PlayerJumpTime = 0.0f;
 	float PlayerTime = 0.0f;
-	//Bike값
+	//Bike제어값
 	bool IsRide = false;
 	//Gold
 	int Gold = 0;
 
+	////////방향 및 index
 	LookDir Dir;
-
 	int2 NextJumpIndex = int2::Zero;
-	float PlayerMoveSpeed = 5.0f;
-
-
-	float PlayerAutoMoveTime = 0.0f;
-
+	//AutoMove Pos값을 저장하는 list
 	std::list<float4> NextMovePos = std::list<float4>();
 	
 };

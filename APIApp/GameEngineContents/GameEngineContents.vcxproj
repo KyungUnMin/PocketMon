@@ -524,7 +524,7 @@
     <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="int2.cpp" />
-    <ClCompile Include="NPC1.cpp" />
+    <ClCompile Include="ShopNpc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerLoad.cpp" />
     <ClCompile Include="PlayerState.cpp" />
@@ -956,7 +956,7 @@
     <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="int2.h" />
-    <ClInclude Include="NPC1.h" />
+    <ClInclude Include="ShopNpc.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerTestLevel.h" />
     <ClInclude Include="PocketMonCore.h" />

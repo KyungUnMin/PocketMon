@@ -10,17 +10,17 @@
 
 
 
-class NPC1 : public BaseNPC
+class ShopNpc : public BaseNPC
 {
 public:
-	NPC1();
-	~NPC1();
+	ShopNpc();
+	~ShopNpc();
 
 	// delete Function
-	NPC1(const NPC1& _Other) = delete;
-	NPC1(NPC1&& _Other) noexcept = delete;
-	NPC1& operator=(const NPC1& _Other) = delete;
-	NPC1& operator=(NPC1&& _Other) noexcept = delete;
+	ShopNpc(const ShopNpc& _Other) = delete;
+	ShopNpc(ShopNpc&& _Other) noexcept = delete;
+	ShopNpc& operator=(const ShopNpc& _Other) = delete;
+	ShopNpc& operator=(ShopNpc&& _Other) noexcept = delete;
 
 
 	void ImageLoad();

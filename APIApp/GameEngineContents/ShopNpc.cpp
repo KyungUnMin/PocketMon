@@ -7,22 +7,22 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEngineCore/GameEngineCore.h>
 
-#include "NPC1.h"
+#include "ShopNpc.h"
 #include "ContentsEnum.h"
 #include "Player.h"
 #include "FieldDialog.h"
 #include "ShopUIManager.h"
 
 
-NPC1::NPC1()
+ShopNpc::ShopNpc()
 {
 }
 
-NPC1::~NPC1()
+ShopNpc::~ShopNpc()
 {
 }
 
-void NPC1::ImageLoad()
+void ShopNpc::ImageLoad()
 {
 	GameEngineDirectory Dir;
 	Dir.MoveParentToDirectory("ContentsResources");
@@ -38,7 +38,7 @@ void NPC1::ImageLoad()
 
 }
 
-void NPC1::Start()
+void ShopNpc::Start()
 {
 	if (NPC1ImageLoad = true)
 	{
@@ -66,7 +66,7 @@ void NPC1::Start()
 
 
 
-void NPC1::Update(float _DeltaTime)
+void ShopNpc::Update(float _DeltaTime)
 {
 
 	
@@ -84,7 +84,7 @@ void NPC1::Update(float _DeltaTime)
 }
 
 
-void NPC1::Render(float _DeltaTime)
+void ShopNpc::Render(float _DeltaTime)
 {
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{

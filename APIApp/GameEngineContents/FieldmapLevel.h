@@ -6,7 +6,7 @@
 #include "DoorActorBase.h"
 #include "Fieldmap.h"
 
-class NPC1;
+class ShopNpc;
 class Player;
 class FieldDialog;
 class FieldmapRender;
@@ -43,7 +43,7 @@ private:
 	std::map<std::string, DoorActorBase*> AllDoors;
 
 	Player* MainPlayer = nullptr;
-	NPC1* ShopNpc = nullptr;
+	ShopNpc* ShopNpcs = nullptr;
 
 	FieldDialog* MainFieldDialog = nullptr;
 	FieldmapRender* MainFieldRender = nullptr;

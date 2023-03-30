@@ -11,7 +11,7 @@
 
 #include "Player.h"
 #include "PlayerTestLevel.h"
-#include "NPC1.h"
+#include "ShopNpc.h"
 
 
 
