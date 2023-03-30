@@ -131,7 +131,7 @@ protected:
 	void Render(float _DeltaTime) override;
 private:
 
-	TrainerPokemon* PlayerPokemon;
+	TrainerPokemon* PlayerPokemon=nullptr;
 	//플레이어Render
 	GameEngineRender* Players = nullptr;
 	GameEngineRender* BikePlayers = nullptr;

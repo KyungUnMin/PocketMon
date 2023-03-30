@@ -99,7 +99,7 @@ bool Player::VaildJumpRight()
 void Player::Start()
 {
 	MainPlayer = this; 
-
+	PlayerPokemon = new TrainerPokemon();
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();

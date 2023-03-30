@@ -209,7 +209,9 @@ void Player::PlayerAutoMove()
 {
 	if (NextMovePos.size() != 0)
 	{
+		std::list<float4>::iterator It;
 		StartPos = GetPos();
+		if(it= NextMovePos.Start)
 		EndPos= NextMovePos.front();
 
 		ChangeState(PlayerState::MOVE);
