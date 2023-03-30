@@ -456,9 +456,6 @@
     <ClCompile Include="PokemonHPBar.cpp">
       <Filter>Pokemon\UI</Filter>
     </ClCompile>
-    <ClCompile Include="Pokemon.cpp">
-      <Filter>Pokemon</Filter>
-    </ClCompile>
     <ClCompile Include="BattleDefine.cpp">
       <Filter>Battle\04.Defines</Filter>
     </ClCompile>
@@ -503,6 +500,9 @@
     </ClCompile>
     <ClCompile Include="SkillActor_Growl.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainerPokemon.cpp">
+      <Filter>Pokemon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -945,9 +945,6 @@
     <ClInclude Include="PokemonHPBar.h">
       <Filter>Pokemon\UI</Filter>
     </ClInclude>
-    <ClInclude Include="Pokemon.h">
-      <Filter>Pokemon</Filter>
-    </ClInclude>
     <ClInclude Include="BattleDefine.h">
       <Filter>Battle\04.Defines</Filter>
     </ClInclude>
@@ -995,6 +992,9 @@
     </ClInclude>
     <ClInclude Include="SkillActor_Growl.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainerPokemon.h">
+      <Filter>Pokemon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
