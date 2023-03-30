@@ -209,11 +209,12 @@ void Player::PlayerAutoMove()
 {
 	if (NextMovePos.size() != 0)
 	{
-		InputControlHandle = InputControll::UseControll();
+		
 		std::list<float4>::iterator It;
 		StartPos = GetPos();
 		for (It = NextMovePos.begin(); It != NextMovePos.end() ; ++It)
 		{
+			InputControlHandle = InputControll::UseControll();
 			EndPos =*It;
 			ChangeState(PlayerState::MOVE);
 		}
