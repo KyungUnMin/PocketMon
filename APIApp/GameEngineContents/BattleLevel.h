@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "ContentsEnum.h"
 
@@ -76,6 +77,10 @@ private:
 	GameEngineRender* FadeUpRender = nullptr;
 
 	BattleFSM* BattleFsmPtr = nullptr;
+	BattleNpcType BattleType = BattleNpcType::None;
+
+
+	GameEngineSoundPlayer BgmCtrl;
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
@@ -91,6 +96,7 @@ private:
 
 
 
+	void CreateBGM(BattleNpcType _BattleType);
 
 
 	

@@ -62,9 +62,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr == ChangedCenterLevel)
 		return;
 
-	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -78,6 +78,9 @@ void BattleLevel::Init_Level(
 	const std::vector<PokeDataBase>& _EnemyMonsters, 
 	BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
+	BattleType = _NpcType;
+	CreateBGM(BattleType);
+
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitActors(_FieldType, _NpcType, _EnemyMonsters);
 
@@ -97,6 +100,26 @@ void BattleLevel::InitActors(
 	BattleEnemy* Enemy = CreateActor<BattleEnemy>(UpdateOrder::Battle_Actors);
 	Enemy->Init(_FieldType, _NpcType, _EnemyMonsters);
 }
+
+
+void BattleLevel::CreateBGM(BattleNpcType _BattleType)
+{
+	switch (_BattleType)
+	{
+	case BattleNpcType::None:
+		BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl("Battle_Wild.mp3");
+		break;
+	/*case BattleNpcType::Rival:
+		break;
+	case BattleNpcType::Woong:
+		break;*/
+	default:
+		MsgAssert("아직 해당 전투일때 사운드를 정해주지 않았습니다");
+		break;
+	}
+
+}
+
 
 
 
@@ -154,6 +177,7 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	}
 
 	Actors.clear();
+	BgmCtrl.Stop();
 }
 
 

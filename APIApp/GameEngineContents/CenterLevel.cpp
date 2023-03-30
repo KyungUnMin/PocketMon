@@ -126,6 +126,10 @@ void CenterLevel::Loading()
 
 		Dir.Move("Skill");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
+		//TODO
+
+		Dir.MoveParentToDirectory("Skill");
+
 
 
 
@@ -396,6 +400,16 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title(recorder).mp3"));             // 오프닝(리코더)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Title.mp3"));						  // 오프닝
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Growl.mp3"));						  // 울음소리
+	}
+
+	{
+		//배틀 사운드
+		Dir.MoveParentToDirectory("Battle");
+		Dir.Move("Battle");
+		Dir.Move("BGM");
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Wild.mp3"));
+
+		Dir.MoveParentToDirectory("Battle");
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
