@@ -2,7 +2,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineCollision.h>
 #include <GameEngineCore/GameEngineResources.h>
-
+#include <GameEngineCore/GameEngineRender.h>
 
 #include "FieldmapCity.h"
 #include "Fieldmap.h"
