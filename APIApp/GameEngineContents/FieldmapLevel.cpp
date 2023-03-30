@@ -420,7 +420,21 @@ void FieldmapLevel::Loading()
 	EndingPlayActor* EndActor = CreateActor<EndingPlayActor>();
 	EndActor->Off();
 
+	
+	/////// 스폰 마을
+	///////
+	///////
+	///////
+	///////
+	///////
 	Fieldmap::ChangeCity("PewterCity_Gym");
+	///////
+	///////
+	///////
+	///////
+	///////
+	///////
+	///////
 
 	// Debug용 랜더
 	MainFieldRender = CreateActor<FieldmapRender>();

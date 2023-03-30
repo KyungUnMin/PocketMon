@@ -14,7 +14,6 @@ BaseNPC::BaseNPC() :
 	InteractionDir(LookDir::Right),
 	Type(BattleNpcType::None)
 {
-	PokemonDatas.reserve(6);
 }
 
 BaseNPC::~BaseNPC()

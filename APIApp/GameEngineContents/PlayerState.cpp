@@ -164,7 +164,7 @@ void Player::MoveUpdate(float _Time)
 	 {
 		 PlayerTime = 0.0f;
 
-		 //InputControlHandle = InputControll::ResetControll(InputControlHandle);
+		 InputControlHandle = InputControll::ResetControll(InputControlHandle);
 
 		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 		 Fieldmap::FieldUpdate();

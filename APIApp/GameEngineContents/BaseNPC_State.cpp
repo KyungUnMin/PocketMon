@@ -129,10 +129,10 @@ void BaseNPC::InteractionEnd()
 		Func();
 	}
 
-	if (PokemonDatas.size() != 0)
+	if (PokemonDatas.GetPokemonCount() != 0)
 	{
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
-		BattleLevel::BattleLevelPtr->Init(PokemonDatas, GroundType::Grass, Type);
+		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
 
 		BattleFadeCtrl* Fade = GetLevel()->CreateActor<BattleFadeCtrl>();
 		Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(
@@ -151,15 +151,26 @@ void BaseNPC::InteractionEnd()
 	}
 }
 
-void BaseNPC::AddPokeData(PokeDataBase _Data)
+void BaseNPC::AddPokeData(int _Index, int _Level)
 {
-	if (6 == PokemonDatas.size())
+	if (6 == PokemonDatas.GetPokemonCount())
 	{
 		MsgAssert("Npc는 6개를 초과해 포켓몬을 소지할 수 없습니다.");
 		return;
 	}
 
-	PokemonDatas.push_back(_Data);
+	PokemonDatas.AddPokemon(_Index, _Level);
+}
+
+void BaseNPC::AddPokeData(PokeDataBase _Data)
+{
+	if (6 == PokemonDatas.GetPokemonCount())
+	{
+		MsgAssert("Npc는 6개를 초과해 포켓몬을 소지할 수 없습니다.");
+		return;
+	}
+
+	PokemonDatas.AddPokemon(_Data);
 }
 
 void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )

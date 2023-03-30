@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 #include "PokeDataBase.h"
+#include "TrainerPokemon.h"
 
 enum class LookDir;
 enum class BattleNpcType;
@@ -72,6 +73,7 @@ public:
 		InteractionDir = _CheckDir;
 	}
 
+	void AddPokeData(int _Index, int _Level);
 	void AddPokeData(PokeDataBase _Data);
 
 
@@ -152,5 +154,5 @@ private:
 	std::list<std::string> ScriptDatas;
 
 	// 포켓몬 데이터
-	std::vector<PokeDataBase> PokemonDatas;
+	TrainerPokemon PokemonDatas;
 };

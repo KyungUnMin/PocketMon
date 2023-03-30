@@ -26,6 +26,11 @@ public:
 	// 다음 포켓몬이 있다면 true를 반환합니다.
 	bool HasNextPokemon();
 
+	inline size_t GetPokemonCount() const
+	{
+		return Pokemons.size();
+	}
+
 	// delete Function
 	TrainerPokemon(const TrainerPokemon& _Other) = delete;
 	TrainerPokemon(TrainerPokemon&& _Other) noexcept = delete;
