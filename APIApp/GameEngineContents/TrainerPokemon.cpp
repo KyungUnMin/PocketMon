@@ -34,7 +34,13 @@ PokeDataBase TrainerPokemon::NextPokemon()
 	{
 		if (false == Pokemons[i].IsMonsterStern())
 		{
-			return Pokemons[i];
+			if (i != 0)
+			{
+				PokeDataBase _Pokemon = Pokemons[i];
+				Pokemons[i] = Pokemons[0];
+				Pokemons[0] = _Pokemon;
+			}
+			return Pokemons[0];
 		}
 	}
 	return Pokemons[0];
