@@ -434,6 +434,7 @@
     </ClCompile>
     <ClCompile Include="FieldmapSingleDoor.cpp" />
     <ClCompile Include="FieldmapWoodDoor.cpp" />
+    <ClCompile Include="GreenNPC.cpp" />
     <ClCompile Include="InputControll.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="ItemDataBase.cpp">
@@ -467,10 +468,13 @@
     <ClCompile Include="Logo_Pokemon.cpp" />
     <ClCompile Include="Logo_Pokemon_White.cpp" />
     <ClCompile Include="Logo_PressStart.cpp" />
+    <ClCompile Include="MarketNPC.cpp" />
+    <ClCompile Include="MotherNPC.cpp" />
     <ClCompile Include="MoveMapFadeEffect.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="OakNPC.cpp" />
     <ClCompile Include="OpeningLevel.cpp">
       <SubType>
       </SubType>
@@ -523,6 +527,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="PokemonCenterNPC.cpp" />
     <ClCompile Include="PokemonHPBar.cpp" />
     <ClCompile Include="PokemonLevel.cpp">
       <SubType>
@@ -843,6 +848,7 @@
     </ClInclude>
     <ClInclude Include="FieldmapSingleDoor.h" />
     <ClInclude Include="FieldmapWoodDoor.h" />
+    <ClInclude Include="GreenNPC.h" />
     <ClInclude Include="InputControll.h" />
     <ClInclude Include="Item.h">
       <SubType>
@@ -879,10 +885,13 @@
     <ClInclude Include="Logo_Pokemon.h" />
     <ClInclude Include="Logo_Pokemon_White.h" />
     <ClInclude Include="Logo_PressStart.h" />
+    <ClInclude Include="MarketNPC.h" />
+    <ClInclude Include="MotherNPC.h" />
     <ClInclude Include="MoveMapFadeEffect.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="OakNPC.h" />
     <ClInclude Include="OpeningLevel.h">
       <SubType>
       </SubType>
@@ -934,6 +943,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="PokemonCenterNPC.h" />
     <ClInclude Include="PokemonHPBar.h" />
     <ClInclude Include="PokemonLevel.h">
       <SubType>

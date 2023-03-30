@@ -107,9 +107,6 @@
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp" />
-    <ClCompile Include="BackgroundUI.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="BattleMonsterBase.cpp">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClCompile>
@@ -121,9 +118,6 @@
     </ClCompile>
     <ClCompile Include="FieldmapBattleZone.cpp">
       <Filter>Map\Actor\BattleZone</Filter>
-    </ClCompile>
-    <ClCompile Include="FieldmapFlower.cpp">
-      <Filter>Map\Actor</Filter>
     </ClCompile>
     <ClCompile Include="BuyLevel.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -324,9 +318,6 @@
     <ClCompile Include="InputControll.cpp">
       <Filter>Base</Filter>
     </ClCompile>
-    <ClCompile Include="FieldmapCutableTree.cpp">
-      <Filter>Map\Actor</Filter>
-    </ClCompile>
     <ClCompile Include="LevelUpStatUI_2.cpp">
       <Filter>BattleUI\Actor</Filter>
     </ClCompile>
@@ -375,7 +366,6 @@
     <ClCompile Include="BattleState_StageLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClCompile>
-    <ClCompile Include="CityNameUI.cpp" />
     <ClCompile Include="BattleState_BattleLose.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
     </ClCompile>
@@ -427,14 +417,12 @@
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClCompile>
     <ClCompile Include="SelectStartingUI.cpp" />
-    <ClCompile Include="StaticNPC.cpp" />
     <ClCompile Include="BattleEnemy_CreateMonster.cpp">
       <Filter>Battle\03.FSM\04.Enemy\02.State\02.CreateMonster</Filter>
     </ClCompile>
     <ClCompile Include="BattleEnemyMonster_CreatedInBall.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\04.CreatedInBall</Filter>
     </ClCompile>
-    <ClCompile Include="TurnNPC.cpp" />
     <ClCompile Include="Logo_Fireredversion_White.cpp">
       <Filter>Opening\Actor</Filter>
     </ClCompile>
@@ -474,11 +462,43 @@
     <ClCompile Include="BattleDefine.cpp">
       <Filter>Battle\04.Defines</Filter>
     </ClCompile>
+    <ClCompile Include="BackgroundUI.cpp">
+      <Filter>Map\Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapCutableTree.cpp">
+      <Filter>Map\Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="FieldmapFlower.cpp">
+      <Filter>Map\Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="CityNameUI.cpp">
+      <Filter>Map\Actor\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="StaticNPC.cpp">
+      <Filter>Player\NPC\NormalNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="TurnNPC.cpp">
+      <Filter>Player\NPC\NormalNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="OakNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="MotherNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="GreenNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonCenterNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
+    <ClCompile Include="MarketNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
     <ClInclude Include="CenterLevel.h" />
-    <ClInclude Include="ContentsEnum.h" />
     <ClInclude Include="PocketMonCore.h" />
     <ClInclude Include="int2.h">
       <Filter>Base</Filter>
@@ -577,9 +597,6 @@
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBase.h" />
-    <ClInclude Include="BackgroundUI.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="BattleMonsterBase.h">
       <Filter>Battle\02.Actor\03.Monster\01.MonsterBase\01.Base</Filter>
     </ClInclude>
@@ -591,9 +608,6 @@
     </ClInclude>
     <ClInclude Include="FieldmapBattleZone.h">
       <Filter>Map\Actor\BattleZone</Filter>
-    </ClInclude>
-    <ClInclude Include="FieldmapFlower.h">
-      <Filter>Map\Actor</Filter>
     </ClInclude>
     <ClInclude Include="BuyLevel.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -787,9 +801,6 @@
     <ClInclude Include="InputControll.h">
       <Filter>Base</Filter>
     </ClInclude>
-    <ClInclude Include="FieldmapCutableTree.h">
-      <Filter>Map\Actor</Filter>
-    </ClInclude>
     <ClInclude Include="LevelUpStatUI_2.h">
       <Filter>BattleUI\Actor</Filter>
     </ClInclude>
@@ -838,7 +849,6 @@
     <ClInclude Include="BattleState_StageLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\09.StageLose</Filter>
     </ClInclude>
-    <ClInclude Include="CityNameUI.h" />
     <ClInclude Include="BattleState_BattleLose.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\11.BattleLose</Filter>
     </ClInclude>
@@ -887,14 +897,12 @@
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClInclude>
     <ClInclude Include="SelectStartingUI.h" />
-    <ClInclude Include="StaticNPC.h" />
     <ClInclude Include="BattleEnemy_CreateMonster.h">
       <Filter>Battle\03.FSM\04.Enemy\02.State\02.CreateMonster</Filter>
     </ClInclude>
     <ClInclude Include="BattleEnemyMonster_CreatedInBall.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\04.CreatedInBall</Filter>
     </ClInclude>
-    <ClInclude Include="TurnNPC.h" />
     <ClInclude Include="Logo_Fireredversion_White.h">
       <Filter>Opening\Actor</Filter>
     </ClInclude>
@@ -933,6 +941,42 @@
     </ClInclude>
     <ClInclude Include="BattleDefine.h">
       <Filter>Battle\04.Defines</Filter>
+    </ClInclude>
+    <ClInclude Include="BackgroundUI.h">
+      <Filter>Map\Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapCutableTree.h">
+      <Filter>Map\Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="FieldmapFlower.h">
+      <Filter>Map\Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="CityNameUI.h">
+      <Filter>Map\Actor\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticNPC.h">
+      <Filter>Player\NPC\NormalNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="TurnNPC.h">
+      <Filter>Player\NPC\NormalNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="ContentsEnum.h">
+      <Filter>Base</Filter>
+    </ClInclude>
+    <ClInclude Include="OakNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="MotherNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="GreenNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonCenterNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="MarketNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1283,6 +1327,18 @@
     </Filter>
     <Filter Include="Battle\04.Defines">
       <UniqueIdentifier>{3dc71b0f-da43-49fa-9219-da62ffba3d43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\UI">
+      <UniqueIdentifier>{4722eb62-7142-493c-9c60-f9c24f77b736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Map\Actor\Object">
+      <UniqueIdentifier>{2e672631-a8a3-4c57-9d45-bf1d5e885496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\EventNPC">
+      <UniqueIdentifier>{39278d84-0ccb-4159-88e9-b040fd47e3a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player\NPC\NormalNPC">
+      <UniqueIdentifier>{7329baba-bce3-414b-9526-e6086d587231}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
