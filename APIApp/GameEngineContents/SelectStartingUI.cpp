@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "FieldDialog.h"
 #include "InputControll.h"
+#include "Player.h"
 
 SelectStartingUI* SelectStartingUI::MainSelectStartingUI = nullptr;
 
@@ -107,7 +108,7 @@ void SelectStartingUI::Update(float _DeltaTime)
 				switch (State)
 				{
 				case MenuState::Yes:
-					//GivePoke(Select);
+					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(static_cast<int>(Select), 4);
 					AcFieldDialog->ConversationStart(&SelectScript);
 					State = MenuState::Null;
 					StateToRender();

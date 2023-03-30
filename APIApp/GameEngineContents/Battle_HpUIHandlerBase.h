@@ -17,6 +17,8 @@ public:
 
 	virtual void OnDamage(int _Value) = 0;
 
+	void ExpCheck();
+
 protected:
 	inline void SetOwner(BattleMonsterBase* _Owner)
 	{

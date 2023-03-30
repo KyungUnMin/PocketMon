@@ -102,7 +102,7 @@ void Player::Start()
 	MainPlayer = this; 
 	//
 	PlayerPokemon = new TrainerPokemon();
-	PlayerPokemon->AddPokemon(1, 1);
+	PlayerPokemon->AddPokemon(1, 10);
 	PlayerPokemon->AddPokemon(4, 1);
 	PlayerPokemon->AddPokemon(7, 1);
 

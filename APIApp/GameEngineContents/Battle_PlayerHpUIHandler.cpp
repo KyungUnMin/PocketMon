@@ -27,8 +27,7 @@ void Battle_PlayerHpUIHandler::Start()
 	SetOwner(Monster);
 	
 	UI = GetLevel()->CreateActor<FriendlyHPBackground>(UpdateOrder::Battle_Actors);
-	/*UI->GetMonsterDamage(10);
-	UI->IsBattleStartCheck(true);*/
+	
 	SetUI(UI);
 
 	SetMovePoints(StartOffset, DestOffset);

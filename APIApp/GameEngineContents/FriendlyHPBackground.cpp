@@ -136,7 +136,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (TickNumber_1 == 0) 
 				{
-					ExpUpdate(ExpPoint, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
+					ExpUpdate(20, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
