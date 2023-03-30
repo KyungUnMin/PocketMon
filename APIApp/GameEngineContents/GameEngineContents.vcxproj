@@ -266,6 +266,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerGrowl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerTackle.cpp">
       <SubType>
       </SubType>
@@ -552,6 +556,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_Growl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="StaticNPC.cpp">
       <SubType>
       </SubType>
@@ -679,6 +687,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerGrowl.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -966,6 +978,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ShopUIManager.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Growl.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -498,6 +498,12 @@
     <ClCompile Include="PokemonCenterUI.cpp">
       <Filter>FieldUI\HSM</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerGrowl.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Growl.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -984,6 +990,12 @@
     <ClInclude Include="PokemonCenterUI.h">
       <Filter>FieldUI\HSM</Filter>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerGrowl.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Growl.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1345,6 +1357,9 @@
     </Filter>
     <Filter Include="Player\NPC\NormalNPC">
       <UniqueIdentifier>{7329baba-bce3-414b-9526-e6086d587231}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\05.Effect\04.SkillActor">
+      <UniqueIdentifier>{9b066b1d-cdf0-40de-8aa4-5bf985513c81}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

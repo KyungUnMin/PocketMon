@@ -4,12 +4,13 @@
 enum class BattlePlayerMonster_StateType
 {
 	Test,
-	
+
 	Create,
 	Idle,
 	Dead,
 
 	Skill_Tackle,
+	Skill_Growl,
 
 	COUNT
 };

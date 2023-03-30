@@ -108,7 +108,7 @@ public:
 	//PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
 	static PokeDataBase PokeCreate(int _PokeDexNumber, int _Level = 1);
-	static void PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon);
+	static int PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon);
 
 	// 아이템 소지중?
 	bool IsPokemonItemPossession()

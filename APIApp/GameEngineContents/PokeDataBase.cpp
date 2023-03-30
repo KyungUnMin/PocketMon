@@ -413,7 +413,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 //////////////////////////////////////////////////////////////// 푸키먼 전투 후 경험치 획득
 
 // 몬스터를 처치하면 경험치 획득
-void PokeDataBase::PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon)
+int PokeDataBase::PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon)
 {
 	int Basicvalue = 50;
 	int Knockpokelevel = _knockeddownpokemon.GetMonsterLevel_int();
@@ -428,6 +428,9 @@ void PokeDataBase::PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase&
 		int Residue = Newexperience - 100;
 		_Ownerpokemon.Experience = Residue;
 	}
+
+	// 얻은 경험치
+	return Acquisitionvalue;
 }
 
 // 일정 경험치 이상을 획득할 경우 레벨이 증가

@@ -127,6 +127,9 @@ void CenterLevel::Loading()
 
 		Dir.Move("Skill");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl1.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"));
 		//TODO
 
 		Dir.MoveParentToDirectory("Skill");
