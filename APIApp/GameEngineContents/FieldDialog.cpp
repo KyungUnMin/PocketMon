@@ -167,7 +167,7 @@ void FieldDialog::Update(float _DeltaTime)
 		}
 	}
 
-	if (IsValid = false)
+	if (IsValid == false)
 	{
 		return;
 	}

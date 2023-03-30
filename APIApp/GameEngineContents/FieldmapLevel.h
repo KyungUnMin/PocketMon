@@ -14,6 +14,7 @@ class FieldMainMenu;
 class MoveMapFadeEffect;
 class ShopUIManager;
 class SelectStartingUI;
+class PokemonCenterUI;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
@@ -50,6 +51,7 @@ private:
 	MoveMapFadeEffect* MainMoveMapFadeEffect = nullptr;
 	ShopUIManager* MainShopUIManager = nullptr;
 	SelectStartingUI* MainSelectStartingUI = nullptr;
+	PokemonCenterUI* MainPokemonCenterUI = nullptr;
 
 	bool IsCameraDebug = false;
 

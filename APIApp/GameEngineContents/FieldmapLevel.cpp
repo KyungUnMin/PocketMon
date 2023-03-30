@@ -26,6 +26,7 @@
 #include "ShopUIManager.h"
 #include "CityNameUI.h"
 #include "SelectStartingUI.h"
+#include "PokemonCenterUI.h"
 
 //Game Actor
 #include "BaseNPC.h"
@@ -485,6 +486,7 @@ void FieldmapLevel::Loading()
 	MainMoveMapFadeEffect = CreateActor<MoveMapFadeEffect>();
 	MainShopUIManager = CreateActor<ShopUIManager>(); 
 	MainSelectStartingUI = CreateActor<SelectStartingUI >();
+	MainPokemonCenterUI = CreateActor<PokemonCenterUI>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
@@ -573,7 +575,8 @@ void FieldmapLevel::Update(float _DeltaTime)
 	
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
-		MainSelectStartingUI->TestSelectMonster();
+		MainPokemonCenterUI->CenterStart();
+		//MainSelectStartingUI->TestSelectMonster();
 		//MainShopUIManager->OnOffSwtich();
 		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
 		//MainFieldDialog->OnOffSwtich();
@@ -621,6 +624,9 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Bulbasaur.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Charmander.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Select_Squirtle.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterBallAnimation.bmp"))->Cut(6,1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterBallAnimation2.bmp"))->Cut(4,1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterTVAnimation.bmp"))->Cut(4,2);
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
