@@ -300,6 +300,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_ChangeMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_EnemyTurn.cpp" />
     <ClCompile Include="BattleState_EnemyHPCheck.cpp">
       <SubType>
@@ -314,6 +318,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleState_MonsterDead.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_PlayerDeadChange.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -729,6 +737,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleState_ChangeMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
     <ClInclude Include="BattleState_EnemyHPCheck.h">
       <SubType>
@@ -743,6 +755,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_MonsterDead.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_PlayerDeadChange.h">
       <SubType>
       </SubType>
     </ClInclude>

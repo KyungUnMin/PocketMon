@@ -7,6 +7,7 @@
 #include "BattleFSM.h"
 #include "BattleLevel.h"
 #include "Battle_PlayerHpUIHandler.h"
+#include "Player.h"
 
 
 BattleMonsterPlayer::BattleMonsterPlayer()
@@ -23,9 +24,16 @@ BattleMonsterPlayer::~BattleMonsterPlayer()
 	}
 }
 
-void BattleMonsterPlayer::Init(PokeNumber _MonsterType)
+void BattleMonsterPlayer::Init()
 {
-	BattleMonsterBase::Init(_MonsterType, 10);
+	TrainerPokemon* Monsters = Player::MainPlayer->GetPlayerPokemon();
+	if (false == Monsters->HasNextPokemon())
+	{
+		MsgAssert("전투에 참여할 플레이어 몬스터가 존재하지 않습니다");
+		return;
+	}
+
+	BattleMonsterBase::Init(Monsters->NextPokemon());
 
 	RenderCreate();
 	FsmPtr->Init();

@@ -4,9 +4,9 @@
 #include "BattleFSM.h"
 #include "BackTextActor.h"
 
+
 BattleState_ItemUse::BattleState_ItemUse()
 {
-
 }
 
 BattleState_ItemUse::~BattleState_ItemUse()

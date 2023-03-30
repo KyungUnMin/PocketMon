@@ -15,7 +15,7 @@ public:
 	BattleMonsterPlayer& operator=(const BattleMonsterPlayer& _Other) = delete;
 	BattleMonsterPlayer& operator=(const BattleMonsterPlayer&& _Other) noexcept = delete;
 
-	void Init(PokeNumber _MonsterType);
+	void Init();
 
 	inline GameEngineRender* GetRender() override
 	{

@@ -510,6 +510,12 @@
     <ClCompile Include="BattleSkill_EnemyScratch.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_ChangeMonster.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\13.ChangeMonster</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_PlayerDeadChange.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.PlayerDeadChange</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1008,6 +1014,12 @@
     <ClInclude Include="BattleSkill_EnemyScratch.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
+    <ClInclude Include="BattleState_ChangeMonster.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\13.ChangeMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_PlayerDeadChange.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.PlayerDeadChange</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1378,6 +1390,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch">
       <UniqueIdentifier>{e6d2a2b0-6e74-4fa5-bd87-d9526111f612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\13.ChangeMonster">
+      <UniqueIdentifier>{6681bba1-f2dc-46d0-86e5-6b75032ff747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\05.PlayerDeadChange">
+      <UniqueIdentifier>{0684e850-8e56-4f6c-b95a-f580134d244e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

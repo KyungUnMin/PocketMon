@@ -23,10 +23,10 @@ BattleMonsterEnemy::~BattleMonsterEnemy()
 	}
 }
 
-void BattleMonsterEnemy::Init(PokeNumber _MonsterType, bool _IsWildMonster)
+void BattleMonsterEnemy::Init(PokeDataBase _MonsterDB, bool _IsWildMonster)
 {
 	IsWildMonster = _IsWildMonster;
-	BattleMonsterBase::Init(_MonsterType);
+	BattleMonsterBase::Init(_MonsterDB);
 
 	RenderCreate();
 	FsmPtr->Init(_IsWildMonster);

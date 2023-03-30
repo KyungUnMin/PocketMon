@@ -21,6 +21,7 @@ enum class BattleStateType
 	BattleLose,
 
 	UseItem,
+	PlayerChangeByDead,
 
 	COUNT,
 };

@@ -105,9 +105,9 @@ void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
 		return;
 	}
 	
-	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
+	PokeDataBase& MonsterDB = MonsterDatas[CurIndex];
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNum, true);
+	Monster->Init(MonsterDB, true);
 	++CurIndex;
 }
 
@@ -126,9 +126,9 @@ void BattleEnemy::CreateMonster()
 		Monster->Death();
 	}
 
-	PokeNumber PokeNum = MonsterDatas[CurIndex].GetPokeNumber_enum();
+	PokeDataBase& MonsterDB = MonsterDatas[CurIndex];
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNum, false);
+	Monster->Init(MonsterDB, false);
 	Monster->SetPos(GetPos() + CreateOffset);
 	++CurIndex;
 

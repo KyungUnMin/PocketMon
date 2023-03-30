@@ -52,6 +52,8 @@ public:
 	void ThrowBallToCreate();
 	void ThrowBallToCatch(bool _IsMasterBall);
 	void CreateMontser();
+
+	void ChangeNextMonster();
 	
 protected:
 

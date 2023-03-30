@@ -41,7 +41,7 @@ public:
 	virtual void DamageOnIU(int _Value) = 0;
 
 protected:
-	void Init(PokeNumber _MonsterType, int _Level = 1);
+	void Init(PokeDataBase _MonsterDB);
 
 private:
 	bool IsInit = false;

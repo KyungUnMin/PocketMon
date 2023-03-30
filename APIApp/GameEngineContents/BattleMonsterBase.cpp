@@ -5,7 +5,6 @@
 #include "ContentsEnum.h"
 #include "PokeSkillBase.h"
 
-
 BattleMonsterBase::BattleMonsterBase()
 {
 	
@@ -16,11 +15,11 @@ BattleMonsterBase::~BattleMonsterBase()
 
 }
 
-void BattleMonsterBase::Init(PokeNumber _MonsterType, int _Level)
+void BattleMonsterBase::Init(PokeDataBase _MonsterDB)
 {
 	IsInit = true;
-	SetName(NameEnumToString[static_cast<size_t>(_MonsterType)]);
-	DbPtr = PokeDataBase::PokeCreate(static_cast<int>(_MonsterType) + 1, _Level);
+	SetName(NameEnumToString[static_cast<size_t>(_MonsterDB.GetPokeNumber_int())]);
+	DbPtr = _MonsterDB;
 }
 
 

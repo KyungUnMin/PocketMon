@@ -37,6 +37,6 @@ void Battle_EnemyHpUIHandler::Start()
 
 void Battle_EnemyHpUIHandler::OnDamage(int _Value)
 {
-	UI->GetPlayerDamage(_Value);
+	UI->GetPlayerDamage(static_cast<float>(_Value));
 	UI->IsBattleStartCheck(true);
 }

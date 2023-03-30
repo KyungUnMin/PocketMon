@@ -9,6 +9,7 @@
 #include "Battle_PlayerBallParticle.h"
 #include "BattlePlayerFSM.h"
 #include "BattleMonsterBall.h"
+#include "Player.h"
 
 BattlePlayer* BattlePlayer::PlayerPtr = nullptr;
 
@@ -138,7 +139,21 @@ void BattlePlayer::ThrowBallToCatch(bool _IsMasterBall)
 void BattlePlayer::CreateMontser()
 {
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
-	Monster->Init(PokeNumber::Bulbasaur);
+
+	Monster->Init();
+	Battle_PlayerBallParticle* Particle = GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors);
+	Particle->SetPos(GetPos());
+}
+
+void BattlePlayer::ChangeNextMonster()
+{
+	Monster->Death();
+	
+
+
+
+	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
+	Monster->Init();
 	Battle_PlayerBallParticle* Particle = GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors);
 	Particle->SetPos(GetPos());
 }
