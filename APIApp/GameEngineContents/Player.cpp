@@ -109,6 +109,7 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
+	
 	if (IsRide==true)
 	{
 		Players->Off();

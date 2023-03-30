@@ -44,6 +44,10 @@ public:
 	void PlayerKeyLoad();
 	void PlayerRenderLoad();
 	void PlayerCollisionSet();
+	void PlayerAutoRightMove(float _DeltaTime);
+	void PlayerAutoUpMove();
+	void PlayerAutoLeftMove();
+	void PlayerAutoDownMove();
 
 	float GetPlayerMoveTile()
 	{
@@ -188,5 +192,9 @@ private:
 
 	int2 NextJumpIndex = int2::Zero;
 	float PlayerMoveSpeed = 5.0f;
+
+
+	float PlayerAutoMoveTime = 0.0f;
+	
 };
 

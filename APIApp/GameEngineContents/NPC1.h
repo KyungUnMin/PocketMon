@@ -25,6 +25,7 @@ public:
 
 	void ImageLoad();
 	void Render(float _DeltaTime);
+	void AutoRightMove(float _DeltaTime);
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -43,12 +44,12 @@ protected:
 
 private:
 	GameEngineRender* R_NPC1 = nullptr;
-	
-
 	GameEngineCollision* C_NPC_R = nullptr;
-	
-
 	bool NPC1ImageLoad = true;
 
+	float4 StartPos = float4::Zero;
+	float4 EndPos = float4::Zero;
+
+	float MoveTime = 0.0f;
 };
 

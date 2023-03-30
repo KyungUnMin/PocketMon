@@ -199,3 +199,20 @@ void Player::JumpEnd()
 {
 
 }
+
+void Player::PlayerAutoRightMove(float _DeltaTime)
+{
+	PlayerAutoMoveTime += _DeltaTime;
+	StartPos = GetPos();
+	EndPos = GetPos() + float4{ 64 ,0 };
+	Dir = LookDir::Right;
+	SetPos(float4::LerpClamp(StartPos, EndPos, PlayerAutoMoveTime));
+	if (PlayerAutoMoveTime > 1.0f)
+	{
+		PlayerAutoMoveTime = 0.0f;
+		return;
+	}
+}
+//void Player::PlayerAutoUpMove()
+//void Player::PlayerAutoLeftMove()
+//void Player::PlayerAutoDownMove()
