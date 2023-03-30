@@ -87,7 +87,7 @@ private:
 	float MyCurHp = 0.0f;
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
-	bool IsExpUP = true;
+	bool IsExpUP = false;
 
 
 	int ExpPoint = 0;

@@ -22,8 +22,8 @@ void BattleState_BattleWin::EnterState()
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText("We Win");
 
-	LevelUpStatUI_2* ResultUI = BattleLevel::BattleLevelPtr->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
-	ResultUI->SetPos(float4{ 450.f, 70.f });
+	//LevelUpStatUI_2* ResultUI = BattleLevel::BattleLevelPtr->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
+	//ResultUI->SetPos(float4{ 450.f, 70.f });
 
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
