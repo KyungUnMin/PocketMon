@@ -446,6 +446,8 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("DownMove", VK_DOWN);
 		GameEngineInput::CreateKey("RightMove", VK_RIGHT);
 
+		GameEngineInput::CreateKey("PlayerAutoMoveDebug", '0');
+
 		//기본 키 설정(에뮬레이터 기준)
 		GameEngineInput::CreateKeyNoToupper("Select", VK_RSHIFT);
 		GameEngineInput::CreateKeyNoToupper("Start", VK_RETURN);

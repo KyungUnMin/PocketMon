@@ -115,14 +115,34 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
-	/*if (true == GameEngineInput::IsDown("NpcTalk"))
+	if (true == GameEngineInput::IsDown("PlayerAutoMoveDebug"))
 	{
-		float4 NextPos = GetPos() + float4{ 64,0 };
-		InsertPlayerPos(NextPos);
-		InsertPlayerPos(NextPos + float4{ 64,0 });
+		if (NextMovePos.size() != 0)
+		{
+			return;
+		}
+
+		float4 TestPos = GetPos();
+
+		for (size_t i = 0; i < 10; i++)
+		{
+			TestPos += float4{ 64,0 };
+			InsertPlayerPos(TestPos);			
+		}
+
+		for (size_t i = 0; i < 10; i++)
+		{
+			TestPos += float4{ 0, 64 };
+			InsertPlayerPos(TestPos);
+		}
+
+		for (size_t i = 0; i < 10; i++)
+		{
+			TestPos += float4{ -64, 0 };
+			InsertPlayerPos(TestPos);
+		}
 	}
-	PlayerAutoMove();*/
-	
+
 	if (IsRide==true)
 	{
 		Players->Off();
