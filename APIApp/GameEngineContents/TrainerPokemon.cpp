@@ -64,3 +64,12 @@ bool TrainerPokemon::HasNextPokemon()
 	return false;
 }
 
+void TrainerPokemon::AllRecovery()
+{
+	for (int i = 0; i < Pokemons.size(); i++)
+	{
+		Pokemons[i].ForInven_AllPowerPointRecovery();
+		Pokemons[i].SetMonsterCurrentHP(Pokemons[i].GetMonsterMaxHP_int());
+	}
+}
+

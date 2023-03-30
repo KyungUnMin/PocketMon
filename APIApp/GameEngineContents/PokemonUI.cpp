@@ -578,6 +578,7 @@ void PokemonUI::SwitchSelect()
 	PokeDataBase _Pokemon = Pokemons[SwitchCursor];
 	Pokemons[SwitchCursor] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 	PokeDataSetting();
 	SwitchCancel();
 }

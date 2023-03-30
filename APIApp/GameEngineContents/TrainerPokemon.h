@@ -32,6 +32,8 @@ public:
 	{
 		return Pokemons.size();
 	}
+	
+	void AllRecovery();
 
 	// delete Function
 	TrainerPokemon(const TrainerPokemon& _Other) = delete;
