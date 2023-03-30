@@ -127,9 +127,9 @@ void CenterLevel::Loading()
 
 		Dir.Move("Skill");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl1.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"));
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl1.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Scratch.bmp"))->Cut(1, 6);
 		//TODO
 

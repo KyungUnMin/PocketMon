@@ -1,4 +1,4 @@
-#include "BattleSkill_PlayerGrowl.h"
+#include "BattleSkill_EnemyGrowl.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -8,66 +8,66 @@
 #include "SkillActor_Growl.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerGrowl::BattleSkill_PlayerGrowl()
+BattleSkill_EnemyGrowl::BattleSkill_EnemyGrowl() 
 {
 }
 
-BattleSkill_PlayerGrowl::~BattleSkill_PlayerGrowl()
+BattleSkill_EnemyGrowl::~BattleSkill_EnemyGrowl() 
 {
 }
 
-void BattleSkill_PlayerGrowl::EnterState()
+void BattleSkill_EnemyGrowl::EnterState()
 {
-	BattleSkill_PlayerBase::EnterState();
+	BattleSkill_EnemyBase::EnterState();
 
-	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
-	
+	PlayerMonster = GetPlayerMonster()->GetRender();
+
 	GrowlRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
 	GrowlRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
 	GrowlRender3 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
 
-	GrowlRender1->SetPos({ 410, 280 });
-	GrowlRender2->SetPos({ 410, 350 });
-	GrowlRender3->SetPos({ 410, 420 });
-
-	Growl1StartPos = GrowlRender1->GetPos();
-	Growl1EndPos = Growl1StartPos + float4::Up * 65 + float4::Right * 65;
-
-	Growl2StartPos = GrowlRender2->GetPos();
-	Growl2EndPos = Growl2StartPos + float4::Right * 65;
+	GrowlRender3->SetPos({ 510, 200 });
+	GrowlRender2->SetPos({ 510, 400 });
+	GrowlRender1->SetPos({ 510, 300 });
 
 	Growl3StartPos = GrowlRender3->GetPos();
-	Growl3EndPos = Growl3StartPos + float4::Down * 65 + float4::Right * 65;
+	Growl3EndPos = Growl3StartPos + float4::Up * 50 + float4::Left * 50;
 
-	GrowlRender1->GrowlSetting(1);
-	GrowlRender2->GrowlSetting(2);
+	Growl2StartPos = GrowlRender2->GetPos();
+	Growl2EndPos = Growl2StartPos + float4::Left * 50;
+
+	Growl1StartPos = GrowlRender1->GetPos();
+	Growl1EndPos = Growl1StartPos + float4::Down * 50 + float4::Left * 50;
+
 	GrowlRender3->GrowlSetting(3);
+	GrowlRender2->GrowlSetting(2);
+	GrowlRender1->GrowlSetting(1);
 
-	GrowlRender1->Off();
-	GrowlRender2->Off();
 	GrowlRender3->Off();
+	GrowlRender2->Off();
+	GrowlRender1->Off();
 }
 
-void BattleSkill_PlayerGrowl::Update(float _DeltaTime)
+void BattleSkill_EnemyGrowl::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_EnemyGrowl::Update_CheckTime(_DeltaTime, 2.0f))
 	{
 		return;
 	}
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerGrowl::MoveState::Forward:
+	case BattleSkill_EnemyGrowl::MoveState::Forward:
 		Update_Forward(_DeltaTime);
 		break;
-	case BattleSkill_PlayerGrowl::MoveState::Backward:
+	case BattleSkill_EnemyGrowl::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
 	}
 }
 
-void BattleSkill_PlayerGrowl::Update_Forward(float _Deltatime)
+void BattleSkill_EnemyGrowl::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
@@ -121,27 +121,27 @@ void BattleSkill_PlayerGrowl::Update_Forward(float _Deltatime)
 	}
 }
 
-void BattleSkill_PlayerGrowl::Update_BackWard(float _Deltatime)
+void BattleSkill_EnemyGrowl::Update_BackWard(float _Deltatime)
 {
-	GrowlRender1->Off();
-	GrowlRender2->Off();
 	GrowlRender3->Off();
+	GrowlRender2->Off();
+	GrowlRender1->Off();
 
 	BackwardTime += _Deltatime;
 
 	if (0.4f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetPosition(float4::Zero);
 	}
 	else if (0.2f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Right * 5);
+		PlayerMonster->SetPosition(float4::Left * 10);
 	}
 }
 
-void BattleSkill_PlayerGrowl::ExitState()
+void BattleSkill_EnemyGrowl::ExitState()
 {
-	BattleSkill_PlayerBase::ExitState();
+	BattleSkill_EnemyBase::ExitState();
 
 	PlayerMonster->SetPosition(float4::Zero);
 

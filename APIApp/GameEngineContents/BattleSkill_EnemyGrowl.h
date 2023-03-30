@@ -1,21 +1,22 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineRender;
 class SkillActor_Growl;
 
-class BattleSkill_PlayerGrowl : public BattleSkill_PlayerBase
+class BattleSkill_EnemyGrowl : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerGrowl();
-	~BattleSkill_PlayerGrowl();
+	BattleSkill_EnemyGrowl();
+	~BattleSkill_EnemyGrowl();
 
 	// delete Function
-	BattleSkill_PlayerGrowl(const BattleSkill_PlayerGrowl& _Other) = delete;
-	BattleSkill_PlayerGrowl(BattleSkill_PlayerGrowl&& _Other) noexcept = delete;
-	BattleSkill_PlayerGrowl& operator=(const BattleSkill_PlayerGrowl& _Other) = delete;
-	BattleSkill_PlayerGrowl& operator=(BattleSkill_PlayerGrowl&& _Other) noexcept = delete;
+	BattleSkill_EnemyGrowl(const BattleSkill_EnemyGrowl& _Other) = delete;
+	BattleSkill_EnemyGrowl(BattleSkill_EnemyGrowl&& _Other) noexcept = delete;
+	BattleSkill_EnemyGrowl& operator=(const BattleSkill_EnemyGrowl& _Other) = delete;
+	BattleSkill_EnemyGrowl& operator=(BattleSkill_EnemyGrowl&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

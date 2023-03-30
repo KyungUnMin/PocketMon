@@ -12,6 +12,7 @@ enum class BattleEnemyMonster_StateType
 	CreatedInBall,
 
 	Skill_Tackle,
+	Skill_Growl,
 	Skill_Scratch,
 	COUNT,
 };

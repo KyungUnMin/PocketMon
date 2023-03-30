@@ -7,6 +7,8 @@
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
 
+#include "BattleSkill_EnemyGrowl.h"
+
 #include "BattleSkill_EnemyTest.h"
 
 
@@ -27,6 +29,8 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	ResizeStates(BattleEnemyMonster_StateType::COUNT);
 
 	CreateState<BattleSkill_EnemyTest>(BattleEnemyMonster_StateType::Test);
+
+	CreateState<BattleSkill_EnemyGrowl>(BattleEnemyMonster_StateType::Skill_Growl);
 
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);
