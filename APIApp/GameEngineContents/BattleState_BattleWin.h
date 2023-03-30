@@ -2,8 +2,7 @@
 #include "BattleStateBase.h"
 
 class BackTextActor;
-class LevelUpStatUI_2;
-
+class BattleFadeCtrl;
 
 class BattleState_BattleWin : public BattleStateBase
 {
@@ -24,9 +23,8 @@ protected:
 private:
 	float Timer = 0.f;
 	const float Duration = 3.f;
-	size_t Step = 0;
 
 	BackTextActor* TextInfo = nullptr;
-	LevelUpStatUI_2* ResultUI = nullptr;
+	BattleFadeCtrl* Fade = nullptr;
 };
 
