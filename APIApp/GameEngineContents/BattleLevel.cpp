@@ -22,6 +22,9 @@ BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
 const char BattleLevel::BattleKey = 'Z';
 
+const std::string_view BattleLevel::BattleBgmName = "Battle_WildBGM.mp3";
+const std::string_view BattleLevel::VictoryBgmName = "_.mp3";
+
 BattleLevel::BattleLevel()
 {
 	BattleLevelPtr = this;
@@ -62,8 +65,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr == ChangedCenterLevel)
 		return;
 
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
-	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
@@ -107,17 +110,16 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType)
 	switch (_BattleType)
 	{
 	case BattleNpcType::None:
-		BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl("Battle_Wild.mp3");
-		break;
-	/*case BattleNpcType::Rival:
-		break;
+	case BattleNpcType::Rival:
 	case BattleNpcType::Woong:
-		break;*/
+		BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleBgmName);
+		break;
 	default:
 		MsgAssert("아직 해당 전투일때 사운드를 정해주지 않았습니다");
 		break;
 	}
 
+	BgmCtrl.Volume(WorldBgmVolumn);
 }
 
 
@@ -235,5 +237,12 @@ void BattleLevel::LockWildPocketMon()
 void BattleLevel::ChangeFieldLevel()
 {
 	PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
+}
+
+void BattleLevel::ChangeBGM(const std::string_view& _BgmName)
+{
+	BgmCtrl.Stop();
+	BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(_BgmName);
+	BgmCtrl.Volume(WorldBgmVolumn);
 }
 

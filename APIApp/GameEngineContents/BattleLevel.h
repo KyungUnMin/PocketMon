@@ -35,6 +35,9 @@ public:
 	static BattleLevel* BattleLevelPtr;
 	static const std::string_view  BattleKeyName;
 
+	static const std::string_view BattleBgmName;
+	static const std::string_view VictoryBgmName;
+
 	BattleLevel();
 	~BattleLevel() override;
 
@@ -64,6 +67,8 @@ public:
 
 	void ChangeFieldLevel();
 
+	void ChangeBGM(const std::string_view& _BgmName);
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
@@ -81,6 +86,7 @@ private:
 
 
 	GameEngineSoundPlayer BgmCtrl;
+	const float WorldBgmVolumn = 1.0f;
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 

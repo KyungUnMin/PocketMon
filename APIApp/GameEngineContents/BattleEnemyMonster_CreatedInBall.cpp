@@ -1,11 +1,12 @@
 #include "BattleEnemyMonster_CreatedInBall.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleEnemyMonsterFSM.h"
 #include "Battle_MonsterAppearEffect.h"
 #include "BattleLevel.h"
-
+#include "BattleDefine.h"
 
 BattleEnemyMonster_CreatedInBall::BattleEnemyMonster_CreatedInBall()
 {
@@ -20,6 +21,9 @@ BattleEnemyMonster_CreatedInBall::~BattleEnemyMonster_CreatedInBall()
 void BattleEnemyMonster_CreatedInBall::EnterState()
 {
 	CreateRenders();
+	GameEngineSoundPlayer Sfx = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_BallPop);
+	Sfx.LoopCount(1);
+	Sfx.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleEnemyMonster_CreatedInBall::CreateRenders()

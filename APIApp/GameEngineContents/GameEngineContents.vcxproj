@@ -171,6 +171,10 @@
     </ClCompile>
     <ClCompile Include="BaseNPC_State.cpp" />
     <ClCompile Include="BattleBackGround.cpp" />
+    <ClCompile Include="BattleDefine.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemy.cpp" />
     <ClCompile Include="BattleEnemyFSM.cpp" />
     <ClCompile Include="BattleEnemyMonsterFSM.cpp" />
@@ -579,6 +583,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleBackGround.h" />
+    <ClInclude Include="BattleDefine.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemy.h" />
     <ClInclude Include="BattleEnemyFSM.h" />
     <ClInclude Include="BattleEnemyMonsterFSM.h" />

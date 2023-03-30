@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleSkill_EnemyBase.h"
+#include <GameEngineCore/GameEngineResources.h>
 
 class GameEngineRender;
 
@@ -38,6 +39,8 @@ private:
 	float BackwardTimer = 0.f;
 	const float ForwardDuration = 0.1f;
 	const float BackwardDuration = 0.25f;
+
+	const float SfxVolumn = 3.f;
 
 	void Update_Forward(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);

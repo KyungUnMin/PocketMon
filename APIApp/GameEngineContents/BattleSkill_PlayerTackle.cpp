@@ -1,8 +1,10 @@
 #include "BattleSkill_PlayerTackle.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterPlayer.h"
 #include "BattleMonsterEnemy.h"
 #include "ContentsEnum.h"
+
 
 
 BattleSkill_PlayerTackle::BattleSkill_PlayerTackle()
@@ -72,6 +74,9 @@ void BattleSkill_PlayerTackle::Update_Forward(float _DeltaTime)
 		return;
 
 	CurState = MoveState::Backward;
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(SfxVolumn * BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerTackle::Update_BackWard(float _DeltaTime)

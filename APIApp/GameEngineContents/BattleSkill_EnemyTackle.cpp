@@ -57,6 +57,9 @@ void BattleSkill_EnemyTackle::Update_Forward(float _DeltaTime)
 		return;
 
 	CurState = MoveState::Backward;
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(SfxVolumn * BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyTackle::Update_BackWard(float _DeltaTime)

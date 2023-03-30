@@ -6,6 +6,7 @@
 #include <GameEngineCore/GameEngineResources.h>
 
 #include "CenterActor.h"
+#include "BattleDefine.h"
 
 CenterLevel::CenterLevel() 
 {
@@ -407,7 +408,13 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Battle");
 		Dir.Move("Battle");
 		Dir.Move("BGM");
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Wild.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_WildBGM.mp3"));
+
+		Dir.MoveParentToDirectory("SFX");
+		Dir.Move("SFX");
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_Tackle));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallPop));
+
 
 		Dir.MoveParentToDirectory("Battle");
 	}

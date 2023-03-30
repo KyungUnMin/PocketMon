@@ -26,3 +26,5 @@ BattleFieldType BattleLevel::FieldConvertor(GroundType _FieldType)
 	return BattleFieldType::Forest;
 }
 
+
+

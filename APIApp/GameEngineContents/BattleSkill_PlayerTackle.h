@@ -39,6 +39,9 @@ private:
 	const float ForwardDuration = 0.1f;
 	const float BackwardDuration = 0.25f;
 
+	
+	const float SfxVolumn = 3.f;
+
 	void Update_Forward(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);
 	

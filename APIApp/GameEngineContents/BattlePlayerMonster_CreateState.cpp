@@ -1,11 +1,13 @@
 #include "BattlePlayerMonster_CreateState.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattlePlayer.h"
 #include "BattleMonsterPlayer.h"
 #include "ContentsEnum.h"
 #include "Battle_MonsterAppearEffect.h"
 #include "BattleLevel.h"
 #include "BattlePlayerMonsterFSM.h"
+#include "BattleDefine.h"
 
 BattlePlayerMonster_CreateState::BattlePlayerMonster_CreateState()
 {
@@ -36,6 +38,10 @@ void BattlePlayerMonster_CreateState::EnterState()
 
 	BattleLevel::BattleLevelPtr->CreateActor<Battle_MonsterAppearEffect>(UpdateOrder::Battle_Actors);
 	Duration = Battle_MonsterAppearEffect::FadeDuration;
+
+	GameEngineSoundPlayer Sfx = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_BallPop);
+	Sfx.LoopCount(1);
+	Sfx.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattlePlayerMonster_CreateState::Update(float _DeltaTime)

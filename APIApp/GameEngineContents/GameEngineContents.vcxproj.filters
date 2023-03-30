@@ -471,6 +471,9 @@
     <ClCompile Include="Pokemon.cpp">
       <Filter>Pokemon</Filter>
     </ClCompile>
+    <ClCompile Include="BattleDefine.cpp">
+      <Filter>Battle\04.Defines</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -928,6 +931,9 @@
     <ClInclude Include="Pokemon.h">
       <Filter>Pokemon</Filter>
     </ClInclude>
+    <ClInclude Include="BattleDefine.h">
+      <Filter>Battle\04.Defines</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1274,6 +1280,9 @@
     </Filter>
     <Filter Include="Item">
       <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\04.Defines">
+      <UniqueIdentifier>{3dc71b0f-da43-49fa-9219-da62ffba3d43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
