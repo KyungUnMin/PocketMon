@@ -17,6 +17,9 @@ public:
 	// 포켓몬이 가득 찬 경우 (6마리)
 	bool IsFull();
 
+	// 모든 포켓몬을 받아온다.
+	std::vector<PokeDataBase> GetPokemons();
+
 	// 다음 포켓몬을 받아온다.
 	PokeDataBase NextPokemon();
 

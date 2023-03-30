@@ -28,6 +28,11 @@ bool TrainerPokemon::IsFull()
 	return PokemonMax == Pokemons.size();
 }
 
+std::vector<PokeDataBase> TrainerPokemon::GetPokemons()
+{
+	return Pokemons;
+}
+
 PokeDataBase TrainerPokemon::NextPokemon()
 {
 	for (int i = 0; i < Pokemons.size(); i++)
