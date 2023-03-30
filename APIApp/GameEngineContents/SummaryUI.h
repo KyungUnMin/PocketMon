@@ -31,6 +31,7 @@ protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void LevelChangeStart(GameEngineLevel* _Prev) override;
+	void LevelChangeEnd(GameEngineLevel* _Next) override;
 private:
 
 	GameEngineLevel* CurrentLevel = nullptr;

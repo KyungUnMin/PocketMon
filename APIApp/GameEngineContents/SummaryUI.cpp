@@ -7,6 +7,7 @@
 #include "TextActor.h"
 #include "PokemonUI.h"
 #include "ContentsEnum.h"
+#include "Player.h"
 SummaryUI::SummaryUI() 
 {
 }
@@ -215,6 +216,7 @@ void SummaryUI::Update(float _DeltaTime)
 
 void SummaryUI::LevelChangeStart(GameEngineLevel* _Prev)
 {
+	Pokemons = Player::MainPlayer->GetPlayerPokemon()->Pokemons;
 	IsStop = false;
 	CurrentPokemon = PokemonUI::MainPokemon->CurrentCursor;
 	SetPokemonData();
@@ -222,6 +224,11 @@ void SummaryUI::LevelChangeStart(GameEngineLevel* _Prev)
 	PageOff();
 	CurrentPage = SummaryPage::Info;
 	PageOn();
+}
+
+void SummaryUI::LevelChangeEnd(GameEngineLevel* _Next)
+{
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 }
 
 void SummaryUI::NextPage()

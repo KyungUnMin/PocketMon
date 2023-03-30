@@ -4,6 +4,8 @@
 // Ό³Έν :
 class TrainerPokemon
 {
+	friend class PokemonUI;
+	friend class SummaryUI;
 public:
 	// constrcuter destructer
 	TrainerPokemon();

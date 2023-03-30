@@ -8,6 +8,7 @@
 #include "LevelChangeFade.h"
 #include "PokemonHPBar.h"
 #include "BattleLevel.h"
+#include "Player.h"
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 PokemonUI::PokemonUI() 
@@ -36,15 +37,11 @@ void PokemonUI::SetState_Shift()
 
 void PokemonUI::Start()
 {
+	Player::MainPlayer->GetPlayerPokemon()->AddPokemon(1, 1);
+
 	CurrentLevel = GetLevel();
 	MainPokemon = this;
-	//_______테스트용 포켓몬 생성
-	Pokemons.resize(5);
-	Pokemons[0] = PokeDataBase::PokeCreate(1, 5);
-	Pokemons[1] = PokeDataBase::PokeCreate(4, 5);
-	Pokemons[2] = PokeDataBase::PokeCreate(7, 5);
-	Pokemons[3] = PokeDataBase::PokeCreate(10, 2);
-	Pokemons[4] = PokeDataBase::PokeCreate(11, 3);
+
 	// ____________렌더 생성______________
 	{
 
@@ -155,9 +152,6 @@ void PokemonUI::Start()
 
 
 	}
-	PokeDataSetting();
-
-	
 }
 
 void PokemonUI::SetCursor(int _Cursor)
@@ -275,6 +269,7 @@ void PokemonUI::Update(float _DeltaTime)
 
 void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 {
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 	if (_PrevLevel->GetName() == "SummaryLevel")
 	{
 		return;
@@ -285,6 +280,7 @@ void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	IsStop = false;
+	PokeDataSetting();
 	if (_PrevLevel->GetName() == "SummaryLevel")
 	{
 		return;
@@ -306,12 +302,13 @@ void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	CurrentCursor = 0;
 	CursorMove();
 	SelectOff();
-	PokeDataSetting();
 	SetBarText();
 }
 
 void PokemonUI::PokeDataSetting()
 {
+	Pokemons = Player::MainPlayer->GetPlayerPokemon()->Pokemons;
+
 	// ____________렌더 생성______________
 	
 	{
