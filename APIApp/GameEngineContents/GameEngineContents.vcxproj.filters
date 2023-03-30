@@ -50,10 +50,10 @@
       <Filter>Map\Class</Filter>
     </ClCompile>
     <ClCompile Include="BagLevel.cpp">
-      <Filter>FieldUI\BagUI</Filter>
+      <Filter>Item</Filter>
     </ClCompile>
     <ClCompile Include="PlayerBag.cpp">
-      <Filter>FieldUI\BagUI</Filter>
+      <Filter>Item</Filter>
     </ClCompile>
     <ClCompile Include="FieldDialog.cpp">
       <Filter>FieldUI\HSM</Filter>
@@ -84,12 +84,6 @@
     </ClCompile>
     <ClCompile Include="FieldMainMenu.cpp">
       <Filter>FieldUI\HSM</Filter>
-    </ClCompile>
-    <ClCompile Include="PokemonLevel.cpp">
-      <Filter>FieldUI\PokemonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="PokemonUI.cpp">
-      <Filter>FieldUI\PokemonUI</Filter>
     </ClCompile>
     <ClCompile Include="FieldmapDoubleDoor.cpp">
       <Filter>Map\Actor\Door</Filter>
@@ -133,12 +127,6 @@
     </ClCompile>
     <ClCompile Include="BuyLevel.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
-    </ClCompile>
-    <ClCompile Include="SummaryLevel.cpp">
-      <Filter>FieldUI\PokemonUI</Filter>
-    </ClCompile>
-    <ClCompile Include="SummaryUI.cpp">
-      <Filter>FieldUI\PokemonUI</Filter>
     </ClCompile>
     <ClCompile Include="BuyWindow.cpp">
       <Filter>FieldUI\HSM\ShopUI</Filter>
@@ -435,7 +423,6 @@
     <ClCompile Include="Battle_EnemyHpUIHandler.cpp">
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\03.EnemyHP</Filter>
     </ClCompile>
-    <ClCompile Include="PokemonHPBar.cpp" />
     <ClCompile Include="BattleState_ItemUse.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClCompile>
@@ -465,6 +452,24 @@
     </ClCompile>
     <ClCompile Include="BattleState_GymTalk.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonLevel.cpp">
+      <Filter>Pokemon\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonUI.cpp">
+      <Filter>Pokemon\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SummaryLevel.cpp">
+      <Filter>Pokemon\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="SummaryUI.cpp">
+      <Filter>Pokemon\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="PokemonHPBar.cpp">
+      <Filter>Pokemon\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="Pokemon.cpp">
+      <Filter>Pokemon</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -515,10 +520,10 @@
       <Filter>Map\Class</Filter>
     </ClInclude>
     <ClInclude Include="BagLevel.h">
-      <Filter>FieldUI\BagUI</Filter>
+      <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="PlayerBag.h">
-      <Filter>FieldUI\BagUI</Filter>
+      <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="FieldDialog.h">
       <Filter>FieldUI\HSM</Filter>
@@ -549,12 +554,6 @@
     </ClInclude>
     <ClInclude Include="FieldMainMenu.h">
       <Filter>FieldUI\HSM</Filter>
-    </ClInclude>
-    <ClInclude Include="PokemonLevel.h">
-      <Filter>FieldUI\PokemonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="PokemonUI.h">
-      <Filter>FieldUI\PokemonUI</Filter>
     </ClInclude>
     <ClInclude Include="FieldmapDoubleDoor.h">
       <Filter>Map\Actor\Door</Filter>
@@ -596,17 +595,11 @@
     <ClInclude Include="BuyLevel.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
-    <ClInclude Include="SummaryLevel.h">
-      <Filter>FieldUI\PokemonUI</Filter>
-    </ClInclude>
-    <ClInclude Include="SummaryUI.h">
-      <Filter>FieldUI\PokemonUI</Filter>
-    </ClInclude>
     <ClInclude Include="BuyWindow.h">
       <Filter>FieldUI\HSM\ShopUI</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
-      <Filter>FieldUI\BagUI</Filter>
+      <Filter>Item</Filter>
     </ClInclude>
     <ClInclude Include="EndingPlayerAnimActor.h">
       <Filter>Ending\Actor</Filter>
@@ -887,7 +880,6 @@
     <ClInclude Include="Battle_PlayerHpUIHandler.h">
       <Filter>Battle\02.Actor\06.UIHandler\01.MonsterHpUI\02.PlayerHP</Filter>
     </ClInclude>
-    <ClInclude Include="PokemonHPBar.h" />
     <ClInclude Include="BattleState_ItemUse.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClInclude>
@@ -917,6 +909,24 @@
     </ClInclude>
     <ClInclude Include="BattleState_GymTalk.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonLevel.h">
+      <Filter>Pokemon\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonUI.h">
+      <Filter>Pokemon\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SummaryLevel.h">
+      <Filter>Pokemon\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SummaryUI.h">
+      <Filter>Pokemon\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="PokemonHPBar.h">
+      <Filter>Pokemon\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="Pokemon.h">
+      <Filter>Pokemon</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -953,9 +963,6 @@
     <Filter Include="Player\NPC">
       <UniqueIdentifier>{b4b3e5d1-2ef0-43e2-8173-ae968d1ae06b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="FieldUI\BagUI">
-      <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="FieldUI\HSM">
       <UniqueIdentifier>{67809fc1-ef1f-4703-b7c8-9cb88f6365bf}</UniqueIdentifier>
     </Filter>
@@ -967,9 +974,6 @@
     </Filter>
     <Filter Include="BattleUI\Actor">
       <UniqueIdentifier>{99e1e9e2-41f8-40fa-9dc9-3a822bd614db}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="FieldUI\PokemonUI">
-      <UniqueIdentifier>{7e22dfe8-052b-418b-9be5-5686949ffa94}</UniqueIdentifier>
     </Filter>
     <Filter Include="Map\Actor\Door">
       <UniqueIdentifier>{871d9329-15a4-4282-998c-b242e92f1c7b}</UniqueIdentifier>
@@ -1261,6 +1265,15 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\04.GymTalk">
       <UniqueIdentifier>{4d273083-2518-4bd0-ad1f-f74736c58fb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pokemon">
+      <UniqueIdentifier>{d89ec29f-221d-4dcf-a4c2-a8188c57a50c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pokemon\UI">
+      <UniqueIdentifier>{20fa4b9b-e7e7-4fa0-b343-c2fa0a9224bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Item">
+      <UniqueIdentifier>{934a19df-551f-4e0b-8b2d-8e07efe10ecf}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
