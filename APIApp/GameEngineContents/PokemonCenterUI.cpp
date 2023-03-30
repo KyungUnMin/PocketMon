@@ -3,6 +3,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "FieldDialog.h"
+#include "Player.h"
 
 PokemonCenterUI::PokemonCenterUI()
 {
@@ -117,7 +118,7 @@ void PokemonCenterUI::Update(float _DeltaTime)
 					AcFieldDialog->IsValid = false;
 					State = PokemonMenuState::Null;
 					StateToRender();
-					HealMonsterCount = 5; // 넣어줘야함
+					HealMonsterCount = static_cast<int>(Player::MainPlayer->GetPlayerPokemon()->GetPokemonCount());
 					//HealPokemon();
 					break;
 				case PokemonMenuState::No:
@@ -214,8 +215,7 @@ void PokemonCenterUI::StartAnimationAndChangeProcess(float _DeltaTime)
 		}
 		else if (AnimationTime >= 2.0f)
 		{
-			CountAndTwinkleBallAnimationOff(HealMonsterCount);
-			MonitorAnimation->Off();
+			AllAnimationOff();
 			Process = CenterProcess::Goodbye;
 			AcFieldDialog->ConversationStart(&GoodbyeScript2);
 			AnimationTime = 0;
