@@ -46,13 +46,6 @@ void FriendlyHPBackground::Start()
 
 		GameEngineInput::CreateKey("HpDebug111", 'Z');
 	}
-	//예시코드
-
-	//데미지
-	//if (FirstHp == 0) {
-	//	FirstHp = 192.0f;
-	//	
-	//}
 	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
 	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
 	
@@ -61,9 +54,6 @@ void FriendlyHPBackground::Start()
 	EXPRenderPtr->SetScale(float4{ ExpNum,172 });
 	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 360 });
 
-	/*for (int i = 1; i <= 10; i++) {
-		EXPTick.push_back((ExpNum / 10) * i);
-	}*/
 	PoketMonName_R.resize(PoketMonNameMax);
 	PoketMonLevel_R.resize(PoketMonLevelMax);
 	PoketMonHPCUR_R.resize(PoketMonLevelMax);
@@ -164,15 +154,11 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	if (BattleStartCheck == true) {
 
-		/*if (FirstHp == 0)
-		{
-			FirstHp = 192.0f;
-		}*/
 
 		if(TickNumber ==0)
 		{
 		
-			HpUpdate(static_cast<float>(EnumyMonsterDamage), static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()), SecoundHp);
+			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num/*static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()*/, SecoundHp);
 		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.1f) {
@@ -188,9 +174,11 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (TickNumber == 10 ) {
 			TickNumber = 0;
 			BattleStartCheck = false;
-
+			Num -= static_cast<float>(EnumyMonsterDamage);
 			SecoundHp = DamegeTick[9];
+			if (true == IsLevelUp) {
 
+			}
 		}
 		
 	}
@@ -213,6 +201,7 @@ void FriendlyHPBackground::Clear(std::vector<float> _Tick)
 {
 	_Tick.erase(_Tick.begin(), _Tick.end());
 }
+
 
 void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)
 {
@@ -320,6 +309,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 		
 			for (size_t z = x; z < EXPTick.size(); z++) {
 				if (_GetExp + _MyCurExp > 100.0f) {
+					IsLevelUp = true;
 					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
 					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
 					EXPTick[z] = UpExp / (EXPTick.size() - x) * j;

@@ -30,7 +30,6 @@ public:
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
-
 	GameEngineRender* GetWindowPtr()
 	{
 		return RenderPtr;
@@ -108,7 +107,9 @@ private:
 	float MyCurHp = 0.0f;
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
+	
 	bool IsExpUP = false;
+	bool IsLevelUp = false;
 	float SecoundHp = 0.0f;
 
 	int ExpPoint = 0;
