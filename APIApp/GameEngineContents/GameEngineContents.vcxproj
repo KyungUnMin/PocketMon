@@ -288,6 +288,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerBubble.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerEarthquake.cpp">
       <SubType>
       </SubType>
@@ -302,6 +306,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerLeer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerRazorLeaf.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -322,6 +330,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerVineWhip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerWaterGun.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -603,11 +619,27 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_Bubble.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SkillActor_Growl.cpp">
       <SubType>
       </SubType>
     </ClCompile>
     <ClCompile Include="SkillActor_Leer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_RazorLeaf.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_VineWhip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_WaterGun.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -774,6 +806,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerBubble.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerEarthquake.h">
       <SubType>
       </SubType>
@@ -788,6 +824,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerLeer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerRazorLeaf.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -808,6 +848,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerTest.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerVineWhip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerWaterGun.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1090,11 +1138,27 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SkillActor_Bubble.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SkillActor_Growl.h">
       <SubType>
       </SubType>
     </ClInclude>
     <ClInclude Include="SkillActor_Leer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_RazorLeaf.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_VineWhip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_WaterGun.h">
       <SubType>
       </SubType>
     </ClInclude>

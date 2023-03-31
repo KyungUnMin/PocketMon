@@ -134,6 +134,11 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble_After.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RazorLeaf.bmp"))->Cut(1, 3);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("VineWhip.bmp"))->Cut(1, 4);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun.bmp"))->Cut(1, 5);
 		//TODO
 
 		Dir.MoveParentToDirectory("Skill");

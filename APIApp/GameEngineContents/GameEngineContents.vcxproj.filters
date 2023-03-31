@@ -566,6 +566,30 @@
     <ClCompile Include="BattleSkill_EnemyEmber.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerBubble.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerRazorLeaf.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerVineWhip.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerWaterGun.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Bubble.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_RazorLeaf.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_VineWhip.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_WaterGun.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1119,6 +1143,30 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyEmber.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerBubble.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerRazorLeaf.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerVineWhip.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerWaterGun.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Bubble.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_RazorLeaf.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_VineWhip.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_WaterGun.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
