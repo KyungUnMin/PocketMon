@@ -536,6 +536,9 @@
     <ClCompile Include="BattleSkill_EnemyTailWhip.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyTailWhip.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerFeatherDance.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
@@ -1064,6 +1067,9 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyLeer.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyTailWhip.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyTailWhip.h">
