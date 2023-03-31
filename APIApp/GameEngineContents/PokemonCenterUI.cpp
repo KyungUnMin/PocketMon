@@ -119,7 +119,7 @@ void PokemonCenterUI::Update(float _DeltaTime)
 					State = PokemonMenuState::Null;
 					StateToRender();
 					HealMonsterCount = static_cast<int>(Player::MainPlayer->GetPlayerPokemon()->GetPokemonCount());
-					//HealPokemon();
+					Player::MainPlayer->GetPlayerPokemon()->AllRecovery();
 					break;
 				case PokemonMenuState::No:
 					AcFieldDialog->ConversationStart(&GoodbyeScript1);
