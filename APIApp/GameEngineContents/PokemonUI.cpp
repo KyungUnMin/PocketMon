@@ -605,6 +605,7 @@ void PokemonUI::Shift()
 	PokeDataBase _Pokemon = Pokemons[0];
 	Pokemons[0] = Pokemons[CurrentCursor];
 	Pokemons[CurrentCursor] = _Pokemon;
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
 	BattleLevel::BattleLevelPtr->ChangePlayerMonster(Pokemons[0].GetPokeNumber_enum());
 	IsStop = true;
