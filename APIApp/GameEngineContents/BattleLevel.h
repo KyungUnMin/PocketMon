@@ -65,7 +65,7 @@ public:
 
 	void LockWildPocketMon();
 
-	void ChangeFieldLevel();
+	void ChangeFieldLevel(bool _FadeColorBlack = true, float _FadeDuration = 1.5f);
 
 	void ChangeBGM(const std::string_view& _BgmName);
 

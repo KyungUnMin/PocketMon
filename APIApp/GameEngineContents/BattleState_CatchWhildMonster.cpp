@@ -3,6 +3,8 @@
 #include "BattleLevel.h"
 #include "BattleFadeCtrl.h"
 #include "PocketMonCore.h"
+#include "BattleEnemy.h"
+#include "Player.h"
 
 BattleState_CatchWhildMonster::BattleState_CatchWhildMonster()
 {
@@ -27,16 +29,14 @@ void BattleState_CatchWhildMonster::Update(float _DeltaTime)
 	if (LiveTime < FadeTime)
 		return;
 
-	if (nullptr != FadeCtrl)
+	if (true == IsPushed)
 		return;
 
-	FadeCtrl = BattleLevel::BattleLevelPtr->CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
-	FadeCtrl->Init(BattleFadeCtrl::FadeType::WhiteOut, []
-	{
-		PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
-	});
-
-	FadeCtrl->SetDuration(1.5f);
+	IsPushed = true;
+	PokeDataBase* EnemyDB = BattleEnemy::EnemyPtr->GetMonsterDB();
+	TrainerPokemon* PlayerMonsters = Player::MainPlayer->GetPlayerPokemon();
+	PlayerMonsters->AddPokemon(*EnemyDB);
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(false);
 }
 
 void BattleState_CatchWhildMonster::ExitState()

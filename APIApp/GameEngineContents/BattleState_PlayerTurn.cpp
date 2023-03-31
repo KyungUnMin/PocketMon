@@ -73,10 +73,8 @@ void BattleState_PlayerTurn::BindSelectBoard()
 	});
 
 	//필드 레벨과 연결
-	BackTextActor* TextInfo = this->TextInfo;
 	SelectBoard->SetCallBack(3, [&]
 	{
-		TextInfo->BattleSetText("Succeed in escaping");
 		BattleLevel::BattleLevelPtr->ChangeFieldLevel();
 	});
 }

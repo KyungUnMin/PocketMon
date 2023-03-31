@@ -167,7 +167,7 @@ bool BattleLevel::TestKeyUpdate()
 void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	//가방으로 이동하는 경우엔 Actor들을 삭제하지 않음
-	/*BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
+	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
 	if (nullptr != BagUILevel)
 		return;
 
@@ -175,20 +175,7 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	if (nullptr != MonsterChangeLevel)
 		return;
 
-	if (nullptr != BattleFsmPtr)
-	{
-		delete BattleFsmPtr;
-		BattleFsmPtr = nullptr;
-	}
-
-	std::vector<GameEngineActor*> Actors = GetActors(UpdateOrder::Battle_Actors);
-	for (GameEngineActor* Actor : Actors)
-	{
-		Actor->Death();
-	}
-
-	Actors.clear();
-	BgmCtrl.Stop();*/
+	
 }
 
 
@@ -249,11 +236,13 @@ void BattleLevel::LockWildPocketMon()
 	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
 }
 
-void BattleLevel::ChangeFieldLevel()
+void BattleLevel::ChangeFieldLevel(bool _FadeColorBlack, float _FadeDuration)
 {
+	BattleFadeCtrl::FadeType FadeType = _FadeColorBlack ? BattleFadeCtrl::FadeType::BlackOut : BattleFadeCtrl::FadeType::WhiteOut;
+
 	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
-	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(&BattleLevel::Clear, this), false);
-	Fade->SetDuration(2.0f);
+	Fade->Init(FadeType, std::bind(&BattleLevel::Clear, this), false);
+	Fade->SetDuration(_FadeDuration);
 }
 
 void BattleLevel::Clear()

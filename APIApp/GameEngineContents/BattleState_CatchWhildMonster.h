@@ -2,7 +2,6 @@
 #include "BattleStateBase.h"
 
 class BackTextActor;
-class BattleFadeCtrl;
 
 class BattleState_CatchWhildMonster : public BattleStateBase
 {
@@ -24,6 +23,6 @@ private:
 	BackTextActor* TextInfoUI = nullptr;
 	const float FadeTime = 1.f;
 	float LiveTime = 0.f;
-	BattleFadeCtrl* FadeCtrl = nullptr;
+	bool IsPushed = false;
 };
 
