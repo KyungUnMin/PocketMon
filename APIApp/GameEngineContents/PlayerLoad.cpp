@@ -36,7 +36,7 @@ void Player::PlayerRenderLoad()
 		BikePlayers->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "BikeRight.bmp", .Start = 0, .End = 2, .InterTime = 0.04f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "BikeLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "BikeUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
-		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown1.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
 		BikePlayers->Off();
 	}
 }
