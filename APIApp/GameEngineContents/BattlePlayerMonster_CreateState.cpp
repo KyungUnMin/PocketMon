@@ -21,9 +21,11 @@ BattlePlayerMonster_CreateState::~BattlePlayerMonster_CreateState()
 
 void BattlePlayerMonster_CreateState::EnterState()
 {
+	static const float OffsetY = 30.f;
+
 	BattlePlayer* Player = BattlePlayer::PlayerPtr;
 	Monster = Player->GetMonster();
-	Monster->SetPos(Player->GetPos());
+	Monster->SetPos(Player->GetPos() + float4::Up * OffsetY);
 
 	GameEngineRender* MonsterRender = Monster->GetRender();
 	DestScale = MonsterRender->GetScale();

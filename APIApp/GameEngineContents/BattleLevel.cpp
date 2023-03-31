@@ -16,6 +16,7 @@
 #include "BagLevel.h"
 #include "PokemonLevel.h"
 #include "CenterLevel.h"
+#include "BattleFadeCtrl.h"
 
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
@@ -52,6 +53,10 @@ void BattleLevel::Loading()
 
 void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
+	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
+	Fade->Init(BattleFadeCtrl::FadeType::BlackIn);
+	Fade->SetDuration(0.1f);
+
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
 	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_PrevLevel);
 	if (nullptr != BagUILevel)
@@ -136,6 +141,9 @@ void BattleLevel::Update(float _DeltaTime)
 	if (true == TestKeyUpdate())
 		return;
 
+	if (nullptr == BattleFsmPtr)
+		return;
+
 	BattleFsmPtr->Update(_DeltaTime);
 }
 
@@ -143,6 +151,7 @@ bool BattleLevel::TestKeyUpdate()
 {
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
+		Clear();
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
 		return true;
 	}
@@ -158,7 +167,7 @@ bool BattleLevel::TestKeyUpdate()
 void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
 	//가방으로 이동하는 경우엔 Actor들을 삭제하지 않음
-	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
+	/*BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
 	if (nullptr != BagUILevel)
 		return;
 
@@ -179,8 +188,9 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 	}
 
 	Actors.clear();
-	BgmCtrl.Stop();
+	BgmCtrl.Stop();*/
 }
+
 
 
 
@@ -236,8 +246,30 @@ void BattleLevel::LockWildPocketMon()
 
 void BattleLevel::ChangeFieldLevel()
 {
+	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
+	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(&BattleLevel::Clear, this), false);
+	Fade->SetDuration(2.0f);
+}
+
+void BattleLevel::Clear()
+{
+	if (nullptr != BattleFsmPtr)
+	{
+		delete BattleFsmPtr;
+		BattleFsmPtr = nullptr;
+	}
+
+	std::vector<GameEngineActor*> Actors = GetActors(UpdateOrder::Battle_Actors);
+	for (GameEngineActor* Actor : Actors)
+	{
+		Actor->Death();
+	}
+
+	Actors.clear();
+	BgmCtrl.Stop();
 	PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
 }
+
 
 void BattleLevel::ChangeBGM(const std::string_view& _BgmName)
 {

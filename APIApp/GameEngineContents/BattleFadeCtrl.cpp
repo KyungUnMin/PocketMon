@@ -13,7 +13,7 @@ BattleFadeCtrl::~BattleFadeCtrl()
 
 }
 
-void BattleFadeCtrl::Init(FadeType _FadeType, const std::function<void()>& _Event)
+void BattleFadeCtrl::Init(FadeType _FadeType, const std::function<void()>& _Event, bool _IsDestroy)
 {
 	if (FadeType::UNKNOWN == _FadeType)
 	{
@@ -23,6 +23,7 @@ void BattleFadeCtrl::Init(FadeType _FadeType, const std::function<void()>& _Even
 
 	Event = _Event;
 	Type = _FadeType;
+	IsDestroy = _IsDestroy;
 	SetPos(GameEngineWindow::GetScreenSize().half());
 
 	std::string ImageName = "BattleFadeBlack.bmp";
@@ -50,9 +51,13 @@ void BattleFadeCtrl::Update(float _DeltaTime)
 		if (nullptr != Event)
 		{
 			Event();
+			Event = nullptr;
 		}
 
-		Death();
+		if (true == IsDestroy)
+		{
+			Death();
+		}
 		return;
 	}
 

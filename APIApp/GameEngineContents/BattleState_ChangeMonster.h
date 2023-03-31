@@ -15,8 +15,11 @@ public:
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
+	void ExitState() override;
 
 private:
-
+	float Timer = 0.f;
+	const float Duration = 3.f;
+	class BackTextActor* TextInfo = nullptr;
 };
 

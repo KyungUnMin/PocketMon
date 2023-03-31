@@ -25,7 +25,7 @@ public:
 	BattleFadeCtrl& operator=(const BattleFadeCtrl& _Other) = delete;
 	BattleFadeCtrl& operator=(const BattleFadeCtrl&& _Other) noexcept = delete;
 
-	void Init(FadeType _FadeType, const std::function<void()>& _Event = nullptr);
+	void Init(FadeType _FadeType, const std::function<void()>& _Event = nullptr, bool _IsDestroy = true);
 	
 	inline void SetDuration(float _Time)
 	{
@@ -40,5 +40,6 @@ private:
 	std::function<void()> Event = nullptr;
 	FadeType Type = FadeType::UNKNOWN;
 	float Duration = 0.5f;
+	bool IsDestroy = true;
 };
 

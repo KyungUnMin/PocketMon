@@ -19,6 +19,10 @@ void BattlePlayer_ThrowState::EnterState()
 {
 	BattlePlayer* Player = BattlePlayer::PlayerPtr;
 	PlayerRender = Player->GetTrainerRender();
+
+	if (true == IsCreated)
+		return;
+
 	PlayerRender->CreateAnimation
 	({
 		.AnimationName = "Throw",
@@ -28,10 +32,9 @@ void BattlePlayer_ThrowState::EnterState()
 		.InterTime = 0.1f,
 		.Loop = false
 	});
+	IsCreated = true;
 
 	PlayerRender->ChangeAnimation("Throw");
-
-	
 }
 
 void BattlePlayer_ThrowState::Update(float _DeltaTime)
@@ -50,4 +53,5 @@ void BattlePlayer_ThrowState::Update(float _DeltaTime)
 
 void BattlePlayer_ThrowState::ExitState()
 {
+	PlayerRender = nullptr;
 }

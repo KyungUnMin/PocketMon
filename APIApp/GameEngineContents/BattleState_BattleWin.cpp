@@ -35,16 +35,12 @@ void BattleState_BattleWin::Update(float _DeltaTime)
 	if (Timer < Duration)
 		return;
 	
-	if (nullptr != Fade)
+	if (true == IsLevelChanged)
 		return;
 
-	Fade = BattleLevel::BattleLevelPtr->CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
-	Fade->SetDuration(1.f);
-	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, []
-	{
-		BattleLevel::BattleLevelPtr->ChangeFieldLevel();
-	});
-
+	
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel();
+	IsLevelChanged = true;
 }
 
 void BattleState_BattleWin::ExitState()

@@ -138,6 +138,11 @@ void BattlePlayer::ThrowBallToCatch(bool _IsMasterBall)
 
 void BattlePlayer::CreateMontser()
 {
+	if (nullptr != Monster)
+	{
+		Monster->Death();
+	}
+
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 
 	Monster->Init();
@@ -149,9 +154,6 @@ void BattlePlayer::ChangeNextMonster()
 {
 	Monster->Death();
 	
-
-
-
 	Monster = GetLevel()->CreateActor<BattleMonsterPlayer>(UpdateOrder::Battle_Actors);
 	Monster->Init();
 	Battle_PlayerBallParticle* Particle = GetLevel()->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors);

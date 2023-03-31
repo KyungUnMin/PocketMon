@@ -22,6 +22,12 @@ BattleMonsterPlayer::~BattleMonsterPlayer()
 		delete FsmPtr;
 		FsmPtr = nullptr;
 	}
+
+	if (nullptr != UiHandler)
+	{
+		UiHandler->Death();
+		UiHandler = nullptr;
+	}
 }
 
 void BattleMonsterPlayer::Init()
@@ -48,11 +54,6 @@ void BattleMonsterPlayer::RenderCreate()
 	std::string ImagePath = "Battle" + Name + "Back.bmp";
 	RenderPtr = CreateRender(ImagePath, BattleRenderOrder::Monster0);
 	RenderPtr->SetScaleToImage();
-
-	/*ImagePath = "Battle" + Name + "BackLight.bmp";
-	AppearRender = CreateRender(ImagePath, BattleRenderOrder::Monster0);
-	AppearRender->SetScale(float4::Zero);
-	AppearRender->SetAlpha(200);*/
 }
 
 

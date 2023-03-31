@@ -21,6 +21,12 @@ BattleMonsterEnemy::~BattleMonsterEnemy()
 		delete FsmPtr;
 		FsmPtr = nullptr;
 	}
+
+	if (nullptr != UiHandler)
+	{
+		UiHandler->Death();
+		UiHandler = nullptr;
+	}
 }
 
 void BattleMonsterEnemy::Init(PokeDataBase* _MonsterDB, bool _IsWildMonster)

@@ -48,7 +48,7 @@ void BattleState_StageLose::Update(float _DeltaTime)
 
 	if (true == IsAliveMonster)
 	{
-		GetFSM()->ChangeState(BattleStateType::PlayerChangeByDead);
+		GetFSM()->ChangeState(BattleStateType::PlayerMonsterChange);
 	}
 	else
 	{

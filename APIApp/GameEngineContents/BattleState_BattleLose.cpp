@@ -1,7 +1,6 @@
 #include "BattleState_BattleLose.h"
 #include "BackTextActor.h"
 #include "BattleLevel.h"
-#include "BattleFadeCtrl.h"
 
 BattleState_BattleLose::BattleState_BattleLose()
 {
@@ -26,14 +25,11 @@ void BattleState_BattleLose::Update(float _DeltaTime)
 	if (Timer < Duration)
 		return;
 
-	if (nullptr != Fade)
+	if (true == IsLevelChanged)
 		return;
 
-	Fade = BattleLevel::BattleLevelPtr->CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
-	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, []
-	{
-		BattleLevel::BattleLevelPtr->ChangeFieldLevel();
-	});
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel();
+	IsLevelChanged = true;
 }
 
 void BattleState_BattleLose::ExitState()
@@ -42,12 +38,6 @@ void BattleState_BattleLose::ExitState()
 	{
 		TextInfo->Death();
 		TextInfo = nullptr;
-	}
-
-	if (false == Fade->IsDeath())
-	{
-		Fade->Death();
-		Fade = nullptr;
 	}
 
 }

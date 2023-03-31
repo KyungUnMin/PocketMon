@@ -15,6 +15,9 @@
 #include "BattleState_ItemUse.h"
 #include "BattleState_BattleWin.h"
 #include "BattleState_GymTalk.h"
+#include "BattleState_ChangeMonster.h"
+#include "BattleState_BattleLose.h"
+
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -44,7 +47,9 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_StageWin>(BattleStateType::StageWin);
 	CreateState<BattleState_StageLose>(BattleStateType::StageLose);
 	CreateState<BattleState_BattleWin>(BattleStateType::BattleWin);
+	CreateState<BattleState_BattleLose>(BattleStateType::BattleLose);
 	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
+	CreateState<BattleState_ChangeMonster>(BattleStateType::PlayerMonsterChange);
 
 	CreateState<BattleState_ItemUse>(BattleStateType::UseItem);
 

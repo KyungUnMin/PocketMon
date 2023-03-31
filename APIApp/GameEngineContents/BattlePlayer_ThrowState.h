@@ -26,5 +26,6 @@ private:
 	const float ThrowDuration = 0.5f;
 	const float MoveSpeed = 800.f;
 	float Timer = 0.f;
+	bool IsCreated = false;
 };
 

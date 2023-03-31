@@ -2,7 +2,6 @@
 #include "BattleStateBase.h"
 
 class BackTextActor;
-class BattleFadeCtrl;
 
 class BattleState_BattleLose : public BattleStateBase
 {
@@ -22,7 +21,7 @@ protected:
 
 private:
 	BackTextActor* TextInfo = nullptr;
-	BattleFadeCtrl* Fade = nullptr;
+	bool IsLevelChanged = false;
 	float Timer = 0.f;
 	float Duration = 0.5f;
 };

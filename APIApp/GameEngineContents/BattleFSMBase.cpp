@@ -66,6 +66,12 @@ void BattleFSMBase::InitState(BattleStateBase* _State, size_t _Index)
 		return;
 	}
 
+	if (nullptr != AllState[_Index])
+	{
+		MsgAssert("해당 위치에는 이미 다른 State가 존재합니다\n enum값을 확인해보세요");
+		return;
+	}
+
 	_State->FsmPtr = this;
 	AllState[_Index] = _State;
 }

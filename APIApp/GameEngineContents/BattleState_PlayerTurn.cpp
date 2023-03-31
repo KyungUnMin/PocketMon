@@ -73,9 +73,11 @@ void BattleState_PlayerTurn::BindSelectBoard()
 	});
 
 	//필드 레벨과 연결
-	SelectBoard->SetCallBack(3, []
+	BackTextActor* TextInfo = this->TextInfo;
+	SelectBoard->SetCallBack(3, [&]
 	{
-		PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
+		TextInfo->BattleSetText("Succeed in escaping");
+		BattleLevel::BattleLevelPtr->ChangeFieldLevel();
 	});
 }
 

@@ -105,9 +105,6 @@ private:
 	void CreateBGM(BattleNpcType _BattleType);
 
 
-	
-
-
-
+	void Clear();
 };
 

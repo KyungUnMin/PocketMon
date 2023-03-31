@@ -322,10 +322,6 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleState_PlayerDeadChange.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
     <ClCompile Include="BattleState_PlayerHPCheck.cpp">
       <SubType>
       </SubType>
@@ -757,10 +753,6 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_MonsterDead.h">
-      <SubType>
-      </SubType>
-    </ClInclude>
-    <ClInclude Include="BattleState_PlayerDeadChange.h">
       <SubType>
       </SubType>
     </ClInclude>

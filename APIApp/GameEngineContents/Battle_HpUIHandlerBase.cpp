@@ -9,7 +9,10 @@ Battle_HpUIHandlerBase::Battle_HpUIHandlerBase()
 
 Battle_HpUIHandlerBase::~Battle_HpUIHandlerBase()
 {
-
+	if (nullptr != UI)
+	{
+		UI->Death();
+	}
 }
 
 void Battle_HpUIHandlerBase::ExpCheck()
