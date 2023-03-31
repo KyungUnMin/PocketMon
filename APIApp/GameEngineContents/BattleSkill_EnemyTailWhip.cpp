@@ -38,7 +38,7 @@ void BattleSkill_EnemyTailWhip::EnterState()
 
 void BattleSkill_EnemyTailWhip::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 1.6f))
 	{
 		return;
 	}

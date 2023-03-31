@@ -51,7 +51,7 @@ void BattleSkill_PlayerGrowl::EnterState()
 
 void BattleSkill_PlayerGrowl::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.6f))
 	{
 		return;
 	}

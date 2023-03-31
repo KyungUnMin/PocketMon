@@ -51,7 +51,7 @@ void BattleSkill_EnemyGrowl::EnterState()
 
 void BattleSkill_EnemyGrowl::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_EnemyGrowl::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_EnemyGrowl::Update_CheckTime(_DeltaTime, 1.6f))
 	{
 		return;
 	}

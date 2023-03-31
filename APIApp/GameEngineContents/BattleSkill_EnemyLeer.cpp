@@ -31,7 +31,7 @@ void BattleSkill_EnemyLeer::EnterState()
 
 void BattleSkill_EnemyLeer::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_EnemyLeer::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_EnemyLeer::Update_CheckTime(_DeltaTime, 1.6f))
 	{
 		return;
 	}
