@@ -15,6 +15,8 @@ enum class BattlePlayerMonster_StateType
 	Skill_TailWhip,
 	Skill_Earthquake,
 	Skill_Scratch,
+	Skill_FeatherDance,
+
 	COUNT
 };
 
