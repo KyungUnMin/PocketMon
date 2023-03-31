@@ -3,7 +3,7 @@
 #include "BattleStateIdle.h"
 #include "BattleEnemyMonster_LockState.h"
 #include "BattleSkill_EnemyTackle.h"
-#include "BattleSkill_PlayerScratch.h"
+#include "BattleSkill_EnemyScratch.h"
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
 
@@ -39,7 +39,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleEnemyMonster_CreatedInBall>(BattleEnemyMonster_StateType::CreatedInBall);
 
 	CreateState<BattleSkill_EnemyTackle>(BattleEnemyMonster_StateType::Skill_Tackle);
-	CreateState<BattleSkill_PlayerScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
+	CreateState<BattleSkill_EnemyScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
 
 	if (true == _IsWildMonster)
 	{

@@ -1,6 +1,7 @@
 #pragma once
 #include "BattleSkill_EnemyBase.h"
 // Ό³Έν :
+class GameEngineRender;
 class BattleSkill_EnemyScratch : public BattleSkill_EnemyBase
 {
 public:
@@ -20,12 +21,24 @@ protected:
 	void ExitState() override;
 private:
 	const float Duration = 1.0f;
-	float Timer = 0;
-	enum class MoveState
-	{
-		Forward,
-		Backward
-	};
 
+	GameEngineRender* PlayerMonster = nullptr;
+	GameEngineRender* EffectRender = nullptr;
+
+	float WaitTime = 0.f;
+	float BackwardTime = 0.f;
+	float FlashingTime = 0.f;
+
+	enum class SkillState
+	{
+		Wait,
+		BackWard,
+		Flashing
+	};
+	SkillState CurState = SkillState::Wait;
+
+	void Update_Wait(float _DeltaTime);
+	void Update_BackWard(float _DeltaTime);
+	void Update_Flashing(float _DeltaTime);
 };
 

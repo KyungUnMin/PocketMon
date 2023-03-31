@@ -17,7 +17,7 @@ void BattleSkill_PlayerScratch::EnterState()
 	EnemyMonster = GetEnemyMonster()->GetRender();
 	EffectRender = GetEnemyMonster()->CreateRender("Scratch.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScale({128, 128});
-	EffectRender->SetAlpha({150});
+	EffectRender->SetAlpha({170});
 	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "Scratch.bmp", .Loop = false, .FrameIndex = {5, 0, 1, 2, 3, 4, 5}, .FrameTime = {0.3f, 0.04f, 0.04f, 0.04f, 0.07f, 0.1f, 0.1f} });
 	EffectRender->ChangeAnimation("Defalut");
 }
