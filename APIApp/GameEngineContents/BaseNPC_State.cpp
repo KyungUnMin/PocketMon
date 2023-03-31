@@ -111,7 +111,7 @@ void BaseNPC::InteractionStart()
 	}
 	else if (ScriptDatas.size() != 0)
 	{
-		FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas);
+		FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas[ScriptKey]);
 	}
 }
 
@@ -136,7 +136,7 @@ void BaseNPC::InteractionUpdate(float _DeltaTime)
 				PlayAnimation();
 
 				IsBattleEnd = true;
-				FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas);
+				FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas[ScriptKey]);
 			}
 		}
 	}
@@ -204,6 +204,17 @@ void BaseNPC::InteractionEnd()
 	}
 }
 
+void BaseNPC::SetScriptKey(int _Key)
+{
+	if (ScriptDatas.find(_Key) == ScriptDatas.end())
+	{
+		MsgAssert("존재하지 않는 스크립트 키로 설정하려했습니다.");
+		return;
+	}
+
+	ScriptKey = _Key;
+}
+
 void BaseNPC::AddPokeData(int _Index, int _Level)
 {
 	if (6 == PokemonDatas.GetPokemonCount())
@@ -224,6 +235,11 @@ void BaseNPC::AddPokeData(PokeDataBase _Data)
 	}
 
 	PokemonDatas.AddPokemon(_Data);
+}
+
+void BaseNPC::PlayInteraction()
+{
+	ChangeState(NPCState::interaction);
 }
 
 void BaseNPC::AddInteractionFunc(std::function<void()> _Func, bool _IsLoop )

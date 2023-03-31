@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <list>
 #include <GameEngineCore/GameEngineActor.h>
 #include "int2.h"
 #include "FieldData.h"

@@ -62,7 +62,7 @@ void FieldmapBattleZone::BattleStart()
 	BattleZoneBushParticle* Particle = GetLevel()->CreateActor<BattleZoneBushParticle>();
 	Particle->SetPos(PlayerPos);
 
-	if (0 < GameEngineRandom::MainRandom.RandomInt(0, 10))
+	if (5 < GameEngineRandom::MainRandom.RandomInt(0, 100))
 	{
 		return;
 	}

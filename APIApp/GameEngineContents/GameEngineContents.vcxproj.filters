@@ -548,6 +548,15 @@
     <ClCompile Include="BattleSkill_PlayerEmber.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="SelectStartingUI.cpp" />
+    <ClCompile Include="TrainerCardLevel.cpp" />
+    <ClCompile Include="TrainerCardUI.cpp" />
+    <ClCompile Include="StartingPokeball.cpp">
+      <Filter>Map\Actor\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="StopOakNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1083,6 +1092,15 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerEmber.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectStartingUI.h" />
+    <ClInclude Include="TrainerCardLevel.h" />
+    <ClInclude Include="TrainerCardUI.h" />
+    <ClInclude Include="StartingPokeball.h">
+      <Filter>Map\Actor\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="StopOakNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

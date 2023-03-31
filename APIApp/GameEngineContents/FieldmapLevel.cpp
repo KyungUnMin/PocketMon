@@ -9,6 +9,7 @@
 #include "PokeDataBase.h"
 #include "PokemonScript.h"
 #include "PocketMonCore.h"
+#include "PokemonScript.h"
 
 // Map
 #include "Fieldmap.h"
@@ -20,6 +21,7 @@
 #include "FieldmapCutableTree.h"
 #include "FieldmapFlower.h"
 #include "FieldmapBattleZone.h"
+#include "StartingPokeball.h"
 
 // Debug
 #include "FieldmapRender.h"
@@ -45,6 +47,7 @@
 #include "OakNPC.h"
 #include "GreenNPC.h"
 #include "ShopNpc.h"
+#include "StopOakNPC.h"
 
 // Player
 #include "Player.h"
@@ -62,6 +65,7 @@
 #include "MoveMapFadeEffect.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
+std::vector<std::function<void()>> FieldmapLevel::LevelStartCallFuncs;
 
 FieldmapLevel::FieldmapLevel()
 {
@@ -427,7 +431,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("ViridianForest");
+	Fieldmap::ChangeCity("PalletTown_Home2F");
 	///////
 	///////
 	///////
@@ -444,6 +448,43 @@ void FieldmapLevel::Loading()
 	
 	ShopNpcs = CreateActor<ShopNpc>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpcs);
+
+	// 스타팅 포켓볼 생성
+	{
+		StartingPokeball* StartPokeball01 = CreateActor<StartingPokeball>();
+		StartPokeball01->Init(PokeNumber::Bulbasaur);
+		Fieldmap::AddActor("PalletTown_Office", int2(9, 5), StartPokeball01, false);
+
+		StartingPokeball* StartPokeball02 = CreateActor<StartingPokeball>();
+		StartPokeball01->Init(PokeNumber::Charmander);
+		Fieldmap::AddActor("PalletTown_Office", int2(10, 5), StartPokeball02, false);
+
+		StartingPokeball* StartPokeball03 = CreateActor<StartingPokeball>();
+		StartPokeball01->Init(PokeNumber::Squirtle);
+		Fieldmap::AddActor("PalletTown_Office", int2(11, 5), StartPokeball03, false);
+
+		Fieldmap::AddUpdateEvent("PalletTown_Office", int2(9, 6), {
+			.Name = "GetPokemon",
+			.Order = -100,
+			.VaildFunc = std::bind(&StartingPokeball::EventCheck, StartPokeball01),
+			.EventFunc = std::bind(&StartingPokeball::EventFunc, StartPokeball01),
+			.Loop = true
+			});
+		Fieldmap::AddUpdateEvent("PalletTown_Office", int2(10, 6), {
+			.Name = "GetPokemon",
+			.Order = -100,
+			.VaildFunc = std::bind(&StartingPokeball::EventCheck, StartPokeball02),
+			.EventFunc = std::bind(&StartingPokeball::EventFunc, StartPokeball02),
+			.Loop = true
+			});
+		Fieldmap::AddUpdateEvent("PalletTown_Office", int2(11, 6), {
+			.Name = "GetPokemon",
+			.Order = -100,
+			.VaildFunc = std::bind(&StartingPokeball::EventCheck, StartPokeball03),
+			.EventFunc = std::bind(&StartingPokeball::EventFunc, StartPokeball03),
+			.Loop = true
+			});
+	}
 
 	// 태초 마을
 	{
@@ -462,6 +503,7 @@ void FieldmapLevel::Loading()
 		OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
 		OakNPCPtr->AddScript("Script 003");
 		OakNPCPtr->AddScript("Script 004");
+		OakNPCPtr->AddScript("CZCZ!", 1);
 		OakNPCPtr->SetBaseDir(LookDir::Down);
 		OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -484,18 +526,20 @@ void FieldmapLevel::Loading()
 		ProfessorNPCPtr->AddScript("Script 008");
 		ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+
 	}
 	{
-		GreenNPC* ProfessorNPCPtr = CreateActor<GreenNPC>();
-		ProfessorNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
-		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
-		ProfessorNPCPtr->AddScript("Script 020");
-		ProfessorNPCPtr->AddScript("Script 021");
-		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 10));
-		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 11));
-		ProfessorNPCPtr->AddPokeData(PokeDataBase::PokeCreate(1, 12));
-		ProfessorNPCPtr->SetBaseDir(LookDir::Down);
-		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		GreenNPC* GreenNPCPtr = CreateActor<GreenNPC>();
+		GreenNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
+		GreenNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
+		GreenNPCPtr->AddScript("Script 020");
+		GreenNPCPtr->AddScript("Script 021");
+		GreenNPCPtr->AddScript("Battle 0101", 1);
+		GreenNPCPtr->AddScript("Battle 0202", 1);
+		GreenNPCPtr->AddScript("BYE", 2);
+
+		GreenNPCPtr->SetBaseDir(LookDir::Down);
+		GreenNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
 
 	{
@@ -568,6 +612,50 @@ void FieldmapLevel::Loading()
 		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
 		WoongPtr->SetBaseDir(LookDir::Down);
 		WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	{ // 태초마을 오박사 이벤트
+	
+		std::function<bool()> VaildRamda = []()
+		{
+			if (PokemonScript::IsScriptEnd(100))
+			{
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		};
+
+		std::function<void()> EventRamda = std::bind(
+			[](FieldmapLevel* _This)
+			{
+				StopOakNPC* NpcPtr =_This->CreateActor<StopOakNPC>();
+				NpcPtr->InitNPC("StopOak", "Oak.bmp", BattleNpcType::None);
+				NpcPtr->AddNPC("PalletTown", int2::Zero, false);
+
+				NpcPtr->AddScript("0001");
+				NpcPtr->AddScript("0002");
+			}
+		, this);
+
+		Fieldmap::AddStartEvent("PalletTown", int2(18, 0),
+			{
+			 .Name = "StopEvent",
+			 .Order = -9999,
+			 .VaildFunc = VaildRamda,
+			 .EventFunc = EventRamda,
+			 .Loop = true
+			});
+		Fieldmap::AddStartEvent("PalletTown", int2(19, 0),
+			{
+			 .Name = "StopEvent",
+			 .Order = -9999,
+			 .VaildFunc = VaildRamda,
+			 .EventFunc = EventRamda,
+			 .Loop = true
+			});
 	}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
@@ -692,6 +780,16 @@ void FieldmapLevel::Update(float _DeltaTime)
 	{
 		Fieldmap::EndEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
 	}
+}
+
+void FieldmapLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
+{
+	for (size_t i = 0; i < LevelStartCallFuncs.size(); i++)
+	{
+		LevelStartCallFuncs[i]();
+	}
+
+	LevelStartCallFuncs.clear();
 }
 
 void FieldmapLevel::UIImageLoad()

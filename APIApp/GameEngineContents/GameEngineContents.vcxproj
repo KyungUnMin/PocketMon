@@ -603,10 +603,12 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StartingPokeball.cpp" />
     <ClCompile Include="StaticNPC.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="StopOakNPC.cpp" />
     <ClCompile Include="SummaryLevel.cpp">
       <SubType>
       </SubType>
@@ -1080,10 +1082,12 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="StartingPokeball.h" />
     <ClInclude Include="StaticNPC.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="StopOakNPC.h" />
     <ClInclude Include="SummaryLevel.h">
       <SubType>
       </SubType>

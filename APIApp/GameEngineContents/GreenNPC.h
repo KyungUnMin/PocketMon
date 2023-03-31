@@ -14,8 +14,11 @@ public:
 
 protected:
 	
+	void IdleUpdate(float _DeltaTime) override;
+	
+	void InteractionEnd() override;
 private:
-
-
+	bool IsOut = false;
+	bool IsPlay = false;
 };
 

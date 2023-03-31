@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <functional>
 #include <GameEngineBase/GameEngineString.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "int2.h"
@@ -22,8 +24,14 @@ public:
 	{
 		return PlayerPos;
 	}
+
+	static void AddLevelStartFunc(std::function<void()> _Func)
+	{
+		LevelStartCallFuncs.push_back(_Func);
+	}
 private:
 	static float4 PlayerPos;
+	static std::vector<std::function<void()>> LevelStartCallFuncs;
 public:
 	FieldmapLevel();
 	~FieldmapLevel();
@@ -37,8 +45,8 @@ protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;
 
+	void LevelChangeStart(GameEngineLevel* _PrevLevel) override;
 	void LevelChangeEnd(GameEngineLevel* _NextLevel) override {}
-	void LevelChangeStart(GameEngineLevel* _PrevLevel) override {}
 private:
 	std::map<std::string, DoorActorBase*> AllDoors;
 

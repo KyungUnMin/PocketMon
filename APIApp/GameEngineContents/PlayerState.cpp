@@ -78,6 +78,14 @@ void Player::IdleStart()
 }
 void Player::IdleUpdate(float _Time)
 {
+	if (NextMovePos.size() != 0)
+	{
+		EndPos = NextMovePos.front();
+		NextMovePos.pop_front();
+
+		ChangeState(PlayerState::MOVE);
+	}
+
 	if (false == InputControll::CanControll())
 	{
 		return;
@@ -85,15 +93,6 @@ void Player::IdleUpdate(float _Time)
 
 	Playerindex = Fieldmap::GetIndex(GetPos());	
 	Fieldmap::UpdateEventCheck(Playerindex);
-
-	if (NextMovePos.size() != 0)
-	{
-		EndPos = NextMovePos.front();
-		NextMovePos.pop_front();
-
-		InputControlHandle = InputControll::UseControll();
-		ChangeState(PlayerState::MOVE);
-	}
 
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
@@ -161,8 +160,11 @@ void Player::MoveUpdate(float _Time)
 	 if (PlayerTime > 1.0f) //다음타일까지의 이동시간
 	 {
 		 PlayerTime = 0.0f;
-
-		 InputControlHandle = InputControll::ResetControll(InputControlHandle);
+			
+		 if (0 <= InputControlHandle)
+		 {
+			InputControlHandle = InputControll::ResetControll(InputControlHandle);
+		 }
 
 		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 		 Fieldmap::FieldUpdate();

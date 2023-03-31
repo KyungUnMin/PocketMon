@@ -44,15 +44,19 @@ void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _Im
 	NPCRender->CreateAnimation({.AnimationName = "Interaction_Right", .ImageName = _ImageName, .Start = 23, .End = 23, .Loop = false});
 }
 
-void BaseNPC::AddNPC(const std::string_view& _CityName, int2 _Index)
+void BaseNPC::AddNPC(const std::string_view& _CityName, int2 _Index, bool _IsAdd)
 {
 	CityName = _CityName;
-	Fieldmap::AddActor(_CityName, _Index, this, false);
+
+	if (true == _IsAdd)
+	{
+		Fieldmap::AddActor(_CityName, _Index, this, false);
+	}
 }
 
-void BaseNPC::AddScript(const std::string_view& _Script)
+void BaseNPC::AddScript(const std::string_view& _Script, int _Key)
 {
-	ScriptDatas.push_back(_Script.data());
+	ScriptDatas[_Key].push_back(_Script.data());
 }
 
 void BaseNPC::Look(LookDir _Dir)

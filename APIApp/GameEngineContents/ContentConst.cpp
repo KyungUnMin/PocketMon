@@ -1,6 +1,6 @@
 #include "ContentConst.h"
 
-const float4 ContentConst::NpcSize = float4(80, 80);
+const float4 ContentConst::NpcSize = float4(64, 64);
 
 ContentConst::ContentConst()
 {

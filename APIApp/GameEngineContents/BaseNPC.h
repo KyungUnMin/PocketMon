@@ -21,7 +21,7 @@ public:
 		Shop,
 		Look
 	};
-private:
+protected:
 	enum class NPCState
 	{
 		Idle,
@@ -39,8 +39,8 @@ public:
 	BaseNPC& operator=(BaseNPC&& _Other) noexcept = delete;
 
 	void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName, BattleNpcType _Type);
-	void AddNPC(const std::string_view& _CityName, int2 _Index);
-	void AddScript(const std::string_view& _Script);
+	void AddNPC(const std::string_view& _CityName, int2 _Index, bool _IsAdd = true);
+	void AddScript(const std::string_view& _Script, int _Key = 0);
 
 	// NPC 이동 지점 추가
 	void AddMovePoint(const float4& _Pos)
@@ -78,10 +78,14 @@ public:
 		LookDistance = _Dis;
 	}
 
+	void SetScriptKey(int _Key);
+	
 	void AddPokeData(int _Index, int _Level);
 	void AddPokeData(PokeDataBase _Data);
 
 
+	// 상호작용 실행
+	void PlayInteraction();
 	// 상호작용 이벤트 추가
 	void AddInteractionFunc(std::function<void()> _Func, bool _IsLoop = true);
 
@@ -98,35 +102,13 @@ public:
 protected:
 	LookDir Dir;
 
-	void Update(float _DeltaTime) override;
-
-	virtual void IdleStart();
-	virtual void IdleUpdate(float _DeltaTime);
-	virtual void IdleEnd();
-
-	virtual void MoveStart();
-	virtual void MoveUpdate(float _DeltaTime);
-	virtual void MoveEnd();
-
-	virtual void InteractionStart();
-	virtual void InteractionUpdate(float _DeltaTime);
-	virtual void InteractionEnd();
-
-
-	void PlayAnimation();
-	void ChangeState(NPCState _State);
-
-	bool CheckInteractionTrigger() const;
-
-private:
-
 	// 랜더링 관련 변수
 	GameEngineRender* NPCRender = nullptr;
 	std::string AnimationName = "Idle";
 
 	// 정보 값 저장
-	std::string CityName; 
-	std::string Name; 
+	std::string CityName;
+	std::string Name;
 
 	// Npc 상태
 	NPCState State = NPCState::Idle;
@@ -153,13 +135,38 @@ private:
 	int2 InteractionIndex = int2::Zero;
 	int LookDistance = 6;
 
-	
+
 	std::vector<std::function<void()>> InteractionFuncs;
 	std::vector<std::function<void()>> LoopInteractionFuncs;
 
 	// 대사 저장
-	std::list<std::string> ScriptDatas;
+	int ScriptKey = 0;
+	std::map<int, std::list<std::string>> ScriptDatas;
 
 	// 포켓몬 데이터
 	TrainerPokemon PokemonDatas;
+
+	void Update(float _DeltaTime) override;
+
+	virtual void IdleStart();
+	virtual void IdleUpdate(float _DeltaTime);
+	virtual void IdleEnd();
+
+	virtual void MoveStart();
+	virtual void MoveUpdate(float _DeltaTime);
+	virtual void MoveEnd();
+
+	virtual void InteractionStart();
+	virtual void InteractionUpdate(float _DeltaTime);
+	virtual void InteractionEnd();
+
+
+	void PlayAnimation();
+	void ChangeState(NPCState _State);
+
+	bool CheckInteractionTrigger() const;
+
+private:
+
+
 };

@@ -278,6 +278,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ViridianCity_Flower.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Route1_Flower.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PalletTown_Flower.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pokeball.bmp"));
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FadeInOut.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Background.bmp"));
