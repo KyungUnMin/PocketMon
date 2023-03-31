@@ -27,18 +27,6 @@ void FieldDialog::Off()
 	UpdateEnd();
 }
 
-void FieldDialog::OnOffSwtich()
-{
-	if (IsUpdate())
-	{
-		Off();
-	}
-	else
-	{
-		ConversationStart(&TestScript);
-	}
-}
-
 void FieldDialog::ConversationStart(std::list<std::string>* _Script)
 {
 	On();
@@ -99,11 +87,6 @@ void FieldDialog::Start()
 	ArrowRender->CreateAnimation({.AnimationName = "Arrow", .ImageName = "Arrow_Dialog.bmp", .Start = 0, .End = 3, .InterTime = 0.1f});
 	ArrowRender->SetScale(ArrowRenderScale);
 	ArrowRender->ChangeAnimation("Arrow");
-
-	//Test
-	TestScript.push_back("sdjkhfsbjk,,lsj");
-	TestScript.push_back("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
-	TestScript.push_back("sdjkhfsbjk,,vqqwjbfhqkasjfbaukuvbdmjvgqsj,vqvbkvbax,jga,vbhjxa.");
 
 	Off();
 }

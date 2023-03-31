@@ -20,7 +20,6 @@ public:
 	FieldDialog& operator=(FieldDialog&& _Other) noexcept = delete;
 
 	void Off() override;
-	void OnOffSwtich() override;
 
 	static FieldDialog* GetFieldDialog()
 	{
@@ -33,10 +32,10 @@ public:
 
 	bool IsValid = true;
 
-	std::string_view GetCurScript()
-	{
-		return ScriptIter->data();
-	}
+	//std::string_view GetCurScript()
+	//{
+	//	return ScriptIter->data();
+	//}
 
 	std::list<std::string>* GetCurScriptPtr() const
 	{
@@ -64,8 +63,6 @@ private:
 	float4 TextRenderInterval = { 0,12 };
 	int SpaceFrameNum = 26;
 	float PrintSpeed = 0.03f;
-
-	std::list<std::string> TestScript = std::list<std::string>();
 
 	std::list<std::string>::iterator ScriptIter = std::list<std::string>::iterator();
 	std::list<std::string>::iterator ScriptEndIter = std::list<std::string>::iterator();
