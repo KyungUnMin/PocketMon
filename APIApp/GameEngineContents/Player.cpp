@@ -129,6 +129,7 @@ void Player::Update(float _DeltaTime)
 		BikePlayers->Off();
 		PlayerMoveSpeed = 5.0f;
 	}
+
 	if (true == PlayerMoveBool)
 	{
 		UpdateState(_DeltaTime); //움직임관리
@@ -236,6 +237,17 @@ void Player::JumpDown()
 	NextJumpIndex = { Playerindex.x ,Playerindex.y + 2 };
 	ChangeState(PlayerState::JUMP);
 	Dir = LookDir::Down;
+}
+
+
+void Player::PlayerDeathCheckFunction()
+{
+	if (true == IsPlayerDeath)
+	{
+		Fieldmap::ChangeCity("PalletTown_Home2F");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", int2(5, 5)));
+		Fieldmap::FieldUpdate();
+	}
 }
 
 

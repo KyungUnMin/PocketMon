@@ -191,7 +191,7 @@ void Player::JumpUpdate(float _Time)
 		Players->ChangeAnimation("Jump");
 	}
 	
-	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
+	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, JumpHeight, PlayerJumpTime);
 	SetPos(NextJumpPos);
 
 	if (PlayerJumpTime > 1.0f)

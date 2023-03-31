@@ -154,6 +154,15 @@ public:
 		Players->ChangeAnimation("Up_Idle");
 	}
 
+	/////////PlayerDeathCheck
+
+	void SetPlayerDeath()
+	{
+		IsPlayerDeath = true;
+		PlayerDeathCheckFunction();
+	}
+
+
 	
 protected:
 	void Start() override;
@@ -205,6 +214,8 @@ private:
 	float4 JumpStartPos = float4::Zero;
 	float4 JumpEndPos = float4::Zero;
 
+	float JumpHeight = 150.0f;
+
 	//플레이어<->NPC 방향제어enum class
 	NPCtalkValue TalkValue = NPCtalkValue::NONE;
 
@@ -233,5 +244,10 @@ private:
 	//AutoMove Pos값을 저장하는 list
 	std::list<float4> NextMovePos = std::list<float4>();
 	
+
+
+	//////////DeathCheckbool
+	void PlayerDeathCheckFunction();
+	bool IsPlayerDeath = false;
 };
 

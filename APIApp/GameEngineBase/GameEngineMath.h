@@ -240,9 +240,9 @@ public:
 		return Start*((1.0f - Ratio) * (1.0f - Ratio))+ Middle*(2*((1.0f - Ratio)*Ratio))+End*(Ratio*Ratio);
 	}
 
-	static float4 BezierClamp(const float4& Start, const float4& End, float Ratio)
+	static float4 BezierClamp(const float4& Start, const float4& End,float _JumpHeight, float Ratio)
 	{
-		float4 Middle = { ((End + Start).x)/2, ((End + Start).y)/2 -150.0f };
+		float4 Middle = { ((End + Start).x)/2, ((End + Start).y)/2 - _JumpHeight };
 
 		if (0 >= Ratio)
 		{
