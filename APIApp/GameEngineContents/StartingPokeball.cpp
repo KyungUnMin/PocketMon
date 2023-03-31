@@ -8,8 +8,11 @@
 #include "Player.h"
 #include "SelectStartingUI.h"
 
+int2 StartingPokeball::StaticRivalMovelIndex = int2(0, 0);
+StartingPokeball* StartingPokeball::StaticRivalPokeball = nullptr;
+
 StartingPokeball::StartingPokeball() :
-	_MyNumber(PokeNumber::Onix)
+	PokemonNumber(PokeNumber::Onix)
 {
 }
 
@@ -17,9 +20,11 @@ StartingPokeball::~StartingPokeball()
 {
 }
 
-void StartingPokeball::Init(PokeNumber _Number)
+void StartingPokeball::Init(PokeNumber _Number, int2 _RivalIndex, StartingPokeball* _RivalPokeball)
 {
-	_MyNumber = _Number;
+	PokemonNumber = _Number;
+	RivalBallIndex = _RivalIndex;
+	RivalPokeball = _RivalPokeball;
 }
 
 bool StartingPokeball::EventCheck()
@@ -49,16 +54,24 @@ bool StartingPokeball::EventCheck()
 
 void StartingPokeball::EventFunc()
 {
-	SelectStartingUI::MainSelectStartingUI->SelectMonster(_MyNumber,
+	SelectStartingUI::MainSelectStartingUI->SelectMonster(PokemonNumber,
 		std::bind([](StartingPokeball* _This) {
 			_This->SelectEvent();
 			}, this));
+
+	StaticRivalPokeball = RivalPokeball;
+	StaticRivalMovelIndex = RivalBallIndex;
 }
 
 void StartingPokeball::SelectEvent()
 {
 	PokeballRender->Off();
 	PokemonScript::EndScript(100);
+}
+
+void StartingPokeball::RenderOff()
+{
+	PokeballRender->Off();
 }
 
 void StartingPokeball::Start()

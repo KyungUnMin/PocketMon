@@ -80,6 +80,7 @@ void FieldmapLevel::Loading()
 	{
 		PokemonScript::AddScript(0);   // 태초마을 나가기 이벤트
 		PokemonScript::AddScript(100); // 스타팅 포켓몬 획득
+		PokemonScript::AddScript(150); // 라이벌 포켓몬 획득
 		PokemonScript::AddScript(200); // 라이벌 전투
 		PokemonScript::AddScript(300); // 22번 도로 전투
 		PokemonScript::AddScript(400); // 회색시티 체육관 전투
@@ -431,7 +432,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PalletTown_Home2F");
+	Fieldmap::ChangeCity("PalletTown_Office");
 	///////
 	///////
 	///////
@@ -452,16 +453,17 @@ void FieldmapLevel::Loading()
 	// 스타팅 포켓볼 생성
 	{
 		StartingPokeball* StartPokeball01 = CreateActor<StartingPokeball>();
-		StartPokeball01->Init(PokeNumber::Bulbasaur);
 		Fieldmap::AddActor("PalletTown_Office", int2(9, 5), StartPokeball01, false);
 
 		StartingPokeball* StartPokeball02 = CreateActor<StartingPokeball>();
-		StartPokeball01->Init(PokeNumber::Charmander);
 		Fieldmap::AddActor("PalletTown_Office", int2(10, 5), StartPokeball02, false);
 
 		StartingPokeball* StartPokeball03 = CreateActor<StartingPokeball>();
-		StartPokeball01->Init(PokeNumber::Squirtle);
 		Fieldmap::AddActor("PalletTown_Office", int2(11, 5), StartPokeball03, false);
+
+		StartPokeball01->Init(PokeNumber::Bulbasaur, int2(10, 6), StartPokeball02);
+		StartPokeball02->Init(PokeNumber::Charmander, int2(11, 6), StartPokeball03);
+		StartPokeball03->Init(PokeNumber::Squirtle, int2(9, 6), StartPokeball01);
 
 		Fieldmap::AddUpdateEvent("PalletTown_Office", int2(9, 6), {
 			.Name = "GetPokemon",
@@ -540,6 +542,36 @@ void FieldmapLevel::Loading()
 
 		GreenNPCPtr->SetBaseDir(LookDir::Down);
 		GreenNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+
+		std::function<bool()> VaildEvent = std::bind(&GreenNPC::BattleEventCheck, GreenNPCPtr);
+		std::function<void()> BattleEvent = std::bind(&GreenNPC::BattleStart, GreenNPCPtr);
+
+		Fieldmap::AddStartEvent("PalletTown_Office", int2(8, 9),
+			{
+				.Name = "RivalBattle",
+				.Order = -1,
+				.VaildFunc = VaildEvent,
+				.EventFunc = BattleEvent,
+				.Loop = false
+			});
+
+		Fieldmap::AddStartEvent("PalletTown_Office", int2(7, 9),
+			{
+				.Name = "RivalBattle",
+				.Order = -1,
+				.VaildFunc = VaildEvent,
+				.EventFunc = BattleEvent,
+				.Loop = false
+			});
+
+		Fieldmap::AddStartEvent("PalletTown_Office", int2(6, 9),
+			{
+				.Name = "RivalBattle",
+				.Order = -1,
+				.VaildFunc = VaildEvent,
+				.EventFunc = BattleEvent,
+				.Loop = false
+			});
 	}
 
 	{
@@ -928,6 +960,7 @@ void FieldmapLevel::CreateBattlezone_Route1(const int2& _Start, const int2& _Siz
 
 	BattleZone->InitBattleZone("Route1", _Start, _Size, 2, 5);
 	BattleZone->AddPokemon(PokeNumber::Rattata);
+	BattleZone->AddPokemon(PokeNumber::Pidgey);
 }
 
 void FieldmapLevel::CreateBattlezone_Route2_Down(const int2& _Start, const int2& _Size)
@@ -935,15 +968,17 @@ void FieldmapLevel::CreateBattlezone_Route2_Down(const int2& _Start, const int2&
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
 	BattleZone->InitBattleZone("Route2_Down", _Start, _Size, 5, 7);
-	BattleZone->AddPokemon(PokeNumber::Venusaur);
+	BattleZone->AddPokemon(PokeNumber::Rattata);
+	BattleZone->AddPokemon(PokeNumber::Pidgey);
 }
 
 void FieldmapLevel::CreateBattlezone_Route2_Up(const int2& _Start, const int2& _Size)
 {
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
-	BattleZone->InitBattleZone("Route2_Up", _Start, _Size, 9, 12);
-	BattleZone->AddPokemon(PokeNumber::Blastoise);
+	BattleZone->InitBattleZone("Route2_Up", _Start, _Size, 8, 10);
+	BattleZone->AddPokemon(PokeNumber::Geodude);
+	BattleZone->AddPokemon(PokeNumber::Spearow);
 }
 
 void FieldmapLevel::CreateBattlezone_Route22(const int2& _Start, const int2& _Size)
@@ -951,13 +986,16 @@ void FieldmapLevel::CreateBattlezone_Route22(const int2& _Start, const int2& _Si
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
 	BattleZone->InitBattleZone("Route22", _Start, _Size, 12, 15);
-	BattleZone->AddPokemon(PokeNumber::Geodude);
+	BattleZone->AddPokemon(PokeNumber::Rattata);
+	BattleZone->AddPokemon(PokeNumber::Pidgey);
 }
 
 void FieldmapLevel::CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size)
 {
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
-	BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 10);
-	BattleZone->AddPokemon(PokeNumber::Charmeleon);
+	BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 8);
+	BattleZone->AddPokemon(PokeNumber::Bulbasaur);
+	BattleZone->AddPokemon(PokeNumber::Charmander);
+	BattleZone->AddPokemon(PokeNumber::Squirtle);
 }

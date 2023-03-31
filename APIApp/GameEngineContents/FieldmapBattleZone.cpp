@@ -70,13 +70,12 @@ void FieldmapBattleZone::BattleStart()
 	GameEngineRandom& MianRand = GameEngineRandom::MainRandom;
 
 	int RandomIndex = MianRand.RandomInt(0, static_cast<int>(PokeNumbers.size() - 1));
-	int PokeNumber = static_cast<int>(PokeNumbers[RandomIndex]);
 	int RandomLevel = MianRand.RandomInt(static_cast<int>(MinLevel), static_cast<int>(MaxLevel));
 
 	GroundType MyGroundType = Fieldmap::GetGroundType(PlayerIndex);
 
 	std::vector<PokeDataBase> PoekDatas;
-	PoekDatas.push_back(PokeDataBase::PokeCreate(RandomIndex + 1, RandomLevel));
+	PoekDatas.push_back(PokeDataBase::PokeCreate(PokeNumbers[RandomIndex], RandomLevel));
 
 	BattleLevel::BattleLevelPtr->Init(PoekDatas, MyGroundType);
 

@@ -12,13 +12,17 @@ public:
 	GreenNPC& operator=(const GreenNPC& _Other) = delete;
 	GreenNPC& operator=(GreenNPC&& _Other) noexcept = delete;
 
+	bool BattleEventCheck();
+	void BattleStart();
+
 protected:
 	
 	void IdleUpdate(float _DeltaTime) override;
 	
 	void InteractionEnd() override;
 private:
-	bool IsOut = false;
-	bool IsPlay = false;
+	bool IsSelectMove = false;
+	bool IsBlockMove = false;
+	bool IsBattleEnd = false;
 };
 

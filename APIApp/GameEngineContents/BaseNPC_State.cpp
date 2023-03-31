@@ -82,8 +82,11 @@ void BaseNPC::InteractionStart()
 {
 	PlayAnimation();
 
-	InputHandle = InputControll::UseControll();
-	InputControll::UsedKey();
+	if (true == InputControll::CanControll())
+	{
+		InputHandle = InputControll::UseControll();
+		InputControll::UsedKey();
+	}
 
 	if (TriggerType == InteractionTriggerType::Look)
 	{
@@ -192,7 +195,10 @@ void BaseNPC::InteractionEnd()
 
 			[](BaseNPC* _this)
 			{
-				_this->InputHandle = InputControll::ResetControll(_this->InputHandle);
+				if (0 <= _this->InputHandle)
+				{
+					_this->InputHandle = InputControll::ResetControll(_this->InputHandle);
+				}
 				GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
 			},
 			this));

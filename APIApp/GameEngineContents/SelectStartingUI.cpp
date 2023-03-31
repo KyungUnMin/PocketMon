@@ -103,7 +103,7 @@ void SelectStartingUI::Update(float _DeltaTime)
 				switch (State)
 				{
 				case MenuState::Yes:
-					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(static_cast<int>(Select), 5);
+					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(PokeDataBase::PokeCreate(Select, 5));
 					DeleteBallFunction();
 					AcFieldDialog->ConversationStart(&SelectScript);
 					State = MenuState::Null;
