@@ -5,6 +5,7 @@
 
 #include "BattlePlayer.h"
 #include "BattleMonsterPlayer.h"
+#include "BattleEnemy.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -32,7 +33,7 @@ FriendlyHPBackground::~FriendlyHPBackground()
 
 void FriendlyHPBackground::Start()
 {
-	GameEngineRender* RenderPtr = CreateRender("FriendlyHPBackground.bmp", BattleRenderOrder::Battle_UI);
+	RenderPtr = CreateRender("FriendlyHPBackground.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 	RenderPtr->SetPosition({ 480,360 });
 
@@ -54,7 +55,6 @@ void FriendlyHPBackground::Start()
 	//}
 	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
 	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
-	BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(40);
 	
 	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
@@ -106,6 +106,8 @@ void FriendlyHPBackground::Start()
 		PoketMonHPMAX_R[x]->EffectCameraOff();
 
 	}
+	 SecoundHp = 192.0f - FirstHp;
+
 }
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
@@ -140,7 +142,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (TickNumber_1 == 0) 
 				{
-					ExpUpdate(20, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
+					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -149,6 +151,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			if (TickNumber_1 == 20)
 			{
 				TickNumber_1 = 0;
+				BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float());
 				IsExpUP = false;
 			//	CurMyHP = DamegeTick[9];
 
@@ -161,15 +164,15 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	if (BattleStartCheck == true) {
 
-		if (FirstHp == 0)
+		/*if (FirstHp == 0)
 		{
 			FirstHp = 192.0f;
-		}
+		}*/
+
 		if(TickNumber ==0)
 		{
-
 		
-			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), FirstHp);
+			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), SecoundHp);
 		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.1f) {
@@ -186,7 +189,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			TickNumber = 0;
 			BattleStartCheck = false;
 
-			FirstHp = DamegeTick[9];
+			SecoundHp = DamegeTick[9];
 
 		}
 		
@@ -303,7 +306,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 	float Expmag = _GetExp / (100.0f - _MyCurExp);
 	/*if (Expmag>=1.0f)*/
 
-	float UpExp = GameEngineMath::Lerp(0.0f, _curpos- _CurExpPos, Expmag);
+	float UpExp = GameEngineMath::Lerp(0.0f, _curpos + _CurExpPos, Expmag);
 	for (int i = 1; i <= 20; i++) {
 
 		EXPTick.push_back(_CurExpPos +(UpExp / 20 )* i); /*현재 HP - (데미지 / 10 *)1*/

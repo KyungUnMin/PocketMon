@@ -17,6 +17,11 @@ public:
 
 	void BattleSetText(const std::string_view& _Texts);
 
+	GameEngineRender* GetWindowPtr()
+	{
+		return RenderPtr;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -46,7 +51,7 @@ private:
 	int SecondLineRenderLen = 0;
 
 	int IndexCount = 0;
-
+	GameEngineRender* RenderPtr = nullptr;
 	std::list<std::string> TestText = std::list<std::string>();
 	std::list<std::string>::iterator TestTextIter = std::list<std::string>::iterator();
 	std::list<std::string>::iterator TestTextEndIter = std::list<std::string>::iterator();

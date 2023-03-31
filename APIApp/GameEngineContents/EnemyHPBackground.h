@@ -25,6 +25,11 @@ public:
 	float GetPlayerDamage(float _EnumyMonsterDamage);
 	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp, float _curpos);
 
+	GameEngineRender* GetWindowPtr()
+	{
+		return RenderPtr;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -38,7 +43,7 @@ private:
 	std::vector<GameEngineRender*> EnemyPoketMonName_R;
 	std::vector<GameEngineRender*> EnemyPoketMonLevel_R;
 
-
+	GameEngineRender* RenderPtr = nullptr;
 	float4 EnemyPoketMonName_S = { 100,120 };
 	float4 EnemyPoketMonLevel_S = { 385,120 };
 

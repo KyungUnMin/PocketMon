@@ -31,7 +31,11 @@ public:
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
 
-
+	GameEngineRender* GetWindowPtr()
+	{
+		return RenderPtr;
+	}
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -48,6 +52,7 @@ private:
 	std::vector<GameEngineRender*> PoketMonHPCUR_R;
 	std::vector<GameEngineRender*> PoketMonHPMAX_R;
 
+	GameEngineRender* RenderPtr = nullptr;
 	GameEngineRender* HPRenderPtr = nullptr;
 
 	GameEngineRender* EXPRenderPtr = nullptr;
@@ -94,7 +99,7 @@ private:
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
 	bool IsExpUP = false;
-
+	float SecoundHp = 0.0f;
 
 	int ExpPoint = 0;
 	int CurExp = 0.0f;

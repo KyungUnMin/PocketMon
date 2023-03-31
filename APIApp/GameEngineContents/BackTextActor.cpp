@@ -20,7 +20,7 @@ BackTextActor::~BackTextActor()
 void BackTextActor::Start()
 {
 	SetPos({480,540});
-	GameEngineRender* RenderPtr = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
+	RenderPtr = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 
 	BattleTextRender.resize(LineCount);
