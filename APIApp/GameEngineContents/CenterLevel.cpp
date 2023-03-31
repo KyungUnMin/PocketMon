@@ -133,7 +133,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Scratch.bmp"))->Cut(1, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
 		//TODO
 
 		Dir.MoveParentToDirectory("Skill");

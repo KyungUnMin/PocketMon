@@ -15,11 +15,13 @@ void BattleSkill_PlayerEmber::EnterState()
 
 
 	EnemyMonster = GetEnemyMonster()->GetRender();
+
 	EffectRender = GetEnemyMonster()->CreateRender("Ember.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScale({ 128, 128 });
-	//EffectRender->SetAlpha({ 170 });
-	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "Ember.bmp", .Loop = false, .FrameIndex = {1, 2, 3, 4 }, .FrameTime = {0.5f, 0.2f, 0.1f,0.2f} });
+	EffectRender->SetPosition(StartPos);
+	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "Ember.bmp", .Loop = false, .FrameIndex = {0, 1, 2, 3, 4, 5, 6 }, .FrameTime = {0.65f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f, 0.07f} });
 	EffectRender->ChangeAnimation("Defalut");
+	EffectRender->On();
 }
 
 void BattleSkill_PlayerEmber::Update(float _DeltaTime)
@@ -29,8 +31,8 @@ void BattleSkill_PlayerEmber::Update(float _DeltaTime)
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerEmber::SkillState::Wait:
-		Update_Wait(_DeltaTime);
+	case BattleSkill_PlayerEmber::SkillState::Shoot:
+		Update_Shoot(_DeltaTime);
 		break;
 	case BattleSkill_PlayerEmber::SkillState::BackWard:
 		Update_BackWard(_DeltaTime);
@@ -42,38 +44,45 @@ void BattleSkill_PlayerEmber::Update(float _DeltaTime)
 		break;
 	}
 
+	if (true == EffectRender->IsAnimationEnd())
+	{
+		EffectRender->Off();
+	}
 }
 
 void BattleSkill_PlayerEmber::ExitState()
 {
 	BattleSkill_PlayerBase::ExitState();
 
-	WaitTime = 0.f;
+	ShootTime = 0.f;
 	BackwardTime = 0.f;
 	FlashingTime = 0.f;
-	CurState = SkillState::Wait;
+	
+	CurState = SkillState::Shoot;
 	EnemyMonster->On();
 }
 
-void BattleSkill_PlayerEmber::Update_Wait(float _DeltaTime)
+void BattleSkill_PlayerEmber::Update_Shoot(float _DeltaTime)
 {
-	WaitTime += _DeltaTime;
+	ShootTime += EmberSpeed * _DeltaTime;
+	EffectRender->SetPosition(float4::LerpClamp(StartPos, EndPos, ShootTime));
 
-	if (0.45f < WaitTime)
+	if (1.0f < ShootTime)
 	{
 		CurState = SkillState::BackWard;
 	}
 }
 
+
 void BattleSkill_PlayerEmber::Update_BackWard(float _DeltaTime)
 {
 	BackwardTime += _DeltaTime;
-
-	if (0.28f <= BackwardTime)
+	EffectRender->SetMove(float4::Right * 172 * _DeltaTime);
+	if (0.12f <= BackwardTime)
 	{
 		CurState = SkillState::Flashing;
 	}
-	else if (0.12f <= BackwardTime)
+	else if (0.06f <= BackwardTime)
 	{
 		EnemyMonster->SetPosition(float4::Zero);
 	}
@@ -88,7 +97,7 @@ void BattleSkill_PlayerEmber::Update_Flashing(float _DeltaTime)
 	FlashingTime += _DeltaTime;
 
 
-	if (0.08 <= FlashingTime)
+	if (0.08f <= FlashingTime)
 	{
 		EnemyMonster->On();
 		FlashingTime = 0;

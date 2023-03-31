@@ -1,10 +1,10 @@
 #pragma once
 #include "BattleSkill_PlayerBase.h"
-
 // Ό³Έν :
 class GameEngineRender;
 class BattleSkill_PlayerEmber : public BattleSkill_PlayerBase
 {
+	friend class EmberEffect;
 public:
 	// constrcuter destructer
 	BattleSkill_PlayerEmber();
@@ -21,25 +21,28 @@ protected:
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 private:
-	const float Duration = 1.0f;
+	const float Duration = 1.1f;
+	const float EmberSpeed = 1.5f;
+	const float4 StartPos = { -332, 212 };
+	const float4 EndPos = { 0, 32 };
 
-	GameEngineRender* EnemyMonster = nullptr;
 	GameEngineRender* EffectRender = nullptr;
-	
-	float WaitTime = 0.f;
-	float BackwardTime = 0.f;
-	float FlashingTime = 0.f;
+	GameEngineRender* EnemyMonster = nullptr;
+
 
 	enum class SkillState
 	{
-		Wait,
+		Shoot,
 		BackWard,
 		Flashing
 	};
-	SkillState CurState = SkillState::Wait;
-
-	void Update_Wait(float _DeltaTime);
+	float ShootTime = 0.f;
+	float BackwardTime = 0.f;
+	float FlashingTime = 0.f;
+	SkillState CurState = SkillState::Shoot;
+	void Update_Shoot(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);
 	void Update_Flashing(float _DeltaTime);
+
 };
 
