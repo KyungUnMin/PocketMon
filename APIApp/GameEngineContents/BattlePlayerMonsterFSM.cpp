@@ -7,6 +7,9 @@
 #include "BattleSkill_PlayerGrowl.h"
 #include "BattleSkill_PlayerTest.h"
 #include "BattleSkill_PlayerScratch.h"
+#include "BattleSkill_PlayerLeer.h"
+#include "BattleSkill_PlayerEarthquake.h"
+#include "BattleSkill_PlayerTailWhip.h"
 
 BattlePlayerMonsterFSM::BattlePlayerMonsterFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -26,6 +29,9 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerTest>(BattlePlayerMonster_StateType::Test);
 
 	CreateState<BattleSkill_PlayerGrowl>(BattlePlayerMonster_StateType::Skill_Growl);
+	CreateState<BattleSkill_PlayerLeer>(BattlePlayerMonster_StateType::Skill_Leer);
+	CreateState<BattleSkill_PlayerTailWhip>(BattlePlayerMonster_StateType::Skill_TailWhip);
+	CreateState<BattleSkill_PlayerEarthquake>(BattlePlayerMonster_StateType::Skill_Earthquake);
 
 	CreateState<BattlePlayerMonster_CreateState>(BattlePlayerMonster_StateType::Create);
 	CreateState<BattleStateIdle>(BattlePlayerMonster_StateType::Idle);

@@ -255,6 +255,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_EnemyGrowl.cpp" />
+    <ClCompile Include="BattleSkill_EnemyLeer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyScratch.cpp">
       <SubType>
       </SubType>
@@ -271,7 +275,15 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerEarthquake.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerGrowl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerLeer.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -280,6 +292,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerTackle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTailWhip.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTempl.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -569,6 +589,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_Leer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="StaticNPC.cpp">
       <SubType>
       </SubType>
@@ -689,6 +713,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyGrowl.h" />
+    <ClInclude Include="BattleSkill_EnemyLeer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyScratch.h">
       <SubType>
       </SubType>
@@ -705,7 +733,15 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerEarthquake.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerGrowl.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerLeer.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -714,6 +750,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerTackle.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTailWhip.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTempl.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1001,6 +1045,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SkillActor_Growl.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Leer.h">
       <SubType>
       </SubType>
     </ClInclude>

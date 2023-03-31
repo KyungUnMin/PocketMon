@@ -13,6 +13,7 @@ enum class BattleEnemyMonster_StateType
 
 	Skill_Tackle,
 	Skill_Growl,
+	Skill_Leer,
 	Skill_Scratch,
 	COUNT,
 };

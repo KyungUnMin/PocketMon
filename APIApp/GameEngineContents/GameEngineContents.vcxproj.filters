@@ -516,6 +516,24 @@
     <ClCompile Include="BattleSkill_EnemyGrowl.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerLeer.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerEarthquake.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTailWhip.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Leer.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerTempl.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyLeer.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1018,6 +1036,24 @@
       <Filter>Battle\03.FSM\02.Battle\02.State\13.ChangeMonster</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyGrowl.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerLeer.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerEarthquake.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTailWhip.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Leer.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerTempl.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\03.TestSkill</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyLeer.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>

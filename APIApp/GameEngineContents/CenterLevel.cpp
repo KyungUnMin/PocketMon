@@ -131,6 +131,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Scratch.bmp"))->Cut(1, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
 		//TODO
 
 		Dir.MoveParentToDirectory("Skill");
