@@ -28,7 +28,7 @@ private:
 
 	int Money = 0;
 	NumberRenderObject MoneyRender = NumberRenderObject();
-
+	float4 MoneyRenderPos = { 88,-36 };
 
 };
 

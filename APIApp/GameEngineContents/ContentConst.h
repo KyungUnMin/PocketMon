@@ -5,6 +5,7 @@ class ContentConst
 {
 public:
 	static const float4 NpcSize;
+	static const float4 NpcRenderPos;
 
 protected:
 

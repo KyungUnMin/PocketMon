@@ -25,6 +25,7 @@ void TrainerCardUI::Start()
 	MoneyRender.SetAlign(Align::Right);
 	MoneyRender.SetValue(1231);
 	MoneyRender.SetCameraEffect(false);
+	MoneyRender.SetRenderPos(MoneyRenderPos);
 }
 
 void TrainerCardUI::Update(float _DeltaTime)
