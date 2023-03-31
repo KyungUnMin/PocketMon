@@ -19,7 +19,7 @@ protected:
 
 private:
 	float Timer = 0.f;
-	const float Duration = 3.f;
+	const float Duration = 1.5f;
 	class BackTextActor* TextInfo = nullptr;
 };
 

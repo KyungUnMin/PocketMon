@@ -73,11 +73,25 @@ void BattleState_PlayerTurn::BindSelectBoard()
 	});
 
 	//필드 레벨과 연결
-	SelectBoard->SetCallBack(3, [&]
-	{
-		BattleLevel::BattleLevelPtr->ChangeFieldLevel();
-	});
+	SelectBoard->SetCallBack(3, std::bind(&BattleState_PlayerTurn::SelectRunAway, this));
 }
+
+void BattleState_PlayerTurn::SelectRunAway()
+{
+	if (true == WasRun)
+		return;
+
+	if (nullptr != TextInfo)
+	{
+		TextInfo->Death();
+	}
+
+	WasRun = true;
+	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+	TextInfo->BattleSetText("Succeed in escaping");
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true, 2.f);
+}
+
 
 
 void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
@@ -145,6 +159,7 @@ void BattleState_PlayerTurn::CreateHpUI()
 	}
 
 }
+
 
 
 

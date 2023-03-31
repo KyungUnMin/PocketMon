@@ -92,6 +92,9 @@ void BattleMonsterEnemy::Update(float _DeltaTime)
 
 void BattleMonsterEnemy::CreateHpUI()
 {
+	if (nullptr != UiHandler)
+		return;
+
 	UiHandler = GetLevel()->CreateActor<Battle_EnemyHpUIHandler>(UpdateOrder::Battle_Actors);
 }
 

@@ -222,7 +222,10 @@ void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 	Mon->NextPokemon();*/
 
 	//BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
-	BattlePlayer::PlayerPtr->CreateMontser();
+
+	BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
+	PlayerMonster->Death();
+	BattleFsmPtr->ChangeState(BattleStateType::PlayerMonsterChange);
 }
 
 void BattleLevel::LockWildPocketMon()

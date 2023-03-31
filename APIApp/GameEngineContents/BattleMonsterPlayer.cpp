@@ -72,6 +72,9 @@ void BattleMonsterPlayer::KillMonster()
 
 void BattleMonsterPlayer::CreateHpUI()
 {
+	if (nullptr != UiHandler)
+		return;
+
 	UiHandler = GetLevel()->CreateActor<Battle_PlayerHpUIHandler>(UpdateOrder::Battle_Actors);
 }
 

@@ -34,6 +34,7 @@ private:
 	BattleCommendActor* BattleCommand = nullptr;
 	BackTextActor* TextInfo = nullptr;
 	std::function<void()> DamageCalcFunc = nullptr;
+	bool WasRun = false;
 
 	void BindSelectBoard();
 	void BindBattleCommand(int _SlotIndex);
@@ -43,5 +44,6 @@ private:
 	BattlePlayerMonster_StateType ConvertSkill(PokeSkill _SkillType);
 
 	void CreateHpUI();
+	void SelectRunAway();
 };
 

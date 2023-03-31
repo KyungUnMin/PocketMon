@@ -37,21 +37,24 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	size_t Size = static_cast<size_t>(BattleStateType::COUNT);
 	
 	CreateState<BattleState_WildTalk>(BattleStateType::WildTalk);
+	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
+	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
+
 	CreateState<BattleState_PlayerTurn>(BattleStateType::PlayerTurn);
 	CreateState<BattleState_EnemyTurn>(BattleStateType::EnemyTurn);
 	CreateState<BattleState_ThrowMonsterBall>(BattleStateType::ThrowMonsterBall);
 	CreateState<BattleState_CatchWhildMonster>(BattleStateType::CatchWildMonster);
-	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
 	CreateState<BattleState_PlayerHPCheck>(BattleStateType::CheckPlayerHP);
 	CreateState<BattleState_EnemyHPCheck>(BattleStateType::CheckEnemyHP);
+
 	CreateState<BattleState_StageWin>(BattleStateType::StageWin);
 	CreateState<BattleState_StageLose>(BattleStateType::StageLose);
 	CreateState<BattleState_BattleWin>(BattleStateType::BattleWin);
 	CreateState<BattleState_BattleLose>(BattleStateType::BattleLose);
-	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
-	CreateState<BattleState_ChangeMonster>(BattleStateType::PlayerMonsterChange);
 
 	CreateState<BattleState_ItemUse>(BattleStateType::UseItem);
+	CreateState<BattleState_ChangeMonster>(BattleStateType::PlayerMonsterChange);
+
 
 
 	switch (_NpcType)
