@@ -184,20 +184,25 @@ void Player::JumpStart()
 }
 void Player::JumpUpdate(float _Time)
 {
-	PlayerJumpTime += _Time*5.0f;
-
-	float4 NextJumpPos = float4::LerpClamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
+	PlayerJumpTime += _Time*2.5f;
+	Shadow->On();
+	if (IsRide == false)
+	{
+		Players->ChangeAnimation("Jump");
+	}
+	
+	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, PlayerJumpTime);
 	SetPos(NextJumpPos);
 
 	if (PlayerJumpTime > 1.0f)
 	{
+		Shadow->Off();
 		PlayerJumpTime = 0.0f;
 		ChangeState(PlayerState::IDLE);
 	}
 }
 void Player::JumpEnd()
 {
-
 }
 
 

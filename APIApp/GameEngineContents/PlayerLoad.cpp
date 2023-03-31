@@ -25,6 +25,7 @@ void Player::PlayerRenderLoad()
 		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.0625f });
 		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 3 , .InterTime = 0.0625f });
 
+		Players->CreateAnimation({ .AnimationName = "Jump",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 0 , .InterTime = 0.5f });
 
 		BikePlayers = CreateRender(RenderOrder::Player);
 		BikePlayers->SetScale(ContentConst::NpcSize);
@@ -38,6 +39,13 @@ void Player::PlayerRenderLoad()
 		BikePlayers->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "BikeUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown1.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
 		BikePlayers->Off();
+
+		Shadow = CreateRender(RenderOrder::Player_Shadow);
+		Shadow->SetScale({50,20});
+		Shadow->SetPosition({ 0,40 });
+		Shadow->CreateAnimation({ .AnimationName = "Shadow",  .ImageName = "Shadow.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
+		Shadow->ChangeAnimation("Shadow");
+		Shadow->Off();
 	}
 }
 
