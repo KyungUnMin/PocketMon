@@ -15,6 +15,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_Growl,
 	Skill_Leer,
 	Skill_Scratch,
+	Skill_FeatherDance,
 	COUNT,
 };
 

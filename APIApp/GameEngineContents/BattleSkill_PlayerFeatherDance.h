@@ -21,7 +21,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 private:
-	const float Duration = 4.0f;
+	const float Duration = 3.6f;
 
 	GameEngineRender* EffectRender = nullptr;
 
