@@ -107,6 +107,15 @@ public:
 	//PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
 	//PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
 
+	static PokeDataBase PokeCreate(PokeNumber _PokeDexenum, int _Level = 1)
+	{
+		int DexNumber = static_cast<int>(_PokeDexenum) + 1;
+
+		PokeDataBase Value = PokeCreate(DexNumber, _Level);
+
+		return Value;
+	}
+
 	static PokeDataBase PokeCreate(int _PokeDexNumber, int _Level = 1);
 	static bool PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon);
 

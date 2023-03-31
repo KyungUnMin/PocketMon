@@ -17,6 +17,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	PokeDataBase NewP1 = PokeDataBase::PokeCreate(4, 15);
 	PokeDataBase NewP2 = PokeDataBase::PokeCreate(1, 20);
 
+	PokeDataBase NewP3 = PokeDataBase::PokeCreate(PokeNumber::Bulbasaur, 20);
+
 	std::string AAAA = NewP1.ForUI_GetMonsterName();
 
 	std::string A = NewP1.GetMonsterSkillList(1).ForUI_GetSkillName();
