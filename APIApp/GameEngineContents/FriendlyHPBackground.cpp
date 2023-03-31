@@ -48,8 +48,12 @@ void FriendlyHPBackground::Start()
 	//예시코드
 
 	//데미지
-	HPRenderPtr->SetScale(float4{ 192, 172 });
-	HPRenderPtr->SetPosition({ 560, 360 });
+	//if (FirstHp == 0) {
+	//	FirstHp = 192.0f;
+	//	
+	//}
+	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
+	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
 	BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(40);
 	
 	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
@@ -156,9 +160,16 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 
 	if (BattleStartCheck == true) {
+
+		if (FirstHp == 0)
+		{
+			FirstHp = 192.0f;
+		}
 		if(TickNumber ==0)
 		{
-			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), CurMyHP);
+
+		
+			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), FirstHp);
 		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.1f) {
@@ -175,7 +186,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			TickNumber = 0;
 			BattleStartCheck = false;
 
-			CurMyHP = DamegeTick[9];
+			FirstHp = DamegeTick[9];
 
 		}
 		

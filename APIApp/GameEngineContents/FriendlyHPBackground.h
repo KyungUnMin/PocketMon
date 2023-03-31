@@ -79,8 +79,14 @@ private:
 	float NextTickTime = 0.0f;
 	float NextTickTime_1 = 0.0f;
 
+	float Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP();
+	float Num1 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int();
 
-	float CurMyHP =192.0f;
+	float FirstNum = Num / Num1;
+	float FirstHp = GameEngineMath::Lerp(192.0f, 0.0f, FirstNum);
+
+	float CurMyHP = 192.0f;
+	//
 	float CurMyExpPos = 256.0f;
 
 	float EnumyMonsterDamage = 0.0f;
