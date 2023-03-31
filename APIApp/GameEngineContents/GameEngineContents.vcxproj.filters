@@ -416,7 +416,6 @@
     <ClCompile Include="BattleState_ItemUse.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClCompile>
-    <ClCompile Include="SelectStartingUI.cpp" />
     <ClCompile Include="BattleEnemy_CreateMonster.cpp">
       <Filter>Battle\03.FSM\04.Enemy\02.State\02.CreateMonster</Filter>
     </ClCompile>
@@ -941,7 +940,6 @@
     <ClInclude Include="BattleState_ItemUse.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\12.ItemUse</Filter>
     </ClInclude>
-    <ClInclude Include="SelectStartingUI.h" />
     <ClInclude Include="BattleEnemy_CreateMonster.h">
       <Filter>Battle\03.FSM\04.Enemy\02.State\02.CreateMonster</Filter>
     </ClInclude>

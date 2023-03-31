@@ -23,22 +23,17 @@ void SelectStartingUI::Off()
 	UpdateEnd();
 }
 
-void SelectStartingUI::SelectMonster(PokeNumber _Pokemon)
+void SelectStartingUI::SelectMonster(PokeNumber _Pokemon, std::function<void()> _DeletBall)
 {
 	if (!IsGetPokemon)
 	{
 		On();
-		UpdateStart(_Pokemon);
+		UpdateStart(_Pokemon, _DeletBall);
 	}
 	else
 	{
 		AcFieldDialog->ConversationStart(&AlreadyGetMonsterScript);
 	}
-}
-
-void SelectStartingUI::TestSelectMonster() // Test
-{
-	SelectMonster(PokeNumber::Squirtle);
 }
 
 void SelectStartingUI::Start()
@@ -108,7 +103,8 @@ void SelectStartingUI::Update(float _DeltaTime)
 				switch (State)
 				{
 				case MenuState::Yes:
-					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(static_cast<int>(Select), 4);
+					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(static_cast<int>(Select), 5);
+					DeleteBallFunction();
 					AcFieldDialog->ConversationStart(&SelectScript);
 					State = MenuState::Null;
 					StateToRender();
@@ -131,13 +127,14 @@ void SelectStartingUI::Update(float _DeltaTime)
 	}
 }
 
-void SelectStartingUI::UpdateStart(PokeNumber _Pokemon)
+void SelectStartingUI::UpdateStart(PokeNumber _Pokemon, std::function<void()> _DeleteBall)
 {
 	if (!IsGetPokemon)
 	{
 		InputControllHandle = InputControll::UseControll();
 		Select = _Pokemon;
 		AcFieldDialog->IsValid = false;
+		DeleteBallFunction = _DeleteBall;
 		switch (Select)
 		{
 		case PokeNumber::Bulbasaur:

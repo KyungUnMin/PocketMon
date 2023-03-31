@@ -140,6 +140,7 @@ void FieldMainMenu::Update(float _DeltaTime)
 			GameEngineCore::GetInst()->ChangeLevel("BagLevel");
 			break;
 		case MainMenuState::Red:
+			GameEngineCore::GetInst()->ChangeLevel("TrainerCardLevel");
 			break;
 		case MainMenuState::Save:
 			break;

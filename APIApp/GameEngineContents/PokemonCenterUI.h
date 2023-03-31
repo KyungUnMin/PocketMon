@@ -32,6 +32,7 @@ public:
 
 	void CenterStart();
 	
+	static PokemonCenterUI* MainPokemonCenterUI;
 
 protected:
 	void Start() override;

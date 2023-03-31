@@ -1,4 +1,5 @@
 #pragma once
+#include <functional>
 #include <GameEngineCore/GameEngineActor.h>
 #include "PokeDataBase.h"
 
@@ -26,8 +27,7 @@ public:
 
 	void Off() override;
 
-	void SelectMonster(PokeNumber _Pokemon);
-	void TestSelectMonster(); // Test
+	void SelectMonster(PokeNumber _Pokemon, std::function<void()> _DeletBall);
 
 	static SelectStartingUI* MainSelectStartingUI;
 
@@ -36,6 +36,8 @@ protected:
 	void Update(float _DeltaTime) override;
 
 private:
+
+
 
 	FieldDialog* AcFieldDialog = nullptr;
 	PokeNumber Select = PokeNumber::Bulbasaur;
@@ -61,8 +63,10 @@ private:
 
 	bool IsGetPokemon = false;
 
+	std::function<void()> DeleteBallFunction = nullptr;
 
-	void UpdateStart(PokeNumber _Pokemon);
+
+	void UpdateStart(PokeNumber _Pokemon, std::function<void()> _DeleteBall);
 	void UpdateEnd();
 
 	void StateToRender();

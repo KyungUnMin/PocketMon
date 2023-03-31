@@ -16,6 +16,7 @@
 #include "BuyLevel.h"
 #include "EndingLevel.h"
 #include "OpeningLevel.h"
+#include "TrainerCardLevel.h"
 
 PocketMonCore PocketMonCore::Core;
 
@@ -44,6 +45,7 @@ void PocketMonCore::Start()
 	CreateLevel<BuyLevel>("BuyLevel");
 	CreateLevel<EndingLevel>("EndingLevel");
 	CreateLevel<OpeningLevel>("OpeningLevel");
+	CreateLevel<TrainerCardLevel>("TrainerCardLevel");
 
 	ChangeLevel("CenterLevel");
 }

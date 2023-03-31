@@ -5,9 +5,11 @@
 #include "FieldDialog.h"
 #include "Player.h"
 
+PokemonCenterUI* PokemonCenterUI::MainPokemonCenterUI = nullptr;
+
 PokemonCenterUI::PokemonCenterUI()
 {
-
+	MainPokemonCenterUI = this;
 }
 
 PokemonCenterUI::~PokemonCenterUI()

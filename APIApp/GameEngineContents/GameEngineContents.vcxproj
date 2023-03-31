@@ -611,6 +611,14 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="TrainerCardLevel.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="TrainerCardUI.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="TrainerPokemon.cpp" />
     <ClCompile Include="TurnNPC.cpp">
       <SubType>
@@ -1069,6 +1077,14 @@
     <ClInclude Include="TextActor.h" />
     <ClInclude Include="TextTestLevel.h" />
     <ClInclude Include="TileDebugRender.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TrainerCardLevel.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="TrainerCardUI.h">
       <SubType>
       </SubType>
     </ClInclude>
