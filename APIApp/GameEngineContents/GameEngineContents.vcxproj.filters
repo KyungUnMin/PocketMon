@@ -539,6 +539,9 @@
     <ClCompile Include="BattleSkill_EnemyFeatherDance.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerEmber.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1065,6 +1068,9 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyFeatherDance.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerEmber.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

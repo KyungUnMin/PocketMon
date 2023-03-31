@@ -12,6 +12,7 @@
 #include "BattleSkill_PlayerTailWhip.h"
 
 #include "BattleSkill_PlayerFeatherDance.h"
+#include "BattleSkill_PlayerEmber.h"
 BattlePlayerMonsterFSM::BattlePlayerMonsterFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
 {
@@ -41,6 +42,7 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerTackle>(BattlePlayerMonster_StateType::Skill_Tackle);
 	CreateState<BattleSkill_PlayerScratch>(BattlePlayerMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_PlayerFeatherDance>(BattlePlayerMonster_StateType::Skill_FeatherDance);
+	CreateState<BattleSkill_PlayerEmber>(BattlePlayerMonster_StateType::Skill_Ember);
 
 	ChangeState(BattlePlayerMonster_StateType::Create);
 }
