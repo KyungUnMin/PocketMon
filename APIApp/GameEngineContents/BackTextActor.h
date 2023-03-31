@@ -49,6 +49,8 @@ private:
 
 	int FirstLineRenderLen = 0;
 	int SecondLineRenderLen = 0;
+	float Time = 0.0f;
+	float PrintSpeed = 0.03f;
 
 	int IndexCount = 0;
 	GameEngineRender* RenderPtr = nullptr;

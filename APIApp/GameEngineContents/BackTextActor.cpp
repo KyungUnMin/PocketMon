@@ -35,7 +35,7 @@ void BackTextActor::Start()
 			BattleTextRender[y][x]->SetPosition(FirstTextRenderPos + float4{ static_cast<float>(x),static_cast<float>(y) } *(TextRenderInterval + TextRenderImageScale));
 			BattleTextRender[y][x]->SetScale(TextRenderImageScale);
 			BattleTextRender[y][x]->SetFrame(SpaceFrameNum);
-//			BattleTextRender[y][x]->Off();
+			BattleTextRender[y][x]->Off();
 			BattleTextRender[y][x]->EffectCameraOff();
 		}
 	}
@@ -166,7 +166,37 @@ void BackTextActor::Update(float _DeltaTime)
 	if (false == IsValid)
 		return;
 
-	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) // 말걸었을때 바로 넘어가지 않게
+
+	for (size_t i = 0; i < FirstLineRenderLen; i++)
+	{
+		BattleTextRender[0][i]->On();
+	}
+
+	for (size_t i = 0; i < SecondLineRenderLen; i++)
+	{
+		BattleTextRender[1][i]->On();
+	}
+	Time += _DeltaTime;
+	if (Time >= PrintSpeed)
+	{
+		Time = 0;
+		if (FirstLineRenderLen != OneLineSize)
+		{
+			
+			++FirstLineRenderLen;
+		}
+		else if (SecondLineRenderLen != OneLineSize)
+		{
+			
+			++SecondLineRenderLen;
+		}
+
+		else
+		{
+			return;
+		}
+	}
+	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) 
 	{
 		if (TestText.end() == TestTextIter)
 			return;
