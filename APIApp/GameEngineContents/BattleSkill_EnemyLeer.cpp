@@ -25,7 +25,7 @@ void BattleSkill_EnemyLeer::EnterState()
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
 	LeerRender = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Leer>();
-	LeerRender->SetPos({ 540, 170 });
+	LeerRender->SetPos({ 540, 150 });
 	LeerRender->Off();
 }
 

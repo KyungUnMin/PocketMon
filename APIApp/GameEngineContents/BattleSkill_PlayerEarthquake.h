@@ -2,7 +2,6 @@
 #include "BattleSkill_PlayerBase.h"
 
 class GameEngineRender;
-// 스킬액터 class SkillActor_Growl;
 
 class BattleSkill_PlayerEarthquake : public BattleSkill_PlayerBase
 {
@@ -26,21 +25,23 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 
-	// 스킬 액터
-	// SkillActor_Growl* GrowlRender1 = nullptr;
+	float4 InitCameraPos = float4::Zero;
 
 	enum class MoveState
 	{
 		Forward,
-		Backward
+		Backward,
+		Flashing,
 	};
 
 	MoveState CurState = MoveState::Forward;
 
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
+	float FlashingTime = 0.f;
 
 	void Update_Forward(float _Deltatime);
 	void Update_BackWard(float _Deltatime);
+	void Update_Flashing(float _Deltatime);
 };
 

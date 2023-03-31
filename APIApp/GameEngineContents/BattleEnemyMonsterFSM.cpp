@@ -10,6 +10,7 @@
 
 #include "BattleSkill_EnemyGrowl.h"
 #include "BattleSkill_EnemyLeer.h"
+#include "BattleSkill_EnemyTailWhip.h"
 
 #include "BattleSkill_EnemyTest.h"
 
@@ -34,6 +35,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 
 	CreateState<BattleSkill_EnemyGrowl>(BattleEnemyMonster_StateType::Skill_Growl);
 	CreateState<BattleSkill_EnemyLeer>(BattleEnemyMonster_StateType::Skill_Leer);
+	CreateState<BattleSkill_EnemyTailWhip>(BattleEnemyMonster_StateType::Skill_TailWhip);
 
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);

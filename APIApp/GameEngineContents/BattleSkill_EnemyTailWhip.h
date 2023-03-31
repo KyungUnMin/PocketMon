@@ -1,20 +1,21 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
 
-class BattleSkill_PlayerTailWhip : public BattleSkill_PlayerBase
+// Ό³Έν :
+class BattleSkill_EnemyTailWhip : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerTailWhip();
-	~BattleSkill_PlayerTailWhip();
+	BattleSkill_EnemyTailWhip();
+	~BattleSkill_EnemyTailWhip();
 
 	// delete Function
-	BattleSkill_PlayerTailWhip(const BattleSkill_PlayerTailWhip& _Other) = delete;
-	BattleSkill_PlayerTailWhip(BattleSkill_PlayerTailWhip&& _Other) noexcept = delete;
-	BattleSkill_PlayerTailWhip& operator=(const BattleSkill_PlayerTailWhip& _Other) = delete;
-	BattleSkill_PlayerTailWhip& operator=(BattleSkill_PlayerTailWhip&& _Other) noexcept = delete;
+	BattleSkill_EnemyTailWhip(const BattleSkill_EnemyTailWhip& _Other) = delete;
+	BattleSkill_EnemyTailWhip(BattleSkill_EnemyTailWhip&& _Other) noexcept = delete;
+	BattleSkill_EnemyTailWhip& operator=(const BattleSkill_EnemyTailWhip& _Other) = delete;
+	BattleSkill_EnemyTailWhip& operator=(BattleSkill_EnemyTailWhip&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

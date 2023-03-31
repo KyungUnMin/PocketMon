@@ -14,6 +14,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_Tackle,
 	Skill_Growl,
 	Skill_Leer,
+	Skill_TailWhip,
 	Skill_Scratch,
 	Skill_FeatherDance,
 	COUNT,
