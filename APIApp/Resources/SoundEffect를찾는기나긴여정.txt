@@ -1,8 +1,75 @@
+0001: When you give a Potion to a Pokémon
+0002: PC Access
+0003: PC Off
+0004: PC On
+0005: Talking to someone blip sound
+0006: Start menu open
+0007: Bumping into a wall
+0008: RSE Door Open
+0009: Exit a building
+000A: Ledge jump
+000B: Bicycle Bell
+000C: "It's not very effective" sound
+000D: Normal damage to a Pokemon
+000E: "It's super effective" sound
+000F: Swap out a Pokemon in battle
+0010: Pokémon fainting
+0011: Running from a wild Pokémon
+0012: Sliding door open
+0013: Traveling in the Seagallop
+0014: Ho-Oh encounter wing flap
+0015: (!) pop-up sound
+0016: Fail!
+0017: Poké Balls placed in Pokémon Center healing machine
+0018: Game Corner slot stop
+0019: PokéDex search finish R/S
+001A: Incorrect
+001B: EXP Gain
+001C: Acro Bike hop
+001D: ???
+001E: ???
+001F: ???
+0020: ???
+0021: Drown in sand
+0022: Ice cracking
+0023: Ice breaking
+0024: Falling through hole
+0025: Landing after falling
+0026: Door lock (for big metal doors that need setmaptile to close)
+0027: Teleport panel warp (take-off)
+0028: Teleport panel warp (land)
+0029: Teachy TV static (White Noise)?? 
+002A: RSE truck intro
+002B: RSE truck stopping
+002C: RSE truck gas letout
+002D: RSE truck door open
+002E: Looping whining sound
+002F: Saved game
+0030: Pokémon catching sound 1
+0031: Pokémon catching sound 2
+0032: Pokémon catching sound 3
+0033: Pokémon catching sound 4
+0034: Pokémon catching sound 5
+0035: Pokémon catch throwing Poké Ball
+0036: Throw Pokeball
+0037: Secret Base Music Pad - Low C
+0038: Secret Base Music Pad - D
+0039: Secret Base Music Pad - E
+003A: Secret Base Music Pad - F#
+003B: Secret Base Music Pad - G
+003C: Secret Base Music Pad - A
+003D: Secret Base Music Pad - B
+003E: Secret Base Music Pad - High C
+003F: Step in water
+0040: Cash register
+0041: Safari Zone ding-dong
+
 0053_빨피
 00EE_디버프
 00F8_구매
 0005_메뉴이동
 0006_메뉴열기
 0017_센터 포켓볼 놓기
+0070_뭔가 모니터
 
 
