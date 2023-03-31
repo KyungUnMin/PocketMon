@@ -551,6 +551,12 @@
     <ClCompile Include="SelectStartingUI.cpp" />
     <ClCompile Include="TrainerCardLevel.cpp" />
     <ClCompile Include="TrainerCardUI.cpp" />
+    <ClCompile Include="BattleSkill_EnemyEarthquake.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectStartingUI.cpp" />
+    <ClCompile Include="TrainerCardLevel.cpp" />
+    <ClCompile Include="TrainerCardUI.cpp" />
     <ClCompile Include="StartingPokeball.cpp">
       <Filter>Map\Actor\Object</Filter>
     </ClCompile>
@@ -1095,6 +1101,12 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerEmber.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectStartingUI.h" />
+    <ClInclude Include="TrainerCardLevel.h" />
+    <ClInclude Include="TrainerCardUI.h" />
+    <ClInclude Include="BattleSkill_EnemyEarthquake.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
     <ClInclude Include="SelectStartingUI.h" />
     <ClInclude Include="TrainerCardLevel.h" />

@@ -254,6 +254,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyEarthquake.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyEmber.cpp">
       <SubType>
       </SubType>
@@ -733,6 +737,10 @@
     <ClInclude Include="BattlePlayer_MoveState.h" />
     <ClInclude Include="BattlePlayer_ThrowState.h" />
     <ClInclude Include="BattleSkill_EnemyBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyEarthquake.h">
       <SubType>
       </SubType>
     </ClInclude>
