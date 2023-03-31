@@ -228,9 +228,14 @@ void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
 	BattlePlayer::PlayerPtr->ThrowBallToCatch(IsMasterBall);
 }
 
+
 void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 {
+	/*TrainerPokemon* Mon = Player::MainPlayer->GetPlayerPokemon();
+	Mon->NextPokemon();*/
 
+	//BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
+	BattlePlayer::PlayerPtr->CreateMontser();
 }
 
 void BattleLevel::LockWildPocketMon()
