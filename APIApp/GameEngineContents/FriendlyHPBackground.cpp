@@ -142,7 +142,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (TickNumber_1 == 0) 
 				{
-					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience(), CurMyExpPos, ExpNum);
+					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience()), CurMyExpPos, ExpNum);
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -151,7 +151,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			if (TickNumber_1 == 20)
 			{
 				TickNumber_1 = 0;
-				BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float());
+				BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(static_cast<int>(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float()));
 				IsExpUP = false;
 			//	CurMyHP = DamegeTick[9];
 
@@ -172,7 +172,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if(TickNumber ==0)
 		{
 		
-			HpUpdate(EnumyMonsterDamage, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP(), SecoundHp);
+			HpUpdate(static_cast<float>(EnumyMonsterDamage), static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()), SecoundHp);
 		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.1f) {
@@ -300,7 +300,7 @@ void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp ,
 
 }
 
-void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curpos, int _CurExpPos)
+void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curpos, float _CurExpPos)
 {
 
 	float Expmag = _GetExp / (100.0f - _MyCurExp);
@@ -318,7 +318,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 	for (size_t x = 0; x < EXPTick.size(); x++) {
 		if (EXPTick[x] > 256.0f) {
 		
-			for (int z = x; z < EXPTick.size(); z++) {
+			for (size_t z = x; z < EXPTick.size(); z++) {
 				if (_GetExp + _MyCurExp > 100.0f) {
 					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
 					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);

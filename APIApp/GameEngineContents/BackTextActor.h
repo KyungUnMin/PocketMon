@@ -72,4 +72,3 @@ private:
 	std::vector<std::string> AllTexts;
 	TestScript* ScriptPtr = nullptr;
 };
-

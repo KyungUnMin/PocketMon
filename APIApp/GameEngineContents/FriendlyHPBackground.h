@@ -25,7 +25,7 @@ public:
 	int GetMonsterDamage(int _EnumyMonsterDamage);
 	int GetExpPoint(int _ExpPoint);
 	void HpUpdate(float _EnumyMonsterDamage, float _MyCurHp , float _curpos );
-	void ExpUpdate(float _EnumyMonsterDamage, float _MyCurHp, float _curpos , int _CurExpPos);
+	void ExpUpdate(float _EnumyMonsterDamage, float _MyCurHp, float _curpos , float _CurExpPos);
 
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void CurHpRender(GameEngineRender* _Render, float _hp);
@@ -84,8 +84,8 @@ private:
 	float NextTickTime = 0.0f;
 	float NextTickTime_1 = 0.0f;
 
-	float Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP();
-	float Num1 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int();
+	float Num =	static_cast<float>( BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
+	float Num1 = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int());
 
 	float FirstNum = Num / Num1;
 	float FirstHp = GameEngineMath::Lerp(192.0f, 0.0f, FirstNum);
@@ -94,7 +94,7 @@ private:
 	//
 	float CurMyExpPos = 256.0f;
 
-	float EnumyMonsterDamage = 0.0f;
+	int EnumyMonsterDamage = 0;
 	float MyCurHp = 0.0f;
 	int TickNumber = 0;
 	int TickNumber_1 = 0;
@@ -102,7 +102,7 @@ private:
 	float SecoundHp = 0.0f;
 
 	int ExpPoint = 0;
-	int CurExp = 0.0f;
+	int CurExp = 0;
 	
 };
 
