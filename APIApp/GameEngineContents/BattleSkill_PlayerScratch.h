@@ -22,9 +22,24 @@ protected:
 	void ExitState() override;
 private:
 	const float Duration = 1.0f;
-	float Timer = 0;
-	GameEngineRender* EnemyRender = nullptr;
-	GameEngineRender* EffectRender = nullptr;
 
+	GameEngineRender* EnemyMonster = nullptr;
+	GameEngineRender* EffectRender = nullptr;
+	
+	float WaitTime = 0.f;
+	float BackwardTime = 0.f;
+	float FlashingTime = 0.f;
+
+	enum class SkillState
+	{
+		Wait,
+		BackWard,
+		Flashing
+	};
+	SkillState CurState = SkillState::Wait;
+
+	void Update_Wait(float _DeltaTime);
+	void Update_BackWard(float _DeltaTime);
+	void Update_Flashing(float _DeltaTime);
 };
 
