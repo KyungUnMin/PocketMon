@@ -137,10 +137,10 @@ public:
 	// 모든 스킬 max 회복
 	void ForInven_AllPowerPointRecovery()
 	{
+		SkillList[0].SkillPP_MAXRecovery();
 		SkillList[1].SkillPP_MAXRecovery();
 		SkillList[2].SkillPP_MAXRecovery();
 		SkillList[3].SkillPP_MAXRecovery();
-		SkillList[4].SkillPP_MAXRecovery();
 	}
 
 	// 몬스터가 기절상태입니까?

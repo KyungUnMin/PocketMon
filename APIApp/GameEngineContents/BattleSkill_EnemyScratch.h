@@ -20,5 +20,12 @@ protected:
 	void ExitState() override;
 private:
 	const float Duration = 1.0f;
+	float Timer = 0;
+	enum class MoveState
+	{
+		Forward,
+		Backward
+	};
+
 };
 

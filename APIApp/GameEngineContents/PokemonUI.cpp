@@ -588,6 +588,7 @@ void PokemonUI::Item()
 	BarText->SetText(std::string("Take the ") + Item::GetItem(Pokemons[CurrentCursor].GetPossession()).GetItemName().data() + ".", true);
 	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor].GetPossession());
 	Pokemons[CurrentCursor].SetPossession(ItemCode::Cancel);
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 	PokeDataSetting();
 	SelectOff();
 	IsStop = true;
@@ -674,6 +675,7 @@ void PokemonUI::GiveItem()
 
 	BarText->SetText(std::string("Give the ") + Item::GetItem(CurrentItemCode).GetItemName().data() + ".", true);
 	IsStop = true;
+	Player::MainPlayer->GetPlayerPokemon()->Pokemons = Pokemons;
 	PokeDataSetting();
 
 	std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
