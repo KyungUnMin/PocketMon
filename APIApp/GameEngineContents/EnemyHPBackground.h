@@ -30,6 +30,11 @@ public:
 		return RenderPtr;
 	}
 
+	GameEngineRender* GetHPPtr()
+	{
+		return EnemyHPRenderPtr;
+	}
+
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

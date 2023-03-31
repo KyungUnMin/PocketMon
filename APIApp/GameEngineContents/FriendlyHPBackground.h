@@ -35,6 +35,16 @@ public:
 	{
 		return RenderPtr;
 	}
+
+	GameEngineRender* GetHPPtr()
+	{
+		return HPRenderPtr;
+	}
+
+	GameEngineRender* GetEXPPtr()
+	{
+		return EXPRenderPtr;
+	}
 	
 protected:
 	void Start() override;
