@@ -15,7 +15,6 @@ void Player::PlayerRenderLoad()
 	{
 		Players = CreateRender(RenderOrder::Player);
 		Players->SetScale(ContentConst::NpcSize);
-		Players->SetPosition(ContentConst::NpcRenderPos);
 		Players->CreateAnimation({ .AnimationName = "Right_Idle",  .ImageName = "IdleRight.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Left_Idle",  .ImageName = "IdleLeft.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "IdleUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
