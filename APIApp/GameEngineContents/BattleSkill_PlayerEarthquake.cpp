@@ -26,7 +26,12 @@ void BattleSkill_PlayerEarthquake::EnterState()
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
-	//FriendlyHPBackground::FriendlyPtr->
+	PlayerMonster->EffectCameraOff();
+	FriendlyHPBackground::FriendlyPtr->GetWindowPtr()->EffectCameraOff();
+	FriendlyHPBackground::FriendlyPtr->GetHPPtr()->EffectCameraOff();
+	FriendlyHPBackground::FriendlyPtr->GetEXPPtr()->EffectCameraOff();
+	EnemyHPBackground::EnemyPtr->GetWindowPtr()->EffectCameraOff();
+	EnemyHPBackground::EnemyPtr->GetHPPtr()->EffectCameraOff();
 
 	InitCameraPos = BattleLevel::BattleLevelPtr->GetCameraPos();
 }
@@ -128,6 +133,13 @@ void BattleSkill_PlayerEarthquake::Update_Flashing(float _Deltatime)
 void BattleSkill_PlayerEarthquake::ExitState()
 {
 	BattleSkill_PlayerBase::ExitState();
+
+	PlayerMonster->EffectCameraOn();
+	FriendlyHPBackground::FriendlyPtr->GetWindowPtr()->EffectCameraOn();
+	FriendlyHPBackground::FriendlyPtr->GetHPPtr()->EffectCameraOn();
+	FriendlyHPBackground::FriendlyPtr->GetEXPPtr()->EffectCameraOn();
+	EnemyHPBackground::EnemyPtr->GetWindowPtr()->EffectCameraOn();
+	EnemyHPBackground::EnemyPtr->GetHPPtr()->EffectCameraOn();
 
 	PlayerMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
