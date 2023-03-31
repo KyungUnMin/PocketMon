@@ -557,6 +557,9 @@
     <ClCompile Include="StopOakNPC.cpp">
       <Filter>Player\NPC\EventNPC</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyEmber.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1101,6 +1104,9 @@
     </ClInclude>
     <ClInclude Include="StopOakNPC.h">
       <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyEmber.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

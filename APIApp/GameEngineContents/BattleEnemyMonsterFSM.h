@@ -17,6 +17,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_TailWhip,
 	Skill_Scratch,
 	Skill_FeatherDance,
+	Skill_Ember,
 	COUNT,
 };
 

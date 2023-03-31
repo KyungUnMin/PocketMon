@@ -254,6 +254,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyEmber.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyFeatherDance.cpp" />
     <ClCompile Include="BattleSkill_EnemyGrowl.cpp" />
     <ClCompile Include="BattleSkill_EnemyLeer.cpp">
@@ -729,6 +733,10 @@
     <ClInclude Include="BattlePlayer_MoveState.h" />
     <ClInclude Include="BattlePlayer_ThrowState.h" />
     <ClInclude Include="BattleSkill_EnemyBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyEmber.h">
       <SubType>
       </SubType>
     </ClInclude>

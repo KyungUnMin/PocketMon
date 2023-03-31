@@ -5,6 +5,7 @@
 #include "BattleSkill_EnemyTackle.h"
 #include "BattleSkill_EnemyScratch.h"
 #include "BattleSkill_EnemyFeatherDance.h"
+#include "BattleSkill_EnemyEmber.h"
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
 
@@ -46,6 +47,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyTackle>(BattleEnemyMonster_StateType::Skill_Tackle);
 	CreateState<BattleSkill_EnemyScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_EnemyFeatherDance>(BattleEnemyMonster_StateType::Skill_FeatherDance);
+	CreateState<BattleSkill_EnemyEmber>(BattleEnemyMonster_StateType::Skill_Ember);
 
 	if (true == _IsWildMonster)
 	{
