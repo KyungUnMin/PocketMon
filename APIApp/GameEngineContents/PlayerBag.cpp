@@ -560,10 +560,28 @@ void PlayerBag::SelectOn()
 	{
 		if (true == CurrentSpaceItems[CurrentCursor].IsBattleuse())
 		{
-			SelectText->SetText("USE\nCANCEL");
-			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
-			SelectFunctions[1] = std::bind(&PlayerBag::ItemUse, this);
-			SelectSize = 1;
+			if (CurrentSpace == BagSpace::PokeBalls) {
+				if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
+				{
+					SelectText->SetText("USE\nCANCEL");
+					SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+					SelectFunctions[1] = std::bind(&PlayerBag::ItemUse, this);
+					SelectSize = 1;
+				}
+				else
+				{
+					SelectText->SetText("CANCEL");
+					SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+					SelectSize = 0;
+				}
+			}
+			else
+			{
+				SelectText->SetText("USE\nCANCEL");
+				SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+				SelectFunctions[1] = std::bind(&PlayerBag::ItemUse, this);
+				SelectSize = 1;
+			}
 		}
 		else
 		{

@@ -7,6 +7,7 @@ enum class RenderOrder
 	Tilemap,
 	FieldBack,
 	Monster,
+	Player_Shadow,
 	Player,
 	FieldMiddle,
 	FieldFront,

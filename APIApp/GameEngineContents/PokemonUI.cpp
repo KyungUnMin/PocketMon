@@ -37,8 +37,6 @@ void PokemonUI::SetState_Shift()
 
 void PokemonUI::Start()
 {
-	Player::MainPlayer->GetPlayerPokemon()->AddPokemon(1, 1);
-
 	CurrentLevel = GetLevel();
 	MainPokemon = this;
 
@@ -335,6 +333,12 @@ void PokemonUI::PokeDataSetting()
 			PokemonCurrentHPText[i]->SetText(Pokemons[i].ForUI_GetMonsterCurrentHP(), "Font_Dialog_White.bmp", 3, false);
 
 			PokemonHPBars[i]->SetValue(Pokemons[i].GetMonsterCurrentHP() / Pokemons[i].GetMonsterMaxHP_float());
+
+			PokemonRender[i]->On();
+			PokemonNameText[i]->On();
+			PokemonLevelText[i]->On();
+			PokemonCurrentHPText[i]->On();
+			PokemonMaxHPText[i]->On();
 		}
 		for (size_t i = Pokemons.size(); i < 6; i++)
 		{

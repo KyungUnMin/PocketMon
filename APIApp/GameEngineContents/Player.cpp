@@ -116,33 +116,6 @@ void Player::Start()
 
 void Player::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("PlayerAutoMoveDebug"))
-	{
-		if (NextMovePos.size() != 0)
-		{
-			return;
-		}
-
-		float4 TestPos = GetPos();
-
-		for (size_t i = 0; i < 10; i++)
-		{
-			TestPos += float4{ 64,0 };
-			InsertPlayerPos(TestPos);			
-		}
-
-		for (size_t i = 0; i < 10; i++)
-		{
-			TestPos += float4{ 0, 64 };
-			InsertPlayerPos(TestPos);
-		}
-
-		for (size_t i = 0; i < 10; i++)
-		{
-			TestPos += float4{ -64, 0 };
-			InsertPlayerPos(TestPos);
-		}
-	}
 
 	if (IsRide==true)
 	{

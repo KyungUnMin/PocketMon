@@ -69,6 +69,11 @@ public:
 
 	void ChangeBGM(const std::string_view& _BgmName);
 
+	bool IsWildBattle()
+	{
+		return (BattleNpcType::None == BattleType);
+	}
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;

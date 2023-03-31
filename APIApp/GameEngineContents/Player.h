@@ -165,6 +165,7 @@ private:
 	//플레이어Render
 	GameEngineRender* Players = nullptr;
 	GameEngineRender* BikePlayers = nullptr;
+	GameEngineRender* Shadow = nullptr;
 	//플레이어Collision
 	GameEngineCollision* RedCollision = nullptr;
 

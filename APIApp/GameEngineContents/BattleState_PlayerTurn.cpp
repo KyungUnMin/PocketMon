@@ -81,6 +81,9 @@ void BattleState_PlayerTurn::SelectRunAway()
 	if (true == WasRun)
 		return;
 
+	if (false == BattleLevel::BattleLevelPtr->IsWildBattle())
+		return;
+
 	if (nullptr != TextInfo)
 	{
 		TextInfo->Death();
