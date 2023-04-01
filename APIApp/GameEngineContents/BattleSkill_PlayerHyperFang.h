@@ -26,7 +26,10 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 	
-	SkillActor_Bite* BiteRender = nullptr;
+	SkillActor_Bite* BiteRender1 = nullptr;
+	SkillActor_Bite* BiteRender2 = nullptr;
+
+	float4 InitCameraPos = float4::Zero;
 
 	enum class MoveState
 	{

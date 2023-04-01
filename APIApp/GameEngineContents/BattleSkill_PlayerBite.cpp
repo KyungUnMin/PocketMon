@@ -27,8 +27,8 @@ void BattleSkill_PlayerBite::EnterState()
 	BiteRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bite>();
 	BiteRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bite>();
 
-	BiteRender1->SetPos({ 750, 100 });
-	BiteRender2->SetPos({ 750, 200 });
+	BiteRender1->SetPos({ 710, 50 });
+	BiteRender2->SetPos({ 710, 270 });
 
 	BiteRender1->BiteSetting(1);
 	BiteRender2->BiteSetting(2);
@@ -39,7 +39,7 @@ void BattleSkill_PlayerBite::EnterState()
 
 void BattleSkill_PlayerBite::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.6f))
 	{
 		EnemyMonster->On();
 		return;
@@ -62,6 +62,60 @@ void BattleSkill_PlayerBite::Update(float _DeltaTime)
 void BattleSkill_PlayerBite::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
+
+	BiteRender1->On();
+	BiteRender2->On();
+
+	if (0.5f <= ForwardTime)
+	{
+		BiteRender1->Off();
+		BiteRender2->Off();
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 110 });
+		BiteRender2->SetPos({ 710, 210 });
+	}
+	else if (0.4f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 90 });
+		BiteRender2->SetPos({ 710, 230 });
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 70 });
+		BiteRender2->SetPos({ 710, 250 });
+	}
+	else if (0.3f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 90 });
+		BiteRender2->SetPos({ 710, 230 });
+	}
+	else if (0.25f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 70 });
+		BiteRender2->SetPos({ 710, 250 });
+	}
+	else if (0.2f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 90 });
+		BiteRender2->SetPos({ 710, 230 });
+	}
+	else if (0.15f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 110 });
+		BiteRender2->SetPos({ 710, 210 });
+	}
+	else if (0.1f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 90 });
+		BiteRender2->SetPos({ 710, 230 });
+	}
+	else if (0.05f <= ForwardTime)
+	{
+		BiteRender1->SetPos({ 710, 70 });
+		BiteRender2->SetPos({ 710, 250 });
+	}
 
 	if (1.0f <= ForwardTime)
 	{
@@ -109,9 +163,10 @@ void BattleSkill_PlayerBite::ExitState()
 	PlayerMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
 
-	// 스킬 액터 데스
-	// GrowlRender1->Death();
-	// GrowlRender1 = nullptr;
+	BiteRender1->Death();
+	BiteRender2->Death();
+	BiteRender1 = nullptr;
+	BiteRender2 = nullptr;
 
 	CurState = MoveState::Forward;
 
