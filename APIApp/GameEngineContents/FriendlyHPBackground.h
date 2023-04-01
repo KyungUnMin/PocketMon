@@ -112,7 +112,11 @@ private:
 	
 	bool IsExpUP = false;
 	bool IsLevelUp = false;
+
 	float SecoundHp = 0.0f;
+	float MyCurHpNum = CurMyHP - FirstHp;
+	float Hp50Under = 98.0f;
+	float Hp30Under = 48.0f;
 
 	int ExpPoint = 0;
 	int CurExp = 0;

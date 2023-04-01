@@ -49,8 +49,24 @@ void FriendlyHPBackground::Start()
 
 		GameEngineInput::CreateKey("HpDebug111", 'Z');
 	}
-	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
-	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
+	if (MyCurHpNum < Hp50Under && MyCurHpNum> Hp30Under) {
+
+		HPRenderPtr1->SetScale(float4{ MyCurHpNum, 172 });
+		HPRenderPtr1->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+	else if (MyCurHpNum < Hp30Under) {
+		HPRenderPtr2->SetScale(float4{ MyCurHpNum, 172 });
+		HPRenderPtr2->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+	else {
+		HPRenderPtr->SetScale(float4{ MyCurHpNum, 172 });
+		HPRenderPtr->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+
+
+	HPRenderPtr->EffectCameraOff();
+	HPRenderPtr1->EffectCameraOff();
+	HPRenderPtr2->EffectCameraOff();
 
 	float ExpNum_1 = static_cast<float>( BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience());
 	if (ExpNum_1 >= 100.0f) {
@@ -175,12 +191,12 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (NextTickTime > 0.1f) {
 			NextTickTime = 0;
 			if (TickNumber != 10) {
-				if(DamegeTick[TickNumber] <96.0f){
+				if(DamegeTick[TickNumber] < Hp50Under && DamegeTick[TickNumber]>Hp30Under){
 					HPRenderPtr->Off();
 					HPRenderPtr1->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr1->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
-				if (DamegeTick[TickNumber] < 48.0f) {
+				if (DamegeTick[TickNumber] < Hp30Under) {
 					HPRenderPtr1->Off();
 					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
