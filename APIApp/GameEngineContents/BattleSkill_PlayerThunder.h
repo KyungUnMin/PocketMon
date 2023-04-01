@@ -4,6 +4,7 @@
 class GameEngineRender;
 class SkillActor_Thunder;
 class SkillActor_ThunderBack;
+class SkillActor_BlackBox;
 
 class BattleSkill_PlayerThunder : public BattleSkill_PlayerBase
 {
@@ -32,6 +33,8 @@ private:
 	SkillActor_Thunder* ThunderRender3 = nullptr;
 	SkillActor_Thunder* ThunderRender4 = nullptr;
 	SkillActor_Thunder* ThunderRender5 = nullptr;
+
+	SkillActor_BlackBox* BBox = nullptr;
 
 	SkillActor_ThunderBack* BackGround1 = nullptr;
 	SkillActor_ThunderBack* BackGround2 = nullptr;

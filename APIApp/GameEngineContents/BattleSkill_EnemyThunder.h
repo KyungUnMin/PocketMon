@@ -4,7 +4,7 @@
 class GameEngineRender;
 class SkillActor_Thunder;
 class SkillActor_ThunderBack;
-
+class SkillActor_BlackBox;
 
 class BattleSkill_EnemyThunder : public BattleSkill_EnemyBase
 {
@@ -36,6 +36,8 @@ private:
 
 	SkillActor_ThunderBack* BackGround1 = nullptr;
 	SkillActor_ThunderBack* BackGround2 = nullptr;
+
+	SkillActor_BlackBox* BBox = nullptr;
 
 	enum class MoveState
 	{

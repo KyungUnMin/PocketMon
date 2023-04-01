@@ -116,7 +116,7 @@ float PokeBattleSystem::Damagecalculator(PokeDataBase& _Attacker, int _AttackerS
 	}
 
 	float step1 = static_cast<float>(_Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkillDamage());
-	float step3 = OwnCharacteristiccalculation(_Attacker, _Attacker.GetMonsterCharacteristic());
+	float step3 = OwnCharacteristiccalculation(_Attacker, _Attacker.GetMonsterCharacteristic(), _AttackerSkillNumber);
 	float step4 = OtherCharacteristiccalculation(_Defender, _Defender.GetMonsterCharacteristic());
 
 	// 기술위력 × 도구보정 × 특성보정 × 상대특성보정
@@ -125,7 +125,7 @@ float PokeBattleSystem::Damagecalculator(PokeDataBase& _Attacker, int _AttackerS
 	return DamageCal;
 }
 
-float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic)
+float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic, int _AttackerSkillNumber)
 {
 	float CharDamage = 0.0f;
 
@@ -175,15 +175,19 @@ float PokeBattleSystem::OwnCharacteristiccalculation(PokeDataBase& _Attacker, Po
 	break;
 	case PokeCharacteristic::근성:
 	{
-		//if (true == _Attacker->IsAbnormalStatus())
-		//{
-		//	Damage = 1.f;
-		//}
-		//else
-		//{
-		//	Damage = 1.f;
-		//}
 		CharDamage = 1.f;
+	}
+	break;
+	case PokeCharacteristic::정전기:
+	{
+		if (static_cast<int>(_Attacker.GetMonsterSkillList(_AttackerSkillNumber).GetSkillType()) == static_cast<int>(_Attacker.GetMonsterType()))
+		{
+			CharDamage = 1.5f;
+		}
+		else
+		{
+			CharDamage = 1.f;
+		}
 	}
 	break;
 	default:
@@ -701,6 +705,31 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase& _Attacker, int _At
 			break;
 		}
 	}
+	case 12: // 전기
+	{
+		switch (othervalue)
+		{
+		case 2:
+			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
+			break;
+		case 10:
+			correctionvalue = 2.f;
+			ScriptValue = BattleScript::Amazing;
+			break;
+		case 11:
+			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
+			break;
+		case 12:
+			correctionvalue = 0.5f;
+			ScriptValue = BattleScript::Insignificant;
+			break;
+		default:
+			correctionvalue = 1.f;
+			break;
+		}
+	}
 	break;
 	default:
 		correctionvalue = 1.f;
@@ -754,6 +783,10 @@ void PokeBattleSystem::Bufflogic(PokeDataBase& _Attacker, int _AttackerSkillNumb
 		_Attacker.PlusSpcialDefensebuffstack();
 		break;
 	case PokeSkill::SuperFang:  // 분노의앞니 : 공증
+		_Attacker.PlusAttackbuffstack();
+		_Attacker.PlusSpcialAttackbuffstack();
+		break;
+	case PokeSkill::FeatherDance: // 깃털댄스 : 공증
 		_Attacker.PlusAttackbuffstack();
 		_Attacker.PlusSpcialAttackbuffstack();
 		break;

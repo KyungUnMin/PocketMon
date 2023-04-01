@@ -6,6 +6,7 @@
 #include "BattleMonsterEnemy.h"
 #include "SkillActor_Thunder.h"
 #include "SkillActor_ThunderBack.h"
+#include "SkillActor_BlackBox.h"
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
@@ -49,6 +50,8 @@ void BattleSkill_EnemyThunder::EnterState()
 
 	BackGround1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_ThunderBack>();
 	BackGround2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_ThunderBack>();
+	
+	BBox = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_BlackBox>();
 
 	BackGround2->SetPos({ -870, 0 });
 
@@ -60,6 +63,8 @@ void BattleSkill_EnemyThunder::EnterState()
 	ThunderRender3->Off();
 	ThunderRender4->Off();
 	ThunderRender5->Off();
+
+	BBox->Off();
 }
 
 void BattleSkill_EnemyThunder::Update(float _DeltaTime)
@@ -102,6 +107,16 @@ void BattleSkill_EnemyThunder::Update_Forward(float _Deltatime)
 	{
 		ThunderRender5->On();
 		ThunderRender5->SetMove(float4::Down * 120.0f * _Deltatime);
+	}
+
+	if (3.4f <= ForwardTime)
+	{
+		BBox->FadeOutStart();
+	}
+	else if (1.7f <= ForwardTime)
+	{
+		BBox->On();
+		BBox->FadeInStart();
 	}
 
 	if (1.5f <= ForwardTime)
@@ -192,6 +207,8 @@ void BattleSkill_EnemyThunder::ExitState()
 	BackGround1->Death();
 	BackGround2->Death();
 
+	BBox->Death();
+
 	ThunderRender1 = nullptr;
 	ThunderRender2 = nullptr;
 	ThunderRender3 = nullptr;
@@ -200,6 +217,8 @@ void BattleSkill_EnemyThunder::ExitState()
 
 	BackGround1 = nullptr;
 	BackGround2 = nullptr;
+
+	BBox = nullptr;
 
 	CurState = MoveState::Forward;
 

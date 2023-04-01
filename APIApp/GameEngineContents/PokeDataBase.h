@@ -117,12 +117,6 @@ public:
 	PokeDataBase();
 	~PokeDataBase();
 
-	// delete Function
-	//PokeDataBase(const PokeDataBase& _Other) = delete;
-	//PokeDataBase(PokeDataBase&& _Other) noexcept = delete;
-	//PokeDataBase& operator=(const PokeDataBase& _Other) = delete;
-	//PokeDataBase& operator=(PokeDataBase&& _Other) noexcept = delete;
-
 	static PokeDataBase PokeCreate(PokeNumber _PokeDexenum, int _Level = 1)
 	{
 		int DexNumber = static_cast<int>(_PokeDexenum) + 1;
@@ -507,23 +501,9 @@ public:
 		SpecialDefenseStack = 0;
 	}
 
-	/// <summary>
-	/// 메모리 해제용 포인터 Get 함수입니다. 호출해서 사용하지 마세요. 터집니다.
-	/// </summary>
-	//static PokeDataBase& GetPtr()
-	//{
-	//	return Ptr;
-	//}
-	//
-	//void Release();
-
 protected:
 
 private:
-	// 메모리 할당, 해제용 리스트, 포인터 (사용하지 마세요...)
-	// static std::list<PokeDataBase*> AllPokemons;		          // 모든 포켓몬
-	// static std::list<PokeSkillBase*> AllSkills;			          // 모든 스킬
-	// static PokeDataBase Ptr;                                      // 사용하지 마세요...
 
 	// 포켓몬 데이터
 	GameEngineRender* MonsterImage = nullptr;					  // 포켓몬 이미지

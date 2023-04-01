@@ -44,7 +44,7 @@ private:
 
 	static float Damagecalculator(PokeDataBase& _Attacker, int _AttackerSkillNumber, PokeDataBase& _Defender);
 
-	static float OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic);
+	static float OwnCharacteristiccalculation(PokeDataBase& _Attacker, PokeCharacteristic _characteristic, int _AttackerSkillNumber);
 	static float OtherCharacteristiccalculation(PokeDataBase& _Defender, PokeCharacteristic _characteristic);
 
 	static float NormalAttackstatuscalculator(PokeDataBase& _Attacker);

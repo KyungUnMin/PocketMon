@@ -5,10 +5,6 @@
 
 #include "PokeSkillBase.h"
 
-//PokeDataBase PokeDataBase::Ptr;                                                     // PokeDataBasePtr (사용X)
-//std::list<PokeDataBase*> PokeDataBase::AllPokemons = std::list<PokeDataBase*>();    // 모든 포켓몬 (왠만하면 사용 X)
-//std::list<PokeSkillBase*> PokeDataBase::AllSkills = std::list<PokeSkillBase*>();    // 모든 스킬 (왠만하면 사용 X)
-
 PokeDataBase::PokeDataBase() 
 {
 }
@@ -16,33 +12,6 @@ PokeDataBase::PokeDataBase()
 PokeDataBase::~PokeDataBase() 
 {
 }
-
-//////////////////////////////////////////////////////////////// 푸키먼 데이터 릴리즈 구조 (수정은 엄태건에게 요청)
-
-//void PokeDataBase::Release()
-//{
-//	for (PokeSkillBase* Sk : AllSkills)
-//	{
-//		if (nullptr == Sk)
-//		{
-//			continue;
-//		}
-//
-//		delete Sk;
-//		Sk = nullptr;
-//	}
-//
-//	for (PokeDataBase* Pokes : AllPokemons)
-//	{
-//		if (nullptr == Pokes)
-//		{
-//			continue;
-//		}
-//
-//		delete Pokes;
-//		Pokes = nullptr;
-//	}
-//}
 
 //////////////////////////////////////////////////////////////// 푸키먼 데이터 생성 함수
 
@@ -65,7 +34,6 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		MsgAssert("레벨이 0인 포켓몬은 생성할 수 없습니다.");
 	}
 
-	// PokeDataBase* PoKeCreatePtr = new PokeDataBase();
 	PokeDataBase PoKeCreatePtr;
 
 	PoKeCreatePtr.PokeDexNumber = static_cast<PokeNumber>(ChangePokeNumber);
@@ -1022,7 +990,7 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::CatchRattata:
-
+		 
 		RattataData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Bite, PoKeCreatePtr);

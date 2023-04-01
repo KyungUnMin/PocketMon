@@ -1,8 +1,5 @@
  #include "PocketMonCore.h"
 
-#include "PokeDataBase.h"
-#include "ItemDataBase.h"
-
 #include "InputControll.h"
 
 #include "CenterLevel.h"
@@ -57,5 +54,4 @@ void PocketMonCore::Update()
 
 void PocketMonCore::End()
 {
-	//PokeDataBase::GetPtr().Release();
 }
