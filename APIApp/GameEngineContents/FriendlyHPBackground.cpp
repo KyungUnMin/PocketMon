@@ -41,6 +41,7 @@ void FriendlyHPBackground::Start()
 	EXPRenderPtr = CreateRender("FriendlyHPExp.bmp", BattleRenderOrder::Battle_Text);
 
 
+
 	if (false == GameEngineInput::IsKey("HpDebug111"))
 	{
 
@@ -48,6 +49,7 @@ void FriendlyHPBackground::Start()
 	}
 	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
 	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
+
 	float ExpNum_1 = static_cast<float>( BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience());
 	if (ExpNum_1 >= 100.0f) {
 		ExpNum_1 -= 100.0f;
@@ -171,6 +173,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (NextTickTime > 0.1f) {
 			NextTickTime = 0;
 			if (TickNumber != 10) {
+				/*if(DamegeTick[TickNumber] <96.0f){
+				}*/
 				HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
 				HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				TickNumber++;
@@ -282,16 +286,28 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 	}
 }
 
-
+bool IsDeath_B = false;
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
 	DamegeTick.clear();
+	if (_EnumyMonsterDamage > _MyCurHp) {
+		_EnumyMonsterDamage = _MyCurHp;
+		IsDeath_B = true;
+	}
 	float Hpmag = _EnumyMonsterDamage / _MyCurHp;
 	float damege = GameEngineMath::Lerp(_curpos, 0.0f, Hpmag);
+	int j = 0;
 	for (int i = 10; i >= 1; i--) {
+		DamegeTick.push_back(damege + ((_curpos - damege)) / 10 * i);/*현재 HP - (데미지 / 10 *)1*/
+		if (DamegeTick[j] < 0.0f) {
+			DamegeTick[j] = 0.0f;
+			j++;
+		}
 
-		DamegeTick.push_back(damege + ((_curpos - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
-
+	}
+	if (true == IsDeath_B) {
+		DamegeTick[9] = 0.0f;
+		IsDeath_B = false;
 	}
 
 }
