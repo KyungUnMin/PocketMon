@@ -7,6 +7,7 @@
 
 #include "FriendlyHPBackground.h"
 #include "EnemyHPBackground.h"
+#include "SkillActor_BlackBox.h"
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
@@ -26,6 +27,8 @@ void BattleSkill_EnemyEarthquake::EnterState()
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
+	BBox = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_BlackBox>();
+
 	EnemyMonster->EffectCameraOff();
 	FriendlyHPBackground::FriendlyPtr->GetWindowPtr()->EffectCameraOff();
 	FriendlyHPBackground::FriendlyPtr->GetHPPtr()->EffectCameraOff();
@@ -38,7 +41,7 @@ void BattleSkill_EnemyEarthquake::EnterState()
 
 void BattleSkill_EnemyEarthquake::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 1.6f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 2.3f))
 	{
 		PlayerMonster->On();
 		return;
@@ -62,11 +65,59 @@ void BattleSkill_EnemyEarthquake::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
-	if (0.7f <= ForwardTime)
+	if (1.2f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos);
 	}
+	else if (1.15f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (1.1f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (1.05f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (1.0f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.95f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (0.9f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.85f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (0.8f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.75f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (0.7f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.65f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
 	else if (0.6f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.55f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
 	}
@@ -74,24 +125,17 @@ void BattleSkill_EnemyEarthquake::Update_Forward(float _Deltatime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
 	}
-	else if (0.4f <= ForwardTime)
+
+	if (1.4f <= ForwardTime)
 	{
-		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
-	}
-	else if (0.3f <= ForwardTime)
-	{
-		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
-	}
-	else if (0.2f <= ForwardTime)
-	{
-		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+		BBox->FadeOutStart();
 	}
 	else if (0.1f <= ForwardTime)
 	{
-		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+		BBox->FadeInStart();
 	}
 
-	if (1.0f <= ForwardTime)
+	if (1.7f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
 	}
@@ -142,6 +186,9 @@ void BattleSkill_EnemyEarthquake::ExitState()
 	EnemyHPBackground::EnemyPtr->GetHPPtr()->EffectCameraOn();
 
 	EnemyMonster->SetPosition(float4::Zero);
+
+	BBox->Death();
+	BBox = nullptr;
 	
 	CurState = MoveState::Forward;
 

@@ -2,6 +2,7 @@
 #include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
+class SkillActor_BlackBox;
 
 class BattleSkill_EnemyEarthquake : public BattleSkill_EnemyBase
 {
@@ -24,6 +25,8 @@ protected:
 private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
+
+	SkillActor_BlackBox* BBox = nullptr;
 
 	float4 InitCameraPos = float4::Zero;
 
