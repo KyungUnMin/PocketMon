@@ -10,6 +10,19 @@
 #include "BattleSkill_PlayerLeer.h"
 #include "BattleSkill_PlayerEarthquake.h"
 #include "BattleSkill_PlayerTailWhip.h"
+#include "BattleSkill_PlayerWaterGun.h"
+#include "BattleSkill_PlayerBubble.h"
+#include "BattleSkill_PlayerVineWhip.h"
+#include "BattleSkill_PlayerRazorLeaf.h"
+#include "BattleSkill_PlayerThunder.h"
+#include "BattleSkill_PlayerThunderbolt.h"
+#include "BattleSkill_PlayerDragonBreath.h"
+#include "BattleSkill_PlayerDoubleEdge.h"
+#include "BattleSkill_PlayerBite.h"
+#include "BattleSkill_PlayerHyperFang.h"
+#include "BattleSkill_PlayerAirSlash.h"
+#include "BattleSkill_PlayerGust.h"
+#include "BattleSkill_PlayerQuickAttack.h"
 
 #include "BattleSkill_PlayerFeatherDance.h"
 #include "BattleSkill_PlayerEmber.h"
@@ -34,6 +47,20 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerLeer>(BattlePlayerMonster_StateType::Skill_Leer);
 	CreateState<BattleSkill_PlayerTailWhip>(BattlePlayerMonster_StateType::Skill_TailWhip);
 	CreateState<BattleSkill_PlayerEarthquake>(BattlePlayerMonster_StateType::Skill_Earthquake);
+
+	CreateState<BattleSkill_PlayerWaterGun>(BattlePlayerMonster_StateType::Skill_WaterGun);
+	CreateState<BattleSkill_PlayerBubble>(BattlePlayerMonster_StateType::Skill_Bubble);
+	CreateState<BattleSkill_PlayerVineWhip>(BattlePlayerMonster_StateType::Skill_VineWhip);
+	CreateState<BattleSkill_PlayerRazorLeaf>(BattlePlayerMonster_StateType::Skill_RazorLeaf);
+	CreateState<BattleSkill_PlayerThunder>(BattlePlayerMonster_StateType::Skill_Thunder);
+	CreateState<BattleSkill_PlayerThunderbolt>(BattlePlayerMonster_StateType::Skill_Thunderbolt);
+	CreateState<BattleSkill_PlayerDragonBreath>(BattlePlayerMonster_StateType::Skill_DragonBreath);
+	CreateState<BattleSkill_PlayerDoubleEdge>(BattlePlayerMonster_StateType::Skill_DoubleEdge);
+	CreateState<BattleSkill_PlayerBite>(BattlePlayerMonster_StateType::Skill_Bite);
+	CreateState<BattleSkill_PlayerHyperFang>(BattlePlayerMonster_StateType::Skill_HyperFang);
+	CreateState<BattleSkill_PlayerAirSlash>(BattlePlayerMonster_StateType::Skill_AirSlash);
+	CreateState<BattleSkill_PlayerGust>(BattlePlayerMonster_StateType::Skill_Gust);
+	CreateState<BattleSkill_PlayerQuickAttack>(BattlePlayerMonster_StateType::Skill_QuickAttack);
 
 	CreateState<BattlePlayerMonster_CreateState>(BattlePlayerMonster_StateType::Create);
 	CreateState<BattleStateIdle>(BattlePlayerMonster_StateType::Idle);

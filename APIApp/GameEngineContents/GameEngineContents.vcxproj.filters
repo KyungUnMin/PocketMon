@@ -596,6 +596,33 @@
     <ClCompile Include="JumpEffect.cpp">
       <Filter>Player\Player</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerQuickAttack.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerGust.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerAirSlash.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerHyperFang.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerBite.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDoubleEdge.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerThunderbolt.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerThunder.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1179,6 +1206,33 @@
     </ClInclude>
     <ClInclude Include="JumpEffect.h">
       <Filter>Player\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerQuickAttack.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerGust.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerAirSlash.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerHyperFang.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerBite.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDoubleEdge.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerThunderbolt.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerThunder.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

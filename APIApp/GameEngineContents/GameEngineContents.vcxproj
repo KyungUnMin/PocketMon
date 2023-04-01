@@ -284,11 +284,27 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerAirSlash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerBase.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerBite.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerBubble.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDoubleEdge.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -305,7 +321,19 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerGust.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerHyperFang.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerLeer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerQuickAttack.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -330,6 +358,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerTest.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerThunder.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerThunderbolt.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -807,11 +843,27 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerAirSlash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerBase.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerBite.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerBubble.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDoubleEdge.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -828,7 +880,19 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerGust.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerHyperFang.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerLeer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerQuickAttack.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -853,6 +917,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerTest.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerThunder.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerThunderbolt.h">
       <SubType>
       </SubType>
     </ClInclude>

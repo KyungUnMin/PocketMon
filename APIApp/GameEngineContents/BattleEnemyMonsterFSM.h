@@ -16,6 +16,16 @@ enum class BattleEnemyMonster_StateType
 	Skill_Leer,
 	Skill_Earthquake,
 	Skill_TailWhip,
+
+	Skill_QuickAttack,
+	Skill_Gust,
+	Skill_Thunderbolt,
+	Skill_Thunder,
+	Skill_WaterGun,
+	Skill_Bubble,
+	Skill_Vinewhip,
+	Skill_RazorLeaf,
+
 	Skill_Scratch,
 	Skill_FeatherDance,
 	Skill_Ember,
