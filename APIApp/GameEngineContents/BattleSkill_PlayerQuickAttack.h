@@ -38,6 +38,8 @@ private:
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
 
+	bool IsMove = true;
+
 	void Update_Forward(float _Deltatime);
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);

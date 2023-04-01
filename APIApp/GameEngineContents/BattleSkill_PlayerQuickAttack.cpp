@@ -52,6 +52,52 @@ void BattleSkill_PlayerQuickAttack::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
+	if (0.4f <= ForwardTime)
+	{
+		PlayerMonster->Off();
+		IsMove = false;
+	}
+
+	if (true == IsMove)
+	{
+		float MoveSpeed = 150.0f;
+
+		if (0.3f <= ForwardTime && 0.4f >= ForwardTime)
+		{
+			MoveSpeed = 3500.0f;
+		}
+		else if (0.1f <= ForwardTime && 0.3f >= ForwardTime)
+		{
+			MoveSpeed = 0.0f;
+		}
+
+		PlayerMonster->SetMove(float4::Up * MoveSpeed * _Deltatime);
+	}
+
+	if (0.4f <= ForwardTime)
+	{
+		PlayerMonster->SetAlpha(0);
+	}
+	else if (0.375f <= ForwardTime)
+	{
+		PlayerMonster->SetAlpha(60);
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		PlayerMonster->SetAlpha(120);
+	}
+	else if (0.325f <= ForwardTime)
+	{
+		PlayerMonster->SetAlpha(180);
+	}
+
+	if (1.0f <= ForwardTime)
+	{
+		PlayerMonster->On();
+		PlayerMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetAlpha(255);
+	}
+
 	if (1.0f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
@@ -106,5 +152,5 @@ void BattleSkill_PlayerQuickAttack::ExitState()
 
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
-	float FlashingTime = 0.f;
+	FlashingTime = 0.f;
 }

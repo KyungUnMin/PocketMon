@@ -26,8 +26,16 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 
-	// 스킬 액터
-	// SkillActor_Growl* GrowlRender1 = nullptr;
+	GameEngineRender* EffectRender1 = nullptr;
+	GameEngineRender* EffectRender2 = nullptr;
+	GameEngineRender* EffectRender3 = nullptr;
+
+	const float4 MoveOffset = { 20.f, 0.f };
+	
+	float4 StartPos1 = float4::Zero;
+	float4 EndPos1 = float4::Zero;
+	float4 StartPos2 = float4::Zero;
+	float4 EndPos2 = float4::Zero;
 
 	enum class MoveState
 	{
@@ -38,11 +46,18 @@ private:
 
 	MoveState CurState = MoveState::Forward;
 
+	float Pos1Time = 0.f;
+	float Pos2Time = 0.f;
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
 
+	bool IsMove = true;
+
 	void Update_Forward(float _Deltatime);
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);
+
+	float4 EdgeClamp(const float4& Start, const float4& End, float Ratio);
+	float4 EdgeLerp(const float4& Start, const float4& End, float Ratio);
 };
