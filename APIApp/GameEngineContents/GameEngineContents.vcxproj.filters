@@ -650,6 +650,27 @@
     <ClCompile Include="SkillActor_BlackBox.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClCompile>
+    <ClCompile Include="SkillActor_ThunderBack.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyThunderbolt.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyThunder.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyWaterGun.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyBubble.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyRazorLeaf.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyVinewhip.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1287,6 +1308,27 @@
     </ClInclude>
     <ClInclude Include="SkillActor_BlackBox.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_ThunderBack.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyThunderbolt.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyThunder.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyWaterGun.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyBubble.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyRazorLeaf.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyVinewhip.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

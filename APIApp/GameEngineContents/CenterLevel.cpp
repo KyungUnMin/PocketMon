@@ -127,6 +127,7 @@ void CenterLevel::Loading()
 
 		Dir.Move("Skill");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ThunderBack.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl1.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"))->Cut(2, 1);
@@ -134,8 +135,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 5);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble_After.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 3);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RazorLeaf.bmp"))->Cut(1, 3);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("VineWhip.bmp"))->Cut(1, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun.bmp"))->Cut(1, 5);
@@ -145,7 +145,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DragonBrath.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Gust.bmp"))->Cut(1, 2);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Thunder.bmp"))->Cut(1, 5);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Thunderbolt.bmp"))->Cut(1, 7);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Thunderbolt_After.bmp"))->Cut(1, 6);
 		//TODO
 
 		Dir.MoveParentToDirectory("Skill");

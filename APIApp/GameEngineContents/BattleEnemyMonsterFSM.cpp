@@ -15,6 +15,12 @@
 #include "BattleSkill_EnemyEarthquake.h"
 #include "BattleSkill_EnemyGust.h"
 #include "BattleSkill_EnemyQuickAttack.h"
+#include "BattleSkill_EnemyThunderbolt.h"
+#include "BattleSkill_EnemyThunder.h"
+#include "BattleSkill_EnemyWaterGun.h"
+#include "BattleSkill_EnemyBubble.h"
+#include "BattleSkill_EnemyVinewhip.h"
+#include "BattleSkill_EnemyRazorLeaf.h"
 
 #include "BattleSkill_EnemyTest.h"
 
@@ -43,6 +49,13 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyEarthquake>(BattleEnemyMonster_StateType::Skill_Earthquake);
 	CreateState<BattleSkill_EnemyGust>(BattleEnemyMonster_StateType::Skill_Gust);
 	CreateState<BattleSkill_EnemyQuickAttack>(BattleEnemyMonster_StateType::Skill_QuickAttack);
+
+	CreateState<BattleSkill_EnemyThunderbolt>(BattleEnemyMonster_StateType::Skill_Thunderbolt);
+	CreateState<BattleSkill_EnemyThunder>(BattleEnemyMonster_StateType::Skill_Thunder);
+	CreateState<BattleSkill_EnemyWaterGun>(BattleEnemyMonster_StateType::Skill_WaterGun);
+	CreateState<BattleSkill_EnemyBubble>(BattleEnemyMonster_StateType::Skill_Bubble);
+	CreateState<BattleSkill_EnemyVinewhip>(BattleEnemyMonster_StateType::Skill_Vinewhip);
+	CreateState<BattleSkill_EnemyRazorLeaf>(BattleEnemyMonster_StateType::Skill_RazorLeaf);
 
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);

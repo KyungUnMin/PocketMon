@@ -1,22 +1,22 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
 class SkillActor_Thunderbolt;
 class SkillActor_BlackBox;
 
-class BattleSkill_PlayerThunderbolt : public BattleSkill_PlayerBase
+class BattleSkill_EnemyThunderbolt : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerThunderbolt();
-	~BattleSkill_PlayerThunderbolt();
+	BattleSkill_EnemyThunderbolt();
+	~BattleSkill_EnemyThunderbolt();
 
 	// delete Function
-	BattleSkill_PlayerThunderbolt(const BattleSkill_PlayerThunderbolt& _Other) = delete;
-	BattleSkill_PlayerThunderbolt(BattleSkill_PlayerThunderbolt&& _Other) noexcept = delete;
-	BattleSkill_PlayerThunderbolt& operator=(const BattleSkill_PlayerThunderbolt& _Other) = delete;
-	BattleSkill_PlayerThunderbolt& operator=(BattleSkill_PlayerThunderbolt&& _Other) noexcept = delete;
+	BattleSkill_EnemyThunderbolt(const BattleSkill_EnemyThunderbolt& _Other) = delete;
+	BattleSkill_EnemyThunderbolt(BattleSkill_EnemyThunderbolt&& _Other) noexcept = delete;
+	BattleSkill_EnemyThunderbolt& operator=(const BattleSkill_EnemyThunderbolt& _Other) = delete;
+	BattleSkill_EnemyThunderbolt& operator=(BattleSkill_EnemyThunderbolt&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;
@@ -52,4 +52,3 @@ private:
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);
 };
-

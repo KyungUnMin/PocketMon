@@ -8,6 +8,7 @@
 #include "FriendlyHPBackground.h"
 #include "EnemyHPBackground.h"
 #include "SkillActor_Bite.h"
+#include "SkillActor_BlackBox.h"
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
@@ -39,6 +40,8 @@ void BattleSkill_PlayerHyperFang::EnterState()
 	BiteRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bite>();
 	BiteRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bite>();
 
+	BBox = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_BlackBox>();
+
 	BiteRender1->SetPos({ 710, 50 });
 	BiteRender2->SetPos({ 710, 270 });
 
@@ -51,7 +54,7 @@ void BattleSkill_PlayerHyperFang::EnterState()
 
 void BattleSkill_PlayerHyperFang::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.6f))
+	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.3f))
 	{
 		EnemyMonster->On();
 		return;
@@ -75,54 +78,79 @@ void BattleSkill_PlayerHyperFang::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
-	if (0.8f <= ForwardTime)
+	if (1.2f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos);
 	}
-	else if (0.7f <= ForwardTime)
+	else if (1.15f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
 	}
-	else if (0.6f <= ForwardTime)
+	else if (1.1f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
 	}
-	else if (0.5f <= ForwardTime)
+	else if (1.05f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
 	}
-	else if (0.4f <= ForwardTime)
+	else if (1.0f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.95f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (0.9f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
+	}
+	else if (0.85f <= ForwardTime)
+	{
+		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Down * 10);
+	}
+	else if (0.8f <= ForwardTime)
 	{
 		BattleLevel::BattleLevelPtr->SetCameraPos(InitCameraPos + float4::Up * 10);
 	}
 
-	if (0.35f <= ForwardTime)
+	if (0.85f <= ForwardTime)
 	{
 		BiteRender1->Off();
 		BiteRender2->Off();
 	}
-	else if (0.3f <= ForwardTime)
+	else if (0.7f <= ForwardTime)
 	{
 		BiteRender1->SetPos({ 710, 110 });
 		BiteRender2->SetPos({ 710, 210 });
 	}
-	else if (0.2f <= ForwardTime)
+	else if (0.6f <= ForwardTime)
 	{
 		BiteRender1->SetPos({ 710, 90 });
 		BiteRender2->SetPos({ 710, 230 });
 	}
-	else if (0.1f <= ForwardTime)
+	else if (0.5f <= ForwardTime)
 	{
 		BiteRender1->SetPos({ 710, 70 });
 		BiteRender2->SetPos({ 710, 250 });
 	}
-	else if (0.01f <= ForwardTime)
+	else if (0.41f <= ForwardTime)
 	{
 		BiteRender1->On();
 		BiteRender2->On();
 	}
 
-	if (1.0f <= ForwardTime)
+	if (1.4f <= ForwardTime)
+	{
+		BBox->FadeOutStart();
+	}
+	else if (0.1f <= ForwardTime)
+	{
+		BBox->FadeInStart();
+	}
+
+	if (1.7f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
 	}
@@ -176,9 +204,11 @@ void BattleSkill_PlayerHyperFang::ExitState()
 
 	BiteRender1->Death();
 	BiteRender2->Death();
+	BBox->Death();
 
 	BiteRender1 = nullptr;
 	BiteRender2 = nullptr;
+	BBox = nullptr;
 
 	CurState = MoveState::Forward;
 

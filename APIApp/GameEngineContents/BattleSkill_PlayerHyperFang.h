@@ -3,6 +3,7 @@
 
 class GameEngineRender;
 class SkillActor_Bite;
+class SkillActor_BlackBox;
 
 class BattleSkill_PlayerHyperFang : public BattleSkill_PlayerBase
 {
@@ -28,6 +29,8 @@ private:
 	
 	SkillActor_Bite* BiteRender1 = nullptr;
 	SkillActor_Bite* BiteRender2 = nullptr;
+
+	SkillActor_BlackBox* BBox = nullptr;
 
 	float4 InitCameraPos = float4::Zero;
 

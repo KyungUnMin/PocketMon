@@ -1,22 +1,23 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
 class SkillActor_Thunder;
 class SkillActor_ThunderBack;
 
-class BattleSkill_PlayerThunder : public BattleSkill_PlayerBase
+
+class BattleSkill_EnemyThunder : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerThunder();
-	~BattleSkill_PlayerThunder();
+	BattleSkill_EnemyThunder();
+	~BattleSkill_EnemyThunder();
 
 	// delete Function
-	BattleSkill_PlayerThunder(const BattleSkill_PlayerThunder& _Other) = delete;
-	BattleSkill_PlayerThunder(BattleSkill_PlayerThunder&& _Other) noexcept = delete;
-	BattleSkill_PlayerThunder& operator=(const BattleSkill_PlayerThunder& _Other) = delete;
-	BattleSkill_PlayerThunder& operator=(BattleSkill_PlayerThunder&& _Other) noexcept = delete;
+	BattleSkill_EnemyThunder(const BattleSkill_EnemyThunder& _Other) = delete;
+	BattleSkill_EnemyThunder(BattleSkill_EnemyThunder&& _Other) noexcept = delete;
+	BattleSkill_EnemyThunder& operator=(const BattleSkill_EnemyThunder& _Other) = delete;
+	BattleSkill_EnemyThunder& operator=(BattleSkill_EnemyThunder&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

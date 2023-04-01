@@ -16,11 +16,15 @@ public:
 	SkillActor_Thunderbolt& operator=(const SkillActor_Thunderbolt& _Other) = delete;
 	SkillActor_Thunderbolt& operator=(SkillActor_Thunderbolt&& _Other) noexcept = delete;
 
+	void ThunderboltAfterSet();
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
 
 private:
 	GameEngineRender* RenderPtr = nullptr;
+
+	bool IsAfter = false;
 
 };

@@ -1,4 +1,4 @@
-#include "BattleSkill_PlayerThunderbolt.h"
+#include "BattleSkill_EnemyThunderbolt.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -10,17 +10,17 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerThunderbolt::BattleSkill_PlayerThunderbolt() 
+BattleSkill_EnemyThunderbolt::BattleSkill_EnemyThunderbolt() 
 {
 }
 
-BattleSkill_PlayerThunderbolt::~BattleSkill_PlayerThunderbolt() 
+BattleSkill_EnemyThunderbolt::~BattleSkill_EnemyThunderbolt() 
 {
 }
 
-void BattleSkill_PlayerThunderbolt::EnterState()
+void BattleSkill_EnemyThunderbolt::EnterState()
 {
-	BattleSkill_PlayerBase::EnterState();
+	BattleSkill_EnemyBase::EnterState();
 
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
@@ -33,12 +33,12 @@ void BattleSkill_PlayerThunderbolt::EnterState()
 
 	BBox = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_BlackBox>();
 
-	ThunderboltRender1->SetPos({ 620, 100 });
-	ThunderboltRender2->SetPos({ 690, 60 });
-	ThunderboltRender3->SetPos({ 720, 140 });
-	ThunderboltRender4->SetPos({ 780, 120 });
+	ThunderboltRender1->SetPos({ 160, 290 });
+	ThunderboltRender2->SetPos({ 240, 250 });
+	ThunderboltRender3->SetPos({ 270, 330 });
+	ThunderboltRender4->SetPos({ 340, 310 });
 
-	ThunderboltRender5->SetPos({ 710, 180 });
+	ThunderboltRender5->SetPos({ 270, 360 });
 
 	ThunderboltRender5->ThunderboltAfterSet();
 
@@ -49,29 +49,29 @@ void BattleSkill_PlayerThunderbolt::EnterState()
 	ThunderboltRender5->Off();
 }
 
-void BattleSkill_PlayerThunderbolt::Update(float _DeltaTime)
+void BattleSkill_EnemyThunderbolt::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.3f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 2.3f))
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		return;
 	}
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerThunderbolt::MoveState::Forward:
+	case BattleSkill_EnemyThunderbolt::MoveState::Forward:
 		Update_Forward(_DeltaTime);
 		break;
-	case BattleSkill_PlayerThunderbolt::MoveState::Backward:
+	case BattleSkill_EnemyThunderbolt::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
-	case BattleSkill_PlayerThunderbolt::MoveState::Flashing:
+	case BattleSkill_EnemyThunderbolt::MoveState::Flashing:
 		Update_Flashing(_DeltaTime);
 		break;
 	}
 }
 
-void BattleSkill_PlayerThunderbolt::Update_Forward(float _Deltatime)
+void BattleSkill_EnemyThunderbolt::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
@@ -136,7 +136,7 @@ void BattleSkill_PlayerThunderbolt::Update_Forward(float _Deltatime)
 	}
 }
 
-void BattleSkill_PlayerThunderbolt::Update_BackWard(float _Deltatime)
+void BattleSkill_EnemyThunderbolt::Update_BackWard(float _Deltatime)
 {
 	BackwardTime += _Deltatime;
 
@@ -146,36 +146,35 @@ void BattleSkill_PlayerThunderbolt::Update_BackWard(float _Deltatime)
 	}
 	else if (0.12f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetPosition(float4::Zero);
 	}
 	else
 	{
-		EnemyMonster->SetPosition(float4::Right * 8);
+		PlayerMonster->SetPosition(float4::Left * 10);
 	}
 }
 
-void BattleSkill_PlayerThunderbolt::Update_Flashing(float _Deltatime)
+void BattleSkill_EnemyThunderbolt::Update_Flashing(float _Deltatime)
 {
 	FlashingTime += _Deltatime;
 
 	if (0.08 <= FlashingTime)
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		FlashingTime = 0;
 	}
 	else if (0.04f <= FlashingTime)
 	{
-		EnemyMonster->Off();
+		PlayerMonster->Off();
 	}
 }
 
-void BattleSkill_PlayerThunderbolt::ExitState()
+void BattleSkill_EnemyThunderbolt::ExitState()
 {
-	BattleSkill_PlayerBase::ExitState();
+	BattleSkill_EnemyBase::ExitState();
 
 	PlayerMonster->SetPosition(float4::Zero);
-	PlayerMonster = nullptr;
-
+	
 	ThunderboltRender1->Death();
 	ThunderboltRender2->Death();
 	ThunderboltRender3->Death();

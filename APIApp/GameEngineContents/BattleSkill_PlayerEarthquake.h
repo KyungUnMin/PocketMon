@@ -47,4 +47,3 @@ private:
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);
 };
-

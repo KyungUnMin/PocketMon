@@ -15,7 +15,7 @@ SkillActor_BlackBox::~SkillActor_BlackBox()
 
 void SkillActor_BlackBox::Start()
 {
-	RenderPtr = CreateRender("BlackBox.bmp", BattleRenderOrder::BackGround);
+	RenderPtr = CreateRender("BlackBox.bmp", BattleRenderOrder::Ground);
 	RenderPtr->SetScale(RenderPtr->GetImage()->GetImageScale());
 	RenderPtr->SetPosition(GameEngineWindow::GetScreenSize().half());
 	RenderPtr->EffectCameraOff();

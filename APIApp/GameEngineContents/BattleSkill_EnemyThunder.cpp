@@ -1,4 +1,4 @@
-#include "BattleSkill_PlayerThunder.h"
+#include "BattleSkill_EnemyThunder.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -10,17 +10,17 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerThunder::BattleSkill_PlayerThunder() 
+BattleSkill_EnemyThunder::BattleSkill_EnemyThunder() 
 {
 }
 
-BattleSkill_PlayerThunder::~BattleSkill_PlayerThunder() 
+BattleSkill_EnemyThunder::~BattleSkill_EnemyThunder() 
 {
 }
 
-void BattleSkill_PlayerThunder::EnterState()
+void BattleSkill_EnemyThunder::EnterState()
 {
-	BattleSkill_PlayerBase::EnterState();
+	BattleSkill_EnemyBase::EnterState();
 
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
@@ -31,25 +31,26 @@ void BattleSkill_PlayerThunder::EnterState()
 	ThunderRender4 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Thunder>();
 	ThunderRender5 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Thunder>();
 
-	ThunderRender1->SetPos({ 630, 80 });
-	ThunderRender2->SetPos({ 750, 110 });
+	ThunderRender1->SetPos({ 200, 290 });
+	ThunderRender2->SetPos({ 320, 310 });
 
-	ThunderRender5->SetPos({ 700, 10 });
+	ThunderRender5->SetPos({ 270, 220 });
 	ThunderRender5->ThunderSetting(ThunderSet::Thunder1);
 
 	ThunderRender1->ThunderSetting(ThunderSet::Thunder1);
 	ThunderRender2->ThunderSetting(ThunderSet::Thunder1);
-
-	ThunderRender3->SetPos({ 700, 150 });
+	
+	// ThunderboltRender5->SetPos({ 270, 360 });
+	ThunderRender3->SetPos({ 270, 360 });
 	ThunderRender3->ThunderSetting(ThunderSet::Thunder2);
 
-	ThunderRender4->SetPos({ 760, 120 });
+	ThunderRender4->SetPos({ 330, 330 });
 	ThunderRender4->ThunderSetting(ThunderSet::Thunder3);
 
 	BackGround1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_ThunderBack>();
 	BackGround2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_ThunderBack>();
 
-	BackGround2->SetPos({-870, 0});
+	BackGround2->SetPos({ -870, 0 });
 
 	BackGround1->Off();
 	BackGround2->Off();
@@ -61,29 +62,29 @@ void BattleSkill_PlayerThunder::EnterState()
 	ThunderRender5->Off();
 }
 
-void BattleSkill_PlayerThunder::Update(float _DeltaTime)
+void BattleSkill_EnemyThunder::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 4.7f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 4.7f))
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		return;
 	}
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerThunder::MoveState::Forward:
+	case BattleSkill_EnemyThunder::MoveState::Forward:
 		Update_Forward(_DeltaTime);
 		break;
-	case BattleSkill_PlayerThunder::MoveState::Backward:
+	case BattleSkill_EnemyThunder::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
-	case BattleSkill_PlayerThunder::MoveState::Flashing:
+	case BattleSkill_EnemyThunder::MoveState::Flashing:
 		Update_Flashing(_DeltaTime);
 		break;
 	}
 }
 
-void BattleSkill_PlayerThunder::Update_Forward(float _Deltatime)
+void BattleSkill_EnemyThunder::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
@@ -143,7 +144,7 @@ void BattleSkill_PlayerThunder::Update_Forward(float _Deltatime)
 	}
 }
 
-void BattleSkill_PlayerThunder::Update_BackWard(float _Deltatime)
+void BattleSkill_EnemyThunder::Update_BackWard(float _Deltatime)
 {
 	BackwardTime += _Deltatime;
 
@@ -153,35 +154,34 @@ void BattleSkill_PlayerThunder::Update_BackWard(float _Deltatime)
 	}
 	else if (0.12f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetPosition(float4::Zero);
 	}
 	else
 	{
-		EnemyMonster->SetPosition(float4::Right * 8);
+		PlayerMonster->SetPosition(float4::Left * 10);
 	}
 }
 
-void BattleSkill_PlayerThunder::Update_Flashing(float _Deltatime)
+void BattleSkill_EnemyThunder::Update_Flashing(float _Deltatime)
 {
 	FlashingTime += _Deltatime;
 
 	if (0.08 <= FlashingTime)
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		FlashingTime = 0;
 	}
 	else if (0.04f <= FlashingTime)
 	{
-		EnemyMonster->Off();
+		PlayerMonster->Off();
 	}
 }
 
-void BattleSkill_PlayerThunder::ExitState()
+void BattleSkill_EnemyThunder::ExitState()
 {
-	BattleSkill_PlayerBase::ExitState();
+	BattleSkill_EnemyBase::ExitState();
 
 	PlayerMonster->SetPosition(float4::Zero);
-	PlayerMonster = nullptr;
 
 	ThunderRender1->Death();
 	ThunderRender2->Death();
@@ -191,7 +191,7 @@ void BattleSkill_PlayerThunder::ExitState()
 
 	BackGround1->Death();
 	BackGround2->Death();
-	
+
 	ThunderRender1 = nullptr;
 	ThunderRender2 = nullptr;
 	ThunderRender3 = nullptr;
