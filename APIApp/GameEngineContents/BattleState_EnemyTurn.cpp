@@ -25,7 +25,7 @@ void BattleState_EnemyTurn::EnterState()
 
 	//임시코드, 나중에 EnemyMonster에서 함수를 따로 만들어서 연동시킬 계획,
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
-	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Earthquake);
+	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Gust);
 }
 
 void BattleState_EnemyTurn::ExitState()

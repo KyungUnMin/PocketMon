@@ -1,21 +1,21 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
 class SkillActor_Gust;
 
-class BattleSkill_PlayerGust : public BattleSkill_PlayerBase
+class BattleSkill_EnemyGust : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerGust();
-	~BattleSkill_PlayerGust();
+	BattleSkill_EnemyGust();
+	~BattleSkill_EnemyGust();
 
 	// delete Function
-	BattleSkill_PlayerGust(const BattleSkill_PlayerGust& _Other) = delete;
-	BattleSkill_PlayerGust(BattleSkill_PlayerGust&& _Other) noexcept = delete;
-	BattleSkill_PlayerGust& operator=(const BattleSkill_PlayerGust& _Other) = delete;
-	BattleSkill_PlayerGust& operator=(BattleSkill_PlayerGust&& _Other) noexcept = delete;
+	BattleSkill_EnemyGust(const BattleSkill_EnemyGust& _Other) = delete;
+	BattleSkill_EnemyGust(BattleSkill_EnemyGust&& _Other) noexcept = delete;
+	BattleSkill_EnemyGust& operator=(const BattleSkill_EnemyGust& _Other) = delete;
+	BattleSkill_EnemyGust& operator=(BattleSkill_EnemyGust&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;
@@ -49,7 +49,7 @@ private:
 	float FlashingTime = 0.f;
 
 	float Angle = 0.0f;
-	
+
 	bool IsRotate = true;
 	bool IsShoot = false;
 
@@ -59,4 +59,3 @@ private:
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);
 };
-

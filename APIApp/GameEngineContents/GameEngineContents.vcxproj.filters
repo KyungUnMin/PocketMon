@@ -641,6 +641,9 @@
     <ClCompile Include="SkillActor_Thunderbolt.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyGust.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1269,6 +1272,9 @@
     </ClInclude>
     <ClInclude Include="SkillActor_Thunderbolt.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyGust.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

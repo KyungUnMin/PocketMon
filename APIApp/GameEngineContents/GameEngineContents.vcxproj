@@ -264,6 +264,10 @@
     </ClCompile>
     <ClCompile Include="BattleSkill_EnemyFeatherDance.cpp" />
     <ClCompile Include="BattleSkill_EnemyGrowl.cpp" />
+    <ClCompile Include="BattleSkill_EnemyGust.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyLeer.cpp">
       <SubType>
       </SubType>
@@ -847,6 +851,10 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyFeatherDance.h" />
     <ClInclude Include="BattleSkill_EnemyGrowl.h" />
+    <ClInclude Include="BattleSkill_EnemyGust.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyLeer.h">
       <SubType>
       </SubType>

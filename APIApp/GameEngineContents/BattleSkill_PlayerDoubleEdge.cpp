@@ -54,11 +54,11 @@ void BattleSkill_PlayerDoubleEdge::EnterState()
 
 	StartPos1 = PlayerMonster->GetPosition();
 
-	EndPos1 = StartPos1 + float4::Right * 100;
+	EndPos1 = StartPos1 + float4::Right * 60;
 
 	StartPos2 = EndPos1;
 
-	EndPos2 = StartPos2 + float4::Left * 100;
+	EndPos2 = StartPos2 + float4::Left * 60;
 }
 
 void BattleSkill_PlayerDoubleEdge::Update(float _DeltaTime)

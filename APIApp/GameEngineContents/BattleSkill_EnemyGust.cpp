@@ -1,4 +1,4 @@
-#include "BattleSkill_PlayerGust.h"
+#include "BattleSkill_EnemyGust.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -9,55 +9,55 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerGust::BattleSkill_PlayerGust() 
+BattleSkill_EnemyGust::BattleSkill_EnemyGust() 
 {
 }
 
-BattleSkill_PlayerGust::~BattleSkill_PlayerGust() 
+BattleSkill_EnemyGust::~BattleSkill_EnemyGust() 
 {
 }
 
-void BattleSkill_PlayerGust::EnterState()
+void BattleSkill_EnemyGust::EnterState()
 {
-	BattleSkill_PlayerBase::EnterState();
+	BattleSkill_EnemyBase::EnterState();
 
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
 	GustRender = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Gust>();
-	GustRender->SetPos({ 400, 300 });
+	GustRender->SetPos({ 560, 150 });
 	GustRender->SetAlphaValue(0);
 	GustRender->Off();
 
 	NewPos = GustRender->GetPos();
 }
 
-void BattleSkill_PlayerGust::Update(float _DeltaTime)
+void BattleSkill_EnemyGust::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 2.0f))
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		return;
 	}
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerGust::MoveState::Forward:
+	case BattleSkill_EnemyGust::MoveState::Forward:
 		Update_Forward(_DeltaTime);
 		break;
-	case BattleSkill_PlayerGust::MoveState::Backward:
+	case BattleSkill_EnemyGust::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
-	case BattleSkill_PlayerGust::MoveState::Flashing:
+	case BattleSkill_EnemyGust::MoveState::Flashing:
 		Update_Flashing(_DeltaTime);
 		break;
 	}
 }
 
-void BattleSkill_PlayerGust::Update_Forward(float _Deltatime)
+void BattleSkill_EnemyGust::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
-	
+
 	GustRender->On();
 
 	if (1.1f <= ForwardTime)
@@ -72,7 +72,7 @@ void BattleSkill_PlayerGust::Update_Forward(float _Deltatime)
 
 		if (0.001f <= RotationTime)
 		{
-			Angle += 2.5f;
+			Angle -= 2.5f;
 			RotationTime = 0.0f;
 		}
 
@@ -107,7 +107,7 @@ void BattleSkill_PlayerGust::Update_Forward(float _Deltatime)
 		{
 			ShootSet = 0;
 			StartPos = GustRender->GetPos();
-			EndPos = StartPos + float4{ 500, -350 };
+			EndPos = StartPos + float4{ -500, 350 };
 		}
 
 		GustTime += _Deltatime * 4.0f;
@@ -115,7 +115,7 @@ void BattleSkill_PlayerGust::Update_Forward(float _Deltatime)
 		float4 Pos = float4::LerpClamp(StartPos, EndPos, GustTime);
 		GustRender->SetPos(Pos);
 
-		if (EndPos.x <= GustRender->GetPos().x)
+		if (EndPos.x >= GustRender->GetPos().x)
 		{
 			GustRender->Off();
 		}
@@ -127,7 +127,7 @@ void BattleSkill_PlayerGust::Update_Forward(float _Deltatime)
 	}
 }
 
-void BattleSkill_PlayerGust::Update_BackWard(float _Deltatime)
+void BattleSkill_EnemyGust::Update_BackWard(float _Deltatime)
 {
 	BackwardTime += _Deltatime;
 
@@ -137,36 +137,35 @@ void BattleSkill_PlayerGust::Update_BackWard(float _Deltatime)
 	}
 	else if (0.12f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetPosition(float4::Zero);
 	}
 	else
 	{
-		EnemyMonster->SetPosition(float4::Right * 8);
+		PlayerMonster->SetPosition(float4::Left * 10);
 	}
 }
 
-void BattleSkill_PlayerGust::Update_Flashing(float _Deltatime)
+void BattleSkill_EnemyGust::Update_Flashing(float _Deltatime)
 {
 	FlashingTime += _Deltatime;
 
 	if (0.08 <= FlashingTime)
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		FlashingTime = 0;
 	}
 	else if (0.04f <= FlashingTime)
 	{
-		EnemyMonster->Off();
+		PlayerMonster->Off();
 	}
 }
 
-void BattleSkill_PlayerGust::ExitState()
+void BattleSkill_EnemyGust::ExitState()
 {
-	BattleSkill_PlayerBase::ExitState();
+	BattleSkill_EnemyBase::ExitState();
 
 	PlayerMonster->SetPosition(float4::Zero);
-	PlayerMonster = nullptr;
-
+	
 	GustRender->Death();
 	GustRender = nullptr;
 

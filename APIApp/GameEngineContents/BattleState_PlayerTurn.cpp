@@ -132,7 +132,7 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 
 		//일단 임시, 나중에 PlayerMonster에서 함수를 만들어서 등록된 슬롯과 연동시킬 예정이다
 		//MonsterFSM->ChangeState(ConvertSkill(SkillType));
-		MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_DoubleEdge);
+		MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_Gust);
 
 	});
 
