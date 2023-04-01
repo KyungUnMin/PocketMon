@@ -26,19 +26,22 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 
-	SkillActor_Growl* BubbleRender = nullptr;
+	SkillActor_Bubble* BubbleRender = nullptr;
 
 	enum class MoveState
 	{
 		Forward,
-		Backward
+		Backward,
+		Flashing,
 	};
 
 	MoveState CurState = MoveState::Forward;
 
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
+	float FlashingTime = 0.f;
 
 	void Update_Forward(float _Deltatime);
 	void Update_BackWard(float _Deltatime);
+	void Update_Flashing(float _Deltatime);
 };

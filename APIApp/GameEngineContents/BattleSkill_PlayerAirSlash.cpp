@@ -42,6 +42,24 @@ void BattleSkill_PlayerAirSlash::Update(float _DeltaTime)
 	case BattleSkill_PlayerAirSlash::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
+	case BattleSkill_PlayerAirSlash::MoveState::Flashing:
+		Update_Flashing(_DeltaTime);
+		break;
+	}
+}
+
+void BattleSkill_PlayerAirSlash::Update_Flashing(float _Deltatime)
+{
+	FlashingTime += _Deltatime;
+
+	if (0.08 <= FlashingTime)
+	{
+		EnemyMonster->On();
+		FlashingTime = 0;
+	}
+	else if (0.04f <= FlashingTime)
+	{
+		EnemyMonster->Off();
 	}
 }
 
@@ -75,4 +93,5 @@ void BattleSkill_PlayerAirSlash::ExitState()
 
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
+	FlashingTime = 0.f;
 }

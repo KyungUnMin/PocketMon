@@ -42,6 +42,24 @@ void BattleSkill_PlayerRazorLeaf::Update(float _DeltaTime)
 	case BattleSkill_PlayerRazorLeaf::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
+	case BattleSkill_PlayerRazorLeaf::MoveState::Flashing:
+		Update_Flashing(_DeltaTime);
+		break;
+	}
+}
+
+void BattleSkill_PlayerRazorLeaf::Update_Flashing(float _Deltatime)
+{
+	FlashingTime += _Deltatime;
+
+	if (0.08 <= FlashingTime)
+	{
+		EnemyMonster->On();
+		FlashingTime = 0;
+	}
+	else if (0.04f <= FlashingTime)
+	{
+		EnemyMonster->Off();
 	}
 }
 
@@ -75,4 +93,5 @@ void BattleSkill_PlayerRazorLeaf::ExitState()
 
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
+	float FlashingTime = 0.f;
 }
