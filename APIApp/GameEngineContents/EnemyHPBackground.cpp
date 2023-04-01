@@ -77,7 +77,7 @@ void EnemyHPBackground::Update(float _DeltaTime)
 	if (BattleStartCheck==true)
 	{
 		if (TickNumber_2 == 0) {
-			HpUpdate(FrinedMonsterDamage, BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP(), CurMyHP);
+			HpUpdate(FrinedMonsterDamage, static_cast<float>(BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP()), CurMyHP);
 
 		}
 		NextTickTime_2 += _DeltaTime;

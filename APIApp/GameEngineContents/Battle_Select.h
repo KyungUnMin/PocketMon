@@ -19,7 +19,6 @@ public:
 	Battle_Select(Battle_Select&& _Other) noexcept = delete;
 	Battle_Select& operator=(const Battle_Select& _Other) = delete;
 	Battle_Select& operator=(Battle_Select&& _Other) noexcept = delete;
-	void SelectSOUND();
 
 	void init(GameEngineActor* Script);
 
@@ -41,6 +40,7 @@ protected:
 //	void CollisionCheck(float _DeltaTime);
 	void ArrowNumberCheck();
 	void ArrowInput(int _Number);
+	void SelectSOUND();
 
 private:
 	std::vector<std::function<void()>> Callbacks;
