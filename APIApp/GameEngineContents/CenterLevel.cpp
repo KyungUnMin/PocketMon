@@ -114,6 +114,13 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFront.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleFrontLight.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle\\BattleSquirtleShadow.bmp"));
+
+		// ÇÇÄ«Ãò
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu\\BattlePikachuBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu\\BattlePikachuBackLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu\\BattlePikachuFront.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu\\BattlePikachuFrontLight.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu\\BattlePikachuShadow.bmp"));
 		Dir.MoveParentToDirectory("Monster");
 
 
