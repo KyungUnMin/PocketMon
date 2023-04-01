@@ -29,8 +29,9 @@ void BattleSkill_PlayerDragonBreath::EnterState()
 
 void BattleSkill_PlayerDragonBreath::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 2.0f))
+	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.6f))
 	{
+		EnemyMonster->On();
 		return;
 	}
 
@@ -48,21 +49,6 @@ void BattleSkill_PlayerDragonBreath::Update(float _DeltaTime)
 	}
 }
 
-void BattleSkill_PlayerDragonBreath::Update_Flashing(float _Deltatime)
-{
-	FlashingTime += _Deltatime;
-
-	if (0.08 <= FlashingTime)
-	{
-		EnemyMonster->On();
-		FlashingTime = 0;
-	}
-	else if (0.04f <= FlashingTime)
-	{
-		EnemyMonster->Off();
-	}
-}
-
 void BattleSkill_PlayerDragonBreath::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
@@ -76,6 +62,34 @@ void BattleSkill_PlayerDragonBreath::Update_Forward(float _Deltatime)
 void BattleSkill_PlayerDragonBreath::Update_BackWard(float _Deltatime)
 {
 	BackwardTime += _Deltatime;
+
+	if (0.28f <= BackwardTime)
+	{
+		CurState = MoveState::Flashing;
+	}
+	else if (0.12f <= BackwardTime)
+	{
+		EnemyMonster->SetPosition(float4::Zero);
+	}
+	else
+	{
+		EnemyMonster->SetPosition(float4::Right * 8);
+	}
+}
+
+void BattleSkill_PlayerDragonBreath::Update_Flashing(float _Deltatime)
+{
+	FlashingTime += _Deltatime;
+
+	if (0.08 <= FlashingTime)
+	{
+		EnemyMonster->On();
+		FlashingTime = 0;
+	}
+	else if (0.04f <= FlashingTime)
+	{
+		EnemyMonster->Off();
+	}
 }
 
 void BattleSkill_PlayerDragonBreath::ExitState()

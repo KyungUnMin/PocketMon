@@ -26,7 +26,8 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 		
-	SkillActor_AirSlash* AirSlashRender = nullptr;
+	SkillActor_AirSlash* AirSlashRender1 = nullptr;
+	SkillActor_AirSlash* AirSlashRender2 = nullptr;
 
 	enum class MoveState
 	{
@@ -40,6 +41,8 @@ private:
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
+
+	bool IsMove = true;
 
 	void Update_Forward(float _Deltatime);
 	void Update_BackWard(float _Deltatime);

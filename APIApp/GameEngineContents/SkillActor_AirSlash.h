@@ -23,4 +23,5 @@ protected:
 private:
 	GameEngineRender* RenderPtr = nullptr;
 
+	float OffTime = 0.0f;
 };

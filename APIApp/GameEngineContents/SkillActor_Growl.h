@@ -37,6 +37,5 @@ private:
 	bool Num3 = false;
 	bool IsStart = false;
 
-	void GrowlEffectMove(float _Deltatime);
 };
 

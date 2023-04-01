@@ -26,7 +26,8 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 		
-	SkillActor_Bite* BiteRender = nullptr;
+	SkillActor_Bite* BiteRender1 = nullptr;
+	SkillActor_Bite* BiteRender2 = nullptr;
 
 	enum class MoveState
 	{

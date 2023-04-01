@@ -91,7 +91,7 @@ private:
 
 
 	GameEngineSoundPlayer BgmCtrl;
-	const float WorldBgmVolumn = 1.0f;
+	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다.
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 

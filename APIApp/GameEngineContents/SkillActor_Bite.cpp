@@ -12,6 +12,25 @@ SkillActor_Bite::~SkillActor_Bite()
 {
 }
 
+void SkillActor_Bite::BiteSetting(int _Number)
+{
+	BiteSet Num = static_cast<BiteSet>(_Number - 1);
+
+	switch (Num)
+	{
+	case BiteSet::Bite1:
+		RenderPtr->ChangeAnimation("Bite_Up");
+		Num1 = true;
+		break;
+	case BiteSet::Bite2:
+		RenderPtr->ChangeAnimation("Bite_Down");
+		Num2 = true;
+		break;
+	default:
+		break;
+	}
+}
+
 void SkillActor_Bite::Start()
 {
 	RenderPtr = CreateRender(BattleRenderOrder::SkillEffect);
