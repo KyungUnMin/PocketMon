@@ -433,8 +433,8 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	//Fieldmap::ChangeCity("PalletTown_Office");
-	Fieldmap::ChangeCity("Route2_Down");
+	Fieldmap::ChangeCity("PalletTown_Home2F");
+	//Fieldmap::ChangeCity("Route2_Down");
 	///////
 	///////
 	///////
