@@ -203,7 +203,7 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 			_This->Burnning->On();
 		}, this), false);
 
-	LevelEvent.AddEvent(9.0f, std::bind([=](OpeningLevel* _This)
+	LevelEvent.AddEvent(10.5f, std::bind([=](OpeningLevel* _This)
 		{
 			IsLevelChange = true;
 		}, this), false);
