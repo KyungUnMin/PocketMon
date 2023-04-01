@@ -1,6 +1,8 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/GameEngineLevel.h>
+#include <GameEngineCore/GameEngineResources.h>
+
 #include <functional>
 #include <vector>
 
@@ -17,6 +19,7 @@ public:
 	Battle_Select(Battle_Select&& _Other) noexcept = delete;
 	Battle_Select& operator=(const Battle_Select& _Other) = delete;
 	Battle_Select& operator=(Battle_Select&& _Other) noexcept = delete;
+	void SelectSOUND();
 
 	void init(GameEngineActor* Script);
 
@@ -47,5 +50,9 @@ private:
 	int ArrowCheckNum = 0;
 
 	GameEngineActor* ScriptPtr = nullptr;
+
+
+	GameEngineSoundPlayer B_SelectSOUND;
+
 };
 

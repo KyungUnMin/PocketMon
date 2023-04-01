@@ -1,5 +1,7 @@
  #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
+
 #include "int2.h"
 class TestScript;
 
@@ -34,6 +36,9 @@ protected:
 	void StringToRender();
 
 
+	void NextScriptSOUND();
+
+
 private:
 	bool IsValid = false;
 
@@ -66,4 +71,7 @@ private:
 	int CurIndex = 0;
 	std::vector<std::string> AllTexts;
 	TestScript* ScriptPtr = nullptr;
+
+	GameEngineSoundPlayer B_NextScriptSOUND;
+
 };

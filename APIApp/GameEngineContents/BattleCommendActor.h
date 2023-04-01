@@ -1,9 +1,12 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
-#include <functional>
 #include <GameEngineContents/PokeDataBase.h>
+#include <GameEngineCore/GameEngineResources.h>
+
+#include <functional>
 #include "BattlePlayer.h"
 #include "BattleMonsterPlayer.h"
+
 
 class PokeSkillBase;
 
@@ -35,7 +38,7 @@ protected:
 	void B_ArrowInput(/*int _Number*/);
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 
-
+	void NextInputSOUND();
 //	void SetAndResize(std::vector<GameEngineRender*> _Render, float4 _Pos);
 
 	GameEngineRender* BattleArrowRender= nullptr;
@@ -81,5 +84,9 @@ private:
 
 	bool IsSelected = false;
 	std::vector<std::function<void()>> CallBacks = std::vector<std::function<void()>>(4);
+
+
+	GameEngineSoundPlayer B_NextInputSOUND;
+
 
 };

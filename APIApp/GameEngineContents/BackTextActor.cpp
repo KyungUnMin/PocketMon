@@ -197,8 +197,9 @@ void BackTextActor::Update(float _DeltaTime)
 			return;
 		}
 	}
-	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("A")) 
+	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("BattleUI_Next")) 
 	{
+		NextScriptSOUND();
 		if (TestText.end() == TestTextIter)
 			return;
 
@@ -232,6 +233,13 @@ void BackTextActor::BattleSetText(const std::string_view& _Texts)
 
 
 
+
+void BackTextActor::NextScriptSOUND()
+{
+	B_NextScriptSOUND = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	B_NextScriptSOUND.Volume(1.0f);
+	B_NextScriptSOUND.LoopCount(1);
+}
 
 
 

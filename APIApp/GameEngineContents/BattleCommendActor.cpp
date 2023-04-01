@@ -158,21 +158,25 @@ void BattleCommendActor::B_ArrowNumberCheck()
 {
 	if (B_ArrowCheckNum == 1 || B_ArrowCheckNum == 3) {
 		if (true == GameEngineInput::IsDown("LeftMove")) {
+			NextInputSOUND();
 			B_ArrowCheckNum -= 1;
 		}
 	}
 	if (B_ArrowCheckNum == 0 || B_ArrowCheckNum == 2) {
 		if (true == GameEngineInput::IsDown("RightMove")) {
+			NextInputSOUND();
 			B_ArrowCheckNum += 1;
 		}
 	}
 	if (B_ArrowCheckNum == 2 || B_ArrowCheckNum == 3) {
 		if (true == GameEngineInput::IsDown("UpMove")) {
+			NextInputSOUND();
 			B_ArrowCheckNum -= 2;
 		}
 	}
 	if (B_ArrowCheckNum == 0 || B_ArrowCheckNum == 1) {
 		if (true == GameEngineInput::IsDown("DownMove")) {
+			NextInputSOUND();
 			B_ArrowCheckNum += 2;
 		}
 	}
@@ -186,6 +190,7 @@ void BattleCommendActor::B_ArrowInput(/*int _Number*/)
 	if (nullptr == CallBacks[B_ArrowCheckNum])
 		return;
 
+	NextInputSOUND();
 	CallBacks[B_ArrowCheckNum]();
 	IsSelected = true;
 	
@@ -285,3 +290,20 @@ void BattleCommendActor::StringToRender(std::vector<GameEngineRender*> _Render ,
 	
 
 }
+
+
+
+
+void BattleCommendActor::NextInputSOUND()
+{
+	B_NextInputSOUND = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	B_NextInputSOUND.Volume(1.0f);
+	B_NextInputSOUND.LoopCount(1);
+}
+
+
+
+
+
+
+

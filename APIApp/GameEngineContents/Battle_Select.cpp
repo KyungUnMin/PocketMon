@@ -21,6 +21,8 @@ Battle_Select::~Battle_Select()
 {
 }
 
+
+
 void Battle_Select::init(GameEngineActor* Script)
 {
 	ScriptPtr = Script;
@@ -70,21 +72,25 @@ void Battle_Select::ArrowNumberCheck()
 {
 	if (ArrowCheckNum == 1 || ArrowCheckNum==3) {
 		if (true == GameEngineInput::IsDown("LeftMove")) {
+			SelectSOUND();
 			ArrowCheckNum -= 1;
 		}
 	}
 	if (ArrowCheckNum == 0 || ArrowCheckNum == 2) {
 		if (true == GameEngineInput::IsDown("RightMove")) {
+			SelectSOUND();
 			ArrowCheckNum += 1;
 		}
 	}
 	if (ArrowCheckNum == 2 || ArrowCheckNum == 3) {
 		if (true == GameEngineInput::IsDown("UpMove")) {
+			SelectSOUND();
 			ArrowCheckNum -= 2;
 		}
 	}
 	if (ArrowCheckNum == 0 || ArrowCheckNum == 1) {
 		if (true == GameEngineInput::IsDown("DownMove")) {
+			SelectSOUND();
 			ArrowCheckNum += 2;
 		}
 	}
@@ -103,6 +109,7 @@ void Battle_Select::ArrowInput(int _Number)
 	{
 		if (nullptr != Callbacks[ArrowCheckNum])
 		{
+			SelectSOUND();
 			Callbacks[ArrowCheckNum]();
 			return;
 		}
@@ -119,6 +126,13 @@ void Battle_Select::ArrowInput(int _Number)
 void Battle_Select::Render(float _DeltaTime)
 {
 
+}
+
+void Battle_Select::SelectSOUND()
+{
+	B_SelectSOUND = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	B_SelectSOUND.Volume(1.0f);
+	B_SelectSOUND.LoopCount(1);
 }
 //void Battle_Select::CollisionCheck(float _DeltaTime)
 //{

@@ -444,6 +444,16 @@ void CenterLevel::Loading()
 
 		Dir.MoveParentToDirectory("Battle");
 	}
+	{
+		//UI 사운드 로드하는곳이에요
+		Dir.MoveParentToDirectory("FieldUI"); 
+		Dir.Move("FieldUI");
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MenuButton.wav"));
+
+
+
+	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
 	{
@@ -511,7 +521,16 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKeyNoToupper("Menu_Left", VK_LEFT);
 		GameEngineInput::CreateKeyNoToupper("Menu_Right", VK_RIGHT);
 	}
-
+	//Battle_UI 관련 키
+	if (false == GameEngineInput::IsKey("BattleUI_Next"))
+	{
+		GameEngineInput::CreateKey("BattleUI_Next", 'Z'); 
+		GameEngineInput::CreateKey("BattleUI_Input", 'Z'); 
+		GameEngineInput::CreateKeyNoToupper("CommendLeft", VK_LEFT);
+		GameEngineInput::CreateKeyNoToupper("CommendRight", VK_RIGHT);
+		GameEngineInput::CreateKeyNoToupper("commendUp", VK_UP);
+		GameEngineInput::CreateKeyNoToupper("commendDown", VK_DOWN);
+	}
 	CreateActor<CenterActor>();
 }
 
