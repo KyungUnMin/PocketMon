@@ -100,27 +100,75 @@ void BattleSkill_PlayerDoubleEdge::Update_Forward(float _Deltatime)
 		PlayerMonster->SetPosition(Pos2);
 	}
 
-	if (0.35f <= ForwardTime)
+	if (0.45f <= ForwardTime)
 	{
-		EffectRender3->Off();
+		EffectRender3->SetAlpha(0);
+	}
+	else if (0.4f <= ForwardTime)
+	{
+		EffectRender3->SetAlpha(30);
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		EffectRender3->SetAlpha(60);
+	}
+	else if (0.3f <= ForwardTime)
+	{
+		EffectRender3->SetAlpha(90);
+	}
+	else if (0.25f <= ForwardTime)
+	{
+		EffectRender3->SetAlpha(120);
 	}
 	else if (0.2f <= ForwardTime)
 	{
 		EffectRender3->On();
 	}
 
-	if (0.3f <= ForwardTime)
+	if (0.4f <= ForwardTime)
 	{
-		EffectRender2->Off();
+		EffectRender2->SetAlpha(0);
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		EffectRender2->SetAlpha(30);
+	}
+	else if (0.3f <= ForwardTime)
+	{
+		EffectRender2->SetAlpha(60);
+	}
+	else if (0.25f <= ForwardTime)
+	{
+		EffectRender2->SetAlpha(90);
+	}
+	else if (0.2f <= ForwardTime)
+	{
+		EffectRender2->SetAlpha(120);
 	}
 	else if (0.15f <= ForwardTime)
 	{
 		EffectRender2->On();
 	}
 
-	if (0.25f <= ForwardTime)
+	if (0.35f <= ForwardTime)
 	{
-		EffectRender1->Off();
+		EffectRender1->SetAlpha(0);
+	}
+	else if (0.3f <= ForwardTime)
+	{
+		EffectRender1->SetAlpha(30);
+	}
+	else if (0.25f <= ForwardTime)
+	{
+		EffectRender1->SetAlpha(60);
+	}
+	else if (0.2f <= ForwardTime)
+	{
+		EffectRender1->SetAlpha(90);
+	}
+	else if (0.15f <= ForwardTime)
+	{
+		EffectRender1->SetAlpha(120);
 	}
 	else if (0.1f <= ForwardTime)
 	{
