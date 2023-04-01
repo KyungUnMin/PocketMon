@@ -39,6 +39,8 @@ void FriendlyHPBackground::Start()
 
 	HPRenderPtr = CreateRender("FriendlyHPBar.bmp", BattleRenderOrder::Battle_Text);
 	EXPRenderPtr = CreateRender("FriendlyHPExp.bmp", BattleRenderOrder::Battle_Text);
+	HPRenderPtr1 = CreateRender("FriendlyHP50Bar.bmp", BattleRenderOrder::Battle_Text);
+	HPRenderPtr2 = CreateRender("FriendlyHP30Bar.bmp", BattleRenderOrder::Battle_Text);
 
 
 
@@ -173,8 +175,16 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (NextTickTime > 0.1f) {
 			NextTickTime = 0;
 			if (TickNumber != 10) {
-				/*if(DamegeTick[TickNumber] <96.0f){
-				}*/
+				if(DamegeTick[TickNumber] <96.0f){
+					HPRenderPtr->Off();
+					HPRenderPtr1->SetScale(float4{ DamegeTick[TickNumber], 172 });
+					HPRenderPtr1->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
+				}
+				if (DamegeTick[TickNumber] < 48.0f) {
+					HPRenderPtr1->Off();
+					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
+					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
+				}
 				HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
 				HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				TickNumber++;

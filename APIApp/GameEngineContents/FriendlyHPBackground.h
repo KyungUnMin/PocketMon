@@ -63,6 +63,8 @@ private:
 
 	GameEngineRender* RenderPtr = nullptr;
 	GameEngineRender* HPRenderPtr = nullptr;
+	GameEngineRender* HPRenderPtr1 = nullptr;
+	GameEngineRender* HPRenderPtr2 = nullptr;
 
 	GameEngineRender* EXPRenderPtr = nullptr;
 
