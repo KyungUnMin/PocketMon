@@ -1,20 +1,21 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 class GameEngineRender;
 
-class BattleSkill_PlayerQuickAttack : public BattleSkill_PlayerBase
+// Ό³Έν :
+class BattleSkill_EnemyQuickAttack : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerQuickAttack();
-	~BattleSkill_PlayerQuickAttack();
+	BattleSkill_EnemyQuickAttack();
+	~BattleSkill_EnemyQuickAttack();
 
 	// delete Function
-	BattleSkill_PlayerQuickAttack(const BattleSkill_PlayerQuickAttack& _Other) = delete;
-	BattleSkill_PlayerQuickAttack(BattleSkill_PlayerQuickAttack&& _Other) noexcept = delete;
-	BattleSkill_PlayerQuickAttack& operator=(const BattleSkill_PlayerQuickAttack& _Other) = delete;
-	BattleSkill_PlayerQuickAttack& operator=(BattleSkill_PlayerQuickAttack&& _Other) noexcept = delete;
+	BattleSkill_EnemyQuickAttack(const BattleSkill_EnemyQuickAttack& _Other) = delete;
+	BattleSkill_EnemyQuickAttack(BattleSkill_EnemyQuickAttack&& _Other) noexcept = delete;
+	BattleSkill_EnemyQuickAttack& operator=(const BattleSkill_EnemyQuickAttack& _Other) = delete;
+	BattleSkill_EnemyQuickAttack& operator=(BattleSkill_EnemyQuickAttack&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;
@@ -46,3 +47,4 @@ private:
 	void Update_BackWard(float _Deltatime);
 	void Update_Flashing(float _Deltatime);
 };
+

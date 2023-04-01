@@ -1,4 +1,4 @@
-#include "BattleSkill_PlayerQuickAttack.h"
+#include "BattleSkill_EnemyQuickAttack.h"
 
 #include <GameEngineCore/GameEngineRender.h>
 
@@ -8,17 +8,17 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerQuickAttack::BattleSkill_PlayerQuickAttack() 
+BattleSkill_EnemyQuickAttack::BattleSkill_EnemyQuickAttack() 
 {
 }
 
-BattleSkill_PlayerQuickAttack::~BattleSkill_PlayerQuickAttack() 
+BattleSkill_EnemyQuickAttack::~BattleSkill_EnemyQuickAttack() 
 {
 }
 
-void BattleSkill_PlayerQuickAttack::EnterState()
+void BattleSkill_EnemyQuickAttack::EnterState()
 {
-	BattleSkill_PlayerBase::EnterState();
+	BattleSkill_EnemyBase::EnterState();
 
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
@@ -26,58 +26,59 @@ void BattleSkill_PlayerQuickAttack::EnterState()
 	EffectRender = GetEnemyMonster()->CreateRender("Tackle.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScaleToImage();
 	EffectRender->SetAlpha(200);
+	EffectRender->SetPosition({-450, 200});
 	EffectRender->Off();
 }
 
-void BattleSkill_PlayerQuickAttack::Update(float _DeltaTime)
+void BattleSkill_EnemyQuickAttack::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.5f))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 1.5f))
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		return;
 	}
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerQuickAttack::MoveState::Forward:
+	case BattleSkill_EnemyQuickAttack::MoveState::Forward:
 		Update_Forward(_DeltaTime);
 		break;
-	case BattleSkill_PlayerQuickAttack::MoveState::Backward:
+	case BattleSkill_EnemyQuickAttack::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
 		break;
-	case BattleSkill_PlayerQuickAttack::MoveState::Flashing:
+	case BattleSkill_EnemyQuickAttack::MoveState::Flashing:
 		Update_Flashing(_DeltaTime);
 		break;
 	}
 }
 
-void BattleSkill_PlayerQuickAttack::Update_Forward(float _Deltatime)
+void BattleSkill_EnemyQuickAttack::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
 
 	if (0.4f <= ForwardTime)
 	{
-		PlayerMonster->Off();
+		EnemyMonster->Off();
 		IsMove = false;
 	}
 
 	if (true == IsMove)
 	{
 		float MoveSpeed = 150.0f;
-		float UpMoveSpeed = 50.0f;
+		float DownMoveSpeed = 50.0f;
 
 		if (0.3f <= ForwardTime && 0.4f >= ForwardTime)
 		{
 			MoveSpeed = 3500.0f;
-			UpMoveSpeed = 200.0f;
+			DownMoveSpeed = 200.0f;
 		}
 		else if (0.1f <= ForwardTime && 0.3f >= ForwardTime)
 		{
 			MoveSpeed = 0.0f;
-			UpMoveSpeed = 0.0f;
+			DownMoveSpeed = 0.0f;
 		}
 
-		PlayerMonster->SetMove(float4::Right * MoveSpeed * _Deltatime + float4::Up * UpMoveSpeed * _Deltatime);
+		EnemyMonster->SetMove(float4::Left * MoveSpeed * _Deltatime + float4::Down * DownMoveSpeed * _Deltatime);
 	}
 
 	if (0.85f <= ForwardTime)
@@ -108,31 +109,31 @@ void BattleSkill_PlayerQuickAttack::Update_Forward(float _Deltatime)
 
 	if (0.4f <= ForwardTime)
 	{
-		PlayerMonster->SetAlpha(0);
+		EnemyMonster->SetAlpha(0);
 	}
 	else if (0.375f <= ForwardTime)
 	{
-		PlayerMonster->SetAlpha(60);
+		EnemyMonster->SetAlpha(60);
 	}
 	else if (0.35f <= ForwardTime)
 	{
-		PlayerMonster->SetAlpha(120);
+		EnemyMonster->SetAlpha(120);
 	}
 	else if (0.325f <= ForwardTime)
 	{
-		PlayerMonster->SetAlpha(180);
+		EnemyMonster->SetAlpha(180);
 	}
 
 	if (0.9f <= ForwardTime)
 	{
-		PlayerMonster->On();
-		PlayerMonster->SetPosition(float4::Zero);
-		PlayerMonster->SetAlpha(255);
+		EnemyMonster->On();
+		EnemyMonster->SetPosition(float4::Zero);
+		EnemyMonster->SetAlpha(255);
 		CurState = MoveState::Backward;
 	}
 }
 
-void BattleSkill_PlayerQuickAttack::Update_BackWard(float _Deltatime)
+void BattleSkill_EnemyQuickAttack::Update_BackWard(float _Deltatime)
 {
 	BackwardTime += _Deltatime;
 
@@ -142,35 +143,34 @@ void BattleSkill_PlayerQuickAttack::Update_BackWard(float _Deltatime)
 	}
 	else if (0.12f <= BackwardTime)
 	{
-		EnemyMonster->SetPosition(float4::Zero);
+		PlayerMonster->SetPosition(float4::Zero);
 	}
 	else
 	{
-		EnemyMonster->SetPosition(float4::Right * 8);
+		PlayerMonster->SetPosition(float4::Left * 10);
 	}
 }
 
-void BattleSkill_PlayerQuickAttack::Update_Flashing(float _Deltatime)
+void BattleSkill_EnemyQuickAttack::Update_Flashing(float _Deltatime)
 {
 	FlashingTime += _Deltatime;
 
 	if (0.08 <= FlashingTime)
 	{
-		EnemyMonster->On();
+		PlayerMonster->On();
 		FlashingTime = 0;
 	}
 	else if (0.04f <= FlashingTime)
 	{
-		EnemyMonster->Off();
+		PlayerMonster->Off();
 	}
 }
 
-void BattleSkill_PlayerQuickAttack::ExitState()
+void BattleSkill_EnemyQuickAttack::ExitState()
 {
-	BattleSkill_PlayerBase::ExitState();
+	BattleSkill_EnemyBase::ExitState();
 
-	PlayerMonster->SetPosition(float4::Zero);
-	PlayerMonster = nullptr;
+	EnemyMonster->SetPosition(float4::Zero);
 
 	EffectRender->Death();
 	EffectRender = nullptr;

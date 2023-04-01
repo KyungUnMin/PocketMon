@@ -164,7 +164,7 @@ void BattleSkill_EnemyGust::ExitState()
 {
 	BattleSkill_EnemyBase::ExitState();
 
-	PlayerMonster->SetPosition(float4::Zero);
+	EnemyMonster->SetPosition(float4::Zero);
 	
 	GustRender->Death();
 	GustRender = nullptr;

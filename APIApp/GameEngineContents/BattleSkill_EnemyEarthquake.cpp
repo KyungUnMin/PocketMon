@@ -141,9 +141,8 @@ void BattleSkill_EnemyEarthquake::ExitState()
 	EnemyHPBackground::EnemyPtr->GetWindowPtr()->EffectCameraOn();
 	EnemyHPBackground::EnemyPtr->GetHPPtr()->EffectCameraOn();
 
-	PlayerMonster->SetPosition(float4::Zero);
-	// PlayerMonster = nullptr;
-
+	EnemyMonster->SetPosition(float4::Zero);
+	
 	CurState = MoveState::Forward;
 
 	ForwardTime = 0.f;

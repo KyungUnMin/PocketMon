@@ -96,7 +96,7 @@ void BattleSkill_EnemyLeer::ExitState()
 {
 	BattleSkill_EnemyBase::ExitState();
 
-	PlayerMonster->SetPosition(float4::Zero);
+	EnemyMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
 
 	LeerRender->Death();

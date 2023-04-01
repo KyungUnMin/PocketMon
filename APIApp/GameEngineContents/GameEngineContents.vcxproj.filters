@@ -644,6 +644,9 @@
     <ClCompile Include="BattleSkill_EnemyGust.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyQuickAttack.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1274,6 +1277,9 @@
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyGust.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyQuickAttack.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
   </ItemGroup>

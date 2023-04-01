@@ -103,7 +103,7 @@ void BattleSkill_EnemyTailWhip::ExitState()
 {
 	BattleSkill_EnemyBase::ExitState();
 
-	PlayerMonster->SetPosition(float4::Zero);
+	EnemyMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
 
 	CurState = MoveState::Forward;

@@ -14,6 +14,7 @@
 #include "BattleSkill_EnemyTailWhip.h"
 #include "BattleSkill_EnemyEarthquake.h"
 #include "BattleSkill_EnemyGust.h"
+#include "BattleSkill_EnemyQuickAttack.h"
 
 #include "BattleSkill_EnemyTest.h"
 
@@ -41,6 +42,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyTailWhip>(BattleEnemyMonster_StateType::Skill_TailWhip);
 	CreateState<BattleSkill_EnemyEarthquake>(BattleEnemyMonster_StateType::Skill_Earthquake);
 	CreateState<BattleSkill_EnemyGust>(BattleEnemyMonster_StateType::Skill_Gust);
+	CreateState<BattleSkill_EnemyQuickAttack>(BattleEnemyMonster_StateType::Skill_QuickAttack);
 
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);

@@ -272,6 +272,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyQuickAttack.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyScratch.cpp">
       <SubType>
       </SubType>
@@ -856,6 +860,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyLeer.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyQuickAttack.h">
       <SubType>
       </SubType>
     </ClInclude>
