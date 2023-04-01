@@ -2,7 +2,7 @@
 #include "BattleSkill_PlayerBase.h"
 
 class GameEngineRender;
-// 스킬 전방 class SkillActor_Leer;
+class SkillActor_WaterGun;
 
 class BattleSkill_PlayerWaterGun : public BattleSkill_PlayerBase
 {
@@ -25,9 +25,8 @@ protected:
 private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
-
-	// 스킬 액터
-	// SkillActor_Growl* GrowlRender1 = nullptr;
+	
+	SkillActor_WaterGun* GrowlRender1 = nullptr;
 
 	enum class MoveState
 	{

@@ -4,7 +4,7 @@
 
 #include "BattleMonsterPlayer.h"
 #include "BattleMonsterEnemy.h"
-// #include <스킬 액터>
+#include "SkillActor_Bubble.h"
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"

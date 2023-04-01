@@ -4,7 +4,6 @@
 
 #include "BattleMonsterPlayer.h"
 #include "BattleMonsterEnemy.h"
-// #include <스킬 액터>
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
