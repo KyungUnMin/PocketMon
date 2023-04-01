@@ -623,6 +623,24 @@
     <ClCompile Include="BattleSkill_PlayerThunder.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="SkillActor_AirSlash.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Bite.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_DragonBrath.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Gust.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Thunder.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Thunderbolt.cpp">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1233,6 +1251,24 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerThunder.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_AirSlash.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Bite.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_DragonBrath.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Gust.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Thunder.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Thunderbolt.h">
+      <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

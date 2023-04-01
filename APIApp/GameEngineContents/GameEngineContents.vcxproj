@@ -660,11 +660,27 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_AirSlash.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Bite.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SkillActor_Bubble.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_DragonBrath.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SkillActor_Growl.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Gust.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -673,6 +689,14 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="SkillActor_RazorLeaf.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Thunder.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="SkillActor_Thunderbolt.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -1223,11 +1247,27 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SkillActor_AirSlash.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Bite.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SkillActor_Bubble.h">
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="SkillActor_DragonBrath.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="SkillActor_Growl.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Gust.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1236,6 +1276,14 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SkillActor_RazorLeaf.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Thunder.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Thunderbolt.h">
       <SubType>
       </SubType>
     </ClInclude>
