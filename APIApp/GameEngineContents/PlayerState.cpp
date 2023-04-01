@@ -12,6 +12,7 @@
 #include "Player.h"
 #include "Fieldmap.h"
 #include "ShopNpc.h"
+#include "JumpEffect.h"
 
 
 void Player::ChangeState(PlayerState _State)
@@ -184,25 +185,30 @@ void Player::JumpStart()
 }
 void Player::JumpUpdate(float _Time)
 {
-	PlayerJumpTime += _Time*2.5f;
+	PlayerJumpTime += _Time * PlayerJumpSpeed;
 	Shadow->On();
+
 	if (IsRide == false)
 	{
 		Players->ChangeAnimation("Jump");
 	}
-	
+
 	float4 NextJumpPos = float4::BezierClamp(JumpStartPos, JumpEndPos, JumpHeight, PlayerJumpTime);
 	SetPos(NextJumpPos);
 
 	if (PlayerJumpTime > 1.0f)
 	{
+		JumpEffect* Test=GetLevel()->CreateActor<JumpEffect>();
+		Test->SetPos(GetPos());
 		Shadow->Off();
 		PlayerJumpTime = 0.0f;
 		ChangeState(PlayerState::IDLE);
 	}
+	
 }
 void Player::JumpEnd()
 {
+	
 }
 
 

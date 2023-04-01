@@ -512,6 +512,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="JumpEffect.cpp" />
     <ClCompile Include="LeafNPC.cpp">
       <SubType>
       </SubType>
@@ -1033,6 +1034,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="ItemDataBase.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="JumpEffect.h">
       <SubType>
       </SubType>
     </ClInclude>

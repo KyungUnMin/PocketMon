@@ -593,6 +593,9 @@
     <ClCompile Include="LeafNPC.cpp">
       <Filter>Player\NPC\EventNPC</Filter>
     </ClCompile>
+    <ClCompile Include="JumpEffect.cpp">
+      <Filter>Player\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1173,6 +1176,9 @@
     </ClInclude>
     <ClInclude Include="LeafNPC.h">
       <Filter>Player\NPC\EventNPC</Filter>
+    </ClInclude>
+    <ClInclude Include="JumpEffect.h">
+      <Filter>Player\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

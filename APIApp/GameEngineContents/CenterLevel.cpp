@@ -187,6 +187,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeRight.bmp"))->Cut(3, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BikeUp.bmp"))->Cut(3, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("shadow.bmp"))->Cut(1, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Jumpeffect.bmp"))->Cut(3, 1);
 
 	}
 

@@ -242,6 +242,8 @@ void Player::JumpDown()
 
 void Player::PlayerDeathCheckFunction()
 {
+
+	//가능하면 이펙트 찾아서 추가할예정
 	if (true == IsPlayerDeath)
 	{
 		Fieldmap::ChangeCity("PalletTown_Home2F");

@@ -27,6 +27,7 @@ enum class NPCtalkValue
 };
 
 enum class LookDir;
+
 class Player : public GameEngineActor
 {
 public:
@@ -49,6 +50,8 @@ public:
 	void PlayerCollisionSet();
 
 	void PlayerAutoMove();
+
+
 	void InsertPlayerPos(float4 _Pos)
 	{
 		NextMovePos.push_back(_Pos);
@@ -59,14 +62,15 @@ public:
 		NextMovePos.push_back(M_index);
 	}
 
-	float GetPlayerMoveTile()
+	float GetPlayerMoveSpeed()
 	{
-		return MoveTile;
+		return PlayerMoveSpeed;
 	}
 
-	void SetPlayerSpeed(float _PlayerTileSpeed)
+	//Defalut speed=5.0f;
+	void SetPlayerSpeed(float _PlayerMoveSpeed)
 	{
-		MoveTile = _PlayerTileSpeed;
+		PlayerMoveSpeed = _PlayerMoveSpeed;
 	}
 
 	NPCtalkValue GetPlayerNPCtalkValue()
@@ -200,10 +204,9 @@ private:
 	void JumpEnd();
 	
 	//////////Speed&Pos//////////
-	float MoveTile = 100.0f;
-	float4 MoveDir = float4::Zero;
 	int2 Playerindex = int2::Zero;
 	float PlayerMoveSpeed = 5.0f;
+	float PlayerJumpSpeed = 2.5f;
 	/////////////////////////////
 	
 
@@ -230,9 +233,10 @@ private:
 	bool IsPlayerDirRIGHT = true;
 
 	
-	//이동시간
+	//이동시간 및 time값들
 	float PlayerJumpTime = 0.0f;
 	float PlayerTime = 0.0f;
+	float JumpEffectControlTime = 0.0f;
 	//Bike제어값
 	bool IsRide = false;
 	//Gold
