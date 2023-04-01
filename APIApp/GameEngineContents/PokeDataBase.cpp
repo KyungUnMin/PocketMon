@@ -79,7 +79,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
@@ -87,7 +87,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
@@ -104,7 +104,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
@@ -112,7 +112,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
@@ -129,7 +129,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
 		}
@@ -137,7 +137,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
 		}
@@ -154,7 +154,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr );
 		
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
@@ -162,7 +162,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
@@ -179,7 +179,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
@@ -187,7 +187,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
@@ -204,7 +204,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
 		}
@@ -212,7 +212,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
 		}
@@ -229,7 +229,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
@@ -237,7 +237,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
@@ -254,7 +254,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
@@ -262,7 +262,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
@@ -279,7 +279,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
 		}
@@ -287,7 +287,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
 		}
@@ -304,7 +304,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
 			PokeSkillInit(3, PokeSkill::Gust, PoKeCreatePtr);
 		}
@@ -312,7 +312,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::QuickAttack, PoKeCreatePtr);
 		}
@@ -330,7 +330,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		PokeSkillInit(3, PokeSkill::QuickAttack, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::HyperFang, PoKeCreatePtr);
 		}
@@ -348,7 +348,7 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 		PokeSkillInit(3, PokeSkill::Leer, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 9)
+		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::FuryAttack, PoKeCreatePtr);
 		}
@@ -365,17 +365,17 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 8)
+		if (PoKeCreatePtr.MonsterLevel >= 20)
 		{
-			PokeSkillInit(3, PokeSkill::RockPolish, PoKeCreatePtr);
+			PokeSkillInit(3, PokeSkill::Earthquake, PoKeCreatePtr);
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
 		}
-		if (PoKeCreatePtr.MonsterLevel >= 12)
+		if (PoKeCreatePtr.MonsterLevel >= 300)
 		{
-			PokeSkillInit(4, PokeSkill::RockThrow, PoKeCreatePtr);
+			PokeSkillInit(4, PokeSkill::StoneEdge, PoKeCreatePtr);
 		}
 		else
 		{
@@ -389,16 +389,18 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
-		PokeSkillInit(3, PokeSkill::Bind, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
+	}
+	break;
+	case PokeNumber::Pikachu:
+	{
+		PikachuData(_Level, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 12)
-		{
-			PokeSkillInit(4, PokeSkill::RockThrow, PoKeCreatePtr);
-		}
-		else
-		{
-			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-		}
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 	}
 	break;
 	default:
@@ -894,7 +896,7 @@ void PokeDataBase::GeodudeData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.MaxHealthPoint = 20;
 	PoKeCreatePtr.CurrentHealthPoint = 20;
 	PoKeCreatePtr.AttackPower = 80;
-	PoKeCreatePtr.Defense = 100;
+	PoKeCreatePtr.Defense = 80;
 	PoKeCreatePtr.SpecialAttackPower = 30;
 	PoKeCreatePtr.SpecialDefense = 30;
 	PoKeCreatePtr.Agility = 20;
@@ -925,7 +927,7 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.MaxHealthPoint = 25;
 	PoKeCreatePtr.CurrentHealthPoint = 25;
 	PoKeCreatePtr.AttackPower = 45;
-	PoKeCreatePtr.Defense = 160;
+	PoKeCreatePtr.Defense = 120;
 	PoKeCreatePtr.SpecialAttackPower = 30;
 	PoKeCreatePtr.SpecialDefense = 45;
 	PoKeCreatePtr.Agility = 70;
@@ -940,4 +942,148 @@ void PokeDataBase::OnixData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.MonsterLevel = PlusLevel;
 
 	PoKeCreatePtr.PokeDexText = "They usually live in the soil. It can travel at 80 km/h inside the soil.";
+}
+
+// No.15 피카츄
+void PokeDataBase::PikachuData(int _Level, PokeDataBase& PoKeCreatePtr)
+{
+	GenderDecision(PoKeCreatePtr);
+	PersonalityDecision(PoKeCreatePtr);
+	PoKeCreatePtr.Type = PokeType::Electro;
+	PoKeCreatePtr.Characteristic = PokeCharacteristic::정전기;
+	PoKeCreatePtr.Name = "Pikachu";
+	PoKeCreatePtr.TypeName = "Electro";
+	PoKeCreatePtr.NumberName = "015";
+
+	PoKeCreatePtr.MaxHealthPoint = 35;
+	PoKeCreatePtr.CurrentHealthPoint = 35;
+	PoKeCreatePtr.AttackPower = 55;
+	PoKeCreatePtr.Defense = 70;
+	PoKeCreatePtr.SpecialAttackPower = 50;
+	PoKeCreatePtr.SpecialDefense = 50;
+	PoKeCreatePtr.Agility = 90;
+
+	int PlusLevel = PoKeCreatePtr.MonsterLevel + _Level;
+
+	for (int i = 1; i < PlusLevel; i++)
+	{
+		PokeStatusUp(PoKeCreatePtr);
+	}
+
+	PoKeCreatePtr.MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr.PokeDexText = "It has small electrical pouches on either side of its cheeks. When a crisis is sensed, it discharges.";
+}
+
+PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
+{
+	PokeDataBase PoKeCreatePtr;
+
+	switch (_Enum)
+	{
+	case SpecialPokeEnum::StartingBulbasaur:
+
+		BulbasaurData(10, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::StartingCharmander:
+
+		CharmanderData(10, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Flamethrower, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::StartingSquirtle:
+
+		SquirtleData(10, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::CatchPidgey:
+
+		PidgeyData(_Level, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Peck, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::FeatherDance, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Gust, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::AirSlash, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::CatchRattata:
+
+		RattataData(_Level, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Bite, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::SuperFang, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::HyperFang, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::DoubleEdge, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::CatchSpearow:
+
+		SpearowData(_Level, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Peck, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::FastMove, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::QuickAttack, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::AirSlash, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::CatchPikachu:
+
+		PikachuData(_Level, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::QuickAttack, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Thunderbolt, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Thunder, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::MasterPikachu:
+
+		PikachuData(99, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::QuickAttack, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Earthquake, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Thunderbolt, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Thunder, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::UngGeodude:
+
+		GeodudeData(12, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
+
+		break;
+	case SpecialPokeEnum::UngOnix:
+
+		OnixData(18, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Magnitude, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::DragonBreath, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Earthquake, PoKeCreatePtr);
+
+		break;
+	default:
+		break;
+	}
+
+	return PoKeCreatePtr;
 }

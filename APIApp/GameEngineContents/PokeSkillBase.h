@@ -53,6 +53,8 @@ enum class PokeSkill
 	Crunch,       // 45 깨물어부수기
 	SuperFang,    // 46 분노의앞니
 	DoubleEdge,   // 47 이판사판태클
+	Thunderbolt,
+	Thunder,
 	Unknown,      // 48 Max
 };
 
@@ -252,4 +254,6 @@ private:
 	void SuperFangData();
 	void DoubleEdgeData();
 	void UnknownData();
+	void ThunderboltData();
+	void ThunderData();
 };

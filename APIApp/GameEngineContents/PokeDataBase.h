@@ -8,6 +8,20 @@
 #include "PokeSkillBase.h"
 #include "ContentsEnum.h"
 
+enum class SpecialPokeEnum
+{
+	StartingBulbasaur,
+	StartingCharmander,
+	StartingSquirtle,
+	CatchPidgey,
+	CatchRattata,
+	CatchSpearow,
+	CatchPikachu,
+	MasterPikachu,
+	UngGeodude,
+	UngOnix,
+};
+
 // 도감번호는 +1로 표시
 enum class PokeNumber
 {
@@ -25,6 +39,7 @@ enum class PokeNumber
 	Spearow,    // 11 깨비참
 	Geodude,    // 12 꼬마돌
 	Onix,       // 13 롱스톤
+	Pikachu,    // 14 피카츄
 	Max,        // 14 max
 };
 
@@ -89,6 +104,7 @@ enum class PokeCharacteristic
 	날카로운눈,   // 3
 	근성,        // 4
 	돌머리,      // 5
+	정전기,      // 6
 };
 
 class GameEngineRender;
@@ -118,6 +134,8 @@ public:
 
 	static PokeDataBase PokeCreate(int _PokeDexNumber, int _Level = 1);
 	static bool PokeExperienceGain(PokeDataBase& _Ownerpokemon, PokeDataBase& _knockeddownpokemon);
+
+	static PokeDataBase SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level);
 
 	// 아이템 소지중?
 	bool IsPokemonItemPossession()
@@ -576,6 +594,9 @@ private:
 	static void SpearowData(int _Level, PokeDataBase& _PoKeCreatePtr);
 	static void GeodudeData(int _Level, PokeDataBase& _PoKeCreatePtr);
 	static void OnixData(int _Level, PokeDataBase& _PoKeCreatePtr);
+	static void PikachuData(int _Level, PokeDataBase& _PoKeCreatePtr);
+
+	SpecialPokeEnum Value = SpecialPokeEnum::UngOnix;
 
 };
 

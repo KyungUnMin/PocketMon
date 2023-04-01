@@ -164,6 +164,12 @@ void PokeSkillBase::InitCreateSkill(PokeSkill _SkillName)
 	case PokeSkill::DoubleEdge:
 		DoubleEdgeData();
 		break;
+	case PokeSkill::Thunderbolt:
+		ThunderboltData();
+		break;
+	case PokeSkill::Thunder:
+		ThunderData();
+		break;
 	case PokeSkill::Unknown:
 		UnknownData();
 		break;
@@ -805,6 +811,30 @@ void PokeSkillBase::DoubleEdgeData()
 	MaxSkillPowerPoint = 5;
 	CurrentSkillPowerPoint = 5;
 	SkillHitrate = 1.f;
+}
+
+void PokeSkillBase::ThunderboltData()
+{
+	IsAttackSkill = true;
+	SkillType = SkillType::Electro;
+	Name = "Thunderbolt";
+
+	SkillDamage = 95;
+	MaxSkillPowerPoint = 15;
+	CurrentSkillPowerPoint = 15;
+	SkillHitrate = 1.f;
+}
+
+void PokeSkillBase::ThunderData()
+{
+	IsAttackSkill = true;
+	SkillType = SkillType::Electro;
+	Name = "Thunder";
+
+	SkillDamage = 120;
+	MaxSkillPowerPoint = 10;
+	CurrentSkillPowerPoint = 10;
+	SkillHitrate = 0.7f;
 }
 
 void PokeSkillBase::UnknownData()
