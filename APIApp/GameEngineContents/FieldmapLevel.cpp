@@ -48,6 +48,7 @@
 #include "GreenNPC.h"
 #include "ShopNpc.h"
 #include "StopOakNPC.h"
+#include "LeafNPC.h"
 
 // Player
 #include "Player.h"
@@ -432,7 +433,8 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PalletTown_Office");
+	//Fieldmap::ChangeCity("PalletTown_Office");
+	Fieldmap::ChangeCity("Route2_Down");
 	///////
 	///////
 	///////
@@ -582,6 +584,21 @@ void FieldmapLevel::Loading()
 		NPCPtr->AddScript("Script 010");
 		NPCPtr->SetBaseDir(LookDir::Up);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+	}
+
+	// 2번도로 사망이벤트를 호출할 NPC
+	{
+		LeafNPC* LeafNPCptr = CreateActor<LeafNPC>();
+		LeafNPCptr->InitNPC("Leaf", "Leaf.bmp", BattleNpcType::Woong);
+		LeafNPCptr->AddNPC("Route2_Down", int2(11, 51));
+		LeafNPCptr->SetBaseDir(LookDir::Right);
+		LeafNPCptr->Look(LookDir::Right);
+		LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+		LeafNPCptr->SetLookDis(20);
+		LeafNPCptr->AddScript(".........");
+		LeafNPCptr->AddPokeData(1, 99);
+		LeafNPCptr->AddPokeData(4, 99);
+		LeafNPCptr->AddPokeData(7, 99);
 	}
 
 	{

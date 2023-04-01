@@ -318,9 +318,10 @@ bool BaseNPC::CheckInteractionTrigger() const
 				CheckIndex.x -= 1;
 				break;
 			case LookDir::Right:
-				break;
 				CheckIndex.x += 1;
+				break;
 			default:
+				MsgAssert("??");
 				break;
 			}
 

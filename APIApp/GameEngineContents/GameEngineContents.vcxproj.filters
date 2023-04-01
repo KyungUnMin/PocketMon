@@ -590,6 +590,9 @@
     <ClCompile Include="SkillActor_WaterGun.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClCompile>
+    <ClCompile Include="LeafNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1167,6 +1170,9 @@
     </ClInclude>
     <ClInclude Include="SkillActor_WaterGun.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="LeafNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

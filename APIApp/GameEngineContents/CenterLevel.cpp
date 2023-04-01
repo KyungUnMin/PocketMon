@@ -308,6 +308,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Professor.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ung.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Mother.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leaf.bmp"))->Cut(4, 6);
 	}
 
 	{
@@ -352,6 +353,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SelectMenu.bmp"))->Cut(5, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TextBox.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_White.bmp"))->Cut(27, 4);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Orange.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Black.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Font_Dialog_Black2.bmp"))->Cut(27, 4);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Items.bmp"))->Cut(7,2);

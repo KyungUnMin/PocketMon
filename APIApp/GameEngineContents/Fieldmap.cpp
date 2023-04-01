@@ -135,7 +135,7 @@ void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr
 	AllCitys[UpperName] = _CityPtr;
 }
 
-void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
+void Fieldmap::ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI)
 {
 	if (CurCity == _CityPtr)
 	{
@@ -160,10 +160,13 @@ void Fieldmap::ChangeCity(FieldmapCity* _CityPtr)
 		CityRef.second->CityActiveUpdate();
 	}
 
-	CityNameUI::FieldmapCityNameUI->PlayText(CurCity->GetUICityName());
+	if (true == _PlayUI)
+	{
+		CityNameUI::FieldmapCityNameUI->PlayText(CurCity->GetUICityName());
+	}
 }
 
-void Fieldmap::ChangeCity(const std::string_view& _CityName)
+void Fieldmap::ChangeCity(const std::string_view& _CityName, bool _PlayUI)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);
 
@@ -172,7 +175,7 @@ void Fieldmap::ChangeCity(const std::string_view& _CityName)
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	ChangeCity(AllCitys[UpperName]);
+	ChangeCity(AllCitys[UpperName], _PlayUI);
 }
 
 void Fieldmap::AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)

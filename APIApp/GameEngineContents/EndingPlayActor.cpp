@@ -38,10 +38,12 @@ void EndingPlayActor::PlayEnding()
 	IsEndingPlay = true;
 
 	CameraMoveDir = float4::Zero;
-	CameraSpeed = 128.0f;
+	CameraSpeed = 100.0f;
 
 	MainTextActor->SetLine(1);
+	MainFakeTextActor->SetLine(1);
 	SubTextActor->SetLine(7);
+	SubFakeTextActor->SetLine(7);
 
 	Fade->Off();
 	PlayerAnim->Off();
@@ -65,148 +67,309 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Game Design", "UTG");
+			_This->SetText("Game Design", "Um Taegun");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
 			_This->SubFakeTextActor->On();
-
+	
 			_This->SetCameraDir(float4(1, 1).NormalizeReturn());
 		}, this), false);
-
-	LevelTimeEvent.AddEvent(7.5f, std::bind(
+	
+	LevelTimeEvent.AddEvent(6.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		},this), false);
-
-	LevelTimeEvent.AddEvent(8.0f, std::bind(
+	
+	LevelTimeEvent.AddEvent(6.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Consultation", "Cho Haegeun");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(10.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(11.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Opening Desing", "Um Taegun");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(-0.5, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(15.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(16.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon001.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Red);
-
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Player Design", "YDM"));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianForest", int2(32, 55), float4::Left));
-
+	
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Player Design", "Yoo Dongmin"));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianForest", int2(32, 35), float4::Down));
+	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-
-		}, this), false); // 회색 시티
-
-
-	LevelTimeEvent.AddEvent(12.5f, std::bind(
+	
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(20.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
-
-	LevelTimeEvent.AddEvent(13.0f, std::bind(
+	
+	LevelTimeEvent.AddEvent(20.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Map Desing", "Kim Kyeongsik\nUm Taegun");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(24.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(25.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("NPC Desing", "Kim Kyeongsik\nYoo Dongmin");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(29.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(29.5f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon002.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Green);
-
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Map Design", "KKS"));
+	
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Event Desing", "Kim Kyeongsik"));
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianCity", int2(18, 10), float4::Down));
-
+	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
-
+	
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-
-		}, this), false); // 상록 숲
-
-
-	LevelTimeEvent.AddEvent(17.5f, std::bind(
+	
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(33.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Ending Desing", "Kim Kyeongsik");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(37.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
-
-	LevelTimeEvent.AddEvent(18.0f, std::bind(
-		[](EndingPlayActor* _This) // this call
+	
+	LevelTimeEvent.AddEvent(38.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Field UI Desing", "Hwang Seungmin");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(42.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(42.5f, std::bind(
+		[](EndingPlayActor* _This)
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon003.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Blue);
-
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "UI Design", "KKH\nHSM\nKMS"));
+	
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Battle UI Desing", "Kim Minseok\nMin Kyungwoon\nKim Kyunghak"));
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "Route1", int2(14, 14), float4::Down));
-
+	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
-
+	
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-
-		}, this), false); // 상록 시티
-
-
-	LevelTimeEvent.AddEvent(22.5f, std::bind(
+	
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(46.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(47.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Inventory UI Desing", "Kim Kyunghak");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(51.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(0);
+			_This->SetFakeTextAlphaDiff(510.0f);
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(51.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->SetFakeTextAlpha(255);
+			_This->SetFakeTextAlphaDiff(-510.0f);
+			_This->SetText("Battle Desing", "Min Kyungwoon\nKim Kyunghak\nUm Taegun\nKim Minseok");
+			_This->MainTextActor->On();
+			_This->MainFakeTextActor->On();
+			_This->SubTextActor->On();
+			_This->SubFakeTextActor->On();
+	
+			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
+		}, this), false);
+	
+	LevelTimeEvent.AddEvent(55.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(23.0f, std::bind(
+	LevelTimeEvent.AddEvent(56.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon004.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Yellow);
 
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Battle Design", "MKU"));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "PalletTown", int2(8, 3), float4::Left));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Tanks For Watching", " "));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "PalletTown", int2(12, 2), float4::Left));
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
 
-		}, this), false); // 1번 도로
-
-	LevelTimeEvent.AddEvent(25.0f, std::bind(
-		[](EndingPlayActor* _This)
-		{
-			EndingPlayerAnimActor* AnimPtr = _This->PlayerAnim;
-
-			float4 StartPos = AnimPtr->GetPos();
-			float4 DestPos = float4{ GameEngineWindow::GetScreenSize().half().x,StartPos.y };
-
-			AnimPtr->MovePos(StartPos, DestPos, 0.4f);
-			_This->SetCameraDir(float4::Zero);
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(26.0f, std::bind(
+	LevelTimeEvent.AddEvent(60.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
-			_This->Fade->On();
-		}, this), false);
-
-	LevelTimeEvent.AddEvent(27.5f, std::bind(
-		[](EndingPlayActor* _This)
-		{
-			_This->Fade->On();
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
+			_This->SetCameraDir(float4::Zero);
+		}, this), false);	
+	
+	LevelTimeEvent.AddEvent(60.5f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->MainTextActor->Off();
+			_This->MainFakeTextActor->Off();
+			_This->SubTextActor->Off();
+			_This->SubFakeTextActor->Off();
+
+			float4 Start = _This->PlayerAnim->GetPos();
+			float4 Dest = GameEngineWindow::GetScreenSize().half();
+			Dest.y = Start.y;
+
+			_This->PlayerAnim->MovePos(Start, Dest, 0.5f);
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(28.0f, std::bind(
+	LevelTimeEvent.AddEvent(61.3f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->Fade->On();
+		}, this), false);
+
+	LevelTimeEvent.AddEvent(63.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::PlayLastEffect();
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
-		}, this), false); // 태초마을 카메라
+		}, this), false);
 }
 
 void EndingPlayActor::SetText(const std::string_view& _MainText, const std::string_view _SubText)
 {
 	MainTextActor->SetText(
 		_MainText,
-		"Font_Dialog_White.bmp",
+		"Font_Dialog_Orange.bmp",
 		static_cast<int>(RenderOrder::EndingMiddle),
 		false);
 
@@ -236,7 +399,7 @@ void EndingPlayActor::AddCameraMoveEvent(const std::string_view& _CityName, cons
 		0.0f, std::bind(
 		[=](EndingPlayActor* _This) 
 		{
-			Fieldmap::ChangeCity(_CityName);
+			Fieldmap::ChangeCity(_CityName, false);
 			_This->GetLevel()->SetCameraPos(Fieldmap::GetPos(_CityIndex));
 			_This->SetCameraDir(_MoveDir);
 		}, this), false); // 상록 시티
