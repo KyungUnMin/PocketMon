@@ -48,9 +48,16 @@ void FriendlyHPBackground::Start()
 	}
 	HPRenderPtr->SetScale(float4{ 192.0f - FirstHp, 172 });
 	HPRenderPtr->SetPosition({ 560 - (FirstHp)/2, 360 });
-	
-	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
+	float ExpNum_1 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience();
+	if (ExpNum_1 >= 100.0f) {
+		ExpNum_1 -= 100.0f;
+	}
+	float hpcur = ExpNum_1 / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
+	if (ExpNum > 256.0f) {
+		ExpNum - 256.0f;
+	}
+	
 	EXPRenderPtr->SetScale(float4{ ExpNum,172 });
 	EXPRenderPtr->SetPosition({ 528- (256-ExpNum)/2, 360 });
 
