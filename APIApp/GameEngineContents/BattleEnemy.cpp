@@ -150,6 +150,11 @@ void BattleEnemy::ComeBack()
 	FsmPtr->ChangeState(BattleEnemy_StateType::ComeBack);
 }
 
+void BattleEnemy::ChangeMonster_ForDegug(PokeNumber _Index)
+{
+
+}
+
 void BattleEnemy::Update(float _DeltaTime)
 {
 	FsmPtr->Update(_DeltaTime);

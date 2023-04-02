@@ -52,6 +52,8 @@ public:
 
 	void ComeBack();
 
+	void ChangeMonster_ForDegug(PokeNumber _Index);
+
 protected:
 	void Update(float _DeltaTime) override;
 

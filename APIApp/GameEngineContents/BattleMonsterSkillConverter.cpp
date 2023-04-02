@@ -68,6 +68,7 @@ const std::vector<std::string_view> BattleMonsterBase::NameEnumToString =
 	"Rattata",				 // 10 ²¿·¿
 	"Spearow",				  // 11 ±úºñÂü
 	"Geodude",				   // 12 ²¿¸¶µ¹
-	"Onix"					   // 13 ·Õ½ºÅæ
-	//"Max"					   // 14 max
+	"Onix",					   // 13 ·Õ½ºÅæ
+	"Pikachu",			//14ÇÇÄ«Ãò
+	//"Max"					   // max
 };

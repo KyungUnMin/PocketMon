@@ -677,6 +677,9 @@
     <ClCompile Include="BattleState_NextStage.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage</Filter>
     </ClCompile>
+    <ClCompile Include="BattleDebug.cpp">
+      <Filter>Battle\02.Actor\06.UIHandler\02.Debug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1342,6 +1345,9 @@
     <ClInclude Include="BattleState_NextStage.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage</Filter>
     </ClInclude>
+    <ClInclude Include="BattleDebug.h">
+      <Filter>Battle\02.Actor\06.UIHandler\02.Debug</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1721,6 +1727,9 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage">
       <UniqueIdentifier>{e26fa6da-7b7d-4996-90f7-458bafa63cd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\02.Actor\06.UIHandler\02.Debug">
+      <UniqueIdentifier>{4ad134ab-2312-4c62-9125-099bd340b8f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

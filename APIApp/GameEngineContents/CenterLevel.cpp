@@ -33,6 +33,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattlePlayer.bmp"))->Cut(5, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeWhite.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleFadeBlack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleDebug.bmp"));
 
 		Dir.Move("Field");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Forest\\BattleForestEnemyGround.bmp"));

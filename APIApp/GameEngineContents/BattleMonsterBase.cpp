@@ -18,7 +18,8 @@ BattleMonsterBase::~BattleMonsterBase()
 void BattleMonsterBase::Init(PokeDataBase* _MonsterDB)
 {
 	IsInit = true;
-	SetName(NameEnumToString[static_cast<size_t>(_MonsterDB->GetPokeNumber_int() - 1)]);
+	size_t Index = static_cast<size_t>(_MonsterDB->GetPokeNumber_int() - 1);
+	SetName(NameEnumToString[Index]);
 	DbPtr = _MonsterDB;
 }
 

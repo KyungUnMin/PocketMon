@@ -171,6 +171,10 @@
     </ClCompile>
     <ClCompile Include="BaseNPC_State.cpp" />
     <ClCompile Include="BattleBackGround.cpp" />
+    <ClCompile Include="BattleDebug.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleDefine.cpp">
       <SubType>
       </SubType>
@@ -804,6 +808,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleBackGround.h" />
+    <ClInclude Include="BattleDebug.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleDefine.h">
       <SubType>
       </SubType>
