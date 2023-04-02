@@ -4,6 +4,7 @@
 #include "BattleLevel.h"
 #include "BattleEnemy.h"
 #include "BattleEnemy_CreateMonster.h"
+#include "BattleEnemy_ComeBackState.h"
 
 BattleEnemyFSM::BattleEnemyFSM(GameEngineActor* _Owner)
 	:BattleFSMBase( _Owner)
@@ -22,7 +23,7 @@ void BattleEnemyFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleEnemy_MoveState>(BattleEnemy_StateType::Move);
 	CreateState<BattleStateIdle>(BattleEnemy_StateType::Idle);
 	CreateState<BattleEnemy_CreateMonster>(BattleEnemy_StateType::CreateMonster);
-
+	CreateState<BattleEnemy_ComeBackState>(BattleEnemy_StateType::ComeBack);
 	
 	if (BattleNpcType::None == _NpcType)
 	{

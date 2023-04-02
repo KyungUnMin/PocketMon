@@ -37,8 +37,7 @@ void BattleState_StageWin::Update(float _DeltaTime)
 	}
 	else
 	{
-		int a = 10;
-		//GetFSM()->ChangeState(BattleStateType::BattleWin);
+		GetFSM()->ChangeState(BattleStateType::NextStage);
 		return;
 	}
 }

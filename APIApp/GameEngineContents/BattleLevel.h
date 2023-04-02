@@ -65,7 +65,7 @@ public:
 
 	void LockWildPocketMon();
 
-	void ChangeFieldLevel(bool _FadeColorBlack = true, float _FadeDuration = 1.5f);
+	void ChangeFieldLevel(bool IsWin, bool _FadeColorBlack = true, float _FadeDuration = 1.5f);
 
 	void ChangeBGM(const std::string_view& _BgmName);
 
@@ -91,7 +91,7 @@ private:
 
 
 	GameEngineSoundPlayer BgmCtrl;
-	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다.
+	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 

@@ -21,6 +21,7 @@ BattleState_TalkBase::~BattleState_TalkBase()
 
 void BattleState_TalkBase::EnterState()
 {
+	NextState = static_cast<int>(BattleStateType::PlayerTurn);
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 }
 
@@ -56,7 +57,7 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 	//더 전달할 텍스트가 없을땐 다음 State로 이동
 	if (TextEvents.size() == CurTextNum)
 	{
-		GetFSM()->ChangeState(BattleStateType::PlayerTurn);
+		GetFSM()->ChangeState(NextState);
 		return;
 	}
 

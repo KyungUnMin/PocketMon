@@ -17,6 +17,8 @@
 #include "PokemonLevel.h"
 #include "CenterLevel.h"
 #include "BattleFadeCtrl.h"
+#include "Player.h"
+#include "BattleDefine.h"
 
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
@@ -71,8 +73,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 		return;
 
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Grass);
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
-	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
+	Init({ PokeDataBase::PokeCreate(1), PokeDataBase::PokeCreate(1) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -239,13 +241,19 @@ void BattleLevel::LockWildPocketMon()
 	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
 }
 
-void BattleLevel::ChangeFieldLevel(bool _FadeColorBlack, float _FadeDuration)
+void BattleLevel::ChangeFieldLevel(bool IsWin, bool _FadeColorBlack, float _FadeDuration)
 {
 	BattleFadeCtrl::FadeType FadeType = _FadeColorBlack ? BattleFadeCtrl::FadeType::BlackOut : BattleFadeCtrl::FadeType::WhiteOut;
 
 	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
 	Fade->Init(FadeType, std::bind(&BattleLevel::Clear, this), false);
 	Fade->SetDuration(_FadeDuration);
+
+	if (true == IsWin)
+		return;
+
+	//이 함수를 LevelChange되기 전에 호출되도 되는지 여쭤보자
+	Player::MainPlayer->SetPlayerDeath();
 }
 
 void BattleLevel::Clear()
@@ -272,6 +280,6 @@ void BattleLevel::ChangeBGM(const std::string_view& _BgmName)
 {
 	BgmCtrl.Stop();
 	BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(_BgmName);
-	BgmCtrl.Volume(WorldBgmVolumn);
+	BgmCtrl.Volume(WorldBgmVolumn * BattleDefine::WorldVolumn);
 }
 

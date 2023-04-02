@@ -26,12 +26,20 @@ protected:
 	void CreateUIText(const std::vector<std::string_view>& _Texts);
 	void SetTextEvent(size_t _Index, std::function<void()> _Event);
 
+	template <typename StateType>
+	void SetNextState(StateType _NextState)
+	{
+		NextState = static_cast<int>(_NextState);
+	}
+
 private:
 	BackTextActor* TextInfoUI = nullptr;
 
 	float Timer = -1.6f;
 	int CurTextNum = 0;
 	std::vector<std::pair<std::string ,std::function<void()>>> TextEvents;
+
+	int NextState = -1;
 };
 
 

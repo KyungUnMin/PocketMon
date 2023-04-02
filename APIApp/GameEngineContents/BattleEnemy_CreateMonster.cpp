@@ -33,3 +33,8 @@ void BattleEnemy_CreateMonster::Update(float _DeltaTime)
 	float4 NowOffset = float4::LerpClamp(OriginOffset, DestOffset, Ratio);
 	EnemyRender->SetPosition(NowOffset);
 }
+
+void BattleEnemy_CreateMonster::ExitState()
+{
+	Timer = 0.f;
+}

@@ -39,7 +39,7 @@ void BattleState_BattleWin::Update(float _DeltaTime)
 		return;
 
 	
-	BattleLevel::BattleLevelPtr->ChangeFieldLevel();
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true);
 	IsLevelChanged = true;
 }
 

@@ -18,7 +18,7 @@ public:
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
-
+	void ExitState() override;
 
 private:
 	GameEngineRender* EnemyRender = nullptr;

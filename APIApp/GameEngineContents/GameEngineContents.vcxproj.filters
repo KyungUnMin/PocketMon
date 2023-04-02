@@ -671,6 +671,12 @@
     <ClCompile Include="BattleSkill_EnemyVinewhip.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
+    <ClCompile Include="BattleEnemy_ComeBackState.cpp">
+      <Filter>Battle\03.FSM\04.Enemy\02.State\03.ComeBack</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_NextStage.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1330,6 +1336,12 @@
     <ClInclude Include="BattleSkill_EnemyVinewhip.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
+    <ClInclude Include="BattleEnemy_ComeBackState.h">
+      <Filter>Battle\03.FSM\04.Enemy\02.State\03.ComeBack</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_NextStage.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1703,6 +1715,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\13.ChangeMonster">
       <UniqueIdentifier>{6681bba1-f2dc-46d0-86e5-6b75032ff747}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\04.Enemy\02.State\03.ComeBack">
+      <UniqueIdentifier>{87fc0c4e-582b-4577-b895-6faa025fab12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\05.NextStage">
+      <UniqueIdentifier>{e26fa6da-7b7d-4996-90f7-458bafa63cd4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

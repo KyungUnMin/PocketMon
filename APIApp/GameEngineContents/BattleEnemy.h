@@ -50,6 +50,8 @@ public:
 
 	bool IsValidNextMonster();
 
+	void ComeBack();
+
 protected:
 	void Update(float _DeltaTime) override;
 

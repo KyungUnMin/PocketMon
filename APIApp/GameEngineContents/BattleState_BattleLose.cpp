@@ -28,7 +28,7 @@ void BattleState_BattleLose::Update(float _DeltaTime)
 	if (true == IsLevelChanged)
 		return;
 
-	BattleLevel::BattleLevelPtr->ChangeFieldLevel();
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(false);
 	IsLevelChanged = true;
 }
 

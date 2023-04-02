@@ -7,6 +7,7 @@ enum class BattleEnemy_StateType
 	Move,
 	Idle,
 	CreateMonster,
+	ComeBack,
 
 	COUNT
 };

@@ -145,6 +145,11 @@ bool BattleEnemy::IsValidNextMonster()
 	return CurIndex < MonsterDatas.size();
 }
 
+void BattleEnemy::ComeBack()
+{
+	FsmPtr->ChangeState(BattleEnemy_StateType::ComeBack);
+}
+
 void BattleEnemy::Update(float _DeltaTime)
 {
 	FsmPtr->Update(_DeltaTime);

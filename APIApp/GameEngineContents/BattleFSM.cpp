@@ -17,7 +17,7 @@
 #include "BattleState_GymTalk.h"
 #include "BattleState_ChangeMonster.h"
 #include "BattleState_BattleLose.h"
-
+#include "BattleState_NextStage.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -39,6 +39,7 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_WildTalk>(BattleStateType::WildTalk);
 	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
 	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
+	CreateState<BattleState_NextStage>(BattleStateType::NextStage);
 
 	CreateState<BattleState_PlayerTurn>(BattleStateType::PlayerTurn);
 	CreateState<BattleState_EnemyTurn>(BattleStateType::EnemyTurn);

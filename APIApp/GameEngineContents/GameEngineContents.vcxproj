@@ -187,6 +187,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
+    <ClCompile Include="BattleEnemy_ComeBackState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemy_CreateMonster.cpp">
       <SubType>
       </SubType>
@@ -441,6 +445,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleState_MonsterDead.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleState_NextStage.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -812,6 +820,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
+    <ClInclude Include="BattleEnemy_ComeBackState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemy_CreateMonster.h">
       <SubType>
       </SubType>
@@ -1064,6 +1076,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_MonsterDead.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_NextStage.h">
       <SubType>
       </SubType>
     </ClInclude>
