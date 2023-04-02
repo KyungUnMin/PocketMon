@@ -72,3 +72,86 @@ const std::vector<std::string_view> BattleMonsterBase::NameEnumToString =
 	"Pikachu",			//14ÇÇÄ«Ãò
 	//"Max"					   // max
 };
+
+
+void BattleMonsterBase::SetPlayerOffset()
+{
+	PokeNumber Id = DbPtr->GetPokeNumber_enum();
+	float4 Offset = float4::Zero;
+
+	switch (Id)
+	{
+	case PokeNumber::Bulbasaur:
+	case PokeNumber::Ivysaur:
+	case PokeNumber::Venusaur:
+		break;
+
+	case PokeNumber::Charmander:
+	case PokeNumber::Charmeleon:
+		Offset = float4::Up * 20.f;
+	case PokeNumber::Charizard:
+		break;
+
+	case PokeNumber::Squirtle:
+	case PokeNumber::Wartortle:
+	case PokeNumber::Blastoise:
+		break;
+
+	case PokeNumber::Pidgey:
+		break;
+	case PokeNumber::Rattata:
+		break;
+	case PokeNumber::Spearow:
+		break;
+
+	case PokeNumber::Geodude:
+		break;
+	case PokeNumber::Onix:
+		break;
+	case PokeNumber::Pikachu:
+		break;
+	}
+
+	SetMove(Offset);
+}
+
+void BattleMonsterBase::SetEnemyOffset()
+{
+	PokeNumber Id = DbPtr->GetPokeNumber_enum();
+	float4 Offset = float4::Zero;
+
+	switch (Id)
+	{
+	case PokeNumber::Bulbasaur:
+	case PokeNumber::Ivysaur:
+	case PokeNumber::Venusaur:
+		break;
+
+	case PokeNumber::Charmander:
+	case PokeNumber::Charmeleon:
+	case PokeNumber::Charizard:
+		break;
+
+	case PokeNumber::Squirtle:
+	case PokeNumber::Wartortle:
+	case PokeNumber::Blastoise:
+		break;
+
+	case PokeNumber::Pidgey:
+		break;
+	case PokeNumber::Rattata:
+		break;
+	case PokeNumber::Spearow:
+		break;
+
+	case PokeNumber::Geodude:
+		break;
+	case PokeNumber::Onix:
+		Offset = float4::Up * 50.f;
+		break;
+	case PokeNumber::Pikachu:
+		break;
+	}
+
+	SetMove(Offset);
+}

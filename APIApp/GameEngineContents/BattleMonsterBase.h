@@ -43,6 +43,9 @@ public:
 protected:
 	void Init(PokeDataBase* _MonsterDB);
 
+	void SetPlayerOffset();
+	void SetEnemyOffset();
+
 private:
 	bool IsInit = false;
 	static const std::vector<std::string_view> NameEnumToString;

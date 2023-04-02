@@ -25,6 +25,7 @@ void BattleMonsterBase::Init(PokeDataBase* _MonsterDB)
 
 
 
+
 //
 //BattleSkillBase* BattleMonsterBase::CreateSkill(PokeSkill _SkillType, BattleMonsterBase* _Owner)
 //{

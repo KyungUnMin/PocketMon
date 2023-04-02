@@ -35,6 +35,7 @@ void BattleMonsterEnemy::Init(PokeDataBase* _MonsterDB, bool _IsWildMonster)
 	BattleMonsterBase::Init(_MonsterDB);
 
 	RenderCreate();
+	SetEnemyOffset();
 	FsmPtr->Init(_IsWildMonster);
 }
 
@@ -52,7 +53,6 @@ void BattleMonsterEnemy::RenderCreate()
 	EffectRender = CreateRender(ImagePath, BattleRenderOrder::Monster1);
 	EffectRender->Off();
 }
-
 
 
 

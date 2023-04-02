@@ -128,8 +128,8 @@ void BattleEnemy::CreateMonster()
 
 	PokeDataBase& MonsterDB = MonsterDatas[CurIndex];
 	Monster = GetLevel()->CreateActor<BattleMonsterEnemy>(UpdateOrder::Battle_Actors);
-	Monster->Init(&MonsterDB, false);
 	Monster->SetPos(GetPos() + CreateOffset);
+	Monster->Init(&MonsterDB, false);
 	++CurIndex;
 
 	FsmPtr->ChangeState(BattleEnemy_StateType::CreateMonster);

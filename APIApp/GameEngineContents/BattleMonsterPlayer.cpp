@@ -45,6 +45,7 @@ void BattleMonsterPlayer::Init()
 
 	RenderCreate();
 	FsmPtr->Init();
+	SetPlayerOffset();
 }
 
 void BattleMonsterPlayer::RenderCreate()
