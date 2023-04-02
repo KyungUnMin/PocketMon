@@ -45,7 +45,7 @@ void BattleDebug::Start()
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	SetPos(ScreenSize.half());
 
-	GameEngineRender* RenderPtr = CreateRender("BattleDebug.bmp", BattleRenderOrder::Battle_UI);
+	GameEngineRender* RenderPtr = CreateRender("BattleDebug.bmp", BattleRenderOrder::Fade);
 	RenderPtr->SetScaleToImage();
 
 	if (true == GameEngineInput::IsKey(DebugKeys[0]))
