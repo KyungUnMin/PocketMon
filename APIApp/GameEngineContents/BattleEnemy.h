@@ -27,7 +27,7 @@ public:
 	void Init(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
 	//Enemy FSM쪽에서 호출됨
-	void CreateWildMonster(BattleFieldType _FieldType);
+	void CreateWildMonster();
 
 	void CreateMonster();
 

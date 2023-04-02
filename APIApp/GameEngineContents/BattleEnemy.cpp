@@ -95,7 +95,7 @@ void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 
 
 
-void BattleEnemy::CreateWildMonster(BattleFieldType _FieldType)
+void BattleEnemy::CreateWildMonster()
 {
 	//const float4 CreateOffset = float4::Up * 100.f;
 	
@@ -152,7 +152,15 @@ void BattleEnemy::ComeBack()
 
 void BattleEnemy::ChangeMonster_ForDegug(PokeNumber _Index)
 {
+	Monster->Death();
+	MonsterDatas.clear();
+	CurIndex = 0;
 
+	PokeDataBase MonsterDB = PokeDataBase::PokeCreate(static_cast<int>(_Index) + 1);
+	MonsterDatas.push_back(MonsterDB);
+
+	CreateWildMonster();
+	Monster->CreateHpUI();
 }
 
 void BattleEnemy::Update(float _DeltaTime)

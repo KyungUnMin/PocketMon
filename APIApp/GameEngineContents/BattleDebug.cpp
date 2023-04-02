@@ -1,6 +1,7 @@
 #include "BattleDebug.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineRender.h>
 #include "BattleEnemy.h"
 #include "PokeDataBase.h"
 #include "BattleLevel.h"
@@ -29,14 +30,23 @@ void BattleDebug::Start()
 	BattleStateType NowState = BattleLevel::BattleLevelPtr->GetBattleFSM()->GetNowState<BattleStateType>();
 	if (BattleStateType::PlayerTurn != NowState)
 	{
-		MsgAssert("플레이어 차례일때만 디버깅 기능을 사용할 수 있습니다");
+		DebugMsgBox("플레이어 차례일때만 디버깅 기능을 사용할 수 있습니다");
+		Death();
 		return;
 	}
 
-	//야생전일때만
+	if (false == BattleLevel::BattleLevelPtr->IsWildBattle())
+	{
+		DebugMsgBox("야생 전투일때만 디버깅 기능을 사용할 수 있습니다");
+		Death();
+		return;
+	}
 
 	float4 ScreenSize = GameEngineWindow::GetScreenSize();
 	SetPos(ScreenSize.half());
+
+	GameEngineRender* RenderPtr = CreateRender("BattleDebug.bmp", BattleRenderOrder::Battle_UI);
+	RenderPtr->SetScaleToImage();
 
 	if (true == GameEngineInput::IsKey(DebugKeys[0]))
 		return;
@@ -49,6 +59,12 @@ void BattleDebug::Start()
 
 void BattleDebug::Update(float _DeltaTime)
 {
+	if (true == GameEngineInput::IsDown("BackCenterLevel"))
+	{
+		Death();
+		return;
+	}
+
 	for (size_t i = 0; i < DebugKeys.size(); ++i)
 	{
 		if (false == GameEngineInput::IsDown(DebugKeys[i]))
@@ -56,7 +72,7 @@ void BattleDebug::Update(float _DeltaTime)
 
 		ChangeWildMonster(i);
 		Death();
-		break;
+		return;
 	}
 }
 
@@ -80,4 +96,5 @@ void BattleDebug::ChangeWildMonster(size_t _Index)
 	}
 
 	BattleEnemy::EnemyPtr->ChangeMonster_ForDegug(SelectedMonster);
+	Death();
 }

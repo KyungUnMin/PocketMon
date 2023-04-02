@@ -27,7 +27,7 @@ void BattleEnemyFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	
 	if (BattleNpcType::None == _NpcType)
 	{
-		BattleEnemy::EnemyPtr->CreateWildMonster(_FieldType);
+		BattleEnemy::EnemyPtr->CreateWildMonster();
 	}
 	
 	//TODO

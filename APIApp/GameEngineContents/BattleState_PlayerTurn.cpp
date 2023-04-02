@@ -1,5 +1,6 @@
 #include "BattleState_PlayerTurn.h"
 #include <string_view>
+#include <GameEnginePlatform/GameEngineInput.h>
 #include "BattleLevel.h"
 #include "BackTextActor.h"
 #include "Battle_Select.h"
@@ -16,6 +17,7 @@
 #include "PokeBattleSystem.h"
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
+#include "BattleDebug.h"
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -50,6 +52,8 @@ void BattleState_PlayerTurn::EnterState()
 
 	CreateHpUI();
 }
+
+
 
 
 void BattleState_PlayerTurn::BindSelectBoard()
@@ -163,6 +167,18 @@ void BattleState_PlayerTurn::CreateHpUI()
 
 }
 
+
+
+void BattleState_PlayerTurn::Update(float _DeltaTime)
+{
+	if (false == BattleLevel::BattleLevelPtr->IsWildBattle())
+		return;
+
+	if (false == GameEngineInput::IsDown("FreeCamera"))
+		return;
+
+	BattleLevel::BattleLevelPtr->CreateActor<BattleDebug>(UpdateOrder::Battle_Actors);
+}
 
 
 

@@ -36,7 +36,7 @@ void BattleState_CatchWhildMonster::Update(float _DeltaTime)
 	PokeDataBase* EnemyDB = BattleEnemy::EnemyPtr->GetMonsterDB();
 	TrainerPokemon* PlayerMonsters = Player::MainPlayer->GetPlayerPokemon();
 	PlayerMonsters->AddPokemon(*EnemyDB);
-	BattleLevel::BattleLevelPtr->ChangeFieldLevel(false);
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true);
 }
 
 void BattleState_CatchWhildMonster::ExitState()

@@ -23,9 +23,9 @@ void BattleState_PlayerHPCheck::EnterState()
 	TextInfo->BattleSetText("My Pocketmon was Damaged");
 
 	PokeDataBase* MonsterDB = BattlePlayer::PlayerPtr ->GetMonsterDB();
-	int EnemyHP = MonsterDB->GetMonsterCurrentHP();
+	int PlayerHP = MonsterDB->GetMonsterCurrentHP();
 
-	if (0 < EnemyHP)
+	if (0 < PlayerHP)
 	{
 		NextState = static_cast<int>(BattleStateType::PlayerTurn);
 	}
