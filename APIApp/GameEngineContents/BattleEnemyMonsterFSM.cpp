@@ -54,7 +54,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyThunder>(BattleEnemyMonster_StateType::Skill_Thunder);
 	CreateState<BattleSkill_EnemyWaterGun>(BattleEnemyMonster_StateType::Skill_WaterGun);
 	CreateState<BattleSkill_EnemyBubble>(BattleEnemyMonster_StateType::Skill_Bubble);
-	CreateState<BattleSkill_EnemyVinewhip>(BattleEnemyMonster_StateType::Skill_Vinewhip);
+	CreateState<BattleSkill_EnemyVinewhip>(BattleEnemyMonster_StateType::Skill_VineWhip);
 	CreateState<BattleSkill_EnemyRazorLeaf>(BattleEnemyMonster_StateType::Skill_RazorLeaf);
 
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);

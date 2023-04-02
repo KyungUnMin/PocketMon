@@ -9,11 +9,11 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerVineWhip::BattleSkill_PlayerVineWhip() 
+BattleSkill_PlayerVineWhip::BattleSkill_PlayerVineWhip()
 {
 }
 
-BattleSkill_PlayerVineWhip::~BattleSkill_PlayerVineWhip() 
+BattleSkill_PlayerVineWhip::~BattleSkill_PlayerVineWhip()
 {
 }
 
@@ -24,7 +24,17 @@ void BattleSkill_PlayerVineWhip::EnterState()
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
-	// GrowlRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
+	VineRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_VineWhip>();
+	VineRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_VineWhip>();
+
+	VineRender1->VineSetting(VineSet::Vine_R_Stop);
+	VineRender2->VineSetting(VineSet::VineWhip);
+	
+	VineRender1->SetPos({ 390, 330 });
+	VineRender2->SetPos({ 710, 170 });
+
+	VineRender1->Off();
+	VineRender2->Off();
 }
 
 void BattleSkill_PlayerVineWhip::Update(float _DeltaTime)
@@ -52,6 +62,40 @@ void BattleSkill_PlayerVineWhip::Update(float _DeltaTime)
 void BattleSkill_PlayerVineWhip::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
+
+	if (0.65f <= ForwardTime)
+	{
+		VineRender2->On();
+	}
+
+	if (0.5f <= ForwardTime)
+	{
+		VineRender1->VineSetting(VineSet::Vine_R);
+	}
+	else if (0.4f <= ForwardTime)
+	{
+		VineRender1->AlphaControl(255);
+	}
+	else if (0.35f <= ForwardTime)
+	{
+		VineRender1->AlphaControl(200);
+	}
+	else if (0.3f <= ForwardTime)
+	{
+		VineRender1->AlphaControl(150);
+	}
+	else if (0.25f <= ForwardTime)
+	{
+		VineRender1->AlphaControl(100);
+	}
+	else if (0.2f <= ForwardTime)
+	{
+		VineRender1->AlphaControl(50);
+	}
+	else if (0.15f <= ForwardTime)
+	{
+		VineRender1->On();
+	}
 
 	if (1.0f <= ForwardTime)
 	{
@@ -99,9 +143,11 @@ void BattleSkill_PlayerVineWhip::ExitState()
 	PlayerMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
 
-	// 스킬 액터 데스
-	// GrowlRender1->Death();
-	// GrowlRender1 = nullptr;
+	VineRender1->Death();
+	VineRender2->Death();
+
+	VineRender1 = nullptr;
+	VineRender2 = nullptr;
 
 	CurState = MoveState::Forward;
 

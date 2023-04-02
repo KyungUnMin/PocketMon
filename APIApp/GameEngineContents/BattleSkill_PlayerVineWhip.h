@@ -26,7 +26,8 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 
-	SkillActor_VineWhip* GrowlRender1 = nullptr;
+	SkillActor_VineWhip* VineRender1 = nullptr;
+	SkillActor_VineWhip* VineRender2 = nullptr;
 
 	enum class MoveState
 	{

@@ -26,7 +26,19 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 		
-	SkillActor_RazorLeaf* LeafRender = nullptr;
+	SkillActor_RazorLeaf* LeafRender1 = nullptr;
+	SkillActor_RazorLeaf* LeafRender2 = nullptr;
+	SkillActor_RazorLeaf* LeafRender3 = nullptr;
+	SkillActor_RazorLeaf* LeafRender4 = nullptr;
+	SkillActor_RazorLeaf* LeafRender5 = nullptr;
+
+	SkillActor_RazorLeaf* RazorRender1 = nullptr;
+	SkillActor_RazorLeaf* RazorRender2 = nullptr;
+
+	float4 StartPos1 = float4::Zero;
+	float4 StartPos2 = float4::Zero;
+	float4 EndPos1 = float4::Zero;
+	float4 EndPos2 = float4::Zero;
 
 	enum class MoveState
 	{
@@ -36,6 +48,12 @@ private:
 	};
 
 	MoveState CurState = MoveState::Forward;
+
+	bool IsShoot1 = false;
+	bool IsShoot2 = false;
+
+	float ShootTime1 = 0.0f;
+	float ShootTime2 = 0.0f;
 
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;

@@ -143,9 +143,15 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 3);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RazorLeaf.bmp"))->Cut(1, 3);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RazorLeaf.bmp"))->Cut(1, 4);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leafs.bmp"))->Cut(1, 9);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leafs_L.bmp"))->Cut(1, 9);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("VineWhip.bmp"))->Cut(1, 4);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Vine_R.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Vine_L.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun_R.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun_L.bmp"))->Cut(1, 5);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("WaterGun_After.bmp"))->Cut(1, 3);
 
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AirSlash.bmp"))->Cut(1, 5);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bite.bmp"))->Cut(1, 2);

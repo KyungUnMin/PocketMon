@@ -23,7 +23,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_Thunder,
 	Skill_WaterGun,
 	Skill_Bubble,
-	Skill_Vinewhip,
+	Skill_VineWhip,
 	Skill_RazorLeaf,
 
 	Skill_Scratch,
