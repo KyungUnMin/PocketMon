@@ -109,13 +109,14 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 	BattleCommand->SetCallBack(_SlotIndex, [=]
 	{
 		PokeDataBase* PlayerMonsterDB = BattlePlayer::PlayerPtr->GetMonsterDB();
-		PokeSkill SkillType = PlayerMonsterDB->GetMonsterSkillList(_SlotIndex + 1).GetSkill();
+		PokeSkillBase& SkillDB = PlayerMonsterDB->GetMonsterSkillList(_SlotIndex + 1);
+		PokeSkill SkillType = SkillDB.GetSkill();
 		if (PokeSkill::Unknown == SkillType)
 			return;
 
 		TextInfo->Death();
 		TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-		TextInfo->BattleSetText("Player Attacking...");
+		TextInfo->BattleSetText(SkillDB.ForUI_GetSkillName( ) + "!!!");
 
 		SelectBoard->Off();
 		BattleCommand->Off();
