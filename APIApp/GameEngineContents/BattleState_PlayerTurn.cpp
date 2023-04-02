@@ -134,10 +134,10 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		//TODO
 		BattlePlayerMonsterFSM* MonsterFSM = BattlePlayer::PlayerPtr->GetMonster()->GetFSM();
 
-		//일단 임시, 나중에 PlayerMonster에서 함수를 만들어서 등록된 슬롯과 연동시킬 예정이다
-		//MonsterFSM->ChangeState(ConvertSkill(SkillType));
-		MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_RazorLeaf);
-
+		
+		//실제 게임용입니다. 스킬 확인을 하시기 위해서는 아래 코드를 주석하시고 그 다음 코드의 주석을 풀어주세요
+		MonsterFSM->ChangeState(ConvertSkill(SkillType));
+		//MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_RazorLeaf);
 	});
 
 
