@@ -1,6 +1,7 @@
 #pragma once
 #include "BattleSkill_EnemyBase.h"
 // Ό³Έν :
+class SkillActor_Ember;
 class GameEngineRender;
 class BattleSkill_EnemyEmber : public BattleSkill_EnemyBase
 {
@@ -21,26 +22,24 @@ protected:
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 private:
-	const float Duration = 1.1f;
-	const float EmberSpeed = 1.5f;
+	const float Duration = 1.5f;
 	const float4 StartPos = { 372, -182 };
 	const float4 EndPos = { 48, 12};
 
-	GameEngineRender* EffectRender = nullptr;
 	GameEngineRender* PlayerMonster = nullptr;
-
+	SkillActor_Ember* EmberActor = nullptr;
 
 	enum class SkillState
 	{
-		Shoot,
+		Wait,
 		BackWard,
 		Flashing
 	};
-	float ShootTime = 0.f;
+	float WaitTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
-	SkillState CurState = SkillState::Shoot;
-	void Update_Shoot(float _DeltaTime);
+	SkillState CurState = SkillState::Wait;
+	void Update_Wait(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);
 	void Update_Flashing(float _DeltaTime);
 

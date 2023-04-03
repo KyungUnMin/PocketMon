@@ -26,6 +26,7 @@ private:
 	GameEngineRender* EffectRender = nullptr;
 	float4 StartPos = { 372, -182 };
 	float4 EndPos = { 48, 12 };
+	bool IsLeft = false;
 	enum class EmberState
 	{
 		Shoot,

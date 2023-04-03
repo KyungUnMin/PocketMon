@@ -22,8 +22,7 @@ protected:
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 private:
-	const float Duration = 1.1f;
-	const float EmberSpeed = 1.5f;
+	const float Duration = 1.5f;
 	const float4 StartPos = { -332, 212 };
 	const float4 EndPos = { 0, 32 };
 

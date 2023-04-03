@@ -14,6 +14,8 @@ void SkillActor_Ember::SetEmber(const float4& _StartPos, const float4& _EndPos)
 	StartPos = _StartPos;
 	EndPos = _EndPos;
 	SetPos(StartPos);
+
+	IsLeft = EndPos.x < StartPos.x;
 }
 
 void SkillActor_Ember::Start()
@@ -27,6 +29,8 @@ void SkillActor_Ember::Start()
 
 void SkillActor_Ember::Update(float _DeltaTime)
 {
+	
+
 	switch (CurState)
 	{
 	case SkillActor_Ember::EmberState::Shoot:
@@ -35,11 +39,18 @@ void SkillActor_Ember::Update(float _DeltaTime)
 		if (1 < GetLiveTime())
 		{
 			CurState = EmberState::Burn;
+			EffectRender->ChangeAnimation("Burn");
 		}
 	}
 		break;
 	case SkillActor_Ember::EmberState::Burn:
-		SetMove(float4::Right * 232 * _DeltaTime);
+	{
+		if (true == EffectRender->IsAnimationEnd())
+		{
+			Death();
+		}
+		SetMove(IsLeft == true ? float4::Left : float4::Right * 132 * _DeltaTime);
+	}
 		break;
 	default:
 		break;
