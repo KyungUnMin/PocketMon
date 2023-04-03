@@ -164,6 +164,12 @@ public:
 		SkillList[3].SkillPP_MAXRecovery();
 	}
 
+	// 기절 상태 회복
+	void SternRecorvery()
+	{
+		IsMonsterDeath = false;
+	}
+
 	// 몬스터가 기절상태입니까?
 	bool IsMonsterStern()
 	{
