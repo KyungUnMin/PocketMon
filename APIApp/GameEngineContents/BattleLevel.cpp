@@ -122,7 +122,7 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType)
 		BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleBgmName);
 		break;
 	default:
-		MsgAssert("아직 해당 전투일때 사운드를 정해주지 않았습니다");
+		DebugMsgBox("아직 해당 전투일때 사운드를 정해주지 않았습니다");
 		break;
 	}
 

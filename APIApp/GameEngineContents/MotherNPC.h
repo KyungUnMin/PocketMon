@@ -13,7 +13,10 @@ public:
 	MotherNPC& operator=(MotherNPC&& _Other) noexcept = delete;
 
 protected:
-	
+
+	void IdleUpdate(float _DeltaTime) override;
+	void InteractionEnd() override;
+
 private:
 
 

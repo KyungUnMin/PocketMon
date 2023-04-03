@@ -3,12 +3,14 @@
 #include "Player.h"
 #include "MoveMapFadeEffect.h"
 #include "InputControll.h"
+#include "ContentsEnum.h"
 
 const std::string DoorActorBase::DoorIdleAnimName = "DoorIdle";
 const std::string DoorActorBase::DoorOpenAnimName = "DoorOpen";
 const std::string DoorActorBase::DoorCloseAnimName = "DoorClose";
 
-DoorActorBase::DoorActorBase()
+DoorActorBase::DoorActorBase() :
+	OutDir(LookDir::Down)
 {
 }
 
@@ -41,6 +43,25 @@ void DoorActorBase::PlayerMove()
 	}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(LinkDoor->DoorCity, LinkDoor->DoorIndex));
+	
+	switch (LinkDoor->OutDir)
+	{
+	case LookDir::Up:
+		MainPlayer->SetPlayerDirUp();
+		break;
+	case LookDir::Down:
+		MainPlayer->SetPlayerDirDown();
+		break;
+	case LookDir::Left:
+		MainPlayer->SetPlayerDirLeft();
+		break;
+	case LookDir::Right:
+		MainPlayer->SetPlayerDirRight();
+		break;
+	default:
+		break;
+	}
+
 	Fieldmap::FieldUpdate();
 	LinkDoor->DoorOpenAndClose();
 

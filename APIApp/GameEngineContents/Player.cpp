@@ -15,7 +15,7 @@
 #include "PokemonCenterNPC.h"
 
 Player* Player::MainPlayer;
-bool Player::GymClear = true;
+bool Player::GymClear = false;
 
 LookDir Player::CalLookDir(const float4& _Start, const float4& _End)
 {
@@ -172,6 +172,12 @@ void Player::Update(float _DeltaTime)
 	{
 		UpdateState(_DeltaTime); //框流烙包府
 		NPCtalkValueSet(); //NPC规氢技泼侩
+
+		if (false == InputControll::CanControll())
+		{
+			return;
+		}
+
 		if (true == GameEngineInput::IsDown("FieldMainMenuSwitch"))
 		{
 			FieldMainMenu::GetFieldMainMenu()->OnOffSwtich();

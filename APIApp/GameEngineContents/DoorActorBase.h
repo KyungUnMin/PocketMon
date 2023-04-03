@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "int2.h"
 
+enum class LookDir;
 class DoorActorBase : public GameEngineActor
 {
 public:
@@ -32,10 +33,16 @@ public:
 
 	void SetLinkDoor(DoorActorBase* _LinkDoor);
 
+	void SetOutDir(LookDir _Dir)
+	{
+		OutDir = _Dir;
+	}
+
 	bool VaildDoor() const
 	{
 		return true;
 	}
+
 
 	void UseDoor();
 
@@ -50,6 +57,8 @@ protected:
 	virtual void RenderInit() = 0;
 private:
 	GameEngineTimeEvent DoorEvent;
+
+	LookDir OutDir;
 
 	std::string DoorName;
 	std::string DoorCity;

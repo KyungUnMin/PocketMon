@@ -55,6 +55,7 @@ void BaseNPC::MoveStart()
 	PlayAnimation();
 	MoveProgress = 0.0f;
 
+	Fieldmap::SetWalkable(CityName, MoveStartIndex, true);
 	Fieldmap::SetWalkable(CityName, MoveEndIndex, false);
 }
 
