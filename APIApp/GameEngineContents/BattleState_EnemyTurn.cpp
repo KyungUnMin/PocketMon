@@ -25,13 +25,21 @@ void BattleState_EnemyTurn::EnterState()
 	TextInfoUI->BattleSetText("Enemy Attacking...");
 
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
-	PokeDataBase* MonsterDB = EnemyMonster->GetDB();
 
+	PokeDataBase* MonsterDB = EnemyMonster->GetDB();
+	int MaxCount = MonsterDB->GetMonsterSkillCount();
+	int SelectedSkill = GameEngineRandom::MainRandom.RandomInt(1, MaxCount);
+
+	PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList(SelectedSkill);
+	
+	//스킬 확인용
+	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Thunder);
+
+	//실제 게임용, 적 몬스터 랜덤 공격
+	//EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillDB.GetSkill()));
 	//GameEngineRandom::MainRandom.RandomInt(1, )
 	//PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList();
 
-
-	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Bubble);
 }
 
 void BattleState_EnemyTurn::ExitState()
