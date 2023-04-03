@@ -25,7 +25,6 @@ void BaseNPC::IdleUpdate(float _DeltaTime)
 
 	if (0 < MovePoints.size())
 	{
-
 		MoveStartPos = GetPos();
 		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
 
@@ -66,8 +65,30 @@ void BaseNPC::MoveUpdate(float _DeltaTime)
 
 	if (1.0f <= MoveProgress)
 	{
-		ChangeState(NPCState::Idle);
-		return;
+		if (0 < MovePoints.size())
+		{
+			MoveStartPos = GetPos();
+			MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
+
+			MoveEndPos = MovePoints.front();
+			MoveEndIndex = Fieldmap::GetIndex(MoveEndPos);
+
+			if (false == Fieldmap::Walkable(MoveEndIndex))
+			{
+				return;
+			}
+
+			MovePoints.pop_front();
+			Look(MoveStartIndex, MoveEndIndex);
+
+			ChangeState(NPCState::Move);
+			return;
+		}
+		else
+		{
+			ChangeState(NPCState::Idle);
+			return;
+		}
 	}
 }
 

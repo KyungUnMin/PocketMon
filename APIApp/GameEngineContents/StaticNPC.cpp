@@ -23,7 +23,6 @@ void StaticNPC::IdleUpdate(float _DeltaTime)
 void StaticNPC::MoveEnd()
 {
 	BaseNPC::MoveEnd();
-	Look(BaseDir);
 }
 
 void StaticNPC::InteractionEnd()
