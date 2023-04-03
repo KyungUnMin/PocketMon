@@ -138,7 +138,7 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		
 		//실제 게임용입니다. 스킬 확인을 하시기 위해서는 아래 코드를 주석하시고 그 다음 코드의 주석을 풀어주세요
 		MonsterFSM->ChangeState(ConvertSkill(SkillType));
-		//MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_DragonBreath);
+		//MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_WaterGun);
 	});
 
 
