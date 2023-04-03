@@ -35,6 +35,14 @@ public:
 	
 	static PokemonCenterUI* MainPokemonCenterUI;
 
+	std::list<std::string> GetWelcomeScript()
+	{
+		return WelcomeScript;
+	}
+	std::list<std::string> GetGoodbyeScript1()
+	{
+		return GoodbyeScript1;
+	}
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

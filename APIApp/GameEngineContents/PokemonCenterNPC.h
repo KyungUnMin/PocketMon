@@ -1,7 +1,9 @@
 #pragma once
 #include "StaticNPC.h"
+#include <GameEngineCore/GameEngineCollision.h>
 
-
+class GameEngineCollision;
+class PokemonCenterUI;
 class PokemonCenterNPC : public StaticNPC
 {
 public:
@@ -17,7 +19,7 @@ protected:
 	void Start() override;
 	void IdleUpdate(float _DeltaTime) override;
 private:
-
-
+	GameEngineCollision* CenterNpc_C = nullptr;
+	
 };
 
