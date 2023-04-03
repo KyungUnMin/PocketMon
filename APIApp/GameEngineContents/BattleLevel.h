@@ -24,8 +24,10 @@ enum class BattleNpcType
 {
 	None,
 	Rival,
-	Woong
-
+	Woong,
+	Blue,
+	NPC2,
+	NPC3
 };
 
 

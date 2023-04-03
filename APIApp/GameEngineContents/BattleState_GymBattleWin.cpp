@@ -4,7 +4,7 @@
 
 const std::vector<std::string_view> BattleState_GymBattleWin::Texts =
 {
-	"Woong :\nCongratulation, This is yours",
+	"Woong\nCongratulation! This is yours!",
 	"I got a gray emblem!",
 };
 
@@ -24,10 +24,5 @@ void BattleState_GymBattleWin::EnterState()
 	SetNextState(BattleStateType::BattleWin);
 
 	CreateUIText(Texts);
-	SetTextEvent(0, []
-	{
-		BattleEnemy::EnemyPtr->ComeBack();
-	});
-
-
+	BattleEnemy::EnemyPtr->ComeBack();
 }

@@ -6,8 +6,8 @@
 
 const std::vector<std::string_view> BattleState_NextStage::Texts =
 {
-	"He is trying to get the next Pokemon out",
-	"Please choose the Pokemon you want to fight next?",
+	"He is trying to\nget the next Pokemon out",
+	"Please choose the Pokemon\nyou want to fight next?",
 };
 
 BattleState_NextStage::BattleState_NextStage()

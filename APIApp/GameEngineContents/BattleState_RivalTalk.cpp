@@ -5,9 +5,9 @@
 
 const std::vector<std::string_view> BattleState_RivalTalk::Texts =
 {
-	"Rival vs Player",
-	"Rival will take out his monster",
-	"Go @@@"
+	"Green walks into battle",
+	"He is trying to\nget the Pokemon out",
+	"Lets Go!"
 };
 
 BattleState_RivalTalk::BattleState_RivalTalk()

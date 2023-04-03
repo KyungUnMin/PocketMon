@@ -16,7 +16,7 @@ BattleState_BattleLose::~BattleState_BattleLose()
 void BattleState_BattleLose::EnterState()
 {
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfo->BattleSetText("My eyes is going to black");
+	TextInfo->BattleSetText("My eyes\nis going to black");
 }
 
 void BattleState_BattleLose::Update(float _DeltaTime)

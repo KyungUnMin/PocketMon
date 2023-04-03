@@ -36,7 +36,7 @@ void BattleState_StageLose::EnterState()
 	}
 	else
 	{
-		TextInfo->BattleSetText("My Eyes is going to Dark");
+		TextInfo->BattleSetText("My Eyes\nis going to Dark");
 	}
 }
 

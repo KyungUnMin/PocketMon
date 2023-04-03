@@ -5,7 +5,7 @@
 const std::vector<std::string_view> BattleState_GymTalk::Texts =
 {
 	"He come up with a fight",
-	"He will take out his monster",
+	"He is trying to\nget the Pokemon out",
 	"Go @@@"
 };
 
