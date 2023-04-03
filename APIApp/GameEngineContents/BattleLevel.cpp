@@ -72,9 +72,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr == ChangedCenterLevel)
 		return;
 
-	//Init({ PokeDataBase::PokeCreate(PokeNumber::Pikachu) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
-	Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(

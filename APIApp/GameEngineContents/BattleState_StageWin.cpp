@@ -32,7 +32,14 @@ void BattleState_StageWin::Update(float _DeltaTime)
 
 	if (false == BattleEnemy::EnemyPtr->IsValidNextMonster())
 	{
-		GetFSM()->ChangeState(BattleStateType::BattleWin);
+		if (true == BattleLevel::BattleLevelPtr->IsBossBattle())
+		{
+
+		}
+		else
+		{
+			GetFSM()->ChangeState(BattleStateType::BattleWin);
+		}
 		return;
 	}
 	else

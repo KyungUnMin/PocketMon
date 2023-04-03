@@ -1,7 +1,9 @@
 #pragma once
 #include "BattleStateBase.h"
+#include "PokeDataBase.h"
 
 class BackTextActor;
+enum class SpecialPokeEnum;
 
 class BattleState_CatchWhildMonster : public BattleStateBase
 {
@@ -24,5 +26,7 @@ private:
 	const float FadeTime = 1.f;
 	float LiveTime = 0.f;
 	bool IsPushed = false;
+
+	SpecialPokeEnum PokeNumToSpecialConvertor(PokeNumber _Index);
 };
 
