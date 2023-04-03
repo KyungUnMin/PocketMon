@@ -3,18 +3,18 @@
 // Ό³Έν :
 class GameEngineRender;
 class SkillActor_Ember;
-class BattleSkill_PlayerDragonBrath : public BattleSkill_PlayerBase
+class BattleSkill_PlayerDragonBreath : public BattleSkill_PlayerBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerDragonBrath();
-	~BattleSkill_PlayerDragonBrath();
+	BattleSkill_PlayerDragonBreath();
+	~BattleSkill_PlayerDragonBreath();
 
 	// delete Function
-	BattleSkill_PlayerDragonBrath(const BattleSkill_PlayerDragonBrath& _Other) = delete;
-	BattleSkill_PlayerDragonBrath(BattleSkill_PlayerDragonBrath&& _Other) noexcept = delete;
-	BattleSkill_PlayerDragonBrath& operator=(const BattleSkill_PlayerDragonBrath& _Other) = delete;
-	BattleSkill_PlayerDragonBrath& operator=(BattleSkill_PlayerDragonBrath&& _Other) noexcept = delete;
+	BattleSkill_PlayerDragonBreath(const BattleSkill_PlayerDragonBreath& _Other) = delete;
+	BattleSkill_PlayerDragonBreath(BattleSkill_PlayerDragonBreath&& _Other) noexcept = delete;
+	BattleSkill_PlayerDragonBreath& operator=(const BattleSkill_PlayerDragonBreath& _Other) = delete;
+	BattleSkill_PlayerDragonBreath& operator=(BattleSkill_PlayerDragonBreath&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

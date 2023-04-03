@@ -22,6 +22,7 @@ enum class BattlePlayerMonster_StateType
 	Skill_Thunder,
 	Skill_Thunderbolt,
 	Skill_DragonBreath,
+
 	Skill_DoubleEdge,
 	Skill_Bite,
 	Skill_HyperFang,
@@ -35,7 +36,6 @@ enum class BattlePlayerMonster_StateType
 	Skill_FeatherDance,
 	Skill_Ember,
 	Skill_Flamethrower,
-	Skill_DragonBrath,
 
 	COUNT
 };
