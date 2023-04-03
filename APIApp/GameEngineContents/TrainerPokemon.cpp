@@ -33,6 +33,11 @@ std::vector<PokeDataBase> TrainerPokemon::GetPokemons()
 	return Pokemons;
 }
 
+std::vector<PokeDataBase>& TrainerPokemon::GetPokemonsRef()
+{
+	return Pokemons;
+}
+
 PokeDataBase* TrainerPokemon::NextPokemon()
 {
 	for (int i = 0; i < Pokemons.size(); i++)

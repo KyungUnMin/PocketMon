@@ -13,6 +13,7 @@ void SkillActor_Ember::SetEmber(const float4& _StartPos, const float4& _EndPos)
 {
 	StartPos = _StartPos;
 	EndPos = _EndPos;
+	SetPos(StartPos);
 }
 
 void SkillActor_Ember::Start()
