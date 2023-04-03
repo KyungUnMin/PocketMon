@@ -626,7 +626,7 @@
     <ClCompile Include="SkillActor_Bite.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClCompile>
-    <ClCompile Include="SkillActor_DragonBrath.cpp">
+    <ClCompile Include="SkillActor_DragonBreath.cpp">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClCompile>
     <ClCompile Include="SkillActor_Gust.cpp">
@@ -707,11 +707,12 @@
     <ClCompile Include="BattleSkill_EnemyIronDefense.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
-    <ClCompile Include="BattleSkill_EnemyDragonBrath.cpp">
+    <ClCompile Include="BattleSkill_EnemyDragonBreath.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
-    <ClCompile Include="EndingWalkPlayer.cpp" />
-    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp" />
+    <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1326,7 +1327,7 @@
     <ClInclude Include="SkillActor_Bite.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClInclude>
-    <ClInclude Include="SkillActor_DragonBrath.h">
+    <ClInclude Include="SkillActor_DragonBreath.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
     </ClInclude>
     <ClInclude Include="SkillActor_Gust.h">
@@ -1404,10 +1405,12 @@
     <ClInclude Include="BattleSkill_EnemyIronDefense.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
-    <ClInclude Include="BattleSkill_EnemyDragonBrath.h">
+    <ClInclude Include="BattleSkill_EnemyDragonBreath.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
-    <ClInclude Include="EndingWalkPlayer.h" />
+    <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">

@@ -143,7 +143,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DragonBrath.bmp"))->Cut(1, 7);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DragonBreath.bmp"))->Cut(1, 7);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 3);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DefenseCurl.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("RazorLeaf.bmp"))->Cut(1, 4);

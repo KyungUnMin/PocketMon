@@ -2,19 +2,19 @@
 #include "BattleSkill_EnemyBase.h"
 // Ό³Έν :
 class GameEngineRender;
-class BattleSkill_EnemyDragonBrath : public BattleSkill_EnemyBase
+class BattleSkill_EnemyDragonBreath : public BattleSkill_EnemyBase
 {
-	friend class DragonBrathEffect;
+	friend class DragonBreathEffect;
 public:
 	// constrcuter destructer
-	BattleSkill_EnemyDragonBrath();
-	~BattleSkill_EnemyDragonBrath();
+	BattleSkill_EnemyDragonBreath();
+	~BattleSkill_EnemyDragonBreath();
 
 	// delete Function
-	BattleSkill_EnemyDragonBrath(const BattleSkill_EnemyDragonBrath& _Other) = delete;
-	BattleSkill_EnemyDragonBrath(BattleSkill_EnemyDragonBrath&& _Other) noexcept = delete;
-	BattleSkill_EnemyDragonBrath& operator=(const BattleSkill_EnemyDragonBrath& _Other) = delete;
-	BattleSkill_EnemyDragonBrath& operator=(BattleSkill_EnemyDragonBrath&& _Other) noexcept = delete;
+	BattleSkill_EnemyDragonBreath(const BattleSkill_EnemyDragonBreath& _Other) = delete;
+	BattleSkill_EnemyDragonBreath(BattleSkill_EnemyDragonBreath&& _Other) noexcept = delete;
+	BattleSkill_EnemyDragonBreath& operator=(const BattleSkill_EnemyDragonBreath& _Other) = delete;
+	BattleSkill_EnemyDragonBreath& operator=(BattleSkill_EnemyDragonBreath&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

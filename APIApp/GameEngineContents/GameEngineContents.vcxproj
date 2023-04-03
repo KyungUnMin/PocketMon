@@ -274,7 +274,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleSkill_EnemyDragonBrath.cpp">
+    <ClCompile Include="BattleSkill_EnemyDragonBreath.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -368,7 +368,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp" />
+    <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp" />
     <ClCompile Include="BattleSkill_PlayerEarthquake.cpp">
       <SubType>
       </SubType>
@@ -758,7 +758,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="SkillActor_DragonBrath.cpp">
+    <ClCompile Include="SkillActor_DragonBreath.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -951,7 +951,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="BattleSkill_EnemyDragonBrath.h">
+    <ClInclude Include="BattleSkill_EnemyDragonBreath.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1045,6 +1045,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDragonBreath.h" />
     <ClInclude Include="BattleSkill_PlayerEarthquake.h">
       <SubType>
       </SubType>
@@ -1437,7 +1438,7 @@
       <SubType>
       </SubType>
     </ClInclude>
-    <ClInclude Include="SkillActor_DragonBrath.h">
+    <ClInclude Include="SkillActor_DragonBreath.h">
       <SubType>
       </SubType>
     </ClInclude>
