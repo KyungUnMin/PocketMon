@@ -35,6 +35,7 @@ enum class BattlePlayerMonster_StateType
 	Skill_FeatherDance,
 	Skill_Ember,
 	Skill_Flamethrower,
+	Skill_DragonBrath,
 
 	COUNT
 };

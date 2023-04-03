@@ -274,6 +274,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyDragonBrath.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyEarthquake.cpp">
       <SubType>
       </SubType>
@@ -361,6 +365,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerDoubleEdge.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -946,6 +954,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyDragonBrath.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyEarthquake.h">
       <SubType>
       </SubType>
@@ -1033,6 +1045,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerDoubleEdge.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerDragonBrath.h">
       <SubType>
       </SubType>
     </ClInclude>

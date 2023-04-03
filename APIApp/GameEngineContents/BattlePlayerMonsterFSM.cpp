@@ -29,6 +29,8 @@
 #include "BattleSkill_PlayerIronDefense.h"
 #include "BattleSkill_PlayerEmber.h"
 #include "BattleSkill_PlayerFlamethrower.h"
+#include "BattleSkill_PlayerDragonBrath.h"
+
 BattlePlayerMonsterFSM::BattlePlayerMonsterFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
 {
@@ -76,6 +78,7 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerIronDefense>(BattlePlayerMonster_StateType::Skill_IronDefense);
 	CreateState<BattleSkill_PlayerEmber>(BattlePlayerMonster_StateType::Skill_Ember);
 	CreateState<BattleSkill_PlayerFlamethrower>(BattlePlayerMonster_StateType::Skill_Flamethrower);
+	CreateState<BattleSkill_PlayerDragonBrath>(BattlePlayerMonster_StateType::Skill_DragonBrath);
 
 	ChangeState(BattlePlayerMonster_StateType::Create);
 }
