@@ -6,6 +6,7 @@
 
 #include "Battle_HpUIHandlerBase.h"
 #include "FriendlyHPBackground.h"
+#include "Battle_PlayerHpUIHandler.h"
 
 BattleState_BattleWin::BattleState_BattleWin()
 {
@@ -28,7 +29,9 @@ void BattleState_BattleWin::EnterState()
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
 
-	if (true == HpUI->IsLevelUp())
+	
+	
+	if (true == dynamic_cast<Battle_PlayerHpUIHandler*>(HpUI)->IsLevelUp())
 	{
 		Duration = LevelUpDuration;
 	}

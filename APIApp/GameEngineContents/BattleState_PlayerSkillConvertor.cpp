@@ -84,6 +84,11 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 	case PokeSkill::DefenseCurl:
 		return BattlePlayerMonster_StateType::Skill_DefenseCurl;
 
+	/*case PokeSkill::DragonBreath:
+		return BattlePlayerMonster_StateType::Skill_Bre;*/
+
+	/*case PokeSkill:::
+		return BattlePlayerMonster_StateType::Skill_DefenseCurl;*/
 
 
 	case PokeSkill::Slash:

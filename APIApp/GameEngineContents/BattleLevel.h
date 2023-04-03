@@ -25,7 +25,7 @@ enum class BattleNpcType
 	None,
 	Rival,
 	Woong,
-	Blue,
+	Leaf,
 	NPC2,
 	NPC3
 };
