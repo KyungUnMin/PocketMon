@@ -192,13 +192,7 @@ void Player::MoveUpdate(float _Time)
 	 if (PlayerTime > 1.0f) //다음타일까지의 이동시간
 	 {
 		 PlayerTime = 0.0f;
-			
-		 if (0 <= InputControlHandle)
-		 {
-			InputControlHandle = InputControll::ResetControll(InputControlHandle);
-		 }
-
-		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
+		
 		 Fieldmap::FieldUpdate();
 
 		 ChangeState(PlayerState::IDLE);
@@ -207,6 +201,11 @@ void Player::MoveUpdate(float _Time)
 
 void Player::MoveEnd()
 {
+	if (0 <= InputControlHandle)
+	{
+		InputControlHandle = InputControll::ResetControll(InputControlHandle);
+	}
+	Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 }
 
 void Player::JumpStart()

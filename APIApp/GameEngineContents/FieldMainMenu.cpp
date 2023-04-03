@@ -114,12 +114,7 @@ void FieldMainMenu::MainMenuOpenSoundPlay()
 
 void FieldMainMenu::UpdateStart()
 {
-	//if (!InputControll::CanControll())
-	//{
-	//	return;
-	//}
-
-	InputControlHandle = InputControll::UseControll();
+	//InputControlHandle = InputControll::UseControll();
 	Player::MainPlayer->SetPlayerMoveBool(false);
 	State = MainMenuState::Pokemon;
 	MenuStateToRender();
