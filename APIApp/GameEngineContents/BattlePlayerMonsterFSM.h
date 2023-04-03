@@ -30,6 +30,7 @@ enum class BattlePlayerMonster_StateType
 	Skill_QuickAttack,
 
 	Skill_Scratch,
+	Skill_DefenseCurl,
 	Skill_FeatherDance,
 	Skill_Ember,
 	Skill_Flamethrower,

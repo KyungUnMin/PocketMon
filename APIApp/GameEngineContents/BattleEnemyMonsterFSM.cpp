@@ -2,14 +2,15 @@
 #include "BattleEnemyMonster_ShadowState.h"
 #include "BattleStateIdle.h"
 #include "BattleEnemyMonster_LockState.h"
-#include "BattleSkill_EnemyTackle.h"
-#include "BattleSkill_EnemyScratch.h"
-#include "BattleSkill_EnemyFeatherDance.h"
-#include "BattleSkill_EnemyEmber.h"
-#include "BattleSkill_EnemyFlamethrower.h"
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
 
+#include "BattleSkill_EnemyTackle.h"
+#include "BattleSkill_EnemyScratch.h"
+#include "BattleSkill_EnemyFeatherDance.h"
+#include "BattleSkill_EnemyDefenseCurl.h"
+#include "BattleSkill_EnemyEmber.h"
+#include "BattleSkill_EnemyFlamethrower.h"
 #include "BattleSkill_EnemyGrowl.h"
 #include "BattleSkill_EnemyLeer.h"
 #include "BattleSkill_EnemyTailWhip.h"
@@ -67,6 +68,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyTackle>(BattleEnemyMonster_StateType::Skill_Tackle);
 	CreateState<BattleSkill_EnemyScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_EnemyFeatherDance>(BattleEnemyMonster_StateType::Skill_FeatherDance);
+	CreateState<BattleSkill_EnemyDefenseCurl>(BattleEnemyMonster_StateType::Skill_DefenseCurl);
 	CreateState<BattleSkill_EnemyEmber>(BattleEnemyMonster_StateType::Skill_Ember);
 	CreateState<BattleSkill_EnemyFlamethrower>(BattleEnemyMonster_StateType::Skill_Flamethrower);
 
