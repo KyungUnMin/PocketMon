@@ -1003,6 +1003,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 	{
 	case SpecialPokeEnum::StartingBulbasaur:
 
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Blastoise;
+
 		BulbasaurData(10, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
@@ -1014,6 +1016,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::StartingCharmander:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Charmander;
 
 		CharmanderData(10, PoKeCreatePtr);
 
@@ -1027,6 +1031,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		break;
 	case SpecialPokeEnum::StartingSquirtle:
 
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Squirtle;
+
 		SquirtleData(10, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
@@ -1039,6 +1045,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		break;
 	case SpecialPokeEnum::CatchPidgey:
 
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pidgey;
+
 		PidgeyData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Peck, PoKeCreatePtr);
@@ -1050,7 +1058,9 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::CatchRattata:
-		 
+		
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Rattata;
+
 		RattataData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Bite, PoKeCreatePtr);
@@ -1062,6 +1072,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::CatchSpearow:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Spearow;
 
 		SpearowData(_Level, PoKeCreatePtr);
 
@@ -1075,6 +1087,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		break;
 	case SpecialPokeEnum::CatchPikachu:
 
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pikachu;
+
 		PikachuData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::QuickAttack, PoKeCreatePtr);
@@ -1086,6 +1100,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::MasterPikachu:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pikachu;
 
 		PikachuData(99, PoKeCreatePtr);
 
@@ -1099,6 +1115,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		break;
 	case SpecialPokeEnum::UngGeodude:
 
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Geodude;
+
 		GeodudeData(12, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
@@ -1110,6 +1128,8 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		break;
 	case SpecialPokeEnum::UngOnix:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Onix;
 
 		OnixData(18, PoKeCreatePtr);
 

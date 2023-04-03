@@ -26,7 +26,16 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 
-	SkillActor_Bubble* BubbleRender = nullptr;
+	SkillActor_Bubble* BubbleRender1 = nullptr;
+	SkillActor_Bubble* BubbleRender2 = nullptr;
+	SkillActor_Bubble* BubbleRender3 = nullptr;
+
+	float4 StartPos1 = float4::Zero;
+	float4 StartPos2 = float4::Zero;
+	float4 StartPos3 = float4::Zero;
+	float4 EndPos1 = float4::Zero;
+	float4 EndPos2 = float4::Zero;
+	float4 EndPos3 = float4::Zero;
 
 	enum class MoveState
 	{
@@ -37,6 +46,9 @@ private:
 
 	MoveState CurState = MoveState::Forward;
 
+	bool IsShoot1 = false;
+
+	float ShootTime1 = 0.0f;
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;

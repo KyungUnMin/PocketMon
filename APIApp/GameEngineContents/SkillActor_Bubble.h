@@ -2,6 +2,13 @@
 
 #include <GameEngineCore/GameEngineActor.h>
 
+enum class BubbleSet
+{
+	BubbleSet1,
+	BubbleSet2,
+
+};
+
 // Ό³Έν :
 class SkillActor_Bubble : public GameEngineActor
 {

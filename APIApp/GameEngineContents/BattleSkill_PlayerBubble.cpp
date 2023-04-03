@@ -9,11 +9,11 @@
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
 
-BattleSkill_PlayerBubble::BattleSkill_PlayerBubble() 
+BattleSkill_PlayerBubble::BattleSkill_PlayerBubble()
 {
 }
 
-BattleSkill_PlayerBubble::~BattleSkill_PlayerBubble() 
+BattleSkill_PlayerBubble::~BattleSkill_PlayerBubble()
 {
 }
 
@@ -24,7 +24,26 @@ void BattleSkill_PlayerBubble::EnterState()
 	PlayerMonster = GetPlayerMonster()->GetRender();
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
-	// GrowlRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Growl>();
+	BubbleRender1 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
+	BubbleRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
+	BubbleRender3 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
+
+	BubbleRender1->SetPos({ 320, 320 });
+	BubbleRender2->SetPos({ 320, 320 });
+	BubbleRender3->SetPos({ 320, 320 });
+
+	StartPos1 = BubbleRender1->GetPos();
+	EndPos1 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+
+	StartPos2 = BubbleRender2->GetPos();
+	EndPos2 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+
+	StartPos3 = BubbleRender2->GetPos();
+	EndPos3 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+
+	BubbleRender1->Off();
+	BubbleRender2->Off();
+	BubbleRender3->Off();
 }
 
 void BattleSkill_PlayerBubble::Update(float _DeltaTime)
@@ -52,6 +71,29 @@ void BattleSkill_PlayerBubble::Update(float _DeltaTime)
 void BattleSkill_PlayerBubble::Update_Forward(float _Deltatime)
 {
 	ForwardTime += _Deltatime;
+
+	if (0.1f <= ForwardTime)
+	{
+		IsShoot1 = true;
+	}
+
+	if (true == IsShoot1)
+	{
+		ShootTime1 += _Deltatime * 2.0f;
+
+		float4 Pos = float4::LerpClamp(StartPos1, EndPos1, ShootTime1);
+		BubbleRender1->SetPos(Pos);
+
+		if (EndPos1.x == BubbleRender1->GetPos().x)
+		{
+			BubbleRender1->Off();
+			float sfsf = ForwardTime;
+		}
+		else
+		{
+			BubbleRender1->On();
+		}
+	}
 
 	if (1.0f <= ForwardTime)
 	{
@@ -99,12 +141,17 @@ void BattleSkill_PlayerBubble::ExitState()
 	PlayerMonster->SetPosition(float4::Zero);
 	PlayerMonster = nullptr;
 
-	// 스킬 액터 데스
-	// GrowlRender1->Death();
-	// GrowlRender1 = nullptr;
+	BubbleRender1->Death();
+	BubbleRender2->Death();
+	BubbleRender3->Death();
+
+	BubbleRender1 = nullptr;
+	BubbleRender2 = nullptr;
+	BubbleRender3 = nullptr;
 
 	CurState = MoveState::Forward;
 
+	ShootTime1 = 0.0f;
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
 	FlashingTime = 0.f;

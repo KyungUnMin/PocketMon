@@ -103,7 +103,6 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkil
 		}
 	}
 
-
 	return ScriptValue;
 }
 
