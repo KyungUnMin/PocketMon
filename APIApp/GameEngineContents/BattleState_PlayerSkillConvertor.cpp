@@ -78,7 +78,8 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 	case PokeSkill::Ember:
 		return BattlePlayerMonster_StateType::Skill_Ember;
 
-
+	case PokeSkill::Flamethrower:
+		return BattlePlayerMonster_StateType::Skill_Flamethrower;
 
 
 
@@ -97,8 +98,6 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 		SkillName = "DefenseCurl";
 	case PokeSkill::Withdraw:
 		SkillName = "Withdraw";
-	case PokeSkill::Flamethrower:
-		SkillName = "Flamethrower";
 	case PokeSkill::HydroPump:
 		SkillName = "HydroPump";
 	case PokeSkill::SolarBeam:

@@ -47,14 +47,14 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	case PokeSkill::Ember:
 		return BattleEnemyMonster_StateType::Skill_Ember;
 
+	case PokeSkill::Flamethrower:
+		return BattleEnemyMonster_StateType::Skill_Flamethrower;
 
 
 	case PokeSkill::Slash:
 		SkillName = "Slash";
 		break;
-	case PokeSkill::Flamethrower:
-		SkillName = "Flamethrower";
-		break;
+	
 	case PokeSkill::Withdraw:
 		SkillName = "Withdraw";
 		break;
