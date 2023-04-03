@@ -38,8 +38,8 @@ private:
 	float4 HourRenderPos = { 20, 92 };
 	float4 MinuteRenderPos = { 88, 92 };
 
-
 	GameEngineRender* ColonsAnimation = nullptr;
-
+	float4 ColonsAnimationPos = { 40, 92 };
+	float4 ColonsAnimationScale = { 20, 48 };
 };
 

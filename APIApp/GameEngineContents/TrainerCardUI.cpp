@@ -3,6 +3,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "PlayTime.h"
+#include "PlayerBag.h"
 
 TrainerCardUI::TrainerCardUI()
 {
@@ -44,6 +45,13 @@ void TrainerCardUI::Start()
 	GamePlayTimeRender_Minute.SetValue(MainPlayTime->Minute);
 	GamePlayTimeRender_Minute.SetCameraEffect(false);
 	GamePlayTimeRender_Minute.SetRenderPos(MinuteRenderPos);
+
+	ColonsAnimation = CreateRender(RenderOrder::FieldFront);
+	ColonsAnimation->SetPosition(ColonsAnimationPos);
+	ColonsAnimation->SetScale(ColonsAnimationScale);
+	ColonsAnimation->EffectCameraOff();
+	ColonsAnimation->CreateAnimation({.AnimationName = "1", .ImageName = "ColonsAnimation.bmp", .Start = 0, .End = 1, .InterTime = 0.5});
+	ColonsAnimation->ChangeAnimation("1");
 }
 
 void TrainerCardUI::Update(float _DeltaTime)
@@ -52,7 +60,12 @@ void TrainerCardUI::Update(float _DeltaTime)
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
 	}
-
 	GamePlayTimeRender_Hour.SetValue((int)MainPlayTime->Hour);
 	GamePlayTimeRender_Minute.SetValue((int)MainPlayTime->Minute);
+
+	if (Money != PlayerBag::MainBag->GetMoney())
+	{
+		Money = PlayerBag::MainBag->GetMoney();
+		MoneyRender.SetValue(Money);
+	}
 }

@@ -1089,6 +1089,7 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterBallAnimation.bmp"))->Cut(6,1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterBallAnimation2.bmp"))->Cut(4,1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterTVAnimation.bmp"))->Cut(4,2);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ColonsAnimation.bmp"))->Cut(2,1);
 }
 
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
