@@ -14,6 +14,8 @@ public:
 
 	void OnDamage(int _Value) override;
 
+	bool IsLevelUp() override;
+
 protected:
 	void Start() override;
 

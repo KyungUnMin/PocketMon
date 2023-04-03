@@ -40,3 +40,8 @@ void Battle_PlayerHpUIHandler::OnDamage(int _Value)
 	UI->IsBattleStartCheck(true);
 
 }
+
+bool Battle_PlayerHpUIHandler::IsLevelUp()
+{
+	return UI->IsGetLevelUp();
+}

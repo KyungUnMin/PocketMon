@@ -27,6 +27,16 @@ void BattleState_BattleWin::EnterState()
 
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
+
+	if (true == HpUI->IsLevelUp())
+	{
+		Duration = LevelUpDuration;
+	}
+	else
+	{
+		Duration = NormalDuration;
+	}
+	
 }
 
 void BattleState_BattleWin::Update(float _DeltaTime)

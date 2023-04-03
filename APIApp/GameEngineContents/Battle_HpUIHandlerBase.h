@@ -19,6 +19,8 @@ public:
 
 	void ExpCheck();
 
+	virtual bool IsLevelUp() { return false; }
+
 protected:
 	inline void SetOwner(BattleMonsterBase* _Owner)
 	{
