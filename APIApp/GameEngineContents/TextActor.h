@@ -13,6 +13,10 @@ public:
 	void SetText(const std::string_view& _Str, const std::string_view& _Font, bool _Animation = false);
 	void SetText(const std::string_view& _Str, bool _Animation = false);
 	void SetLine(int _LineCount);
+	void SetOneLineSize(int _LineSize)
+	{
+		OneLineSize = _LineSize;
+	}
 	void SetInterver(const float4& _Interval);
 	void SetAlpha(int _Alpha);
 	void SkipAnimation();

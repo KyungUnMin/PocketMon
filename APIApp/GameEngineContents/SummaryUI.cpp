@@ -70,6 +70,7 @@ void SummaryUI::Start()
 		Info_Item->SetPos({ 684, 412 });
 
 		Info_Memo = CurrentLevel->CreateActor<TextActor>();
+		Info_Memo->SetOneLineSize(38);
 		Info_Memo->SetPos({ 48, 484 });
 
 		Info_Objects.reserve(6);
