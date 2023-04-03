@@ -3,6 +3,7 @@
 #include "PokemoncenterUI.h"
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "Player.h"
+#include <string>
 
 PokemonCenterNPC::PokemonCenterNPC()
 {
@@ -16,7 +17,6 @@ void PokemonCenterNPC::Start()
 {
 	InitNPC("PoketmonCenterNpc", "Nurse.bmp", BattleNpcType::NPC3);
 	AddNPC("PewterCity_PokemonCenter", { 8,4 });
-	//SetBaseDir(LookDir::Down);
 	Look(LookDir::Down);
 
 	CenterNpc_C = CreateCollision(CollisionOrder::NPC);
@@ -34,5 +34,13 @@ void PokemonCenterNPC::IdleUpdate(float _DeltaTime)
 	{
 		PokemonCenterUI::MainPokemonCenterUI->CenterStart();
 	}
-
+	CenterProcess Test=PokemonCenterUI::MainPokemonCenterUI->GetProcess();
+	if (Test == CenterProcess::Heal)
+	{
+		Look(LookDir::Left);
+	}
+	else
+	{
+		Look(LookDir::Down);
+	}
 }

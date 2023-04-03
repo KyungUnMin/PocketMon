@@ -35,13 +35,9 @@ public:
 	
 	static PokemonCenterUI* MainPokemonCenterUI;
 
-	std::list<std::string> GetWelcomeScript()
+	CenterProcess GetProcess()
 	{
-		return WelcomeScript;
-	}
-	std::list<std::string> GetGoodbyeScript1()
-	{
-		return GoodbyeScript1;
+		return Process;
 	}
 protected:
 	void Start() override;
