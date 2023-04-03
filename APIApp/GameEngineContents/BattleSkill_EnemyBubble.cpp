@@ -28,18 +28,18 @@ void BattleSkill_EnemyBubble::EnterState()
 	BubbleRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
 	BubbleRender3 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
 
-	BubbleRender1->SetPos({ 330, 330 });
-	BubbleRender2->SetPos({ 330, 340 });
-	BubbleRender3->SetPos({ 330, 350 });
+	BubbleRender1->SetPos({ 670, 170 });
+	BubbleRender2->SetPos({ 670, 180 });
+	BubbleRender3->SetPos({ 670, 190 });
 
 	StartPos1 = BubbleRender1->GetPos();
-	EndPos1 = StartPos1 + float4::Up * 140.0f + float4::Right * 320.0f;
+	EndPos1 = StartPos1 + float4::Down * 150.0f + float4::Left * 330.0f;
 
 	StartPos2 = BubbleRender2->GetPos();
-	EndPos2 = StartPos2 + float4::Up * 120.0f + float4::Right * 350.0f;
+	EndPos2 = StartPos2 + float4::Down * 130.0f + float4::Left * 360.0f;
 
 	StartPos3 = BubbleRender3->GetPos();
-	EndPos3 = StartPos3 + float4::Up * 110.0f + float4::Right * 370.0f;
+	EndPos3 = StartPos3 + float4::Down * 120.0f + float4::Left * 380.0f;
 
 	BubbleRender1->Off();
 	BubbleRender2->Off();
@@ -99,7 +99,7 @@ void BattleSkill_EnemyBubble::Update_Forward(float _Deltatime)
 			SetCount1 = 0;
 			IsShoot1_A = true;
 			StartPos1_A = BubbleRender1->GetPos();
-			EndPos1_A = StartPos1_A + float4::Up * 60.0f + float4::Right * 40.0f;
+			EndPos1_A = StartPos1_A + float4::Down * 60.0f + float4::Left * 40.0f;
 		}
 		else
 		{
@@ -132,7 +132,7 @@ void BattleSkill_EnemyBubble::Update_Forward(float _Deltatime)
 			SetCount2 = 0;
 			IsShoot2_A = true;
 			StartPos2_A = BubbleRender2->GetPos();
-			EndPos2_A = StartPos2_A + float4::Up * 30.0f + float4::Right * 40.0f;
+			EndPos2_A = StartPos2_A + float4::Down * 30.0f + float4::Left * 40.0f;
 		}
 		else
 		{
@@ -165,7 +165,7 @@ void BattleSkill_EnemyBubble::Update_Forward(float _Deltatime)
 			SetCount3 = 0;
 			IsShoot3_A = true;
 			StartPos3_A = BubbleRender3->GetPos();
-			EndPos3_A = StartPos3_A + float4::Up * 60.0f + float4::Right * 60.0f;
+			EndPos3_A = StartPos3_A + float4::Down * 60.0f + float4::Left * 60.0f;
 		}
 		else
 		{

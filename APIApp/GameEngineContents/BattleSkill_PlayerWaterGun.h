@@ -26,7 +26,11 @@ private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
 	
-	SkillActor_WaterGun* GrowlRender1 = nullptr;
+	SkillActor_WaterGun* WaterGunRender = nullptr;
+
+	SkillActor_WaterGun* WaterRender1 = nullptr;
+	SkillActor_WaterGun* WaterRender2 = nullptr;
+	SkillActor_WaterGun* WaterRender3 = nullptr;
 
 	enum class MoveState
 	{
