@@ -135,7 +135,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 
 	// 임시로 디버깅용 현재 경험치 넣어주기 및 초깃값 셋팅
-	CurExp = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience();
+	//CurExp = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience();
 
 
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
@@ -167,13 +167,22 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			}
 			if (TickNumber_1 == 20)
 			{
+				CheckTimnAA += _DeltaTime;
 				TickNumber_1 = 0;
-				BattlePlayer::PlayerPtr->GetMonsterDB()->PlusMonsterExperience(static_cast<int>(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float()));
+				PokeDataBase::PokeExperienceGain(*BattlePlayer::PlayerPtr->GetMonsterDB(), *BattleEnemy::EnemyPtr->GetMonsterDB());
 				IsExpUP = false;
+				if (true == IsLevelUp) {
+					LevelUpPtr = GetLevel()->CreateActor<LevelUpStatUI_2>();
+					LevelUpPtr->SetPos({ 450,70 });
+					if (CheckTimnAA > 4.50f) {
+						LevelUpPtr->Death();
+						CheckTimnAA = 0.0f;
+					}
+				}
+				
 			//	CurMyHP = DamegeTick[9];
-
+			//PlusMonsterExperience(static_cast<int>(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float())
 			}
-
 		
 		}
 	}
@@ -213,9 +222,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			BattleStartCheck = false;
 			Num -= static_cast<float>(EnumyMonsterDamage);
 			SecoundHp = DamegeTick[9];
-			if (true == IsLevelUp) {
-
-			}
+			
 		}
 		
 	}

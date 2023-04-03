@@ -4,6 +4,7 @@
 #include <vector>
 #include <GameEngineContents/PokeDataBase.h>
 #include "BattleEnemy.h"
+#include "LevelUpStatUI_2.h"
 // Ό³Έν :
 class FriendlyHPBackground : public GameEngineActor
 {
@@ -44,7 +45,11 @@ public:
 	{
 		return EXPRenderPtr;
 	}
-	
+
+	bool IsGetLevelUp()
+	{
+		return IsLevelUp;
+	}
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -53,7 +58,6 @@ protected:
 
 private:
 
-	PokeDataBase NewTestMon = PokeDataBase::PokeCreate(4, 15);
 
 	std::vector<GameEngineRender*> PoketMonName_R;
 	std::vector<GameEngineRender*> PoketMonLevel_R;
@@ -67,6 +71,9 @@ private:
 	GameEngineRender* HPRenderPtr2 = nullptr;
 
 	GameEngineRender* EXPRenderPtr = nullptr;
+
+
+	class LevelUpStatUI_2* LevelUpPtr = nullptr;
 
 
 	float4 TextRenderImageScale = { 20, 40 };
@@ -121,5 +128,7 @@ private:
 	int ExpPoint = 0;
 	int CurExp = 0;
 	
+
+	float CheckTimnAA = 0.0f;
 };
 

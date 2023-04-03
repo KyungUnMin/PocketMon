@@ -105,7 +105,7 @@ void LevelUpStatUI_2::Update(float _DeltaTime)
 	StringToRender(LevelUpStat5_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterSpecialDefense());
 	StringToRender(LevelUpStat6_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterAgility());
 	CheckTime11 += _DeltaTime;
-	if (CheckTime11 > 1.0f) {
+	if (CheckTime11 > 2.0f) {
 		if (true == IsCheck123) 
 		{
 			StatRenderPtr->SetScale((StatRenderPtr->GetImage()->GetImageScale()));
@@ -116,7 +116,7 @@ void LevelUpStatUI_2::Update(float _DeltaTime)
 		
 	}
 	CheckTime22 += _DeltaTime;
-	if (CheckTime22 > 2.0f) {
+	if (CheckTime22 > 4.0f) {
 		StatRenderPtr->Off();
 		StatRenderPtr1->Off();
 		for (size_t x = 0; x < LevelUpStat1_R.size(); x++) {

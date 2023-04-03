@@ -4,6 +4,9 @@
 #include "BattleEnemy.h"
 #include "BattleCommendActor.h"
 #include "FriendlyHPBackground.h"
+#include <GameEngineCore/GameEngineCore.h>
+#include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineLevel.h>
 
 // Ό³Έν :
 class LevelUpStatUI_2 : public GameEngineActor
