@@ -440,7 +440,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PalletTown");
+	Fieldmap::ChangeCity("PewterCity_Gym");
 	///////
 	///////
 	///////

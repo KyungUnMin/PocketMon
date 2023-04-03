@@ -15,7 +15,7 @@
 #include "PokemonCenterNPC.h"
 
 Player* Player::MainPlayer;
-bool Player::GymClear = false;
+bool Player::GymClear = true;
 
 LookDir Player::CalLookDir(const float4& _Start, const float4& _End)
 {
