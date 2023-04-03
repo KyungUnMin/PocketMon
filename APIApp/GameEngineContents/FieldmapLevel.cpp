@@ -582,8 +582,7 @@ void FieldmapLevel::Loading()
 		StaticNPC* NPCPtr = CreateActor<StaticNPC>();
 		NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
 		NPCPtr->AddNPC("PalletTown", int2(11, 15));
-		NPCPtr->AddScript("Hi there!\nHow's your day been so far?");
-		NPCPtr->AddScript("Script 010");
+		NPCPtr->AddScript("Hi there!\nHow`s your day been so far?");
 		NPCPtr->SetBaseDir(LookDir::Up);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
