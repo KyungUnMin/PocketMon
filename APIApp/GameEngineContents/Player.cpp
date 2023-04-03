@@ -159,13 +159,13 @@ void Player::Update(float _DeltaTime)
 	{
 		Players->Off();
 		BikePlayers->On();
-		PlayerMoveSpeed = 6.0f;
+		PlayerMoveSpeed = 7.5f;
 	}
 	else if(IsRide==false)
 	{
 		Players->On();
 		BikePlayers->Off();
-		PlayerMoveSpeed = 4.0f;
+		PlayerMoveSpeed = 5.0f;
 	}
 
 	if (true == PlayerMoveBool)

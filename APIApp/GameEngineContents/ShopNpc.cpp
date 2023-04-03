@@ -49,8 +49,8 @@ void ShopNpc::Start()
 	{
 		R_NPC1 = CreateRender(RenderOrder::Player);
 		R_NPC1->CreateAnimation({ .AnimationName = "Idle",  .ImageName = "NPC_Shop.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
-		R_NPC1->SetScale({ 128,128 });
-		R_NPC1->SetPosition({ 0,-10 });
+		R_NPC1->SetScale({ 110,110 });
+		R_NPC1->SetPosition({ 0,-8 });
 	}
 	{
 		C_NPC_R = CreateCollision(CollisionOrder::NPC);
