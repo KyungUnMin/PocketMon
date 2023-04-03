@@ -12,6 +12,7 @@
 #include "Fieldmap.h"
 #include "FieldMainMenu.h"
 #include "InputControll.h"
+#include "PokemonCenterNPC.h"
 
 Player* Player::MainPlayer;
 bool Player::GymClear = true;
@@ -279,12 +280,13 @@ void Player::JumpDown()
 
 void Player::PlayerDeathCheckFunction()
 {
-
 	//가능하면 이펙트 찾아서 추가할예정
 	if (true == IsPlayerDeath)
 	{
+		int2 Pos=Set_P_Pos->GetSavePlayerPos();
+		//이거 체인지시티 나중에 변수로받기
 		Fieldmap::ChangeCity("PalletTown_Home2F");
-		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", int2(5, 5)));
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", Pos));
 		Fieldmap::FieldUpdate();
 	}
 }

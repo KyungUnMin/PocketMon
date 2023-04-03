@@ -31,6 +31,7 @@ void PokemonCenterNPC::IdleUpdate(float _DeltaTime)
 		true == GameEngineInput::IsDown("NpcTalk") &&
 		Player::MainPlayer->GetPlayerMoveBool())
 	{
+		SavePlayerPos = Player::MainPlayer->GetPlayerIndex();
 		PokemonCenterUI::MainPokemonCenterUI->CenterStart();
 	}
 	CenterProcess Test=PokemonCenterUI::MainPokemonCenterUI->GetProcess();
@@ -42,4 +43,5 @@ void PokemonCenterNPC::IdleUpdate(float _DeltaTime)
 	{
 		Look(LookDir::Down);
 	}
+	
 }

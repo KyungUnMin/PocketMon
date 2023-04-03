@@ -28,7 +28,7 @@ enum class NPCtalkValue
 };
 
 enum class LookDir;
-
+class PokemonCenterNPC;
 class Player : public GameEngineActor
 {
 public:
@@ -268,5 +268,6 @@ private:
 	//////////DeathCheckbool
 	void PlayerDeathCheckFunction();
 	bool IsPlayerDeath = false;
+	PokemonCenterNPC* Set_P_Pos;
 };
 
