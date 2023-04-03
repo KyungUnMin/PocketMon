@@ -499,8 +499,8 @@ void FieldmapLevel::Loading()
 		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
 		MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
 		MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
-		MotherNPCPtr->AddScript("MOM: _Right.\nAll boys leave home someday.");
-		MotherNPCPtr->AddScript("Script 002");
+		MotherNPCPtr->AddScript("MOM: _Right. All boys leave home someday. It said so on TV.");
+		MotherNPCPtr->AddScript("Oh, yes. PROF. OAK, next door,\nwas looking for you.");
 		MotherNPCPtr->SetBaseDir(LookDir::Down);
 		MotherNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -509,9 +509,9 @@ void FieldmapLevel::Loading()
 		OakNPC* OakNPCPtr = CreateActor<OakNPC>();
 		OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
 		OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
-		OakNPCPtr->AddScript("Script 003");
-		OakNPCPtr->AddScript("Script 004");
-		OakNPCPtr->AddScript("CZCZ!", 1);
+		OakNPCPtr->AddScript("OAK: Now, RED.");
+		OakNPCPtr->AddScript("Inside those three POK@ BALLS arePOK@MON.");
+		OakNPCPtr->AddScript("Which one will you choose for\nyourself?");
 		OakNPCPtr->SetBaseDir(LookDir::Down);
 		OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -520,8 +520,7 @@ void FieldmapLevel::Loading()
 		StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
 		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
 		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
-		ProfessorNPCPtr->AddScript("Script 005");
-		ProfessorNPCPtr->AddScript("Script 006");
+		ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
 		ProfessorNPCPtr->SetBaseDir(LookDir::Up);
 		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -530,8 +529,7 @@ void FieldmapLevel::Loading()
 		TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
 		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
 		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
-		ProfessorNPCPtr->AddScript("Script 007");
-		ProfessorNPCPtr->AddScript("Script 008");
+		ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
 		ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 
@@ -540,11 +538,11 @@ void FieldmapLevel::Loading()
 		GreenNPC* GreenNPCPtr = CreateActor<GreenNPC>();
 		GreenNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
 		GreenNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
-		GreenNPCPtr->AddScript("Script 020");
-		GreenNPCPtr->AddScript("Script 021");
-		GreenNPCPtr->AddScript("Battle 0101", 1);
-		GreenNPCPtr->AddScript("Battle 0202", 1);
-		GreenNPCPtr->AddScript("BYE", 2);
+		GreenNPCPtr->AddScript("GREEN: Heh, I don`t need to be\ngreedy like you. I`m mature!");
+		GreenNPCPtr->AddScript("Go ahead and choose, RED!");
+		GreenNPCPtr->AddScript("GREEN: I`ll take this one, then!", 1);
+		GreenNPCPtr->AddScript("GREEN: Wait, RED!\nLet`s check out our POK@MON!", 2);
+		GreenNPCPtr->AddScript("Come on, I`ll take you on!", 2);
 
 		GreenNPCPtr->SetBaseDir(LookDir::Down);
 		GreenNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
@@ -609,8 +607,8 @@ void FieldmapLevel::Loading()
 		TurnNPC* NPCPtr = CreateActor<TurnNPC>();
 		NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
 		NPCPtr->AddNPC("PalletTown", int2(20, 18));
-		NPCPtr->AddScript("Script 011");
-		NPCPtr->AddScript("Script 012");
+		NPCPtr->AddScript("Technology is incredible!");
+		NPCPtr->AddScript("You can now store and recall \nitems and POK@MON as data via PC.");
 		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -688,8 +686,10 @@ void FieldmapLevel::Loading()
 				NpcPtr->InitNPC("StopOak", "Oak.bmp", BattleNpcType::None);
 				NpcPtr->AddNPC("PalletTown", int2::Zero, false);
 
-				NpcPtr->AddScript("0001");
-				NpcPtr->AddScript("0002");
+				NpcPtr->AddScript("Hey! Wait!\nDon`t go out!");
+				NpcPtr->AddScript("OAK: It`s unsafe!\nWild POK@MON live in tall grass!");
+				NpcPtr->AddScript("You need your own POK@MON for\nyour protection.");
+				NpcPtr->AddScript("I know!\nHere, come with me!");
 			}
 		, this);
 
