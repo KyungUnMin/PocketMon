@@ -2,6 +2,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "ContentsEnum.h"
+#include "FieldmapLevel.h"
 
 BattleFade* BattleFade::FieldmapBattleFade = nullptr;
 
@@ -95,7 +96,10 @@ void BattleFade::Update(float _DeltaTime)
 				EndEvent();
 			}
 
-			Off();
+			FieldmapLevel::AddLevelStartFunc(std::bind([](BattleFade* _this)
+				{
+					_this->Off();
+				}, this));
 		}
 	}
 	else

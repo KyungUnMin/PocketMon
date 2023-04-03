@@ -17,6 +17,7 @@ class MoveMapFadeEffect;
 class ShopUIManager;
 class SelectStartingUI;
 class PokemonCenterUI;
+class LevelChangeFade;
 class FieldmapLevel : public GameEngineLevel
 {
 public:
