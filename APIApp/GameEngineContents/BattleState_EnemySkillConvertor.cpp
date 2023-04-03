@@ -50,6 +50,10 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	case PokeSkill::Flamethrower:
 		return BattleEnemyMonster_StateType::Skill_Flamethrower;
 
+	case PokeSkill::DefenseCurl:
+		return BattleEnemyMonster_StateType::Skill_DefenseCurl;
+		break;
+
 
 	case PokeSkill::Slash:
 		SkillName = "Slash";
@@ -103,9 +107,7 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	case PokeSkill::DrillPeck:
 		SkillName = "DrillPeck";
 		break;
-	case PokeSkill::DefenseCurl:
-		SkillName = "DefenseCurl";
-		break;
+	
 	case PokeSkill::RockPolish:
 		SkillName = "RockPolish";
 		break;

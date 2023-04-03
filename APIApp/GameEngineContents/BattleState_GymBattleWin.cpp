@@ -4,7 +4,7 @@
 
 const std::vector<std::string_view> BattleState_GymBattleWin::Texts =
 {
-	"Woong :\Congratulation, This is yours",
+	"Woong :\nCongratulation, This is yours",
 	"I got a gray emblem!",
 };
 
