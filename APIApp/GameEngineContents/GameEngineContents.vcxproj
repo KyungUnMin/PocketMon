@@ -725,6 +725,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="SkillActor_Ember.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="SkillActor_Growl.cpp">
       <SubType>
       </SubType>
@@ -1361,6 +1365,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="SkillActor_DragonBrath.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="SkillActor_Ember.h">
       <SubType>
       </SubType>
     </ClInclude>

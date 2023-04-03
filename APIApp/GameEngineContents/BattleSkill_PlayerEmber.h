@@ -2,6 +2,7 @@
 #include "BattleSkill_PlayerBase.h"
 // Ό³Έν :
 class GameEngineRender;
+class SkillActor_Ember;
 class BattleSkill_PlayerEmber : public BattleSkill_PlayerBase
 {
 	friend class EmberEffect;
@@ -26,21 +27,20 @@ private:
 	const float4 StartPos = { -332, 212 };
 	const float4 EndPos = { 0, 32 };
 
-	GameEngineRender* EffectRender = nullptr;
+	SkillActor_Ember* EmberActor = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
-
 
 	enum class SkillState
 	{
-		Shoot,
+		Wait,
 		BackWard,
 		Flashing
 	};
-	float ShootTime = 0.f;
+	float WaitTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
-	SkillState CurState = SkillState::Shoot;
-	void Update_Shoot(float _DeltaTime);
+	SkillState CurState = SkillState::Wait;
+	void Update_Wait(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);
 	void Update_Flashing(float _DeltaTime);
 

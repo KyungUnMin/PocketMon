@@ -68,6 +68,7 @@ void TrainerPokemon::AllRecovery()
 {
 	for (int i = 0; i < Pokemons.size(); i++)
 	{
+		Pokemons[i].SternRecorvery();
 		Pokemons[i].ForInven_AllPowerPointRecovery();
 		Pokemons[i].SetMonsterCurrentHP(Pokemons[i].GetMonsterMaxHP_int());
 	}
