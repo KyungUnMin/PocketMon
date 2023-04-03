@@ -675,9 +675,10 @@ void FieldmapLevel::Loading()
 		{
 			PokemonCenterNPC* CenterNpc1 = CreateActor<PokemonCenterNPC>();
 			CenterNpc1->AddNPC("ViridianCity_PokemonCenter", int2(8, 4));
+			CenterNpc1->SetCityValue(1);
 			PokemonCenterNPC* CenterNpc2= CreateActor<PokemonCenterNPC>();
 			CenterNpc2->AddNPC("PewterCity_PokemonCenter", int2(8, 4));
-			
+			CenterNpc2->SetCityValue(2);
 		}
 	}
 

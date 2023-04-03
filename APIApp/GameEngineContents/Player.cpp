@@ -198,7 +198,7 @@ void Player::Render(float _DeltaTime)
 	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		//RedCollision->DebugRender();
+		PlayerDeathCheckFunction();
 	}
 }
 
@@ -286,15 +286,27 @@ void Player::JumpDown()
 
 void Player::PlayerDeathCheckFunction()
 {
-	//가능하면 이펙트 찾아서 추가할예정
-	if (true == IsPlayerDeath)
+	if (0 == CityValue)
 	{
-		int2 Pos=Set_P_Pos->GetSavePlayerPos();
-		//이거 체인지시티 나중에 변수로받기
 		Fieldmap::ChangeCity("PalletTown_Home2F");
-		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", Pos));
-		Fieldmap::FieldUpdate();
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", int2{ 7,7 }));
 	}
+	else if (1 == CityValue)
+	{
+		Fieldmap::ChangeCity("ViridianCity_PokemonCenter");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("ViridianCity_PokemonCenter", int2{ 8,6 }));
+	}
+	else if (2 == CityValue)
+	{
+		Fieldmap::ChangeCity("PewterCity_PokemonCenter");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity_PokemonCenter", int2{ 8,6 }));
+	}
+	else
+	{
+		MsgAssert("등록되지않은CityValue값입니다.");
+	}
+	
+	Fieldmap::FieldUpdate();
 }
 
 

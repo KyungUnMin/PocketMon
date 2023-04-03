@@ -170,12 +170,25 @@ public:
 	void SetPlayerDeath()
 	{
 		IsPlayerDeath = true;
-		PlayerDeathCheckFunction();
+		if (true == IsPlayerDeath)
+		{
+			PlayerDeathCheckFunction();
+		}
 	}
 
 	inline void PlayGymClearAnimation()
 	{
 		ChangeState(PlayerState::GymClear);
+	}
+
+	//1은상록 2는회색
+	inline void SetPlayerCityValue(int _Value)
+	{
+		if (!((1 == _Value) || (2 == _Value)))
+		{
+			MsgAssert("잘못된CityValue정보입니다")
+		}
+		CityValue = _Value;
 	}
 	
 protected:
@@ -268,6 +281,7 @@ private:
 	//////////DeathCheckbool
 	void PlayerDeathCheckFunction();
 	bool IsPlayerDeath = false;
-	PokemonCenterNPC* Set_P_Pos;
+	
+	int CityValue = 0;
 };
 

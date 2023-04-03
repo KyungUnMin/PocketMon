@@ -14,16 +14,26 @@ public:
 	PokemonCenterNPC(PokemonCenterNPC&& _Other) noexcept = delete;
 	PokemonCenterNPC& operator=(const PokemonCenterNPC& _Other) = delete;
 	PokemonCenterNPC& operator=(PokemonCenterNPC&& _Other) noexcept = delete;
-	int2 GetSavePlayerPos()
+
+	//1은상록 2는회색
+	inline void SetCityValue(int _Value)
 	{
-		return SavePlayerPos;
+		if (!(_Value == 1 || _Value == 2))
+		{
+			MsgAssert("등록할수없는 CityValue입니다");
+		}
+		CityValue = _Value;
 	}
+	
 protected:
 	void Start() override;
 	void IdleUpdate(float _DeltaTime) override;
+	void Update(float _DeltaTime) override;
 private:
 	GameEngineCollision* CenterNpc_C = nullptr;
 	int2 SavePlayerPos = int2::Zero;
 	
+
+	int CityValue = 0;
 };
 
