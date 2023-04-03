@@ -797,7 +797,6 @@ void FieldmapLevel::Loading()
 
 		}
 
-		//AddNPC("PewterCity_PokemonCenter", { 8,4 });
 		
 	}
 	{
