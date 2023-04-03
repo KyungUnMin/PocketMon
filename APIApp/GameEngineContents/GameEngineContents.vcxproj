@@ -368,6 +368,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp" />
     <ClCompile Include="BattleSkill_PlayerEarthquake.cpp">
       <SubType>
       </SubType>

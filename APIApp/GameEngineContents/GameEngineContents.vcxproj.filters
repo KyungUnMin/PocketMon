@@ -707,12 +707,11 @@
     <ClCompile Include="BattleSkill_EnemyIronDefense.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
-    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
-    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyDragonBrath.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="EndingWalkPlayer.cpp" />
+    <ClCompile Include="BattleSkill_PlayerDragonBrath.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1405,12 +1404,10 @@
     <ClInclude Include="BattleSkill_EnemyIronDefense.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
-    <ClInclude Include="BattleSkill_PlayerDragonBrath.h">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
-    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyDragonBrath.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
+    <ClInclude Include="EndingWalkPlayer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
