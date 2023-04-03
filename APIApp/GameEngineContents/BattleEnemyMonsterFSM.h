@@ -29,6 +29,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_Scratch,
 	Skill_FeatherDance,
 	Skill_Ember,
+	Skill_Flamethrower,
 	COUNT,
 };
 

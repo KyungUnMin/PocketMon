@@ -279,6 +279,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_EnemyFeatherDance.cpp" />
+    <ClCompile Include="BattleSkill_EnemyFlamethrower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyGrowl.cpp" />
     <ClCompile Include="BattleSkill_EnemyGust.cpp">
       <SubType>
@@ -361,6 +365,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerFeatherDance.cpp" />
+    <ClCompile Include="BattleSkill_PlayerFlamethrower.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerGrowl.cpp">
       <SubType>
       </SubType>
@@ -927,6 +935,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyFeatherDance.h" />
+    <ClInclude Include="BattleSkill_EnemyFlamethrower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyGrowl.h" />
     <ClInclude Include="BattleSkill_EnemyGust.h">
       <SubType>
@@ -1009,6 +1021,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerFeatherDance.h" />
+    <ClInclude Include="BattleSkill_PlayerFlamethrower.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_PlayerGrowl.h">
       <SubType>
       </SubType>

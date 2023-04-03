@@ -692,6 +692,12 @@
     <ClCompile Include="BattleState_GymBattleWin.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\14.GymBattleWin</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerFlamethrower.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyFlamethrower.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1368,6 +1374,12 @@
     </ClInclude>
     <ClInclude Include="BattleState_GymBattleWin.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\14.GymBattleWin</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerFlamethrower.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyFlamethrower.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

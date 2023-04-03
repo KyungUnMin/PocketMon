@@ -10,7 +10,7 @@ public:
 	SkillActor_Ember();
 	~SkillActor_Ember();
 
-	void SetEmber(const float4& _StartPos, const float4& _EndPos);
+	void SetEmber(const float4& _StartPos, const float4& _EndPos, float _WaitTime = 0);
 
 	// delete Function
 	SkillActor_Ember(const SkillActor_Ember& _Other) = delete;
@@ -26,6 +26,7 @@ private:
 	GameEngineRender* EffectRender = nullptr;
 	float4 StartPos = { 372, -182 };
 	float4 EndPos = { 48, 12 };
+	float WaitTime = 0.f;
 	bool IsLeft = false;
 	enum class EmberState
 	{
