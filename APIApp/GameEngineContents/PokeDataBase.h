@@ -507,6 +507,11 @@ public:
 		SpecialDefenseStack = 0;
 	}
 
+	int GetMonsterSkillCount()
+	{
+		return SkillCount;
+	}
+
 protected:
 
 private:
@@ -544,6 +549,7 @@ private:
 	int MonsterLevel = 0;								          // 몬스터 레벨
 	int Experience = 0;									          // 몬스터 경험치
 	int RemainingExperience = 0;						          // 몬스터 다음 레벨까지 남은 경험치
+	int SkillCount = 0;											  // 몬스터가 가진 스킬 갯수
 									    
 	int PokeBall = 0;									          // 포켓몬이 담겨있는 포켓볼 종류
 	PokeType Type = PokeType::Bug;								  // 포켓몬 속성 타입
