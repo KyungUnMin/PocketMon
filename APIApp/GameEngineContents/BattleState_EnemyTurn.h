@@ -1,7 +1,10 @@
 #pragma once
 #include "BattleStateBase.h"
+#include "PokeSkillBase.h"
 
 class BackTextActor;
+enum class BattleEnemyMonster_StateType;
+enum class PokeSkill;
 
 class BattleState_EnemyTurn : public BattleStateBase
 {
@@ -20,5 +23,7 @@ protected:
 
 private:
 	BackTextActor* TextInfoUI = nullptr;
+
+	BattleEnemyMonster_StateType ConvertSkill(PokeSkill _SkillType);
 };
 

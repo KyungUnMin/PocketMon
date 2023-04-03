@@ -435,6 +435,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_EnemySkillConvertor.cpp" />
     <ClCompile Include="BattleState_EnemyTurn.cpp" />
     <ClCompile Include="BattleState_EnemyHPCheck.cpp">
       <SubType>

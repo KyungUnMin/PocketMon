@@ -680,6 +680,9 @@
     <ClCompile Include="BattleDebug.cpp">
       <Filter>Battle\02.Actor\06.UIHandler\02.Debug</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_EnemySkillConvertor.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\03.EnemyTurn</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />

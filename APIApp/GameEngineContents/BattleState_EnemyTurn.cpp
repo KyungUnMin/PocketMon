@@ -1,4 +1,5 @@
 #include "BattleState_EnemyTurn.h"
+#include <GameEngineBase/GameEngineRandom.h>
 #include "BattleLevel.h"
 #include "BackTextActor.h"
 #include "BattleEnemy.h"
@@ -23,8 +24,13 @@ void BattleState_EnemyTurn::EnterState()
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfoUI->BattleSetText("Enemy Attacking...");
 
-	//임시코드, 나중에 EnemyMonster에서 함수를 따로 만들어서 연동시킬 계획,
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
+	PokeDataBase* MonsterDB = EnemyMonster->GetDB();
+
+	//GameEngineRandom::MainRandom.RandomInt(1, )
+	//PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList();
+
+
 	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_Thunder);
 }
 
