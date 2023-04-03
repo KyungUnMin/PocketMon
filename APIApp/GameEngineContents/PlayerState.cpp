@@ -127,7 +127,6 @@ void Player::IdleUpdate(float _Time)
 	}
 
 	Playerindex = Fieldmap::GetIndex(GetPos());	
-	Fieldmap::UpdateEventCheck(Playerindex);
 
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
@@ -165,10 +164,11 @@ void Player::IdleUpdate(float _Time)
 			EndPos = Fieldmap::GetPos(NextIndex);
 			ChangeState(PlayerState::MOVE);
 			InputControlHandle = InputControll::UseControll();
+			return;
 		}
-
-		return;
 	}
+
+	Fieldmap::UpdateEventCheck(Playerindex);
 }
 void Player::IdleEnd() 
 {

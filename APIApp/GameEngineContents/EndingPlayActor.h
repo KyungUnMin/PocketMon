@@ -59,6 +59,8 @@ private:
 	float4 CameraMoveDir = float4::Down;
 	float CameraSpeed = 1.0f;
 
+	float UpdateWaitTime = 3.0f;
+
 	float FakeFontAlpha = 0.0f;
 	float FakeFontAlphaDiff = 0.0f;
 

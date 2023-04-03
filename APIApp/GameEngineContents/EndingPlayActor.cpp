@@ -34,8 +34,6 @@ void EndingPlayActor::PlayEnding()
 	Player::MainPlayer->Off();
 	On();
 
-	PlayerAnim->On();
-	BackgroundRender->On();
 	IsEndingPlay = true;
 
 	CameraMoveDir = float4::Zero;
@@ -49,7 +47,6 @@ void EndingPlayActor::PlayEnding()
 	Fade->Off();
 	PlayerAnim->Off();
 
-
 	AddCameraMoveEvent("PewterCity", int2(15, 16), float4::Zero);
 
 	GameEngineLevel* Level = GetLevel();
@@ -57,7 +54,13 @@ void EndingPlayActor::PlayEnding()
 
 	Level->CreateActor<EndingWalkPlayer>();
 
-	LevelTimeEvent.AddEvent(1.5f, std::bind(
+	LevelTimeEvent.AddEvent(3.0f, std::bind(
+		[](EndingPlayActor* _This)
+		{
+			_This->BackgroundRender->On();
+		}, this), false);	
+	
+	LevelTimeEvent.AddEvent(4.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			float4 AnimPos = _This->PlayerAnim->GetPos();
@@ -66,7 +69,7 @@ void EndingPlayActor::PlayEnding()
 			_This->PlayerAnim->On();
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(2.0f, std::bind(
+	LevelTimeEvent.AddEvent(5.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -80,14 +83,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(1, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(6.0f, std::bind(
+	LevelTimeEvent.AddEvent(9.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		},this), false);
 	
-	LevelTimeEvent.AddEvent(6.5f, std::bind(
+	LevelTimeEvent.AddEvent(9.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -101,14 +104,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(10.5f, std::bind(
+	LevelTimeEvent.AddEvent(13.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(11.0f, std::bind(
+	LevelTimeEvent.AddEvent(14.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -122,7 +125,7 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(15.5f, std::bind(
+	LevelTimeEvent.AddEvent(18.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
@@ -144,14 +147,14 @@ void EndingPlayActor::PlayEnding()
 	
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(20.0f, std::bind(
+	LevelTimeEvent.AddEvent(23.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(20.5f, std::bind(
+	LevelTimeEvent.AddEvent(23.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -165,14 +168,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(24.5f, std::bind(
+	LevelTimeEvent.AddEvent(27.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(25.0f, std::bind(
+	LevelTimeEvent.AddEvent(28.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -186,14 +189,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(29.0f, std::bind(
+	LevelTimeEvent.AddEvent(32.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(29.5f, std::bind(
+	LevelTimeEvent.AddEvent(32.5f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon002.bmp");
@@ -209,7 +212,7 @@ void EndingPlayActor::PlayEnding()
 	
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(33.5f, std::bind(
+	LevelTimeEvent.AddEvent(39.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -223,14 +226,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(37.5f, std::bind(
+	LevelTimeEvent.AddEvent(40.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(38.0f, std::bind(
+	LevelTimeEvent.AddEvent(41.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -244,14 +247,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(42.0f, std::bind(
+	LevelTimeEvent.AddEvent(45.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(42.5f, std::bind(
+	LevelTimeEvent.AddEvent(45.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon003.bmp");
@@ -267,14 +270,14 @@ void EndingPlayActor::PlayEnding()
 	
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(46.5f, std::bind(
+	LevelTimeEvent.AddEvent(49.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(47.0f, std::bind(
+	LevelTimeEvent.AddEvent(50.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -288,14 +291,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(-1, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(51.0f, std::bind(
+	LevelTimeEvent.AddEvent(54.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(51.5f, std::bind(
+	LevelTimeEvent.AddEvent(54.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(255);
@@ -309,14 +312,14 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
-	LevelTimeEvent.AddEvent(55.5f, std::bind(
+	LevelTimeEvent.AddEvent(58.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
 			_This->SetFakeTextAlphaDiff(510.0f);
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(56.0f, std::bind(
+	LevelTimeEvent.AddEvent(59.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::SetPokemonImageName("EndingPokemon004.bmp");
@@ -332,7 +335,7 @@ void EndingPlayActor::PlayEnding()
 
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(60.0f, std::bind(
+	LevelTimeEvent.AddEvent(63.0f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->SetFakeTextAlpha(0);
@@ -340,7 +343,7 @@ void EndingPlayActor::PlayEnding()
 			_This->SetCameraDir(float4::Zero);
 		}, this), false);	
 	
-	LevelTimeEvent.AddEvent(60.5f, std::bind(
+	LevelTimeEvent.AddEvent(63.5f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->MainTextActor->Off();
@@ -355,13 +358,13 @@ void EndingPlayActor::PlayEnding()
 			_This->PlayerAnim->MovePos(Start, Dest, 0.5f);
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(61.3f, std::bind(
+	LevelTimeEvent.AddEvent(64.3f, std::bind(
 		[](EndingPlayActor* _This)
 		{
 			_This->Fade->On();
 		}, this), false);
 
-	LevelTimeEvent.AddEvent(63.0f, std::bind(
+	LevelTimeEvent.AddEvent(66.0f, std::bind(
 		[](EndingPlayActor* _This) 
 		{
 			EndingLevel::PlayLastEffect();
@@ -463,6 +466,12 @@ void EndingPlayActor::Start()
 
 void EndingPlayActor::Update(float _DeltaTime)
 {
+	if (0.0f < UpdateWaitTime)
+	{
+		UpdateWaitTime -= _DeltaTime;
+		return;
+	}
+
 	GetLevel()->SetCameraMove(CameraMoveDir * _DeltaTime * CameraSpeed);
 	FakeFontAlpha += FakeFontAlphaDiff * _DeltaTime;
 	UpdateAlpha();
