@@ -1,6 +1,7 @@
 #pragma once
 #include "StaticNPC.h"
 
+
 class PokemonCenterNPC : public StaticNPC
 {
 public:
@@ -13,7 +14,8 @@ public:
 	PokemonCenterNPC& operator=(PokemonCenterNPC&& _Other) noexcept = delete;
 
 protected:
-	
+	void Start() override;
+	void IdleUpdate(float _DeltaTime) override;
 private:
 
 

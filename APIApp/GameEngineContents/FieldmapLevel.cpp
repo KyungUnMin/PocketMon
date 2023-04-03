@@ -49,6 +49,7 @@
 #include "ShopNpc.h"
 #include "StopOakNPC.h"
 #include "LeafNPC.h"
+#include "PokemonCenterNPC.h"
 
 // Player
 #include "Player.h"
@@ -798,6 +799,10 @@ void FieldmapLevel::Loading()
 
 
 		
+	}
+	{
+		PokemonCenterNPC* CenterNpc = CreateActor<PokemonCenterNPC>();
+		CenterNpc->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
 
 	// 이벤트 모음
