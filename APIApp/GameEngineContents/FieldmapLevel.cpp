@@ -597,7 +597,7 @@ void FieldmapLevel::Loading()
 		LeafNPCptr->Look(LookDir::Right);
 		LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
 		LeafNPCptr->SetLookDis(20);
-		LeafNPCptr->AddScript(".........");
+		LeafNPCptr->AddScript("___");
 		LeafNPCptr->AddPokeData(1, 99);
 		LeafNPCptr->AddPokeData(4, 99);
 		LeafNPCptr->AddPokeData(7, 99);
@@ -608,7 +608,7 @@ void FieldmapLevel::Loading()
 		NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
 		NPCPtr->AddNPC("PalletTown", int2(20, 18));
 		NPCPtr->AddScript("Technology is incredible!");
-		NPCPtr->AddScript("You can now store and recall \nitems and POK@MON as data via PC.");
+		NPCPtr->AddScript("You can now store and recall\nitems and POK@MON as data via PC.");
 		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
@@ -620,7 +620,7 @@ void FieldmapLevel::Loading()
 		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
 		BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::Woong);
 		BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
-		BaatleNpcPtr->AddScript("Script 050");
+		BaatleNpcPtr->AddScript("Get ready to face the\npower of my POK@MON!");
 		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
@@ -632,7 +632,7 @@ void FieldmapLevel::Loading()
 		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
 		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC4.bmp", BattleNpcType::Woong);
 		BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
-		BaatleNpcPtr->AddScript("Script 051");
+		BaatleNpcPtr->AddScript("My POK@MON may not look like much,but it's got some serious bite!");
 		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
@@ -644,8 +644,8 @@ void FieldmapLevel::Loading()
 		StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
 		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::Woong);
 		BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
-		BaatleNpcPtr->AddScript("Script 040");
-		BaatleNpcPtr->AddScript("Script 041");
+		BaatleNpcPtr->AddScript("Hey! You have POK@MON!\nCome on!");
+		BaatleNpcPtr->AddScript("Let`s battle `em!");
 		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 		BaatleNpcPtr->SetBaseDir(LookDir::Left);
 		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
@@ -657,8 +657,7 @@ void FieldmapLevel::Loading()
 		StaticNPC* WoongPtr = CreateActor<StaticNPC>();
 		WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
 		WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
-		WoongPtr->AddScript("Script 040");
-		WoongPtr->AddScript("Script 041");
+		WoongPtr->AddScript("You`re going down! MyPOK@MON\nwon`t hold anything back!");
 		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
 		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
 		WoongPtr->SetBaseDir(LookDir::Down);
