@@ -14,6 +14,7 @@
 #include "EndingLevel.h"
 #include "OpeningLevel.h"
 #include "TrainerCardLevel.h"
+#include "PlayTime.h"
 
 PocketMonCore PocketMonCore::Core;
 
@@ -50,6 +51,7 @@ void PocketMonCore::Start()
 void PocketMonCore::Update(float _DeltaTime)
 {
 	InputControll::ResetDoubleCheck();
+	PlayTime::MianPlayTime->Update(_DeltaTime);
 }
 
 void PocketMonCore::End()

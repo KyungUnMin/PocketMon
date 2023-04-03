@@ -706,6 +706,10 @@
     <ClCompile Include="FriendlyHPBackground.cpp" />
     <ClCompile Include="HpBackGroundMove.cpp" />
     <ClCompile Include="int2.cpp" />
+    <ClCompile Include="PlayTime.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="ShopNpc.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerLoad.cpp" />
@@ -1388,6 +1392,10 @@
     <ClInclude Include="FriendlyHPBackground.h" />
     <ClInclude Include="HpBackGroundMove.h" />
     <ClInclude Include="int2.h" />
+    <ClInclude Include="PlayTime.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="ShopNpc.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerTestLevel.h" />

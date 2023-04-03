@@ -7,6 +7,7 @@
 
 #include "CenterActor.h"
 #include "BattleDefine.h"
+#include "PlayTime.h"
 
 CenterLevel::CenterLevel() 
 {
@@ -18,6 +19,8 @@ CenterLevel::~CenterLevel()
 
 void CenterLevel::Loading()
 {
+	CreateActor<PlayTime>();
+
 	GameEngineDirectory Dir;
 
 	Dir.MoveParentToDirectory("ContentsResources");
