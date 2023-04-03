@@ -50,6 +50,20 @@ void BuyYesNoMenu::Start()
 	Off();
 }
 
+void BuyYesNoMenu::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
+}
+
+void BuyYesNoMenu::BuySoundPlay()
+{
+	BuySound = GameEngineResources::GetInst().SoundPlayToControl("BuySound.wav");
+	BuySound.Volume(0.8f);
+	BuySound.LoopCount(1);
+}
+
 void BuyYesNoMenu::UpdateStart()
 {
 	InputControlHandle = InputControll::UseControll();
@@ -74,11 +88,13 @@ void BuyYesNoMenu::Update(float _DeltaTime)
 			Off();
 			BuyLevelDialog::GetBuyLevelDialog()->ConversationStart(&Script);
 			BuyLevelDialog::GetBuyLevelDialog()->IsValid = true;
+			BuySoundPlay();
 			break;
 		case MenuState::No:
 			Off();
 			//BuyWindow::GetBuyWindow()->IsValid = true;
 			BuyLevelDialog::GetBuyLevelDialog()->Off();
+			MenuBeepSoundPlay();
 			break;
 		default:
 			break;
@@ -125,6 +141,7 @@ void BuyYesNoMenu::ChangeState()
 		State = MenuState::Yes;
 	}
 	StateToRender();
+	MenuBeepSoundPlay();
 }
 
 void BuyYesNoMenu::BuyItem()

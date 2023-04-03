@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>	
+#include <GameEngineCore/GameEngineResources.h>
 #include "ShopUIManager.h"
 #include "ContentsEnum.h"
 
@@ -46,6 +47,10 @@ private:
 	float4 FirstArrowRenderPos = {-176, -60}; // 32 44  //12, 20
 	float4 SecondArrowRenderPos = {-176, 4}; // 32 44  //12, 20
 	float4 ThirdArrowRenderPos = {-176, 68}; // 32 44  //12, 20
+
+	GameEngineSoundPlayer MenuBeepSound = GameEngineSoundPlayer();
+
+	void MenuBeepSoundPlay();
 
 	void UpdateStart();
 	void UpdateEnd();

@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 enum class CenterProcess
 {
@@ -61,7 +62,12 @@ private:
 
 	GameEngineRender* MonitorAnimation = nullptr;
 
-	float AnimationTime = 0.0f;
+	float AnimationTime1 = 0.0f;
+	float AnimationTime2 = 0.0f;
+
+	GameEngineSoundPlayer HealSound = GameEngineSoundPlayer();
+	GameEngineSoundPlayer PutBallSound = GameEngineSoundPlayer();
+	GameEngineSoundPlayer MenuBeepSound = GameEngineSoundPlayer();
 
 	void StateToRender();
 	void ChangeState();
@@ -73,4 +79,7 @@ private:
 	void CountAndTwinkleBallAnimationOn(int _Count);
 	void CountAndTwinkleBallAnimationOff(int _Count);
 
+	void HealSoundPlay();
+	void PutBallSoundPlay();
+	void MenuBeepSoundPlay();
 };

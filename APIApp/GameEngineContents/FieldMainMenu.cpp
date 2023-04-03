@@ -82,6 +82,7 @@ void FieldMainMenu::ChangeStatePrev()
 	}
 	State = static_cast<MainMenuState>(CurState);
 	MenuStateToRender();
+	ChangeStateSoundPlay();
 }
 
 void FieldMainMenu::ChangeStateNext()
@@ -94,8 +95,22 @@ void FieldMainMenu::ChangeStateNext()
 	}
 	State = static_cast<MainMenuState>(CurState);
 	MenuStateToRender();
+	ChangeStateSoundPlay();
 }
 
+void FieldMainMenu::ChangeStateSoundPlay()
+{
+	ChangeStateSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	ChangeStateSound.Volume(1.0f);
+	ChangeStateSound.LoopCount(1);
+}
+
+void FieldMainMenu::MainMenuOpenSoundPlay()
+{
+	MainMenuOpenSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MainMenuOpenSound.Volume(0.8f);
+	MainMenuOpenSound.LoopCount(1);
+}
 
 void FieldMainMenu::UpdateStart()
 {
@@ -108,6 +123,7 @@ void FieldMainMenu::UpdateStart()
 	Player::MainPlayer->SetPlayerMoveBool(false);
 	State = MainMenuState::Pokemon;
 	MenuStateToRender();
+	MainMenuOpenSoundPlay();
 }
 
 void FieldMainMenu::Update(float _DeltaTime)
@@ -135,12 +151,15 @@ void FieldMainMenu::Update(float _DeltaTime)
 		{
 		case MainMenuState::Pokemon:
 			GameEngineCore::GetInst()->ChangeLevel("PokemonLevel");
+			ChangeStateSoundPlay();
 			break;
 		case MainMenuState::Bag:
 			GameEngineCore::GetInst()->ChangeLevel("BagLevel");
+			ChangeStateSoundPlay();
 			break;
 		case MainMenuState::Red:
 			GameEngineCore::GetInst()->ChangeLevel("TrainerCardLevel");
+			ChangeStateSoundPlay();
 			break;
 		case MainMenuState::Save:
 			break;
@@ -164,5 +183,6 @@ void FieldMainMenu::UpdateEnd()
 {
 	InputControlHandle = InputControll::ResetControll(InputControlHandle);
 	Player::MainPlayer->SetPlayerMoveBool(true);
+	ChangeStateSoundPlay();
 }
 

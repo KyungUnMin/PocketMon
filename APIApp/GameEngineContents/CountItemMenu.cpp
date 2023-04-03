@@ -77,6 +77,13 @@ void CountItemMenu::Start()
 	Off();
 }
 
+void CountItemMenu::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
+}
+
 void CountItemMenu::UpdateStart(Item& _Item)
 {
 	SetCount(1);
@@ -153,6 +160,7 @@ void CountItemMenu::AddCount()
 	}
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price* Count);
+	MenuBeepSoundPlay();
 }
 
 void CountItemMenu::AddCount10()
@@ -166,6 +174,7 @@ void CountItemMenu::AddCount10()
 	Count = CountSave;
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price * Count);
+	MenuBeepSoundPlay();
 }
 
 void CountItemMenu::SubCount()
@@ -189,6 +198,7 @@ void CountItemMenu::SubCount()
 	}
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price * Count);
+	MenuBeepSoundPlay();
 }
 
 void CountItemMenu::SubCount10()
@@ -202,6 +212,7 @@ void CountItemMenu::SubCount10()
 	Count = CountSave;
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price * Count);
+	MenuBeepSoundPlay();
 }
 
 void CountItemMenu::SetCount(int _ItemCount)
@@ -209,6 +220,7 @@ void CountItemMenu::SetCount(int _ItemCount)
 	Count = _ItemCount;
 	CountNum.SetValue(Count);
 	PriceNum.SetValue(Price * Count);
+	MenuBeepSoundPlay();
 }
 
 void CountItemMenu::SetPrice(int _ItemPrice)

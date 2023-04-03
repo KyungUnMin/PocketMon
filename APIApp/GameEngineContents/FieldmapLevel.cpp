@@ -874,16 +874,6 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterTVAnimation.bmp"))->Cut(4,2);
 }
 
-void FieldmapLevel::UISountLoad()
-{
-	GameEngineDirectory Dir;
-	Dir.MoveParentToDirectory("ContentsResources");
-	Dir.Move("ContentsResources");
-	Dir.Move("Sound");
-	Dir.Move("FieldUI");
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));
-}
-
 void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
 {
 }

@@ -168,6 +168,7 @@ void BuyWindow::Update(float _DeltaTime)
 				return;
 			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[0]);
+			MenuBeepSoundPlay();
 			break;
 		case 1:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
@@ -177,6 +178,7 @@ void BuyWindow::Update(float _DeltaTime)
 				return;
 			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[1]);
+			MenuBeepSoundPlay();
 			break;
 		case 2:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
@@ -186,6 +188,7 @@ void BuyWindow::Update(float _DeltaTime)
 				return;
 			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[2]);
+			MenuBeepSoundPlay();
 			break;
 		case 3:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
@@ -195,6 +198,7 @@ void BuyWindow::Update(float _DeltaTime)
 				return;
 			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[3]);
+			MenuBeepSoundPlay();
 			break;
 		case 4:
 			InputControlHandle = InputControll::ResetControll(InputControlHandle);
@@ -204,6 +208,7 @@ void BuyWindow::Update(float _DeltaTime)
 				return;
 			}
 			BuyUIManager::GetBuyUIManager()->On(ItemList[4]);
+			MenuBeepSoundPlay();
 			break;
 		case 5:
 			Cancle();
@@ -212,6 +217,13 @@ void BuyWindow::Update(float _DeltaTime)
 			break;
 		}
 	}
+}
+
+void BuyWindow::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
 }
 
 void BuyWindow::UpdateStart()
@@ -247,6 +259,7 @@ void BuyWindow::ChangeStatePrev()
 		State = 5;
 	}
 	StateToRender();
+	MenuBeepSoundPlay();
 }
 
 void BuyWindow::ChangeStateNext()
@@ -257,6 +270,7 @@ void BuyWindow::ChangeStateNext()
 		State = 0;
 	}
 	StateToRender();
+	MenuBeepSoundPlay();
 }
 
 void BuyWindow::ChangeState(int _State)
@@ -267,11 +281,13 @@ void BuyWindow::ChangeState(int _State)
 	}
 	State = _State;
 	StateToRender();
+	MenuBeepSoundPlay();
 }
 
 void BuyWindow::Cancle()
 {
 	LevelChangeFade::MainLevelFade->LevelChangeFadeOut("FieldmapLevel");
+	MenuBeepSoundPlay();
 }
 
 void BuyWindow::ItemPushBack()

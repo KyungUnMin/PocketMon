@@ -110,6 +110,7 @@ void SelectStartingUI::Update(float _DeltaTime)
 					StateToRender();
 					Off();
 					IsGetPokemon = true;
+					MenuBeepSoundPlay();
 					break;
 				case MenuState::No:
 					AcFieldDialog->IsValid = true;
@@ -118,6 +119,7 @@ void SelectStartingUI::Update(float _DeltaTime)
 					Off();
 					AcFieldDialog->Off();
 					IsGetPokemon = false;
+					MenuBeepSoundPlay();
 					break;
 				default:
 					break;
@@ -125,6 +127,13 @@ void SelectStartingUI::Update(float _DeltaTime)
 			}
 		}
 	}
+}
+
+void SelectStartingUI::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
 }
 
 void SelectStartingUI::UpdateStart(PokeNumber _Pokemon, std::function<void()> _DeleteBall)
@@ -201,4 +210,5 @@ void SelectStartingUI::ChangeState()
 		State = MenuState::Yes;
 		StateToRender();
 	}
+	MenuBeepSoundPlay();
 }

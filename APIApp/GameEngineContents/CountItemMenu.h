@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/NumberRenderObject.h>
 #include "ContentsEnum.h"
 
@@ -65,6 +66,8 @@ private:
 	std::list<std::string> Scripts = std::list<std::string>();
 
 	int InputControllHandle = -1;
+	GameEngineSoundPlayer MenuBeepSound = GameEngineSoundPlayer();
+	void MenuBeepSoundPlay();
 
 	void UpdateStart(Item& _Item);
 	void UpdateEnd();

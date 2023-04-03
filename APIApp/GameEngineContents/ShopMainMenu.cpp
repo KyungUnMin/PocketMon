@@ -45,6 +45,13 @@ void ShopMainMenu::Start()
 }
 
 
+void ShopMainMenu::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
+}
+
 void ShopMainMenu::UpdateStart()
 {
 	State = ShopMianMenuState::Buy;
@@ -72,10 +79,12 @@ void ShopMainMenu::Update(float _DeltaTime)
 		{
 		case ShopMianMenuState::Buy:
 			GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
+			MenuBeepSoundPlay();
 			break;
 		case ShopMianMenuState::Sell:
 			break;
 		case ShopMianMenuState::SeeYa:
+			MenuBeepSoundPlay();
 			AcParent->LeaveShop();
 			break;
 		default:
@@ -117,6 +126,7 @@ void ShopMainMenu::ChangeStatePrev()
 	}
 	State = static_cast<ShopMianMenuState>(CurState);
 	MenuStateToRender();
+	MenuBeepSoundPlay();
 }
 
 void ShopMainMenu::ChangeStateNext()
@@ -129,6 +139,7 @@ void ShopMainMenu::ChangeStateNext()
 	}
 	State = static_cast<ShopMianMenuState>(CurState);
 	MenuStateToRender();
+	MenuBeepSoundPlay();
 }
 
 void ShopMainMenu::ChangeState()
@@ -137,10 +148,12 @@ void ShopMainMenu::ChangeState()
 	{
 		State = ShopMianMenuState::SeeYa;
 		MenuStateToRender();
+		MenuBeepSoundPlay();
 	}
 	else
 	{
 		State = ShopMianMenuState::Buy;
 		MenuStateToRender();
+		MenuBeepSoundPlay();
 	}
 }

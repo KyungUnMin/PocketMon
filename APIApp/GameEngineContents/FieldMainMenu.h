@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "ContentsEnum.h"
 
 enum class MainMenuState
@@ -48,10 +49,15 @@ private:
 
 	int InputControlHandle = -1;
 
+	GameEngineSoundPlayer MainMenuOpenSound = GameEngineSoundPlayer();
+	GameEngineSoundPlayer ChangeStateSound = GameEngineSoundPlayer();
+
 	void UpdateStart();
 	void UpdateEnd();
 	void MenuStateToRender();
 	void ChangeStatePrev();
 	void ChangeStateNext();
+	void ChangeStateSoundPlay();
+	void MainMenuOpenSoundPlay();
 };
 

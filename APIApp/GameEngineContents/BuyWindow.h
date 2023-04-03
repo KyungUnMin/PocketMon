@@ -1,6 +1,7 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
 #include <GameEngineCore/NumberRenderObject.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "TextActor.h"
 #include "ContentsEnum.h"
 #include "Item.h"
@@ -73,7 +74,8 @@ private:
 	std::list<std::string> LackMoneyScript = std::list<std::string>();
 
 	int State = 0;
-
+	GameEngineSoundPlayer MenuBeepSound = GameEngineSoundPlayer();
+	void MenuBeepSoundPlay();
 
 	void UpdateStart();
 	void UpdateEnd();

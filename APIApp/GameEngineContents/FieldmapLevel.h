@@ -64,7 +64,6 @@ private:
 	bool IsCameraDebug = false;
 
 	void UIImageLoad();
-	void UISountLoad();
 
 	void CreateFlower(const std::string_view& _CityName, const int2& _Index);
 

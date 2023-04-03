@@ -91,6 +91,13 @@ void FieldDialog::Start()
 	Off();
 }
 
+void FieldDialog::DialogNextButtonSoundPlay()
+{
+	DialogNextButtonSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	DialogNextButtonSound.Volume(0.8f);
+	DialogNextButtonSound.LoopCount(1);
+}
+
 void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 {
 	Player::MainPlayer->SetPlayerMoveBool(false);
@@ -165,10 +172,12 @@ void FieldDialog::Update(float _DeltaTime)
 			SecondLineRenderLen = 0;
 			StringToRender();
 			ArrowRender->Off();
+			DialogNextButtonSoundPlay();
 		}
 		else
 		{
 			Off();
+			DialogNextButtonSoundPlay();
 		}
 	}
 }

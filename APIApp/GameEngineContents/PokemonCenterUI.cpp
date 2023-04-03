@@ -108,6 +108,7 @@ void PokemonCenterUI::Update(float _DeltaTime)
 			if (GameEngineInput::IsDown("Menu_Up") || GameEngineInput::IsDown("Menu_Down"))
 			{
 				ChangeState();
+				MenuBeepSoundPlay();
 			}
 
 			if (GameEngineInput::IsDown("A"))
@@ -122,12 +123,14 @@ void PokemonCenterUI::Update(float _DeltaTime)
 					StateToRender();
 					HealMonsterCount = static_cast<int>(Player::MainPlayer->GetPlayerPokemon()->GetPokemonCount());
 					Player::MainPlayer->GetPlayerPokemon()->AllRecovery();
+					MenuBeepSoundPlay();
 					break;
 				case PokemonMenuState::No:
 					AcFieldDialog->ConversationStart(&GoodbyeScript1);
 					State = PokemonMenuState::Null;
 					StateToRender();
 					Off();
+					MenuBeepSoundPlay();
 					break;
 				default:
 					break;
@@ -205,22 +208,37 @@ void PokemonCenterUI::StartAnimationAndChangeProcess(float _DeltaTime)
 	{
 		PutBallAnimation->ChangeAnimation(std::to_string(HealMonsterCount), true);
 		PutBallAnimation->On();
+		PutBallSoundPlay();
+	}
+	else if (PutBallAnimation->IsUpdate() && !PutBallAnimation->IsAnimationEnd())
+	{
+		AnimationTime1 += _DeltaTime;
+		if (AnimationTime1 >= 0.4f)
+		{
+			AnimationTime1 = 0;
+			PutBallSoundPlay();
+		}
+	}
+	else
+	{
+		AnimationTime1 = 0;
 	}
 	
 	if (PutBallAnimation->IsAnimationEnd())
 	{
-		AnimationTime += _DeltaTime;
-		if (AnimationTime >= 0.4f && !IsAnyTwinkleBallAnimationUpdate())
+		AnimationTime2 += _DeltaTime;
+		if (AnimationTime2 >= 0.4f && !IsAnyTwinkleBallAnimationUpdate())
 		{
 			CountAndTwinkleBallAnimationOn(HealMonsterCount);
 			MonitorAnimation->On();
+			HealSoundPlay();
 		}
-		else if (AnimationTime >= 2.0f)
+		else if (AnimationTime2 >= 2.0f)
 		{
 			AllAnimationOff();
 			Process = CenterProcess::Goodbye;
 			AcFieldDialog->ConversationStart(&GoodbyeScript2);
-			AnimationTime = 0;
+			AnimationTime2 = 0;
 		}
 	}
 }
@@ -284,6 +302,27 @@ void PokemonCenterUI::CountAndTwinkleBallAnimationOff(int _Count)
 	default:
 		break;
 	}
+}
+
+void PokemonCenterUI::HealSoundPlay()
+{
+	HealSound = GameEngineResources::GetInst().SoundPlayToControl("Healed.mp3");
+	HealSound.Volume(0.8f);
+	HealSound.LoopCount(1);
+}
+
+void PokemonCenterUI::PutBallSoundPlay()
+{
+	PutBallSound = GameEngineResources::GetInst().SoundPlayToControl("CenterPutBall.wav");
+	PutBallSound.Volume(0.8f);
+	PutBallSound.LoopCount(1);
+}
+
+void PokemonCenterUI::MenuBeepSoundPlay()
+{
+	MenuBeepSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuBeepSound.Volume(0.8f);
+	MenuBeepSound.LoopCount(1);
 }
 
 

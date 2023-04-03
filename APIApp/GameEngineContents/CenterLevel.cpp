@@ -466,9 +466,9 @@ void CenterLevel::Loading()
 		Dir.Move("FieldUI");
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MenuButton.wav"));
-
-
-
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CenterPutBall.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))

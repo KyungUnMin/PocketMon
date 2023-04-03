@@ -1,6 +1,7 @@
 #pragma once
 #include <functional>
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "PokeDataBase.h"
 
 enum class MenuState
@@ -64,6 +65,9 @@ private:
 	bool IsGetPokemon = false;
 
 	std::function<void()> DeleteBallFunction = nullptr;
+
+	GameEngineSoundPlayer MenuBeepSound = GameEngineSoundPlayer();
+	void MenuBeepSoundPlay();
 
 
 	void UpdateStart(PokeNumber _Pokemon, std::function<void()> _DeleteBall);
