@@ -21,7 +21,8 @@ public:
 
 	// 모든 포켓몬을 받아온다.
 	std::vector<PokeDataBase> GetPokemons();
-
+	// 모든 포켓몬을 받아온다.
+	std::vector<PokeDataBase>& GetPokemonsRef();
 	// 다음 포켓몬을 받아온다.
 	PokeDataBase* NextPokemon();
 

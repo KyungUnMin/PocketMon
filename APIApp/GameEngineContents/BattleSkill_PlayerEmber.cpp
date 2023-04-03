@@ -19,6 +19,7 @@ void BattleSkill_PlayerEmber::EnterState()
 	EnemyMonster = GetEnemyMonster()->GetRender();
 
 	EmberActor = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Ember>();
+	EmberActor->SetEmber(StartPos, EndPos);
 }
 
 void BattleSkill_PlayerEmber::Update(float _DeltaTime)
