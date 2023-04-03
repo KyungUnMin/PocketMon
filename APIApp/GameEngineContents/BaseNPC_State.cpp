@@ -6,7 +6,7 @@
 #include "FieldDialog.h"
 #include "Player.h"
 #include "BattleLevel.h"
-#include "BattleFadeCtrl.h"
+#include "BattleFade.h"
 
 // Idle
 void BaseNPC::IdleStart()
@@ -190,8 +190,8 @@ void BaseNPC::InteractionEnd()
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
 		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
 
-		BattleFadeCtrl* Fade = GetLevel()->CreateActor<BattleFadeCtrl>();
-		Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(
+		BattleFade* Fade = BattleFade::GetFieldmapBattleFade();
+		Fade->PlayBattleFade(2, 5.0f, std::bind(
 
 			[](BaseNPC* _this)
 			{
@@ -202,7 +202,6 @@ void BaseNPC::InteractionEnd()
 				GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
 			},
 			this));
-		Fade->On();
 	}
 	else if (InputHandle >= 0)
 	{

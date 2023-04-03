@@ -200,6 +200,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleEnemy_MoveState.cpp" />
+    <ClCompile Include="BattleFade.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleFadeCtrl.cpp">
       <SubType>
       </SubType>
@@ -842,6 +846,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleEnemy_MoveState.h" />
+    <ClInclude Include="BattleFade.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleFadeCtrl.h">
       <SubType>
       </SubType>

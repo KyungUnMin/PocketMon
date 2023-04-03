@@ -111,6 +111,11 @@ void GreenNPC::IdleUpdate(float _DeltaTime)
 		return;
 	}
 
+	if (0.0f < WaitTime)
+	{
+		WaitTime -= _DeltaTime;
+		return;
+	}
 	if (true == PokemonScript::IsScriptEnd(200))
 	{
 		if (MovePoints.size() == 0 && true == IsBattleEnd)
@@ -132,12 +137,16 @@ void GreenNPC::IdleUpdate(float _DeltaTime)
 	}
 	else if (true == PokemonScript::IsScriptEnd(100))
 	{
+		ScriptKey = 1;
+
 		if (IsSelectMove == false)
 		{
 			InputHandle = InputControll::UseControll();
 
 			int2 NpcIndex = Fieldmap::GetIndex(GetPos());
 			int2 PokeballPos = StartingPokeball::StaticRivalMovelIndex;
+
+			WaitTime = 2.0f;
 
 			for (size_t i = 0; i < 2; i++)
 			{
@@ -156,6 +165,7 @@ void GreenNPC::IdleUpdate(float _DeltaTime)
 
 			IsSelectMove = true;
 			SetBaseDir(LookDir::Up);
+			return;
 		}
 
 		if (true == IsSelectMove && MovePoints.size() == 0)
@@ -165,8 +175,6 @@ void GreenNPC::IdleUpdate(float _DeltaTime)
 			PokemonScript::EndScript(150);
 			StartingPokeball::StaticRivalPokeball->RenderOff();
 		}
-
-		ScriptKey = 1;
 	}
 	else
 	{

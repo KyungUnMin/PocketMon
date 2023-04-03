@@ -24,5 +24,7 @@ private:
 	bool IsSelectMove = false;
 	bool IsBlockMove = false;
 	bool IsBattleEnd = false;
+
+	float WaitTime = 0.0f;
 };
 

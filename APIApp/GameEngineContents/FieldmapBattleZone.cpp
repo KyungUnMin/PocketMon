@@ -6,7 +6,7 @@
 #include "Player.h"
 #include "BattleZoneBushParticle.h"
 #include "BattleLevel.h"
-#include "BattleFadeCtrl.h"
+#include "BattleFade.h"
 #include "InputControll.h"
 
 FieldmapBattleZone::FieldmapBattleZone()
@@ -81,14 +81,12 @@ void FieldmapBattleZone::BattleStart()
 
 	InputControllHandle = InputControll::UseControll();
 
-	BattleFadeCtrl* Fade = GetLevel()->CreateActor<BattleFadeCtrl>();
-	Fade->Init(BattleFadeCtrl::FadeType::BlackOut, std::bind(
+	BattleFade* Fade = BattleFade::GetFieldmapBattleFade();
+	Fade->PlayBattleFade(3, 5.0f, std::bind(
 		[](FieldmapBattleZone* _this)
 		{
 			_this->InputControllHandle = InputControll::ResetControll(_this->InputControllHandle);
 			GameEngineCore::GetInst()->ChangeLevel("BattleLevel");
 		},
 		this));
-	Fade->On();
-	//Fade->SetDuration(1.0f);
 }

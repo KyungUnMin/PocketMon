@@ -64,6 +64,7 @@
 #include "FieldDialog.h"
 #include "SelectStartingUI.h"
 #include "MoveMapFadeEffect.h"
+#include "BattleFade.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 std::vector<std::function<void()>> FieldmapLevel::LevelStartCallFuncs;
@@ -715,6 +716,7 @@ void FieldmapLevel::Loading()
 	MainShopUIManager = CreateActor<ShopUIManager>(); 
 	MainSelectStartingUI = CreateActor<SelectStartingUI >();
 	MainPokemonCenterUI = CreateActor<PokemonCenterUI>();
+	CreateActor<BattleFade>();
 }
 
 void FieldmapLevel::Update(float _DeltaTime)
