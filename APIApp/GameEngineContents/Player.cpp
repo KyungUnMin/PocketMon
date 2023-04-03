@@ -195,10 +195,10 @@ void Player::Update(float _DeltaTime)
 
 void Player::Render(float _DeltaTime)
 {
-	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
+	//일단 내리기기능만
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		//PlayerDeathCheckFunction();
+		IsRide = false;
 	}
 }
 
