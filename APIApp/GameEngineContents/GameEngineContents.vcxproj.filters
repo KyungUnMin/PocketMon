@@ -686,6 +686,9 @@
     <ClCompile Include="BattleState_EnemySkillConvertor.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\03.EnemyTurn</Filter>
     </ClCompile>
+    <ClCompile Include="BattleFade.cpp">
+      <Filter>Map\Actor\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1356,6 +1359,9 @@
     </ClInclude>
     <ClInclude Include="SkillActor_Ember.h">
       <Filter>Battle\02.Actor\05.Effect\04.SkillActor</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleFade.h">
+      <Filter>Map\Actor\UI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
