@@ -797,12 +797,17 @@ void FieldmapLevel::Loading()
 
 		}
 
-
+		//AddNPC("PewterCity_PokemonCenter", { 8,4 });
 		
 	}
 	{
 		PokemonCenterNPC* CenterNpc = CreateActor<PokemonCenterNPC>();
 		CenterNpc->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		CenterNpc->AddNPC("PewterCity_PokemonCenter", { 8,4 });
+
+		PokemonCenterNPC* CenterNpc2 = CreateActor<PokemonCenterNPC>();
+		CenterNpc2->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		CenterNpc2->AddNPC("ViridianCity_PokemonCenter", { 8,4 });
 	}
 
 	// 이벤트 모음

@@ -16,7 +16,6 @@ PokemonCenterNPC::~PokemonCenterNPC()
 void PokemonCenterNPC::Start()
 {
 	InitNPC("PoketmonCenterNpc", "Nurse.bmp", BattleNpcType::NPC3);
-	AddNPC("PewterCity_PokemonCenter", { 8,4 });
 	Look(LookDir::Down);
 
 	CenterNpc_C = CreateCollision(CollisionOrder::NPC);
