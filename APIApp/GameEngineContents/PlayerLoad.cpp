@@ -20,10 +20,10 @@ void Player::PlayerRenderLoad()
 		Players->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "IdleUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		Players->CreateAnimation({ .AnimationName = "Down_Idle",  .ImageName = "IdleDown.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 
-		Players->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "WalkRight.bmp", .Start = 0, .End = 3, .InterTime = 0.0625f });
-		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 3 , .InterTime = 0.0625f });
-		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 3 , .InterTime = 0.0625f });
-		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 3 , .InterTime = 0.0625f });
+		Players->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "WalkRight.bmp", .Start = 0, .End = 3, .InterTime = 0.05f });
+		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 3 , .InterTime = 0.05f });
+		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 3 , .InterTime = 0.05f });
+		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 3 , .InterTime = 0.05f });
 		
 		Players->CreateAnimation({ .AnimationName = "Right_Clear", .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
 		Players->CreateAnimation({ .AnimationName = "Left_Clear",  .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
@@ -39,10 +39,10 @@ void Player::PlayerRenderLoad()
 		BikePlayers->CreateAnimation({ .AnimationName = "Up_Idle",  .ImageName = "BikeStopUp.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 		BikePlayers->CreateAnimation({ .AnimationName = "Down_Idle",  .ImageName = "BikeStopDown.bmp", .Start = 0, .End = 0, .InterTime = 1.0f });
 
-		BikePlayers->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "BikeRight.bmp", .Start = 0, .End = 2, .InterTime = 0.04f });
-		BikePlayers->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "BikeLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
-		BikePlayers->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "BikeUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
-		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown1.bmp", .Start = 0, .End = 2 , .InterTime = 0.04f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Right_Move",  .ImageName = "BikeRight.bmp", .Start = 0, .End = 2, .InterTime = 0.06666f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "BikeLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.06666f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "BikeUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.06666f });
+		BikePlayers->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "BikeDown1.bmp", .Start = 0, .End = 2 , .InterTime = 0.06666f });
 		BikePlayers->Off();
 
 		Shadow = CreateRender(RenderOrder::Player_Shadow);

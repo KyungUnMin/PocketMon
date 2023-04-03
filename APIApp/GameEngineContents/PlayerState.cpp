@@ -188,10 +188,7 @@ void Player::MoveUpdate(float _Time)
 	
 	float4 POS = float4::LerpClamp(StartPos, EndPos, PlayerTime);
 	SetPos(POS); 
-	if (PlayerTime < 1.0f)
-	{
-
-	}
+	
 	 if (PlayerTime > 1.0f) //다음타일까지의 이동시간
 	 {
 		 PlayerTime = 0.0f;
