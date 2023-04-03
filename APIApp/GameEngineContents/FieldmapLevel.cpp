@@ -671,7 +671,14 @@ void FieldmapLevel::Loading()
 			WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
 			WoongPtr->SetBaseDir(LookDir::Down);
 			WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-		}		
+		}	
+		{
+			PokemonCenterNPC* CenterNpc1 = CreateActor<PokemonCenterNPC>();
+			CenterNpc1->AddNPC("ViridianCity_PokemonCenter", int2(8, 4));
+			PokemonCenterNPC* CenterNpc2= CreateActor<PokemonCenterNPC>();
+			CenterNpc2->AddNPC("PewterCity_PokemonCenter", int2(8, 4));
+			
+		}
 	}
 
 	// 이벤트 모음
