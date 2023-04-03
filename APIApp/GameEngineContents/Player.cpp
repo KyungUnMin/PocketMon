@@ -14,6 +14,43 @@
 #include "InputControll.h"
 
 Player* Player::MainPlayer;
+bool Player::GymClear = true;
+
+LookDir Player::CalLookDir(const float4& _Start, const float4& _End)
+{
+	float4 Dir = _End - _Start;
+
+	if (0.5f > std::fabsf(Dir.x))
+	{
+		Dir.x = 0;
+	}
+
+	if (0.5f > std::fabsf(Dir.y))
+	{
+		Dir.y = 0;
+	}
+
+	if (Dir.x > 0)
+	{
+		return LookDir::Right;
+	}
+	else if (Dir.x < 0)
+	{
+		return LookDir::Left;
+	}
+	else if (Dir.y > 0)
+	{
+		return LookDir::Down;
+	}
+	else if (Dir.y < 0)
+	{
+		return LookDir::Up;
+	}
+	else
+	{
+		return LookDir::Down;
+	}
+}
 
 Player::Player() :
 	Dir(LookDir::Up)

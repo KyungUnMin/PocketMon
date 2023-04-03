@@ -33,6 +33,9 @@ void Player::ChangeState(PlayerState _State)
 	case PlayerState::JUMP:
 		JumpStart();
 		break;
+	case PlayerState::GymClear:
+		GymClearStart();
+		break;
 	default:
 		break;
 	}
@@ -47,6 +50,9 @@ void Player::ChangeState(PlayerState _State)
 		break;
 	case PlayerState::JUMP:
 		JumpEnd();
+		break;
+	case PlayerState::GymClear:
+		GymClearEnd();
 		break;
 	default:
 		break;
@@ -66,6 +72,9 @@ void Player::UpdateState(float _Time)
 	case PlayerState::JUMP:
 		JumpUpdate(_Time);
 		break;
+	case PlayerState::GymClear:
+		GymClearUpdate(_Time);
+		break;
 	default:
 		break;
 	}
@@ -84,7 +93,32 @@ void Player::IdleUpdate(float _Time)
 		EndPos = NextMovePos.front();
 		NextMovePos.pop_front();
 
+		switch (CalLookDir(GetPos(), EndPos))
+		{
+		case LookDir::Up:
+			Dir = LookDir::Up;
+			DirString = "Up_";
+			break;
+		case LookDir::Down:
+			Dir = LookDir::Down;
+			DirString = "Down_";
+			break;
+		case LookDir::Left:
+			Dir = LookDir::Left;
+			DirString = "Left_";
+			break;
+		case LookDir::Right:
+			Dir = LookDir::Right;
+			DirString = "Right_";
+			break;
+		default:
+			Dir = LookDir::Down;
+			DirString = "Down_";
+			break;
+		}
+
 		ChangeState(PlayerState::MOVE);
+		return;
 	}
 
 	if (false == InputControll::CanControll())
@@ -211,7 +245,28 @@ void Player::JumpEnd()
 	
 }
 
+void Player::GymClearStart()
+{
+	ClaerProgress = 0.0f;
+	Dir = LookDir::Down;
+	DirString = "Down_";
+	Players->ChangeAnimation("Down_Clear");
+}
 
+void Player::GymClearUpdate(float _Time)
+{
+	ClaerProgress += _Time;
+
+	if (3.0f <= ClaerProgress)
+	{
+		ChangeState(PlayerState::IDLE);
+	}
+}
+
+void Player::GymClearEnd()
+{
+
+}
 
 void Player::PlayerAutoMove()
 {

@@ -57,7 +57,7 @@ void GameEngineCore::GlobalUpdate()
 		TimeDeltaTime = 1.0f / 60.0f;
 	}
 
-	Core->Update();
+	Core->Update(TimeDeltaTime);
 	if (nullptr == Core->MainLevel)
 	{
 		MsgAssert("레벨을 지정해주지 않은 상태로 코어를 실행했습니다");

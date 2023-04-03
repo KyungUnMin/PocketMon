@@ -603,6 +603,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="EndingWalkPlayer.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="FieldmapBattleZone.cpp">
       <SubType>
       </SubType>
@@ -1270,6 +1274,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="EndingTextActor.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="EndingWalkPlayer.h">
       <SubType>
       </SubType>
     </ClInclude>

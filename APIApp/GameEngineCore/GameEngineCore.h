@@ -72,7 +72,7 @@ protected:
 	}
 
 	virtual void Start() = 0;
-	virtual void Update() = 0;
+	virtual void Update(float _DeltaTime) = 0;
 	virtual void End() = 0;
 
 private:

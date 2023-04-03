@@ -3,6 +3,8 @@
 #include <GameEngineCore/GameEngineResources.h>
 #include "TrainerCardUI.h"
 
+TrainerCardLevel* TrainerCardLevel::MainTrainerCardLevel = nullptr;
+
 TrainerCardLevel::TrainerCardLevel()
 {
 
@@ -17,6 +19,14 @@ void TrainerCardLevel::Loading()
 {
 	ImageLoad();
 	AcTrainerCardUI = CreateActor<TrainerCardUI>();
+
+	if (nullptr != MainTrainerCardLevel)
+	{
+		MsgAssert("플레이어 상태 레벨을 중복 생성하려 했습니다");
+		return;
+	}
+
+	MainTrainerCardLevel = this;
 }
 
 void TrainerCardLevel::Update(float _DeltaTime)

@@ -15,6 +15,7 @@ enum class PlayerState
 	IDLE,
 	MOVE,
 	JUMP,
+	GymClear
 };
 
 enum class NPCtalkValue
@@ -32,6 +33,11 @@ class Player : public GameEngineActor
 {
 public:
 	static Player* MainPlayer;
+	static bool GymClear;
+
+	static LookDir CalLookDir(const float4& _Start, const float4& _End);
+
+public:
 
 	Player();
 	~Player();
@@ -102,6 +108,7 @@ public:
 	void JumpLeft();
 	void JumpDown();
 
+
 	bool IsPlayerDirUp()
 	{
 		return IsPlayerDirUP;
@@ -166,7 +173,10 @@ public:
 		PlayerDeathCheckFunction();
 	}
 
-
+	inline void PlayGymClearAnimation()
+	{
+		ChangeState(PlayerState::GymClear);
+	}
 	
 protected:
 	void Start() override;
@@ -202,7 +212,11 @@ private:
 	void JumpStart();
 	void JumpUpdate(float _Time);
 	void JumpEnd();
-	
+
+	void GymClearStart();
+	void GymClearUpdate(float _Time);
+	void GymClearEnd();
+
 	//////////Speed&Pos//////////
 	int2 Playerindex = int2::Zero;
 	float PlayerMoveSpeed = 5.0f;
@@ -248,7 +262,8 @@ private:
 	//AutoMove Pos값을 저장하는 list
 	std::list<float4> NextMovePos = std::list<float4>();
 	
-
+	// 엔딩연출용 변수
+	float ClaerProgress = 0.0f;
 
 	//////////DeathCheckbool
 	void PlayerDeathCheckFunction();

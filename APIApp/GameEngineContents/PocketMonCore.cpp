@@ -47,7 +47,7 @@ void PocketMonCore::Start()
 	ChangeLevel("CenterLevel");
 }
 
-void PocketMonCore::Update()
+void PocketMonCore::Update(float _DeltaTime)
 {
 	InputControll::ResetDoubleCheck();
 }

@@ -67,6 +67,8 @@
 #include "LevelChangeFade.h"
 #include "BattleFade.h"
 
+// Level
+#include "TrainerCardLevel.h"
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 std::vector<std::function<void()>> FieldmapLevel::LevelStartCallFuncs;
@@ -92,6 +94,7 @@ void FieldmapLevel::Loading()
 
 	MainPlayer = CreateActor<Player>();
 
+	// 맵 생성 모음
 	{
 		CreateActor<BackgroundUI>();
 
@@ -436,8 +439,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PalletTown_Home2F");
-	//Fieldmap::ChangeCity("Route2_Down");
+	Fieldmap::ChangeCity("PewterCity_Gym");
 	///////
 	///////
 	///////
@@ -504,210 +506,413 @@ void FieldmapLevel::Loading()
 		MotherNPCPtr->SetBaseDir(LookDir::Down);
 		MotherNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 	}
-
+	// NPC 생성 모음
 	{
-		OakNPC* OakNPCPtr = CreateActor<OakNPC>();
-		OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
-		OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
-		OakNPCPtr->AddScript("OAK: Now, RED.");
-		OakNPCPtr->AddScript("Inside those three POK@ BALLS arePOK@MON.");
-		OakNPCPtr->AddScript("Which one will you choose for\nyourself?");
-		OakNPCPtr->SetBaseDir(LookDir::Down);
-		OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-	}
-
-	{
-		StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
-		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
-		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
-		ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
-		ProfessorNPCPtr->SetBaseDir(LookDir::Up);
-		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-	}
-
-	{
-		TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
-		ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
-		ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
-		ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
-		ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
-		ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-
-	}
-	{
-		GreenNPC* GreenNPCPtr = CreateActor<GreenNPC>();
-		GreenNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
-		GreenNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
-		GreenNPCPtr->AddScript("GREEN: Heh, I don`t need to be\ngreedy like you. I`m mature!");
-		GreenNPCPtr->AddScript("Go ahead and choose, RED!");
-		GreenNPCPtr->AddScript("GREEN: I`ll take this one, then!", 1);
-		GreenNPCPtr->AddScript("GREEN: Wait, RED!\nLet`s check out our POK@MON!", 2);
-		GreenNPCPtr->AddScript("Come on, I`ll take you on!", 2);
-
-		GreenNPCPtr->SetBaseDir(LookDir::Down);
-		GreenNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-
-		std::function<bool()> VaildEvent = std::bind(&GreenNPC::BattleEventCheck, GreenNPCPtr);
-		std::function<void()> BattleEvent = std::bind(&GreenNPC::BattleStart, GreenNPCPtr);
-
-		Fieldmap::AddStartEvent("PalletTown_Office", int2(8, 9),
-			{
-				.Name = "RivalBattle",
-				.Order = -1,
-				.VaildFunc = VaildEvent,
-				.EventFunc = BattleEvent,
-				.Loop = false
-			});
-
-		Fieldmap::AddStartEvent("PalletTown_Office", int2(7, 9),
-			{
-				.Name = "RivalBattle",
-				.Order = -1,
-				.VaildFunc = VaildEvent,
-				.EventFunc = BattleEvent,
-				.Loop = false
-			});
-
-		Fieldmap::AddStartEvent("PalletTown_Office", int2(6, 9),
-			{
-				.Name = "RivalBattle",
-				.Order = -1,
-				.VaildFunc = VaildEvent,
-				.EventFunc = BattleEvent,
-				.Loop = false
-			});
-	}
-
-	{
-		StaticNPC* NPCPtr = CreateActor<StaticNPC>();
-		NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
-		NPCPtr->AddNPC("PalletTown", int2(11, 15));
-		NPCPtr->AddScript("Hi there!\nHow`s your day been so far?");
-		NPCPtr->SetBaseDir(LookDir::Up);
-		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-	}
-
-	// 2번도로 사망이벤트를 호출할 NPC
-	{
-		LeafNPC* LeafNPCptr = CreateActor<LeafNPC>();
-		LeafNPCptr->InitNPC("Leaf", "Leaf.bmp", BattleNpcType::Woong);
-		LeafNPCptr->AddNPC("Route2_Down", int2(11, 51));
-		LeafNPCptr->SetBaseDir(LookDir::Right);
-		LeafNPCptr->Look(LookDir::Right);
-		LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
-		LeafNPCptr->SetLookDis(20);
-		LeafNPCptr->AddScript("___");
-		LeafNPCptr->AddPokeData(1, 99);
-		LeafNPCptr->AddPokeData(4, 99);
-		LeafNPCptr->AddPokeData(7, 99);
-	}
-
-	{
-		TurnNPC* NPCPtr = CreateActor<TurnNPC>();
-		NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
-		NPCPtr->AddNPC("PalletTown", int2(20, 18));
-		NPCPtr->AddScript("Technology is incredible!");
-		NPCPtr->AddScript("You can now store and recall\nitems and POK@MON as data via PC.");
-		NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
-		NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-	}
-	
-	// 상록 숲
-
-	// Battle1
-	{
-		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
-		BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::Woong);
-		BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
-		BaatleNpcPtr->AddScript("Get ready to face the\npower of my POK@MON!");
-		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
-		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
-		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
-		BaatleNpcPtr->SetLookDis(10);
-	}
-
-	// Battle2
-	{
-		TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
-		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC4.bmp", BattleNpcType::Woong);
-		BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
-		BaatleNpcPtr->AddScript("My POK@MON may not look like much,but it's got some serious bite!");
-		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
-		BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
-		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
-		BaatleNpcPtr->SetLookDis(10);
-	}
-
-	// Battle3
-	{
-		StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
-		BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::Woong);
-		BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
-		BaatleNpcPtr->AddScript("Hey! You have POK@MON!\nCome on!");
-		BaatleNpcPtr->AddScript("Let`s battle `em!");
-		BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
-		BaatleNpcPtr->SetBaseDir(LookDir::Left);
-		BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
-		BaatleNpcPtr->SetLookDis(10);
-	}
-
-	// 회색시티
-	{
-		StaticNPC* WoongPtr = CreateActor<StaticNPC>();
-		WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
-		WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
-		WoongPtr->AddScript("You`re going down! MyPOK@MON\nwon`t hold anything back!");
-		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
-		WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
-		WoongPtr->SetBaseDir(LookDir::Down);
-		WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
-	}
-
-	{ // 태초마을 오박사 이벤트
-	
-		std::function<bool()> VaildRamda = []()
+		// 태초 마을
 		{
-			if (PokemonScript::IsScriptEnd(100))
-			{
-				return false;
-			}
-			else
-			{
-				return true;
-			}
-		};
+			MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
+			MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
+			MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
+			MotherNPCPtr->AddScript("MOM: _Right.\nAll boys leave home someday.");
+			MotherNPCPtr->AddScript("Script 002");
+			MotherNPCPtr->SetBaseDir(LookDir::Down);
+			MotherNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
 
-		std::function<void()> EventRamda = std::bind(
-			[](FieldmapLevel* _This)
-			{
-				StopOakNPC* NpcPtr =_This->CreateActor<StopOakNPC>();
-				NpcPtr->InitNPC("StopOak", "Oak.bmp", BattleNpcType::None);
-				NpcPtr->AddNPC("PalletTown", int2::Zero, false);
+		{
+			OakNPC* OakNPCPtr = CreateActor<OakNPC>();
+			OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
+			OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
+			OakNPCPtr->AddScript("OAK: Now, RED.");
+			OakNPCPtr->AddScript("Inside those three POK@ BALLS arePOK@MON.");
+			OakNPCPtr->AddScript("Which one will you choose for\nyourself?");
+			OakNPCPtr->SetBaseDir(LookDir::Down);
+			OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+		{
+			OakNPC* OakNPCPtr = CreateActor<OakNPC>();
+			OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
+			OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
+			OakNPCPtr->AddScript("Script 003");
+			OakNPCPtr->AddScript("Script 004");
+			OakNPCPtr->AddScript("CZCZ!", 1);
+			OakNPCPtr->SetBaseDir(LookDir::Down);
+			OakNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
 
-				NpcPtr->AddScript("Hey! Wait!\nDon`t go out!");
-				NpcPtr->AddScript("OAK: It`s unsafe!\nWild POK@MON live in tall grass!");
-				NpcPtr->AddScript("You need your own POK@MON for\nyour protection.");
-				NpcPtr->AddScript("I know!\nHere, come with me!");
+		{
+			StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
+			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+			ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
+			ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
+			ProfessorNPCPtr->SetBaseDir(LookDir::Up);
+			ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+		{
+			StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
+			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+			ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
+			ProfessorNPCPtr->AddScript("Script 005");
+			ProfessorNPCPtr->AddScript("Script 006");
+			ProfessorNPCPtr->SetBaseDir(LookDir::Up);
+			ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
+			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+			ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
+			ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
+			ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+			ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			{
+				TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
+				ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+				ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
+				ProfessorNPCPtr->AddScript("Script 007");
+				ProfessorNPCPtr->AddScript("Script 008");
+				ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+				ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+
 			}
-		, this);
+			{
+				GreenNPC* GreenNPCPtr = CreateActor<GreenNPC>();
+				GreenNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
+				GreenNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
+				GreenNPCPtr->AddScript("GREEN: Heh, I don`t need to be\ngreedy like you. I`m mature!");
+				GreenNPCPtr->AddScript("Go ahead and choose, RED!");
+				GreenNPCPtr->AddScript("GREEN: I`ll take this one, then!", 1);
+				GreenNPCPtr->AddScript("GREEN: Wait, RED!\nLet`s check out our POK@MON!", 2);
+				GreenNPCPtr->AddScript("Come on, I`ll take you on!", 2);
+			}
+			{
+				GreenNPC* GreenNPCPtr = CreateActor<GreenNPC>();
+				GreenNPCPtr->InitNPC("Green", "Green.bmp", BattleNpcType::Rival);
+				GreenNPCPtr->AddNPC("PalletTown_Office", int2(8, 9));
+				GreenNPCPtr->AddScript("Script 020");
+				GreenNPCPtr->AddScript("Script 021");
+				GreenNPCPtr->AddScript("Battle 0101", 1);
+				GreenNPCPtr->AddScript("Battle 0202", 1);
+				GreenNPCPtr->AddScript("BYE", 2);
 
-		Fieldmap::AddStartEvent("PalletTown", int2(18, 0),
+				GreenNPCPtr->SetBaseDir(LookDir::Down);
+				GreenNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+
+				std::function<bool()> VaildEvent = std::bind(&GreenNPC::BattleEventCheck, GreenNPCPtr);
+				std::function<void()> BattleEvent = std::bind(&GreenNPC::BattleStart, GreenNPCPtr);
+
+				Fieldmap::AddStartEvent("PalletTown_Office", int2(8, 9),
+					{
+						.Name = "RivalBattle",
+						.Order = -1,
+						.VaildFunc = VaildEvent,
+						.EventFunc = BattleEvent,
+						.Loop = false
+					});
+
+				Fieldmap::AddStartEvent("PalletTown_Office", int2(7, 9),
+					{
+						.Name = "RivalBattle",
+						.Order = -1,
+						.VaildFunc = VaildEvent,
+						.EventFunc = BattleEvent,
+						.Loop = false
+					});
+
+				Fieldmap::AddStartEvent("PalletTown_Office", int2(6, 9),
+					{
+						.Name = "RivalBattle",
+						.Order = -1,
+						.VaildFunc = VaildEvent,
+						.EventFunc = BattleEvent,
+						.Loop = false
+					});
+			}
+
 			{
-			 .Name = "StopEvent",
-			 .Order = -9999,
-			 .VaildFunc = VaildRamda,
-			 .EventFunc = EventRamda,
-			 .Loop = true
-			});
-		Fieldmap::AddStartEvent("PalletTown", int2(19, 0),
+				StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+				NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
+				NPCPtr->AddNPC("PalletTown", int2(11, 15));
+				NPCPtr->AddScript("Hi there!\nHow`s your day been so far?");
+				NPCPtr->SetBaseDir(LookDir::Up);
+				NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
 			{
-			 .Name = "StopEvent",
-			 .Order = -9999,
-			 .VaildFunc = VaildRamda,
-			 .EventFunc = EventRamda,
-			 .Loop = true
-			});
+				StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+				NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
+				NPCPtr->AddNPC("PalletTown", int2(11, 15));
+				NPCPtr->AddScript("Script 009");
+				NPCPtr->AddScript("Script 010");
+				NPCPtr->SetBaseDir(LookDir::Up);
+				NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
+
+			// 2번도로 사망이벤트를 호출할 NPC
+			{
+				LeafNPC* LeafNPCptr = CreateActor<LeafNPC>();
+				LeafNPCptr->InitNPC("Leaf", "Leaf.bmp", BattleNpcType::Woong);
+				LeafNPCptr->AddNPC("Route2_Down", int2(11, 51));
+				LeafNPCptr->SetBaseDir(LookDir::Right);
+				LeafNPCptr->Look(LookDir::Right);
+				LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				LeafNPCptr->SetLookDis(20);
+				LeafNPCptr->AddScript("___");
+				LeafNPCptr->AddPokeData(1, 99);
+				LeafNPCptr->AddPokeData(4, 99);
+				LeafNPCptr->AddPokeData(7, 99);
+			}
+			// 2번도로 사망이벤트를 호출할 NPC
+			{
+				LeafNPC* LeafNPCptr = CreateActor<LeafNPC>();
+				LeafNPCptr->InitNPC("Leaf", "Leaf.bmp", BattleNpcType::Woong);
+				LeafNPCptr->AddNPC("Route2_Down", int2(11, 51));
+				LeafNPCptr->SetBaseDir(LookDir::Right);
+				LeafNPCptr->Look(LookDir::Right);
+				LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				LeafNPCptr->SetLookDis(20);
+				LeafNPCptr->AddScript(".........");
+				LeafNPCptr->AddPokeData(1, 99);
+				LeafNPCptr->AddPokeData(4, 99);
+				LeafNPCptr->AddPokeData(7, 99);
+			}
+
+			{
+				TurnNPC* NPCPtr = CreateActor<TurnNPC>();
+				NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
+				NPCPtr->AddNPC("PalletTown", int2(20, 18));
+				NPCPtr->AddScript("Technology is incredible!");
+				NPCPtr->AddScript("You can now store and recall\nitems and POK@MON as data via PC.");
+				NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+				NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
+
+			// 상록 숲
+			{
+				TurnNPC* NPCPtr = CreateActor<TurnNPC>();
+				NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
+				NPCPtr->AddNPC("PalletTown", int2(20, 18));
+				NPCPtr->AddScript("Script 011");
+				NPCPtr->AddScript("Script 012");
+				NPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
+				NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
+
+			// 상록 숲
+
+		// Battle1
+			{
+				TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
+				BaatleNpcPtr->AddScript("Get ready to face the\npower of my POK@MON!");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+			// Battle1
+			{
+				TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
+				BaatleNpcPtr->AddScript("Script 050");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+
+			// Battle2
+			{
+				TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC4.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
+				BaatleNpcPtr->AddScript("My POK@MON may not look like much,but it's got some serious bite!");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+			// Battle2
+			{
+				TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC4.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
+				BaatleNpcPtr->AddScript("Script 051");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+
+			// Battle3
+			{
+				StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
+				BaatleNpcPtr->AddScript("Hey! You have POK@MON!\nCome on!");
+				BaatleNpcPtr->AddScript("Let`s battle `em!");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetBaseDir(LookDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+			// Battle3
+			{
+				StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
+				BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::Woong);
+				BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
+				BaatleNpcPtr->AddScript("Script 040");
+				BaatleNpcPtr->AddScript("Script 041");
+				BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+				BaatleNpcPtr->SetBaseDir(LookDir::Left);
+				BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
+				BaatleNpcPtr->SetLookDis(10);
+			}
+
+			// 회색시티
+			{
+				StaticNPC* WoongPtr = CreateActor<StaticNPC>();
+				WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
+				WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
+				WoongPtr->AddScript("You`re going down! MyPOK@MON\nwon`t hold anything back!");
+				WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
+				WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
+				WoongPtr->SetBaseDir(LookDir::Down);
+				WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
+			// 회색시티
+			{
+				StaticNPC* WoongPtr = CreateActor<StaticNPC>();
+				WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
+				WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
+				WoongPtr->AddScript("Script 040");
+				WoongPtr->AddScript("Script 041");
+				WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
+				WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
+				WoongPtr->SetBaseDir(LookDir::Down);
+				WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+			}
+
+		}
+
+
+		
 	}
+
+	// 이벤트 모음
+	{
+		// 태초마을 오박사 이벤트
+		{
+
+			std::function<bool()> VaildRamda = []()
+			{
+				if (PokemonScript::IsScriptEnd(100))
+				{
+					return false;
+				}
+				else
+				{
+					return true;
+				}
+			};
+
+			std::function<void()> EventRamda = std::bind(
+				[](FieldmapLevel* _This)
+				{
+					StopOakNPC* NpcPtr = _This->CreateActor<StopOakNPC>();
+					NpcPtr->InitNPC("StopOak", "Oak.bmp", BattleNpcType::None);
+					NpcPtr->AddNPC("PalletTown", int2::Zero, false);
+
+					NpcPtr->AddScript("Hey! Wait!\nDon`t go out!");
+					NpcPtr->AddScript("OAK: It`s unsafe!\nWild POK@MON live in tall grass!");
+					NpcPtr->AddScript("You need your own POK@MON for\nyour protection.");
+					NpcPtr->AddScript("I know!\nHere, come with me!");
+				}, this);
+
+			Fieldmap::AddStartEvent("PalletTown", int2(18, 0),
+				{
+				 .Name = "StopEvent",
+				 .Order = -9999,
+				 .VaildFunc = VaildRamda,
+				 .EventFunc = EventRamda,
+				 .Loop = true
+				});
+			Fieldmap::AddStartEvent("PalletTown", int2(19, 0),
+				{
+				 .Name = "StopEvent",
+				 .Order = -9999,
+				 .VaildFunc = VaildRamda,
+				 .EventFunc = EventRamda,
+				 .Loop = true
+				});
+		}
+
+		// 체육관 클리어 이벤트
+
+		{
+			std::function<void()> PlayerMoveEvent = []()
+			{
+
+			};
+
+			std::function<void()> CardOffEvent = []()
+			{
+
+			};
+
+			//std::function<void()> CardOnEvent = []()
+			//{
+			//	_this->LevelEvent.AddEvent(3.0f, std::bind([](Player* _Player)
+			//		{
+			//			GameEngineCore::GetInst()->ChangeLevel("TrainerCardLevel");
+			//			TrainerCardLevel::MainTrainerCardLevel->LevelEvent.AddEvent(3.0f,
+			//				std::bind([]()
+			//					{
+			//						GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
+			//					})
+			//				, false);
+			//
+			//			int2 PlayerIndex = Fieldmap::GetIndex(_Player->GetPos());
+			//
+			//			for (size_t i = 0; i < 8; i++)
+			//			{
+			//				PlayerIndex.y += 1;
+			//				_Player->InsertPlayerPos(PlayerIndex);
+			//			}
+			//
+			//		}, MainPlayer), false);
+			//
+			//}, this)
+			//};
+
+			std::function<void()> MainEvent = []()
+			{
+				Player* MainPlayer = Player::MainPlayer;
+				MainPlayer->PlayGymClearAnimation();
+
+			};
+
+
+			Fieldmap::AddUpdateEvent("PewterCity_Gym", int2(6, 6), {
+			.Name = "GymClearEvent",
+			.Order = -10000,
+			.VaildFunc = []() {return Player::GymClear; },
+			.EventFunc = MainEvent,
+			.Loop = false});
+		}
+
+		// 엔딩 플레이 트리거
+		{
+			Fieldmap::AddUpdateEvent("PewterCity", int2(15, 16), {
+				.Name = "EndPlayTrigger",
+				.Order = -100000,
+				.VaildFunc = []() { return Player::GymClear; },
+				.EventFunc = []() {EndingPlayActor::MainEndingPlayActor->PlayEnding(); },
+				.Loop = false
+				});
+		}
+		}
 
 	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);

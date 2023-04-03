@@ -5,6 +5,8 @@ class TrainerCardUI;
 class TrainerCardLevel : public GameEngineLevel
 {
 public:
+	static TrainerCardLevel* MainTrainerCardLevel;
+public:
 	// construtor destructor
 	TrainerCardLevel();
 	~TrainerCardLevel();

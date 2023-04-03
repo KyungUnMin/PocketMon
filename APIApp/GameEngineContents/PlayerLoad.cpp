@@ -24,6 +24,11 @@ void Player::PlayerRenderLoad()
 		Players->CreateAnimation({ .AnimationName = "Left_Move",  .ImageName = "WalkLeft.bmp", .Start = 0, .End = 2 , .InterTime = 0.0625f });
 		Players->CreateAnimation({ .AnimationName = "Up_Move",  .ImageName = "WalkUp.bmp", .Start = 0, .End = 2 , .InterTime = 0.0625f });
 		Players->CreateAnimation({ .AnimationName = "Down_Move",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 3 , .InterTime = 0.0625f });
+		
+		Players->CreateAnimation({ .AnimationName = "Right_Clear", .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
+		Players->CreateAnimation({ .AnimationName = "Left_Clear",  .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
+		Players->CreateAnimation({ .AnimationName = "Up_Clear",    .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
+		Players->CreateAnimation({ .AnimationName = "Down_Clear",  .ImageName = "GymClear.bmp", .Start = 0, .End = 5 , .InterTime = 0.1f, .Loop = false});
 
 		Players->CreateAnimation({ .AnimationName = "Jump",  .ImageName = "WalkDown.bmp", .Start = 0, .End = 0 , .InterTime = 0.5f });
 

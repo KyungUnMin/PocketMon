@@ -11,6 +11,7 @@
 #include "Fieldmap.h"
 #include "EndingFade.h"
 #include "Player.h"
+#include "EndingWalkPlayer.h"
 
 EndingPlayActor* EndingPlayActor::MainEndingPlayActor = nullptr;
 bool EndingPlayActor::IsEndingPlay = false;
@@ -48,10 +49,13 @@ void EndingPlayActor::PlayEnding()
 	Fade->Off();
 	PlayerAnim->Off();
 
-	AddCameraMoveEvent("PewterCity", int2(10, 12), float4::Zero);
+
+	AddCameraMoveEvent("PewterCity", int2(15, 16), float4::Zero);
 
 	GameEngineLevel* Level = GetLevel();
 	GameEngineTimeEvent& LevelTimeEvent = Level->LevelEvent;
+
+	Level->CreateActor<EndingWalkPlayer>();
 
 	LevelTimeEvent.AddEvent(1.5f, std::bind(
 		[](EndingPlayActor* _This)
@@ -115,7 +119,7 @@ void EndingPlayActor::PlayEnding()
 			_This->SubTextActor->On();
 			_This->SubFakeTextActor->On();
 	
-			_This->SetCameraDir(float4(-0.5, 1).NormalizeReturn());
+			_This->SetCameraDir(float4(0, 1).NormalizeReturn());
 		}, this), false);
 	
 	LevelTimeEvent.AddEvent(15.5f, std::bind(
@@ -132,7 +136,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Red);
 	
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Player Design", "Yoo Dongmin"));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianForest", int2(32, 35), float4::Down));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianForest", int2(39, 40), float4::Down));
 	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 			_This->SetFakeTextAlpha(255);
@@ -196,7 +200,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Green);
 	
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Event Desing", "Kim Kyeongsik"));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianCity", int2(18, 10), float4::Down));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianCity", int2(25, 15), float4::Down));
 	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 	
@@ -254,7 +258,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Blue);
 	
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Battle UI Desing", "Kim Minseok\nMin Kyungwoon\nKim Kyunghak"));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "Route1", int2(14, 14), float4::Down));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "Route1", int2(21, 19), float4::Down));
 	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 	
@@ -319,7 +323,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Yellow);
 
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Tanks For Watching", " "));
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "PalletTown", int2(12, 2), float4::Left));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "PalletTown", int2(19, 7), float4::Left));
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
 
@@ -400,7 +404,7 @@ void EndingPlayActor::AddCameraMoveEvent(const std::string_view& _CityName, cons
 		[=](EndingPlayActor* _This) 
 		{
 			Fieldmap::ChangeCity(_CityName, false);
-			_This->GetLevel()->SetCameraPos(Fieldmap::GetPos(_CityIndex));
+			_This->GetLevel()->SetCameraPos(Fieldmap::GetPos(_CityIndex) - GameEngineWindow::GetScreenSize().half());
 			_This->SetCameraDir(_MoveDir);
 		}, this), false); // 상록 시티
 }
