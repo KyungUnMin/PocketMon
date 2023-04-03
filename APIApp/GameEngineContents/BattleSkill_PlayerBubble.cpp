@@ -28,18 +28,18 @@ void BattleSkill_PlayerBubble::EnterState()
 	BubbleRender2 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
 	BubbleRender3 = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Bubble>();
 
-	BubbleRender1->SetPos({ 320, 320 });
-	BubbleRender2->SetPos({ 320, 320 });
-	BubbleRender3->SetPos({ 320, 320 });
+	BubbleRender1->SetPos({ 330, 350 });
+	BubbleRender2->SetPos({ 330, 330 });
+	BubbleRender3->SetPos({ 330, 370 });
 
 	StartPos1 = BubbleRender1->GetPos();
-	EndPos1 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+	EndPos1 = StartPos1 + float4::Up * 120.0f + float4::Right * 290.0f;
 
 	StartPos2 = BubbleRender2->GetPos();
-	EndPos2 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+	EndPos2 = StartPos2 + float4::Up * 110.0f + float4::Right * 300.0f;
 
-	StartPos3 = BubbleRender2->GetPos();
-	EndPos3 = StartPos1 + float4::Up * 250.0f + float4::Right * 600.0f;
+	StartPos3 = BubbleRender3->GetPos();
+	EndPos3 = StartPos3 + float4::Up * 100.0f + float4::Right * 310.0f;
 
 	BubbleRender1->Off();
 	BubbleRender2->Off();
@@ -48,7 +48,7 @@ void BattleSkill_PlayerBubble::EnterState()
 
 void BattleSkill_PlayerBubble::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 1.6f))
+	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, 10.6f))
 	{
 		EnemyMonster->On();
 		return;
@@ -77,25 +77,116 @@ void BattleSkill_PlayerBubble::Update_Forward(float _Deltatime)
 		IsShoot1 = true;
 	}
 
+	if (0.2f <= ForwardTime)
+	{
+		IsShoot2 = true;
+	}
+
+	if (0.3f <= ForwardTime)
+	{
+		IsShoot3 = true;
+	}
+
 	if (true == IsShoot1)
 	{
 		ShootTime1 += _Deltatime * 2.0f;
 
-		float4 Pos = float4::LerpClamp(StartPos1, EndPos1, ShootTime1);
-		BubbleRender1->SetPos(Pos);
+		float4 Pos1 = float4::LerpClamp(StartPos1, EndPos1, ShootTime1);
+		BubbleRender1->SetPos(Pos1);
 
-		if (EndPos1.x == BubbleRender1->GetPos().x)
+		if (EndPos1.x == BubbleRender1->GetPos().x && 1 == SetCount1)
 		{
-			BubbleRender1->Off();
-			float sfsf = ForwardTime;
+			SetCount1 = 0;
+			IsShoot2_A = true;
+			StartPos1_A = BubbleRender1->GetPos();
+			EndPos1_A = StartPos1_A + float4::Up * 60.0f + float4::Right * 40.0f;
 		}
 		else
 		{
 			BubbleRender1->On();
 		}
+
+		if (true == IsShoot2_A)
+		{
+			ShootTime1_A += _Deltatime * 1.0f;
+
+			float4 Pos2 = float4::LerpClamp(StartPos1_A, EndPos1_A, ShootTime1_A);
+			BubbleRender1->SetPos(Pos2);
+
+			if (EndPos1_A.x == BubbleRender1->GetPos().x)
+			{
+				BubbleRender1->BubbleSetting(BubbleSet::Bubble_Pop);
+			}
+		}
 	}
 
-	if (1.0f <= ForwardTime)
+	if (true == IsShoot2)
+	{
+		ShootTime2 += _Deltatime * 2.0f;
+
+		float4 Pos3 = float4::LerpClamp(StartPos2, EndPos2, ShootTime2);
+		BubbleRender2->SetPos(Pos3);
+
+		if (EndPos2.x == BubbleRender2->GetPos().x && 1 == SetCount2)
+		{
+			SetCount2 = 0;
+			IsShoot2_A = true;
+			StartPos2_A = BubbleRender2->GetPos();
+			EndPos2_A = StartPos2_A + float4::Up * 60.0f + float4::Right * 40.0f;
+		}
+		else
+		{
+			BubbleRender2->On();
+		}
+
+		if (true == IsShoot2_A)
+		{
+			ShootTime2_A += _Deltatime * 1.0f;
+
+			float4 Pos4 = float4::LerpClamp(StartPos2_A, EndPos2_A, ShootTime2_A);
+			BubbleRender2->SetPos(Pos4);
+
+			if (EndPos2_A.x == BubbleRender2->GetPos().x)
+			{
+				BubbleRender2->BubbleSetting(BubbleSet::Bubble_Pop);
+			}
+		}
+	}
+
+	if (true == IsShoot3)
+	{
+		ShootTime3 += _Deltatime * 2.0f;
+
+		float4 Pos5 = float4::LerpClamp(StartPos3, EndPos3, ShootTime3);
+		BubbleRender3->SetPos(Pos5);
+
+		if (EndPos3.x == BubbleRender3->GetPos().x && 1 == SetCount3)
+		{
+			SetCount3 = 0;
+			IsShoot3_A = true;
+			StartPos3_A = BubbleRender3->GetPos();
+			EndPos3_A = StartPos3_A + float4::Up * 60.0f + float4::Right * 40.0f;
+		}
+		else
+		{
+			BubbleRender3->On();
+		}
+
+		if (true == IsShoot3_A)
+		{
+			ShootTime3_A += _Deltatime * 1.0f;
+
+			float4 Pos6 = float4::LerpClamp(StartPos3_A, EndPos3_A, ShootTime3_A);
+			BubbleRender3->SetPos(Pos6);
+
+			if (EndPos3_A.x == BubbleRender3->GetPos().x)
+			{
+				BubbleRender3->BubbleSetting(BubbleSet::Bubble_Pop);
+			}
+		}
+	}
+
+	if (10.0f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
 	}
@@ -151,7 +242,26 @@ void BattleSkill_PlayerBubble::ExitState()
 
 	CurState = MoveState::Forward;
 
+	SetCount1 = 1;
+	SetCount2 = 1;
+	SetCount3 = 1;
+
+	IsShoot1 = false;
+	IsShoot2 = false;
+	IsShoot3 = false;
+
+	IsShoot1_A = false;
+	IsShoot2_A = false;
+	IsShoot3_A = false;
+
 	ShootTime1 = 0.0f;
+	ShootTime2 = 0.0f;
+	ShootTime3 = 0.0f;
+
+	ShootTime1_A = 0.0f;
+	ShootTime2_A = 0.0f;
+	ShootTime3_A = 0.0f;
+
 	ForwardTime = 0.f;
 	BackwardTime = 0.f;
 	FlashingTime = 0.f;

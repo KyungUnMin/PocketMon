@@ -37,6 +37,17 @@ private:
 	float4 EndPos2 = float4::Zero;
 	float4 EndPos3 = float4::Zero;
 
+	float4 StartPos1_A = float4::Zero;
+	float4 StartPos2_A = float4::Zero;
+	float4 StartPos3_A = float4::Zero;
+	float4 EndPos1_A = float4::Zero;
+	float4 EndPos2_A = float4::Zero;
+	float4 EndPos3_A = float4::Zero;
+
+	int SetCount1 = 1;
+	int SetCount2 = 1;
+	int SetCount3 = 1;
+
 	enum class MoveState
 	{
 		Forward,
@@ -47,8 +58,21 @@ private:
 	MoveState CurState = MoveState::Forward;
 
 	bool IsShoot1 = false;
+	bool IsShoot2 = false;
+	bool IsShoot3 = false;
+
+	bool IsShoot1_A = false;
+	bool IsShoot2_A = false;
+	bool IsShoot3_A = false;
 
 	float ShootTime1 = 0.0f;
+	float ShootTime2 = 0.0f;
+	float ShootTime3 = 0.0f;
+
+	float ShootTime1_A = 0.0f;
+	float ShootTime2_A = 0.0f;
+	float ShootTime3_A = 0.0f;
+
 	float ForwardTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;

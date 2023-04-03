@@ -62,7 +62,12 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	a12121212 = NewP1.GetMonsterLevel_int();
 	a1212121212 = NewP1.GetMonsterExperience();
+
+	PokeDataBase PPP = PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::CatchRattata, 6);
 	
+	PokeNumber pasdf = PPP.GetPokeNumber_enum();
+	
+
 	PocketMonCore::GetInst().CoreStart(hInstance);
 	return 1;
 }

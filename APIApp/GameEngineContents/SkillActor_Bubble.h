@@ -4,9 +4,8 @@
 
 enum class BubbleSet
 {
-	BubbleSet1,
-	BubbleSet2,
-
+	Bubble_Stop,
+	Bubble_Pop,
 };
 
 // Ό³Έν :
@@ -23,6 +22,8 @@ public:
 	SkillActor_Bubble& operator=(const SkillActor_Bubble& _Other) = delete;
 	SkillActor_Bubble& operator=(SkillActor_Bubble&& _Other) noexcept = delete;
 
+	void BubbleSetting(BubbleSet _enum);
+
 protected:
 	void Start() override;
 	void Update(float _Deltatime) override;
@@ -30,4 +31,5 @@ protected:
 private:
 	GameEngineRender* RenderPtr = nullptr;
 
+	bool IsPop = false;
 };

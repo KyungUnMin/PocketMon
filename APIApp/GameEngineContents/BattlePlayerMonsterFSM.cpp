@@ -16,7 +16,6 @@
 #include "BattleSkill_PlayerRazorLeaf.h"
 #include "BattleSkill_PlayerThunder.h"
 #include "BattleSkill_PlayerThunderbolt.h"
-#include "BattleSkill_PlayerDragonBreath.h"
 #include "BattleSkill_PlayerDoubleEdge.h"
 #include "BattleSkill_PlayerBite.h"
 #include "BattleSkill_PlayerHyperFang.h"
@@ -59,7 +58,6 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerRazorLeaf>(BattlePlayerMonster_StateType::Skill_RazorLeaf);
 	CreateState<BattleSkill_PlayerThunder>(BattlePlayerMonster_StateType::Skill_Thunder);
 	CreateState<BattleSkill_PlayerThunderbolt>(BattlePlayerMonster_StateType::Skill_Thunderbolt);
-	CreateState<BattleSkill_PlayerDragonBreath>(BattlePlayerMonster_StateType::Skill_DragonBreath);
 	CreateState<BattleSkill_PlayerDoubleEdge>(BattlePlayerMonster_StateType::Skill_DoubleEdge);
 	CreateState<BattleSkill_PlayerBite>(BattlePlayerMonster_StateType::Skill_Bite);
 	CreateState<BattleSkill_PlayerHyperFang>(BattlePlayerMonster_StateType::Skill_HyperFang);

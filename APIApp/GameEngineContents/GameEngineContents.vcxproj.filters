@@ -614,9 +614,6 @@
     <ClCompile Include="BattleSkill_PlayerDoubleEdge.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClCompile>
-    <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
-    </ClCompile>
     <ClCompile Include="BattleSkill_PlayerThunderbolt.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClCompile>
@@ -1316,9 +1313,6 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerDoubleEdge.h">
-      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
-    </ClInclude>
-    <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\02.Tackle</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerThunderbolt.h">
