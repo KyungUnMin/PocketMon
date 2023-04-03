@@ -445,6 +445,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_GymBattleWin.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_GymTalk.cpp">
       <SubType>
       </SubType>
@@ -1085,6 +1089,10 @@
     </ClInclude>
     <ClInclude Include="BattleState_EnemyTurn.h" />
     <ClInclude Include="BattleState_EnemyHPCheck.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_GymBattleWin.h">
       <SubType>
       </SubType>
     </ClInclude>

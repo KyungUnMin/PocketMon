@@ -272,6 +272,19 @@ void BattleLevel::Clear()
 
 	Actors.clear();
 	BgmCtrl.Stop();
+
+	TrainerPokemon* MonsterBag = Player::MainPlayer->GetPlayerPokemon();
+	//MonsterBag->GetPokemonsRef()
+	//std::vector<>
+
+	/*for (PokeDataBase& Monster : )
+	{
+
+	}*/
+	//Monsters->GetPokemons()[0].Resetbuffstack();
+
+
+	
 	PocketMonCore::GetInst().ChangeLevel("FieldmapLevel");
 }
 

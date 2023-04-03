@@ -689,6 +689,9 @@
     <ClCompile Include="BattleFade.cpp">
       <Filter>Map\Actor\UI</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_GymBattleWin.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\14.GymBattleWin</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1363,6 +1366,9 @@
     <ClInclude Include="BattleFade.h">
       <Filter>Map\Actor\UI</Filter>
     </ClInclude>
+    <ClInclude Include="BattleState_GymBattleWin.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\14.GymBattleWin</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1745,6 +1751,9 @@
     </Filter>
     <Filter Include="Battle\02.Actor\06.UIHandler\02.Debug">
       <UniqueIdentifier>{4ad134ab-2312-4c62-9125-099bd340b8f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\14.GymBattleWin">
+      <UniqueIdentifier>{fc409448-6489-487a-8098-6dccb7ecc39d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
