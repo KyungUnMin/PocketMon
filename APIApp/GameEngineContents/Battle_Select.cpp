@@ -37,7 +37,7 @@ void Battle_Select::Start()
 	//	GameEngineInput::CreateKey("InsertMove1", 'Z');
 	//}
 
-	SetPos({720,540});
+	SetPos({720,542});
 	GameEngineRender* RenderPtr = CreateRender("Battle_Select.bmp", BattleRenderOrder::Battle_Text);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 

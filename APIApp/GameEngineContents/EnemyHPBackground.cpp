@@ -26,13 +26,33 @@ void EnemyHPBackground::Start()
 	RenderPtr->SetPosition({ 280,160 });
 
 	EnemyHPRenderPtr = CreateRender("EnemyHPBar.bmp", BattleRenderOrder::Battle_Text);
-	
+	EnemyHPRenderPtr1 = CreateRender("EnemyHP50Bar.bmp", BattleRenderOrder::Battle_Text);
+	EnemyHPRenderPtr2 = CreateRender("EnemyHP30Bar.bmp", BattleRenderOrder::Battle_Text);
+
+
+	if (MyCurHpNum < Hp50Under && MyCurHpNum> Hp30Under) {
+
+		EnemyHPRenderPtr1->SetScale(float4{ MyCurHpNum, 172 });
+		EnemyHPRenderPtr1->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+	else if (MyCurHpNum < Hp30Under) {
+		EnemyHPRenderPtr2->SetScale(float4{ MyCurHpNum, 172 });
+		EnemyHPRenderPtr2->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+	else {
+		EnemyHPRenderPtr->SetScale(float4{ MyCurHpNum, 172 });
+		EnemyHPRenderPtr->SetPosition({ 560 - (FirstHp) / 2, 360 });
+	}
+
+
 	EnemyHPRenderPtr->SetScale(float4{ 192, 172 });
 	EnemyHPRenderPtr->SetPosition({ 324, 160 });
 
 
 
-
+	EnemyHPRenderPtr->EffectCameraOff();
+	EnemyHPRenderPtr1->EffectCameraOff();
+	EnemyHPRenderPtr2->EffectCameraOff();
 
 	EnemyPoketMonName_R.resize(PoketMonNameMax);
 	EnemyPoketMonLevel_R.resize(PoketMonLevelMax);
@@ -62,6 +82,8 @@ void EnemyHPBackground::Start()
 
 
 	}
+	SecoundHp = 192.0f - FirstHp;
+
 
 }
 void EnemyHPBackground::Update(float _DeltaTime)
@@ -77,13 +99,24 @@ void EnemyHPBackground::Update(float _DeltaTime)
 	if (BattleStartCheck==true)
 	{
 		if (TickNumber_2 == 0) {
-			HpUpdate(FrinedMonsterDamage, static_cast<float>(BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP()), CurMyHP);
+			HpUpdate(FrinedMonsterDamage, Num, SecoundHp);
 
 		}
 		NextTickTime_2 += _DeltaTime;
 			if (NextTickTime_2 > 0.1f) {
 				NextTickTime_2 = 0;
 				if (TickNumber_2 != 10) {
+
+					if (EnemyDamegeTick[TickNumber_2] < Hp50Under && EnemyDamegeTick[TickNumber_2]>Hp30Under) {
+						EnemyHPRenderPtr->Off();
+						EnemyHPRenderPtr1->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
+						EnemyHPRenderPtr1->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
+					}
+					if (EnemyDamegeTick[TickNumber_2] < Hp30Under) {
+						EnemyHPRenderPtr1->Off();
+						EnemyHPRenderPtr2->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
+						EnemyHPRenderPtr2->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
+					}
 					EnemyHPRenderPtr->SetScale(float4{ EnemyDamegeTick[TickNumber_2], 172 });
 					EnemyHPRenderPtr->SetPosition({ 324.0f - (192.0f - EnemyDamegeTick[TickNumber_2]) / 2 , 160.0f });
 					TickNumber_2++;
@@ -92,7 +125,8 @@ void EnemyHPBackground::Update(float _DeltaTime)
 			if (TickNumber_2 == 10) {
 				TickNumber_2 = 0;
 				BattleStartCheck = false;
-				CurMyHP = EnemyDamegeTick[9];
+				Num -= static_cast<float>(FrinedMonsterDamage);
+				SecoundHp = EnemyDamegeTick[9];
 
 
 			}
@@ -190,10 +224,16 @@ float EnemyHPBackground::GetPlayerDamage(float _EnumyMonsterDamage)
 	FrinedMonsterDamage = _EnumyMonsterDamage;
 	return FrinedMonsterDamage;
 }
+bool IsDeathEnumy_B = false;
 
 void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp , float _curpos)
 {
 	EnemyDamegeTick.clear();
+
+	if (_FriendMonsterDamage > _MyCurHp) {
+		_FriendMonsterDamage = _MyCurHp;
+		IsDeathEnumy_B = true;
+	}
 
 	float Hpmag = _FriendMonsterDamage / _MyCurHp;
 	float damege = GameEngineMath::Lerp(_curpos, 0.0f, Hpmag);
@@ -202,5 +242,9 @@ void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp , fl
 
 		EnemyDamegeTick.push_back(damege + ((_curpos - damege)) / 10 * i); /*현재 HP - (데미지 / 10 *)1*/
 
+	}
+	if (true == IsDeathEnumy_B) {
+		EnemyDamegeTick[9] = 0.0f;
+		IsDeathEnumy_B = false;
 	}
 }

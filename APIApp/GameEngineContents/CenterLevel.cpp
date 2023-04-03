@@ -185,6 +185,8 @@ void CenterLevel::Loading()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\BattleStatusTwo.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\FriendlyHP50Bar.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\FriendlyHP30Bar.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\EnemyHP50Bar.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleUI\\EnemyHP30Bar.bmp"));
 
 
 

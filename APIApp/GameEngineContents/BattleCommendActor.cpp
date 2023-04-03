@@ -21,7 +21,7 @@ BattleCommendActor::~BattleCommendActor()
 }
 void BattleCommendActor::Start()
 {
-	SetPos({ 480,540 });
+	SetPos({ 480,545 });
 	GameEngineRender* RenderPtr = CreateRender("BattleCommend.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 

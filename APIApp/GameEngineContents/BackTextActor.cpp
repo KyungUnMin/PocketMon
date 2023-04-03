@@ -19,7 +19,7 @@ BackTextActor::~BackTextActor()
 
 void BackTextActor::Start()
 {
-	SetPos({480,540});
+	SetPos({480,542});
 	RenderPtr = CreateRender("Combat_TextFrame.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
 	RenderPtr->EffectCameraOff();

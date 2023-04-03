@@ -49,6 +49,7 @@ private:
 	std::vector<GameEngineRender*> EnemyPoketMonLevel_R;
 
 	GameEngineRender* RenderPtr = nullptr;
+
 	float4 EnemyPoketMonName_S = { 100,120 };
 	float4 EnemyPoketMonLevel_S = { 385,120 };
 
@@ -61,8 +62,21 @@ private:
 	float NextTickTime_2 = 0.0f;
 	int TickNumber_2 = 0;
 	GameEngineRender* EnemyHPRenderPtr = nullptr;
+	GameEngineRender* EnemyHPRenderPtr1 = nullptr;
+	GameEngineRender* EnemyHPRenderPtr2 = nullptr;
 	std::vector<float> EnemyDamegeTick;
 
+
+	float Num = static_cast<float>(BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterCurrentHP());
+	float Num1 = static_cast<float>(BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterMaxHP_int());
+	float FirstNum = Num / Num1;
+	float FirstHp = GameEngineMath::Lerp(192.0f, 0.0f, FirstNum);
+	float MyCurHpNum = CurMyHP - FirstHp;
+
+	float SecoundHp = 0.0f;
+
+	float Hp50Under = 98.0f;
+	float Hp30Under = 48.0f;
 
 
 
