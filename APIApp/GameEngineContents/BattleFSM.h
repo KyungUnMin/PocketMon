@@ -23,6 +23,7 @@ enum class BattleStateType
 
 	UseItem,
 	PlayerMonsterChange,
+	GymBattleWin,
 
 	COUNT,
 };

@@ -34,7 +34,7 @@ void BattleState_StageWin::Update(float _DeltaTime)
 	{
 		if (true == BattleLevel::BattleLevelPtr->IsBossBattle())
 		{
-
+			GetFSM()->ChangeState(BattleStateType::GymBattleWin);
 		}
 		else
 		{
