@@ -64,7 +64,9 @@
 #include "FieldDialog.h"
 #include "SelectStartingUI.h"
 #include "MoveMapFadeEffect.h"
+#include "LevelChangeFade.h"
 #include "BattleFade.h"
+
 
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 std::vector<std::function<void()>> FieldmapLevel::LevelStartCallFuncs;
@@ -449,7 +451,8 @@ void FieldmapLevel::Loading()
 	MainFieldRender->On();
 		
 	UIImageLoad();
-	
+	CreateActor<LevelChangeFade>();
+
 	ShopNpcs = CreateActor<ShopNpc>();
 	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpcs);
 
@@ -496,7 +499,7 @@ void FieldmapLevel::Loading()
 		MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
 		MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
 		MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
-		MotherNPCPtr->AddScript("Script 001");
+		MotherNPCPtr->AddScript("MOM: _Right.\nAll boys leave home someday.");
 		MotherNPCPtr->AddScript("Script 002");
 		MotherNPCPtr->SetBaseDir(LookDir::Down);
 		MotherNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);

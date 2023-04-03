@@ -263,9 +263,9 @@ void FieldDialog::StringToRender()
 					case '-':
 						FieldDialogTextRender[y][x]->SetFrame(86);
 						break;
-					//case '¡¦':
-					//	FieldDialogTextRender[y][x]->SetFrame(91);
-					//	break;
+					case '_':
+						FieldDialogTextRender[y][x]->SetFrame(91);
+						break;
 					case '.':
 						FieldDialogTextRender[y][x]->SetFrame(92);
 						break;
