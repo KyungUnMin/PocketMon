@@ -198,7 +198,7 @@ void Player::Render(float _DeltaTime)
 	float4 PlayerPos = GetPos() - GetLevel()->GetCameraPos();
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		PlayerDeathCheckFunction();
+		//PlayerDeathCheckFunction();
 	}
 }
 

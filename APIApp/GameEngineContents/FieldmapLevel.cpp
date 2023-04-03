@@ -793,7 +793,7 @@ void FieldmapLevel::Loading()
 		}
 	}
 
-	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
+	MainPlayer->SetPos(Fieldmap::GetPos(21, 15));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
