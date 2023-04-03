@@ -704,6 +704,12 @@
     <ClCompile Include="BattleSkill_EnemyDefenseCurl.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerIronDefense.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyIronDefense.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1391,6 +1397,12 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyDefenseCurl.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerIronDefense.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyIronDefense.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "BattleSkill_EnemyScratch.h"
 #include "BattleSkill_EnemyFeatherDance.h"
 #include "BattleSkill_EnemyDefenseCurl.h"
+#include "BattleSkill_EnemyIronDefense.h"
 #include "BattleSkill_EnemyEmber.h"
 #include "BattleSkill_EnemyFlamethrower.h"
 #include "BattleSkill_EnemyGrowl.h"
@@ -69,6 +70,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_EnemyFeatherDance>(BattleEnemyMonster_StateType::Skill_FeatherDance);
 	CreateState<BattleSkill_EnemyDefenseCurl>(BattleEnemyMonster_StateType::Skill_DefenseCurl);
+	CreateState<BattleSkill_EnemyIronDefense>(BattleEnemyMonster_StateType::Skill_IronDefense);
 	CreateState<BattleSkill_EnemyEmber>(BattleEnemyMonster_StateType::Skill_Ember);
 	CreateState<BattleSkill_EnemyFlamethrower>(BattleEnemyMonster_StateType::Skill_Flamethrower);
 

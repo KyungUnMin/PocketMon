@@ -26,6 +26,7 @@
 
 #include "BattleSkill_PlayerFeatherDance.h"
 #include "BattleSkill_PlayerDefenseCurl.h"
+#include "BattleSkill_PlayerIronDefense.h"
 #include "BattleSkill_PlayerEmber.h"
 #include "BattleSkill_PlayerFlamethrower.h"
 BattlePlayerMonsterFSM::BattlePlayerMonsterFSM(GameEngineActor* _Owner)
@@ -72,6 +73,7 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerScratch>(BattlePlayerMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_PlayerFeatherDance>(BattlePlayerMonster_StateType::Skill_FeatherDance);
 	CreateState<BattleSkill_PlayerDefenseCurl>(BattlePlayerMonster_StateType::Skill_DefenseCurl);
+	CreateState<BattleSkill_PlayerIronDefense>(BattlePlayerMonster_StateType::Skill_IronDefense);
 	CreateState<BattleSkill_PlayerEmber>(BattlePlayerMonster_StateType::Skill_Ember);
 	CreateState<BattleSkill_PlayerFlamethrower>(BattlePlayerMonster_StateType::Skill_Flamethrower);
 
