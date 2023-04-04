@@ -224,6 +224,7 @@ float EnemyHPBackground::GetPlayerDamage(float _EnumyMonsterDamage)
 	FrinedMonsterDamage = _EnumyMonsterDamage;
 	return FrinedMonsterDamage;
 }
+
 bool IsDeathEnumy_B = false;
 
 void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp , float _curpos)

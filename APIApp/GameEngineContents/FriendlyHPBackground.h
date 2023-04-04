@@ -46,10 +46,12 @@ public:
 		return EXPRenderPtr;
 	}
 
-	bool IsGetLevelUp()
-	{
+	bool IsGetLevelUp(){
+
 		return IsLevelUp;
+
 	}
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
@@ -58,6 +60,7 @@ protected:
 
 private:
 
+	bool IsLevelUp = false;
 
 	std::vector<GameEngineRender*> PoketMonName_R;
 	std::vector<GameEngineRender*> PoketMonLevel_R;
@@ -118,7 +121,6 @@ private:
 	int TickNumber_1 = 0;
 	
 	bool IsExpUP = false;
-	bool IsLevelUp = false;
 
 	float SecoundHp = 0.0f;
 	float MyCurHpNum = CurMyHP - FirstHp;

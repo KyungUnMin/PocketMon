@@ -31,6 +31,7 @@ FriendlyHPBackground::~FriendlyHPBackground()
 	}
 }
 
+
 void FriendlyHPBackground::Start()
 {
 	RenderPtr = CreateRender("FriendlyHPBackground.bmp", BattleRenderOrder::Battle_UI);
@@ -126,6 +127,7 @@ void FriendlyHPBackground::Start()
 	 SecoundHp = 192.0f - FirstHp;
 
 }
+
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
 	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
@@ -172,8 +174,10 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				PokeDataBase::PokeExperienceGain(*BattlePlayer::PlayerPtr->GetMonsterDB(), *BattleEnemy::EnemyPtr->GetMonsterDB());
 				IsExpUP = false;
 				if (true == IsLevelUp) {
-					LevelUpPtr = GetLevel()->CreateActor<LevelUpStatUI_2>();
+					LevelUpPtr = GetLevel()->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
 					LevelUpPtr->SetPos({ 450,70 });
+					IsGetLevelUp();
+
 					if (CheckTimnAA > 4.50f) {
 						LevelUpPtr->Death();
 						CheckTimnAA = 0.0f;
@@ -320,6 +324,8 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 }
 
 bool IsDeath_B = false;
+
+
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
 	DamegeTick.clear();
@@ -366,6 +372,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 			for (size_t z = x; z < EXPTick.size(); z++) {
 				if (_GetExp + _MyCurExp > 100.0f) {
 					IsLevelUp = true;
+					IsGetLevelUp();
 					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
 					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
 					EXPTick[z] = UpExp / (EXPTick.size() - x) * j;

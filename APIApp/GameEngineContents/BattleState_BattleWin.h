@@ -22,7 +22,7 @@ protected:
 private:
 	float Timer = 0.f;
 
-	const float LevelUpDuration = 5.f;
+	const float LevelUpDuration = 10.f;
 	const float NormalDuration = 3.f;
 	float Duration = 0.f;
 
