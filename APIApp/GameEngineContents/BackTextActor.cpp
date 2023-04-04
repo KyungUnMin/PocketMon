@@ -199,7 +199,6 @@ void BackTextActor::Update(float _DeltaTime)
 	}
 	if (BattleTextRender[LastTextRenderIndex.y][LastTextRenderIndex.x]->IsUpdate() && GameEngineInput::IsDown("BattleUI_Next")) 
 	{
-		NextScriptSOUND();
 		if (TestText.end() == TestTextIter)
 			return;
 

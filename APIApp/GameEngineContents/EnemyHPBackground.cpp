@@ -231,7 +231,7 @@ void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp , fl
 {
 	EnemyDamegeTick.clear();
 
-	if (_FriendMonsterDamage > _MyCurHp) {
+	if (_FriendMonsterDamage >= _MyCurHp) {
 		_FriendMonsterDamage = _MyCurHp;
 		IsDeathEnumy_B = true;
 	}
@@ -245,6 +245,8 @@ void EnemyHPBackground::HpUpdate(float _FriendMonsterDamage, float _MyCurHp , fl
 
 	}
 	if (true == IsDeathEnumy_B) {
+		EnemyDamegeTick[7] = 0.0f;
+		EnemyDamegeTick[8] = 0.0f;
 		EnemyDamegeTick[9] = 0.0f;
 		IsDeathEnumy_B = false;
 	}

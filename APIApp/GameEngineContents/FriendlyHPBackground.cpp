@@ -146,7 +146,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 
 
-	float hpcur = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience() / 100.0f;
+	float hpcur = CurExp / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
 
 
