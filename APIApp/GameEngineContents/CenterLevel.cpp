@@ -520,6 +520,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ember.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Flamethrower.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Earthquake.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RockThrow.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RazorLeaf.wav"));
 
 
 		Dir.MoveParentToDirectory("Battle");

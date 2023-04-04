@@ -65,6 +65,10 @@ void BattleSkill_EnemyRazorLeaf::EnterState()
 
 	RazorRender1->Off();
 	RazorRender2->Off();
+
+	GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("RazorLeaf.wav");
+	SFX.LoopCount(1);
+	SFX.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyRazorLeaf::Update(float _DeltaTime)
@@ -194,6 +198,9 @@ void BattleSkill_EnemyRazorLeaf::Update_Forward(float _Deltatime)
 	if (5.0f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
+		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+		SFX.LoopCount(1);
+		SFX.Volume(BattleDefine::WorldVolumn);
 	}
 }
 
