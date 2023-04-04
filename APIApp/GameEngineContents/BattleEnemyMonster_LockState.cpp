@@ -6,6 +6,13 @@
 #include "Battle_MonsterAppearEffect.h"
 #include "BattleLevel.h"
 
+float4 BattleEnemyMonster_LockState::OriginScale = float4::Zero;
+
+const float4& BattleEnemyMonster_LockState::GetOriginScale()
+{
+	return OriginScale;
+}
+
 BattleEnemyMonster_LockState::BattleEnemyMonster_LockState()
 {
 
@@ -51,4 +58,11 @@ void BattleEnemyMonster_LockState::Update(float _DeltaTime)
 	LockEffect->SetPosition(Offset);
 	MonsterRender->SetScale(Scale);
 	LockEffect->SetScale(Scale);
+}
+
+void BattleEnemyMonster_LockState::ExitState()
+{
+	LiveTime = 0.f;
+	MonsterRender->Off();
+	LockEffect->Off();
 }

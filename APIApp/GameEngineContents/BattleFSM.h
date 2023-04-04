@@ -15,6 +15,7 @@ enum class BattleStateType
 	EnemyTurn,
 	ThrowMonsterBall,
 	CatchWildMonster,
+	CatchFailWildMonster,
 	CheckPlayerHP,
 	CheckEnemyHP,
 

@@ -15,16 +15,20 @@ public:
 	BattleEnemyMonster_LockState& operator=(const BattleEnemyMonster_LockState& _Other) = delete;
 	BattleEnemyMonster_LockState& operator=(const BattleEnemyMonster_LockState&& _Other) noexcept = delete;
 
+	static const float4& GetOriginScale();
+	static const float4& GetDestOffset();
+
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
+	void ExitState() override;
 
 private:
 	GameEngineRender* MonsterRender = nullptr;
 	GameEngineRender* LockEffect = nullptr;
 
 	float4 DestOffset = float4::Zero;
-	float4 OriginScale = float4::Zero;
+	static float4 OriginScale;
 
 	float LiveTime = 0.f;
 	float Duration = 1.f;

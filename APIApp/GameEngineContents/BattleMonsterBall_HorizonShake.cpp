@@ -1,7 +1,9 @@
 #include "BattleMonsterBall_HorizonShake.h"
+#include <GameEngineBase/GameEngineRandom.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleMonsterBall.h"
 #include "BattleMonsterBallFSM.h"
+#include "BattleEnemy.h"
 
 BattleMonsterBall_HorizonShake::BattleMonsterBall_HorizonShake()
 {
@@ -18,14 +20,68 @@ void BattleMonsterBall_HorizonShake::EnterState()
 	BattleMonsterBall* MonsterBall = dynamic_cast<BattleMonsterBallFSM*>(GetFSM())->GetMonsterBall();
 	BallRender = MonsterBall->GetRender();
 	BallRender->ChangeAnimation(BattleMonsterBall::RollAniName);
+
+	SelectNextState();
 }
+
+void BattleMonsterBall_HorizonShake::SelectNextState()
+{
+	PokeDataBase* EnemyMonDB = BattleEnemy::EnemyPtr->GetMonsterDB();
+	int EnemyMonCurHP = EnemyMonDB->GetMonsterCurrentHP();
+	float EnemyMonMaxHP = EnemyMonDB->GetMonsterMaxHP_float();
+
+	float HpRatio = (static_cast<float>(EnemyMonCurHP) / EnemyMonMaxHP);
+	float RandValue = GameEngineRandom::MainRandom.RandomFloat(0.f, 1.f);
+
+	if (RandValue < HpRatio)
+	{
+		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Unlock);
+	}
+	else
+	{
+		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
+	}
+
+	//int RandValue = GameEngineRandom::MainRandom.RandomInt(1, 10);
+	////HP가 20 이상일때
+	//if (20 < EnemyMonHP)
+	//{
+	//	//NegativePer의 확률로 몬스터를 잡는다
+	//	if (RandValue <= NegativePer)
+	//	{
+	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
+	//	}
+	//	else
+	//	{
+	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Unlock);
+	//	}
+	//}
+
+	////HP가 20이하일때
+	//else
+	//{
+	//	//PositivePer의 확률로 몬스터를 잡는다
+	//	if (RandValue <= PositivePer)
+	//	{
+	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
+	//	}
+	//	else
+	//	{
+	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Unlock);
+	//	}
+	//}
+}
+
+
+
+
 
 void BattleMonsterBall_HorizonShake::Update(float _DeltaTime)
 {
 	LiveTime += _DeltaTime;
 	if (Duration < LiveTime)
 	{
-		GetFSM()->ChangeState(BattleMonsterBall_Movement::Catch);
+		GetFSM()->ChangeState(static_cast<BattleMonsterBall_Movement>(NextState));
 		return;
 	}
 
@@ -47,3 +103,13 @@ void BattleMonsterBall_HorizonShake::Update(float _DeltaTime)
 	}
 	
 }
+
+void BattleMonsterBall_HorizonShake::ExitState()
+{
+	BallRender->SetPosition(float4::Zero);
+	BallRender = nullptr;
+
+	LiveTime = 0.f;
+	NextState = -1;
+}
+

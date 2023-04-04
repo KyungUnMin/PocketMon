@@ -228,7 +228,7 @@
       <Filter>Battle\03.FSM\06.EnemyMonster\01.FSM</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBall_CatchState.cpp">
-      <Filter>Battle\03.FSM\07.MonsterBall\02.State\03.CatchThrow</Filter>
+      <Filter>Battle\03.FSM\07.MonsterBall\02.State\03.Catch</Filter>
     </ClCompile>
     <ClCompile Include="BattleMonsterBall_FadeState.cpp">
       <Filter>Battle\03.FSM\07.MonsterBall\02.State\04.Fade</Filter>
@@ -756,6 +756,15 @@
     <ClCompile Include="ItemNPC.cpp">
       <Filter>Player\NPC\EventNPC</Filter>
     </ClCompile>
+    <ClCompile Include="BattleMonsterBall_UnlockState.cpp">
+      <Filter>Battle\03.FSM\07.MonsterBall\02.State\07.UnLock</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleEnemyMonster_UnlockState.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\05.Unlock</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_UnlockWildMonster.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -979,7 +988,7 @@
       <Filter>Battle\03.FSM\06.EnemyMonster\01.FSM</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBall_CatchState.h">
-      <Filter>Battle\03.FSM\07.MonsterBall\02.State\03.CatchThrow</Filter>
+      <Filter>Battle\03.FSM\07.MonsterBall\02.State\03.Catch</Filter>
     </ClInclude>
     <ClInclude Include="BattleMonsterBall_FadeState.h">
       <Filter>Battle\03.FSM\07.MonsterBall\02.State\04.Fade</Filter>
@@ -1497,6 +1506,15 @@
     <ClInclude Include="ItemNPC.h">
       <Filter>Player\NPC\EventNPC</Filter>
     </ClInclude>
+    <ClInclude Include="BattleMonsterBall_UnlockState.h">
+      <Filter>Battle\03.FSM\07.MonsterBall\02.State\07.UnLock</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleEnemyMonster_UnlockState.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\05.Unlock</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_UnlockWildMonster.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1700,9 +1718,6 @@
     <Filter Include="Battle\03.FSM\07.MonsterBall\02.State\02.Open">
       <UniqueIdentifier>{4468ee5d-80ca-4958-b36b-72d5f67cb75a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Battle\03.FSM\07.MonsterBall\02.State\03.CatchThrow">
-      <UniqueIdentifier>{78e3a962-b92e-44e2-993c-b91a9881994c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Battle\03.FSM\07.MonsterBall\02.State\01.Throw">
       <UniqueIdentifier>{48754272-1d81-48dd-866e-b94bb451137f}</UniqueIdentifier>
     </Filter>
@@ -1891,6 +1906,18 @@
     </Filter>
     <Filter Include="FieldUI\HSM\TrainerCardUI">
       <UniqueIdentifier>{d61075ff-c984-4ad0-86a4-2c7fb63abad9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\07.MonsterBall\02.State\03.Catch">
+      <UniqueIdentifier>{78e3a962-b92e-44e2-993c-b91a9881994c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\07.MonsterBall\02.State\07.UnLock">
+      <UniqueIdentifier>{13e8f8db-9ccc-46dd-8013-c62a05963dbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\06.EnemyMonster\02.State\05.Unlock">
+      <UniqueIdentifier>{2082e130-4a80-4a95-a95a-5a68ec4e12da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster">
+      <UniqueIdentifier>{fa963243-90ca-456f-9608-e488c78881d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

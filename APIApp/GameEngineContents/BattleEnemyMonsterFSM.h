@@ -8,6 +8,7 @@ enum class BattleEnemyMonster_StateType
 	Shadow,
 	Idle,
 	Lock,
+	Unlock,
 	Dead,
 	CreatedInBall,
 

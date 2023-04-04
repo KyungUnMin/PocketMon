@@ -10,6 +10,7 @@ enum class BattleMonsterBall_Movement
 	ShakeHorizon,
 	Catch,
 	Fade,
+	Unlock,
 
 	COUNT,
 };

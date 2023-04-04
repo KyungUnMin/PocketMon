@@ -21,6 +21,7 @@
 #include "BattleState_GymBattleWin.h"
 #include "BattleState_NpcTalk.h"
 #include "BattleState_LeafTalk.h"
+#include "BattleState_UnlockWildMonster.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -50,6 +51,7 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_EnemyTurn>(BattleStateType::EnemyTurn);
 	CreateState<BattleState_ThrowMonsterBall>(BattleStateType::ThrowMonsterBall);
 	CreateState<BattleState_CatchWhildMonster>(BattleStateType::CatchWildMonster);
+	CreateState<BattleState_UnlockWildMonster>(BattleStateType::CatchFailWildMonster);
 	CreateState<BattleState_PlayerHPCheck>(BattleStateType::CheckPlayerHP);
 	CreateState<BattleState_EnemyHPCheck>(BattleStateType::CheckEnemyHP);
 

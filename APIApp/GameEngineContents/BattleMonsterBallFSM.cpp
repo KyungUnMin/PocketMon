@@ -7,6 +7,7 @@
 #include "BattleMonsterBall_HorizonShake.h"
 #include "BattleMonsterBall_CatchState.h"
 #include "BattleMonsterBall_FadeState.h"
+#include "BattleMonsterBall_UnlockState.h"
 
 BattleMonsterBallFSM::BattleMonsterBallFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -49,6 +50,7 @@ void BattleMonsterBallFSM::InitToCatch()
 	CreateState<BattleMonsterBall_HorizonShake>(BattleMonsterBall_Movement::ShakeHorizon);
 	CreateState<BattleMonsterBall_CatchState>(BattleMonsterBall_Movement::Catch);
 	CreateState<BattleMonsterBall_FadeState>(BattleMonsterBall_Movement::Fade);
+	CreateState<BattleMonsterBall_UnlockState>(BattleMonsterBall_Movement::Unlock);
 
 	ChangeState(BattleMonsterBall_Movement::Create);
 }

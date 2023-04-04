@@ -66,6 +66,7 @@ public:
 	void ChangePlayerMonster(PokeNumber _NextMonster);
 
 	void LockWildPocketMon();
+	void UnlockWildPocketMon();
 
 	void ChangeFieldLevel(bool IsWin, bool _FadeColorBlack = true, float _FadeDuration = 1.5f);
 

@@ -70,6 +70,24 @@ void BattleMonsterEnemy::Lock()
 	FsmPtr->ChangeState(BattleEnemyMonster_StateType::Lock);
 }
 
+void BattleMonsterEnemy::UnLock()
+{
+	if (false == IsWildMonster)
+	{
+		MsgAssert("야생 포켓몬만 몬스터볼로 잡을수 있습니다");
+		return;
+	}
+
+	BattleFSM* GameFSM = BattleLevel::BattleLevelPtr->GetBattleFSM();
+	if (BattleStateType::ThrowMonsterBall != GameFSM->GetNowState<BattleStateType>())
+	{
+		MsgAssert("몬스터볼을 던진 상태에서만 이 함수를 호출 할 수 있습니다");
+		return;
+	}
+
+	FsmPtr->ChangeState(BattleEnemyMonster_StateType::Unlock);
+}
+
 void BattleMonsterEnemy::KillMonster()
 {
 	BattleFSM* GameFSM = BattleLevel::BattleLevelPtr->GetBattleFSM();

@@ -25,6 +25,7 @@ public:
 		ChangeState(static_cast<size_t>(_Type));
 	}
 
+
 	template <typename EnumType>
 	EnumType GetNowState()
 	{
@@ -57,12 +58,13 @@ private:
 	size_t CurIndex = 999999;
 	GameEngineActor* Owner = nullptr;
 
-	void ChangeState(size_t _NextIndex);
-
 	inline void ResizeStates(size_t _Size)
 	{
 		AllState.resize(_Size);
 	}
+
+	void ChangeState(size_t _NextIndex);
+
 
 	void InitState(BattleStateBase* _State, size_t _Index);
 };

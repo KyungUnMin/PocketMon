@@ -4,6 +4,7 @@
 #include "BattleEnemyMonster_LockState.h"
 #include "BattleState_MonsterDead.h"
 #include "BattleEnemyMonster_CreatedInBall.h"
+#include "BattleEnemyMonster_UnlockState.h"
 
 #include "BattleSkill_EnemyTackle.h"
 #include "BattleSkill_EnemyScratch.h"
@@ -29,6 +30,7 @@
 #include "BattleSkill_EnemyAgility.h"
 #include "BattleSkill_EnemySuperFang.h"
 #include "BattleSkill_EnemyTest.h"
+
 
 
 BattleEnemyMonsterFSM::BattleEnemyMonsterFSM(GameEngineActor* _Owner)
@@ -66,6 +68,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleEnemyMonster_ShadowState>(BattleEnemyMonster_StateType::Shadow);
 	CreateState<BattleStateIdle>(BattleEnemyMonster_StateType::Idle);
 	CreateState<BattleEnemyMonster_LockState>(BattleEnemyMonster_StateType::Lock);
+	CreateState<BattleEnemyMonster_UnlockState>(BattleEnemyMonster_StateType::Unlock);
 	CreateState<BattleState_MonsterDead>(BattleEnemyMonster_StateType::Dead);
 	CreateState<BattleEnemyMonster_CreatedInBall>(BattleEnemyMonster_StateType::CreatedInBall);
 

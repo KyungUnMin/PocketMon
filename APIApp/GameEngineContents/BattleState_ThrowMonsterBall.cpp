@@ -19,15 +19,6 @@ void BattleState_ThrowMonsterBall::EnterState()
 {
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfoUI->BattleSetText("You are mine");
-
-
-
-	/*BattleEnemy* Enemy = BattleEnemy::EnemyPtr;
-	float4 Dest = Enemy->GetPos();
-	
-
-	BattleEnemyMonsterFSM* EnemyMonsterFSM = Enemy->GetMonster()->GetFSM();*/
-	//EnemyMonsterFSM->ChangeState(BattleEnemyMonster_StateType::)
 }
 
 void BattleState_ThrowMonsterBall::ExitState()

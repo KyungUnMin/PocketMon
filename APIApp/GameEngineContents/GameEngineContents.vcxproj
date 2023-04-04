@@ -191,6 +191,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleEnemyMonster_ShadowState.cpp" />
+    <ClCompile Include="BattleEnemyMonster_UnlockState.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleEnemy_ComeBackState.cpp">
       <SubType>
       </SubType>
@@ -245,6 +249,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleMonsterBall_ThrowToCreate.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleMonsterBall_UnlockState.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -546,6 +554,10 @@
     </ClCompile>
     <ClCompile Include="BattleState_TalkBase.cpp" />
     <ClCompile Include="BattleState_ThrowMonsterBall.cpp" />
+    <ClCompile Include="BattleState_UnlockWildMonster.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_WildTalk.cpp" />
     <ClCompile Include="BattleTrainerBase.cpp" />
     <ClCompile Include="BattleZoneBushParticle.cpp">
@@ -914,6 +926,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleEnemyMonster_ShadowState.h" />
+    <ClInclude Include="BattleEnemyMonster_UnlockState.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleEnemy_ComeBackState.h">
       <SubType>
       </SubType>
@@ -967,6 +983,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleMonsterBall_ThrowToCreate.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleMonsterBall_UnlockState.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1265,6 +1285,10 @@
     </ClInclude>
     <ClInclude Include="BattleState_TalkBase.h" />
     <ClInclude Include="BattleState_ThrowMonsterBall.h" />
+    <ClInclude Include="BattleState_UnlockWildMonster.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleState_WildTalk.h" />
     <ClInclude Include="BattleTrainerBase.h" />
     <ClInclude Include="BattleZoneBushParticle.h">

@@ -16,6 +16,7 @@ public:
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
+	void ExitState() override;
 
 private:
 	class GameEngineRender* BallRender = nullptr;
@@ -23,5 +24,13 @@ private:
 
 	float LiveTime = 0.f;
 	const float Duration = 3.f;
+
+	size_t NextState = -1;
+
+	const int CatchHpRatio = 20;
+	const int NegativePer = 2;
+	const int PositivePer = 9;
+
+	void SelectNextState();
 };
 

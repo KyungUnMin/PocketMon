@@ -216,6 +216,30 @@ void BattleLevel::UseMonsterBall(ItemCode _MonsterBallType)
 }
 
 
+void BattleLevel::LockWildPocketMon()
+{
+	if (BattleStateType::ThrowMonsterBall != BattleFsmPtr->GetNowState<BattleStateType>())
+	{
+		MsgAssert("몬스터볼을 던졌을때만 야생포켓몬을 잡을수 있습니다");
+		return;
+	}
+
+	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
+}
+
+void BattleLevel::UnlockWildPocketMon()
+{
+	if (BattleStateType::ThrowMonsterBall != BattleFsmPtr->GetNowState<BattleStateType>())
+	{
+		MsgAssert("몬스터볼을 던졌을때만 몬스터가 탈출할 수 있습니다");
+		return;
+	}
+
+	BattleFsmPtr->ChangeState(BattleStateType::CatchFailWildMonster);
+}
+
+
+
 void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 {
 	/*TrainerPokemon* Mon = Player::MainPlayer->GetPlayerPokemon();
@@ -228,16 +252,6 @@ void BattleLevel::ChangePlayerMonster(PokeNumber _NextMonster)
 	BattleFsmPtr->ChangeState(BattleStateType::PlayerMonsterChange);
 }
 
-void BattleLevel::LockWildPocketMon()
-{
-	if (BattleStateType::ThrowMonsterBall != BattleFsmPtr->GetNowState<BattleStateType>())
-	{
-		MsgAssert("몬스터볼을 던졌을때만 야생포켓몬을 잡을수 있습니다");
-		return;
-	}
-
-	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
-}
 
 void BattleLevel::ChangeFieldLevel(bool IsWin, bool _FadeColorBlack, float _FadeDuration)
 {

@@ -46,6 +46,8 @@ public:
 
 	void Lock();
 
+	void UnLock();
+
 	void KillMonster();
 
 protected:
