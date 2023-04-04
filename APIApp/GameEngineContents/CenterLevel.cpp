@@ -574,34 +574,17 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("FieldUI");
 		Dir.Move("FieldBGM");
 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_1.mp3"));                  // 1번 도로
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PalletTown.mp3"));               // 태초 마을
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ViridianCity.mp3"));             // 상록시티
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Viridian_Forest1.mp3"));         // 상록숲, 회색시티 1 (1~3중 고르면 됨)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GrayCity1.mp3"));                // 상록숲, 회색시티 2 (1~3중 고르면 됨)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GrayCity2.mp3"));                // 상록숲, 회색시티 3 (1~3중 고르면 됨)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_22.mp3"));                 // 22번 도로 (추천)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_2.mp3"));                  // 2번 도로 (추천)
 		
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("OakLap.mp3"));				   // 오박사 실험실
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonCenter.mp3"));			   // 포켓몬 센터 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Gym.mp3"));			       // 체육관
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Shop.mp3"));                     // 상점
 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));          // 스타팅 포켓몬 선택
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MeetOak.mp3"));				   // 오박사 조우
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));			   // 라이벌 조우
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BeforeBattle.mp3"));	           // 야생 포켓몬에게서 도주
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.wav"));			   // 나무문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.wav"));			   // 슬라이드문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.wav"));			   // 건물(빌딩) 나가기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeBell.wav"));			       // 자전거 벨 울리기
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("LockDoor.wav"));			       // 잠긴문
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Badge_Obtained.mp3"));           // 뱃지 획득
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Item_Obtained.mp3"));            // 아이템 획득
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Cycling.mp3"));                  // 바이크탑승
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
