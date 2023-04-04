@@ -195,3 +195,8 @@ bool GameEngineSoundPlayer::GetPause()
 	ControlChannel->getPaused(&PauseValue);
 	return PauseValue;
 }
+
+bool GameEngineSoundPlayer::VaildCheck() const
+{
+	return ControlChannel != nullptr;
+}

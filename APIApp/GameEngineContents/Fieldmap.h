@@ -55,8 +55,9 @@ public:
 	static GroundType GetGroundType(const int2& _Index);
 
 	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
-	static void ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI = true);
-	static void ChangeCity(const std::string_view& _CityName, bool _PlayUI = true);
+	static void ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI = true, bool _BgmPlay = true);
+	static void ChangeCity(const std::string_view& _CityName, bool _PlayUI = true, bool _BgmPlay = true);
+	static void PlayCityBGM();
 
 	static void AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);
 	static void AddUpdateEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter);

@@ -20,6 +20,7 @@ public:
 	void PauseOff();
 
 	bool GetPause();
+	bool VaildCheck() const;
 
 private:
 	FMOD::Channel* ControlChannel = nullptr;

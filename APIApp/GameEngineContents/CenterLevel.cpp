@@ -462,6 +462,38 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Growl.mp3"));						  // 울음소리
 	}
 
+	//필드맵 사운드
+	{
+		
+		Dir.MoveParentToDirectory("Sound");
+		Dir.Move("Sound");
+		Dir.Move("Fieldmap");
+		Dir.Move("BGM");
+		
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_PalletTown.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_OakLap.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Route1.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_ViridianCity.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_ViridianForest.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Gym.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonCenter.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending_Theme.mp3"));
+
+	}
+
+	//엔딩 사운드
+	{
+
+		Dir.MoveParentToDirectory("Sound");
+		Dir.Move("Sound");
+		Dir.Move("Ending");
+
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BlastoiseHolw.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CharizardHolw.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PikachuHolw.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("VenusaurHolw.wav"));
+	}
+
 	{
 		//배틀 사운드
 		Dir.MoveParentToDirectory("Battle");
@@ -511,30 +543,6 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Potion.wav"));
 
 		Dir.MoveParentToDirectory("FieldUI");
-	}
-
-	{
-		// 배경음악
-		Dir.MoveParentToDirectory("FieldUI");
-		Dir.Move("FieldBGM");
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_1.mp3"));                  // 1번 도로
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PalletTown.mp3"));               // 태초 마을
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ViridianCity.mp3"));             // 상록시티
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("OakLap.mp3"));				   // 오박사 실험실
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonCenter.mp3"));			   // 포켓몬 센터 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Gym.mp3"));			       // 체육관
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));          // 스타팅 포켓몬 선택
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MeetOak.mp3"));				   // 오박사 조우
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));			   // 라이벌 조우
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Wild_Victory.mp3"));			   // 전투 승리 시 BGM
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.wav"));			   // 나무문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.wav"));			   // 슬라이드문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.wav"));			   // 건물(빌딩) 나가기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeBell.wav"));			       // 자전거 벨 울리기
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))

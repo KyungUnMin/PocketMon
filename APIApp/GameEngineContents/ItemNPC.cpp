@@ -45,7 +45,6 @@ void ItemNPC::InteractionStart()
 	Commnet += ".";
 
 	ScriptDatas[0].push_back(Commnet);
-	ScriptDatas[0].push_back("Your adventure just got even more exciting.\nGet stronger and enjoy even more epic adventures!");
 
 	StaticNPC::InteractionStart();
 }

@@ -7,6 +7,7 @@
 #include "FieldmapCity.h"
 #include "ContentsEnum.h"
 #include "CityNameUI.h"
+#include "BgmPlayer.h"
 
 const float Fieldmap::TileSize = 64.0f;
 const float Fieldmap::TileSizeHalf = 32.0f;
@@ -135,7 +136,7 @@ void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr
 	AllCitys[UpperName] = _CityPtr;
 }
 
-void Fieldmap::ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI)
+void Fieldmap::ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI, bool _BgmPlay)
 {
 	if (CurCity == _CityPtr)
 	{
@@ -155,6 +156,11 @@ void Fieldmap::ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI)
 	CurCity = _CityPtr;
 	CurCity->ActiveCity();
 
+	if (true == _BgmPlay)
+	{
+		PlayCityBGM();
+	}
+
 	for (const std::pair<std::string, FieldmapCity*>& CityRef : AllCitys)
 	{
 		CityRef.second->CityActiveUpdate();
@@ -166,7 +172,7 @@ void Fieldmap::ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI)
 	}
 }
 
-void Fieldmap::ChangeCity(const std::string_view& _CityName, bool _PlayUI)
+void Fieldmap::ChangeCity(const std::string_view& _CityName, bool _PlayUI, bool _BgmPlay)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);
 
@@ -175,7 +181,17 @@ void Fieldmap::ChangeCity(const std::string_view& _CityName, bool _PlayUI)
 		MsgAssert("생성하지 않은 필드맵 시티를 사용하려 했습니다.");
 	}
 
-	ChangeCity(AllCitys[UpperName], _PlayUI);
+	ChangeCity(AllCitys[UpperName], _PlayUI, _BgmPlay);
+}
+
+void Fieldmap::PlayCityBGM()
+{
+	std::string BgmName = CurCity->GetBgmName();
+
+	if ("" != BgmName)
+	{
+		BgmPlayer::PlayBGM(BgmName);
+	}
 }
 
 void Fieldmap::AddStartEvent(const std::string_view& _CityName, const int2& _Index, const FieldData::FieldEventParameter& _Parameter)

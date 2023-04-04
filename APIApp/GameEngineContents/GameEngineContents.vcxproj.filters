@@ -765,6 +765,9 @@
     <ClCompile Include="BattleState_UnlockWildMonster.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster</Filter>
     </ClCompile>
+    <ClCompile Include="BgmPlayer.cpp">
+      <Filter>Base</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1514,6 +1517,9 @@
     </ClInclude>
     <ClInclude Include="BattleState_UnlockWildMonster.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster</Filter>
+    </ClInclude>
+    <ClInclude Include="BgmPlayer.h">
+      <Filter>Base</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

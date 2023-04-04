@@ -25,6 +25,7 @@ public:
 	void PlayPokeballAnim(PokeColor _Color);
 	void SetColor(PokeColor _Color);
 
+
 	inline void SetAnimSpeed(float _Speed)
 	{
 		Speed = _Speed;
@@ -42,6 +43,8 @@ protected:
 private:
 	GameEngineRender* PokeballRender = nullptr;
 	GameEngineRender* EndingRing = nullptr;
+
+	PokeColor Color = PokeColor::Blue;
 
 	float Progress = 0.0f;
 	float Speed = 1.0f;

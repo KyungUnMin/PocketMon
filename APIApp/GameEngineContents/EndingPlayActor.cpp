@@ -12,6 +12,7 @@
 #include "EndingFade.h"
 #include "Player.h"
 #include "EndingWalkPlayer.h"
+#include "BgmPlayer.h"
 
 EndingPlayActor* EndingPlayActor::MainEndingPlayActor = nullptr;
 bool EndingPlayActor::IsEndingPlay = false;
@@ -47,6 +48,7 @@ void EndingPlayActor::PlayEnding()
 	Fade->Off();
 	PlayerAnim->Off();
 
+	BgmPlayer::PlayBGM("Ending_Theme.mp3");
 	AddCameraMoveEvent("PewterCity", int2(15, 16), float4::Zero);
 
 	GameEngineLevel* Level = GetLevel();
@@ -445,7 +447,7 @@ void EndingPlayActor::AddCameraMoveEvent(const std::string_view& _CityName, cons
 		0.0f, std::bind(
 		[=](EndingPlayActor* _This) 
 		{
-			Fieldmap::ChangeCity(_CityName, false);
+			Fieldmap::ChangeCity(_CityName, false, false);
 			_This->GetLevel()->SetCameraPos(Fieldmap::GetPos(_CityIndex) - GameEngineWindow::GetScreenSize().half());
 			_This->SetCameraDir(_MoveDir);
 		}, this), false); // 상록 시티

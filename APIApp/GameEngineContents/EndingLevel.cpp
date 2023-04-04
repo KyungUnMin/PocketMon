@@ -1,5 +1,6 @@
 #include "EndingLevel.h"
 #include <GameEnginePlatform/GameEngineWindow.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineCore.h>
 #include "BackgroundUI.h"
 #include "EndingPokeballBackground.h"
