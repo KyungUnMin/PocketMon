@@ -41,5 +41,7 @@ private:
 	GameEngineRender* ColonsAnimation = nullptr;
 	float4 ColonsAnimationPos = { 40, 92 };
 	float4 ColonsAnimationScale = { 20, 48 };
+
+	GameEngineRender* BadgeIcon = nullptr;
 };
 

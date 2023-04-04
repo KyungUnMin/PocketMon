@@ -103,7 +103,7 @@ void SelectStartingUI::Update(float _DeltaTime)
 				switch (State)
 				{
 				case MenuState::Yes:
-					Player::MainPlayer->GetPlayerPokemon()->AddPokemon(PokeDataBase::PokeCreate(Select, 5));
+					Player::MainPlayer->GetPlayerPokemon()->AddSpecialPokemon(Select, 10);
 					DeleteBallFunction();
 					AcFieldDialog->ConversationStart(&SelectScript);
 					State = MenuState::Null;
@@ -141,24 +141,26 @@ void SelectStartingUI::UpdateStart(PokeNumber _Pokemon, std::function<void()> _D
 	if (!IsGetPokemon)
 	{
 		InputControllHandle = InputControll::UseControll();
-		Select = _Pokemon;
 		AcFieldDialog->IsValid = false;
 		DeleteBallFunction = _DeleteBall;
-		switch (Select)
+		switch (_Pokemon)
 		{
 		case PokeNumber::Bulbasaur:
+			Select = SpecialPokeEnum::StartingBulbasaur;
 			AcFieldDialog->ConversationStart(&BulbasaurScript);
 			BulbasaurRender->On();
 			CharmanderRender->Off();
 			SquirtleRender->Off();
 			break;
 		case PokeNumber::Charmander:
+			Select = SpecialPokeEnum::StartingCharmander;
 			AcFieldDialog->ConversationStart(&CharmanderScript);
 			BulbasaurRender->Off();
 			CharmanderRender->On();
 			SquirtleRender->Off();
 			break;
 		case PokeNumber::Squirtle:
+			Select = SpecialPokeEnum::StartingSquirtle;
 			AcFieldDialog->ConversationStart(&SquirtleScript);
 			BulbasaurRender->Off();
 			CharmanderRender->Off();

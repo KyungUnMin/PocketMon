@@ -41,7 +41,7 @@ private:
 
 
 	FieldDialog* AcFieldDialog = nullptr;
-	PokeNumber Select = PokeNumber::Bulbasaur;
+	SpecialPokeEnum Select = SpecialPokeEnum::MasterPikachu;
 
 	MenuState State = MenuState::Null;
 
