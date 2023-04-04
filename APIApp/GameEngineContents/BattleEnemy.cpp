@@ -82,6 +82,15 @@ void BattleEnemy::RenderCreate(BattleNpcType _NpcType)
 	case BattleNpcType::Woong:
 		ImagePath += "Woong.bmp";
 		break;
+	case BattleNpcType::Leaf:
+		ImagePath += "Leaf.bmp";
+		break;
+	case BattleNpcType::NPC2:
+		ImagePath += "2.bmp";
+		break;
+	case BattleNpcType::NPC3:
+		ImagePath += "3.bmp";
+		break;
 	default:
 		MsgAssert("아직 해당 NPC를 구현하지 않았습니다");
 		break;

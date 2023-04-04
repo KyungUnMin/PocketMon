@@ -114,19 +114,19 @@ void BattleLevel::InitActors(
 
 void BattleLevel::CreateBGM(BattleNpcType _BattleType)
 {
-	switch (_BattleType)
+	BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleBgmName);
+	/*switch (_BattleType)
 	{
 	case BattleNpcType::None:
 	case BattleNpcType::Rival:
 	case BattleNpcType::Woong:
-		BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleBgmName);
 		break;
 	default:
 		DebugMsgBox("아직 해당 전투일때 사운드를 정해주지 않았습니다");
 		break;
-	}
+	}*/
 
-	BgmCtrl.Volume(WorldBgmVolumn);
+	BgmCtrl.Volume(WorldBgmVolumn * BattleDefine::WorldVolumn);
 }
 
 

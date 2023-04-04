@@ -7,6 +7,8 @@ enum class BattleStateType
 	WildTalk,
 	RivalTalk,
 	GymTalk,
+	LeafTalk,
+	NpcTalk,
 	NextStage,
 
 	PlayerTurn,

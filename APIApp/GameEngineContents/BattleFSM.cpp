@@ -19,6 +19,8 @@
 #include "BattleState_BattleLose.h"
 #include "BattleState_NextStage.h"
 #include "BattleState_GymBattleWin.h"
+#include "BattleState_NpcTalk.h"
+#include "BattleState_LeafTalk.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -40,6 +42,8 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_WildTalk>(BattleStateType::WildTalk);
 	CreateState<BattleState_RivalTalk>(BattleStateType::RivalTalk);
 	CreateState<BattleState_GymTalk>(BattleStateType::GymTalk);
+	CreateState<BattleState_LeafTalk>(BattleStateType::LeafTalk);
+	CreateState<BattleState_NpcTalk>(BattleStateType::NpcTalk);
 	CreateState<BattleState_NextStage>(BattleStateType::NextStage);
 
 	CreateState<BattleState_PlayerTurn>(BattleStateType::PlayerTurn);
@@ -71,6 +75,13 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 		break;
 	case BattleNpcType::Woong:
 		ChangeState(BattleStateType::GymTalk);
+		break;
+	case BattleNpcType::Leaf:
+		ChangeState(BattleStateType::LeafTalk);
+		break;
+	case BattleNpcType::NPC2:
+	case BattleNpcType::NPC3:
+		ChangeState(BattleStateType::NpcTalk);
 		break;
 	default:
 		MsgAssert("배틀 FSM에서 아직 연결해주지 않은 전투상황입니다");

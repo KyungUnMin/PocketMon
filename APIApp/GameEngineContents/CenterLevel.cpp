@@ -58,6 +58,9 @@ void CenterLevel::Loading()
 		Dir.Move("NPC");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_Rival.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_Woong.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_3.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_2.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleNPC_Leaf.bmp"));
 		Dir.MoveParentToDirectory("NPC");
 
 		Dir.Move("Monster");

@@ -713,6 +713,15 @@
     <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="EndingWalkPlayer.cpp" />
+    <ClCompile Include="PlayTime.cpp" />
+    <ClCompile Include="SkillActor_RockThrow.cpp" />
+    <ClCompile Include="BattleState_LeafTalk.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleState_NpcTalk.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1411,6 +1420,15 @@
     <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
+    <ClInclude Include="EndingWalkPlayer.h" />
+    <ClInclude Include="PlayTime.h" />
+    <ClInclude Include="SkillActor_RockThrow.h" />
+    <ClInclude Include="BattleState_LeafTalk.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleState_NpcTalk.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1796,6 +1814,12 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\14.GymBattleWin">
       <UniqueIdentifier>{fc409448-6489-487a-8098-6dccb7ecc39d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk">
+      <UniqueIdentifier>{6386c887-cfc7-4c0d-a499-85cc415a6667}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk">
+      <UniqueIdentifier>{be6f12df-025f-4540-8f5b-9b0e9d7539d4}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

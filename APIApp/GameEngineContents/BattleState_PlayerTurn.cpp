@@ -96,7 +96,7 @@ void BattleState_PlayerTurn::SelectRunAway()
 	WasRun = true;
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText("Succeed in escaping");
-	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true, false, 2.f);
+	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true, true, 2.f);
 }
 
 

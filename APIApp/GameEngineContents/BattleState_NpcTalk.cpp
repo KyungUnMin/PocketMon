@@ -1,25 +1,26 @@
-#include "BattleState_RivalTalk.h"
+#include "BattleState_NpcTalk.h"
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
 
-const std::vector<std::string_view> BattleState_RivalTalk::Texts =
+const std::vector<std::string_view> BattleState_NpcTalk::Texts =
 {
-	"Green walks into battle",
+	"A suspicious person\ncame to the battle",
 	"He is trying to\nget the Pokemon out",
 	"Lets Go!"
 };
 
-BattleState_RivalTalk::BattleState_RivalTalk()
+
+BattleState_NpcTalk::BattleState_NpcTalk()
 {
 
 }
 
-BattleState_RivalTalk::~BattleState_RivalTalk()
+BattleState_NpcTalk::~BattleState_NpcTalk()
 {
 
 }
 
-void BattleState_RivalTalk::EnterState()
+void BattleState_NpcTalk::EnterState()
 {
 	BattleState_TalkBase::EnterState();
 
