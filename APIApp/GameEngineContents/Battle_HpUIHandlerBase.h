@@ -21,6 +21,8 @@ public:
 
 	virtual bool IsLevelUp() { return false; }
 
+	virtual void SetPrevExp(int _Exp);
+
 protected:
 	inline void SetOwner(BattleMonsterBase* _Owner)
 	{

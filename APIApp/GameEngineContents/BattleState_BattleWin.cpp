@@ -28,10 +28,15 @@ void BattleState_BattleWin::EnterState()
 	//LevelUpStatUI_2* ResultUI = BattleLevel::BattleLevelPtr->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
 	//ResultUI->SetPos(float4{ 450.f, 70.f });
 
+
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
 
-	bool IsLevelUp = PokeDataBase::PokeExperienceGain(*BattlePlayer::PlayerPtr->GetMonsterDB(), *BattleEnemy::EnemyPtr->GetMonsterDB());
+	PokeDataBase* PlayerMonDB = BattlePlayer::PlayerPtr->GetMonsterDB();
+	int PrevExp = PlayerMonDB->GetMonsterExperience();
+	HpUI->SetPrevExp(PrevExp);	//GetCurExp
+
+	bool IsLevelUp = PokeDataBase::PokeExperienceGain(*PlayerMonDB, *BattleEnemy::EnemyPtr->GetMonsterDB());
 	
 	/*if (true == dynamic_cast<Battle_PlayerHpUIHandler*>(HpUI)->IsLevelUp())
 	{

@@ -45,3 +45,8 @@ bool Battle_PlayerHpUIHandler::IsLevelUp()
 {
 	return UI->IsGetLevelUp();
 }
+
+void Battle_PlayerHpUIHandler::SetPrevExp(int _Exp)
+{
+	UI->GetCurExp(_Exp);
+}

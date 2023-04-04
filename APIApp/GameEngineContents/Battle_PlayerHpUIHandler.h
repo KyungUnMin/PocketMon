@@ -16,6 +16,8 @@ public:
 
 	bool IsLevelUp() override;
 
+	void SetPrevExp(int _Exp) override;
+
 protected:
 	void Start() override;
 

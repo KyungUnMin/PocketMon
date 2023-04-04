@@ -27,6 +27,7 @@ void Battle_HpUIHandlerBase::ExpCheck()
 	FriendHpUI->IsExpUpCheck(true);
 }
 
+
 void Battle_HpUIHandlerBase::Update(float _DeltaTime)
 {
 	if (true == Owner->IsDeath())
@@ -48,3 +49,9 @@ void Battle_HpUIHandlerBase::Update(float _DeltaTime)
 
 	IsArrive = true;
 }
+
+void Battle_HpUIHandlerBase::SetPrevExp(int _Exp)
+{
+	MsgAssert("이 함수는 오버라이딩 시켜야 합니다");
+}
+
