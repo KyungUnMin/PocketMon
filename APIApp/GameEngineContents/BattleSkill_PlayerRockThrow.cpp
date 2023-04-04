@@ -21,6 +21,9 @@ void BattleSkill_PlayerRockThrow::EnterState()
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_RockThrow>()->SetRock(GetEnemyMonster()->GetPos() + float4({ -12, 12 }), {96, 96}, 0.2f, true);
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_RockThrow>()->SetRock(GetEnemyMonster()->GetPos() + float4({ 12, -4 }), {64, 64}, 0.5f, false);
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_RockThrow>()->SetRock(GetEnemyMonster()->GetPos() + float4({ 24, 0 }), {32, 32}, 0.57f, true);
+	GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("RockThrow.wav");
+	SFX.LoopCount(3);
+	SFX.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerRockThrow::Update(float _DeltaTime)
