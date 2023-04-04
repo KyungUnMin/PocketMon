@@ -467,7 +467,7 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("Battle");
 		Dir.Move("Battle");
 		Dir.Move("BGM");
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_WildBGM.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_WildBGM.mp3"));             // 인배틀 BGM
 
 		Dir.MoveParentToDirectory("SFX");
 		Dir.Move("SFX");
@@ -481,11 +481,17 @@ void CenterLevel::Loading()
 		//UI 사운드 로드하는곳이에요
 		Dir.MoveParentToDirectory("FieldUI"); 
 		Dir.Move("FieldUI");
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MenuButton.wav"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CenterPutBall.wav"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));
+
+		// 배경음악
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Road_1.mp3"));                   // 1번 도로
+
+
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));             // 필드 UI 창 오픈
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MenuButton.wav"));               // 메뉴 버튼 사운드 (이동)
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CenterPutBall.wav"));            // 포켓몬 센터 몬스터볼 놓기
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));                   // 포켓몬 센터 체력 회복
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));                 // 아이템 구매 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));          // 스타팅 포켓몬 선택
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Exit_TrainerCard.wav"));
 	}
 

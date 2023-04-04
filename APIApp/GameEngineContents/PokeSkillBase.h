@@ -101,6 +101,12 @@ public:
 		return Name;
 	}
 
+	// 스킬 타입명 가져오기
+	std::string ForUI_GetSkillTypeName()
+	{
+		return TypeName;
+	}
+
 	// 이것은 공격스킬입니까?
 	inline bool ItisAttackSkill()
 	{
@@ -191,6 +197,7 @@ protected:
 private:
 	PokeSkill Skills = PokeSkill::Tackle;          // 스킬 종류
 	SkillType SkillType = SkillType::Normal;       // 스킬 타입
+	std::string TypeName = "Error";			       // 스킬 타입
 	std::string Name = "대폭발";					   // 스킬 이름
 
 	bool IsAttackSkill = true;                     // 공격스킬인지 버프스킬인지
