@@ -21,30 +21,18 @@ ShopNpc::ShopNpc()
 ShopNpc::~ShopNpc()
 {
 }
-
 void ShopNpc::ImageLoad()
 {
-	GameEngineDirectory Dir;
-	Dir.MoveParentToDirectory("ContentsResources");
-	Dir.Move("ContentsResources");
-	Dir.Move("Image");
-	Dir.Move("Plyer_YDM");
-	Dir.Move("NPC");
-	Dir.Move("7");
-
-	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC_Shop.bmp"))->Cut(1, 1);
-
-
+	
 
 }
 
 void ShopNpc::Start()
 {
-	if (NPC1ImageLoad = true)
-	{
-		ImageLoad();
-		NPC1ImageLoad = false;
-	}
+	
+	
+	ImageLoad();
+	
 
 	{
 		R_NPC1 = CreateRender(RenderOrder::Player);

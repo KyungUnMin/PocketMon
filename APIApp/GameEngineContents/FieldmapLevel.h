@@ -52,7 +52,7 @@ private:
 	std::map<std::string, DoorActorBase*> AllDoors;
 
 	Player* MainPlayer = nullptr;
-	ShopNpc* ShopNpcs = nullptr;
+	
 
 	FieldDialog* MainFieldDialog = nullptr;
 	FieldmapRender* MainFieldRender = nullptr;
