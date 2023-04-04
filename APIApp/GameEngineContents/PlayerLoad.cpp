@@ -65,7 +65,7 @@ void Player::PlayerSoundLoad()
 
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PlayerJump.wav"));//Jump Sound
 	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PlayerMoveBlock.wav"));//Block Sound
-
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeRing.wav"));//µû¸ª
 }
 
 void Player::PlayerCollisionSet()

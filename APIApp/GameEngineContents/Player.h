@@ -201,6 +201,7 @@ protected:
 			//사운드//
 	GameEngineSoundPlayer JumpSound;
 	GameEngineSoundPlayer BlockSound;
+	GameEngineSoundPlayer BikeRing;
 private:
 	//플레이어가 지니고있는 포켓몬
 	TrainerPokemon* PlayerPokemon=nullptr;

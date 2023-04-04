@@ -459,9 +459,13 @@ void FieldmapLevel::Loading()
 		
 	UIImageLoad();
 	CreateActor<LevelChangeFade>();
+	{
+		ShopNpc* ShopNpc1 = CreateActor<ShopNpc>();
+		Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpc1);
+		ShopNpc* ShopNpc2 = CreateActor<ShopNpc>();
+		Fieldmap::AddActor("PewterCity_Market", int2(3, 4), ShopNpc2);
 
-	ShopNpcs = CreateActor<ShopNpc>();
-	Fieldmap::AddActor("ViridianCity_Market", int2(3, 4), ShopNpcs);
+	}
 
 	// 스타팅 포켓볼 생성
 	{

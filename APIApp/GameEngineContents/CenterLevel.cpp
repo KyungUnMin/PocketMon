@@ -231,6 +231,15 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Jumpeffect.bmp"))->Cut(3, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("GymClear.bmp"))->Cut(6, 1);
 
+		GameEngineDirectory Dir;
+		Dir.MoveParentToDirectory("ContentsResources");
+		Dir.Move("ContentsResources");
+		Dir.Move("Image");
+		Dir.Move("Plyer_YDM");
+		Dir.Move("NPC");
+		Dir.Move("7");
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC_Shop.bmp"))->Cut(1, 1);
 	}
 
 	{

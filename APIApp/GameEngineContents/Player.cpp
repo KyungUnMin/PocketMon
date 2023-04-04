@@ -149,7 +149,7 @@ void Player::Start()
 		
 	ChangeState(PlayerState::IDLE);
 }
-
+bool BikeRings = true;
 void Player::Update(float _DeltaTime)
 {
 
@@ -157,10 +157,19 @@ void Player::Update(float _DeltaTime)
 	{
 		Players->Off();
 		BikePlayers->On();
+		if (true == BikeRings)
+		{
+			BikeRing = GameEngineResources::GetInst().SoundPlayToControl("BikeRing.wav");
+			BikeRing.LoopCount(1);
+			BikeRing.Volume(1.0f);
+			BikeRings = false;
+		}
+		
 		PlayerMoveSpeed = 7.5f;
 	}
 	else if(IsRide==false)
 	{
+		BikeRings = true;
 		Players->On();
 		BikePlayers->Off();
 		PlayerMoveSpeed = 5.0f;
