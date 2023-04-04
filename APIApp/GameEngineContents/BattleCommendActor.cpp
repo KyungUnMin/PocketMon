@@ -124,21 +124,29 @@ void BattleCommendActor::Update(float _DeltaTime)
 		BattleArrowRender->SetPosition({ -430,-25 });
 		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetCurrentSkillPowerPoint());
 		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetSkillTypeName());
+
 	}
 	if (B_ArrowCheckNum == 1) {
 		BattleArrowRender->SetPosition({ -170,-25 });
 		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetCurrentSkillPowerPoint());
 		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetSkillTypeName());
+
 	}																						 
 	if (B_ArrowCheckNum == 2) {
 		BattleArrowRender->SetPosition({ -430,40 });
 		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetCurrentSkillPowerPoint());
 		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetSkillTypeName());
+
 	}
 	if (B_ArrowCheckNum == 3) {
 		BattleArrowRender->SetPosition({ -170,40 });										 
 		StringToRender(PPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetCurrentSkillPowerPoint());
 		StringToRender(PPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetMaxSkillPowerPoint());
+		StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetSkillTypeName());
+
 	}
 	//SKILL
 	StringToRender(PoketMonSkill_R1 , BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetSkillName());
@@ -148,7 +156,6 @@ void BattleCommendActor::Update(float _DeltaTime)
 	
 	//StringToRender(PPCUR_R, CURPP);
 	//StringToRender(PPMAX_R, MAXPP);
-	StringToRender(TYPE_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterTypeName());
 
 	B_ArrowInput();
 }
