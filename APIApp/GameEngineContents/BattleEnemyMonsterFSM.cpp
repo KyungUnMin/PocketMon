@@ -25,6 +25,7 @@
 #include "BattleSkill_EnemyBubble.h"
 #include "BattleSkill_EnemyVinewhip.h"
 #include "BattleSkill_EnemyRazorLeaf.h"
+#include "BattleSkill_EnemyRockThrow.h"
 
 #include "BattleSkill_EnemyTest.h"
 
@@ -75,6 +76,7 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyEmber>(BattleEnemyMonster_StateType::Skill_Ember);
 	CreateState<BattleSkill_EnemyFlamethrower>(BattleEnemyMonster_StateType::Skill_Flamethrower);
 	CreateState<BattleSkill_EnemyDragonBreath>(BattleEnemyMonster_StateType::Skill_DragonBreath);
+	CreateState<BattleSkill_EnemyRockThrow>(BattleEnemyMonster_StateType::Skill_RockThrow);
 
 	if (true == _IsWildMonster)
 	{

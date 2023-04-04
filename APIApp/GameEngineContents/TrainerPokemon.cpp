@@ -23,6 +23,11 @@ void TrainerPokemon::AddPokemon(int _Number, int _Level)
 	AddPokemon(PokeDataBase::PokeCreate(_Number, _Level));
 }
 
+void TrainerPokemon::AddSpecialPokemon(SpecialPokeEnum _SpecialPokeEnum, int _Level)
+{
+	AddPokemon(PokeDataBase::SpecialPokeCreate(_SpecialPokeEnum, _Level));
+}
+
 bool TrainerPokemon::IsFull()
 {
 	return PokemonMax == Pokemons.size();

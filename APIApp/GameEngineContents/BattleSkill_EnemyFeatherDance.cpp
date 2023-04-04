@@ -13,10 +13,10 @@ void BattleSkill_EnemyFeatherDance::EnterState()
 {
 	BattleSkill_EnemyBase::EnterState();
 
-	EffectRender = GetEnemyMonster()->CreateRender("AttackBuff.bmp", BattleRenderOrder::SkillEffect);
+	EffectRender = GetEnemyMonster()->CreateRender("FeatherDance.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScale({ 128, 128 });
 	EffectRender->SetAlpha({ 0 });
-	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "AttackBuff.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
+	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "FeatherDance.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
 	EffectRender->ChangeAnimation("Defalut");
 	EffectRender->On();
 }

@@ -8,7 +8,7 @@ public:
 	// constrcuter destructer
 	SkillActor_RockThrow();
 	~SkillActor_RockThrow();
-
+	void SetRock(const float4& _Pos, const float4& _Scale, float _Delay, bool _IsLeft);
 	// delete Function
 	SkillActor_RockThrow(const SkillActor_RockThrow& _Other) = delete;
 	SkillActor_RockThrow(SkillActor_RockThrow&& _Other) noexcept = delete;
@@ -22,10 +22,10 @@ private:
 	GameEngineRender* EffectRender = nullptr;
 	const float MaxGravity = 1000.0f;
 	float CurrentGravity = 0;
-	float GravityForce = 5000.0f;
-	float MoveSpeed = 300.0f;
-	float Timer = 0;
-
+	float GravityForce = 2000.0f;
+	float MoveSpeed = 200.0f;
+	float Delay = 0.0f;
+	bool IsLeft = false;
 	enum class SkillState {
 		Fall,
 		Jump

@@ -15,6 +15,7 @@ public:
 	void AddPokemon(PokeDataBase _PokeData);
 	// 포켓몬 추가 (도감번호, 레벨)
 	void AddPokemon(int _Number, int _Level);
+	void AddSpecialPokemon(SpecialPokeEnum _SpecialPokeEnum, int _Level);
 
 	// 포켓몬이 가득 찬 경우 (6마리)
 	bool IsFull();

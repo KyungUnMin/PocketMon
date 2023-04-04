@@ -9,6 +9,14 @@ SkillActor_RockThrow::~SkillActor_RockThrow()
 {
 }
 
+void SkillActor_RockThrow::SetRock(const float4& _Pos, const float4& _Scale, float _Delay, bool _IsLeft)
+{
+	SetPos(_Pos);
+	EffectRender->SetScale(_Scale);
+	Delay = _Delay;
+	IsLeft = _IsLeft;
+}
+
 void SkillActor_RockThrow::Start()
 {
 	EffectRender = CreateRender("Rock.bmp", BattleRenderOrder::SkillEffect);
@@ -17,9 +25,10 @@ void SkillActor_RockThrow::Start()
 
 void SkillActor_RockThrow::Update(float _DeltaTime)
 {
-	Timer += _DeltaTime;
-	EffectRender->SetPosition(float4::LerpClamp({ 0, -512 }, float4::Zero, Timer));
-	
+	if (GetLiveTime() < Delay)
+	{
+		return;
+	}
 	switch (CurState)
 	{
 	case SkillActor_RockThrow::SkillState::Fall:
@@ -42,7 +51,7 @@ void SkillActor_RockThrow::FallUpdate(float _DeltaTime)
 	if (0 < EffectRender->GetPosition().y)
 	{
 		CurState = SkillState::Jump;
-		CurrentGravity = -1000;
+		CurrentGravity = -500;
 		EffectRender->SetPosition({ 0, -0.01f });
 	}
 }
@@ -53,9 +62,9 @@ void SkillActor_RockThrow::JumpUpdate(float _DeltaTime)
 	CurrentGravity = std::min<float>(CurrentGravity, MaxGravity);
 	EffectRender->SetMove(float4::Down * CurrentGravity * _DeltaTime);
 
-	EffectRender->SetMove(float4::Left * MoveSpeed * _DeltaTime);
+	EffectRender->SetMove(true == IsLeft ? float4::Left : float4::Right * MoveSpeed * _DeltaTime);
 
-	if (0 < EffectRender->GetPosition().y)
+	if (64 < EffectRender->GetPosition().y)
 	{
 		Death();
 	}

@@ -142,12 +142,15 @@ void CenterLevel::Loading()
 		Dir.Move("Skill");
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Tackle.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ThunderBack.bmp"));
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rock.bmp"));
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl1.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl2.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Growl3.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Scratch.bmp"))->Cut(1, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Leer_or_other.bmp"))->Cut(1, 8);
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("AttackBuff.bmp"))->Cut(1, 8);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FeatherDance.bmp"))->Cut(1, 8);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Agility.bmp"))->Cut(1, 8);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("SuperFang.bmp"))->Cut(1, 8);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Ember.bmp"))->Cut(1, 7);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("DragonBreath.bmp"))->Cut(1, 7);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Bubble.bmp"))->Cut(1, 3);

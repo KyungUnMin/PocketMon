@@ -31,6 +31,7 @@ enum class BattleEnemyMonster_StateType
 	Skill_Ember,
 	Skill_Flamethrower,
 	Skill_DragonBreath,
+	Skill_RockThrow,
 	Skill_DefenseCurl,
 	Skill_IronDefense,
 	COUNT,

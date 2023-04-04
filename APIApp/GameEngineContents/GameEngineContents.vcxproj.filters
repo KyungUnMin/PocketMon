@@ -722,6 +722,15 @@
     <ClCompile Include="BattleState_NpcTalk.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk</Filter>
     </ClCompile>
+    <ClCompile Include="EndingWalkPlayer.cpp" />
+    <ClCompile Include="PlayTime.cpp" />
+    <ClCompile Include="SkillActor_RockThrow.cpp" />
+    <ClCompile Include="BattleSkill_PlayerRockThrow.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyRockThrow.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1428,6 +1437,15 @@
     </ClInclude>
     <ClInclude Include="BattleState_NpcTalk.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingWalkPlayer.h" />
+    <ClInclude Include="PlayTime.h" />
+    <ClInclude Include="SkillActor_RockThrow.h" />
+    <ClInclude Include="BattleSkill_PlayerRockThrow.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyRockThrow.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
