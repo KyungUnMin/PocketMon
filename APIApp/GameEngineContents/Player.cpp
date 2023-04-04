@@ -196,8 +196,7 @@ void Player::Render(float _DeltaTime)
 	//일단 내리기기능만
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		//IsRide = false;
-		SetPlayerDeath();
+		IsRide = false;
 	}
 }
 
