@@ -18,7 +18,7 @@ public:
 	TrainerCardUI(TrainerCardUI&& _Other) noexcept = delete;
 	TrainerCardUI& operator=(const TrainerCardUI& _Other) = delete;
 	TrainerCardUI& operator=(TrainerCardUI&& _Other) noexcept = delete;
-
+	
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;

@@ -703,7 +703,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc3", "NPC3.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianForest", int2(35, 57));
 			NPCPtr->AddScript("This is the entrance to Viridian Forest.");
-			NPCPtr->AddScript("Its a vast and beautiful forest, and the Pokémon that live here are healthy and happy.");
+			NPCPtr->AddScript("It`s a vast and beautiful forest, and the Pok@mon that live here are healthy and happy.");
 			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
@@ -713,7 +713,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc2", "NPC2.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianForest", int2(23, 5));
 			NPCPtr->AddScript("Excuse me, are you also looking for Pikachu?");
-			NPCPtr->AddScript("I thought the same thing and came here, but I havent found it yet.");
+			NPCPtr->AddScript("I thought the same thing and came here, but I haven`t found it yet.");
 			NPCPtr->AddScript("Do you know where it is?");
 			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
@@ -733,9 +733,9 @@ void FieldmapLevel::Loading()
 			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
 			NPCPtr->InitNPC("Npc7", "NPC7.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("PewterCity", int2(20, 31));
-			NPCPtr->AddScript("Im going to challenge Champion Woong and win the badge!");
-			NPCPtr->AddScript("I ve trained hard for this moment and I wont give up until I succeed.");
-			NPCPtr->AddScript("Lets do this!");
+			NPCPtr->AddScript("I`m going to challenge Champion Woong and win the badge!");
+			NPCPtr->AddScript("I`ve trained hard for this moment and I wont give up until I succeed.");
+			NPCPtr->AddScript("Let`s do this!");
 			NPCPtr->SetBaseDir(LookDir::Up);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
@@ -745,7 +745,7 @@ void FieldmapLevel::Loading()
 			StaticNPC* WoongPtr = CreateActor<StaticNPC>();
 			WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
 			WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
-			WoongPtr->AddScript("You`re going down! MyPOK@MON\nwon`t hold anything back!");
+			WoongPtr->AddScript("You`re going down! My POK@MON\nwon`t hold anything back!");
 			WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
 			WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
 			WoongPtr->SetBaseDir(LookDir::Down);
