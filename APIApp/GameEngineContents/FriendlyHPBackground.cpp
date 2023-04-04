@@ -128,6 +128,10 @@ void FriendlyHPBackground::Start()
 
 }
 
+
+bool IsDeath_B = false;
+
+
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
 	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
@@ -152,7 +156,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	if (true == IsExpUP)
 	{
-	
+		HpSoundCheck = true;
+		B_HpLow.Stop();
 		NextTickTime_1 += _DeltaTime;
 		if (NextTickTime_1 > 0.1f) 
 		{
@@ -162,6 +167,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				if (TickNumber_1 == 0) 
 				{
 					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
+					ExpGetSound();
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -210,6 +216,11 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				}
 				if (DamegeTick[TickNumber] < Hp30Under) {
 					HPRenderPtr1->Off();
+					if (true == HpSoundCheck )
+					{
+						HpLowSound();	
+						HpSoundCheck = false;
+					}
 					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
@@ -225,7 +236,12 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			BattleStartCheck = false;
 			Num -= static_cast<float>(EnumyMonsterDamage);
 			SecoundHp = DamegeTick[9];
-			
+			if (IsDeath_B == true) 
+			{
+				B_HpLow.Stop();
+				IsDeath_B = false;
+				HpSoundCheck = true;
+			}
 		}
 		
 	}
@@ -255,6 +271,7 @@ int FriendlyHPBackground::GetCurExp(int _Exp)
 	return CurExp;
 
 }
+
 
 
 void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)
@@ -329,9 +346,6 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 	}
 }
 
-bool IsDeath_B = false;
-
-
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
 	DamegeTick.clear();
@@ -352,7 +366,9 @@ void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp ,
 	}
 	if (true == IsDeath_B) {
 		DamegeTick[9] = 0.0f;
-		IsDeath_B = false;
+		DamegeTick[8] = 0.0f;
+		DamegeTick[7] = 0.0f;
+
 	}
 
 }
@@ -418,3 +434,17 @@ int FriendlyHPBackground::GetExpPoint(int _ExpPoint)
 }
 
 
+
+void FriendlyHPBackground::HpLowSound()
+{
+	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
+	B_HpLow.Volume(1.0f);
+	
+}
+
+void FriendlyHPBackground::ExpGetSound()
+{
+	B_GetExp = GameEngineResources::GetInst().SoundPlayToControl("ExpUp.wav");
+	B_GetExp.Volume(1.0f);
+	B_GetExp.LoopCount(1);
+}

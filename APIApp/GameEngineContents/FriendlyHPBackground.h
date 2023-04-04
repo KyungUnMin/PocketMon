@@ -32,6 +32,9 @@ public:
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
 	int GetCurExp(int _Exp);
+	void ExpGetSound();
+	void HpLowSound();
+
 	GameEngineRender* GetWindowPtr()
 	{
 		return RenderPtr;
@@ -133,5 +136,11 @@ private:
 	
 
 	float CheckTimnAA = 0.0f;
+
+	GameEngineSoundPlayer B_GetExp;
+	GameEngineSoundPlayer B_HpLow;
+
+	bool HpSoundCheck = true;
+
 };
 

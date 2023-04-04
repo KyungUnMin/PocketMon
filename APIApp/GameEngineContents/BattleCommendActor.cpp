@@ -116,16 +116,16 @@ void BattleCommendActor::Start()
 	Skill4 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetSkillName();
 
 	if (Skill1 == "Unknown") {
-		Skill1 = "    -    ";
+		Skill1 = "-    ";
 	}
 	if (Skill2 == "Unknown") {
-		Skill2 = "    -    ";
+		Skill2 = "-    ";
 	}
 	if (Skill3 == "Unknown") {
-		Skill3 = "    -    ";
+		Skill3 = "-    ";
 	}
 	if (Skill4 == "Unknown") {
-		Skill4 = "    -    ";
+		Skill4 = "-    ";
 	}
 
 
