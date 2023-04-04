@@ -110,5 +110,5 @@ private:
 	void CreateBattlezone_Route2_Down(const int2& _Start, const int2& _Size);
 	void CreateBattlezone_Route2_Up(const int2& _Start, const int2& _Size);
 	void CreateBattlezone_Route22(const int2& _Start, const int2& _Size);
-	void CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size);
+	void CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size, bool _IsPikachuZone = false);
 };

@@ -275,7 +275,8 @@ void FieldmapLevel::Loading()
 
 		CreateFieldmapCity("ViridianForest", "Viridian Forest", "ViridianForest", float4(2000.0f, 13000.0f));
 		{
-			CreateBattlezone_VaridianForest(int2(9, 13), int2(5, 15));
+			CreateBattlezone_VaridianForest(int2(9, 13), int2(5, 2), true);
+			CreateBattlezone_VaridianForest(int2(9, 15), int2(5, 13));
 			CreateBattlezone_VaridianForest(int2(17, 12), int2(5, 14));
 			CreateBattlezone_VaridianForest(int2(17, 26), int2(7, 2));
 			CreateBattlezone_VaridianForest(int2(25, 12), int2(5, 10)); 
@@ -703,7 +704,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->AddNPC("ViridianForest", int2(35, 57));
 			NPCPtr->AddScript("This is the entrance to Viridian Forest.");
 			NPCPtr->AddScript("Its a vast and beautiful forest, and the Pokémon that live here are healthy and happy.");
-			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
 
@@ -1200,12 +1201,21 @@ void FieldmapLevel::CreateBattlezone_Route22(const int2& _Start, const int2& _Si
 	BattleZone->AddPokemon(PokeNumber::Pidgey);
 }
 
-void FieldmapLevel::CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size)
+void FieldmapLevel::CreateBattlezone_VaridianForest(const int2& _Start, const int2& _Size, bool _IsPikachuZone)
 {
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
 	BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 8);
-	BattleZone->AddPokemon(PokeNumber::Bulbasaur);
-	BattleZone->AddPokemon(PokeNumber::Charmander);
-	BattleZone->AddPokemon(PokeNumber::Squirtle);
+
+	if (true == _IsPikachuZone)
+	{
+		BattleZone->AddPokemon(PokeNumber::Pikachu);
+	}
+	else
+	{
+		BattleZone->AddPokemon(PokeNumber::Bulbasaur);
+		BattleZone->AddPokemon(PokeNumber::Charmander);
+		BattleZone->AddPokemon(PokeNumber::Squirtle);
+	}
+
 }
