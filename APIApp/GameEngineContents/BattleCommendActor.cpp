@@ -110,6 +110,24 @@ void BattleCommendActor::Start()
 		TYPE_R[x]->EffectCameraOff();
 	}
 
+	Skill1 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetSkillName();
+	Skill2 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetSkillName();
+	Skill3 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetSkillName();
+	Skill4 = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetSkillName();
+
+	if (Skill1 == "Unknown") {
+		Skill1 = "    -    ";
+	}
+	if (Skill2 == "Unknown") {
+		Skill2 = "    -    ";
+	}
+	if (Skill3 == "Unknown") {
+		Skill3 = "    -    ";
+	}
+	if (Skill4 == "Unknown") {
+		Skill4 = "    -    ";
+	}
+
 
 }
 
@@ -149,10 +167,10 @@ void BattleCommendActor::Update(float _DeltaTime)
 
 	}
 	//SKILL
-	StringToRender(PoketMonSkill_R1 , BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(1).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R2, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(2).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R3, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(3).ForUI_GetSkillName());
-	StringToRender(PoketMonSkill_R4, BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterSkillList(4).ForUI_GetSkillName());
+	StringToRender(PoketMonSkill_R1 , Skill1);
+	StringToRender(PoketMonSkill_R2, Skill2);
+	StringToRender(PoketMonSkill_R3, Skill3);
+	StringToRender(PoketMonSkill_R4, Skill4);
 	
 	//StringToRender(PPCUR_R, CURPP);
 	//StringToRender(PPMAX_R, MAXPP);

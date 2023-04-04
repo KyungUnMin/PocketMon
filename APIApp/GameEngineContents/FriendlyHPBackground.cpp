@@ -146,7 +146,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	StringToRender(PoketMonHPMAX_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterMaxHP());
 
 
-	float hpcur = CurExp / 100.0f;
+	float hpcur = static_cast<float>(CurExp) / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
 
 
@@ -161,7 +161,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (TickNumber_1 == 0) 
 				{
-					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), CurExp, CurMyExpPos, ExpNum);
+					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });

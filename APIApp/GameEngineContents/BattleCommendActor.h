@@ -79,7 +79,10 @@ private:
 
 	int B_ArrowCheckNum = 0;
 
-	
+	std::string Skill1 = "";
+	std::string Skill2 = "";
+	std::string Skill3 = "";
+	std::string Skill4 = "";
 
 
 	bool IsSelected = false;
