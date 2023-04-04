@@ -61,9 +61,10 @@ void Player::PlayerSoundLoad()
 	Dir.MoveParentToDirectory("ContentsResources");
 	Dir.Move("ContentsResources");
 	Dir.Move("Sound");
-	Dir.Move("Player");
+	Dir.Move("FieldUI");
 
-	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("JumpSound.wav"));//Jump Sound
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PlayerJump.wav"));//Jump Sound
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PlayerMoveBlock.wav"));//Block Sound
 
 }
 

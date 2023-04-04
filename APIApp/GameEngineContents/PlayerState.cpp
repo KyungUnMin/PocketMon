@@ -130,7 +130,7 @@ void Player::IdleUpdate(float _Time)
 
 	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
 	{
-		int2 NextIndex = Playerindex;
+		NextIndex = Playerindex;
 
 		if (true == GameEngineInput::IsPress("LeftMove"))
 		{
@@ -166,13 +166,25 @@ void Player::IdleUpdate(float _Time)
 			InputControlHandle = InputControll::UseControll();
 			return;
 		}
+		else if (!(Fieldmap::Walkable(NextIndex)) &&
+			(GameEngineInput::IsDown("LeftMove") ||
+				GameEngineInput::IsDown("RightMove") ||
+				GameEngineInput::IsDown("DownMove") ||
+				GameEngineInput::IsDown("UpMove")))
+		{
+			BlockSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerMoveBlock.wav");
+			BlockSound.LoopCount(1);
+			BlockSound.Volume(0.2f);
+		}
+		
 	}
 
 	Fieldmap::UpdateEventCheck(Playerindex);
 }
 void Player::IdleEnd() 
 {
-
+	
+		
 }
 
 void Player::MoveStart()
@@ -180,6 +192,7 @@ void Player::MoveStart()
 	DirCheck("Move");
 	StartPos = GetPos();
 	Fieldmap::EndEventCheck(Fieldmap::GetIndex(GetPos()));
+	
 }
 
 void Player::MoveUpdate(float _Time)
@@ -213,9 +226,9 @@ void Player::JumpStart()
 	JumpStartPos = GetPos();
 	JumpEndPos = Fieldmap::GetPos(NextJumpIndex);
 
-	JumpSound = GameEngineResources::GetInst().SoundPlayToControl("JumpSound.wav");
+	JumpSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerJump.wav");
 	JumpSound.LoopCount(1);
-	JumpSound.Volume(0.5f);
+	JumpSound.Volume(0.3f);
 	
 }
 void Player::JumpUpdate(float _Time)

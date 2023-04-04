@@ -200,6 +200,7 @@ protected:
 	//////////////////////////////
 			//사운드//
 	GameEngineSoundPlayer JumpSound;
+	GameEngineSoundPlayer BlockSound;
 private:
 	//플레이어가 지니고있는 포켓몬
 	TrainerPokemon* PlayerPokemon=nullptr;
@@ -269,14 +270,18 @@ private:
 	float PlayerJumpTime = 0.0f;
 	float PlayerTime = 0.0f;
 	float JumpEffectControlTime = 0.0f;
+	float BlockSoundTime = 0.0f;
 	//Bike제어값
 	bool IsRide = false;
+
+	bool BlockSoundBool = true;
 	//Gold
 	int Gold = 0;
 
 	////////방향 및 index
 	LookDir Dir;
 	int2 NextJumpIndex = int2::Zero;
+	int2 NextIndex = int2::Zero;
 	//AutoMove Pos값을 저장하는 list
 	std::list<float4> NextMovePos = std::list<float4>();
 	
