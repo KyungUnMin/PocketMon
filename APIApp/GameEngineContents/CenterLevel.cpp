@@ -434,6 +434,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Rattata_mini.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Spearow_mini.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Squirtle_mini.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Pikachu_mini.bmp"))->Cut(2, 1);
 		Dir.MoveParentToDirectory("PokemonUI");
 		Dir.Move("PokemonUI");
 		Dir.Move("Summary");
