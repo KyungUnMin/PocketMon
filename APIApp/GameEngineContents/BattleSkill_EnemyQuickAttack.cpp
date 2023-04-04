@@ -44,6 +44,7 @@ void BattleSkill_EnemyQuickAttack::Update(float _DeltaTime)
 		PlayerMonster->On();
 		return;
 	}
+	TimeEvent.Update(_DeltaTime);
 
 	switch (CurState)
 	{
