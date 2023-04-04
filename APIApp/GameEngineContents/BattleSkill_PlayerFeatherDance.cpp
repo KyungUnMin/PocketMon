@@ -1,6 +1,8 @@
 #include "BattleSkill_PlayerFeatherDance.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterPlayer.h"
+
 BattleSkill_PlayerFeatherDance::BattleSkill_PlayerFeatherDance()
 {
 }
@@ -19,6 +21,8 @@ void BattleSkill_PlayerFeatherDance::EnterState()
 	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "FeatherDance.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
 	EffectRender->ChangeAnimation("Defalut");
 	EffectRender->On();
+
+
 }
 
 void BattleSkill_PlayerFeatherDance::Update(float _DeltaTime)
@@ -76,6 +80,9 @@ void BattleSkill_PlayerFeatherDance::Update_WaitAppear(float _DeltaTime)
 	if (0.5f < WaitAppearTime)
 	{
 		CurState = SkillState::Appear;
+		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("BuffSound.wav");
+		SFX.LoopCount(1);
+		SFX.Volume(BattleDefine::WorldVolumn);
 	}
 }
 

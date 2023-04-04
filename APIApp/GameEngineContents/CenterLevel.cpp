@@ -482,6 +482,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_Tackle));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallPop));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Scratch.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuffSound.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("DebuffSound.wav"));
 
 
 		Dir.MoveParentToDirectory("Battle");

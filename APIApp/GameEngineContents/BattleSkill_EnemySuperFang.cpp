@@ -1,5 +1,6 @@
 #include "BattleSkill_EnemySuperFang.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterEnemy.h"
 BattleSkill_EnemySuperFang::BattleSkill_EnemySuperFang()
 {
@@ -76,6 +77,9 @@ void BattleSkill_EnemySuperFang::Update_WaitAppear(float _DeltaTime)
 	if (0.5f < WaitAppearTime)
 	{
 		CurState = SkillState::Appear;
+		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("BuffSound.wav");
+		SFX.LoopCount(1);
+		SFX.Volume(BattleDefine::WorldVolumn);
 	}
 }
 
