@@ -196,7 +196,8 @@ void Player::Render(float _DeltaTime)
 	//일단 내리기기능만
 	if (GameEngineInput::IsPress("CollisionRender"))
 	{
-		IsRide = false;
+		//IsRide = false;
+		SetPlayerDeath();
 	}
 }
 
@@ -284,6 +285,10 @@ void Player::JumpDown()
 
 void Player::PlayerDeathCheckFunction()
 {
+	if (true == IsRide)
+	{
+		IsRide = false;
+	}
 	if (0 == CityValue)
 	{
 		Fieldmap::ChangeCity("PalletTown_Home2F");
@@ -291,13 +296,13 @@ void Player::PlayerDeathCheckFunction()
 	}
 	else if (1 == CityValue)
 	{
-		Fieldmap::ChangeCity("ViridianCity_PokemonCenter");
-		Player::MainPlayer->SetPos(Fieldmap::GetPos("ViridianCity_PokemonCenter", int2{ 8,6 }));
+		Fieldmap::ChangeCity("ViridianCity");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("ViridianCity", int2{ 20,27 }));
 	}
 	else if (2 == CityValue)
 	{
-		Fieldmap::ChangeCity("PewterCity_PokemonCenter");
-		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity_PokemonCenter", int2{ 8,6 }));
+		Fieldmap::ChangeCity("PewterCity");
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity", int2{ 17,26 }));
 	}
 	else
 	{
