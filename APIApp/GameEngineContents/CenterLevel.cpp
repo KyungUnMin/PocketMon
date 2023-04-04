@@ -335,11 +335,15 @@ void CenterLevel::Loading()
 		Dir.Move("Image");
 		Dir.Move("NPC");
 
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FieldItem.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Green.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC1.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC2.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC3.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC4.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC5.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC6.bmp"))->Cut(4, 6);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("NPC7.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Nurse.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Oak.bmp"))->Cut(4, 6);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Professor.bmp"))->Cut(4, 6);

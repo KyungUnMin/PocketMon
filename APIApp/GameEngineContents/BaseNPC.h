@@ -38,7 +38,7 @@ public:
 	BaseNPC& operator=(const BaseNPC& _Other) = delete;
 	BaseNPC& operator=(BaseNPC&& _Other) noexcept = delete;
 
-	void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName, BattleNpcType _Type);
+	virtual void InitNPC(const std::string_view& _Name, const std::string_view& _ImageName, BattleNpcType _Type);
 	void AddNPC(const std::string_view& _CityName, int2 _Index, bool _IsAdd = true);
 	void AddScript(const std::string_view& _Script, int _Key = 0);
 

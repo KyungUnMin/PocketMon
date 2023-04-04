@@ -710,7 +710,6 @@
     <ClCompile Include="BattleSkill_PlayerDragonBreath.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
-    <ClCompile Include="EndingWalkPlayer.cpp" />
     <ClCompile Include="SkillActor_RockThrow.cpp" />
     <ClCompile Include="BattleState_LeafTalk.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
@@ -750,6 +749,12 @@
     </ClCompile>
     <ClCompile Include="PlayTime.cpp">
       <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClCompile>
+    <ClCompile Include="EndingWalkPlayer.cpp">
+      <Filter>Ending\Actor</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemNPC.cpp">
+      <Filter>Player\NPC\EventNPC</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1446,7 +1451,6 @@
     <ClInclude Include="BattleSkill_PlayerDragonBreath.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
-    <ClInclude Include="EndingWalkPlayer.h" />
     <ClInclude Include="SkillActor_RockThrow.h" />
     <ClInclude Include="BattleState_LeafTalk.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
@@ -1486,6 +1490,12 @@
     </ClInclude>
     <ClInclude Include="PlayTime.h">
       <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClInclude>
+    <ClInclude Include="EndingWalkPlayer.h">
+      <Filter>Ending\Actor</Filter>
+    </ClInclude>
+    <ClInclude Include="ItemNPC.h">
+      <Filter>Player\NPC\EventNPC</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

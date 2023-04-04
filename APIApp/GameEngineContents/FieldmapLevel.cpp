@@ -50,6 +50,8 @@
 #include "StopOakNPC.h"
 #include "LeafNPC.h"
 #include "PokemonCenterNPC.h"
+#include "ItemNPC.h"
+
 
 // Player
 #include "Player.h"
@@ -94,6 +96,7 @@ void FieldmapLevel::Loading()
 	}
 
 	MainPlayer = CreateActor<Player>();
+	MainPlayer->SetPlayerDirUp();
 
 	// 맵 생성 모음
 	{
@@ -440,7 +443,7 @@ void FieldmapLevel::Loading()
 	///////
 	///////
 	///////
-	Fieldmap::ChangeCity("PalletTown");
+	Fieldmap::ChangeCity("PalletTown_Home2F");
 	///////
 	///////
 	///////
@@ -515,7 +518,7 @@ void FieldmapLevel::Loading()
 
 		{
 			OakNPC* OakNPCPtr = CreateActor<OakNPC>();
-			OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::Woong);
+			OakNPCPtr->InitNPC("Oak", "Oak.bmp", BattleNpcType::None);
 			OakNPCPtr->AddNPC("PalletTown_Office", int2(7, 4));
 			OakNPCPtr->AddScript("OAK: Now, RED.");
 			OakNPCPtr->AddScript("Inside those three POK@ BALLS arePOK@MON.");
@@ -530,7 +533,7 @@ void FieldmapLevel::Loading()
 
 		{
 			StaticNPC* ProfessorNPCPtr = CreateActor<StaticNPC>();
-			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::None);
 			ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(2, 10));
 			ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
 			ProfessorNPCPtr->SetBaseDir(LookDir::Up);
@@ -539,11 +542,20 @@ void FieldmapLevel::Loading()
 
 		{
 			TurnNPC* ProfessorNPCPtr = CreateActor<TurnNPC>();
-			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::Woong);
+			ProfessorNPCPtr->InitNPC("Professor", "Professor.bmp", BattleNpcType::None);
 			ProfessorNPCPtr->AddNPC("PalletTown_Office", int2(11, 11));
 			ProfessorNPCPtr->AddScript("I study POK@MON as PROF. OAK`s\nAIDE.");
 			ProfessorNPCPtr->SetTurnDir(TurnNPC::TurnDir::Right);
 			ProfessorNPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("PalletTown", int2(11, 15));
+			NPCPtr->AddScript("Hi there!\nHow`s your day been so far?");
+			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
 
 		// 라이벌 NPC
@@ -590,12 +602,26 @@ void FieldmapLevel::Loading()
 				});
 		}
 
+		// 상록 시티
+
 		{
 			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
-			NPCPtr->InitNPC("Npc1", "NPC1.bmp", BattleNpcType::Woong);
-			NPCPtr->AddNPC("PalletTown", int2(11, 15));
-			NPCPtr->AddScript("Hi there!\nHow`s your day been so far?");
-			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->InitNPC("Npc5", "NPC5.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("ViridianCity", int2(14, 11));
+			NPCPtr->AddScript("I love this place, Viridian City, yesterday and today.");
+			NPCPtr->AddScript("The fresh air, beautiful flowers, and bustling city center!");
+			NPCPtr->AddScript("Being here makes me feel at ease. Thats why I love it.");
+			NPCPtr->SetBaseDir(LookDir::Right);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc4", "NPC4.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("ViridianCity", int2(25, 17));
+			NPCPtr->AddScript("Now what should I do? Its so boring that I need to do something...");
+			NPCPtr->AddScript("Hmm... Oh! I should try different things and find something fun to do");
+			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
 
@@ -616,7 +642,7 @@ void FieldmapLevel::Loading()
 
 		{
 			TurnNPC* NPCPtr = CreateActor<TurnNPC>();
-			NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::Woong);
+			NPCPtr->InitNPC("NPC4", "NPC4.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("PalletTown", int2(20, 18));
 			NPCPtr->AddScript("Technology is incredible!");
 			NPCPtr->AddScript("You can now store and recall\nitems and POK@MON as data via PC.");
@@ -624,6 +650,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
 
+		// 상록 숲
 		// Battle1
 		{
 			TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
@@ -661,7 +688,58 @@ void FieldmapLevel::Loading()
 			BaatleNpcPtr->SetLookDis(10);
 		}
 
-		// 회색시티 챔피언 웅
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc3", "NPC3.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("ViridianForest", int2(49, 27));
+			NPCPtr->AddScript("Where should I go? Let me read this sign... How do I read this?");
+			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc3", "NPC3.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("ViridianForest", int2(35, 57));
+			NPCPtr->AddScript("This is the entrance to Viridian Forest.");
+			NPCPtr->AddScript("Its a vast and beautiful forest, and the Pokémon that live here are healthy and happy.");
+			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc2", "NPC2.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("ViridianForest", int2(23, 5));
+			NPCPtr->AddScript("Excuse me, are you also looking for Pikachu?");
+			NPCPtr->AddScript("I thought the same thing and came here, but I havent found it yet.");
+			NPCPtr->AddScript("Do you know where it is?");
+			NPCPtr->SetBaseDir(LookDir::Down);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		// 회색시티 		
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc6", "NPC6.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("PewterCity", int2(31, 26));
+			NPCPtr->AddScript("Be careful not to step on the flowerbeds.");
+			NPCPtr->SetBaseDir(LookDir::Down);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		{
+			StaticNPC* NPCPtr = CreateActor<StaticNPC>();
+			NPCPtr->InitNPC("Npc7", "NPC7.bmp", BattleNpcType::None);
+			NPCPtr->AddNPC("PewterCity", int2(20, 31));
+			NPCPtr->AddScript("Im going to challenge Champion Woong and win the badge!");
+			NPCPtr->AddScript("I ve trained hard for this moment and I wont give up until I succeed.");
+			NPCPtr->AddScript("Lets do this!");
+			NPCPtr->SetBaseDir(LookDir::Up);
+			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		//챔피언 웅
 		{
 			StaticNPC* WoongPtr = CreateActor<StaticNPC>();
 			WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
@@ -672,6 +750,8 @@ void FieldmapLevel::Loading()
 			WoongPtr->SetBaseDir(LookDir::Down);
 			WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}	
+
+
 		{
 			PokemonCenterNPC* CenterNpc1 = CreateActor<PokemonCenterNPC>();
 			CenterNpc1->AddNPC("ViridianCity_PokemonCenter", int2(8, 4));
@@ -679,6 +759,41 @@ void FieldmapLevel::Loading()
 			PokemonCenterNPC* CenterNpc2= CreateActor<PokemonCenterNPC>();
 			CenterNpc2->AddNPC("PewterCity_PokemonCenter", int2(8, 4));
 			CenterNpc2->SetCityValue(2);
+		}
+	}
+
+	// Item 생성 모음
+	{
+		// 1번 도로
+		{
+			ItemNPC* ItemPtr = CreateActor<ItemNPC>();
+			ItemPtr->InitNPC("MonsterBall", "FieldItem.bmp", BattleNpcType::None);
+			ItemPtr->AddNPC("Route1", int2(11, 8));
+			ItemPtr->InitItemData(ItemCode::WiseGlasses, 1, "Wise Glasses");
+			ItemPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+
+		// 상록 숲
+		{
+			ItemNPC* ItemPtr = CreateActor<ItemNPC>();
+			ItemPtr->InitNPC("MuscleBand", "FieldItem.bmp", BattleNpcType::None);
+			ItemPtr->AddNPC("ViridianForest", int2(27, 33));
+			ItemPtr->InitItemData(ItemCode::MuscleBand, 1, "Muscle Band");
+			ItemPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+		{
+			ItemNPC* ItemPtr = CreateActor<ItemNPC>();
+			ItemPtr->InitNPC("ChoiceScarf", "FieldItem.bmp", BattleNpcType::None);
+			ItemPtr->AddNPC("ViridianForest", int2(54, 35));
+			ItemPtr->InitItemData(ItemCode::ChoiceScarf, 1, "Choice Scarf");
+			ItemPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
+		}
+		{
+			ItemNPC* ItemPtr = CreateActor<ItemNPC>();
+			ItemPtr->InitNPC("ChoiceBand", "FieldItem.bmp", BattleNpcType::None);
+			ItemPtr->AddNPC("ViridianForest", int2(44, 5));
+			ItemPtr->InitItemData(ItemCode::ChoiceBand, 1, "Choice Band");
+			ItemPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
 	}
 
@@ -793,7 +908,7 @@ void FieldmapLevel::Loading()
 		}
 	}
 
-	MainPlayer->SetPos(Fieldmap::GetPos(21, 15));
+	MainPlayer->SetPos(Fieldmap::GetPos(6, 7));
 	MainPlayer->SetPlayerSpeed(500.0f);
 	MainFieldDialog = CreateActor<FieldDialog>();
 	MainFieldMainMenu = CreateActor<FieldMainMenu>();
