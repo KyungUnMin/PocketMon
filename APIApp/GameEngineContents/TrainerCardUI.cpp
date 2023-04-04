@@ -4,6 +4,7 @@
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "PlayTime.h"
 #include "PlayerBag.h"
+#include "Player.h"
 
 TrainerCardUI::TrainerCardUI()
 {
@@ -31,6 +32,10 @@ void TrainerCardUI::Start()
 	MoneyRender.SetCameraEffect(false);
 	MoneyRender.SetRenderPos(MoneyRenderPos);
 
+	MoneySignRender = CreateRender("BigMoneysign.bmp", RenderOrder::FieldFront);
+	MoneySignRender->SetScale(NumberRenderScale);
+	MoneySignRender->EffectCameraOff();
+
 	GamePlayTimeRender_Hour.SetOwner(this);
 	GamePlayTimeRender_Hour.SetImage("Num.bmp", NumberRenderScale, static_cast<int>(RenderOrder::FieldFront), RGB(255, 0, 255));
 	GamePlayTimeRender_Hour.SetAlign(Align::Right);
@@ -52,10 +57,17 @@ void TrainerCardUI::Start()
 	ColonsAnimation->EffectCameraOff();
 	ColonsAnimation->CreateAnimation({.AnimationName = "1", .ImageName = "ColonsAnimation.bmp", .Start = 0, .End = 1, .InterTime = 0.5});
 	ColonsAnimation->ChangeAnimation("1");
+
+	BadgeIconRender = CreateRender("FirstBadge.bmp", RenderOrder::FieldFront);
+	BadgeIconRender->SetPosition(BadgeIconRenderPos);
+	BadgeIconRender->SetScale(BadgeIconRenderScale);
+	BadgeIconRender->EffectCameraOff();
 }
 
 void TrainerCardUI::Update(float _DeltaTime)
 {
+	MoneySignRender->SetPosition(MoneyRenderPos + float4::Left * NumberRenderScale * static_cast<float>(GameEngineMath::GetLenth(Money)) + float4{ -8,0 });
+
 	if (GameEngineInput::IsDown("B"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
@@ -67,5 +79,14 @@ void TrainerCardUI::Update(float _DeltaTime)
 	{
 		Money = PlayerBag::MainBag->GetMoney();
 		MoneyRender.SetValue(Money);
+	}
+
+	if (Player::MainPlayer->GymClear)
+	{
+		BadgeIconRender->On();
+	}
+	else
+	{
+		BadgeIconRender->Off();
 	}
 }

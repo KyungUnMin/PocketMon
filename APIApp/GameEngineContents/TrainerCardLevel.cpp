@@ -50,4 +50,7 @@ void TrainerCardLevel::ImageLoad()
 	Dir.Move("FieldUI_HSM");
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("TrainerCard.bmp"));
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("Num.bmp"))->Cut(10,1);
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("FirstBadge.bmp"));
+	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BigMoneysign.bmp"));
+
 }

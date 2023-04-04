@@ -32,6 +32,10 @@ private:
 	NumberRenderObject MoneyRender = NumberRenderObject();
 	float4 MoneyRenderPos = { 88,-36 };
 
+	GameEngineRender* MoneySignRender = nullptr;
+	float4 MoneySignRenderPos = {};
+	float4 MoneySignRenderScale = {};
+
 	PlayTime* MainPlayTime = nullptr;
 	NumberRenderObject GamePlayTimeRender_Hour = NumberRenderObject();
 	NumberRenderObject GamePlayTimeRender_Minute = NumberRenderObject();
@@ -42,6 +46,8 @@ private:
 	float4 ColonsAnimationPos = { 40, 92 };
 	float4 ColonsAnimationScale = { 20, 48 };
 
-	GameEngineRender* BadgeIcon = nullptr;
+	GameEngineRender* BadgeIconRender = nullptr;
+	float4 BadgeIconRenderPos = { -320,224 }; // -320 + 224
+	float4 BadgeIconRenderScale = { 56,56 };
 };
 
