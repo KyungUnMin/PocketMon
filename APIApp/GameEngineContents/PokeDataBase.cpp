@@ -1003,7 +1003,7 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 	{
 	case SpecialPokeEnum::StartingBulbasaur:
 
-		PoKeCreatePtr.PokeDexNumber = PokeNumber::Blastoise;
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Bulbasaur;
 
 		BulbasaurData(10, PoKeCreatePtr);
 
