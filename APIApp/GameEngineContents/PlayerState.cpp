@@ -212,6 +212,11 @@ void Player::JumpStart()
 {
 	JumpStartPos = GetPos();
 	JumpEndPos = Fieldmap::GetPos(NextJumpIndex);
+
+	JumpSound = GameEngineResources::GetInst().SoundPlayToControl("JumpSound.wav");
+	JumpSound.LoopCount(1);
+	JumpSound.Volume(0.5f);
+	
 }
 void Player::JumpUpdate(float _Time)
 {

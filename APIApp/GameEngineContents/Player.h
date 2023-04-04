@@ -190,11 +190,16 @@ public:
 		}
 		CityValue = _Value;
 	}
-	
+
+	void PlayerSoundLoad();
 protected:
 	void Start() override;
 	void Update(float _DeltaTime) override;
 	void Render(float _DeltaTime) override;
+
+	//////////////////////////////
+			//사운드//
+	GameEngineSoundPlayer JumpSound;
 private:
 	//플레이어가 지니고있는 포켓몬
 	TrainerPokemon* PlayerPokemon=nullptr;

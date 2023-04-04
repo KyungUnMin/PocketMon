@@ -1,6 +1,7 @@
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineBase/GameEngineDirectory.h>
 
 #include "Player.h"
 #include "ContentConst.h"
@@ -52,6 +53,18 @@ void Player::PlayerRenderLoad()
 		Shadow->ChangeAnimation("Shadow");
 		Shadow->Off();
 	}
+}
+
+void Player::PlayerSoundLoad()
+{
+	GameEngineDirectory Dir;
+	Dir.MoveParentToDirectory("ContentsResources");
+	Dir.Move("ContentsResources");
+	Dir.Move("Sound");
+	Dir.Move("Player");
+
+	GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("JumpSound.wav"));//Jump Sound
+
 }
 
 void Player::PlayerCollisionSet()

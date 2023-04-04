@@ -144,7 +144,7 @@ void Player::Start()
 	PlayerPokemon->AddPokemon(4, 1);
 	PlayerPokemon->AddPokemon(7, 1);
 
-
+	PlayerSoundLoad();
 	PlayerKeyLoad();
 	PlayerRenderLoad();
 	PlayerCollisionSet();
@@ -308,6 +308,10 @@ void Player::PlayerDeathCheckFunction()
 	
 	Fieldmap::FieldUpdate();
 }
+
+
+
+
 
 
 
