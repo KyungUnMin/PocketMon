@@ -262,6 +262,10 @@
     <ClCompile Include="BattlePlayerMonster_CreateState.cpp" />
     <ClCompile Include="BattlePlayer_MoveState.cpp" />
     <ClCompile Include="BattlePlayer_ThrowState.cpp" />
+    <ClCompile Include="BattleSkill_EnemyAgility.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyBase.cpp">
       <SubType>
       </SubType>
@@ -320,6 +324,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleSkill_EnemySuperFang.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleSkill_EnemyTackle.cpp">
       <SubType>
       </SubType>
@@ -345,6 +353,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_EnemyWaterGun.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerAgility.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -419,6 +431,10 @@
       </SubType>
     </ClCompile>
     <ClCompile Include="BattleSkill_PlayerScratch.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerSuperFang.cpp">
       <SubType>
       </SubType>
     </ClCompile>
@@ -963,6 +979,10 @@
     <ClInclude Include="BattlePlayerMonster_CreateState.h" />
     <ClInclude Include="BattlePlayer_MoveState.h" />
     <ClInclude Include="BattlePlayer_ThrowState.h" />
+    <ClInclude Include="BattleSkill_EnemyAgility.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyBase.h">
       <SubType>
       </SubType>
@@ -1021,6 +1041,10 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="BattleSkill_EnemySuperFang.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="BattleSkill_EnemyTackle.h">
       <SubType>
       </SubType>
@@ -1046,6 +1070,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyWaterGun.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerAgility.h">
       <SubType>
       </SubType>
     </ClInclude>
@@ -1120,6 +1148,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleSkill_PlayerScratch.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerSuperFang.h">
       <SubType>
       </SubType>
     </ClInclude>

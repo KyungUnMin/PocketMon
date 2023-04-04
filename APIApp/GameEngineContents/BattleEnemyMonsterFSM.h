@@ -28,6 +28,8 @@ enum class BattleEnemyMonster_StateType
 
 	Skill_Scratch,
 	Skill_FeatherDance,
+	Skill_Agility,
+	Skill_SuperFang,
 	Skill_Ember,
 	Skill_Flamethrower,
 	Skill_DragonBreath,

@@ -26,7 +26,8 @@
 #include "BattleSkill_EnemyVinewhip.h"
 #include "BattleSkill_EnemyRazorLeaf.h"
 #include "BattleSkill_EnemyRockThrow.h"
-
+#include "BattleSkill_EnemyAgility.h"
+#include "BattleSkill_EnemySuperFang.h"
 #include "BattleSkill_EnemyTest.h"
 
 
@@ -71,6 +72,8 @@ void BattleEnemyMonsterFSM::Init(bool _IsWildMonster)
 	CreateState<BattleSkill_EnemyTackle>(BattleEnemyMonster_StateType::Skill_Tackle);
 	CreateState<BattleSkill_EnemyScratch>(BattleEnemyMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_EnemyFeatherDance>(BattleEnemyMonster_StateType::Skill_FeatherDance);
+	CreateState<BattleSkill_EnemyAgility>(BattleEnemyMonster_StateType::Skill_Agility);
+	CreateState<BattleSkill_EnemySuperFang>(BattleEnemyMonster_StateType::Skill_SuperFang);
 	CreateState<BattleSkill_EnemyDefenseCurl>(BattleEnemyMonster_StateType::Skill_DefenseCurl);
 	CreateState<BattleSkill_EnemyIronDefense>(BattleEnemyMonster_StateType::Skill_IronDefense);
 	CreateState<BattleSkill_EnemyEmber>(BattleEnemyMonster_StateType::Skill_Ember);

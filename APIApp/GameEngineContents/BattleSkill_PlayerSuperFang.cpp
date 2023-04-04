@@ -1,43 +1,43 @@
-#include "BattleSkill_PlayerFeatherDance.h"
+#include "BattleSkill_PlayerSuperFang.h"
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleMonsterPlayer.h"
-BattleSkill_PlayerFeatherDance::BattleSkill_PlayerFeatherDance()
+BattleSkill_PlayerSuperFang::BattleSkill_PlayerSuperFang()
 {
 }
 
-BattleSkill_PlayerFeatherDance::~BattleSkill_PlayerFeatherDance()
+BattleSkill_PlayerSuperFang::~BattleSkill_PlayerSuperFang()
 {
 }
 
-void BattleSkill_PlayerFeatherDance::EnterState()
+void BattleSkill_PlayerSuperFang::EnterState()
 {
 	BattleSkill_PlayerBase::EnterState();
 
-	EffectRender = GetPlayerMonster()->CreateRender("FeatherDance.bmp", BattleRenderOrder::SkillEffect);
+	EffectRender = GetPlayerMonster()->CreateRender("SuperFang.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScale({ 128, 128 });
 	EffectRender->SetAlpha({ 0 });
-	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "FeatherDance.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
+	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "SuperFang.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
 	EffectRender->ChangeAnimation("Defalut");
 	EffectRender->On();
 }
 
-void BattleSkill_PlayerFeatherDance::Update(float _DeltaTime)
+void BattleSkill_PlayerSuperFang::Update(float _DeltaTime)
 {
 	if (true == BattleSkill_PlayerBase::Update_CheckTime(_DeltaTime, Duration))
 		return;
 
 	switch (CurState)
 	{
-	case BattleSkill_PlayerFeatherDance::SkillState::WaitAppear:
+	case BattleSkill_PlayerSuperFang::SkillState::WaitAppear:
 		Update_WaitAppear(_DeltaTime);
 		break;
-	case BattleSkill_PlayerFeatherDance::SkillState::Appear:
+	case BattleSkill_PlayerSuperFang::SkillState::Appear:
 		Update_Appear(_DeltaTime);
 		break;
-	case BattleSkill_PlayerFeatherDance::SkillState::Disappear:
+	case BattleSkill_PlayerSuperFang::SkillState::Disappear:
 		Update_Disappear(_DeltaTime);
 		break;
-	case BattleSkill_PlayerFeatherDance::SkillState::WaitDisappear:
+	case BattleSkill_PlayerSuperFang::SkillState::WaitDisappear:
 		Update_WaitDisappear(_DeltaTime);
 		break;
 	default:
@@ -45,18 +45,18 @@ void BattleSkill_PlayerFeatherDance::Update(float _DeltaTime)
 	}
 }
 
-void BattleSkill_PlayerFeatherDance::ExitState()
+void BattleSkill_PlayerSuperFang::ExitState()
 {
 	BattleSkill_PlayerBase::ExitState();
 	CurState = SkillState::WaitAppear;
-	
+
 	WaitAppearTime = 0.f;
 	AppearTime = 0.f;
 	WaitDisappearTime = 0.f;
 	DisappearTime = 0.f;
 }
 
-void BattleSkill_PlayerFeatherDance::Update_Appear(float _DeltaTime)
+void BattleSkill_PlayerSuperFang::Update_Appear(float _DeltaTime)
 {
 	AppearTime += _DeltaTime;
 
@@ -69,7 +69,7 @@ void BattleSkill_PlayerFeatherDance::Update_Appear(float _DeltaTime)
 	}
 }
 
-void BattleSkill_PlayerFeatherDance::Update_WaitAppear(float _DeltaTime)
+void BattleSkill_PlayerSuperFang::Update_WaitAppear(float _DeltaTime)
 {
 	WaitAppearTime += _DeltaTime;
 
@@ -79,7 +79,7 @@ void BattleSkill_PlayerFeatherDance::Update_WaitAppear(float _DeltaTime)
 	}
 }
 
-void BattleSkill_PlayerFeatherDance::Update_Disappear(float _DeltaTime)
+void BattleSkill_PlayerSuperFang::Update_Disappear(float _DeltaTime)
 {
 	DisappearTime += _DeltaTime;
 	if (0.5f <= DisappearTime)
@@ -92,7 +92,7 @@ void BattleSkill_PlayerFeatherDance::Update_Disappear(float _DeltaTime)
 
 }
 
-void BattleSkill_PlayerFeatherDance::Update_WaitDisappear(float _DeltaTime)
+void BattleSkill_PlayerSuperFang::Update_WaitDisappear(float _DeltaTime)
 {
 	WaitDisappearTime += _DeltaTime;
 

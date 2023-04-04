@@ -1,43 +1,43 @@
-#include "BattleSkill_EnemyFeatherDance.h"
+#include "BattleSkill_EnemyAgility.h"
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleMonsterEnemy.h"
-BattleSkill_EnemyFeatherDance::BattleSkill_EnemyFeatherDance()
+BattleSkill_EnemyAgility::BattleSkill_EnemyAgility()
 {
 }
 
-BattleSkill_EnemyFeatherDance::~BattleSkill_EnemyFeatherDance()
+BattleSkill_EnemyAgility::~BattleSkill_EnemyAgility()
 {
 }
 
-void BattleSkill_EnemyFeatherDance::EnterState()
+void BattleSkill_EnemyAgility::EnterState()
 {
 	BattleSkill_EnemyBase::EnterState();
 
-	EffectRender = GetEnemyMonster()->CreateRender("FeatherDance.bmp", BattleRenderOrder::SkillEffect);
+	EffectRender = GetEnemyMonster()->CreateRender("Agility.bmp", BattleRenderOrder::SkillEffect);
 	EffectRender->SetScale({ 128, 128 });
 	EffectRender->SetAlpha({ 0 });
-	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "FeatherDance.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
+	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "Agility.bmp", .Start = 0, .End = 7, .InterTime = 0.12f, .Loop = true, });
 	EffectRender->ChangeAnimation("Defalut");
 	EffectRender->On();
 }
 
-void BattleSkill_EnemyFeatherDance::Update(float _DeltaTime)
+void BattleSkill_EnemyAgility::Update(float _DeltaTime)
 {
 	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, Duration))
 		return;
 
 	switch (CurState)
 	{
-	case BattleSkill_EnemyFeatherDance::SkillState::WaitAppear:
+	case BattleSkill_EnemyAgility::SkillState::WaitAppear:
 		Update_WaitAppear(_DeltaTime);
 		break;
-	case BattleSkill_EnemyFeatherDance::SkillState::Appear:
+	case BattleSkill_EnemyAgility::SkillState::Appear:
 		Update_Appear(_DeltaTime);
 		break;
-	case BattleSkill_EnemyFeatherDance::SkillState::Disappear:
+	case BattleSkill_EnemyAgility::SkillState::Disappear:
 		Update_Disappear(_DeltaTime);
 		break;
-	case BattleSkill_EnemyFeatherDance::SkillState::WaitDisappear:
+	case BattleSkill_EnemyAgility::SkillState::WaitDisappear:
 		Update_WaitDisappear(_DeltaTime);
 		break;
 	default:
@@ -45,7 +45,7 @@ void BattleSkill_EnemyFeatherDance::Update(float _DeltaTime)
 	}
 }
 
-void BattleSkill_EnemyFeatherDance::ExitState()
+void BattleSkill_EnemyAgility::ExitState()
 {
 	BattleSkill_EnemyBase::ExitState();
 	CurState = SkillState::WaitAppear;
@@ -56,7 +56,7 @@ void BattleSkill_EnemyFeatherDance::ExitState()
 	DisappearTime = 0.f;
 }
 
-void BattleSkill_EnemyFeatherDance::Update_Appear(float _DeltaTime)
+void BattleSkill_EnemyAgility::Update_Appear(float _DeltaTime)
 {
 	AppearTime += _DeltaTime;
 
@@ -69,7 +69,7 @@ void BattleSkill_EnemyFeatherDance::Update_Appear(float _DeltaTime)
 	}
 }
 
-void BattleSkill_EnemyFeatherDance::Update_WaitAppear(float _DeltaTime)
+void BattleSkill_EnemyAgility::Update_WaitAppear(float _DeltaTime)
 {
 	WaitAppearTime += _DeltaTime;
 
@@ -79,7 +79,7 @@ void BattleSkill_EnemyFeatherDance::Update_WaitAppear(float _DeltaTime)
 	}
 }
 
-void BattleSkill_EnemyFeatherDance::Update_Disappear(float _DeltaTime)
+void BattleSkill_EnemyAgility::Update_Disappear(float _DeltaTime)
 {
 	DisappearTime += _DeltaTime;
 	if (0.5f <= DisappearTime)
@@ -92,7 +92,7 @@ void BattleSkill_EnemyFeatherDance::Update_Disappear(float _DeltaTime)
 
 }
 
-void BattleSkill_EnemyFeatherDance::Update_WaitDisappear(float _DeltaTime)
+void BattleSkill_EnemyAgility::Update_WaitDisappear(float _DeltaTime)
 {
 	WaitDisappearTime += _DeltaTime;
 

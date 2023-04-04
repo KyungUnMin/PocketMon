@@ -24,6 +24,8 @@
 #include "BattleSkill_PlayerQuickAttack.h"
 
 #include "BattleSkill_PlayerFeatherDance.h"
+#include "BattleSkill_PlayerAgility.h"
+#include "BattleSkill_PlayerSuperFang.h"
 #include "BattleSkill_PlayerDefenseCurl.h"
 #include "BattleSkill_PlayerIronDefense.h"
 #include "BattleSkill_PlayerEmber.h"
@@ -73,6 +75,8 @@ void BattlePlayerMonsterFSM::Init()
 	CreateState<BattleSkill_PlayerTackle>(BattlePlayerMonster_StateType::Skill_Tackle);
 	CreateState<BattleSkill_PlayerScratch>(BattlePlayerMonster_StateType::Skill_Scratch);
 	CreateState<BattleSkill_PlayerFeatherDance>(BattlePlayerMonster_StateType::Skill_FeatherDance);
+	CreateState<BattleSkill_PlayerAgility>(BattlePlayerMonster_StateType::Skill_Agility);
+	CreateState<BattleSkill_PlayerSuperFang>(BattlePlayerMonster_StateType::Skill_SuperFang);
 	CreateState<BattleSkill_PlayerDefenseCurl>(BattlePlayerMonster_StateType::Skill_DefenseCurl);
 	CreateState<BattleSkill_PlayerIronDefense>(BattlePlayerMonster_StateType::Skill_IronDefense);
 	CreateState<BattleSkill_PlayerEmber>(BattlePlayerMonster_StateType::Skill_Ember);

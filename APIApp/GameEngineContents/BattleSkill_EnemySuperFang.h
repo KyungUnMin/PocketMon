@@ -1,27 +1,27 @@
 #pragma once
-#include "BattleSkill_PlayerBase.h"
+#include "BattleSkill_EnemyBase.h"
 
 // Ό³Έν :
 class GameEngineRender;
-class BattleSkill_PlayerFeatherDance : public BattleSkill_PlayerBase
+class BattleSkill_EnemySuperFang : public BattleSkill_EnemyBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerFeatherDance();
-	~BattleSkill_PlayerFeatherDance();
+	BattleSkill_EnemySuperFang();
+	~BattleSkill_EnemySuperFang();
 
 	// delete Function
-	BattleSkill_PlayerFeatherDance(const BattleSkill_PlayerFeatherDance& _Other) = delete;
-	BattleSkill_PlayerFeatherDance(BattleSkill_PlayerFeatherDance&& _Other) noexcept = delete;
-	BattleSkill_PlayerFeatherDance& operator=(const BattleSkill_PlayerFeatherDance& _Other) = delete;
-	BattleSkill_PlayerFeatherDance& operator=(BattleSkill_PlayerFeatherDance&& _Other) noexcept = delete;
+	BattleSkill_EnemySuperFang(const BattleSkill_EnemySuperFang& _Other) = delete;
+	BattleSkill_EnemySuperFang(BattleSkill_EnemySuperFang&& _Other) noexcept = delete;
+	BattleSkill_EnemySuperFang& operator=(const BattleSkill_EnemySuperFang& _Other) = delete;
+	BattleSkill_EnemySuperFang& operator=(BattleSkill_EnemySuperFang&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 private:
-	const float Duration = 2.6f;
+	const float Duration = 3.6f;
 
 	GameEngineRender* EffectRender = nullptr;
 

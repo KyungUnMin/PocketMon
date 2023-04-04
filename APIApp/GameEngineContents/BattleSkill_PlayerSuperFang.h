@@ -3,18 +3,18 @@
 
 // Ό³Έν :
 class GameEngineRender;
-class BattleSkill_PlayerFeatherDance : public BattleSkill_PlayerBase
+class BattleSkill_PlayerSuperFang : public BattleSkill_PlayerBase
 {
 public:
 	// constrcuter destructer
-	BattleSkill_PlayerFeatherDance();
-	~BattleSkill_PlayerFeatherDance();
+	BattleSkill_PlayerSuperFang();
+	~BattleSkill_PlayerSuperFang();
 
 	// delete Function
-	BattleSkill_PlayerFeatherDance(const BattleSkill_PlayerFeatherDance& _Other) = delete;
-	BattleSkill_PlayerFeatherDance(BattleSkill_PlayerFeatherDance&& _Other) noexcept = delete;
-	BattleSkill_PlayerFeatherDance& operator=(const BattleSkill_PlayerFeatherDance& _Other) = delete;
-	BattleSkill_PlayerFeatherDance& operator=(BattleSkill_PlayerFeatherDance&& _Other) noexcept = delete;
+	BattleSkill_PlayerSuperFang(const BattleSkill_PlayerSuperFang& _Other) = delete;
+	BattleSkill_PlayerSuperFang(BattleSkill_PlayerSuperFang&& _Other) noexcept = delete;
+	BattleSkill_PlayerSuperFang& operator=(const BattleSkill_PlayerSuperFang& _Other) = delete;
+	BattleSkill_PlayerSuperFang& operator=(BattleSkill_PlayerSuperFang&& _Other) noexcept = delete;
 
 protected:
 	void EnterState() override;

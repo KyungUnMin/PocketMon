@@ -731,6 +731,18 @@
     <ClCompile Include="BattleSkill_EnemyRockThrow.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerAgility.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_PlayerSuperFang.cpp">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemyAgility.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="BattleSkill_EnemySuperFang.cpp">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1445,6 +1457,18 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemyRockThrow.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerAgility.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_PlayerSuperFang.h">
+      <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemyAgility.h">
+      <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="BattleSkill_EnemySuperFang.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
     </ClInclude>
   </ItemGroup>
