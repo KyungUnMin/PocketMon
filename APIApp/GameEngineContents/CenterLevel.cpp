@@ -469,13 +469,13 @@ void CenterLevel::Loading()
 		Dir.Move("BGM");
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_WildBGM.mp3"));             // 인배틀 BGM
 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.mp3"));               // 공격 시 노말 데미지일 때 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SuperEffectiveDamage.mp3"));       // 효과는 굉장했다 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonSwapout.mp3"));             // 포켓몬 교체 시 퇴장 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("fainting.mp3"));				     // 포켓몬 기절 (쓰러뜨림)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Running.mp3"));				     // 야생 포켓몬에게서 도주
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.wav"));               // 공격 시 노말 데미지일 때 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SuperEffectiveDamage.wav"));       // 효과는 굉장했다 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonSwapout.wav"));             // 포켓몬 교체 시 퇴장 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("fainting.wav"));				     // 포켓몬 기절 (쓰러뜨림)
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Running.wav"));				     // 야생 포켓몬에게서 도주
 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("EXPGain.mp3"));				     // 경험치 획득
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("EXPGain.wav"));				     // 경험치 획득
 
 		Dir.MoveParentToDirectory("SFX");
 		Dir.Move("SFX");
@@ -521,10 +521,10 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));			   // 라이벌 조우
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Wild_Victory.mp3"));			   // 전투 승리 시 BGM
 
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.mp3"));			   // 나무문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.mp3"));			   // 슬라이드문 열기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.mp3"));			   // 건물(빌딩) 나가기
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeBell.mp3"));			       // 자전거 벨 울리기
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.wav"));			   // 나무문 열기
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.wav"));			   // 슬라이드문 열기
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.wav"));			   // 건물(빌딩) 나가기
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeBell.wav"));			       // 자전거 벨 울리기
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
