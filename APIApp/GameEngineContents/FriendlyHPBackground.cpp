@@ -156,10 +156,14 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	if (true == IsExpUP)
 	{
-		HpSoundCheck = true;
-		B_HpLow.Stop();
+		if (HpSoundCheck == false) {
+			B_HpLow.Stop();
+			HpSoundCheck = true;
+		}
+	
+	
 		NextTickTime_1 += _DeltaTime;
-		if (NextTickTime_1 > 0.1f) 
+		if (NextTickTime_1 > 0.07f) 
 		{
 			NextTickTime_1 = 0;
 			if (TickNumber_1 != 20)
@@ -206,7 +210,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num/*static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()*/, SecoundHp);
 		}
 		NextTickTime += _DeltaTime;
-		if (NextTickTime > 0.1f) {
+		if (NextTickTime > 0.07f) {
 			NextTickTime = 0;
 			if (TickNumber != 10) {
 				if(DamegeTick[TickNumber] < Hp50Under && DamegeTick[TickNumber]>Hp30Under){
@@ -239,8 +243,9 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			if (IsDeath_B == true) 
 			{
 				B_HpLow.Stop();
-				IsDeath_B = false;
 				HpSoundCheck = true;
+				IsDeath_B = false;
+
 			}
 		}
 		

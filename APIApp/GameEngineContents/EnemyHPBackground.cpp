@@ -103,7 +103,7 @@ void EnemyHPBackground::Update(float _DeltaTime)
 
 		}
 		NextTickTime_2 += _DeltaTime;
-			if (NextTickTime_2 > 0.1f) {
+			if (NextTickTime_2 > 0.07f) {
 				NextTickTime_2 = 0;
 				if (TickNumber_2 != 10) {
 
