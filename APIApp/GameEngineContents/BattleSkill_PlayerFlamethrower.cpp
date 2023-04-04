@@ -26,6 +26,9 @@ void BattleSkill_PlayerFlamethrower::EnterState()
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Ember>()->SetEmber(Enemy->GetPos() + StartPos + float4({16, 16}), Enemy->GetPos() + EndPos + float4({ 8, 8 }), 0.75f);
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Ember>()->SetEmber(Enemy->GetPos() + StartPos, Enemy->GetPos() + EndPos, 0.9f);
 	BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Ember>()->SetEmber(Enemy->GetPos() + StartPos + float4({-16, -16}), Enemy->GetPos() + EndPos + float4({ -8, -8 }), 1.0f);
+	GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("Flamethrower.wav");
+	SFX.LoopCount(1);
+	SFX.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerFlamethrower::Update(float _DeltaTime)

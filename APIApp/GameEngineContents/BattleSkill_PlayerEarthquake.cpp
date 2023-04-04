@@ -37,6 +37,10 @@ void BattleSkill_PlayerEarthquake::EnterState()
 	EnemyHPBackground::EnemyPtr->GetHPPtr()->EffectCameraOff();
 
 	InitCameraPos = BattleLevel::BattleLevelPtr->GetCameraPos();
+
+	GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("Earthquake.wav");
+	SFX.LoopCount(1);
+	SFX.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerEarthquake::Update(float _DeltaTime)
