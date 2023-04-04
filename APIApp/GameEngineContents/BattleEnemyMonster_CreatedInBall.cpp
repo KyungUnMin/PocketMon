@@ -31,6 +31,9 @@ void BattleEnemyMonster_CreatedInBall::EnterState()
 	GameEngineSoundPlayer Sfx = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_BallPop);
 	Sfx.LoopCount(1);
 	Sfx.Volume(BattleDefine::WorldVolumn);
+
+	float4 MonsterPos = BattleEnemy::EnemyPtr->GetMonster()->GetPos();
+	DestOffset = MovePivot - MonsterPos;
 }
 
 void BattleEnemyMonster_CreatedInBall::CreateRenders()
@@ -131,7 +134,8 @@ void BattleEnemyMonster_CreatedInBall::Update_FallBall(float _DeltaTime)
 	Timer += _DeltaTime;
 	float Ratio = (Timer / Duration);
 
-	float4 NowOffset = float4::LerpClamp(MoveOffset, float4::Zero, Ratio);
+	//float4 NowOffset = float4::LerpClamp(MoveOffset, float4::Zero, Ratio);
+	float4 NowOffset = float4::LerpClamp(MoveOffset, DestOffset, Ratio);
 	BallRender->SetPosition(NowOffset);
 
 	if (Ratio <= 1.f)

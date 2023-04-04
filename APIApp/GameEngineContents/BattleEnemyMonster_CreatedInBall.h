@@ -42,6 +42,9 @@ private:
 	float4 OriginScale = float4::Zero;
 	const float4 MoveOffset = float4{ 0.f, -150.f };
 
+	const float4 MovePivot = float4{ 703.f, 225.f };
+	float4 DestOffset = float4::Zero;
+
 	void CreateRenders();
 	void Update_JumpBall(float _DeltaTime);
 	void Update_FallBall(float _DeltaTime);
