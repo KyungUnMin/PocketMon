@@ -87,13 +87,26 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 	case PokeSkill::Magnitude:
 		return BattlePlayerMonster_StateType::Skill_IronDefense;
 
+	case PokeSkill::RockThrow:
+		return BattlePlayerMonster_StateType::Skill_RockThrow;
+
+	case PokeSkill::SuperFang:
+		return BattlePlayerMonster_StateType::Skill_SuperFang;
+
+	case PokeSkill::FastMove:
+		return BattlePlayerMonster_StateType::Skill_Agility;
+
+	case PokeSkill::Peck:
+		return BattlePlayerMonster_StateType::Skill_Tackle;
+
+
+	
+
+
 	case PokeSkill::Slash:
 		SkillName = "Slash";
-	case PokeSkill::FastMove:
-		SkillName = "FastMove";
 	case PokeSkill::RockPolish:
 		SkillName = "RockPolish";
-	
 	case PokeSkill::Withdraw:
 		SkillName = "Withdraw";
 	case PokeSkill::HydroPump:
@@ -106,8 +119,6 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 		SkillName = "Twister";
 	case PokeSkill::DrillPeck:
 		SkillName = "DrillPeck";
-	case PokeSkill::RockThrow:
-		SkillName = "RockThrow";
 	case PokeSkill::StoneEdge:
 		SkillName = "StoneEdge";
 	case PokeSkill::RockTomb:
@@ -122,8 +133,6 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 		SkillName = "Selfdestruct";
 	case PokeSkill::SkullBash:
 		SkillName = "SkullBash";
-	case PokeSkill::Peck:
-		SkillName = "Peck";
 	case PokeSkill::FuryAttack:
 		SkillName = "FuryAttack";
 	case PokeSkill::Pursuit:
@@ -138,8 +147,7 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 		SkillName = "SandTomb";
 	case PokeSkill::Crunch:
 		SkillName = "Crunch";
-	case PokeSkill::SuperFang:
-		SkillName = "SuperFang";
+	
 	default:
 		SkillName = "???";
 	}

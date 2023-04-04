@@ -60,6 +60,19 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 		return BattleEnemyMonster_StateType::Skill_IronDefense;
 
 
+	case PokeSkill::RockThrow:
+		return BattleEnemyMonster_StateType::Skill_RockThrow;
+
+	case PokeSkill::SuperFang:
+		return BattleEnemyMonster_StateType::Skill_SuperFang;
+
+	case PokeSkill::FastMove:
+		return BattleEnemyMonster_StateType::Skill_Agility;
+
+	case PokeSkill::Peck:
+		return BattleEnemyMonster_StateType::Skill_Tackle;
+
+
 	case PokeSkill::Slash:
 		SkillName = "Slash";
 		break;
@@ -94,17 +107,11 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	case PokeSkill::AirSlash:
 		SkillName = "AirSlash";
 		break;
-	case PokeSkill::Peck:
-		SkillName = "Peck";
-		break;
 	case PokeSkill::FuryAttack:
 		SkillName = "FuryAttack";
 		break;
 	case PokeSkill::Pursuit:
 		SkillName = "Pursuit";
-		break;
-	case PokeSkill::FastMove:
-		SkillName = "FastMove";
 		break;
 	case PokeSkill::Assurance:
 		SkillName = "Assurance";
@@ -115,9 +122,6 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	
 	case PokeSkill::RockPolish:
 		SkillName = "RockPolish";
-		break;
-	case PokeSkill::RockThrow:
-		SkillName = "RockThrow";
 		break;
 	case PokeSkill::Selfdestruct:
 		SkillName = "Selfdestruct";
@@ -145,9 +149,6 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 		break;
 	case PokeSkill::Crunch:
 		SkillName = "Crunch";
-		break;
-	case PokeSkill::SuperFang:
-		SkillName = "SuperFang";
 		break;
 	case PokeSkill::DoubleEdge:
 		SkillName = "DoubleEdge";

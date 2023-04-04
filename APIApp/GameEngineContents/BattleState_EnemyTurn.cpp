@@ -33,10 +33,10 @@ void BattleState_EnemyTurn::EnterState()
 	PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList(SelectedSkill);
 	
 	//실제 게임용입니다.
-	//EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillDB.GetSkill()));
+	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillDB.GetSkill()));
 
 	//스킬 확인용입니다
-	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
+	//EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
 }
 
 void BattleState_EnemyTurn::ExitState()
