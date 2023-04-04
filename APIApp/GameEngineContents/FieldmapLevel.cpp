@@ -668,7 +668,7 @@ void FieldmapLevel::Loading()
 			TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
 			BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC2.bmp", BattleNpcType::NPC2);
 			BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
-			BaatleNpcPtr->AddScript("My POK@MON may not look like much,but it's got some serious bite!");
+			BaatleNpcPtr->AddScript("My POK@MON may not look like much,but its got some serious bite!");
 			BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 			BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 			BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);

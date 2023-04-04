@@ -124,7 +124,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Opening Desing", "Um Taegun");
+			_This->SetText("Opening Design", "Um Taegun");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -171,7 +171,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Map Desing", "Kim Kyeongsik\nUm Taegun");
+			_This->SetText("Map Design", "Kim Kyeongsik\nUm Taegun");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -194,7 +194,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("NPC Desing", "Kim Kyeongsik\nYoo Dongmin");
+			_This->SetText("NPC Design", "Kim Kyeongsik\nYoo Dongmin");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -218,7 +218,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokemonImageName("EndingPokemon002.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Green);
 	
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Event Desing", "Kim Kyeongsik"));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Event Design", "Kim Kyeongsik"));
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "ViridianCity", int2(25, 15), float4::Down));
 	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
@@ -242,7 +242,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Ending Desing", "Kim Kyeongsik");
+			_This->SetText("Ending Design", "Kim Kyeongsik");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -265,7 +265,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Field UI Desing", "Hwang Seungmin");
+			_This->SetText("Field UI Design", "Hwang Seungmin");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -289,7 +289,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokemonImageName("EndingPokemon003.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Blue);
 	
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Battle UI Desing", "Kim Minseok\nMin Kyungwoon\nKim Kyunghak"));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Battle UI Design", "Kim Minseok\nMin Kyungwoon\nKim Kyunghak"));
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "Route1", int2(21, 19), float4::Down));
 	
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
@@ -313,7 +313,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Inventory UI Desing", "Kim Kyunghak");
+			_This->SetText("Inventory UI Design", "Kim Kyunghak");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -336,7 +336,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Battle Desing", "Min Kyungwoon\nKim Kyunghak\nUm Taegun\nKim Minseok");
+			_This->SetText("Battle Design", "Min Kyungwoon\nKim Kyunghak\nUm Taegun\nKim Minseok");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
