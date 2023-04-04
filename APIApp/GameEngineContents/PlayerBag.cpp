@@ -8,6 +8,7 @@
 #include "Player.h"
 #include "LevelChangeFade.h"
 #include "BattleLevel.h"
+#include <GameEngineCore/GameEngineResources.h>
 PlayerBag* PlayerBag::MainBag = nullptr;
 
 PlayerBag::PlayerBag() {
@@ -447,6 +448,10 @@ void PlayerBag::ChangeSpaceLeft()
 		return;
 	}
 
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
+
 	ChangeAnimation(BagAnim::UpMove);
 }
 
@@ -467,6 +472,10 @@ void PlayerBag::ChangeSpaceRight()
 		return;
 	}
 
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
+
 	ChangeAnimation(BagAnim::UpMove);
 }
 
@@ -480,6 +489,10 @@ void PlayerBag::CursorUp()
 	CurrentCursor--;
 	CursorMove();
 
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
+
 	ChangeAnimation(BagAnim::LeftTurn);
 }
 
@@ -492,6 +505,10 @@ void PlayerBag::CursorDown()
 		return;
 	}
 	CursorMove();
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
 
 	ChangeAnimation(BagAnim::LeftTurn);
 }
@@ -622,6 +639,10 @@ void PlayerBag::SelectOn()
 	SelectText->SetPos({ 744, 580.0f - 68 * SelectSize });
 	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * SelectSize });
 	SelectBox->SetFrame(SelectSize);
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PlayerBag::SelectOff()
@@ -634,6 +655,10 @@ void PlayerBag::SelectOff()
 	SelectText->Off();
 	CursorRender->SetFrame(0);
 	IsItemSelect = false;
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
 }
 
 void PlayerBag::SelectUp()
@@ -659,11 +684,17 @@ void PlayerBag::SelectDown()
 void PlayerBag::SelectMove()
 {
 	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * CurrentSelectCursor });
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PlayerBag::SelectMenu()
 {
 	SelectFunctions[CurrentSelectCursor]();
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PlayerBag::ItemUse()
@@ -700,6 +731,9 @@ void PlayerBag::ItemGive()
 }
 void PlayerBag::Cancel()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
 	CurrentItemCode = ItemCode::Cancel;
 	LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
 	IsStop = true;

@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <vector>
 
 enum class SummaryPage
@@ -35,7 +36,7 @@ protected:
 private:
 
 	GameEngineLevel* CurrentLevel = nullptr;
-	
+	GameEngineSoundPlayer MenuSound;
 	std::vector<PokeDataBase> Pokemons;
 	GameEngineRender* PokemonRender = nullptr;
 	GameEngineRender* CurrentSkillSelect = nullptr;

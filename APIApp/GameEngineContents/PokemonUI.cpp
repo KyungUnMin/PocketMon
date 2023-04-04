@@ -257,7 +257,9 @@ void PokemonUI::Update(float _DeltaTime)
 	}
 	if (GameEngineInput::IsDown("B"))
 	{
-		
+		MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+		MenuSound.Volume(0.5f);
+		MenuSound.LoopCount(1);
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut(PrevLevel->GetName());
 		IsStop = true;
 		return;
@@ -379,6 +381,10 @@ void PokemonUI::CursorDown()
 
 void PokemonUI::CursorMove()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
+
 	if (StateValue != PokemonUIState::Switch)
 	{
 		for (int i = 0; i < CursorRender.size(); i++)
@@ -506,6 +512,10 @@ void PokemonUI::SelectOn()
 	SelectText->SetPos({ 744, 580.0f - 68 * SelectSize });
 	SelectText->On();
 	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * SelectSize });
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PokemonUI::SelectOff()
@@ -521,6 +531,9 @@ void PokemonUI::SelectOff()
 void PokemonUI::SelectMenu()
 {
 	SelectFunctions[CurrentSelectCursor]();
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PokemonUI::SelectUp()
@@ -546,6 +559,9 @@ void PokemonUI::SelectDown()
 void PokemonUI::SelectMove()
 {
 	SelectCursorRender->SetPosition({ 712, 580.0f - 68 * CurrentSelectCursor });
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PokemonUI::Summary()
@@ -574,6 +590,9 @@ void PokemonUI::SwitchCancel()
 
 void PokemonUI::SwitchSelect()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 	if (CurrentCursor == CursorRender.size() - 1)
 	{
 		SwitchCancel();
@@ -589,6 +608,10 @@ void PokemonUI::SwitchSelect()
 
 void PokemonUI::Item()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.5f);
+	MenuSound.LoopCount(1);
+
 	BarText->SetText(std::string("Take the ") + Item::GetItem(Pokemons[CurrentCursor].GetPossession()).GetItemName().data() + ".", true);
 	PlayerBag::MainBag->AddItem(Pokemons[CurrentCursor].GetPossession());
 	Pokemons[CurrentCursor].SetPossession(ItemCode::Cancel);
@@ -602,6 +625,7 @@ void PokemonUI::Item()
 		SetBarText();
 	};
 	TimeEvent.AddEvent(1.0f, Resume, false);
+	
 }
 
 void PokemonUI::Shift()
@@ -617,6 +641,10 @@ void PokemonUI::Shift()
 
 void PokemonUI::PotionUse()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("Potion.wav");
+	MenuSound.Volume(1.0f);
+	MenuSound.LoopCount(1);
+
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
 
 	Pokemons[CurrentCursor].ForInven_UsePotion();
@@ -688,6 +716,10 @@ void PokemonUI::GiveItem()
 		LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
 	};
 	TimeEvent.AddEvent(1.5f, LevelChange, false);
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.7f);
+	MenuSound.LoopCount(1);
 }
 
 void PokemonUI::AnimUpdate(float _DeltaTime)

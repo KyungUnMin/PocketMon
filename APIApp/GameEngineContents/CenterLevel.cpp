@@ -488,6 +488,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));                   // 포켓몬 센터 체력 회복
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));                 // 아이템 구매 사운드
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Exit_TrainerCard.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Potion.wav"));
 
 		Dir.MoveParentToDirectory("FieldUI");
 	}
