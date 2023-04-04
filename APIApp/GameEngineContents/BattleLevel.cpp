@@ -58,6 +58,7 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
 	Fade->Init(BattleFadeCtrl::FadeType::BlackIn);
 	Fade->SetDuration(0.1f);
+	IsBgmFadeOut = false;
 
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
 	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_PrevLevel);
@@ -72,9 +73,9 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	if (nullptr == ChangedCenterLevel)
 		return;
 
-	//Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
-	Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -132,13 +133,10 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType)
 
 
 
-
-
-
-
-
 void BattleLevel::Update(float _DeltaTime)
 {
+	FadeOutBGM(_DeltaTime);
+
 	//테스트용
 	if (true == TestKeyUpdate())
 		return;
@@ -248,13 +246,42 @@ void BattleLevel::ChangeFieldLevel(bool IsWin, bool _FadeColorBlack, float _Fade
 	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
 	Fade->Init(FadeType, std::bind(&BattleLevel::Clear, this), false);
 	Fade->SetDuration(_FadeDuration);
+	FadeDuration = _FadeDuration;
+	IsBgmFadeOut = true;
 
 	if (true == IsWin)
 		return;
 
-	//이 함수를 LevelChange되기 전에 호출되도 되는지 여쭤보자
 	Player::MainPlayer->SetPlayerDeath();
 }
+
+
+void BattleLevel::FadeOutBGM(float _DeltaTime)
+{
+	if (false == IsBgmFadeOut)
+		return;
+
+	static float Timer = 0.f;
+
+	Timer += _DeltaTime;
+	if (FadeDuration < Timer)
+	{
+		IsBgmFadeOut = false;
+		Timer = 0.f;
+		return;
+	}
+
+	float Ratio = (Timer / FadeDuration);
+	if (1.f < Ratio)
+	{
+		Ratio = 1.f;
+	}
+
+	float NowVolumn = WorldBgmVolumn * (1.f - Ratio);
+	BgmCtrl.Volume(NowVolumn);
+}
+
+
 
 void BattleLevel::Clear()
 {

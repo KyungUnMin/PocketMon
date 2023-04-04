@@ -100,6 +100,9 @@ private:
 	GameEngineSoundPlayer BgmCtrl;
 	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
 
+	bool IsBgmFadeOut = false;
+	float FadeDuration = 0.f;
+
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
 	bool TestKeyUpdate();
@@ -111,11 +114,8 @@ private:
 
 	BattleFieldType FieldConvertor(GroundType _FieldType);
 
-
-
-
 	void CreateBGM(BattleNpcType _BattleType);
-
+	void FadeOutBGM(float _DeltaTime);
 
 	void Clear();
 };
