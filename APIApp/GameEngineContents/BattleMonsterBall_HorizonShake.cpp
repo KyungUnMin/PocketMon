@@ -21,6 +21,12 @@ void BattleMonsterBall_HorizonShake::EnterState()
 	BallRender = MonsterBall->GetRender();
 	BallRender->ChangeAnimation(BattleMonsterBall::RollAniName);
 
+	if (BattleMonsterBall::MasterBallName == MonsterBall->GetName())
+	{
+		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
+		return;
+	}
+
 	SelectNextState();
 }
 

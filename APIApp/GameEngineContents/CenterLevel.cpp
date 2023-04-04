@@ -132,11 +132,17 @@ void CenterLevel::Loading()
 
 
 		Dir.Move("MonsterBall");
-		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBall.bmp"))->Cut(8, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleBallParticle.bmp"))->Cut(7, 1);
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBall.bmp"))->Cut(8, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallOpen.bmp"))->Cut(2, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallRoll.bmp"))->Cut(3, 1);
 		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMonsterBallCatch.bmp"))->Cut(4, 1);
+
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMasterBall.bmp"))->Cut(8, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMasterBallOpen.bmp"))->Cut(2, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMasterBallRoll.bmp"))->Cut(3, 1);
+		GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("BattleMasterBallCatch.bmp"))->Cut(4, 1);
 		Dir.MoveParentToDirectory("MonsterBall");
 
 		Dir.Move("Skill");
