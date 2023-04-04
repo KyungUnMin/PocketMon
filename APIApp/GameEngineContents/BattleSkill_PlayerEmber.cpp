@@ -62,6 +62,9 @@ void BattleSkill_PlayerEmber::Update_Wait(float _DeltaTime)
 	if (1.0f < WaitTime)
 	{
 		CurState = SkillState::BackWard;
+		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("Ember.wav");
+		SFX.LoopCount(1);
+		SFX.Volume(BattleDefine::WorldVolumn);
 	}
 }
 
