@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleSkill_PlayerBase.h"
+#include <GameEngineBase/GameEngineTimeEvent.h>
 
 class GameEngineRender;
 
@@ -24,9 +25,8 @@ protected:
 private:
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EnemyMonster = nullptr;
-
 	GameEngineRender* EffectRender = nullptr;
-
+	GameEngineTimeEvent TimeEvent;
 	enum class MoveState
 	{
 		Forward,

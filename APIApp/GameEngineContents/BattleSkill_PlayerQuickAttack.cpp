@@ -7,7 +7,6 @@
 
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
-
 BattleSkill_PlayerQuickAttack::BattleSkill_PlayerQuickAttack() 
 {
 }
@@ -27,6 +26,13 @@ void BattleSkill_PlayerQuickAttack::EnterState()
 	EffectRender->SetScaleToImage();
 	EffectRender->SetAlpha(200);
 	EffectRender->Off();
+	
+	std::function SoundFunction = [] (GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*) {
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
+	};
+	TimeEvent.AddEvent(0.3f, SoundFunction, false);
 }
 
 void BattleSkill_PlayerQuickAttack::Update(float _DeltaTime)
@@ -36,6 +42,7 @@ void BattleSkill_PlayerQuickAttack::Update(float _DeltaTime)
 		EnemyMonster->On();
 		return;
 	}
+	TimeEvent.Update(_DeltaTime);
 
 	switch (CurState)
 	{

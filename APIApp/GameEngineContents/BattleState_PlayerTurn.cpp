@@ -137,10 +137,10 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 
 		
 		//실제 게임용입니다. 
-		MonsterFSM->ChangeState(ConvertSkill(SkillType));
+		//MonsterFSM->ChangeState(ConvertSkill(SkillType));
 		
 		//스킬 확인용입니다
-		//MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_WaterGun);
+		MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_Scratch);
 	});
 
 

@@ -28,6 +28,13 @@ void BattleSkill_EnemyQuickAttack::EnterState()
 	EffectRender->SetAlpha(200);
 	EffectRender->SetPosition({-450, 200});
 	EffectRender->Off();
+
+	std::function SoundFunction = [](GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*) {
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
+	};
+	TimeEvent.AddEvent(0.3f, SoundFunction, false);
 }
 
 void BattleSkill_EnemyQuickAttack::Update(float _DeltaTime)

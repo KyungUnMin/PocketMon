@@ -19,6 +19,10 @@ void BattleSkill_EnemyScratch::EnterState()
 	EffectRender->SetAlpha({ 170 });
 	EffectRender->CreateAnimation({ .AnimationName = "Defalut", .ImageName = "Scratch.bmp", .Loop = false, .FrameIndex = {5, 0, 1, 2, 3, 4, 5}, .FrameTime = {0.3f, 0.04f, 0.04f, 0.04f, 0.07f, 0.1f, 0.1f} });
 	EffectRender->ChangeAnimation("Defalut");
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Scratch.mp3");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyScratch::Update(float _DeltaTime)

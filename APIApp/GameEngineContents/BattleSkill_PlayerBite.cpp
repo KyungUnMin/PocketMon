@@ -35,6 +35,10 @@ void BattleSkill_PlayerBite::EnterState()
 
 	BiteRender1->Off();
 	BiteRender2->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerBite::Update(float _DeltaTime)

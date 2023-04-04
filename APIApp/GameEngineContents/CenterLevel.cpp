@@ -481,6 +481,7 @@ void CenterLevel::Loading()
 		Dir.Move("SFX");
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_Tackle));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallPop));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Scratch.mp3"));
 
 
 		Dir.MoveParentToDirectory("Battle");

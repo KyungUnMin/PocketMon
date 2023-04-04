@@ -1,6 +1,6 @@
 #pragma once
 #include "BattleSkill_PlayerBase.h"
-
+#include <GameEngineCore/GameEngineResources.h>
 // Ό³Έν :
 class GameEngineRender;
 class BattleSkill_PlayerScratch : public BattleSkill_PlayerBase
@@ -22,7 +22,7 @@ protected:
 	void ExitState() override;
 private:
 	const float Duration = 1.0f;
-
+	GameEngineSoundPlayer SfxCtrl;
 	GameEngineRender* EnemyMonster = nullptr;
 	GameEngineRender* EffectRender = nullptr;
 	

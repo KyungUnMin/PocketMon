@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleSkill_EnemyBase.h"
+#include <GameEngineCore/GameEngineResources.h> 
 // Ό³Έν :
 class GameEngineRender;
 class BattleSkill_EnemyScratch : public BattleSkill_EnemyBase
@@ -24,7 +25,7 @@ private:
 
 	GameEngineRender* PlayerMonster = nullptr;
 	GameEngineRender* EffectRender = nullptr;
-
+	GameEngineSoundPlayer SfxCtrl;
 	float WaitTime = 0.f;
 	float BackwardTime = 0.f;
 	float FlashingTime = 0.f;
