@@ -123,8 +123,6 @@ void FieldMainMenu::UpdateStart()
 
 void FieldMainMenu::Update(float _DeltaTime)
 {
-	bool a = InputControll::CanControll(InputControlHandle);
-	
 	if (false == InputControll::CanControll(InputControlHandle))
 	{
 		return;
@@ -145,6 +143,10 @@ void FieldMainMenu::Update(float _DeltaTime)
 		switch (State)
 		{
 		case MainMenuState::Pokemon:
+			if (0 == Player::MainPlayer->GetPlayerPokemon()->GetPokemonCount())
+			{
+				break;
+			}
 			GameEngineCore::GetInst()->ChangeLevel("PokemonLevel");
 			ChangeStateSoundPlay();
 			break;
