@@ -548,9 +548,6 @@
     <ClCompile Include="BattleSkill_PlayerEmber.cpp">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
-    <ClCompile Include="SelectStartingUI.cpp" />
-    <ClCompile Include="TrainerCardLevel.cpp" />
-    <ClCompile Include="TrainerCardUI.cpp" />
     <ClCompile Include="BattleSkill_EnemyEarthquake.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClCompile>
@@ -714,7 +711,6 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClCompile>
     <ClCompile Include="EndingWalkPlayer.cpp" />
-    <ClCompile Include="PlayTime.cpp" />
     <ClCompile Include="SkillActor_RockThrow.cpp" />
     <ClCompile Include="BattleState_LeafTalk.cpp">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
@@ -742,6 +738,18 @@
     </ClCompile>
     <ClCompile Include="BattleSkill_EnemySuperFang.cpp">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainerCardLevel.cpp">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClCompile>
+    <ClCompile Include="TrainerCardUI.cpp">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClCompile>
+    <ClCompile Include="SelectStartingUI.cpp">
+      <Filter>FieldUI\HSM</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayTime.cpp">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -1279,9 +1287,6 @@
     <ClInclude Include="BattleSkill_PlayerEmber.h">
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
-    <ClInclude Include="SelectStartingUI.h" />
-    <ClInclude Include="TrainerCardLevel.h" />
-    <ClInclude Include="TrainerCardUI.h" />
     <ClInclude Include="BattleSkill_EnemyEarthquake.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\02.Tackle</Filter>
     </ClInclude>
@@ -1442,7 +1447,6 @@
       <Filter>Battle\03.FSM\05.PlayerMonster\02.State\02.Skill\04.Scratch</Filter>
     </ClInclude>
     <ClInclude Include="EndingWalkPlayer.h" />
-    <ClInclude Include="PlayTime.h" />
     <ClInclude Include="SkillActor_RockThrow.h" />
     <ClInclude Include="BattleState_LeafTalk.h">
       <Filter>Battle\03.FSM\02.Battle\02.State\01.Talk\06.LeafTalk</Filter>
@@ -1470,6 +1474,18 @@
     </ClInclude>
     <ClInclude Include="BattleSkill_EnemySuperFang.h">
       <Filter>Battle\03.FSM\06.EnemyMonster\02.State\03.Skill\04.Scratch</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainerCardUI.h">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClInclude>
+    <ClInclude Include="TrainerCardLevel.h">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectStartingUI.h">
+      <Filter>FieldUI\HSM</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayTime.h">
+      <Filter>FieldUI\HSM\TrainerCardUI</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -1862,6 +1878,9 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\01.Talk\07.NpcTalk">
       <UniqueIdentifier>{be6f12df-025f-4540-8f5b-9b0e9d7539d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="FieldUI\HSM\TrainerCardUI">
+      <UniqueIdentifier>{d61075ff-c984-4ad0-86a4-2c7fb63abad9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
