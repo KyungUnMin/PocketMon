@@ -4,7 +4,7 @@
 GameEngineSoundPlayer BgmPlayer::MainBGM;
 std::string BgmPlayer::BgmName = "";
 
-void BgmPlayer::PlayBGM(const std::string_view& _BgmName)
+void BgmPlayer::PlayBGM(const std::string_view& _BgmName, bool _IsLoop)
 {
 	if (_BgmName == BgmName)
 	{
@@ -17,7 +17,16 @@ void BgmPlayer::PlayBGM(const std::string_view& _BgmName)
 	}
 
 	MainBGM = GameEngineResources::GetInst().SoundPlayToControl(_BgmName);
-	MainBGM.LoopCount(10000);
+	
+	if (true == _IsLoop)
+	{
+		MainBGM.LoopCount(10000);
+	}
+	else
+	{
+		MainBGM.LoopCount(0);
+	}
+
 	BgmName = _BgmName;
 }
 

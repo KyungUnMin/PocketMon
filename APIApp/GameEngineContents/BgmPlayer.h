@@ -5,7 +5,7 @@
 class BgmPlayer
 {
 public:
-	static void PlayBGM(const std::string_view& _BgmName);
+	static void PlayBGM(const std::string_view& _BgmName, bool _IsLoop = true);
 
 private:
 	static class GameEngineSoundPlayer MainBGM;
