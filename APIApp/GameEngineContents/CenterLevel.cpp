@@ -570,21 +570,6 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("HpLow.wav")); 
 
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Potion.wav"));
-
-		Dir.MoveParentToDirectory("FieldUI");
-		Dir.Move("FieldBGM");
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Viridian_Forest1.mp3"));         // 상록숲, 회색시티 1 (1~3중 고르면 됨)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GrayCity1.mp3"));                // 상록숲, 회색시티 2 (1~3중 고르면 됨)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GrayCity2.mp3"));                // 상록숲, 회색시티 3 (1~3중 고르면 됨)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_22.mp3"));                 // 22번 도로 (추천)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_2.mp3"));                  // 2번 도로 (추천)
-		
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Shop.mp3"));                     // 상점
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("LockDoor.wav"));			       // 잠긴문
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Badge_Obtained.mp3"));           // 뱃지 획득
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Item_Obtained.mp3"));            // 아이템 획득
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
