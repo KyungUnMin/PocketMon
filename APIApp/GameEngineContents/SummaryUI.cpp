@@ -275,6 +275,9 @@ void SummaryUI::PrevPage()
 void SummaryUI::MovePage()
 {
 	PageOn();
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 }
 
 void SummaryUI::PageOn()
@@ -382,6 +385,9 @@ void SummaryUI::NextPokemon()
 		}
 		CurrentPokemon++;
 		SetPokemonData();
+		MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+		MenuSound.Volume(0.3f);
+		MenuSound.LoopCount(1);
 	}
 		break;
 	case SummaryPage::MovesSwitch:
@@ -406,6 +412,9 @@ void SummaryUI::PrevPokemon()
 		}
 		CurrentPokemon--;
 		SetPokemonData();
+		MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MainMenuOpen.wav");
+		MenuSound.Volume(0.3f);
+		MenuSound.LoopCount(1);
 	}
 	break;
 	case SummaryPage::MovesSwitch:
@@ -475,6 +484,10 @@ void SummaryUI::MovesSwitchOn()
 	CurrentSkillSelect->On();
 	SkillSelect->Off();
 	CurrentPage = SummaryPage::MovesSwitch;
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 }
 
 void SummaryUI::MovesSwitchOff()
@@ -483,6 +496,10 @@ void SummaryUI::MovesSwitchOff()
 	SkillSelect->SetFrame(0);
 	SkillSelect->Off();
 	CurrentPage = SummaryPage::Moves;
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 }
 
 void SummaryUI::MovesSwitchUp()
@@ -493,6 +510,10 @@ void SummaryUI::MovesSwitchUp()
 	}
 	CurrentSkillCursor--;
 	CurrentSkillSelect->SetPosition({ 720, 132.0f + 108 * CurrentSkillCursor });
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 }
 
 void SummaryUI::MovesSwitchDown()
@@ -503,10 +524,17 @@ void SummaryUI::MovesSwitchDown()
 	}
 	CurrentSkillCursor++;
 	CurrentSkillSelect->SetPosition({ 720, 132.0f + 108 * CurrentSkillCursor });
+
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 }
 
 void SummaryUI::MovesSwitchSelect()
 {
+	MenuSound = GameEngineResources::GetInst().SoundPlayToControl("MenuButton.wav");
+	MenuSound.Volume(0.3f);
+	MenuSound.LoopCount(1);
 	if (SelectSkillCursor == -1)
 	{
 		SelectSkillCursor = CurrentSkillCursor;

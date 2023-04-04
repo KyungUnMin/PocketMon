@@ -3,6 +3,7 @@
 #include <list>
 #include <functional>
 #include <GameEngineBase/GameEngineTimeEvent.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineActor.h>
 #include "Item.h"
 enum class BagSpace
@@ -83,6 +84,7 @@ protected:
 private:
 	GameEngineLevel* PrevLevel = nullptr;
 	GameEngineTimeEvent TimeEvent;
+	GameEngineSoundPlayer MenuSound;
 	BagAnim AnimState = BagAnim::Idle;
 	BagSpace CurrentSpace = BagSpace::Items;
 	ItemCode CurrentItemCode = ItemCode::Cancel;

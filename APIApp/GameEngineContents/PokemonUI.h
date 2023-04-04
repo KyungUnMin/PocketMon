@@ -3,6 +3,7 @@
 #include <functional>
 #include <GameEngineBase/GameEngineTimeEvent.h>
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "Item.h"
 enum class PokemonUIState
 {
@@ -48,6 +49,7 @@ protected:
 private:
 	GameEngineLevel* PrevLevel = nullptr;
 	GameEngineLevel* CurrentLevel = nullptr;
+	GameEngineSoundPlayer MenuSound;
 	std::vector<PokeDataBase> Pokemons;
 
 	std::vector<GameEngineRender*> PokemonBack = std::vector<GameEngineRender*>(6);
