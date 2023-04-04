@@ -486,6 +486,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CenterPutBall.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Exit_TrainerCard.wav"));
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))

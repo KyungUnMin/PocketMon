@@ -1,5 +1,6 @@
 #pragma once
 #include <GameEngineCore/GameEngineActor.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/NumberRenderObject.h>
 #include "ContentsEnum.h"
 
@@ -49,5 +50,7 @@ private:
 	GameEngineRender* BadgeIconRender = nullptr;
 	float4 BadgeIconRenderPos = { -320,224 }; // -320 + 224
 	float4 BadgeIconRenderScale = { 56,56 };
-};
 
+	GameEngineSoundPlayer ExitSound = GameEngineSoundPlayer();
+	void ExitSoundPlay();
+};

@@ -71,6 +71,7 @@ void TrainerCardUI::Update(float _DeltaTime)
 	if (GameEngineInput::IsDown("B"))
 	{
 		GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
+		ExitSoundPlay();
 	}
 	GamePlayTimeRender_Hour.SetValue((int)MainPlayTime->Hour);
 	GamePlayTimeRender_Minute.SetValue((int)MainPlayTime->Minute);
@@ -89,4 +90,11 @@ void TrainerCardUI::Update(float _DeltaTime)
 	{
 		BadgeIconRender->Off();
 	}
+}
+
+void TrainerCardUI::ExitSoundPlay()
+{
+	ExitSound = GameEngineResources::GetInst().SoundPlayToControl("Exit_TrainerCard.wav");
+	ExitSound.Volume(0.8f);
+	ExitSound.LoopCount(1);
 }
