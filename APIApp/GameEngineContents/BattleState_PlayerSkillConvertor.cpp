@@ -84,19 +84,13 @@ BattlePlayerMonster_StateType BattleState_PlayerTurn::ConvertSkill(PokeSkill _Sk
 	case PokeSkill::DefenseCurl:
 		return BattlePlayerMonster_StateType::Skill_DefenseCurl;
 
-	/*case PokeSkill::DragonBreath:
-		return BattlePlayerMonster_StateType::Skill_Bre;*/
-
-	/*case PokeSkill:::
-		return BattlePlayerMonster_StateType::Skill_DefenseCurl;*/
-
+	case PokeSkill::Magnitude:
+		return BattlePlayerMonster_StateType::Skill_IronDefense;
 
 	case PokeSkill::Slash:
 		SkillName = "Slash";
 	case PokeSkill::FastMove:
 		SkillName = "FastMove";
-	case PokeSkill::Magnitude:
-		SkillName = "Magnitude";
 	case PokeSkill::RockPolish:
 		SkillName = "RockPolish";
 	

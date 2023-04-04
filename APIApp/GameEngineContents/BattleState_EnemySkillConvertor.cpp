@@ -52,7 +52,12 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 
 	case PokeSkill::DefenseCurl:
 		return BattleEnemyMonster_StateType::Skill_DefenseCurl;
-		break;
+		
+	case PokeSkill::DragonBreath:
+		return BattleEnemyMonster_StateType::Skill_DragonBreath;
+	
+	case PokeSkill::Magnitude:
+		return BattleEnemyMonster_StateType::Skill_IronDefense;
 
 
 	case PokeSkill::Slash:
@@ -114,9 +119,6 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 	case PokeSkill::RockThrow:
 		SkillName = "RockThrow";
 		break;
-	case PokeSkill::Magnitude:
-		SkillName = "Magnitude";
-		break;
 	case PokeSkill::Selfdestruct:
 		SkillName = "Selfdestruct";
 		break;
@@ -128,9 +130,6 @@ BattleEnemyMonster_StateType BattleState_EnemyTurn::ConvertSkill(PokeSkill _Skil
 		break;
 	case PokeSkill::RockTomb:
 		SkillName = "RockTomb";
-		break;
-	case PokeSkill::DragonBreath:
-		SkillName = "DragonBreath";
 		break;
 	case PokeSkill::IronTail:
 		SkillName = "IronTail";

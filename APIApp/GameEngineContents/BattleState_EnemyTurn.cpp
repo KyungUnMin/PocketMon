@@ -32,14 +32,11 @@ void BattleState_EnemyTurn::EnterState()
 
 	PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList(SelectedSkill);
 	
-	//스킬 확인용
-	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
-
-	//실제 게임용, 적 몬스터 랜덤 공격
+	//실제 게임용입니다.
 	//EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillDB.GetSkill()));
-	//GameEngineRandom::MainRandom.RandomInt(1, )
-	//PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList();
 
+	//스킬 확인용입니다
+	EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
 }
 
 void BattleState_EnemyTurn::ExitState()
