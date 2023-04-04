@@ -31,6 +31,7 @@ public:
 	void StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str);
 	void CurHpRender(GameEngineRender* _Render, float _hp);
 	void Clear(std::vector<float> _Tick);
+	int GetCurExp(int _Exp);
 	GameEngineRender* GetWindowPtr()
 	{
 		return RenderPtr;

@@ -161,7 +161,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (TickNumber_1 == 0) 
 				{
-					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience()), CurMyExpPos, ExpNum);
+					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), CurExp, CurMyExpPos, ExpNum);
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -171,7 +171,6 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				CheckTimnAA += _DeltaTime;
 				TickNumber_1 = 0;
-				PokeDataBase::PokeExperienceGain(*BattlePlayer::PlayerPtr->GetMonsterDB(), *BattleEnemy::EnemyPtr->GetMonsterDB());
 				IsExpUP = false;
 				if (true == IsLevelUp) {
 					LevelUpPtr = GetLevel()->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
@@ -248,6 +247,13 @@ void FriendlyHPBackground::CurHpRender(GameEngineRender* _Render, float _hp)
 void FriendlyHPBackground::Clear(std::vector<float> _Tick)
 {
 	_Tick.erase(_Tick.begin(), _Tick.end());
+}
+
+int FriendlyHPBackground::GetCurExp(int _Exp)
+{
+	CurExp = _Exp;
+	return CurExp;
+
 }
 
 
