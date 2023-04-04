@@ -35,6 +35,10 @@ void BattleSkill_EnemyVinewhip::EnterState()
 
 	VineRender1->Off();
 	VineRender2->Off();
+
+	GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("VineWhip.wav");
+	SFX.LoopCount(1);
+	SFX.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyVinewhip::Update(float _DeltaTime)
@@ -97,9 +101,12 @@ void BattleSkill_EnemyVinewhip::Update_Forward(float _Deltatime)
 		VineRender1->On();
 	}
 
-	if (1.0f <= ForwardTime)
+	if (0.7f <= ForwardTime)
 	{
 		CurState = MoveState::Backward;
+		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl(BattleDefine::SfxName_Tackle);
+		SFX.LoopCount(1);
+		SFX.Volume(BattleDefine::WorldVolumn);
 	}
 }
 

@@ -484,6 +484,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Scratch.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuffSound.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("DebuffSound.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("VineWhip.wav"));
 
 
 		Dir.MoveParentToDirectory("Battle");
