@@ -482,17 +482,23 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("FieldUI"); 
 		Dir.Move("FieldUI");
 
-		// 배경음악
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Road_1.mp3"));                   // 1번 도로
-
-
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MainMenuOpen.wav"));             // 필드 UI 창 오픈
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MenuButton.wav"));               // 메뉴 버튼 사운드 (이동)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("CenterPutBall.wav"));            // 포켓몬 센터 몬스터볼 놓기
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Healed.mp3"));                   // 포켓몬 센터 체력 회복
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuySound.wav"));                 // 아이템 구매 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));          // 스타팅 포켓몬 선택
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Exit_TrainerCard.wav"));
+
+		Dir.MoveParentToDirectory("FieldUI");
+	}
+
+	{
+		// 배경음악
+		Dir.MoveParentToDirectory("FieldUI");
+		Dir.Move("FieldBGM");
+
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Road_1.mp3"));                   // 1번 도로
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));          // 스타팅 포켓몬 선택
 	}
 
 	if (false == GameEngineInput::IsKey("LevelChange"))
@@ -506,11 +512,7 @@ void CenterLevel::Loading()
 		GameEngineInput::CreateKey("LevelChange7", '7');
 		GameEngineInput::CreateKey("LevelChange8", '8');
 
-
-
-
 		GameEngineInput::CreateKey("BattleSelect1111", 'Z');
-
 
 		//플레이어이동
 		GameEngineInput::CreateKey("LeftMove", VK_LEFT);
