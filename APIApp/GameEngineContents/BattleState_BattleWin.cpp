@@ -7,6 +7,8 @@
 #include "Battle_HpUIHandlerBase.h"
 #include "FriendlyHPBackground.h"
 #include "Battle_PlayerHpUIHandler.h"
+#include "BattleEnemy.h"
+#include "BattlePlayer.h"
 
 BattleState_BattleWin::BattleState_BattleWin()
 {
@@ -29,7 +31,18 @@ void BattleState_BattleWin::EnterState()
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
 
-	if (true == dynamic_cast<Battle_PlayerHpUIHandler*>(HpUI)->IsLevelUp())
+	bool IsLevelUp = PokeDataBase::PokeExperienceGain(*BattlePlayer::PlayerPtr->GetMonsterDB(), *BattleEnemy::EnemyPtr->GetMonsterDB());
+	
+	/*if (true == dynamic_cast<Battle_PlayerHpUIHandler*>(HpUI)->IsLevelUp())
+	{
+		Duration = LevelUpDuration;
+	}
+	else
+	{
+		Duration = NormalDuration;
+	}*/
+
+	if (true == IsLevelUp)
 	{
 		Duration = LevelUpDuration;
 	}
@@ -37,7 +50,6 @@ void BattleState_BattleWin::EnterState()
 	{
 		Duration = NormalDuration;
 	}
-	
 }
 
 void BattleState_BattleWin::Update(float _DeltaTime)
