@@ -45,13 +45,13 @@ void BattleState_PlayerHPCheck::SelectText()
 
 	const std::string& PlayerMonName = BattlePlayer::PlayerPtr->GetMonster()->GetName();
 	const std::string& EnemyMonName = BattleEnemy::EnemyPtr->GetMonster()->GetName();
-	//const std::string_view& PlayerUseSkillName = BattleState_PlayerTurn::GetUsedSkillName();
+	const std::string_view& EnemyUseSkillName = BattleState_EnemyTurn::GetUsedSkillName();
 
 
-	/*switch (BattleResult)
+	switch (BattleResult)
 	{
 	case BattleScript::Nothing:
-		TextValue = MonsterName + "used\n@@@";
+		TextValue = EnemyMonName + " used\n" + EnemyUseSkillName.data();
 		break;
 	case BattleScript::Insignificant:
 		TextValue = "It`s not very effective_";
@@ -63,10 +63,10 @@ void BattleState_PlayerHPCheck::SelectText()
 		TextValue = "It`s super effective!";
 		break;
 	case BattleScript::Buff:
-		TextValue = "Buff!";
+		TextValue = EnemyMonName + "`s Status rose";
 		break;
 	case BattleScript::PPiszero:
-		TextValue = "PPiszero!";
+		TextValue = EnemyMonName + " can`s fight";
 		break;
 	case BattleScript::Stern:
 		TextValue = "Stern!";
@@ -76,7 +76,7 @@ void BattleState_PlayerHPCheck::SelectText()
 		MsgAssert("배틀 결과로 나올수 없는 값입니다");
 	}
 	return;
-	}*/
+	}
 
 	/*
 Nothing,          // 0 아무것도 아님 (노말)

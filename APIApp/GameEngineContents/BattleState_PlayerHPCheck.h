@@ -21,7 +21,7 @@ protected:
 
 private:
 	float Timer = 0.f;
-	const float NextStateTime = 1.f;
+	const float NextStateTime = 2.5f;
 
 	BackTextActor* TextInfo = nullptr;
 	int NextState = -1;
