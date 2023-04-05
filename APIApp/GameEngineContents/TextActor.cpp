@@ -76,9 +76,9 @@ void TextActor::SetText(const std::string_view& _Str, const std::string_view& _F
 					case '-':
 						TextRender[y][x]->SetFrame(86);
 						break;
-						//case '¡¦':
-						//	TextRender[y][x]->SetFrame(91);
-						//	break;
+					case '_':
+						TextRender[y][x]->SetFrame(91);
+						break;
 					case '.':
 						TextRender[y][x]->SetFrame(92);
 						break;
