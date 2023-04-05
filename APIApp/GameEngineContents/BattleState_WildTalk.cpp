@@ -10,7 +10,7 @@
 
 const std::vector<std::string_view> BattleState_WildTalk::Texts =
 {
-	"Oops That Wild PocketMon",
+	"Wild appeared!",
 	"Lets Go!"
 };
 

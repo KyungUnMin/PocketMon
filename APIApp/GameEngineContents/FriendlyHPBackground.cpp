@@ -129,6 +129,12 @@ void FriendlyHPBackground::Start()
 
 }
 
+void FriendlyHPBackground::HpLowSound()
+{
+	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
+	B_HpLow.Volume(1.0f);
+
+}
 
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
@@ -150,7 +156,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	float hpcur = static_cast<float>(CurExp) / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
-	if (SecoundHp < Hp30Under) {
+	if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
 		if (true == HpSoundCheck)
 		{
 			HpLowSound();
@@ -271,9 +277,9 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 					B_HpLow.Stop();
 				}
 
-				
+				IsDeath_B = false;
+
 			}
-			IsDeath_B = false;
 
 		}
 		
@@ -470,12 +476,6 @@ int FriendlyHPBackground::GetExpPoint(int _ExpPoint)
 
 
 
-void FriendlyHPBackground::HpLowSound()
-{
-	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
-	B_HpLow.Volume(1.0f);
-	
-}
 
 void FriendlyHPBackground::ExpGetSound()
 {
