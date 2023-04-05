@@ -623,7 +623,7 @@ void PlayerBag::SelectOn()
 			}
 			else
 			{
-				SelectText->SetText("\nGIVE\nCANCEL");
+				SelectText->SetText("GIVE\nCANCEL");
 				SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
 				SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
 				SelectSize = 1;
