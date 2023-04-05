@@ -53,7 +53,7 @@ void FieldMainMenu::Start()
 		FieldMainMenuRender[i]->SetScaleToImage();
 	}
 
-	Off();
+	GameEngineObject::Off();
 }
 
 
