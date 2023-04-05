@@ -6,6 +6,7 @@
 #include "PokeDataBase.h"
 #include "BattleLevel.h"
 #include "BattleFSM.h"
+#include "BgmPlayer.h"
 
 const std::vector<std::string_view> BattleDebug::DebugKeys =
 {
@@ -83,6 +84,8 @@ void BattleDebug::ChangeWildMonster(size_t _Index)
 	{
 	case 0:
 		SelectedMonster = PokeNumber::Pikachu;
+		BgmPlayer::PlayBGM("Battle_Pikachu2.mp3");
+		BgmPlayer::SetVolume(BattleLevel::BattleLevelPtr->GetWorldVolume());
 		break;
 	case 1:
 		SelectedMonster = PokeNumber::Bulbasaur;

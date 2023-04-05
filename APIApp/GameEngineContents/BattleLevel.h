@@ -84,6 +84,11 @@ public:
 		return IsBattleEndValue;
 	}
 
+	inline float GetWorldVolume()
+	{
+		return WorldBgmVolumn;
+	}
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;

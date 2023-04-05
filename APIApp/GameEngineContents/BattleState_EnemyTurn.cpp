@@ -22,7 +22,6 @@ BattleState_EnemyTurn::~BattleState_EnemyTurn()
 void BattleState_EnemyTurn::EnterState()
 {
 	TextInfoUI = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfoUI->BattleSetText("Enemy Attacking...");
 
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
 
@@ -31,13 +30,43 @@ void BattleState_EnemyTurn::EnterState()
 	int SelectedSkill = GameEngineRandom::MainRandom.RandomInt(1, MaxCount);
 
 	PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList(SelectedSkill);
+
+	PokeSkill SkillType = SkillDB.GetSkill();
+	if (PokeSkill::Unknown == SkillType)
+	{
+		MsgAssert("적 몬스터가 알 수 없는 스킬을 사용했습니다");
+		return;
+	}
+
+	TextInfoUI->BattleSetText(MakeEnemyText(SkillType));
 	
 	//실제 게임용입니다.
-	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillDB.GetSkill()));
+	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillType));
 
 	//스킬 확인용입니다
 	//EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
 }
+
+const std::string BattleState_EnemyTurn::MakeEnemyText(PokeSkill _SkillType)
+{
+	std::string ReturnStr = "";
+	if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
+	{
+		ReturnStr = "The wild Pokemon\nused ";
+	}
+	else
+	{
+		ReturnStr = "The Enemy Pokemon\nused ";
+	}
+
+	ReturnStr += ConvertSkillNames[static_cast<size_t>(_SkillType)].data();
+
+	ReturnStr += " to acttack";
+
+	return ReturnStr;
+}
+
+
 
 void BattleState_EnemyTurn::ExitState()
 {

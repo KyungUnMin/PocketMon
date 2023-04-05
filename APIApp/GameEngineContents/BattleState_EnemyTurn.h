@@ -1,5 +1,7 @@
 #pragma once
 #include "BattleStateBase.h"
+#include <vector>
+#include <string_view>
 #include "PokeSkillBase.h"
 
 class BackTextActor;
@@ -24,6 +26,10 @@ protected:
 private:
 	BackTextActor* TextInfoUI = nullptr;
 
+	static const std::string_view ConvertSkillNames[static_cast<size_t>(PokeSkill::Unknown)];
+
 	BattleEnemyMonster_StateType ConvertSkill(PokeSkill _SkillType);
+
+	const std::string  MakeEnemyText(PokeSkill _SkillType);
 };
 
