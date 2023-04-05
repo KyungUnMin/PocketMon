@@ -588,7 +588,7 @@ private:
 	static void OnixData(int _Level, PokeDataBase& _PoKeCreatePtr);
 	static void PikachuData(int _Level, PokeDataBase& _PoKeCreatePtr);
 
-	SpecialPokeEnum Value = SpecialPokeEnum::UngOnix;
+	SpecialPokeEnum Value = SpecialPokeEnum::UngOnix;  // 스페셜 이넘용 변수 (일반 포켓몬은 UngOnix가 정상)
 
 };
 
