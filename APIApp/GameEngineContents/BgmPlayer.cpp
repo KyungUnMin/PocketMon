@@ -89,8 +89,6 @@ GameEngineSoundPlayer BgmPlayer::SoundFadePlay(const std::string_view& _SoundNam
 		return NewSoundPlayer;
 	}
 
-	ChannelPtr->setLoopCount(INT32_MAX);
-
 	int Rate = 0;
 	unsigned long long ParentClock = 0u;
 
@@ -120,6 +118,7 @@ void BgmPlayer::SoundFadeStop(FMOD::Channel* _Channel, double _Time)
 	unsigned long long ParentClock = 0u;
 	float CurVolume = 0.0f;
 
+	_Channel->setLoopCount(1);
 	FMOD::System* SoundSys = nullptr;
 	_Channel->getSystemObject(&SoundSys);
 	SoundSys->getSoftwareFormat(&Rate, 0, 0);
