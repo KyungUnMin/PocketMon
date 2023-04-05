@@ -72,14 +72,19 @@ public:
 
 	void ChangeBGM(const std::string_view& _BgmName);
 
-	bool IsWildBattle()
+	inline bool IsWildBattle() const
 	{
 		return (BattleNpcType::None == BattleType);
 	}
 
-	bool IsBossBattle()
+	inline bool IsBossBattle() const
 	{
 		return (BattleNpcType::Woong == BattleType);
+	}
+
+	inline bool IsBattleEnd() const
+	{
+		return IsBattleEndValue;
 	}
 
 protected:
@@ -103,6 +108,8 @@ private:
 
 	bool IsBgmFadeOut = false;
 	float FadeDuration = 0.f;
+
+	bool IsBattleEndValue = false;
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 

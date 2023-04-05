@@ -59,6 +59,7 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	Fade->Init(BattleFadeCtrl::FadeType::BlackIn);
 	Fade->SetDuration(0.1f);
 	IsBgmFadeOut = false;
+	IsBattleEndValue = false;
 
 	//임시 코드, 원래대로면 맵쪽에서 호출해주어야 함, 나중에 지울 예정
 	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_PrevLevel);
@@ -267,6 +268,7 @@ void BattleLevel::ChangeFieldLevel(bool IsWin, bool _FadeColorBlack, float _Fade
 	Fade->SetDuration(_FadeDuration);
 	FadeDuration = _FadeDuration;
 	IsBgmFadeOut = true;
+	IsBattleEndValue = true;
 
 	if (true == IsWin)
 		return;
