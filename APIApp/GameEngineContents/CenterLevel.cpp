@@ -520,7 +520,6 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Master.mp3"));              // 의문의 마스터 배틀 BGM
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Victory_Gym.mp3"));                // Gym 승리
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_NPC.mp3"));                 // 일반NPC 배틀 BGM
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Pokemon_Caught.mp3"));             // 포켓몬 포획 성공
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Pikachu1.mp3"));            // 피카츄 배틀 BGM 1 (1~2 중 고르면 됨)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Pikachu2.mp3"));            // 피카츄 배틀 BGM 2 (1~2 중 고르면 됨)
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Battle_Gym1.mp3"));			     // 보스 배틀 BGM 2 (1~2 중 고르면 됨)
@@ -528,14 +527,6 @@ void CenterLevel::Loading()
 
 
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Wild_Victory.mp3"));			     // 전투 승리 시 BGM
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.wav"));               // 공격 시 노말 데미지일 때 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SuperEffectiveDamage.wav"));       // 효과는 굉장했다 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonSwapout.wav"));             // 포켓몬 교체 시 퇴장 사운드
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("fainting.wav"));				     // 포켓몬 기절 (쓰러뜨림)
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Running.wav"));				     // 야생 포켓몬에게서 도주
-
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("EXPGain.wav"));				     // 경험치 획득
 
 		Dir.MoveParentToDirectory("SFX");
 		Dir.Move("SFX");
@@ -550,6 +541,14 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Earthquake.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RockThrow.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RazorLeaf.wav"));
+
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Pokemon_Caught.mp3"));             // 포켓몬 포획 성공
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.wav"));               // 공격 시 노말 데미지일 때 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SuperEffectiveDamage.wav"));       // 효과는 굉장했다 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("fainting.wav"));				     // 포켓몬 기절 (쓰러뜨림)
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonSwapout.wav"));             // 포켓몬 교체 시 퇴장 사운드
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Running.wav"));				     // 야생 포켓몬에게서 도주
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("EXPGain.wav"));				     // 경험치 획득
 
 
 		Dir.MoveParentToDirectory("Battle");
