@@ -42,7 +42,7 @@ void BattleSkill_PlayerDoubleEdge::EnterState()
 
 	float4 sclae = EffectRender1->GetImage()->GetImageScale();
 	sclae.x -= 40.0f;
-	sclae.y -= 40.0f;
+	sclae.y -= 40.0f;  
 
 	EffectRender1->SetScale(sclae);
 	EffectRender2->SetScale(sclae);
@@ -59,6 +59,10 @@ void BattleSkill_PlayerDoubleEdge::EnterState()
 	StartPos2 = EndPos1;
 
 	EndPos2 = StartPos2 + float4::Left * 60;
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("DoubleEdge.mp3");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerDoubleEdge::Update(float _DeltaTime)
