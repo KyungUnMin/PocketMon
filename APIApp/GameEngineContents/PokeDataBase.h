@@ -148,7 +148,24 @@ public:
 	// 레어캔디용
 	void RareCandy_PlusLevel()
 	{
+		MaxHealthPoint += 1;
+		AttackPower += 1;
+		Defense += 1;
+		SpecialAttackPower += 1;
+		SpecialDefense += 1;
+		Agility += 1;
+
 		MonsterLevel += 1;
+
+		// 현재체력 갱신
+		int RenewalcurrentHP = GetMonsterCurrentHP() + 5;
+
+		if (GetMonsterMaxHP_int() <= RenewalcurrentHP)
+		{
+			RenewalcurrentHP = GetMonsterMaxHP_int();
+		}
+
+		SetMonsterCurrentHP(RenewalcurrentHP);
 	}
 
 	// PP 에이드 사용
