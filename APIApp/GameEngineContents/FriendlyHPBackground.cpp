@@ -7,6 +7,7 @@
 #include "BattleMonsterPlayer.h"
 #include "BattleEnemy.h"
 #include "PokemonUI.h"
+#include "BattleLevel.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -129,6 +130,12 @@ void FriendlyHPBackground::Start()
 
 }
 
+void FriendlyHPBackground::HpLowSound()
+{
+	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
+	B_HpLow.Volume(1.0f);
+
+}
 
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
@@ -150,22 +157,21 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	float hpcur = static_cast<float>(CurExp) / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
-	if (SecoundHp < Hp30Under) {
-		if (true == HpSoundCheck)
-		{
-			HpLowSound();
-			HpSoundCheck = false;
-			IsBoolTest = true;
+	if (true == BattleLevel::BattleLevelPtr->IsBattleSelectTurn()) {
+		if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
+			if (true == HpSoundCheck)
+			{
+					//	HpLowSound();
+						HpSoundCheck = false;
+					
+			}
 		}
+	
 	}
 
 
 	if (true == IsExpUP)
 	{
-		if (HpSoundCheck == false) {
-			B_HpLow.Stop();
-			
-		}
 	
 	
 		NextTickTime_1 += _DeltaTime;
@@ -266,14 +272,10 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			SecoundHp = DamegeTick[9];
 			if (IsDeath_B == true) 
 			{
-				if (true == IsBoolTest)
-				{
-					B_HpLow.Stop();
-				}
 
-				
+				IsDeath_B = false;
+
 			}
-			IsDeath_B = false;
 
 		}
 		
@@ -470,12 +472,6 @@ int FriendlyHPBackground::GetExpPoint(int _ExpPoint)
 
 
 
-void FriendlyHPBackground::HpLowSound()
-{
-	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
-	B_HpLow.Volume(1.0f);
-	
-}
 
 void FriendlyHPBackground::ExpGetSound()
 {

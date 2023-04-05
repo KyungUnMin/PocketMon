@@ -63,7 +63,7 @@ Stern,            // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
 	switch (BattleResult)
 	{
 	case BattleScript::Nothing:
-		TextValue = "Nothing!";
+		TextValue = PlayerMonName + " used\n" + PlayerUseSkillName.data();
 		break;
 	case BattleScript::Insignificant:
 		TextValue = "It`s not very effective_";
@@ -75,10 +75,10 @@ Stern,            // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
 		TextValue = "It`s super effective!";
 		break;
 	case BattleScript::Buff:
-		TextValue = "Buff!";
+		TextValue = PlayerMonName + "`s status rose";
 		break;
 	case BattleScript::PPiszero:
-		TextValue = "PPiszero!";
+		TextValue = PlayerMonName + " can`t fight";
 		break;
 	case BattleScript::Stern:
 		TextValue = "Stern!";

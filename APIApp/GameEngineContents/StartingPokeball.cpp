@@ -68,7 +68,7 @@ void StartingPokeball::SelectEvent()
 {
 	PokeballRender->Off();
 	PokemonScript::EndScript(100);
-	BgmPlayer::SoundPlayBgmPause("GetFirstPokemon.mp3");
+	BgmPlayer::SoundPlayBgmPauseFade("GetFirstPokemon.mp3");
 }
 
 void StartingPokeball::RenderOff()
