@@ -174,7 +174,7 @@ void Player::IdleUpdate(float _Time)
 		{
 			BlockSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerMoveBlock.wav");
 			BlockSound.LoopCount(1);
-			BlockSound.Volume(0.2f);
+			BlockSound.Volume(0.8f);
 		}
 		
 	}
@@ -228,7 +228,7 @@ void Player::JumpStart()
 
 	JumpSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerJump.wav");
 	JumpSound.LoopCount(1);
-	JumpSound.Volume(0.3f);
+	JumpSound.Volume(0.6f);
 	
 }
 void Player::JumpUpdate(float _Time)

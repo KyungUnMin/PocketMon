@@ -653,6 +653,7 @@ void CenterLevel::Loading()
 
 		GameEngineInput::CreateKey("FadeOnBGM", 'N');
 		GameEngineInput::CreateKey("FadeOutBGM", 'B');
+		GameEngineInput::CreateKey("Ridefalse", 'C');
 	}
 
 	//Field_UI °ü·Ã Å°

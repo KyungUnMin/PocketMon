@@ -202,8 +202,12 @@ void Player::Update(float _DeltaTime)
 
 void Player::Render(float _DeltaTime)
 {
-	//일단 내리기기능만
-	if (GameEngineInput::IsPress("CollisionRender"))
+	if (GameEngineInput::IsDown("Ridefalse")&& false== IsRide)
+	{
+		IsRide = true;
+	}
+	
+	if (GameEngineInput::IsDown("CollisionRender")&& true == IsRide)
 	{
 		IsRide = false;
 	}
