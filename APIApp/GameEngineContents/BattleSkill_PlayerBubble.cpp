@@ -206,6 +206,9 @@ void BattleSkill_PlayerBubble::Update_BackWard(float _Deltatime)
 	if (0.28f <= BackwardTime)
 	{
 		CurState = MoveState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	}
 	else if (0.12f <= BackwardTime)
 	{
