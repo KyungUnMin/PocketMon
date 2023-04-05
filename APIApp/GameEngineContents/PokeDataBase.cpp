@@ -47,26 +47,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Ivysaur:
@@ -76,26 +96,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Venusaur:
@@ -105,26 +145,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Charmander:
@@ -133,27 +193,47 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr );
+
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
 		
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Charmeleon:
@@ -163,26 +243,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Charizard:
@@ -192,26 +292,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::Leer, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Squirtle:
@@ -221,26 +341,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Wartortle:
@@ -250,26 +390,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Blastoise:
@@ -279,26 +439,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 7)
 		{
 			PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Pidgey:
@@ -308,26 +488,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 10)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 5)
 		{
 			PokeSkillInit(3, PokeSkill::Gust, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::QuickAttack, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Rattata:
@@ -338,16 +538,31 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
 		PokeSkillInit(3, PokeSkill::QuickAttack, PoKeCreatePtr);
 
+		PoKeCreatePtr.SkillCount = 3;
+
+		bool First = false;
+
+		int PlusCount = 0;
+
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::HyperFang, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Spearow:
@@ -358,16 +573,31 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
 		PokeSkillInit(3, PokeSkill::Leer, PoKeCreatePtr);
 
+		PoKeCreatePtr.SkillCount = 3;
+
+		bool First = false;
+
+		int PlusCount = 0;
+
 		if (PoKeCreatePtr.MonsterLevel >= 15)
 		{
 			PokeSkillInit(4, PokeSkill::FuryAttack, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			First = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Geodude:
@@ -377,26 +607,46 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
 
-		if (PoKeCreatePtr.MonsterLevel >= 20)
+		PoKeCreatePtr.SkillCount = 2;
+
+		bool First = false;
+		bool Second = false;
+
+		int PlusCount = 0;
+
+		if (PoKeCreatePtr.MonsterLevel >= 10)
 		{
-			PokeSkillInit(3, PokeSkill::Earthquake, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
+			First = true;
 		}
 		else
 		{
 			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 2;
+			First = false;
 		}
 		if (PoKeCreatePtr.MonsterLevel >= 300)
 		{
 			PokeSkillInit(4, PokeSkill::StoneEdge, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 4;
+			Second = true;
 		}
 		else
 		{
 			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			PoKeCreatePtr.SkillCount = 3;
+			Second = false;
 		}
+
+		if (true == First)
+		{
+			PlusCount += 1;
+		}
+		if (true == Second)
+		{
+			PlusCount += 1;
+		}
+
+		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
+
+		PoKeCreatePtr.SkillCount = NewC;
 	}
 	break;
 	case PokeNumber::Onix:
@@ -417,10 +667,10 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
-		PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::QuickAttack, PoKeCreatePtr);
 		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 
-		PoKeCreatePtr.SkillCount = 2;
+		PoKeCreatePtr.SkillCount = 3;
 	}
 	break;
 	default:
