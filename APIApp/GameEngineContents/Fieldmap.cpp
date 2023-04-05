@@ -190,7 +190,7 @@ void Fieldmap::PlayCityBGM()
 
 	if ("" != BgmName)
 	{
-		BgmPlayer::PlayBGM(BgmName);
+		BgmPlayer::PlayBGMFade(BgmName);
 	}
 }
 

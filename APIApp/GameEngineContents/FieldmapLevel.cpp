@@ -73,6 +73,9 @@
 // Level
 #include "TrainerCardLevel.h"
 
+// Sound
+#include "BgmPlayer.h"
+
 float4 FieldmapLevel::PlayerPos = float4::Zero;
 std::vector<std::function<void()>> FieldmapLevel::LevelStartCallFuncs;
 
@@ -887,6 +890,7 @@ void FieldmapLevel::Loading()
 			{
 				Player* MainPlayer = Player::MainPlayer;
 				MainPlayer->PlayGymClearAnimation();
+				BgmPlayer::SoundPlayBgmPause("Badge_Obtained.mp3");
 
 				_this->LevelEvent.AddEvent(3.0f, std::bind([CardOnEvent]()
 					{

@@ -24,6 +24,11 @@ public:
 	bool IsPlaying() const;
 	bool VaildCheck() const;
 
+	inline FMOD::Channel* GetChannel() const
+	{
+		return ControlChannel;
+	}
+
 private:
 	FMOD::Channel* ControlChannel = nullptr;
 

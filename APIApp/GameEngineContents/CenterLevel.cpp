@@ -650,6 +650,9 @@ void CenterLevel::Loading()
 
 		GameEngineInput::CreateKey("BackCenterLevel", VK_ESCAPE);
 		GameEngineInput::CreateKey("CollisionRender", VK_SPACE);
+
+		GameEngineInput::CreateKey("FadeOnBGM", 'N');
+		GameEngineInput::CreateKey("FadeOutBGM", 'B');
 	}
 
 	//Field_UI °ü·Ã Å°
