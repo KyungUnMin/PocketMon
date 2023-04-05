@@ -47,6 +47,11 @@ void BattleSkill_EnemyThunderbolt::EnterState()
 	ThunderboltRender3->Off();
 	ThunderboltRender4->Off();
 	ThunderboltRender5->Off();
+
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Thunderbolt.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyThunderbolt::Update(float _DeltaTime)

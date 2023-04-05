@@ -64,6 +64,10 @@ void BattleSkill_PlayerThunder::EnterState()
 	ThunderRender5->Off();
 
 	BBox->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Thunder.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerThunder::Update(float _DeltaTime)
