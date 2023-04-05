@@ -1415,6 +1415,62 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		PoKeCreatePtr.SkillCount = 4;
 
 		break;
+	case SpecialPokeEnum::NPCPikachu:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pikachu;
+
+		PikachuData(8, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::QuickAttack, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Thunderbolt, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 3;
+
+		break;
+	case SpecialPokeEnum::NPCBulbasaur:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Bulbasaur;
+
+		BulbasaurData(6, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Growl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::VineWhip, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::RazorLeaf, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 4;
+
+		break;
+	case SpecialPokeEnum::NPCCharmander:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Charmander;
+
+		CharmanderData(7, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Scratch, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Ember, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Flamethrower, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 4;
+
+		break;
+	case SpecialPokeEnum::NPCSquirtle:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Squirtle;
+
+		SquirtleData(6, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::TailWhip, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Bubble, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::WaterGun, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 4;
+
+		break;
 	case SpecialPokeEnum::MasterPikachu:
 
 		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pikachu;
