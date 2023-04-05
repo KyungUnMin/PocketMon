@@ -132,6 +132,7 @@ void FriendlyHPBackground::Start()
 
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
+bool IsBoolTest = false;
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
@@ -152,15 +153,17 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	if (SecoundHp < Hp30Under) {
 		if (true == HpSoundCheck)
 		{
-		//	HpLowSound();
-		//	HpSoundCheck = false;
+			HpLowSound();
+			HpSoundCheck = false;
+			IsBoolTest = true;
 		}
 	}
+
 
 	if (true == IsExpUP)
 	{
 		if (HpSoundCheck == false) {
-		//	B_HpLow.Stop();
+			B_HpLow.Stop();
 			
 		}
 	
@@ -263,10 +266,15 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			SecoundHp = DamegeTick[9];
 			if (IsDeath_B == true) 
 			{
-			//	B_HpLow.Stop();
-				IsDeath_B = false;
+				if (true == IsBoolTest)
+				{
+					B_HpLow.Stop();
+				}
 
+				
 			}
+			IsDeath_B = false;
+
 		}
 		
 	}
