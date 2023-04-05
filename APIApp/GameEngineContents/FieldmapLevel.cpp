@@ -481,9 +481,9 @@ void FieldmapLevel::Loading()
 		StartingPokeball* StartPokeball03 = CreateActor<StartingPokeball>();
 		Fieldmap::AddActor("PalletTown_Office", int2(11, 5), StartPokeball03, false);
 
-		StartPokeball01->Init(PokeNumber::Bulbasaur, int2(10, 6), StartPokeball02);
-		StartPokeball02->Init(PokeNumber::Charmander, int2(11, 6), StartPokeball03);
-		StartPokeball03->Init(PokeNumber::Squirtle, int2(9, 6), StartPokeball01);
+		StartPokeball01->Init(PokeNumber::Bulbasaur, int2(11, 6), StartPokeball03);
+		StartPokeball02->Init(PokeNumber::Squirtle, int2(9, 6), StartPokeball01);
+		StartPokeball03->Init(PokeNumber::Charmander, int2(10, 6), StartPokeball02);
 
 		Fieldmap::AddUpdateEvent("PalletTown_Office", int2(9, 6), {
 			.Name = "GetPokemon",
