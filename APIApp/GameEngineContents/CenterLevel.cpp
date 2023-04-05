@@ -489,13 +489,27 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_PalletTown.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_OakLap.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Route1.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GrayCity2.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_2.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Route_22.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_ViridianCity.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_ViridianForest.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Gym.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonCenter.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Shop.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending_Theme.mp3"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BeforeBattle.mp3"));
+		
+		Dir.MoveParent();
+		Dir.Move("Effect");
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Badge_Obtained.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Item_Obtained.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BikeBell.wav"));
 
 	}
 

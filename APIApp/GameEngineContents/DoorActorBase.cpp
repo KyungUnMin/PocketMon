@@ -1,4 +1,6 @@
 #include "DoorActorBase.h"
+#include <GameEnginePlatform/GameEngineSound.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "Fieldmap.h"
 #include "Player.h"
 #include "MoveMapFadeEffect.h"
@@ -95,6 +97,14 @@ void DoorActorBase::UseDoor()
 	DoorEvent.AddEvent(0.5f, std::bind(&DoorActorBase::PlayerMove, this), false);
 }
 
+void DoorActorBase::PlayOpenSound()
+{
+}
+
+void DoorActorBase::PlayCloseSound()
+{
+}
+
 
 void DoorActorBase::DoorOpenAndClose()
 {
@@ -106,9 +116,11 @@ void DoorActorBase::DoorOpen()
 {
 	DoorRender->ChangeAnimation(DoorOpenAnimName, true);
 	MoveMapFadeEffect::MainMoveMapFadeEffect->On();
+	PlayOpenSound();
 }
 
 void DoorActorBase::DoorClose()
 {
 	DoorRender->ChangeAnimation(DoorCloseAnimName, true);
+	PlayCloseSound();
 }

@@ -160,7 +160,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("ViridianCity", int2(23, 11), int2::Right, 13, LookDir::Down);
 		}
 
-		CreateFieldmapCity("Route22", "Route 22", "Route22", float4(-3360.0f, -4640.0f));
+		CreateFieldmapCity("Route22", "Route 22", "Route22", float4(-3360.0f, -4640.0f), "Route_22.mp3");
 		{
 			CreateBattlezone_Route22(int2(30, 19), int2(7, 5));
 			CreateBattlezone_Route22(int2(49, 19), int2(6, 5));
@@ -178,7 +178,7 @@ void FieldmapLevel::Loading()
 			AddJumpEvent("Route22", int2(54, 12), int2::Right, 3, LookDir::Down);
 		}
 
-		CreateFieldmapCity("Route2_Down", "Route 2", "Route2_Down", float4(0.0f, -7808.0f), "World_Route1.mp3");
+		CreateFieldmapCity("Route2_Down", "Route 2", "Route2_Down", float4(0.0f, -7808.0f), "Route_2.mp3");
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest001", "Route2_Down", int2(11, 25), LookDir::Down, "MoveRoute2_Up");
 			CreateDoor<FieldmapEmptyDoor>("Route2DownToViridianForest002", "Route2_Down", int2(12, 25), LookDir::Down, "MoveRoute2_Up");
@@ -200,7 +200,7 @@ void FieldmapLevel::Loading()
 		}
 
 
-		CreateFieldmapCity("Route2_Up", "Route 2", "Route2_Up",float4(0.0f, -10368.0f), "World_Route1.mp3");
+		CreateFieldmapCity("Route2_Up", "Route 2", "Route2_Up",float4(0.0f, -10368.0f), "Route_2.mp3");
 		{
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest001", "Route2_Up", int2(11, 13), LookDir::Up, "MoveRoute2_Down");
 			CreateDoor<FieldmapEmptyDoor>("Route2UpToViridianForest002", "Route2_Up", int2(12, 13), LookDir::Up, "MoveRoute2_Down");
@@ -212,7 +212,7 @@ void FieldmapLevel::Loading()
 			CreateBattlezone_Route2_Up(int2(8, 2), int2(7, 7));
 		}
 
-		CreateFieldmapCity("PewterCity", "Pewter CIty", "PewterCity", float4(0.0f, -12480.0f), "World_ViridianCity.mp3");
+		CreateFieldmapCity("PewterCity", "Pewter CIty", "PewterCity", float4(0.0f, -12480.0f), "GrayCity2.mp3");
 		{
 			CreateDoor<FieldmapDoubleDoor>("PewterCityToGym", "PewterCity", int2(15, 16), LookDir::Down, "MoveGym");
 			CreateDoor<FieldmapSingleDoor>("PewterCityToMarket", "PewterCity", int2(28, 18), LookDir::Down, "MoveMarket");
@@ -258,7 +258,7 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapEmptyDoor>("PokemonCenterToViridianCity", "ViridianCity_PokemonCenter", int2(8, 10), LookDir::Up, "MoveOut");
 		}
 
-		CreateFieldmapCity("ViridianCity_Market", "Market", "Market", float4(2000.0f, 4000.0f));
+		CreateFieldmapCity("ViridianCity_Market", "Market", "Market", float4(2000.0f, 4000.0f), "Shop.mp3");
 		{
 			CreateDoor<FieldmapEmptyDoor>("MarketToViridianCity", "ViridianCity_Market", int2(5, 8), LookDir::Up, "MoveOut");
 		}
@@ -327,7 +327,7 @@ void FieldmapLevel::Loading()
 			CreateDoor<FieldmapEmptyDoor>("GymToPewterCity", "PewterCity_Gym", int2(6, 14), LookDir::Up, "MoveOut");
 		}
 
-		CreateFieldmapCity("PewterCity_Market", "Market", "Market", float4(6000.0f, 4000.0f));
+		CreateFieldmapCity("PewterCity_Market", "Market", "Market", float4(6000.0f, 4000.0f), "Shop.mp3");
 		{
 			CreateDoor<FieldmapEmptyDoor>("MarketToPewterCity", "PewterCity_Market", int2(5, 8), LookDir::Up, "MoveOut");
 		}

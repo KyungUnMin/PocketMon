@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "BattleLevel.h"
 #include "BattleFade.h"
+#include "BgmPlayer.h"
 
 // Idle
 void BaseNPC::IdleStart()
@@ -133,6 +134,7 @@ void BaseNPC::InteractionStart()
 		Fieldmap::SetWalkable(CityName, MoveStartIndex, true);
 		Fieldmap::SetWalkable(CityName, Fieldmap::GetIndex(MoveEndPos), false);
 
+		BgmPlayer::PlayBGM("BeforeBattle.mp3");
 	}
 	else if (ScriptDatas.size() != 0)
 	{
@@ -211,6 +213,8 @@ void BaseNPC::InteractionEnd()
 
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
 		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
+
+		BgmPlayer::PlayBGM("Battle_WildBGM.mp3");
 
 		BattleFade* Fade = BattleFade::GetFieldmapBattleFade();
 		Fade->PlayBattleFade(2, 5.0f, std::bind(

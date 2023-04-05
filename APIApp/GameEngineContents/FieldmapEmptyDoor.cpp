@@ -1,4 +1,5 @@
 #include "FieldmapEmptyDoor.h"
+#include <GameEngineCore/GameEngineResources.h>
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 
@@ -8,6 +9,12 @@ FieldmapEmptyDoor::FieldmapEmptyDoor()
 
 FieldmapEmptyDoor::~FieldmapEmptyDoor()
 {
+}
+
+void FieldmapEmptyDoor::UseDoor()
+{
+	GameEngineResources::GetInst().SoundPlay("ExitBuilding.wav");	
+	DoorActorBase::UseDoor();
 }
 
 void FieldmapEmptyDoor::RenderInit()

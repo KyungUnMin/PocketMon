@@ -12,6 +12,8 @@ public:
 	FieldmapEmptyDoor& operator=(const FieldmapEmptyDoor& _Other) = delete;
 	FieldmapEmptyDoor& operator=(FieldmapEmptyDoor&& _Other) noexcept = delete;
 
+	void UseDoor() override;
+
 protected:
 	void RenderInit() override;
 private:
