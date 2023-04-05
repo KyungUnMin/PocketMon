@@ -33,7 +33,8 @@ public:
 	void SetState_ItemGive(ItemCode _ItemCode);
 	void SetState_Shift();
 	void SetCursor(int _Cursor);
-
+	// 포션을 사용했는가
+	bool GetIsPotion();
 	// delete Function
 	PokemonUI(const PokemonUI& _Other) = delete;
 	PokemonUI(PokemonUI&& _Other) noexcept = delete;
