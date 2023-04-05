@@ -109,6 +109,7 @@ void FieldDialog::UpdateStart(std::list<std::string>* _Script)
 	StringToRender();
 	ArrowRender->Off();
 	IsValid = true;
+	DialogNextButtonSoundPlay();
 }
 
 
@@ -177,7 +178,6 @@ void FieldDialog::Update(float _DeltaTime)
 		else
 		{
 			Off();
-			DialogNextButtonSoundPlay();
 		}
 	}
 }
