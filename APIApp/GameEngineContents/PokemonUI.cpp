@@ -690,7 +690,9 @@ void PokemonUI::PotionUse()
 	{
 		Pokemons[CurrentCursor].RareCandy_PlusLevel();
 		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " Level Up.", true);
-		PokemonLevelText[CurrentCursor]->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
+		Player::MainPlayer->GetPlayerPokemon()->Pokemons[CurrentCursor] = Pokemons[CurrentCursor];
+		PokeDataSetting();
+		//PokemonLevelText[CurrentCursor]->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
 		IsStop = true;
 		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
 		{
