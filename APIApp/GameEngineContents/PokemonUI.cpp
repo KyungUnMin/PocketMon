@@ -160,6 +160,11 @@ void PokemonUI::SetCursor(int _Cursor)
 	SelectOn();
 }
 
+bool PokemonUI::GetIsPotion()
+{
+	return IsPotion;
+}
+
 void PokemonUI::Update(float _DeltaTime)
 {
 	TimeEvent.Update(_DeltaTime);
@@ -286,6 +291,7 @@ void PokemonUI::LevelChangeEnd(GameEngineLevel* _PrevLevel)
 void PokemonUI::LevelChangeStart(GameEngineLevel* _PrevLevel)
 {
 	IsStop = false;
+	IsPotion = false;
 	PokeDataSetting();
 	if (_PrevLevel->GetName() == "SummaryLevel")
 	{
