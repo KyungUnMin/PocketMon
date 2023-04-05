@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "FieldmapLevel.h"
 #include "StartingPokeball.h"
+#include "BgmPlayer.h"
 
 GreenNPC::GreenNPC()
 {
@@ -30,7 +31,9 @@ void GreenNPC::BattleStart()
 {
 	InputHandle = InputControll::UseControll();
 	PokemonDatas.AddPokemon(PokeDataBase::PokeCreate(StartingPokeball::StaticRivalPokeball->GetPokeNumber(), 5));
-	
+
+	BgmPlayer::PlayBGM("RivalAppears.mp3");
+
 	FieldmapLevel::AddLevelStartFunc(std::bind([](GreenNPC* _this)
 		{
 			int2 CurIndex = Fieldmap::GetIndex(_this->GetPos());

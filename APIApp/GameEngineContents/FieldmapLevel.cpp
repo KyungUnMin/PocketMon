@@ -614,7 +614,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc5", "NPC5.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianCity", int2(14, 11));
 			NPCPtr->AddScript("I love this place, Viridian City, yesterday and today.");
-			NPCPtr->AddScript("The fresh air, beautiful flowers, and bustling city center!");
+			NPCPtr->AddScript("The fresh air, beautiful flowers,\n and bustling city center!");
 			NPCPtr->AddScript("Being here makes me feel at ease. Thats why I love it.");
 			NPCPtr->SetBaseDir(LookDir::Right);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
@@ -625,7 +625,8 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc4", "NPC4.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianCity", int2(25, 17));
 			NPCPtr->AddScript("Now what should I do? Its so boring that I need to do something...");
-			NPCPtr->AddScript("Hmm... Oh! I should try different things and find something fun to do");
+			NPCPtr->AddScript("Hmm... Oh! I should try different");
+			NPCPtr->AddScript("things and find something fun to do");
 			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
@@ -673,7 +674,7 @@ void FieldmapLevel::Loading()
 			TurnNPC* BaatleNpcPtr = CreateActor<TurnNPC>();
 			BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC2.bmp", BattleNpcType::NPC2);
 			BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
-			BaatleNpcPtr->AddScript("My POK@MON may not look like much,but its got some serious bite!");
+			BaatleNpcPtr->AddScript("My POK@MON may not look like much,\nbut its got some serious bite!");
 			BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 			BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 			BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
@@ -707,7 +708,8 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc3", "NPC3.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianForest", int2(35, 57));
 			NPCPtr->AddScript("This is the entrance to Viridian Forest.");
-			NPCPtr->AddScript("It`s a vast and beautiful forest, and the Pok@mon that live here are healthy and happy.");
+			NPCPtr->AddScript("It`s a vast and beautiful forest");
+			NPCPtr->AddScript("and the Pok@mon that live here are healthy and happy.");
 			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}
@@ -717,7 +719,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc2", "NPC2.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("ViridianForest", int2(23, 5));
 			NPCPtr->AddScript("Excuse me, are you also looking for Pikachu?");
-			NPCPtr->AddScript("I thought the same thing and came here, but I haven`t found it yet.");
+			NPCPtr->AddScript("I thought the same thing and came here,\nbut I haven`t found it yet.");
 			NPCPtr->AddScript("Do you know where it is?");
 			NPCPtr->SetBaseDir(LookDir::Down);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
@@ -738,7 +740,7 @@ void FieldmapLevel::Loading()
 			NPCPtr->InitNPC("Npc7", "NPC7.bmp", BattleNpcType::None);
 			NPCPtr->AddNPC("PewterCity", int2(20, 31));
 			NPCPtr->AddScript("I`m going to challenge Champion Woong and win the badge!");
-			NPCPtr->AddScript("I`ve trained hard for this moment and I wont give up until I succeed.");
+			NPCPtr->AddScript("I`ve trained hard for this and won`t give up until I succeed.");
 			NPCPtr->AddScript("Let`s do this!");
 			NPCPtr->SetBaseDir(LookDir::Up);
 			NPCPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);

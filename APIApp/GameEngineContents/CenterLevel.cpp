@@ -494,6 +494,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("World_Gym.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("PokemonCenter.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending_Theme.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));
 
 	}
 

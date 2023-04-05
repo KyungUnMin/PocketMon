@@ -7,6 +7,7 @@
 #include "PokemonScript.h"
 #include "Player.h"
 #include "SelectStartingUI.h"
+#include "BgmPlayer.h"
 
 int2 StartingPokeball::StaticRivalMovelIndex = int2(0, 0);
 StartingPokeball* StartingPokeball::StaticRivalPokeball = nullptr;
@@ -67,6 +68,7 @@ void StartingPokeball::SelectEvent()
 {
 	PokeballRender->Off();
 	PokemonScript::EndScript(100);
+	BgmPlayer::PlayBGM("GetFirstPokemon.mp3", false);
 }
 
 void StartingPokeball::RenderOff()
