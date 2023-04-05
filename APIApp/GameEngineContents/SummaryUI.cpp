@@ -439,7 +439,7 @@ void SummaryUI::SetPokemonData()
 	Info_Name->SetText(Pokemon.ForUI_GetMonsterName(), "Font_Dialog_Black2.bmp", false);
 	Info_Type->SetFrame(static_cast<int>(Pokemon.GetMonsterType()));
 	ItemCode Pokemon_ItemCode = Pokemon.GetPossession();
-	if (ItemCode::Potion <= Pokemon_ItemCode && ItemCode::Cancel >= Pokemon_ItemCode)
+	if (ItemCode::Potion <= Pokemon_ItemCode && ItemCode::Cancel > Pokemon_ItemCode)
 	{
 		Info_Item->SetText(Item::GetItem(Pokemon_ItemCode).GetItemName(), "Font_Dialog_Black2.bmp", false);
 	}
