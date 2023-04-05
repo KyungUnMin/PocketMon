@@ -7,6 +7,7 @@
 #include "BattleMonsterPlayer.h"
 #include "BattleEnemy.h"
 #include "PokemonUI.h"
+#include "BattleLevel.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -156,11 +157,11 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	float hpcur = static_cast<float>(CurExp) / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
-	if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
+	if (SecoundHp > 0.0f && SecoundHp < Hp30Under %% true == IsBattleSelecktTurn()) {
 		if (true == HpSoundCheck)
 		{
-			HpLowSound();
-			HpSoundCheck = false;
+	//		HpLowSound();
+		//	HpSoundCheck = false;
 			IsBoolTest = true;
 		}
 	}
@@ -169,7 +170,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	if (true == IsExpUP)
 	{
 		if (HpSoundCheck == false) {
-			B_HpLow.Stop();
+		//	B_HpLow.Stop();
 			
 		}
 	
@@ -274,7 +275,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			{
 				if (true == IsBoolTest)
 				{
-					B_HpLow.Stop();
+			//		B_HpLow.Stop();
 				}
 
 				IsDeath_B = false;
