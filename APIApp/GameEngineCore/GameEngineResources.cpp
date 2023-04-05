@@ -189,11 +189,35 @@ void GameEngineSoundPlayer::PauseOff()
 	ControlChannel->setPaused(false);
 }
 
+void GameEngineSoundPlayer::ResetSound()
+{
+	ControlChannel = nullptr;
+}
+
 bool GameEngineSoundPlayer::GetPause()
 {
+	if (nullptr == ControlChannel)
+	{
+		MsgAssert("재생하지도 않은 사운드를 컨트롤하겠다고 했습니다.");
+		return false;
+	}
+
 	bool PauseValue = false;
 	ControlChannel->getPaused(&PauseValue);
 	return PauseValue;
+}
+
+bool GameEngineSoundPlayer::IsPlaying() const
+{
+	if (nullptr == ControlChannel)
+	{
+		MsgAssert("재생하지도 않은 사운드를 컨트롤하겠다고 했습니다.");
+		return false;
+	}
+
+	bool Result = false;
+	ControlChannel->isPlaying(&Result);
+	return Result;
 }
 
 bool GameEngineSoundPlayer::VaildCheck() const

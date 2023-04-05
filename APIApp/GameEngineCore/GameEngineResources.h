@@ -18,8 +18,10 @@ public:
 	void Stop();
 	void PauseOn();
 	void PauseOff();
+	void ResetSound();
 
 	bool GetPause();
+	bool IsPlaying() const;
 	bool VaildCheck() const;
 
 private:
