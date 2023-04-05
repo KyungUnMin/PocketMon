@@ -295,7 +295,7 @@ void BuyWindow::ItemPushBack()
 	ItemList.reserve(5);
 	ItemList.push_back(Item::GetItem(ItemCode::MonsterBall));
 	ItemList.push_back(Item::GetItem(ItemCode::Potion));
-	ItemList.push_back(Item::GetItem(ItemCode::Repel));
+	ItemList.push_back(Item::GetItem(ItemCode::Ether));
 	ItemList.push_back(Item::GetItem(ItemCode::MasterBall));
 	ItemList.push_back(Item::GetItem(ItemCode::RareCandy));
 }
