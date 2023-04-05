@@ -6,6 +6,7 @@
 #include "BattlePlayer.h"
 #include "BattleMonsterPlayer.h"
 #include "BattleEnemy.h"
+#include "PokemonUI.h"
 
 #include <GameEnginePlatform/GameEngineWindow.h>
 #include <GameEngineCore/GameEngineRender.h>
@@ -151,15 +152,15 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	if (SecoundHp < Hp30Under) {
 		if (true == HpSoundCheck)
 		{
-			HpLowSound();
-			HpSoundCheck = false;
+		//	HpLowSound();
+		//	HpSoundCheck = false;
 		}
 	}
 
 	if (true == IsExpUP)
 	{
 		if (HpSoundCheck == false) {
-			B_HpLow.Stop();
+		//	B_HpLow.Stop();
 			
 		}
 	
@@ -214,7 +215,9 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						CheckTimnAA = 0.0f;
 					}
 				}
-				
+				if (true == PokemonUI::MainPokemon->GetIsPotion()) { // 2O¿À¸¥´Ù.
+
+				}
 			
 			}
 		
