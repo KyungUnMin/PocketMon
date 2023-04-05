@@ -14,6 +14,7 @@ public:
 
 protected:
 	void RenderInit() override;
+	void PlayOpenSound() override;
 private:
 
 };

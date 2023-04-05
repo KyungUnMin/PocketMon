@@ -1,4 +1,5 @@
 #include "FieldmapWoodDoor.h"
+#include <GameEngineCore/GameEngineResources.h>
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 
@@ -23,4 +24,9 @@ void FieldmapWoodDoor::RenderInit()
 	DoorRender->CreateAnimation({ .AnimationName = DoorCloseAnimName, .ImageName = "WoodDoor.bmp", .Start = 4, .End = 7,.InterTime = 0.075f, .Loop = false });
 
 	DoorRender->ChangeAnimation(DoorIdleAnimName);
+}
+
+void FieldmapWoodDoor::PlayOpenSound()
+{
+	GameEngineResources::GetInst().SoundPlay("WoodDoorOpen.wav");
 }

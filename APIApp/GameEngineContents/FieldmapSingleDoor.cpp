@@ -1,4 +1,5 @@
 #include "FieldmapSingleDoor.h"
+#include <GameEngineCore/GameEngineResources.h>
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 
@@ -23,4 +24,9 @@ void FieldmapSingleDoor::RenderInit()
 	DoorRender->CreateAnimation({ .AnimationName = DoorCloseAnimName, .ImageName = "SingleDoor.bmp", .Start = 4, .End = 7,.InterTime = 0.075f, .Loop = false });
 
 	DoorRender->ChangeAnimation(DoorIdleAnimName);
+}
+
+void FieldmapSingleDoor::PlayOpenSound()
+{
+	GameEngineResources::GetInst().SoundPlay("SlideDoorOpen.wav");
 }

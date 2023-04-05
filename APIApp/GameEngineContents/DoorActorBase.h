@@ -44,7 +44,7 @@ public:
 	}
 
 
-	void UseDoor();
+	virtual void UseDoor();
 
 protected:
 	GameEngineRender* DoorRender = nullptr;
@@ -52,6 +52,9 @@ protected:
 	static const std::string DoorIdleAnimName;
 	static const std::string DoorOpenAnimName;
 	static const std::string DoorCloseAnimName;
+
+	virtual void PlayOpenSound();
+	virtual void PlayCloseSound();
 
 	// 해당 애니메이션은 반드시 생성 Idle, Open, Close static onst std::string에 저장된 값으로 생성할 것
 	virtual void RenderInit() = 0;

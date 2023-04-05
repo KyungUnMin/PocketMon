@@ -1,5 +1,6 @@
 #include "FieldmapDoubleDoor.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "ContentsEnum.h"
 #include "Fieldmap.h"
 #include "Player.h"
@@ -25,4 +26,9 @@ void FieldmapDoubleDoor::RenderInit()
 	DoorRender->CreateAnimation({ .AnimationName = DoorCloseAnimName, .ImageName = "DoubleDoor.bmp", .Start = 4, .End = 7,.InterTime = 0.075f, .Loop = false });
 
 	DoorRender->ChangeAnimation(DoorIdleAnimName);
+}
+
+void FieldmapDoubleDoor::PlayOpenSound()
+{
+	GameEngineResources::GetInst().SoundPlay("SlideDoorOpen.wav");
 }
