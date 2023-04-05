@@ -130,7 +130,7 @@ void FriendlyHPBackground::Start()
 
 
 bool IsDeath_B = false;
-
+bool IsUpdateHp = false;
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
@@ -160,7 +160,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	{
 		if (HpSoundCheck == false) {
 			B_HpLow.Stop();
-			HpSoundCheck = true;
+			
 		}
 	
 	
@@ -170,10 +170,26 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			NextTickTime_1 = 0;
 			if (TickNumber_1 != 20)
 			{
+				
 				if (TickNumber_1 == 0) 
 				{
 					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
 					ExpGetSound();
+					if (true == IsUpdateHp) {
+						HPRenderPtr->Off();
+						HPRenderPtr1->Off();
+						HPRenderPtr2->Off();
+						Num += 5;
+						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
+						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
+			
+						HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+						HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						HPRenderPtr->On();
+						HPRenderPtr1->On();
+						HPRenderPtr2->On();
+						IsUpdateHp = false;
+					}
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -185,6 +201,10 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				TickNumber_1 = 0;
 				IsExpUP = false;
 				if (true == IsLevelUp) {
+				
+
+					//float LevelUpHp = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()/BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int() ;
+	
 					LevelUpPtr = GetLevel()->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
 					LevelUpPtr->SetPos({ 450,70 });
 					IsGetLevelUp();
@@ -395,6 +415,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 			for (size_t z = x; z < EXPTick.size(); z++) {
 				if (_GetExp + _MyCurExp >= 99.0f) {
 					IsLevelUp = true;
+					IsUpdateHp = true;
 					IsGetLevelUp();
 					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
 					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
