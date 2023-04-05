@@ -28,6 +28,10 @@ void GameEngineCore::GlobalUpdate()
 	// 프레임 시작할때 한번 델타타임을 정하고
 	GameEngineSound::SoundUpdate();
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
+	if (GameEngineInput::IsPress("CollisionRender"))
+	{
+		TimeDeltaTime *= 4;
+	}
 	GameEngineInput::Update(TimeDeltaTime);
 
 	// 여기에서 처리한다
