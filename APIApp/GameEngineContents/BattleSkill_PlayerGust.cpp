@@ -30,6 +30,10 @@ void BattleSkill_PlayerGust::EnterState()
 	GustRender->Off();
 
 	NewPos = GustRender->GetPos();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Gust.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerGust::Update(float _DeltaTime)

@@ -47,6 +47,10 @@ void BattleSkill_PlayerGrowl::EnterState()
 	GrowlRender1->Off();
 	GrowlRender2->Off();
 	GrowlRender3->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Growl.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerGrowl::Update(float _DeltaTime)
