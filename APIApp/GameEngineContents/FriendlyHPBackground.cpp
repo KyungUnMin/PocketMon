@@ -140,10 +140,6 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 
 
-	// 임시로 디버깅용 현재 경험치 넣어주기 및 초깃값 셋팅
-	//CurExp = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterExperience();
-
-
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
@@ -152,7 +148,13 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 	float hpcur = static_cast<float>(CurExp) / 100.0f;
 	float ExpNum = GameEngineMath::Lerp(0.0f, 256.0f, hpcur);
-
+	if (SecoundHp < Hp30Under) {
+		if (true == HpSoundCheck)
+		{
+			HpLowSound();
+			HpSoundCheck = false;
+		}
+	}
 
 	if (true == IsExpUP)
 	{
@@ -163,7 +165,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	
 	
 		NextTickTime_1 += _DeltaTime;
-		if (NextTickTime_1 > 0.07f) 
+		if (NextTickTime_1 > 0.1f) 
 		{
 			NextTickTime_1 = 0;
 			if (TickNumber_1 != 20)
@@ -193,8 +195,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 					}
 				}
 				
-			//	CurMyHP = DamegeTick[9];
-			//PlusMonsterExperience(static_cast<int>(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float())
+			
 			}
 		
 		}
@@ -207,7 +208,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if(TickNumber ==0)
 		{
 		
-			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num/*static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()*/, SecoundHp);
+			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num, SecoundHp);
 		}
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.07f) {
@@ -220,11 +221,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				}
 				if (DamegeTick[TickNumber] < Hp30Under) {
 					HPRenderPtr1->Off();
-					if (true == HpSoundCheck )
-					{
-						HpLowSound();	
-						HpSoundCheck = false;
-					}
+					
 					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
@@ -243,7 +240,6 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			if (IsDeath_B == true) 
 			{
 				B_HpLow.Stop();
-				HpSoundCheck = true;
 				IsDeath_B = false;
 
 			}
@@ -354,7 +350,7 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
 	DamegeTick.clear();
-	if (_EnumyMonsterDamage > _MyCurHp) {
+	if (_EnumyMonsterDamage >= _MyCurHp) {
 		_EnumyMonsterDamage = _MyCurHp;
 		IsDeath_B = true;
 	}
@@ -397,7 +393,7 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 		if (EXPTick[x] > 256.0f) {
 		
 			for (size_t z = x; z < EXPTick.size(); z++) {
-				if (_GetExp + _MyCurExp > 100.0f) {
+				if (_GetExp + _MyCurExp >= 99.0f) {
 					IsLevelUp = true;
 					IsGetLevelUp();
 					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;

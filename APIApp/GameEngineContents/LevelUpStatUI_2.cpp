@@ -92,7 +92,7 @@ void LevelUpStatUI_2::Start()
 	}
 
 
-
+	
 }
 bool IsCheck123 = true;
 void LevelUpStatUI_2::Update(float _DeltaTime)
@@ -111,34 +111,36 @@ void LevelUpStatUI_2::Update(float _DeltaTime)
 			StatRenderPtr->SetScale((StatRenderPtr->GetImage()->GetImageScale()));
 			StatRenderPtr->SetPosition({ 320,360 });
 			CheckTime11 = 0.0f;
-			IsCheck123 = false;
+			IsCheck123 = true;
 		}
 		
 	}
-	CheckTime22 += _DeltaTime;
-	if (CheckTime22 > 4.0f) {
-		StatRenderPtr->Off();
-		StatRenderPtr1->Off();
-		for (size_t x = 0; x < LevelUpStat1_R.size(); x++) {
-			LevelUpStat1_R[x]->Off();
-		}
-		for (size_t x = 0; x < LevelUpStat2_R.size(); x++) {
-			LevelUpStat2_R[x]->Off();
-		}
-		for (size_t x = 0; x < LevelUpStat3_R.size(); x++) {
-			LevelUpStat3_R[x]->Off();
-		}
-		for (size_t x = 0; x < LevelUpStat4_R.size(); x++) {
-			LevelUpStat4_R[x]->Off();
-		}
-		for (size_t x = 0; x < LevelUpStat5_R.size(); x++) {
-			LevelUpStat5_R[x]->Off();
-		}
-		for (size_t x = 0; x < LevelUpStat6_R.size(); x++) {
-			LevelUpStat6_R[x]->Off();
-		}
-		
-	}
+	//CheckTime22 += _DeltaTime;
+	//if (CheckTime22 > 3.0f) {
+	//	CheckTime22 = 0.0f;
+	///*	StatRenderPtr->Off();
+	//	StatRenderPtr1->Off();
+	//	for (size_t x = 0; x < LevelUpStat1_R.size(); x++) {
+	//		LevelUpStat1_R[x]->Off();
+	//	}
+	//	for (size_t x = 0; x < LevelUpStat2_R.size(); x++) {
+	//		LevelUpStat2_R[x]->Off();
+	//	}
+	//	for (size_t x = 0; x < LevelUpStat3_R.size(); x++) {
+	//		LevelUpStat3_R[x]->Off();
+	//	}
+	//	for (size_t x = 0; x < LevelUpStat4_R.size(); x++) {
+	//		LevelUpStat4_R[x]->Off();
+	//	}
+	//	for (size_t x = 0; x < LevelUpStat5_R.size(); x++) {
+	//		LevelUpStat5_R[x]->Off();
+	//	}
+	//	for (size_t x = 0; x < LevelUpStat6_R.size(); x++) {
+	//		LevelUpStat6_R[x]->Off();*/
+	//	//}
+	//	
+	//}
+
 }
 
 void LevelUpStatUI_2::StringToRender(std::vector<GameEngineRender*> _Render, std::string_view _Str)
