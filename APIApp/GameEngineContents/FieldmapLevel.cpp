@@ -513,7 +513,7 @@ void FieldmapLevel::Loading()
 		// 태초 마을
 		{
 			MotherNPC* MotherNPCPtr = CreateActor<MotherNPC>();
-			MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::Woong);
+			MotherNPCPtr->InitNPC("Mother", "Mother.bmp", BattleNpcType::None);
 			MotherNPCPtr->AddNPC("PalletTown_Home1F", int2(7, 7));
 			MotherNPCPtr->AddScript("MOM: _Right. All boys leave home someday. It said so on TV.");
 			MotherNPCPtr->AddScript("Oh, yes. PROF. OAK, next door,\nwas looking for you.");
@@ -644,6 +644,7 @@ void FieldmapLevel::Loading()
 			LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
 			LeafNPCptr->SetLookDis(20);
 			LeafNPCptr->AddScript("___");
+			LeafNPCptr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::MasterPikachu, 99));
 			LeafNPCptr->AddPokeData(1, 99);
 			LeafNPCptr->AddPokeData(4, 99);
 			LeafNPCptr->AddPokeData(7, 99);
@@ -755,9 +756,11 @@ void FieldmapLevel::Loading()
 			WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
 			WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
 			WoongPtr->AddScript("You`re going down! My POK@MON\nwon`t hold anything back!");
-			WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Geodude) + 1, 8));
-			WoongPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Onix) + 1, 12));
+			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngGeodude, 12));
+			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngGeodude, 13));
+			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngOnix, 18));
 			WoongPtr->SetBaseDir(LookDir::Down);
+			WoongPtr->LoopBattle();
 			WoongPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Talk);
 		}	
 

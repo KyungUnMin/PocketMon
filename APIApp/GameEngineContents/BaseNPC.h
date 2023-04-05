@@ -78,6 +78,11 @@ public:
 		LookDistance = _Dis;
 	}
 
+	inline void LoopBattle()
+	{
+		IsLoopBattle = true;
+	}
+
 	void SetScriptKey(int _Key);
 	
 	void AddPokeData(int _Index, int _Level);
@@ -128,6 +133,8 @@ protected:
 
 	// 상호작용 변수
 	bool IsBattleEnd = false;
+	bool IsLoopBattle = false;
+	
 	int InputHandle = -1;
 	InteractionTriggerType TriggerType = InteractionTriggerType::None;
 
@@ -142,6 +149,7 @@ protected:
 	// 대사 저장
 	int ScriptKey = 0;
 	std::map<int, std::list<std::string>> ScriptDatas;
+
 
 	// 포켓몬 데이터
 	TrainerPokemon PokemonDatas;

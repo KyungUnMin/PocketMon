@@ -162,7 +162,11 @@ void BaseNPC::InteractionUpdate(float _DeltaTime)
 				AnimationName = "Idle";
 				PlayAnimation();
 
-				IsBattleEnd = true;
+				if (false == IsLoopBattle)
+				{
+					IsBattleEnd = true;
+				}
+
 				FieldDialog::GetFieldDialog()->ConversationStart(&ScriptDatas[ScriptKey]);
 			}
 		}
@@ -209,7 +213,10 @@ void BaseNPC::InteractionEnd()
 
 	if (PokemonDatas.GetPokemonCount() != 0)
 	{
-		IsBattleEnd = true;
+		if (false == IsLoopBattle)
+		{
+			IsBattleEnd = true;
+		}
 
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
 		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
