@@ -612,12 +612,24 @@ void PlayerBag::SelectOn()
 		switch (CurrentSpace)
 		{
 		case BagSpace::Items:
-			SelectText->SetText("USE\nGIVE\nCANCEL");
-			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
-			SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
-			SelectFunctions[2] = std::bind(&PlayerBag::ItemUse, this);
-			SelectSize = 2;
+		{
+			if (CurrentSpaceItems[CurrentCursor].GetItemCode() <= ItemCode::Ether)
+			{
+				SelectText->SetText("USE\nGIVE\nCANCEL");
+				SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+				SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
+				SelectFunctions[2] = std::bind(&PlayerBag::ItemUse, this);
+				SelectSize = 2;
+			}
+			else
+			{
+				SelectText->SetText("\nGIVE\nCANCEL");
+				SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
+				SelectFunctions[1] = std::bind(&PlayerBag::ItemGive, this);
+				SelectSize = 1;
+			}
 			break;
+		}
 		case BagSpace::KeyItems:
 			SelectText->SetText("USE\nCANCEL");
 			SelectFunctions[0] = std::bind(&PlayerBag::SelectOff, this);
