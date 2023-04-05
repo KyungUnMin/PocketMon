@@ -23,6 +23,13 @@ void BattleSkill_EnemyIronDefense::EnterState()
 	EffectRender->On();
 	Timer = 0;
 	BBox = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_BlackBox>();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("DefenseCurl.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
+	GameEngineSoundPlayer SfxCtrl2 = GameEngineResources::GetInst().SoundPlayToControl("IronDefense.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyIronDefense::Update(float _DeltaTime)
