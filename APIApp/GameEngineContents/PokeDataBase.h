@@ -145,6 +145,12 @@ public:
 		return IshaveItem;
 	}
 
+	// 레어캔디용
+	void RareCandy_PlusLevel()
+	{
+		MonsterLevel += 1;
+	}
+
 	// 상처약 사용
 	void ForInven_UsePotion()
 	{
