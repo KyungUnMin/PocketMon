@@ -109,9 +109,9 @@ void BackTextActor::StringToRender()
 					case '-':
 						BattleTextRender[y][x]->SetFrame(86);
 						break;
-						//case '¡¦':
-						//	FieldDialogTextRender[y][x]->SetFrame(91);
-						//	break;
+					case '_':
+						BattleTextRender[y][x]->SetFrame(91);
+						break;
 					case '.':
 						BattleTextRender[y][x]->SetFrame(92);
 						break;
