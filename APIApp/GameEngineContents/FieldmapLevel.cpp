@@ -667,7 +667,7 @@ void FieldmapLevel::Loading()
 			BaatleNpcPtr->InitNPC("ViridianForestBattle1", "NPC3.bmp", BattleNpcType::NPC3);
 			BaatleNpcPtr->AddNPC("ViridianForest", int2(15, 27));
 			BaatleNpcPtr->AddScript("Get ready to face the\npower of my POK@MON!");
-			BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+			BaatleNpcPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::NPCPikachu, 8));
 			BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 			BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
 			BaatleNpcPtr->SetLookDis(10);
@@ -679,7 +679,8 @@ void FieldmapLevel::Loading()
 			BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC2.bmp", BattleNpcType::NPC2);
 			BaatleNpcPtr->AddNPC("ViridianForest", int2(31, 23));
 			BaatleNpcPtr->AddScript("My POK@MON may not look like much,\nbut its got some serious bite!");
-			BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
+			BaatleNpcPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::NPCBulbasaur, 7));
+			BaatleNpcPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::NPCSquirtle, 7));
 			BaatleNpcPtr->SetTurnDir(TurnNPC::TurnDir::Left);
 			BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
 			BaatleNpcPtr->SetLookDis(10);
@@ -690,9 +691,9 @@ void FieldmapLevel::Loading()
 			StaticNPC* BaatleNpcPtr = CreateActor<StaticNPC>();
 			BaatleNpcPtr->InitNPC("ViridianForestBattle2", "NPC3.bmp", BattleNpcType::NPC3);
 			BaatleNpcPtr->AddNPC("ViridianForest", int2(49, 41));
+			BaatleNpcPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::NPCCharmander, 6));
 			BaatleNpcPtr->AddScript("Hey! You have POK@MON!\nCome on!");
 			BaatleNpcPtr->AddScript("Let`s battle `em!");
-			BaatleNpcPtr->AddPokeData(PokeDataBase::PokeCreate(static_cast<int>(PokeNumber::Charmander) + 1, 4));
 			BaatleNpcPtr->SetBaseDir(LookDir::Left);
 			BaatleNpcPtr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
 			BaatleNpcPtr->SetLookDis(10);
@@ -1223,17 +1224,18 @@ void FieldmapLevel::CreateBattlezone_VaridianForest(const int2& _Start, const in
 {
 	FieldmapBattleZone* BattleZone = CreateActor<FieldmapBattleZone>();
 
-	BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 8);
 
 	if (true == _IsPikachuZone)
 	{
 		BattleZone->AddPokemon(PokeNumber::Pikachu);
+		BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 12, 13);
 	}
 	else
 	{
 		BattleZone->AddPokemon(PokeNumber::Bulbasaur);
 		BattleZone->AddPokemon(PokeNumber::Charmander);
 		BattleZone->AddPokemon(PokeNumber::Squirtle);
+		BattleZone->InitBattleZone("ViridianForest", _Start, _Size, 5, 8);
 	}
 
 }
