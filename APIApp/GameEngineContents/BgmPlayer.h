@@ -26,9 +26,7 @@ private:
 	static class GameEngineSoundPlayer EffectSound;
 	static std::string BgmName;
 	static float VolumeValue;
-
 	
-
 	static void Update(float _DeltaTime);
 
 protected:

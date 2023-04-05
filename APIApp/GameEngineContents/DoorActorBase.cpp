@@ -93,6 +93,7 @@ void DoorActorBase::UseDoor()
 
 	InputControllHandle = InputControll::UseControll();
 
+	Player::MainPlayer->SetRideValue(false);
 	DoorOpenAndClose();
 	DoorEvent.AddEvent(0.5f, std::bind(&DoorActorBase::PlayerMove, this), false);
 }
