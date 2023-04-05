@@ -6,6 +6,7 @@
 #include <GameEngineBase/GameEngineRandom.h>
 
 #include "PokeDataBase.h"
+#include "ContentsEnum.h"
 
 int PokeBattleSystem::Damage = 0;
 bool PokeBattleSystem::IsSpecial = false;
@@ -226,18 +227,14 @@ float PokeBattleSystem::NormalAttackstatuscalculator(PokeDataBase& _Attacker)
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = Attackbuff(_Attacker);
 	float step2 = OwnPersonalitycalculation_NA(_Attacker.GetMonsterPersonality()); // 성격에 따른 값 변화
-	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
+	float step3 = 1.0f;
 
-	//if (true == _Attacker->GetPossessionItem())
-	//{
-	//	step2 = 1.1f;
-	//}
-	//else
-	//{
-	//	step2 = 1.0f;
-	//}
+	if (ItemCode::MuscleBand == _Attacker.GetPossession())
+	{
+		step3 = 1.1f;
+	}
 	
-	float DamageCal = step1 * step2 /** step3*/;
+	float DamageCal = step1 * step2 * step3;
 
 	return DamageCal;
 }
@@ -248,18 +245,14 @@ float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase& _Attacker)
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = Specialattackbuff(_Attacker);
 	float step2 = OwnPersonalitycalculation_SA(_Attacker.GetMonsterPersonality());
-	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
+	float step3 = 1.0f;
 
-	//if (true == _Attacker->GetPossessionItem())
-	//{
-	//	step2 = 1.1f;
-	//}
-	//else
-	//{
-	//	step2 = 1.0f;
-	//}
+	if (ItemCode::MuscleBand == _Attacker.GetPossession())
+	{
+		step3 = 1.1f;
+	}
 
-	float DamageCal = step1 * step2 /** step3*/;
+	float DamageCal = step1 * step2 * step3;
 
 	return DamageCal;
 }
@@ -270,18 +263,14 @@ float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase& _Defender)
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
 	float step2 = OtherPersonalitycalculation_ND(_Defender.GetMonsterPersonality());
-	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
+	float step3 = 1.0f;
 
-	//if (true == _Attacker->GetPossessionItem())
-	//{
-	//	step2 = 1.1f;
-	//}
-	//else
-	//{
-	//	step2 = 1.0f;
-	//}
+	if (ItemCode::ChoiceBand == _Defender.GetPossession())
+	{
+		step3 = 1.1f;
+	}
 
-	float DamageCal = step1 * step2 /** step3*/;
+	float DamageCal = step1 * step2 * step3;
 
 	return DamageCal;
 }
@@ -292,18 +281,14 @@ float PokeBattleSystem::SpecialDeffencestatuscalculator(PokeDataBase& _Defender)
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
 	float step1 = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
 	float step2 = OtherPersonalitycalculation_SD(_Defender.GetMonsterPersonality());
-	float step3 = 1.0f; // 아이템 생성 시 0.0f로 수정
+	float step3 = 1.0f;
 
-	//if (true == _Attacker->GetPossessionItem())
-	//{
-	//	step2 = 1.1f;
-	//}
-	//else
-	//{
-	//	step2 = 1.0f;
-	//}
+	if (ItemCode::ChoiceScarf == _Defender.GetPossession())
+	{
+		step3 = 1.1f;
+	}
 
-	float DamageCal = step1 * step2 /** step3*/;
+	float DamageCal = step1 * step2 * step3;
 
 	return DamageCal;
 }
