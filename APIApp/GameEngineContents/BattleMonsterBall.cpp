@@ -38,6 +38,7 @@ void BattleMonsterBall::Init(BattleBallType _Type)
 
 	RenderPtr = CreateRender(BattleRenderOrder::MonsterBall);
 	RenderPtr->SetScale(RenderScale);
+	SetName(Name);
 
 	CreateThrowAni(Name);
 	CreateOpenAni(Name);
