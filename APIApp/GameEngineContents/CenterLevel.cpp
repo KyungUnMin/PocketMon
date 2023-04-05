@@ -544,6 +544,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RockThrow.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RazorLeaf.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("AirSlash.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Bubble.wav"));
 
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Pokemon_Caught.mp3"));             // 포켓몬 포획 성공
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.wav"));               // 공격 시 노말 데미지일 때 사운드

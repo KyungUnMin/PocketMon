@@ -44,6 +44,10 @@ void BattleSkill_PlayerBubble::EnterState()
 	BubbleRender1->Off();
 	BubbleRender2->Off();
 	BubbleRender3->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Bubble.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerBubble::Update(float _DeltaTime)
