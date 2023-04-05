@@ -46,6 +46,10 @@ void BattleSkill_EnemyWaterGun::EnterState()
 	WaterRender1->Off();
 	WaterRender2->Off();
 	WaterRender3->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("WaterGun.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyWaterGun::Update(float _DeltaTime)
