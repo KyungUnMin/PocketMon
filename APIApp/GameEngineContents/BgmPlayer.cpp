@@ -50,9 +50,10 @@ void BgmPlayer::PlayCurBGM(bool _IsLoop)
 	}
 }
 
-void BgmPlayer::SoundPlayBgmPause(const std::string_view& _EffectName)
+void BgmPlayer::SoundPlayBgmPause(const std::string_view& _EffectName, float _Volume)
 {
 	EffectSound = GameEngineResources::GetInst().SoundPlayToControl(_EffectName);
+	EffectSound.Volume(_Volume);
 	EffectSound.LoopCount(1);
 	PauseOn();
 }

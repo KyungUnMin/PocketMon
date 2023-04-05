@@ -4,6 +4,7 @@
 #include "ItemDataBase.h"
 #include "Fieldmap.h"
 #include "PlayerBag.h"
+#include "BgmPlayer.h"
 
 ItemNPC::ItemNPC() :
 	Code(ItemCode::MonsterBall),
@@ -45,7 +46,7 @@ void ItemNPC::InteractionStart()
 	Commnet += ".";
 
 	ScriptDatas[0].push_back(Commnet);
-
+	BgmPlayer::SoundPlayBgmPause("Item_Obtained.mp3");
 	StaticNPC::InteractionStart();
 }
 

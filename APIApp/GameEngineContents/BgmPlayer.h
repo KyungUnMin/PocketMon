@@ -10,7 +10,7 @@ public:
 	static void StopCurBGM(bool _IsLoop = true);
 	static void PlayCurBGM(bool _IsLoop = true);
 
-	static void SoundPlayBgmPause(const std::string_view& _EffectName);
+	static void SoundPlayBgmPause(const std::string_view& _EffectName, float _Volume = 1.0f);
 	static void PauseOn();
 	static void PauseOff();
 
