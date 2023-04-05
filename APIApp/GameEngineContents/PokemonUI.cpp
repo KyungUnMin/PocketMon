@@ -164,7 +164,13 @@ void PokemonUI::Update(float _DeltaTime)
 {
 	TimeEvent.Update(_DeltaTime);
 	AnimUpdate(_DeltaTime);
-	if (IsStop == true) { return; }
+	if (IsStop == true) { 
+		if (IsPotion == true)
+		{
+			Timer += _DeltaTime;
+			PokemonCurrentHPText[CurrentCursor]->SetText(std::to_string(static_cast<int>(std::lerp(BeforeHP, CurrentHP, std::min<float>(1, Timer)))), "Font_Dialog_White.bmp", 3, false);
+		}
+		return; }
 	if (GameEngineInput::IsDown("FieldUITestSwitch"))
 	{
 		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
@@ -646,11 +652,12 @@ void PokemonUI::PotionUse()
 	MenuSound.LoopCount(1);
 
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
-
+	BeforeHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
 	Pokemons[CurrentCursor].ForInven_UsePotion();
+	CurrentHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
 	BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 	PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
-	
+	IsPotion = true;
 	IsStop = true;
 	if (true == IsBattle)
 	{

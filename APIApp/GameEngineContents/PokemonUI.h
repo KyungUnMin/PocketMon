@@ -80,6 +80,10 @@ private:
 	int SelectSize = 0;
 	bool IsSelect = false;
 	bool IsBattle = false;
+	bool IsPotion = false;
+	int BeforeHP = 0;
+	int CurrentHP = 0;
+	float Timer = 0;
 	ItemCode CurrentItemCode = ItemCode::Cancel;
 
 	void PokeDataSetting();
