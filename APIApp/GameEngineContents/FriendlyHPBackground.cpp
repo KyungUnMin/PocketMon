@@ -181,6 +181,9 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						HPRenderPtr1->Off();
 						HPRenderPtr2->Off();
 						Num += 5;
+						if (Num >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
+							Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
+						}
 						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
 						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
 			
@@ -215,9 +218,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						CheckTimnAA = 0.0f;
 					}
 				}
-				if (true == PokemonUI::MainPokemon->GetIsPotion()) { // 2O¿À¸¥´Ù.
-
-				}
+				
 			
 			}
 		
@@ -262,13 +263,14 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			SecoundHp = DamegeTick[9];
 			if (IsDeath_B == true) 
 			{
-				B_HpLow.Stop();
+			//	B_HpLow.Stop();
 				IsDeath_B = false;
 
 			}
 		}
 		
 	}
+	
 }
 
 
