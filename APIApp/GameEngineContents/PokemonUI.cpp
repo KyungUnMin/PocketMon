@@ -658,31 +658,57 @@ void PokemonUI::PotionUse()
 	MenuSound.LoopCount(1);
 
 	PlayerBag::MainBag->RemoveItem(CurrentItemCode);
-	BeforeHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
-	Pokemons[CurrentCursor].ForInven_UsePotion();
-	CurrentHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
-	BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
-	PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
-	IsPotion = true;
-	IsStop = true;
-	if (true == IsBattle)
+
+	if (ItemCode::Potion == CurrentItemCode)
 	{
-		BattleLevel::BattleLevelPtr->PassPlayerTurn();
-		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+		BeforeHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
+		Pokemons[CurrentCursor].ForInven_UsePotion();
+		CurrentHP = Pokemons[CurrentCursor].GetMonsterCurrentHP();
+		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
+		PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
+		IsPotion = true;
+		IsStop = true;
+		if (true == IsBattle)
 		{
-			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
-		};
-		TimeEvent.AddEvent(1.5f, LevelChange, false);
+			BattleLevel::BattleLevelPtr->PassPlayerTurn();
+			std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+			{
+				LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");
+			};
+			TimeEvent.AddEvent(1.5f, LevelChange, false);
+		}
+		else
+		{
+			std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+			{
+				LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+			};
+			TimeEvent.AddEvent(1.5f, LevelChange, false);
+		}
 	}
-	else
+	else if (ItemCode::RareCandy == CurrentItemCode)
 	{
+		Pokemons[CurrentCursor].RareCandy_PlusLevel();
+		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " Level Up.", true);
+		PokemonLevelText[CurrentCursor]->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterLevel(), "Font_Dialog_White.bmp", 3, false);
+		IsStop = true;
 		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
 		{
 			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
 		};
 		TimeEvent.AddEvent(1.5f, LevelChange, false);
 	}
-
+	else if (ItemCode::Ether == CurrentItemCode)
+	{
+		Pokemons[CurrentCursor].PPAid_Use();
+		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " PP was restored.", true);
+		IsStop = true;
+		std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
+		{
+			LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BagLevel");
+		};
+		TimeEvent.AddEvent(1.5f, LevelChange, false);
+	}
 }
 
 void PokemonUI::SetBarText()

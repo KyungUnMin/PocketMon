@@ -24,6 +24,8 @@ void BagLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("LevelChange1"))
 	{
 		PlayerBag::MainBag->AddItem(ItemCode::Potion);
+		PlayerBag::MainBag->AddItem(ItemCode::RareCandy);
+		PlayerBag::MainBag->AddItem(ItemCode::Ether);
 		PlayerBag::MainBag->AddItem(ItemCode::MonsterBall);
 		PlayerBag::MainBag->AddItem(ItemCode::MasterBall);
 		return;
