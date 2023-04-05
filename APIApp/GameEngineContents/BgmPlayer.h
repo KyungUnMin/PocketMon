@@ -6,6 +6,8 @@ class BgmPlayer
 {
 public:
 	static void PlayBGM(const std::string_view& _BgmName, bool _IsLoop = true);
+	static void StopCurBGM(bool _IsLoop = true);
+	static void PlayCurBGM(bool _IsLoop = true);
 
 private:
 	static class GameEngineSoundPlayer MainBGM;

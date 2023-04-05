@@ -4,6 +4,7 @@
 #include <GameEngineCore/GameEngineRender.h>
 #include "FieldDialog.h"
 #include "Player.h"
+#include "BgmPlayer.h"
 
 PokemonCenterUI* PokemonCenterUI::MainPokemonCenterUI = nullptr;
 
@@ -124,6 +125,7 @@ void PokemonCenterUI::Update(float _DeltaTime)
 					HealMonsterCount = static_cast<int>(Player::MainPlayer->GetPlayerPokemon()->GetPokemonCount());
 					Player::MainPlayer->GetPlayerPokemon()->AllRecovery();
 					MenuBeepSoundPlay();
+					BgmPlayer::StopCurBGM();
 					break;
 				case PokemonMenuState::No:
 					AcFieldDialog->ConversationStart(&GoodbyeScript1);
@@ -239,6 +241,7 @@ void PokemonCenterUI::StartAnimationAndChangeProcess(float _DeltaTime)
 			Process = CenterProcess::Goodbye;
 			AcFieldDialog->ConversationStart(&GoodbyeScript2);
 			AnimationTime2 = 0;
+			BgmPlayer::PlayCurBGM();
 		}
 	}
 }

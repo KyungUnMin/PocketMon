@@ -30,6 +30,24 @@ void BgmPlayer::PlayBGM(const std::string_view& _BgmName, bool _IsLoop)
 	BgmName = _BgmName;
 }
 
+void BgmPlayer::StopCurBGM(bool _IsLoop)
+{
+	MainBGM.Stop();
+}
+
+void BgmPlayer::PlayCurBGM(bool _IsLoop)
+{
+	MainBGM = GameEngineResources::GetInst().SoundPlayToControl(BgmName);
+	if (true == _IsLoop)
+	{
+		MainBGM.LoopCount(10000);
+	}
+	else
+	{
+		MainBGM.LoopCount(0);
+	}
+}
+
 BgmPlayer::BgmPlayer()
 {
 }
