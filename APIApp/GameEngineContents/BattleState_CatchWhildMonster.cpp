@@ -76,14 +76,21 @@ SpecialPokeEnum BattleState_CatchWhildMonster::PokeNumToSpecialConvertor(PokeNum
 	case PokeNumber::Spearow:
 		return SpecialPokeEnum::CatchSpearow;
 
+	case PokeNumber::Bulbasaur:
+		return SpecialPokeEnum::CatchBulbasaur;
+
+	case PokeNumber::Charmander:
+		return SpecialPokeEnum::CatchCharmander;
+
+	case PokeNumber::Squirtle:
+		return SpecialPokeEnum::CatchSquirtle;
+
+	case PokeNumber::Geodude:
+		return SpecialPokeEnum::CatchGeodude;
+
 	case PokeNumber::Pikachu:
 		return SpecialPokeEnum::CatchPikachu;
 
-	case PokeNumber::Geodude:
-	{
-		MsgAssert("아직 꼬마돌에 대한 처리는 하지 않았습니다");
-		break;
-	}
 	default:
 	{
 		MsgAssert("야생에서는 잡을수 없는 포켓몬입니다");

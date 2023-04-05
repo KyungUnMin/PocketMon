@@ -3,6 +3,7 @@
 #include "BackTextActor.h"
 #include "BattleFSM.h"
 #include "BattlePlayer.h"
+#include "BattleMonsterPlayer.h"
 #include "PokeDataBase.h"
 #include "BattleState_EnemyTurn.h"
 
@@ -40,15 +41,9 @@ void BattleState_PlayerHPCheck::SelectText()
 	BattleScript BattleResult = BattleState_EnemyTurn::GetBattleResult();
 	std::string TextValue = "";
 
-	/*
-	Nothing,          // 0 아무것도 아님 (노말)
-	Insignificant,    // 1 효과는 미미했다!
-	Critical,         // 2 급소에 맞았다!
-	Amazing,          // 3 효과는 굉장했다!
-	Buff,             // 4 이 스킬은 버프스킬입니다.
-	PPiszero,         // 5 PP가 0입니다. 배틀 불가능
-	Stern,            // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
-	*/
+	const std::string& MonsterName = BattlePlayer::PlayerPtr->GetMonster()->GetName();
+
+
 
 	switch (BattleResult)
 	{
@@ -59,10 +54,10 @@ void BattleState_PlayerHPCheck::SelectText()
 		TextValue = "It`s not very effective_";
 		break;
 	case BattleScript::Critical:
-		TextValue = "Critical!";
+		TextValue = "A critical hit!";
 		break;
 	case BattleScript::Amazing:
-		TextValue = "Amazing!";
+		TextValue = "It`s super effective!";
 		break;
 	case BattleScript::Buff:
 		TextValue = "Buff!";
@@ -79,6 +74,16 @@ void BattleState_PlayerHPCheck::SelectText()
 	}
 	return;
 	}
+
+	/*
+Nothing,          // 0 아무것도 아님 (노말)
+Insignificant,    // 1 효과는 미미했다!
+Critical,         // 2 급소에 맞았다!
+Amazing,          // 3 효과는 굉장했다!
+Buff,             // 4 이 스킬은 버프스킬입니다.
+PPiszero,         // 5 PP가 0입니다. 배틀 불가능
+Stern,            // 6 수비수의 체력이 0이되어 스턴상태가 됐습니다.
+*/
 
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText(TextValue);
