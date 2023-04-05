@@ -1345,6 +1345,20 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		PoKeCreatePtr.SkillCount = 4;
 
 		break;
+	case SpecialPokeEnum::CatchGeodude:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Geodude;
+
+		PikachuData(_Level, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Earthquake, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 4;
+
+		break;
 	case SpecialPokeEnum::CatchPikachu:
 
 		PoKeCreatePtr.PokeDexNumber = PokeNumber::Pikachu;

@@ -16,6 +16,7 @@ enum class SpecialPokeEnum
 	CatchPidgey,
 	CatchRattata,
 	CatchSpearow,
+	CatchGeodude,
 	CatchPikachu,
 	CatchBulbasaur,
 	CatchCharmander,
