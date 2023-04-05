@@ -50,6 +50,10 @@ void BattleSkill_PlayerHyperFang::EnterState()
 
 	BiteRender1->Off();
 	BiteRender2->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("HyperFang.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerHyperFang::Update(float _DeltaTime)
