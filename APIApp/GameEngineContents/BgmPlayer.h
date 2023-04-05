@@ -12,13 +12,20 @@ public:
 	static void StopCurBGM(bool _IsLoop = true);
 	static void PlayCurBGM(bool _IsLoop = true);
 
+	static void SoundFadePauseOff(FMOD::Channel* _Channel, double _Time, float _Volume = 1.0f);
+	static void SoundFadePauseOff(class GameEngineSoundPlayer& _Sound, double _Time, float _Volume = 1.0f);
 	static class GameEngineSoundPlayer SoundFadePlay(const std::string_view& _SoundName, double _Time, float _Volume = 1.0f);
-	static void SoundFadeStop(FMOD::Channel* _Channel, double _Time);
-	static void SoundFadeStop(class GameEngineSoundPlayer& _Sound, double _Time);
+
+	static void SoundFadeStop(FMOD::Channel* _Channel, double _Time, bool _IsStop = true);
+	static void SoundFadeStop(class GameEngineSoundPlayer& _Sound, double _Time, bool _IsStop = true);
 	
 	static void SoundPlayBgmPause(const std::string_view& _EffectName, float _Volume = 1.0f);
+	static void SoundPlayBgmPauseFade(const std::string_view& _EffectName, float _Volume = 1.0f);
+
 	static void PauseOn();
+	static void PauseOnFade();
 	static void PauseOff();
+	static void PauseOffFade();
 
 	static float GetVolume()
 	{
@@ -32,6 +39,7 @@ private:
 	static class GameEngineSoundPlayer EffectSound;
 	static std::string BgmName;
 	static float VolumeValue;
+	static bool FadeCheck;
 	
 	static void Update(float _DeltaTime);
 
