@@ -32,6 +32,10 @@ void BattleSkill_PlayerAirSlash::EnterState()
 
 	AirSlashRender1->Off();
 	AirSlashRender2->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("AirSlash.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerAirSlash::Update(float _DeltaTime)

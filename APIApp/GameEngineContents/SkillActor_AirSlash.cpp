@@ -15,7 +15,7 @@ SkillActor_AirSlash::~SkillActor_AirSlash()
 void SkillActor_AirSlash::Start()
 {
 	RenderPtr = CreateRender(BattleRenderOrder::SkillEffect);
-	RenderPtr->CreateAnimation({ .AnimationName = "AirSlash",  .ImageName = "AirSlash.bmp", .Start = 0, .End = 4, .InterTime = 0.1f, .Loop = false });
+	RenderPtr->CreateAnimation({ .AnimationName = "AirSlash",  .ImageName = "AirSlash.bmp", .Start = 0, .End = 4, .InterTime = 0.02f, .Loop = false });
 	RenderPtr->SetScale({ 128, 128 });
 
 	RenderPtr->ChangeAnimation("AirSlash");
