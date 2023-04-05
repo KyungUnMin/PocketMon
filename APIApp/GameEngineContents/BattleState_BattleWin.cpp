@@ -55,6 +55,14 @@ void BattleState_BattleWin::EnterState()
 	{
 		Duration = NormalDuration;
 	}
+
+	if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
+		return;
+
+	if (true == BattleLevel::BattleLevelPtr->IsBossBattle())
+		return;
+
+	BattleEnemy::EnemyPtr->ComeBack();
 }
 
 void BattleState_BattleWin::Update(float _DeltaTime)
