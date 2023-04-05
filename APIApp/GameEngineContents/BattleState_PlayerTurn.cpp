@@ -20,6 +20,7 @@
 #include "BattleDebug.h"
 
 BattleScript BattleState_PlayerTurn::BattleResultType = BattleScript::Nothing;
+PokeSkill BattleState_PlayerTurn::UseSkill = PokeSkill::Unknown;
 
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
@@ -112,8 +113,8 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 	{
 		PokeDataBase* PlayerMonsterDB = BattlePlayer::PlayerPtr->GetMonsterDB();
 		PokeSkillBase& SkillDB = PlayerMonsterDB->GetMonsterSkillList(_SlotIndex + 1);
-		PokeSkill SkillType = SkillDB.GetSkill();
-		if (PokeSkill::Unknown == SkillType)
+		UseSkill = SkillDB.GetSkill();
+		if (PokeSkill::Unknown == UseSkill)
 			return;
 
 		TextInfo->Death();
@@ -139,7 +140,7 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 
 		
 		//실제 게임용입니다. 
-		MonsterFSM->ChangeState(ConvertSkill(SkillType));
+		MonsterFSM->ChangeState(ConvertSkill(UseSkill));
 		
 		//스킬 확인용입니다
 		//MonsterFSM->ChangeState(BattlePlayerMonster_StateType::Skill_Scratch);

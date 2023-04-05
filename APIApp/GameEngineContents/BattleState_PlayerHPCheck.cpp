@@ -6,6 +6,8 @@
 #include "BattleMonsterPlayer.h"
 #include "PokeDataBase.h"
 #include "BattleState_EnemyTurn.h"
+#include "BattleEnemy.h"
+#include "BattleMonsterEnemy.h"
 
 BattleState_PlayerHPCheck::BattleState_PlayerHPCheck()
 {
@@ -41,14 +43,15 @@ void BattleState_PlayerHPCheck::SelectText()
 	BattleScript BattleResult = BattleState_EnemyTurn::GetBattleResult();
 	std::string TextValue = "";
 
-	const std::string& MonsterName = BattlePlayer::PlayerPtr->GetMonster()->GetName();
+	const std::string& PlayerMonName = BattlePlayer::PlayerPtr->GetMonster()->GetName();
+	const std::string& EnemyMonName = BattleEnemy::EnemyPtr->GetMonster()->GetName();
+	//const std::string_view& PlayerUseSkillName = BattleState_PlayerTurn::GetUsedSkillName();
 
 
-
-	switch (BattleResult)
+	/*switch (BattleResult)
 	{
 	case BattleScript::Nothing:
-		TextValue = "Nothing!";
+		TextValue = MonsterName + "used\n@@@";
 		break;
 	case BattleScript::Insignificant:
 		TextValue = "It`s not very effective_";
@@ -73,7 +76,7 @@ void BattleState_PlayerHPCheck::SelectText()
 		MsgAssert("배틀 결과로 나올수 없는 값입니다");
 	}
 	return;
-	}
+	}*/
 
 	/*
 Nothing,          // 0 아무것도 아님 (노말)

@@ -10,6 +10,7 @@
 #include "BattleMonsterPlayer.h"
 
 BattleScript BattleState_EnemyTurn::BattleResultType = BattleScript::Nothing;
+PokeSkill BattleState_EnemyTurn::UseSkill = PokeSkill::Unknown;
 
 BattleState_EnemyTurn::BattleState_EnemyTurn()
 {
@@ -37,7 +38,7 @@ void BattleState_EnemyTurn::EnterState()
 
 	PokeSkillBase& SkillDB = EnemyDB->GetMonsterSkillList(SelectedSkill);
 
-	PokeSkill UseSkill = SkillDB.GetSkill();
+	UseSkill = SkillDB.GetSkill();
 	if (PokeSkill::Unknown == UseSkill)
 	{
 		MsgAssert("적 몬스터가 알 수 없는 스킬을 사용했습니다");

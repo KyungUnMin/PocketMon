@@ -31,13 +31,21 @@ public:
 		return BattleResultType;
 	}
 
+	static const std::string_view& GetUsedSkillName()
+	{
+		return ConvertSkillNames[static_cast<size_t>(UseSkill)];
+	}
+
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 
 private:
+	static const std::string_view ConvertSkillNames[static_cast<size_t>(PokeSkill::Unknown)];
 	static BattleScript BattleResultType;
+	static PokeSkill UseSkill;
+	
 
 	Battle_Select* SelectBoard = nullptr;
 	BattleCommendActor* BattleCommand = nullptr;

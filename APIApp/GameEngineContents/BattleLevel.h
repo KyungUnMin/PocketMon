@@ -58,6 +58,8 @@ public:
 		return BattleFsmPtr;
 	}
 
+	bool IsBattleSelectTurn();
+
 	void PassPlayerTurn();
 
 	void UseMonsterBall(ItemCode _MonsterBallType);
