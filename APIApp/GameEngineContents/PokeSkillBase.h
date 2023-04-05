@@ -101,6 +101,28 @@ public:
 		return Name;
 	}
 
+	// PP에이드용
+	void SkillPP_Recovery()
+	{
+		if (PokeSkill::Unknown != Skills)
+		{
+			int Value = CurrentSkillPowerPoint + 5;
+
+			if (MaxSkillPowerPoint <= Value)
+			{
+				CurrentSkillPowerPoint = MaxSkillPowerPoint;
+			}
+			else
+			{
+				CurrentSkillPowerPoint += 5;
+			}
+		}
+		else
+		{
+			int a = 0;
+		}
+	}
+
 	// 스킬 타입명 가져오기
 	std::string ForUI_GetSkillTypeName()
 	{

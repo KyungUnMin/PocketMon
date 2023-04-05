@@ -151,6 +151,15 @@ public:
 		MonsterLevel += 1;
 	}
 
+	// PP 에이드 사용
+	void PPAid_Use()
+	{
+		SkillList[0].SkillPP_Recovery();
+		SkillList[1].SkillPP_Recovery();
+		SkillList[2].SkillPP_Recovery();
+		SkillList[3].SkillPP_Recovery();
+	}
+
 	// 상처약 사용
 	void ForInven_UsePotion()
 	{
