@@ -16,7 +16,6 @@ public:
 	BattleEnemyMonster_LockState& operator=(const BattleEnemyMonster_LockState&& _Other) noexcept = delete;
 
 	static const float4& GetOriginScale();
-	static const float4& GetDestOffset();
 
 protected:
 	void EnterState() override;
