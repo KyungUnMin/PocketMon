@@ -68,7 +68,7 @@ void BattleSkill_PlayerFlamethrower::Update_Wait(float _DeltaTime)
 {
 	WaitTime += _DeltaTime;
 
-	if (1.7f < WaitTime)
+	if (1.0f < WaitTime)
 	{
 		CurState = SkillState::BackWard;
 	}
@@ -80,6 +80,9 @@ void BattleSkill_PlayerFlamethrower::Update_BackWard(float _DeltaTime)
 	if (0.12f <= BackwardTime)
 	{
 		CurState = SkillState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	}
 	else if (0.06f <= BackwardTime)
 	{

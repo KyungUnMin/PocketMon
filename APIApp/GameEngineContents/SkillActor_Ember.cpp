@@ -40,8 +40,8 @@ void SkillActor_Ember::Update(float _DeltaTime)
 	{
 	case SkillActor_Ember::EmberState::Shoot:
 	{
-		SetPos(float4::LerpClamp(StartPos, EndPos, GetLiveTime() - WaitTime));
-		if (1 + WaitTime < GetLiveTime())
+		SetPos(float4::LerpClamp(StartPos, EndPos, (GetLiveTime() - WaitTime) * 1.5f));
+		if (0.7f + WaitTime < GetLiveTime())
 		{
 			CurState = EmberState::Burn;
 			EffectRender->ChangeAnimation("Burn");

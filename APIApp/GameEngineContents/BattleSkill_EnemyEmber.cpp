@@ -20,6 +20,10 @@ void BattleSkill_EnemyEmber::EnterState()
 
 	EmberActor = BattleLevel::BattleLevelPtr->CreateActor<SkillActor_Ember>();
 	EmberActor->SetEmber(GetPlayerMonster()->GetPos() + StartPos, GetPlayerMonster()->GetPos() + EndPos);
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("TailWhip.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyEmber::Update(float _DeltaTime)
@@ -59,7 +63,7 @@ void BattleSkill_EnemyEmber::Update_Wait(float _DeltaTime)
 {
 	WaitTime += _DeltaTime;
 
-	if (1.0f < WaitTime)
+	if (0.6f < WaitTime)
 	{
 		CurState = SkillState::BackWard;
 		GameEngineSoundPlayer SFX = GameEngineResources::GetInst().SoundPlayToControl("Ember.wav");
@@ -75,6 +79,9 @@ void BattleSkill_EnemyEmber::Update_BackWard(float _DeltaTime)
 	if (0.12f <= BackwardTime)
 	{
 		CurState = SkillState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	}
 	else if (0.06f <= BackwardTime)
 	{

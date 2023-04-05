@@ -76,6 +76,9 @@ void BattleSkill_PlayerRockThrow::Update_BackWard(float _DeltaTime)
 	if (1.25f <= BackwardTime)
 	{
 		CurState = SkillState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	}
 	else if (0.9f <= BackwardTime)
 	{

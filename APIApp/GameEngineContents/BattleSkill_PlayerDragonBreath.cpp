@@ -81,6 +81,9 @@ void BattleSkill_PlayerDragonBreath::Update_BackWard(float _DeltaTime)
 	if (0.12f <= BackwardTime)
 	{
 		CurState = SkillState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	}
 	else if (0.06f <= BackwardTime)
 	{
