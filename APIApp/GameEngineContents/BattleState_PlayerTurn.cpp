@@ -19,6 +19,8 @@
 #include "BattleMonsterEnemy.h"
 #include "BattleDebug.h"
 
+BattleScript BattleState_PlayerTurn::BattleResultType = BattleScript::Nothing;
+
 BattleState_PlayerTurn::BattleState_PlayerTurn()
 {
 
@@ -127,7 +129,7 @@ void BattleState_PlayerTurn::BindBattleCommand(int _SlotIndex)
 		//데미지 처리는 이 State가 끝날때 하기 위해 콜백 등록
 		ThisPtr->SetCallBack([=]
 		{
-			PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
+			BattleResultType = PokeBattleSystem::Battle(*PlayerMonsterDB, _SlotIndex + 1, *EnemyMonsterDB);
 			int Damage = PokeBattleSystem::GetDamage();
 			EnemyMonster->DamageOnIU(Damage);
 		});

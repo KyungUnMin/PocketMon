@@ -4,6 +4,7 @@
 #include "BattleLevel.h"
 #include "PokeDataBase.h"
 #include "BattleFSM.h"
+#include "BattleState_PlayerTurn.h"
 
 BattleState_EnemyHPCheck::BattleState_EnemyHPCheck()
 {
@@ -17,8 +18,7 @@ BattleState_EnemyHPCheck::~BattleState_EnemyHPCheck()
 
 void BattleState_EnemyHPCheck::EnterState()
 {
-	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfo->BattleSetText("My Attack was Good");
+	SelectText();
 
 	PokeDataBase* MonsterDB = BattleEnemy::EnemyPtr->GetMonsterDB();
 	int EnemyHP = MonsterDB->GetMonsterCurrentHP();
@@ -33,6 +33,47 @@ void BattleState_EnemyHPCheck::EnterState()
 	}
 	
 }
+
+
+void BattleState_EnemyHPCheck::SelectText()
+{
+	BattleScript BattleResult = BattleState_PlayerTurn::GetBattleResult();
+	std::string TextValue = "";
+
+	switch (BattleResult)
+	{
+	case BattleScript::Nothing:
+		TextValue = "Nothing!";
+		break;
+	case BattleScript::Insignificant:
+		TextValue = "Insignificant!";
+		break;
+	case BattleScript::Critical:
+		TextValue = "Critical!";
+		break;
+	case BattleScript::Amazing:
+		TextValue = "Amazing!";
+		break;
+	case BattleScript::Buff:
+		TextValue = "Buff!";
+		break;
+	case BattleScript::PPiszero:
+		TextValue = "PPiszero!";
+		break;
+	case BattleScript::Stern:
+		TextValue = "Stern!";
+		break;
+	default:
+	{
+		MsgAssert("배틀 결과로 나올수 없는 값입니다");
+	}
+		return;
+	}
+
+	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+	TextInfo->BattleSetText(TextValue);
+}
+
 
 void BattleState_EnemyHPCheck::Update(float _DeltaTime)
 {
@@ -49,3 +90,4 @@ void BattleState_EnemyHPCheck::ExitState()
 	TextInfo->Death();
 	NextState = -1;
 }
+

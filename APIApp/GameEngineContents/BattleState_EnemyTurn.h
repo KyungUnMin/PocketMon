@@ -3,6 +3,7 @@
 #include <vector>
 #include <string_view>
 #include "PokeSkillBase.h"
+#include "PokeBattleSystem.h"
 
 class BackTextActor;
 enum class BattleEnemyMonster_StateType;
@@ -19,17 +20,25 @@ public:
 	BattleState_EnemyTurn& operator=(const BattleState_EnemyTurn& _Other) = delete;
 	BattleState_EnemyTurn& operator=(const BattleState_EnemyTurn&& _Other) noexcept = delete;
 
+	static BattleScript GetBattleResult()
+	{
+		return BattleResultType;
+	}
+
 protected:
 	void EnterState() override;
 	void ExitState() override;
 
 private:
-	BackTextActor* TextInfoUI = nullptr;
-
 	static const std::string_view ConvertSkillNames[static_cast<size_t>(PokeSkill::Unknown)];
+	static BattleScript BattleResultType;
+	
+
+	BackTextActor* TextInfoUI = nullptr;
+	PokeDataBase* EnemyDB = nullptr;
+	int SelectedSkill = -1;
 
 	BattleEnemyMonster_StateType ConvertSkill(PokeSkill _SkillType);
-
 	const std::string  MakeEnemyText(PokeSkill _SkillType);
 };
 

@@ -9,6 +9,8 @@
 #include "PokeBattleSystem.h"
 #include "BattleMonsterPlayer.h"
 
+BattleScript BattleState_EnemyTurn::BattleResultType = BattleScript::Nothing;
+
 BattleState_EnemyTurn::BattleState_EnemyTurn()
 {
 
@@ -25,23 +27,27 @@ void BattleState_EnemyTurn::EnterState()
 
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
 
-	PokeDataBase* MonsterDB = EnemyMonster->GetDB();
-	int MaxCount = MonsterDB->GetMonsterSkillCount();
-	int SelectedSkill = GameEngineRandom::MainRandom.RandomInt(1, MaxCount);
+	EnemyDB = EnemyMonster->GetDB();
+	int MaxCount = EnemyDB->GetMonsterSkillCount();
+	SelectedSkill = GameEngineRandom::MainRandom.RandomInt(1, MaxCount);
 
-	PokeSkillBase& SkillDB = MonsterDB->GetMonsterSkillList(SelectedSkill);
+	int DebugLevel = EnemyDB->GetMonsterLevel_int();
+	std::string DebugName = EnemyDB->ForUI_GetMonsterName();
 
-	PokeSkill SkillType = SkillDB.GetSkill();
-	if (PokeSkill::Unknown == SkillType)
+
+	PokeSkillBase& SkillDB = EnemyDB->GetMonsterSkillList(SelectedSkill);
+
+	PokeSkill UseSkill = SkillDB.GetSkill();
+	if (PokeSkill::Unknown == UseSkill)
 	{
 		MsgAssert("적 몬스터가 알 수 없는 스킬을 사용했습니다");
 		return;
 	}
 
-	TextInfoUI->BattleSetText(MakeEnemyText(SkillType));
+	TextInfoUI->BattleSetText(MakeEnemyText(UseSkill));
 	
 	//실제 게임용입니다.
-	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(SkillType));
+	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(UseSkill));
 
 	//스킬 확인용입니다
 	//EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
@@ -73,11 +79,12 @@ void BattleState_EnemyTurn::ExitState()
 	TextInfoUI->Death();
 	TextInfoUI = nullptr;
 
-	//임시코드
-	PokeDataBase* EnemyDB =  BattleEnemy::EnemyPtr->GetMonsterDB();
 	BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
 	PokeDataBase* PlayerDB = PlayerMonster->GetDB();
-	PokeBattleSystem::Battle(*EnemyDB, 1, *PlayerDB);
+
+	BattleResultType = PokeBattleSystem::Battle(*EnemyDB, SelectedSkill, *PlayerDB);
+	SelectedSkill = -1;
+
 	int Damage = PokeBattleSystem::GetDamage();
 	PlayerMonster->DamageOnIU(Damage);
 }

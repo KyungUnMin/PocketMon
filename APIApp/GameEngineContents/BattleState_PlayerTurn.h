@@ -1,6 +1,7 @@
 #pragma once
 #include "BattleStateBase.h"
 #include <functional>
+#include "PokeBattleSystem.h"
 
 class Battle_Select;
 class BattleCommendActor;
@@ -25,12 +26,19 @@ public:
 		DamageCalcFunc = _CallBack;
 	}
 
+	static BattleScript GetBattleResult()
+	{
+		return BattleResultType;
+	}
+
 protected:
 	void EnterState() override;
 	void Update(float _DeltaTime) override;
 	void ExitState() override;
 
 private:
+	static BattleScript BattleResultType;
+
 	Battle_Select* SelectBoard = nullptr;
 	BattleCommendActor* BattleCommand = nullptr;
 	BackTextActor* TextInfo = nullptr;

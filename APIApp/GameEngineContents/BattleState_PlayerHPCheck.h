@@ -25,5 +25,7 @@ private:
 
 	BackTextActor* TextInfo = nullptr;
 	int NextState = -1;
+
+	void SelectText();
 };
 
