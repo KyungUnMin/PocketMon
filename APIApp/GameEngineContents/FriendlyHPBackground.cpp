@@ -161,7 +161,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
 			if (true == HpSoundCheck)
 			{
-						HpLowSound();
+					//	HpLowSound();
 						HpSoundCheck = false;
 					
 			}
