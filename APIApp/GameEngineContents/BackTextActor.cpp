@@ -121,6 +121,15 @@ void BackTextActor::StringToRender()
 					case '@':
 						BattleTextRender[y][x]->SetFrame(94);
 						break;
+					case '$':
+						BattleTextRender[y][x]->SetFrame(95);
+						break;
+					case '`':
+						BattleTextRender[y][x]->SetFrame(96);
+						break;
+					case ':':
+						BattleTextRender[y][x]->SetFrame(97);
+						break;
 					default:
 						MsgAssert("아직 생각해보지 않은 글자입니다.");
 						break;
