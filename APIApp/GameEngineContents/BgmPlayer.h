@@ -9,9 +9,17 @@ public:
 	static void StopCurBGM(bool _IsLoop = true);
 	static void PlayCurBGM(bool _IsLoop = true);
 
+	static float GetVolume()
+	{
+		return VolumeValue;
+	}
+
+	static void SetVolume(float _Volumn);
+
 private:
 	static class GameEngineSoundPlayer MainBGM;
 	static std::string BgmName;
+	static float VolumeValue;
 
 protected:
 	

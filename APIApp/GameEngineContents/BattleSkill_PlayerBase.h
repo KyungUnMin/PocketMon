@@ -1,6 +1,7 @@
 #pragma once
 #include "BattleState_SkillBase.h"
 #include <GameEngineBase/GameEngineMath.h>
+#include <GameEngineCore/GameEngineResources.h>
 
 class BattleMonsterEnemy;
 class BattleMonsterPlayer;

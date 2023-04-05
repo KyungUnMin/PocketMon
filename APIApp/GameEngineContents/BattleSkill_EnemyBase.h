@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleState_SkillBase.h"
+#include <GameEngineCore/GameEngineResources.h>
 
 class BattleSkill_EnemyBase : public BattleState_SkillBase
 {

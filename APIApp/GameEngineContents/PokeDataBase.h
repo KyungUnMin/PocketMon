@@ -225,7 +225,7 @@ public:
 	}
 
 	// 포켓몬 넘버 가져오기 (이넘)
-	PokeNumber GetPokeNumber_enum()
+	PokeNumber GetPokeNumber_enum() const
 	{
 		return PokeDexNumber;
 	}

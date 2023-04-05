@@ -19,6 +19,7 @@
 #include "BattleFadeCtrl.h"
 #include "Player.h"
 #include "BattleDefine.h"
+#include "BgmPlayer.h"
 
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
@@ -96,7 +97,8 @@ void BattleLevel::Init_Level(
 	BattleFieldType _FieldType, BattleNpcType _NpcType)
 {
 	BattleType = _NpcType;
-	CreateBGM(BattleType);
+	PrevLevelVolume = BgmPlayer::GetVolume();
+	CreateBGM(BattleType, _EnemyMonsters);
 
 	//배경 및 플레이어와 상대편의 바닥 이미지를 초기화
 	InitActors(_FieldType, _NpcType, _EnemyMonsters);
@@ -119,21 +121,44 @@ void BattleLevel::InitActors(
 }
 
 
-void BattleLevel::CreateBGM(BattleNpcType _BattleType)
+void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDataBase>& _EnemyMonsters)
 {
-	BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(BattleBgmName);
-	/*switch (_BattleType)
+	switch (_BattleType)
 	{
-	case BattleNpcType::None:
 	case BattleNpcType::Rival:
+		BgmPlayer::PlayBGM("Battle_Gym1.mp3");
+		BgmPlayer::SetVolume(WorldBgmVolumn);
+		return;
 	case BattleNpcType::Woong:
-		break;
+		BgmPlayer::PlayBGM("Battle_Master.mp3");
+		BgmPlayer::SetVolume(WorldBgmVolumn);
+		return;
+	case BattleNpcType::Leaf:
+		BgmPlayer::PlayBGM("Battle_Gym2.mp3");
+		BgmPlayer::SetVolume(WorldBgmVolumn);
+		return;
+	case BattleNpcType::NPC2:
+	case BattleNpcType::NPC3:
+		BgmPlayer::PlayBGM("Battle_Npc.mp3");
+		BgmPlayer::SetVolume(WorldBgmVolumn);
+		return;
+	case BattleNpcType::None:
 	default:
-		DebugMsgBox("아직 해당 전투일때 사운드를 정해주지 않았습니다");
 		break;
-	}*/
+	}
 
-	BgmCtrl.Volume(WorldBgmVolumn * BattleDefine::WorldVolumn);
+	for (const PokeDataBase& Monster :  _EnemyMonsters)
+	{
+		if (PokeNumber::Pikachu != Monster.GetPokeNumber_enum())
+			continue;
+
+		BgmPlayer::PlayBGM("Battle_Pikachu2.mp3");
+		BgmPlayer::SetVolume(WorldBgmVolumn);
+		return;
+	}
+
+	BgmPlayer::PlayBGM("Battle_WildBGM.mp3");
+	BgmPlayer::SetVolume(WorldBgmVolumn);
 }
 
 
@@ -299,7 +324,7 @@ void BattleLevel::FadeOutBGM(float _DeltaTime)
 	}
 
 	float NowVolumn = WorldBgmVolumn * (1.f - Ratio);
-	BgmCtrl.Volume(NowVolumn);
+	BgmPlayer::SetVolume(NowVolumn);
 }
 
 
@@ -319,7 +344,7 @@ void BattleLevel::Clear()
 	}
 
 	Actors.clear();
-	BgmCtrl.Stop();
+	BgmPlayer::SetVolume(PrevLevelVolume);
 
 	TrainerPokemon* MonsterBag = Player::MainPlayer->GetPlayerPokemon();
 	std::vector<PokeDataBase>& Monsters = MonsterBag->GetPokemonsRef();
@@ -334,10 +359,4 @@ void BattleLevel::Clear()
 }
 
 
-void BattleLevel::ChangeBGM(const std::string_view& _BgmName)
-{
-	BgmCtrl.Stop();
-	BgmCtrl = GameEngineResources::GetInst().SoundPlayToControl(_BgmName);
-	BgmCtrl.Volume(WorldBgmVolumn * BattleDefine::WorldVolumn);
-}
 

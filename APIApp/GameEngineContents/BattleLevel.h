@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineLevel.h>
 #include "ContentsEnum.h"
 
@@ -70,8 +69,6 @@ public:
 
 	void ChangeFieldLevel(bool IsWin, bool _FadeColorBlack = true, float _FadeDuration = 1.5f);
 
-	void ChangeBGM(const std::string_view& _BgmName);
-
 	inline bool IsWildBattle() const
 	{
 		return (BattleNpcType::None == BattleType);
@@ -103,13 +100,14 @@ private:
 	BattleNpcType BattleType = BattleNpcType::None;
 
 
-	GameEngineSoundPlayer BgmCtrl;
 	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
+	float PrevLevelVolume = 0.f;
 
 	bool IsBgmFadeOut = false;
 	float FadeDuration = 0.f;
 
 	bool IsBattleEndValue = false;
+
 
 	void InitActors(BattleFieldType _FieldType, BattleNpcType _NpcType, const std::vector<PokeDataBase>& _EnemyMonsters);
 
@@ -122,7 +120,7 @@ private:
 
 	BattleFieldType FieldConvertor(GroundType _FieldType);
 
-	void CreateBGM(BattleNpcType _BattleType);
+	void CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDataBase>& _EnemyMonsters);
 	void FadeOutBGM(float _DeltaTime);
 
 	void Clear();
