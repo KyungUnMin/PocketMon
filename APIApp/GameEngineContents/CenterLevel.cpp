@@ -564,6 +564,8 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("DoubleEdge.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Growl.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Gust.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Leer.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("TailWhip.wav"));
 
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Pokemon_Caught.mp3"));             // 포켓몬 포획 성공
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("NormalDamage.wav"));               // 공격 시 노말 데미지일 때 사운드

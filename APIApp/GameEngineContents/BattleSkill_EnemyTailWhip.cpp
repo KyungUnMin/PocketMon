@@ -34,6 +34,10 @@ void BattleSkill_EnemyTailWhip::EnterState()
 	StartPos3 = EndPos2;
 
 	EndPos3 = StartPos3 + float4::Right * 80;
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("TailWhip.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyTailWhip::Update(float _DeltaTime)

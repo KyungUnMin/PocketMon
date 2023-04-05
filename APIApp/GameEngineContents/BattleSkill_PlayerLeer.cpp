@@ -28,6 +28,10 @@ void BattleSkill_PlayerLeer::EnterState()
 	LeerRender->SetPos({ 380, 320 });
 
 	LeerRender->Off();
+
+	GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("Leer.wav");
+	SfxCtrl.LoopCount(1);
+	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_PlayerLeer::Update(float _DeltaTime)
