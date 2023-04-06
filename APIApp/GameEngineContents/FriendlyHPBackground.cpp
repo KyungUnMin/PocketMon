@@ -423,14 +423,24 @@ void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp ,
 	}
 
 }
-
+bool IsPrevCheck = false;
 void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curpos, float _CurExpPos)
 {
 
-	float Expmag = _GetExp / (100.0f - _MyCurExp);
+  	float Expmag = _GetExp / (100.0f - _MyCurExp);
+	float UpExp = 0.0f;
 	/*if (Expmag>=1.0f)*/
 
-	float UpExp = GameEngineMath::Lerp(0.0f, _curpos + _CurExpPos, Expmag);
+	if (IsPrevCheck == true) {
+		 UpExp = GameEngineMath::Lerp(0.0f, _curpos - _CurExpPos, Expmag);
+		 IsPrevCheck = false;
+
+	}
+	else{
+		 UpExp = GameEngineMath::Lerp(0.0f, _curpos + _CurExpPos, Expmag);
+	}
+	
+
 	for (int i = 1; i <= 20; i++) {
 
 		EXPTick.push_back(_CurExpPos +(UpExp / 20 )* i); /*현재 HP - (데미지 / 10 *)1*/
@@ -443,14 +453,16 @@ void FriendlyHPBackground::ExpUpdate(float _GetExp, float _MyCurExp, float _curp
 		if (EXPTick[x] > 256.0f) {
 		
 			for (size_t z = x; z < EXPTick.size(); z++) {
+				float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
+				float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
+				EXPTick[z] = UpExp / (EXPTick.size() - x) * j;
+				j++;
 				if (_GetExp + _MyCurExp >= 99.0f) {
 					IsLevelUp = true;
 					IsUpdateHp = true;
+					IsPrevCheck = true;
 					IsGetLevelUp();
-					float MAXExpmag = (_GetExp + _MyCurExp - 100.0f) / 100.0f;
-					float UpExp = GameEngineMath::Lerp(0.0f, 256.0f, MAXExpmag);
-					EXPTick[z] = UpExp / (EXPTick.size() - x) * j;
-					j++;
+					
 				}
 			}
 			
