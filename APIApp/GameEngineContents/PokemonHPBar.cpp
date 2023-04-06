@@ -50,5 +50,17 @@ void PokemonHPBar::Update(float _DeltaTime)
 	BarRender->SetScale(Scale);
 	BarRender->SetPosition(Pos);
 
+	if (0.5f < CurrentValue)
+	{
+		BarRender->SetImage("FriendlyHPBar.bmp");
+	}
+	else if (0.33f < CurrentValue)
+	{
+		BarRender->SetImage("FriendlyHP50Bar.bmp");
+	}
+	else
+	{
+		BarRender->SetImage("FriendlyHP30Bar.bmp");
+	}
 }
 

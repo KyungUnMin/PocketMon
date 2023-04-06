@@ -28,8 +28,8 @@ void BattleSkill_EnemyIronDefense::EnterState()
 	SfxCtrl.LoopCount(1);
 	SfxCtrl.Volume(BattleDefine::WorldVolumn);
 	GameEngineSoundPlayer SfxCtrl2 = GameEngineResources::GetInst().SoundPlayToControl("IronDefense.wav");
-	SfxCtrl.LoopCount(1);
-	SfxCtrl.Volume(BattleDefine::WorldVolumn);
+	SfxCtrl2.LoopCount(1);
+	SfxCtrl2.Volume(BattleDefine::WorldVolumn);
 }
 
 void BattleSkill_EnemyIronDefense::Update(float _DeltaTime)
