@@ -11,12 +11,19 @@ LeafNPC::~LeafNPC()
 {
 }
 
+void LeafNPC::InteractionStart()
+{
+	Fieldmap::SetWalkable(CityName, Fieldmap::GetIndex(GetPos()), true);
+	StaticNPC::InteractionStart();
+}
+
 void LeafNPC::InteractionEnd()
 {
+	Fieldmap::SetWalkable(CityName, Fieldmap::GetIndex(GetPos()), true);
+
 	FieldmapLevel::AddLevelStartFunc(std::bind([](LeafNPC* _this)
 		{
 			_this->NPCRender->Off();
-			Fieldmap::SetWalkable(_this->CityName, Fieldmap::GetIndex(_this->GetPos()), true);
 		}, this));
 
 

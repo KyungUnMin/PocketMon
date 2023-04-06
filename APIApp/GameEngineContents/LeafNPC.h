@@ -14,6 +14,7 @@ public:
 
 protected:
 
+	void InteractionStart() override;
 	void InteractionEnd() override;
 
 private:

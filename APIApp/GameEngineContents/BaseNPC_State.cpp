@@ -218,6 +218,7 @@ void BaseNPC::InteractionEnd()
 			IsBattleEnd = true;
 		}
 
+		Player::MainPlayer->SetRideValue(false, false);
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
 		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType, Type);
 

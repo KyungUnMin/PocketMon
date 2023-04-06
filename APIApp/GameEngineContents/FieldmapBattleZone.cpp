@@ -75,6 +75,7 @@ void FieldmapBattleZone::BattleStart()
 		return;
 	}
 
+	Player::MainPlayer->SetRideValue(false, false);
 	GameEngineRandom& MianRand = GameEngineRandom::MainRandom;
 
 	int RandomIndex = MianRand.RandomInt(0, static_cast<int>(PokeNumbers.size() - 1));

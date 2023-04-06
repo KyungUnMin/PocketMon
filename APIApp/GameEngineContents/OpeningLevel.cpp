@@ -22,6 +22,7 @@
 #include "Logo_Fireredversion_White.h"
 #include "Logo_PressStart.h"
 #include "Logo_Backeffect.h"
+#include "BgmPlayer.h"
 
 GameEngineSoundPlayer OpeningLevel::OpeningPlayer = 0;
 OpeningLevel* OpeningLevel::OpeningLevelPtr = nullptr;
@@ -127,7 +128,7 @@ void OpeningLevel::Update(float _DeltaTime)
 
 		if (1.0f <= LevelChangeTime)
 		{
-			OpeningLevel::OpeningPlayer.Stop();
+			//OpeningLevel::OpeningPlayer.Stop();
 			GameEngineCore::GetInst()->ChangeLevel("FieldmapLevel");
 		}
 	}
@@ -142,9 +143,10 @@ void OpeningLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 	LevelEvent.AddEvent(3.3f, std::bind([](OpeningLevel* _This)
 		{
-			_This->OpeningPlayer = GameEngineResources::GetInst().SoundPlayToControl("Title.mp3");
-			_This->OpeningPlayer.Volume(0.3f);
-			_This->OpeningPlayer.LoopCount(10);
+			BgmPlayer::PlayBGMFade("Title.mp3");
+			//_This->OpeningPlayer = GameEngineResources::GetInst().SoundPlayToControl("");
+			//_This->OpeningPlayer.Volume(0.3f);
+			//_This->OpeningPlayer.LoopCount(10);
 		}, this), false);
 
 	LevelEvent.AddEvent(3.5f, std::bind([](OpeningLevel* _This)

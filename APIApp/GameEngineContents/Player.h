@@ -130,7 +130,7 @@ public:
 		return IsRide;
 	}
 
-	void SetRideValue(bool _truefalse);
+	void SetRideValue(bool _truefalse, bool _IsBgmReset = true);
 
 	LookDir GetDir() const
 	{

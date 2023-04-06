@@ -293,15 +293,21 @@ void Player::JumpDown()
 	Dir = LookDir::Down;
 }
 
-void Player::SetRideValue(bool _truefalse)
+void Player::SetRideValue(bool _truefalse, bool _IsBgmReset)
 {
+
 	if (true == _truefalse)
 	{
+		if (false == InputControll::CanControll(InputControlHandle))
+		{
+			return;
+		}
+
 		BgmPlayer::PlayBGMFade("Cycling.mp3");
 	}
 	else
 	{
-		if (false == EndingPlayActor::IsEndingPlay)
+		if (true == _IsBgmReset && false == EndingPlayActor::IsEndingPlay)
 		{
 			Fieldmap::PlayCityBGM();
 		}
