@@ -27,7 +27,7 @@ void BattleSkill_EnemyTackle::EnterState()
 
 void BattleSkill_EnemyTackle::Update(float _DeltaTime)
 {
-	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, ForwardDuration + BackwardDuration))
+	if (true == BattleSkill_EnemyBase::Update_CheckTime(_DeltaTime, 1.1f))
 		return;
 
 	switch (CurState)
@@ -37,6 +37,9 @@ void BattleSkill_EnemyTackle::Update(float _DeltaTime)
 		break;
 	case BattleSkill_EnemyTackle::MoveState::Backward:
 		Update_BackWard(_DeltaTime);
+		break;
+	case BattleSkill_EnemyTackle::MoveState::Flashing:
+		Update_Flashing(_DeltaTime);
 		break;
 	}
 }
@@ -72,12 +75,38 @@ void BattleSkill_EnemyTackle::Update_BackWard(float _DeltaTime)
 
 	float4 NowEffectScale = float4::LerpClamp(EffectScale, float4::Zero, Ratio);
 	EffectRender->SetScale(NowEffectScale);
+
+
+	if (BackwardTimer > BackwardDuration + 0.2f)
+	{
+		CurState = MoveState::Flashing;
+		GameEngineSoundPlayer SfxCtrl = GameEngineResources::GetInst().SoundPlayToControl("NormalDamage.wav");
+		SfxCtrl.LoopCount(1);
+		SfxCtrl.Volume(BattleDefine::WorldVolumn);
+	}
+}
+
+void BattleSkill_EnemyTackle::Update_Flashing(float _DeltaTime)
+{
+	FlashingTime += _DeltaTime;
+
+
+	if (0.08 <= FlashingTime)
+	{
+		GetPlayerMonster()->GetRender()->On();
+		FlashingTime = 0;
+	}
+	else if (0.04f <= FlashingTime)
+	{
+		GetPlayerMonster()->GetRender()->Off();
+	}
 }
 
 
 
 void BattleSkill_EnemyTackle::ExitState()
 {
+	GetPlayerMonster()->GetRender()->On();
 	BattleSkill_EnemyBase::ExitState();
 	EnemyMonster->SetPosition(float4::Zero);
 	EnemyMonster = nullptr;
@@ -89,4 +118,5 @@ void BattleSkill_EnemyTackle::ExitState()
 
 	ForwardTimer = 0.f;
 	BackwardTimer = 0.f;
+
 }

@@ -23,7 +23,8 @@ private:
 	enum class MoveState
 	{
 		Forward,
-		Backward
+		Backward,
+		Flashing
 	};
 
 	MoveState CurState = MoveState::Forward;
@@ -36,6 +37,7 @@ private:
 
 	float ForwardTimer = 0.f;
 	float BackwardTimer = 0.f;
+	float FlashingTime = 0.f;
 	const float ForwardDuration = 0.1f;
 	const float BackwardDuration = 0.25f;
 
@@ -44,6 +46,7 @@ private:
 
 	void Update_Forward(float _DeltaTime);
 	void Update_BackWard(float _DeltaTime);
+	void Update_Flashing(float _DeltaTime);
 	
 };
 
