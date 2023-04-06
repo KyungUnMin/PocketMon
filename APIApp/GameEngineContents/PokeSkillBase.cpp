@@ -218,7 +218,7 @@ void PokeSkillBase::EmberData()
 	Name = "Ember";
 	TypeName = "Fire";
 
-	SkillDamage = 40;
+	SkillDamage = 45;
 	MaxSkillPowerPoint = 25;
 	CurrentSkillPowerPoint = 25;
 	SkillHitrate = 1.0f;
@@ -260,7 +260,7 @@ void PokeSkillBase::FlamethrowerData()
 	Name = "Flamethrower";
 	TypeName = "Fire";
 
-	SkillDamage = 95;
+	SkillDamage = 65;
 	MaxSkillPowerPoint = 15;
 	CurrentSkillPowerPoint = 15;
 	SkillHitrate = 1.0f;
@@ -302,7 +302,7 @@ void PokeSkillBase::BubbleData()
 	Name = "Bubble";
 	TypeName = "Water";
 
-	SkillDamage = 40;
+	SkillDamage = 45;
 	MaxSkillPowerPoint = 30;
 	CurrentSkillPowerPoint = 30;
 	SkillHitrate = 1.f;
@@ -316,7 +316,7 @@ void PokeSkillBase::WaterGunData()
 	Name = "WaterGun";
 	TypeName = "Water";
 
-	SkillDamage = 70;
+	SkillDamage = 65;
 	MaxSkillPowerPoint = 25;
 	CurrentSkillPowerPoint = 25;
 	SkillHitrate = 1.f;
@@ -386,7 +386,7 @@ void PokeSkillBase::VineWhipData()
 	Name = "VineWhip";
 	TypeName = "Grass";
 
-	SkillDamage = 35;
+	SkillDamage = 45;
 	MaxSkillPowerPoint = 10;
 	CurrentSkillPowerPoint = 10;
 	SkillHitrate = 1.f;
@@ -400,7 +400,7 @@ void PokeSkillBase::RazorLeafData()
 	Name = "RazorLeaf";
 	TypeName = "Grass";
 
-	SkillDamage = 70;
+	SkillDamage = 65;
 	MaxSkillPowerPoint = 25;
 	CurrentSkillPowerPoint = 25;
 	SkillHitrate = 0.95f;
@@ -698,7 +698,7 @@ void PokeSkillBase::EarthquakeData()
 	Name = "Earthquake";
 	TypeName = "Ground";
 
-	SkillDamage = 100;
+	SkillDamage = 75;
 	MaxSkillPowerPoint = 10;
 	CurrentSkillPowerPoint = 10;
 	SkillHitrate = 1.f;
