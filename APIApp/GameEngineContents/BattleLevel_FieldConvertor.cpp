@@ -10,14 +10,15 @@ BattleFieldType BattleLevel::FieldConvertor(GroundType _FieldType)
 		return BattleFieldType::Gym;
 	case GroundType::Beige:
 		return BattleFieldType::Indoor;
-
+	case GroundType::Gold:
+		return BattleFieldType::Forest;
 	case GroundType::Water:
 	case GroundType::Blue:
 	case GroundType::Grey:
-	case GroundType::Gold:
 	case GroundType::Purple:
 	case GroundType::Cyan:
 	case GroundType::Unknown:
+		return BattleFieldType::Indoor;
 	default:
 		MsgAssert("해당 위치에서는 전투를 할 수 없습니다");
 		break;

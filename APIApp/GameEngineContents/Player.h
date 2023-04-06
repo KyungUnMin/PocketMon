@@ -108,7 +108,6 @@ public:
 	void JumpLeft();
 	void JumpDown();
 
-
 	bool IsPlayerDirUp()
 	{
 		return IsPlayerDirUP;
@@ -130,10 +129,8 @@ public:
 	{
 		return IsRide;
 	}
-	void SetRideValue(bool _truefalse)
-	{
-		IsRide = _truefalse;
-	}
+
+	void SetRideValue(bool _truefalse);
 
 	LookDir GetDir() const
 	{

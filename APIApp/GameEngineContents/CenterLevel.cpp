@@ -502,6 +502,7 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BeforeBattle.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MeetOak.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Cycling.mp3"));
 		
 		Dir.MoveParent();
 		Dir.Move("Effect");

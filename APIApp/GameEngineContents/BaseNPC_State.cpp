@@ -219,7 +219,7 @@ void BaseNPC::InteractionEnd()
 		}
 
 		GroundType GroundType = Fieldmap::GetGroundType(Player::MainPlayer->GetPos());
-		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType::Grass, Type);
+		BattleLevel::BattleLevelPtr->Init(PokemonDatas.GetPokemons(), GroundType, Type);
 
 		BattleFade* Fade = BattleFade::GetFieldmapBattleFade();
 		Fade->PlayBattleFade(2, 5.0f, std::bind(

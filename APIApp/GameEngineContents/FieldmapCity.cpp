@@ -204,7 +204,7 @@ void FieldmapCity::CityColUpdate()
 	if (true == GameEngineCollision::CollisionRectToPoint(
 		CollisionData(GetPos(), CityScale), CollisionData(PlayerPos)))
 	{
-		Fieldmap::ChangeCity(this);
+		Fieldmap::ChangeCity(this, true, !Player::MainPlayer->GetIsRideValue());
 	}
 	else
 	{

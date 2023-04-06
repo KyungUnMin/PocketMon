@@ -1064,7 +1064,7 @@ void FieldmapLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 
 	LevelStartCallFuncs.clear();
 
-	if (false == EndingPlayActor::IsEndingPlay)
+	if (false == Player::MainPlayer->GetIsRideValue() && false == EndingPlayActor::IsEndingPlay)
 	{
 		Fieldmap::PlayCityBGM();
 	}

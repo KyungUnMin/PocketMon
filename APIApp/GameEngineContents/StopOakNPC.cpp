@@ -44,6 +44,7 @@ void StopOakNPC::IdleUpdate(float _DeltaTime)
 
 	if (0 < MovePoints.size())
 	{
+		Player::MainPlayer->SetRideValue(false);
 		BgmPlayer::PlayBGMFade("MeetOak.mp3");
 		MoveStartPos = GetPos();
 		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);

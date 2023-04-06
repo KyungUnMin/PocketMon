@@ -130,7 +130,7 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 	switch (_BattleType)
 	{
 	case BattleNpcType::Rival:
-		BgmPlayer::PlayBGM("Battle_Npc.mp3");
+		BgmPlayer::PlayBGM("Battle_WildBGM.mp3");
 		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::Woong:
@@ -143,7 +143,7 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 		return;
 	case BattleNpcType::NPC2:
 	case BattleNpcType::NPC3:
-		BgmPlayer::PlayBGM("Battle_Npc.mp3");
+		BgmPlayer::PlayBGM("Battle_WildBGM.mp3");
 		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::None:

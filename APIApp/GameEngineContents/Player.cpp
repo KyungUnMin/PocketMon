@@ -13,6 +13,8 @@
 #include "FieldMainMenu.h"
 #include "InputControll.h"
 #include "PokemonCenterNPC.h"
+#include "BgmPlayer.h"
+#include "EndingPlayActor.h"
 
 Player* Player::MainPlayer;
 bool Player::GymClear = false;
@@ -152,6 +154,11 @@ void Player::Start()
 bool BikeRings = true;
 void Player::Update(float _DeltaTime)
 {
+	if (GameEngineInput::IsDown("Ridefalse"))
+	{
+		SetRideValue(!IsRide);
+	}
+
 
 	if (IsRide==true)
 	{
@@ -202,15 +209,7 @@ void Player::Update(float _DeltaTime)
 
 void Player::Render(float _DeltaTime)
 {
-	if (GameEngineInput::IsDown("Ridefalse")&& false== IsRide)
-	{
-		IsRide = true;
-	}
-	
-	if (GameEngineInput::IsDown("CollisionRender")&& true == IsRide)
-	{
-		IsRide = false;
-	}
+
 }
 
 void Player::ChangeLevelCheck()
@@ -292,6 +291,23 @@ void Player::JumpDown()
 	NextJumpIndex = { Playerindex.x ,Playerindex.y + 2 };
 	ChangeState(PlayerState::JUMP);
 	Dir = LookDir::Down;
+}
+
+void Player::SetRideValue(bool _truefalse)
+{
+	if (true == _truefalse)
+	{
+		BgmPlayer::PlayBGMFade("Cycling.mp3");
+	}
+	else
+	{
+		if (false == EndingPlayActor::IsEndingPlay)
+		{
+			Fieldmap::PlayCityBGM();
+		}
+	}
+
+	IsRide = _truefalse;
 }
 
 
