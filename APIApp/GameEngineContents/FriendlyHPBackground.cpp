@@ -203,13 +203,13 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						}
 						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
 						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
-						if (LevelUpHp < 0.66f && LevelUpHp>0.33f) {
+						if (LevelUpHp < 0.56f && LevelUpHp>0.26f) {
 							HPRenderPtr1->On();
 
 							HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
 							HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
 						}
-						else if (LevelUpHp > 0.0f && LevelUpHp <0.3f) {
+						else if (LevelUpHp > 0.0f && LevelUpHp <0.26f) {
 							HPRenderPtr2->On();
 
 							HPRenderPtr2->SetScale(float4{ 192.0f - LevelUpPos, 172 });
