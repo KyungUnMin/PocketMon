@@ -163,6 +163,11 @@ void PokemonUI::SetCursor(int _Cursor)
 
 bool PokemonUI::GetIsPotion()
 {
+	if (true == IsPotion)
+	{
+		IsPotion = false;
+		return true;
+	}
 	return IsPotion;
 }
 
@@ -668,7 +673,6 @@ void PokemonUI::PotionUse()
 		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 		PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
 		IsPotion = true;
-		FriendlyHPBackground::FriendlyPtr->IsPosionCheck(true);
 		IsStop = true;
 		if (true == IsBattle)
 		{

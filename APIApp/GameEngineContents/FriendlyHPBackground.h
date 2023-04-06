@@ -34,7 +34,6 @@ public:
 	int GetCurExp(int _Exp);
 	void ExpGetSound();
 	void HpLowSound();
-	bool IsPosionCheck(bool _Value);
 	GameEngineRender* GetWindowPtr()
 	{
 		return RenderPtr;
@@ -145,7 +144,6 @@ private:
 
 	bool HpSoundCheck = true;
 
-	bool IsPosion = false;
 
 };
 

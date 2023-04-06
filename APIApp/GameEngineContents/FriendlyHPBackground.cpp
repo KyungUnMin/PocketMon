@@ -146,11 +146,7 @@ void FriendlyHPBackground::HpLowSound()
 
 }
 
-bool FriendlyHPBackground::IsPosionCheck(bool _Value)
-{
-	IsPosion = _Value;
-	return IsPosion;
-}
+
 
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
@@ -162,7 +158,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 	if (nullptr == DB)
 		return;
 
- 	if (true == IsPosion) {
+ 	if (true == PokemonUI::MainPokemon->GetIsPotion	()) {
 		P_Num = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
 		P_Num1 = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int());
 		float P_Numpersent = P_Num / P_Num1;
@@ -171,7 +167,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		HPRenderPtr->SetScale(float4{ 192.0f - P_Hpmeg, 172 });
 		HPRenderPtr->SetPosition({ 560.0f - (P_Hpmeg) / 2 , 360.0f });
 		SecoundHp = 192.0f - P_Hpmeg;
-		IsPosion = false;
+
 	}
 	
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
@@ -213,39 +209,39 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 					B_HpLow.Stop();
 					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
 					ExpGetSound();
-					if (true == IsUpdateHp) {
-						HPRenderPtr->Off();
-						HPRenderPtr1->Off();
-						HPRenderPtr2->Off();
-						Num += 1;
-						if (Num >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
-							Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
-						}
-						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
-						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
-						if (LevelUpHp < 0.56f && LevelUpHp>0.26f) {
-							HPRenderPtr1->On();
+				if (true == IsUpdateHp) {
+						//HPRenderPtr->Off();
+						//HPRenderPtr1->Off();
+						//HPRenderPtr2->Off();
+						//float CurNum_T = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()) + 1.0f;
+						//if (CurNum_T >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
+						//	CurNum_T = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
+						//}
+						//float LevelUpHp = CurNum_T / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()-1;
+						//float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
+						//if (LevelUpHp < 0.56f && LevelUpHp>0.26f) {
+						//	HPRenderPtr1->On();
 
-							HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-							HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
-						}
-						else if (LevelUpHp > 0.0f && LevelUpHp <0.26f) {
-							HPRenderPtr2->On();
+						//	HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+						//	HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						//}
+						//else if (LevelUpHp > 0.0f && LevelUpHp <0.26f) {
+						//	HPRenderPtr2->On();
 
-							HPRenderPtr2->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-							HPRenderPtr2->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						//	HPRenderPtr2->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+						//	HPRenderPtr2->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
 
-						}
-						else {
-							HPRenderPtr->On();
+						//}
+						//else {
+						//	HPRenderPtr->On();
 
-							HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-							HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						//	HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+						//	HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
 
-						}
-						// 여기 마저 작업하기.
-												
-						IsUpdateHp = false;
+						//}
+						//// 여기 마저 작업하기.
+						//						
+						//IsUpdateHp = false;
 					}
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
