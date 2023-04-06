@@ -134,7 +134,7 @@ void BaseNPC::InteractionStart()
 		Fieldmap::SetWalkable(CityName, MoveStartIndex, true);
 		Fieldmap::SetWalkable(CityName, Fieldmap::GetIndex(MoveEndPos), false);
 
-		BgmPlayer::PlayBGMFade("BeforeBattle.mp3");
+		BgmPlayer::PlayBGM("BeforeBattle.mp3");
 	}
 	else if (ScriptDatas.size() != 0)
 	{

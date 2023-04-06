@@ -894,7 +894,7 @@ void FieldmapLevel::Loading()
 			{
 				Player* MainPlayer = Player::MainPlayer;
 				MainPlayer->PlayGymClearAnimation();
-				BgmPlayer::SoundPlayBgmPause("Badge_Obtained.wav");
+				BgmPlayer::SoundPlayBgmPauseFade("Badge_Obtained.wav");
 
 				_this->LevelEvent.AddEvent(3.0f, std::bind([CardOnEvent]()
 					{
