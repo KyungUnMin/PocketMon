@@ -161,13 +161,17 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
 			if (true == HpSoundCheck)
 			{
-					//	HpLowSound();
-						HpSoundCheck = false;
-					
+			//	HpLowSound();
+			//	IsBoolTest = true;
 			}
 		}
-	
+
 	}
+//	else if (false == BattleLevel::BattleLevelPtr->IsBattleSelectTurn()) {
+//  		if(true == IsBoolTest)
+//		B_HpLow.Stop();
+//		IsBoolTest = false;
+//	}
 
 
 	if (true == IsExpUP)
@@ -195,9 +199,12 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						}
 						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
 						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
-			
-						HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-						HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						//if (LevelUpHp < 0.66f && LevelUpHp>0.33f) {
+						//	HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+						//	HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						//}
+						//else if(LevelUpHp>0.0f) // 여기 마저 작업하기.
+												
 						HPRenderPtr->On();
 						HPRenderPtr1->On();
 						HPRenderPtr2->On();
