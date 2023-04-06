@@ -59,7 +59,7 @@ void BattleState_TalkBase::Update(float _DeltaTime)
 		return;
 
 	//더 전달할 텍스트가 없을땐 다음 State로 이동
-	if (TextEvents.size() == CurTextNum)
+	if (TextEvents.size() <= CurTextNum)
 	{
 		GetFSM()->ChangeState(NextState);
 		return;
@@ -89,6 +89,11 @@ void BattleState_TalkBase::ExitState()
 {
 	TextInfoUI->Death();
 	TextInfoUI = nullptr;
+
+	CurTextNum = 0;
+	Timer = -1.6f;
+	TextEvents.clear();
+	NextState = -1;
 }
 
 
