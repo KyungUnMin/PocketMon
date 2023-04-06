@@ -258,12 +258,6 @@ void PlayerBag::Update(float _DeltaTime)
 		break;
 	}
 
-	GetLevel()->DebugTextPush("1 : 아이템 생성");
-	GetLevel()->DebugTextPush("2 : 배틀상태로 변경");
-	if (true == IsBattle)
-	{
-		GetLevel()->DebugTextPush("배틀중");
-	}
 	// 아이템 조작
 	if (true == IsItemSelect)
 	{
