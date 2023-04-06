@@ -8,6 +8,7 @@
 #include "BattleLevel.h"
 #include "BattleFade.h"
 #include "InputControll.h"
+#include "BgmPlayer.h"
 
 FieldmapBattleZone::FieldmapBattleZone()
 {

@@ -66,8 +66,6 @@ private:
 
 	void UIImageLoad();
 
-	void CreateFlower(const std::string_view& _CityName, const int2& _Index);
-
 	template<typename DoorClass>
 	void CreateDoor(const std::string_view& _DoorName, const std::string_view& _CityName, const int2& _Index, LookDir _OutDir, const std::string_view& _EventName, int _Order = 0)
 	{

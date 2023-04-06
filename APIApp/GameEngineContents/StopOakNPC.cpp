@@ -4,6 +4,7 @@
 #include "Player.h"
 #include "Fieldmap.h"
 #include "FieldDialog.h"
+#include "BgmPlayer.h"
 
 StopOakNPC::StopOakNPC()
 {
@@ -43,6 +44,7 @@ void StopOakNPC::IdleUpdate(float _DeltaTime)
 
 	if (0 < MovePoints.size())
 	{
+		BgmPlayer::PlayBGMFade("MeetOak.mp3");
 		MoveStartPos = GetPos();
 		MoveStartIndex = Fieldmap::GetIndex(MoveStartPos);
 

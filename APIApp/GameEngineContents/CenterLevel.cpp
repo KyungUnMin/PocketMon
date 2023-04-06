@@ -501,12 +501,13 @@ void CenterLevel::Loading()
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Ending_Theme.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("RivalAppears.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BeforeBattle.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("MeetOak.mp3"));
 		
 		Dir.MoveParent();
 		Dir.Move("Effect");
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.mp3"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Badge_Obtained.mp3"));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Item_Obtained.mp3"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("GetFirstPokemon.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Badge_Obtained.wav"));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Item_Obtained.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("ExitBuilding.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("SlideDoorOpen.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("WoodDoorOpen.wav"));

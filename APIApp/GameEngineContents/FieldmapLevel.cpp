@@ -638,7 +638,7 @@ void FieldmapLevel::Loading()
 		{
 			LeafNPC* LeafNPCptr = CreateActor<LeafNPC>();
 			LeafNPCptr->InitNPC("Leaf", "Leaf.bmp", BattleNpcType::Leaf);
-			LeafNPCptr->AddNPC("Route2_Down", int2(11, 51));
+			LeafNPCptr->AddNPC("Route2_Down", int2(10, 45));
 			LeafNPCptr->SetBaseDir(LookDir::Right);
 			LeafNPCptr->Look(LookDir::Right);
 			LeafNPCptr->SetInteractionTrigger(BaseNPC::InteractionTriggerType::Look);
@@ -894,7 +894,7 @@ void FieldmapLevel::Loading()
 			{
 				Player* MainPlayer = Player::MainPlayer;
 				MainPlayer->PlayGymClearAnimation();
-				BgmPlayer::SoundPlayBgmPause("Badge_Obtained.mp3");
+				BgmPlayer::SoundPlayBgmPause("Badge_Obtained.wav");
 
 				_this->LevelEvent.AddEvent(3.0f, std::bind([CardOnEvent]()
 					{
@@ -1096,10 +1096,6 @@ void FieldmapLevel::UIImageLoad()
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterBallAnimation2.bmp"))->Cut(4,1);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("PokemonCenterTVAnimation.bmp"))->Cut(4,2);
 	GameEngineResources::GetInst().ImageLoad(Dir.GetPlusFileName("ColonsAnimation.bmp"))->Cut(2,1);
-}
-
-void FieldmapLevel::CreateFlower(const std::string_view& _CityName, const int2& _Index)
-{
 }
 
 void FieldmapLevel::CreateFieldmapCity(const std::string_view& _CityName, const std::string_view _UIName, const std::string_view& _ImageName, const float4& _Pos, const std::string_view& _BgmName)

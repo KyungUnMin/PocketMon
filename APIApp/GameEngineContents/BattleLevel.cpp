@@ -130,15 +130,15 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 	switch (_BattleType)
 	{
 	case BattleNpcType::Rival:
-		BgmPlayer::PlayBGM("Battle_Gym1.mp3");
+		BgmPlayer::PlayBGM("Battle_Npc.mp3");
 		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::Woong:
-		BgmPlayer::PlayBGM("Battle_Master.mp3");
+		BgmPlayer::PlayBGM("Battle_Gym2.mp3");
 		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::Leaf:
-		BgmPlayer::PlayBGM("Battle_Gym2.mp3");
+		BgmPlayer::PlayBGM("Battle_Master.mp3");
 		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::NPC2:

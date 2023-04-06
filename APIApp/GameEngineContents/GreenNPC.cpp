@@ -32,7 +32,7 @@ void GreenNPC::BattleStart()
 	InputHandle = InputControll::UseControll();
 	PokemonDatas.AddPokemon(PokeDataBase::PokeCreate(StartingPokeball::StaticRivalPokeball->GetPokeNumber(), 5));
 
-	BgmPlayer::PlayBGM("RivalAppears.mp3");
+	BgmPlayer::PlayBGMFade("RivalAppears.mp3");
 
 	FieldmapLevel::AddLevelStartFunc(std::bind([](GreenNPC* _this)
 		{
@@ -62,6 +62,8 @@ void GreenNPC::BattleStart()
 
 	int2 NpcIndex = Fieldmap::GetIndex(GetPos());
 	int2 PlayerIndex = Fieldmap::GetIndex(Player::MainPlayer->GetPos());
+
+	WaitTime = 1.0f;
 
 	NpcIndex.y += 1;
 	AddMovePoint(Fieldmap::GetPos(NpcIndex));

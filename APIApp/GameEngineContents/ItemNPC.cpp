@@ -46,7 +46,7 @@ void ItemNPC::InteractionStart()
 	Commnet += ".";
 
 	ScriptDatas[0].push_back(Commnet);
-	BgmPlayer::SoundPlayBgmPause("Item_Obtained.mp3");
+	BgmPlayer::SoundPlayBgmPause("Item_Obtained.wav");
 	StaticNPC::InteractionStart();
 }
 

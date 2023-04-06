@@ -194,6 +194,9 @@ void BgmPlayer::PauseOffFade()
 
 void BgmPlayer::SetVolume(float _Volumn)
 {
+	return;
+	//MainBGM.GetChannel()->getFadePoints();
+
 	VolumeValue = _Volumn;
 	MainBGM.Volume(VolumeValue);
 }
