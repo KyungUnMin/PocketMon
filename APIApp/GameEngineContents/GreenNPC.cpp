@@ -151,7 +151,7 @@ void GreenNPC::IdleUpdate(float _DeltaTime)
 			int2 NpcIndex = Fieldmap::GetIndex(GetPos());
 			int2 PokeballPos = StartingPokeball::StaticRivalMovelIndex;
 
-			WaitTime = 3.0f;
+			WaitTime = 2.5f;
 
 			for (size_t i = 0; i < 2; i++)
 			{
