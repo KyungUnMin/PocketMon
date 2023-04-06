@@ -30,6 +30,11 @@ void PokemonCenterNPC::IdleUpdate(float _DeltaTime)
 }
 void PokemonCenterNPC::Update(float _DeltaTime)
 {
+	if (Player::MainPlayer->GetDir() != LookDir::Up)
+	{
+		return;
+	}
+
 	std::vector<GameEngineCollision*> CheckCollisions;
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };
 	if (true == CenterNpc_C->Collision(CheckPlayer, CheckCollisions) &&

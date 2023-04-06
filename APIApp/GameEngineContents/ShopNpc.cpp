@@ -56,7 +56,10 @@ void ShopNpc::Start()
 
 void ShopNpc::Update(float _DeltaTime)
 {
-
+	if (Player::MainPlayer->GetDir() != LookDir::Left)
+	{
+		return;
+	}
 	
 	std::vector<GameEngineCollision*> CheckCollisions;
 	CollisionCheckParameter CheckPlayer = { .TargetGroup = static_cast<int>(CollisionOrder::Player), .TargetColType = CT_Rect, .ThisColType = CT_Rect };
