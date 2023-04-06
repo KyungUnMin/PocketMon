@@ -756,7 +756,13 @@ void FieldmapLevel::Loading()
 			StaticNPC* WoongPtr = CreateActor<StaticNPC>();
 			WoongPtr->InitNPC("Woong", "Ung.bmp", BattleNpcType::Woong);
 			WoongPtr->AddNPC("PewterCity_Gym", int2(6, 5));
-			WoongPtr->AddScript("You`re going down! My POK@MON\nwon`t hold anything back!");
+			WoongPtr->AddScript("So, you`re here. I`m WOONG\nI`m PEWTER`s GYM LEADER.");
+			WoongPtr->AddScript("My rock-hard willpower is evidenteven in my POK@MON.");
+			WoongPtr->AddScript("My POK@MON are all rock hard, andhave true-grit determination.");
+			WoongPtr->AddScript("That`s right-my POK@MON are all\n the ROCK type!");
+			WoongPtr->AddScript("Fuhaha! You`re going to challengeme knowing that you`ll lose?");
+			WoongPtr->AddScript("That`s the TRAINER`s honor that\ncompels you to challenge me.");
+			WoongPtr->AddScript("Fine, then!\nShow me your best!");
 			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngGeodude, 12));
 			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngGeodude, 13));
 			WoongPtr->AddPokeData(PokeDataBase::SpecialPokeCreate(SpecialPokeEnum::UngOnix, 18));
