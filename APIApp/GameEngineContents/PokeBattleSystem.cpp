@@ -28,7 +28,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkil
 	IsAttack = false;
 	ScriptValue = BattleScript::Nothing;
 
-	if (_AttackerSkillNumber > 4 || _AttackerSkillNumber <= 0)
+    if (_AttackerSkillNumber > 4 || _AttackerSkillNumber <= 0)
 	{
 		MsgAssert("스킬은 1, 2, 3, 4번만 사용할 수 있습니다.");
 		return ScriptValue;
@@ -83,7 +83,7 @@ BattleScript PokeBattleSystem::Battle(PokeDataBase& _Attacker, int _AttackerSkil
 			float step6 = step5 * Cal7;
 			float step7 = step6 * Cal8;
 
-			Damage = static_cast<int>(round(step7 / 60));
+			Damage = static_cast<int>(round(step7 / 50));
 
 			_Defender.MinusMonsterCurrentHP(Damage);
 
@@ -261,7 +261,7 @@ float PokeBattleSystem::SpecialAttackstatuscalculator(PokeDataBase& _Attacker)
 float PokeBattleSystem::NormalDeffencestatuscalculator(PokeDataBase& _Defender)
 {
 	// 스탯 × [[특성]] 보정 × [[도구]] 보정
-	float step1 = static_cast<float>(_Defender.GetMonsterSpecialDefense_float());
+	float step1 = static_cast<float>(_Defender.GetMonsterDefense_float());
 	float step2 = OtherPersonalitycalculation_ND(_Defender.GetMonsterPersonality());
 	float step3 = 1.0f;
 
@@ -689,6 +689,7 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase& _Attacker, int _At
 			break;
 		}
 	}
+	break;
 	case 12: // 전기
 	{
 		switch (othervalue)
@@ -714,7 +715,7 @@ float PokeBattleSystem::Compatibilitycorrection(PokeDataBase& _Attacker, int _At
 			break;
 		}
 	}
-	break;
+ 	break;
 	default:
 		correctionvalue = 1.f;
 	break;
