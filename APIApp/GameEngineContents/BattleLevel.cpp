@@ -20,7 +20,7 @@
 #include "Player.h"
 #include "BattleDefine.h"
 #include "BgmPlayer.h"
-
+#include "Battle_PlayerHpUIHandler.h"
 
 BattleLevel* BattleLevel::BattleLevelPtr = nullptr;
 const std::string_view  BattleLevel::BattleKeyName = "Battle_Z";
@@ -82,11 +82,11 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	PlayerMonsters->AddSpecialPokemon(SpecialPokeEnum::StartingBulbasaur, 10);
 
 
-	//Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
 	//Init({ PokeDataBase::PokeCreate(PokeNumber::Pikachu)}, GroundType::Beige, BattleNpcType::Leaf);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::NPC2);
-	Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -217,7 +217,7 @@ void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 
 
 
-void BattleLevel::PassPlayerTurn()
+void BattleLevel::UsePortionItem()
 {
 	BattleStateType NowFsmType = BattleFsmPtr->GetNowState<BattleStateType>();
 
@@ -227,6 +227,8 @@ void BattleLevel::PassPlayerTurn()
 		return;
 	}
 
+	BattleMonsterPlayer* PlayerMonster = BattlePlayer::PlayerPtr->GetMonster();
+	PlayerMonster->GetHpUI()->ReCreateUI();
 	BattleFsmPtr->ChangeState(BattleStateType::UseItem);
 }
 

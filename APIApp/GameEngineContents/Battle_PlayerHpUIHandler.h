@@ -18,6 +18,8 @@ public:
 
 	void SetPrevExp(int _Exp) override;
 
+	void ReCreateUI() override;
+
 protected:
 	void Start() override;
 

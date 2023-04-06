@@ -50,3 +50,19 @@ void Battle_PlayerHpUIHandler::SetPrevExp(int _Exp)
 {
 	UI->GetCurExp(_Exp);
 }
+
+void Battle_PlayerHpUIHandler::ReCreateUI()
+{
+	float4 Pos = float4::Zero;
+	
+	if (nullptr != UI)
+	{
+		Pos = UI->GetPos();
+		UI->Death();
+		UI = nullptr;
+	}
+
+	UI = GetLevel()->CreateActor<FriendlyHPBackground>(UpdateOrder::Battle_Actors);
+	UI->SetPos(Pos);
+	SetUI(UI);
+}

@@ -60,7 +60,7 @@ public:
 
 	bool IsBattleSelectTurn();
 
-	void PassPlayerTurn();
+	void UsePortionItem();
 
 	void UseMonsterBall(ItemCode _MonsterBallType);
 

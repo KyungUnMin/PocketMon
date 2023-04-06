@@ -23,6 +23,8 @@ public:
 
 	virtual void SetPrevExp(int _Exp);
 
+	virtual void ReCreateUI() {}
+
 protected:
 	inline void SetOwner(BattleMonsterBase* _Owner)
 	{
