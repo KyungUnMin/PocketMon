@@ -38,6 +38,10 @@ void BattleState_BattleWin::EnterState()
 	{
 		TextInfo->BattleSetText("Defeated the wild Pok@mon");
 	}
+	else if (Level->IsBossBattle())
+	{
+		TextInfo->BattleSetText("I got a gray emblem!");
+	}
 	else if (BattleNpcType::Rival == Level->GetNpcType())
 	{
 		TextInfo->BattleSetText(Texts[2]);
