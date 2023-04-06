@@ -197,21 +197,34 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 						HPRenderPtr->Off();
 						HPRenderPtr1->Off();
 						HPRenderPtr2->Off();
-						Num += 5;
+						Num += 1;
 						if (Num >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
 							Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
 						}
 						float LevelUpHp = Num / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
 						float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
-						//if (LevelUpHp < 0.66f && LevelUpHp>0.33f) {
-						//	HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-						//	HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
-						//}
-						//else if(LevelUpHp>0.0f) // 여기 마저 작업하기.
+						if (LevelUpHp < 0.66f && LevelUpHp>0.33f) {
+							HPRenderPtr1->On();
+
+							HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+							HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+						}
+						else if (LevelUpHp > 0.0f && LevelUpHp <0.3f) {
+							HPRenderPtr2->On();
+
+							HPRenderPtr2->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+							HPRenderPtr2->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+
+						}
+						else {
+							HPRenderPtr->On();
+
+							HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
+							HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
+
+						}
+						// 여기 마저 작업하기.
 												
-						HPRenderPtr->On();
-						HPRenderPtr1->On();
-						HPRenderPtr2->On();
 						IsUpdateHp = false;
 					}
 				}
