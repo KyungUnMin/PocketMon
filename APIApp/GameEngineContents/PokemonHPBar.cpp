@@ -21,6 +21,19 @@ void PokemonHPBar::SetValue(float _Value)
 
 	BarRender->SetScale(Scale);
 	BarRender->SetPosition(Pos);
+
+	if (0.5f < CurrentValue)
+	{
+		BarRender->SetImage("FriendlyHPBar.bmp");
+	}
+	else if (0.33f < CurrentValue)
+	{
+		BarRender->SetImage("FriendlyHP50Bar.bmp");
+	}
+	else
+	{
+		BarRender->SetImage("FriendlyHP30Bar.bmp");
+	}
 }
 
 void PokemonHPBar::SetTargetValue(float _Value)
