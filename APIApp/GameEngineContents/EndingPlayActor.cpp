@@ -80,7 +80,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Game Design", "Um Taegun");
+			_This->SetText("Game Director", "Um Taegun");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -103,7 +103,7 @@ void EndingPlayActor::PlayEnding()
 		{
 			_This->SetFakeTextAlpha(255);
 			_This->SetFakeTextAlphaDiff(-510.0f);
-			_This->SetText("Consultation", "Cho Haegeun");
+			_This->SetText("Sound Design", "Kim Kyeongsik\nKim Kyunghak");
 			_This->MainTextActor->On();
 			_This->MainFakeTextActor->On();
 			_This->SubTextActor->On();
@@ -362,7 +362,7 @@ void EndingPlayActor::PlayEnding()
 			EndingLevel::SetPokemonImageName("EndingPokemon004.bmp");
 			EndingLevel::SetPokeballColor(EndingPokeballBackground::PokeColor::Yellow);
 
-			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Tanks For Watching", " "));
+			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::SetText, _This, "Thank you for playing.", " "));
 			EndingLevel::AddEndEvent(std::bind(&EndingPlayActor::AddCameraMoveEvent, _This, "PalletTown", int2(19, 7), float4::Left));
 
 			GameEngineCore::GetInst()->ChangeLevel("EndingLevel");
