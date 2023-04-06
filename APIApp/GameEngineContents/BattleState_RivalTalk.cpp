@@ -16,7 +16,7 @@ BattleState_RivalTalk::BattleState_RivalTalk()
 
 BattleState_RivalTalk::~BattleState_RivalTalk()
 {
-	이 텍스트들 부모에서 상속시켜서 처리하자
+	//이 텍스트들 부모에서 상속시켜서 처리하자
 }
 
 void BattleState_RivalTalk::EnterState()
