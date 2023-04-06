@@ -48,6 +48,11 @@ public:
 		MonsterDatas = _Monsters;
 	}
 
+	inline PokeDataBase GetFrontMonster() const
+	{
+		return MonsterDatas.front();
+	}
+
 	bool IsValidNextMonster();
 
 	void ComeBack();

@@ -23,7 +23,7 @@ protected:
 	void EnterState() override;
 	void ExitState() override;
 
-	void CreateUIText(const std::vector<std::string_view>& _Texts);
+	void CreateUIText(const std::vector<std::string>& _Texts);
 	void SetTextEvent(size_t _Index, std::function<void()> _Event);
 
 	template <typename StateType>

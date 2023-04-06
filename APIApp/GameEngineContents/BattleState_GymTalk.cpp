@@ -2,7 +2,7 @@
 #include "BattleEnemy.h"
 #include "BattlePlayer.h"
 
-const std::vector<std::string_view> BattleState_GymTalk::Texts =
+const std::vector<std::string> BattleState_GymTalk::Texts =
 {
 	"He come up with a fight",
 	"He is trying to\nget the Pokemon out",

@@ -7,11 +7,14 @@
 #include "ContentsEnum.h"
 #include "BattleFSM.h"
 #include "BattlePlayerFSM.h"
+#include "BattleEnemy.h"
+#include "BattleMonsterEnemy.h"
+#include "Player.h"
 
-const std::vector<std::string_view> BattleState_WildTalk::Texts =
+std::vector<std::string> BattleState_WildTalk::Texts =
 {
-	"Wild appeared!",
-	"Lets Go!"
+	"",
+	""
 };
 
 BattleState_WildTalk::BattleState_WildTalk()
@@ -27,6 +30,20 @@ BattleState_WildTalk::~BattleState_WildTalk()
 void BattleState_WildTalk::EnterState()
 {
 	BattleState_TalkBase::EnterState();
+
+	BattleMonsterEnemy* WildMonster = BattleEnemy::EnemyPtr->GetMonster();
+
+	if (nullptr == WildMonster)
+	{
+		MsgAssert("아직 야생 몬스터 생성 전입니다");
+		return;
+	}
+
+	TrainerPokemon* PlayerMonsters = Player::MainPlayer->GetPlayerPokemon();
+	PlayerMonsters->NextPokemon()->ForUI_GetMonsterName();
+
+	Texts[0] = "Wild " + WildMonster->GetName() + " Appear!";
+	Texts[1] = "Go! " + WildMonster->GetName();
 
 	//UI에 들어갈 텍스트 등록
 	CreateUIText(Texts);

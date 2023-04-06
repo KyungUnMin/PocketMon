@@ -4,7 +4,7 @@
 class BattleState_RivalTalk : public BattleState_TalkBase
 {
 public:
-	static const std::vector<std::string_view> Texts;
+	static std::vector<std::string> Texts;
 
 	BattleState_RivalTalk();
 	~BattleState_RivalTalk() override;

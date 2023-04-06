@@ -16,6 +16,6 @@ protected:
 	void EnterState() override;
 
 private:
-	static const std::vector<std::string_view> Texts;
+	static const std::vector<std::string> Texts;
 };
 

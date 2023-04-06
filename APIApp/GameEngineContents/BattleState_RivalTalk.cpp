@@ -2,11 +2,11 @@
 #include "BattlePlayer.h"
 #include "BattleEnemy.h"
 
-const std::vector<std::string_view> BattleState_RivalTalk::Texts =
+std::vector<std::string> BattleState_RivalTalk::Texts =
 {
-	"Green walks into battle",
-	"He is trying to\nget the Pokemon out",
-	"Lets Go!"
+	"GREEN\nwould like to battle!",
+	"GREEN sent\nout ",
+	"Go! "
 };
 
 BattleState_RivalTalk::BattleState_RivalTalk()
@@ -16,12 +16,14 @@ BattleState_RivalTalk::BattleState_RivalTalk()
 
 BattleState_RivalTalk::~BattleState_RivalTalk()
 {
-
+	이 텍스트들 부모에서 상속시켜서 처리하자
 }
 
 void BattleState_RivalTalk::EnterState()
 {
 	BattleState_TalkBase::EnterState();
+
+	Texts[1] += BattleEnemy::EnemyPtr->GetFrontMonster().ForUI_GetMonsterName();
 
 	CreateUIText(Texts);
 

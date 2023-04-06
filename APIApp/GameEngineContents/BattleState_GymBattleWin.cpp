@@ -2,7 +2,7 @@
 #include "BattleFSM.h"
 #include "BattleEnemy.h"
 
-const std::vector<std::string_view> BattleState_GymBattleWin::Texts =
+const std::vector<std::string> BattleState_GymBattleWin::Texts =
 {
 	"Woong\nCongratulation! This is yours!",
 	"I got a gray emblem!",

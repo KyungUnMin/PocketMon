@@ -27,7 +27,7 @@ void BattleState_TalkBase::EnterState()
 
 
 
-void BattleState_TalkBase::CreateUIText(const std::vector<std::string_view>& _Texts)
+void BattleState_TalkBase::CreateUIText(const std::vector<std::string>& _Texts)
 {
 	TextEvents.resize(_Texts.size());
 	for (size_t i = 0; i < TextEvents.size(); ++i)
