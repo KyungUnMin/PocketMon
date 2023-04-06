@@ -1,4 +1,5 @@
 #include "BattleState_BattleWin.h"
+#include <GameEngineBase/GameEngineRandom.h>
 #include "BackTextActor.h"
 #include "BattleLevel.h"
 #include "BattleFadeCtrl.h"
@@ -9,6 +10,13 @@
 #include "Battle_PlayerHpUIHandler.h"
 #include "BattleEnemy.h"
 #include "BattlePlayer.h"
+
+std::vector<std::string_view> BattleState_BattleWin::Texts =
+{
+	"What?",
+	"Unbelievable!",
+	"I picked the wrong POK@MON!"
+};
 
 BattleState_BattleWin::BattleState_BattleWin()
 {
@@ -22,13 +30,24 @@ BattleState_BattleWin::~BattleState_BattleWin()
 
 void BattleState_BattleWin::EnterState()
 {
-	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfo->BattleSetText("We Win");
-
-	//LevelUpStatUI_2* ResultUI = BattleLevel::BattleLevelPtr->CreateActor<LevelUpStatUI_2>(UpdateOrder::Battle_Actors);
-	//ResultUI->SetPos(float4{ 450.f, 70.f });
-
-
+	BattleLevel* Level = BattleLevel::BattleLevelPtr;
+	
+	TextInfo = Level->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
+	
+	if (true == Level->IsWildBattle())
+	{
+		TextInfo->BattleSetText("Defeated the wild Pok@mon");
+	}
+	else if (BattleNpcType::Rival == Level->GetNpcType())
+	{
+		TextInfo->BattleSetText(Texts[2]);
+	}
+	else
+	{
+		int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(Texts.size() - 1));
+		TextInfo->BattleSetText(Texts[RandValue]);
+	}
+	
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
 	HpUI->ExpCheck();
 

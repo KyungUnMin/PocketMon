@@ -32,6 +32,8 @@ protected:
 		NextState = static_cast<int>(_NextState);
 	}
 
+	std::vector<std::string> InitNPCTexts(const std::string_view& _NpcName);
+
 private:
 	BackTextActor* TextInfoUI = nullptr;
 

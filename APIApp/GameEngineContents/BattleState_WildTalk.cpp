@@ -40,10 +40,10 @@ void BattleState_WildTalk::EnterState()
 	}
 
 	TrainerPokemon* PlayerMonsters = Player::MainPlayer->GetPlayerPokemon();
-	PlayerMonsters->NextPokemon()->ForUI_GetMonsterName();
+	std::string PlayerMonName = PlayerMonsters->NextPokemon()->ForUI_GetMonsterName();
 
 	Texts[0] = "Wild " + WildMonster->GetName() + " Appear!";
-	Texts[1] = "Go! " + WildMonster->GetName();
+	Texts[1] = "Go! " + PlayerMonName;
 
 	//UI에 들어갈 텍스트 등록
 	CreateUIText(Texts);

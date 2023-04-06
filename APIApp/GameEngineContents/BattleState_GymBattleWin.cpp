@@ -1,6 +1,7 @@
 #include "BattleState_GymBattleWin.h"
 #include "BattleFSM.h"
 #include "BattleEnemy.h"
+#include "Player.h"
 
 const std::vector<std::string> BattleState_GymBattleWin::Texts =
 {
@@ -25,4 +26,5 @@ void BattleState_GymBattleWin::EnterState()
 
 	CreateUIText(Texts);
 	BattleEnemy::EnemyPtr->ComeBack();
+	Player::MainPlayer->GymClear = true;
 }

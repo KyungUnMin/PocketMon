@@ -1,5 +1,7 @@
 #pragma once
 #include "BattleStateBase.h"
+#include <vector>
+#include <string_view>
 
 class BackTextActor;
 
@@ -29,5 +31,7 @@ private:
 
 	BackTextActor* TextInfo = nullptr;
 	bool IsLevelChanged = false;
+
+	static std::vector<std::string_view> Texts;
 };
 

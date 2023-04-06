@@ -23,6 +23,8 @@ private:
 	BackTextActor* TextInfo = nullptr;
 	bool IsLevelChanged = false;
 	float Timer = 0.f;
-	float Duration = 0.5f;
+	float Duration = 1.0f;
+
+	void MakeText();
 };
 

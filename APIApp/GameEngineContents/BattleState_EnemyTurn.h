@@ -8,6 +8,7 @@
 class BackTextActor;
 enum class BattleEnemyMonster_StateType;
 enum class PokeSkill;
+class BattleMonsterEnemy;
 
 class BattleState_EnemyTurn : public BattleStateBase
 {
@@ -44,6 +45,6 @@ private:
 	int SelectedSkill = -1;
 
 	BattleEnemyMonster_StateType ConvertSkill(PokeSkill _SkillType);
-	const std::string  MakeEnemyText(PokeSkill _SkillType);
+	const std::string  MakeEnemyText(BattleMonsterEnemy* _EnemyMonster, PokeSkill _SkillType);
 };
 

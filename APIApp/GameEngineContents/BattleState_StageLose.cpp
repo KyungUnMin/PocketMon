@@ -36,7 +36,7 @@ void BattleState_StageLose::EnterState()
 	}
 	else
 	{
-		TextInfo->BattleSetText("My Eyes\nis going to Dark");
+		TextInfo->BattleSetText("There`s no Pokemon\nto fight with_");
 	}
 }
 

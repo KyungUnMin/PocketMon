@@ -34,10 +34,10 @@ BattleState_PlayerTurn::~BattleState_PlayerTurn()
 
 void BattleState_PlayerTurn::EnterState()
 {
-	const std::string_view PlayerTurnText = "What should I Do";
+	std::string TextValue = "What will\n" + BattlePlayer::PlayerPtr->GetMonster()->GetName() + " do?";
 
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfo->BattleSetText(PlayerTurnText);
+	TextInfo->BattleSetText(TextValue);
 
 	BattleCommand = BattleLevel::BattleLevelPtr->CreateActor<BattleCommendActor>(UpdateOrder::Battle_Actors);
 	BattleCommand->Off();

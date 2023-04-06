@@ -32,10 +32,6 @@ void BattleState_EnemyTurn::EnterState()
 	int MaxCount = EnemyDB->GetMonsterSkillCount();
 	SelectedSkill = GameEngineRandom::MainRandom.RandomInt(1, MaxCount);
 
-	int DebugLevel = EnemyDB->GetMonsterLevel_int();
-	std::string DebugName = EnemyDB->ForUI_GetMonsterName();
-
-
 	PokeSkillBase& SkillDB = EnemyDB->GetMonsterSkillList(SelectedSkill);
 
 	UseSkill = SkillDB.GetSkill();
@@ -45,7 +41,7 @@ void BattleState_EnemyTurn::EnterState()
 		return;
 	}
 
-	TextInfoUI->BattleSetText(MakeEnemyText(UseSkill));
+	TextInfoUI->BattleSetText(MakeEnemyText(EnemyMonster, UseSkill));
 	
 	//실제 게임용입니다.
 	EnemyMonster->GetFSM()->ChangeState(ConvertSkill(UseSkill));
@@ -54,16 +50,18 @@ void BattleState_EnemyTurn::EnterState()
 	//EnemyMonster->GetFSM()->ChangeState(BattleEnemyMonster_StateType::Skill_WaterGun);
 }
 
-const std::string BattleState_EnemyTurn::MakeEnemyText(PokeSkill _SkillType)
+const std::string BattleState_EnemyTurn::MakeEnemyText(BattleMonsterEnemy* _EnemyMonster, PokeSkill _SkillType)
 {
 	std::string ReturnStr = "";
+
+
 	if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
 	{
-		ReturnStr = "The wild Pokemon\nused ";
+		ReturnStr = "Foe Wild " + _EnemyMonster->GetName() + " used\n";
 	}
 	else
 	{
-		ReturnStr = "The Enemy Pokemon\nused ";
+		ReturnStr = "Foe " + _EnemyMonster->GetName() + " used\n";
 	}
 
 	ReturnStr += ConvertSkillNames[static_cast<size_t>(_SkillType)].data();

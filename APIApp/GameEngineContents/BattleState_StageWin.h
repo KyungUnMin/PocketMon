@@ -1,5 +1,6 @@
 #pragma once
 #include "BattleStateBase.h"
+#include <string>
 
 class BackTextActor;
 
@@ -23,6 +24,8 @@ private:
 	BackTextActor* TextInfo = nullptr;
 
 	float Timer = 0.f;
-	const float Duration = 1.f;
+	const float Duration = 2.f;
+
+	std::string MakeText();
 };
 

@@ -18,11 +18,29 @@ BattleState_StageWin::~BattleState_StageWin()
 void BattleState_StageWin::EnterState()
 {
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
-	TextInfo->BattleSetText("We Kill That");
+	TextInfo->BattleSetText(MakeText());
 
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
 	EnemyMonster->KillMonster();
 }
+
+std::string BattleState_StageWin::MakeText()
+{
+	std::string ReturnStr = "Foe ";
+
+	if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
+	{
+		ReturnStr += "wild ";
+	}
+
+	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
+	ReturnStr += EnemyMonster->GetName();
+
+	ReturnStr += "\nfainted!";
+
+	return ReturnStr;
+}
+
 
 void BattleState_StageWin::Update(float _DeltaTime)
 {
@@ -56,3 +74,4 @@ void BattleState_StageWin::ExitState()
 
 	//BattleEnemy::EnemyPtr->CreateMonster();
 }
+

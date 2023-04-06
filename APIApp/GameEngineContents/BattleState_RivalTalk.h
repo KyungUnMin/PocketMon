@@ -4,8 +4,6 @@
 class BattleState_RivalTalk : public BattleState_TalkBase
 {
 public:
-	static std::vector<std::string> Texts;
-
 	BattleState_RivalTalk();
 	~BattleState_RivalTalk() override;
 

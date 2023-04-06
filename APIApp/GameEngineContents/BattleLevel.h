@@ -91,6 +91,12 @@ public:
 		return WorldBgmVolumn;
 	}
 
+	inline BattleNpcType GetNpcType() const
+	{
+		return BattleType;
+	}
+
+
 protected:
 	void Loading() override;
 	void Update(float _DeltaTime) override;

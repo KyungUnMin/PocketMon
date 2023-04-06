@@ -19,7 +19,7 @@ protected:
 
 private:
 	class BackTextActor* TextInfo = nullptr;
-	const float Duration = 1.f;
+	const float Duration = 2.f;
 	float Timer = 0.f;
 	bool IsAliveMonster = false;
 };

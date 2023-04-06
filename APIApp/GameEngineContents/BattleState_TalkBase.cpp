@@ -1,5 +1,6 @@
 #include "BattleState_TalkBase.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include "BattleLevel.h"
 #include "EnemyHPBackground.h"
@@ -8,6 +9,9 @@
 #include "BattleFSM.h"
 #include "BattlePlayer.h"
 #include "BattlePlayerFSM.h"
+
+#include "Player.h"
+#include "BattleEnemy.h"
 
 BattleState_TalkBase::BattleState_TalkBase()
 {
@@ -103,5 +107,21 @@ void BattleState_TalkBase::SetTextEvent(size_t _Index, std::function<void()> _Ev
 	}
 
 	TextEvents[_Index].second = _Event;
+}
+
+std::vector<std::string> BattleState_TalkBase::InitNPCTexts(const std::string_view& _NpcName)
+{
+	const PokeDataBase& EnemyMonster = BattleEnemy::EnemyPtr->GetFrontMonster();
+	TrainerPokemon* PlayerMonsters = Player::MainPlayer->GetPlayerPokemon();
+	PokeDataBase* PlayerFirstMon = PlayerMonsters->NextPokemon();
+
+	std::vector<std::string> ReturnText(3, "");
+	std::string NpcName = GameEngineString::ToUpper(_NpcName);
+
+	ReturnText[0] = NpcName + "\nwould like to battle!";
+	ReturnText[1] = NpcName + " sent\nout " + EnemyMonster.ForUI_GetMonsterName();
+	ReturnText[2] = "Go! " + PlayerFirstMon->ForUI_GetMonsterName();
+
+	return ReturnText;
 }
 

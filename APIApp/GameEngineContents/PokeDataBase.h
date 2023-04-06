@@ -241,7 +241,7 @@ public:
 	}
 
 	// 포켓몬 이름 가져오기
-	std::string ForUI_GetMonsterName()
+	std::string ForUI_GetMonsterName() const
 	{
 		return Name;
 	}
