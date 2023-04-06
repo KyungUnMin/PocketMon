@@ -550,7 +550,10 @@ void CenterLevel::Loading()
 		Dir.MoveParentToDirectory("SFX");
 		Dir.Move("SFX");
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_Tackle));
-		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallPop));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallInput));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallSwing));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallMoveVertical));
+		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName(BattleDefine::SfxName_BallMoveHorizon));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("Scratch.mp3"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("BuffSound.wav"));
 		GameEngineResources::GetInst().SoundLoad(Dir.GetPlusFileName("DebuffSound.wav"));

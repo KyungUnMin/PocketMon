@@ -10,6 +10,8 @@
 #include "Battle_PlayerHpUIHandler.h"
 #include "BattleEnemy.h"
 #include "BattlePlayer.h"
+#include "BgmPlayer.h"
+#include "BattleDefine.h"
 
 std::vector<std::string_view> BattleState_BattleWin::Texts =
 {
@@ -34,22 +36,28 @@ void BattleState_BattleWin::EnterState()
 	
 	TextInfo = Level->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	
+
+
 	if (true == Level->IsWildBattle())
 	{
 		TextInfo->BattleSetText("Defeated the wild Pok@mon");
+		BgmPlayer::PlayBGM(BattleDefine::BgmName_VictoryNormal);
 	}
 	else if (Level->IsBossBattle())
 	{
 		TextInfo->BattleSetText("I got a gray emblem!");
+		BgmPlayer::PlayBGM(BattleDefine::BgmName_VictoryGym);
 	}
 	else if (BattleNpcType::Rival == Level->GetNpcType())
 	{
 		TextInfo->BattleSetText(Texts[2]);
+		BgmPlayer::PlayBGM(BattleDefine::BgmName_VictoryNormal);
 	}
 	else
 	{
 		int RandValue = GameEngineRandom::MainRandom.RandomInt(0, static_cast<int>(Texts.size() - 1));
 		TextInfo->BattleSetText(Texts[RandValue]);
+		BgmPlayer::PlayBGM(BattleDefine::BgmName_VictoryNormal);
 	}
 	
 	Battle_HpUIHandlerBase* HpUI = BattlePlayer::PlayerPtr->GetMonster()->GetHpUI();
@@ -97,8 +105,15 @@ void BattleState_BattleWin::Update(float _DeltaTime)
 	if (true == IsLevelChanged)
 		return;
 
+	if (true == BattleLevel::BattleLevelPtr->IsBossBattle())
+	{
+		BattleLevel::BattleLevelPtr->ChangeFieldLevel(true, false, 3.f);
+	}
+	else
+	{
+		BattleLevel::BattleLevelPtr->ChangeFieldLevel(true);
+	}
 	
-	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true);
 	IsLevelChanged = true;
 }
 

@@ -1,5 +1,7 @@
 #include "BattleState_MonsterDead.h"
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include "BattleDefine.h"
 #include "BattleFSMBase.h"
 #include "BattleMonsterBase.h"
 
@@ -18,6 +20,8 @@ void BattleState_MonsterDead::EnterState()
 	GameEngineActor* OwnerActor = GetFSM()->GetOwner();
 	BattleMonsterBase* OwnerMonster = dynamic_cast<BattleMonsterBase*>(OwnerActor);
 	MonsterRender = OwnerMonster->GetRender();
+
+	GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_MonsterKill);
 }
 
 void BattleState_MonsterDead::Update(float _DeltaTime)

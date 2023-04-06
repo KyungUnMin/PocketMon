@@ -1,10 +1,12 @@
 #include "BattleMonsterBall_UnlockState.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterBallFSM.h"
 #include "BattleMonsterBall.h"
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleLevel.h"
+#include "BattleDefine.h"
 
 float4 BattleMonsterBall_UnlockState::MonsterBallPos = float4::Zero;
 
@@ -28,6 +30,7 @@ void BattleMonsterBall_UnlockState::EnterState()
 	BattleMonsterEnemy* EnemyMonster = BattleEnemy::EnemyPtr->GetMonster();
 	EnemyMonster->UnLock();
 
+	GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallInput);
 	BattleLevel::BattleLevelPtr->UnlockWildPocketMon();
 }
 

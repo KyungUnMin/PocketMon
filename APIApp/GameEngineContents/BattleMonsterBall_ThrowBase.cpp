@@ -1,8 +1,10 @@
 #include "BattleMonsterBall_ThrowBase.h"
 #include <GameEngineBase/GameEngineDebug.h>
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterBallFSM.h"
 #include "BattleMonsterBall.h"
+#include "BattleDefine.h"
 //#include "BattleEnemy.h"
 
 BattleMonsterBall_ThrowBase::BattleMonsterBall_ThrowBase()
@@ -22,6 +24,7 @@ void BattleMonsterBall_ThrowBase::EnterState()
 	GameEngineRender* BallRender = MonsterBall->GetRender();
 	BallRender->ChangeAnimation(BattleMonsterBall::ThrowAniName);
 
+	GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallSwing);
 	LiveTime = 0.f;
 	NowGravity = StartGravity;
 }

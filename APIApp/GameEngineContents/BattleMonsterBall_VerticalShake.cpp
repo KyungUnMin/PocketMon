@@ -1,7 +1,9 @@
 #include "BattleMonsterBall_VerticalShake.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterBallFSM.h"
 #include "BattleMonsterBall.h"
+#include "BattleDefine.h"
 
 BattleMonsterBall_VerticalShake::BattleMonsterBall_VerticalShake()
 {
@@ -32,6 +34,7 @@ void BattleMonsterBall_VerticalShake::Update(float _DeltaTime)
 		++MoveCnt;
 		Range *= NextPer;
 		TopPos = BotPos + float4::Up * Range;
+		GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallMoveVertical);
 	}
 
 	if (5 <= MoveCnt)

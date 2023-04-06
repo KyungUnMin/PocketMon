@@ -1,9 +1,11 @@
 #include "BattleMonsterBall_HorizonShake.h"
 #include <GameEngineBase/GameEngineRandom.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "BattleMonsterBall.h"
 #include "BattleMonsterBallFSM.h"
 #include "BattleEnemy.h"
+#include "BattleDefine.h"
 
 BattleMonsterBall_HorizonShake::BattleMonsterBall_HorizonShake()
 {
@@ -48,34 +50,6 @@ void BattleMonsterBall_HorizonShake::SelectNextState()
 		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
 	}
 
-	//int RandValue = GameEngineRandom::MainRandom.RandomInt(1, 10);
-	////HP가 20 이상일때
-	//if (20 < EnemyMonHP)
-	//{
-	//	//NegativePer의 확률로 몬스터를 잡는다
-	//	if (RandValue <= NegativePer)
-	//	{
-	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
-	//	}
-	//	else
-	//	{
-	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Unlock);
-	//	}
-	//}
-
-	////HP가 20이하일때
-	//else
-	//{
-	//	//PositivePer의 확률로 몬스터를 잡는다
-	//	if (RandValue <= PositivePer)
-	//	{
-	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Catch);
-	//	}
-	//	else
-	//	{
-	//		NextState = static_cast<size_t>(BattleMonsterBall_Movement::Unlock);
-	//	}
-	//}
 }
 
 
@@ -91,17 +65,29 @@ void BattleMonsterBall_HorizonShake::Update(float _DeltaTime)
 		return;
 	}
 
+	static bool IsSfxOn = false;
 	int NowFrame = BallRender->GetFrame();
 	switch (NowFrame)
 	{
 	case 0:
 		BallRender->SetPosition(float4::Left * Range);
+		if (false == IsSfxOn)
+		{
+			IsSfxOn = false;
+			GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallMoveHorizon);
+		}
 		break;
 	case 1:
 		BallRender->SetPosition(float4::Zero);
+		IsSfxOn = false;
 		break;
 	case 2:
 		BallRender->SetPosition(float4::Right * Range);
+		if (false == IsSfxOn)
+		{
+			IsSfxOn = false;
+			GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallMoveHorizon);
+		}
 		break;
 	default:
 		MsgAssert("예상하지 못한 프레임입니다");

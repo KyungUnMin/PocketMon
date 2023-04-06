@@ -1,5 +1,6 @@
 #include "BattleMonsterBall_OpenState.h"
 #include <GameEngineCore/GameEngineRender.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleMonsterBallFSM.h"
 #include "BattleMonsterBall.h"
 #include "BattleEnemy.h"
@@ -7,6 +8,7 @@
 #include "Battle_PlayerBallParticle.h"
 #include "BattleLevel.h"
 #include "ContentsEnum.h"
+#include "BattleDefine.h"
 
 BattleMonsterBall_OpenState::BattleMonsterBall_OpenState()
 {
@@ -30,6 +32,7 @@ void BattleMonsterBall_OpenState::EnterState()
 
 	Battle_PlayerBallParticle* Particle = BattleLevel::BattleLevelPtr->CreateActor<Battle_PlayerBallParticle>(UpdateOrder::Battle_Actors);
 	Particle->SetPos(MonsterBall->GetPos());
+	GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_BallInput);
 }
 
 void BattleMonsterBall_OpenState::Update(float _DeltaTime)

@@ -82,11 +82,11 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	PlayerMonsters->AddSpecialPokemon(SpecialPokeEnum::StartingBulbasaur, 10);
 
 
-	//Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
+	Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
 	//Init({ PokeDataBase::PokeCreate(PokeNumber::Pikachu)}, GroundType::Beige, BattleNpcType::Leaf);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::NPC2);
-	Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -260,6 +260,7 @@ void BattleLevel::LockWildPocketMon()
 		return;
 	}
 
+	BgmPlayer::PlayBGM(BattleDefine::BgmName_VictoryNormal);
 	BattleFsmPtr->ChangeState(BattleStateType::CatchWildMonster);
 }
 

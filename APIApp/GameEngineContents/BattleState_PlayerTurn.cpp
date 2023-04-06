@@ -1,6 +1,7 @@
 #include "BattleState_PlayerTurn.h"
 #include <string_view>
 #include <GameEnginePlatform/GameEngineInput.h>
+#include <GameEngineCore/GameEngineResources.h>
 #include "BattleLevel.h"
 #include "BackTextActor.h"
 #include "Battle_Select.h"
@@ -18,6 +19,7 @@
 #include "BattleEnemy.h"
 #include "BattleMonsterEnemy.h"
 #include "BattleDebug.h"
+#include "BattleDefine.h"
 
 BattleScript BattleState_PlayerTurn::BattleResultType = BattleScript::Nothing;
 PokeSkill BattleState_PlayerTurn::UseSkill = PokeSkill::Unknown;
@@ -99,6 +101,7 @@ void BattleState_PlayerTurn::SelectRunAway()
 	WasRun = true;
 	TextInfo = BattleLevel::BattleLevelPtr->CreateActor<BackTextActor>(UpdateOrder::Battle_Actors);
 	TextInfo->BattleSetText("Succeed\nin escaping");
+	GameEngineResources::GetInst().SoundPlay(BattleDefine::SfxName_Runaway);
 	BattleLevel::BattleLevelPtr->ChangeFieldLevel(true, true, 3.f);
 }
 
