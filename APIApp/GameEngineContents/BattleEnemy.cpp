@@ -8,6 +8,7 @@
 #include "BattleMonsterEnemy.h"
 #include "BattleEnemyFSM.h"
 #include "PokeDataBase.h"
+#include "BattleEnemyMonsterFSM.h"
 
 BattleEnemy* BattleEnemy::EnemyPtr = nullptr;
 
@@ -157,6 +158,18 @@ bool BattleEnemy::IsValidNextMonster()
 void BattleEnemy::ComeBack()
 {
 	FsmPtr->ChangeState(BattleEnemy_StateType::ComeBack);
+
+	if (nullptr == Monster)
+		return;
+
+	if (true == Monster->IsDeath())
+		return;
+
+	BattleEnemyMonsterFSM* MonsterFSM = Monster->GetFSM();
+	if (BattleEnemyMonster_StateType::Idle != MonsterFSM->GetNowState<BattleEnemyMonster_StateType>())
+		return;
+
+	MonsterFSM->ChangeState(BattleEnemyMonster_StateType::Lock);
 }
 
 void BattleEnemy::ChangeMonster_ForDegug(PokeNumber _Index)
