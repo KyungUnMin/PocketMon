@@ -2,6 +2,7 @@
 #include <GameEngineBase/GameEngineDebug.h>
 #include "BattleLevel.h"
 #include "BattleEnemy.h"
+#include "Player.h"
 #include "BattleState_WildTalk.h"
 #include "BattleState_PlayerTurn.h"
 #include "BattleState_EnemyTurn.h"
@@ -22,6 +23,7 @@
 #include "BattleState_NpcTalk.h"
 #include "BattleState_LeafTalk.h"
 #include "BattleState_UnlockWildMonster.h"
+#include "BattleState_InValidBattle.h"
 
 BattleFSM::BattleFSM(GameEngineActor* _Owner)
 	:BattleFSMBase(_Owner)
@@ -63,7 +65,13 @@ void BattleFSM::Init(BattleFieldType _FieldType, BattleNpcType _NpcType)
 	CreateState<BattleState_ItemUse>(BattleStateType::UseItem);
 	CreateState<BattleState_ChangeMonster>(BattleStateType::PlayerMonsterChange);
 	CreateState<BattleState_GymBattleWin>(BattleStateType::GymBattleWin);
+	CreateState<BattleState_InValidBattle>(BattleStateType::InValidBattle);
 
+	if (false == Player::MainPlayer->GetPlayerPokemon()->HasNextPokemon())
+	{
+		ChangeState(BattleStateType::InValidBattle);
+		return;
+	}
 
 
 	switch (_NpcType)

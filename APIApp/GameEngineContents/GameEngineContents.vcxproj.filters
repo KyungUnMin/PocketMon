@@ -768,6 +768,9 @@
     <ClCompile Include="BgmPlayer.cpp">
       <Filter>Base</Filter>
     </ClCompile>
+    <ClCompile Include="BattleState_InValidBattle.cpp">
+      <Filter>Battle\03.FSM\02.Battle\02.State\16.InValidBattle</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CenterActor.h" />
@@ -1521,6 +1524,9 @@
     <ClInclude Include="BgmPlayer.h">
       <Filter>Base</Filter>
     </ClInclude>
+    <ClInclude Include="BattleState_InValidBattle.h">
+      <Filter>Battle\03.FSM\02.Battle\02.State\16.InValidBattle</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Base">
@@ -1924,6 +1930,9 @@
     </Filter>
     <Filter Include="Battle\03.FSM\02.Battle\02.State\15.UnlockWildMonster">
       <UniqueIdentifier>{fa963243-90ca-456f-9608-e488c78881d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Battle\03.FSM\02.Battle\02.State\16.InValidBattle">
+      <UniqueIdentifier>{301cd569-21a9-4b9f-af5f-4cb884729e45}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

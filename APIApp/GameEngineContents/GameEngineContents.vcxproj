@@ -510,6 +510,10 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="BattleState_InValidBattle.cpp">
+      <SubType>
+      </SubType>
+    </ClCompile>
     <ClCompile Include="BattleState_ItemUse.cpp">
       <SubType>
       </SubType>
@@ -1243,6 +1247,10 @@
       </SubType>
     </ClInclude>
     <ClInclude Include="BattleState_GymTalk.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
+    <ClInclude Include="BattleState_InValidBattle.h">
       <SubType>
       </SubType>
     </ClInclude>

@@ -159,6 +159,9 @@ void BattleEnemy::ComeBack()
 {
 	FsmPtr->ChangeState(BattleEnemy_StateType::ComeBack);
 
+	if (true == BattleLevel::BattleLevelPtr->IsWildBattle())
+		return;
+
 	if (nullptr == Monster)
 		return;
 
