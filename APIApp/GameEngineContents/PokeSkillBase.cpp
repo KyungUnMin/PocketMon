@@ -302,7 +302,7 @@ void PokeSkillBase::BubbleData()
 	Name = "Bubble";
 	TypeName = "Water";
 
-	SkillDamage = 20;
+	SkillDamage = 40;
 	MaxSkillPowerPoint = 30;
 	CurrentSkillPowerPoint = 30;
 	SkillHitrate = 1.f;
@@ -316,7 +316,7 @@ void PokeSkillBase::WaterGunData()
 	Name = "WaterGun";
 	TypeName = "Water";
 
-	SkillDamage = 40;
+	SkillDamage = 70;
 	MaxSkillPowerPoint = 25;
 	CurrentSkillPowerPoint = 25;
 	SkillHitrate = 1.f;
@@ -400,7 +400,7 @@ void PokeSkillBase::RazorLeafData()
 	Name = "RazorLeaf";
 	TypeName = "Grass";
 
-	SkillDamage = 55;
+	SkillDamage = 70;
 	MaxSkillPowerPoint = 25;
 	CurrentSkillPowerPoint = 25;
 	SkillHitrate = 0.95f;
