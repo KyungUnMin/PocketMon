@@ -9,6 +9,7 @@
 #include "PokemonHPBar.h"
 #include "BattleLevel.h"
 #include "Player.h"
+#include "FriendlyHPBackground.h"
 PokemonUI* PokemonUI::MainPokemon = nullptr;
 
 PokemonUI::PokemonUI() 
@@ -667,6 +668,7 @@ void PokemonUI::PotionUse()
 		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 		PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
 		IsPotion = true;
+		FriendlyHPBackground::FriendlyPtr->IsPosionCheck(true);
 		IsStop = true;
 		if (true == IsBattle)
 		{
