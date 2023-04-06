@@ -41,6 +41,8 @@ void FriendlyHPBackground::Start()
 	B_HpLow.Stop();
 	/// //////////////
 
+	
+
 
 	RenderPtr = CreateRender("FriendlyHPBackground.bmp", BattleRenderOrder::Battle_UI);
 	RenderPtr->SetScale((RenderPtr->GetImage()->GetImageScale()));
@@ -132,9 +134,10 @@ void FriendlyHPBackground::Start()
 		PoketMonHPMAX_R[x]->EffectCameraOff();
 
 	}
-	 SecoundHp = 192.0f - FirstHp;
 
+	SecoundHp = 192.0f - FirstHp;
 }
+
 
 void FriendlyHPBackground::HpLowSound()
 {
@@ -143,17 +146,34 @@ void FriendlyHPBackground::HpLowSound()
 
 }
 
+bool FriendlyHPBackground::IsPosionCheck(bool _Value)
+{
+	IsPosion = _Value;
+	return IsPosion;
+}
+
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
-bool IsBoolTest = false;
+bool IsBoolTest = true;
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
 	PokeDataBase* DB = BattlePlayer::PlayerPtr->GetMonsterDB();
 	if (nullptr == DB)
 		return;
-	
 
+ 	if (true == IsPosion) {
+		P_Num = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
+		P_Num1 = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int());
+		float P_Numpersent = P_Num / P_Num1;
+		float P_Hpmeg = GameEngineMath::Lerp(192.0f, 0.0f, P_Numpersent);
+
+		HPRenderPtr->SetScale(float4{ 192.0f - P_Hpmeg, 172 });
+		HPRenderPtr->SetPosition({ 560.0f - (P_Hpmeg) / 2 , 360.0f });
+		SecoundHp = 192.0f - P_Hpmeg;
+		IsPosion = false;
+	}
+	
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
 	StringToRender(PoketMonLevel_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterLevel());
 	StringToRender(PoketMonHPCUR_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterCurrentHP());
@@ -246,7 +266,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 					LevelUpPtr->SetPos({ 450,70 });
 					IsGetLevelUp();
 
-					if (CheckTimnAA > 4.50f) {
+					if (CheckTimnAA > 3.50f) {
 						LevelUpPtr->Death();
 						CheckTimnAA = 0.0f;
 					}
@@ -260,11 +280,11 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 
 	if (BattleStartCheck == true) {
-
+		
 
 		if(TickNumber ==0)
 		{
-		
+	
 			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num, SecoundHp);
 			//////턴이 넘어왔을때 소리를 멈춰놓고 Check하는 bool 값을 다시true로 초기화함
 			//그러면 이 다음에 반영되는 hp를 체크한뒤 위에서 다시 사운드 재생+bool값 false
