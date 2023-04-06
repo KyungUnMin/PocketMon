@@ -10,6 +10,8 @@
 #include "InputControll.h"
 #include "BgmPlayer.h"
 
+bool FieldmapBattleZone::NoBattleDebugOn = false;
+
 FieldmapBattleZone::FieldmapBattleZone()
 {
 }
@@ -57,6 +59,11 @@ void FieldmapBattleZone::AddPokemon(PokeNumber _Number)
 
 void FieldmapBattleZone::BattleStart()
 {
+	if (true == NoBattleDebugOn)
+	{
+		return;
+	}
+
 	float4 PlayerPos = Player::MainPlayer->GetPos();
 	int2 PlayerIndex = Fieldmap::GetIndex(PlayerPos);
 

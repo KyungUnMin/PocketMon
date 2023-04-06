@@ -8,6 +8,8 @@
 class FieldmapBattleZone : public GameEngineActor
 {
 public:
+	static bool NoBattleDebugOn;
+public:
 	FieldmapBattleZone();
 	~FieldmapBattleZone();
 

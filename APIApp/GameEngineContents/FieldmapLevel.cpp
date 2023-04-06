@@ -947,6 +947,11 @@ void FieldmapLevel::Update(float _DeltaTime)
 		return;
 	}
 
+	if (true == FieldmapBattleZone::NoBattleDebugOn)
+	{
+		DebugTextPush("NoBattleState");
+	}
+
 	if (true == GameEngineInput::IsDown("BackCenterLevel"))
 	{
 		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
@@ -982,6 +987,11 @@ void FieldmapLevel::Update(float _DeltaTime)
 	if (true == GameEngineInput::IsDown("FreeCamera"))
 	{
 		IsCameraDebug = !IsCameraDebug;
+	}
+
+	if (true == GameEngineInput::IsDown("NoBattle"))
+	{
+		FieldmapBattleZone::NoBattleDebugOn = !FieldmapBattleZone::NoBattleDebugOn;
 	}
 	
 	if (true == IsCameraDebug)
