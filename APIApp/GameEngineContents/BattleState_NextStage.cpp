@@ -8,6 +8,7 @@ const std::vector<std::string> BattleState_NextStage::Texts =
 {
 	"He is trying to\nget the next Pokemon out",
 	"Please choose the Pokemon\nyou want to fight next?",
+	"Please choose the Pokemon\nyou want to fight next?",
 };
 
 BattleState_NextStage::BattleState_NextStage()
@@ -26,7 +27,7 @@ void BattleState_NextStage::EnterState()
 	CreateUIText(Texts);
 	BattleEnemy::EnemyPtr->ComeBack();
 
-	SetTextEvent(1, []
+	SetTextEvent(2, []
 	{
 		PocketMonCore::GetInst().ChangeLevel("PokemonLevel");
 	});

@@ -113,7 +113,8 @@ private:
 	BattleNpcType BattleType = BattleNpcType::None;
 
 
-	const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
+	//const float WorldBgmVolumn = 0.2f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
+	const float WorldBgmVolumn = 1.0f; // 04.01 엄태건 : 소리 조금만 줄이겠습니다. -> 킹아
 	float PrevLevelVolume = 0.f;
 
 	bool IsBgmFadeOut = false;

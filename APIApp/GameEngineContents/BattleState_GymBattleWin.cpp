@@ -5,8 +5,8 @@
 
 const std::vector<std::string> BattleState_GymBattleWin::Texts =
 {
+	"RED won against Woong",
 	"Woong\nCongratulation! This is yours!",
-	"I got a gray emblem!",
 };
 
 BattleState_GymBattleWin::BattleState_GymBattleWin()

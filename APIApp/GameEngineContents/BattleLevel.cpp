@@ -85,8 +85,8 @@ void BattleLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
 	//Init({ PokeDataBase::PokeCreate(PokeNumber::Rattata) }, GroundType::Grass);
 	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::Rival);
 	//Init({ PokeDataBase::PokeCreate(PokeNumber::Pikachu)}, GroundType::Beige, BattleNpcType::Leaf);
-	Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::NPC2);
-	//Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
+	//Init({ PokeDataBase::PokeCreate(1) }, GroundType::Beige, BattleNpcType::NPC2);
+	Init({ PokeDataBase::PokeCreate(PokeNumber::Geodude), PokeDataBase::PokeCreate(PokeNumber::Onix) }, GroundType::Rock, BattleNpcType::Woong);
 }
 
 void BattleLevel::Init(
@@ -131,20 +131,20 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 	{
 	case BattleNpcType::Rival:
 		BgmPlayer::PlayBGM("Battle_Gym1.mp3");
-		BgmPlayer::SetVolume(WorldBgmVolumn);
+		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::Woong:
 		BgmPlayer::PlayBGM("Battle_Master.mp3");
-		BgmPlayer::SetVolume(WorldBgmVolumn);
+		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::Leaf:
 		BgmPlayer::PlayBGM("Battle_Gym2.mp3");
-		BgmPlayer::SetVolume(WorldBgmVolumn);
+		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::NPC2:
 	case BattleNpcType::NPC3:
 		BgmPlayer::PlayBGM("Battle_Npc.mp3");
-		BgmPlayer::SetVolume(WorldBgmVolumn);
+		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	case BattleNpcType::None:
 	default:
@@ -157,12 +157,12 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 			continue;
 
 		BgmPlayer::PlayBGM("Battle_Pikachu2.mp3");
-		BgmPlayer::SetVolume(WorldBgmVolumn);
+		//BgmPlayer::SetVolume(WorldBgmVolumn);
 		return;
 	}
 
 	BgmPlayer::PlayBGM("Battle_WildBGM.mp3");
-	BgmPlayer::SetVolume(WorldBgmVolumn);
+	//BgmPlayer::SetVolume(WorldBgmVolumn);
 }
 
 
@@ -170,7 +170,7 @@ void BattleLevel::CreateBGM(BattleNpcType _BattleType, const std::vector<PokeDat
 
 void BattleLevel::Update(float _DeltaTime)
 {
-	FadeOutBGM(_DeltaTime);
+	//FadeOutBGM(_DeltaTime);
 
 	//테스트용
 	if (true == TestKeyUpdate())
@@ -347,7 +347,7 @@ void BattleLevel::Clear()
 	}
 
 	Actors.clear();
-	BgmPlayer::SetVolume(PrevLevelVolume);
+	//BgmPlayer::SetVolume(PrevLevelVolume);
 
 	TrainerPokemon* MonsterBag = Player::MainPlayer->GetPlayerPokemon();
 	std::vector<PokeDataBase>& Monsters = MonsterBag->GetPokemonsRef();
