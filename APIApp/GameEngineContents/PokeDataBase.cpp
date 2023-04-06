@@ -1312,7 +1312,7 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		PoKeCreatePtr.PokeDexNumber = PokeNumber::Geodude;
 
-		PikachuData(_Level, PoKeCreatePtr);
+		GeodudeData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
