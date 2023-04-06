@@ -606,47 +606,10 @@ PokeDataBase PokeDataBase::PokeCreate(int _PokeDexNumber, int _Level)
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::DefenseCurl, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 
-		PoKeCreatePtr.SkillCount = 2;
-
-		bool First = false;
-		bool Second = false;
-
-		int PlusCount = 0;
-
-		if (PoKeCreatePtr.MonsterLevel >= 10)
-		{
-			PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
-			First = true;
-		}
-		else
-		{
-			PokeSkillInit(3, PokeSkill::Unknown, PoKeCreatePtr);
-			First = false;
-		}
-		if (PoKeCreatePtr.MonsterLevel >= 300)
-		{
-			PokeSkillInit(4, PokeSkill::StoneEdge, PoKeCreatePtr);
-			Second = true;
-		}
-		else
-		{
-			PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
-			Second = false;
-		}
-
-		if (true == First)
-		{
-			PlusCount += 1;
-		}
-		if (true == Second)
-		{
-			PlusCount += 1;
-		}
-
-		int NewC = PoKeCreatePtr.SkillCount + PlusCount;
-
-		PoKeCreatePtr.SkillCount = NewC;
+		PoKeCreatePtr.SkillCount = 3;
 	}
 	break;
 	case PokeNumber::Onix:
@@ -1349,7 +1312,7 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 
 		PoKeCreatePtr.PokeDexNumber = PokeNumber::Geodude;
 
-		PikachuData(_Level, PoKeCreatePtr);
+		GeodudeData(_Level, PoKeCreatePtr);
 
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Leer, PoKeCreatePtr);
@@ -1496,7 +1459,7 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		PokeSkillInit(3, PokeSkill::RockThrow, PoKeCreatePtr);
 		PokeSkillInit(4, PokeSkill::Unknown, PoKeCreatePtr);
 
-		PoKeCreatePtr.SkillCount = 4;
+		PoKeCreatePtr.SkillCount = 3;
 
 		break;
 	case SpecialPokeEnum::UngOnix:

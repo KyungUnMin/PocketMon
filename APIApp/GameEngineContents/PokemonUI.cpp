@@ -670,7 +670,7 @@ void PokemonUI::PotionUse()
 		IsStop = true;
 		if (true == IsBattle)
 		{
-			BattleLevel::BattleLevelPtr->PassPlayerTurn();
+			BattleLevel::BattleLevelPtr->UsePortionItem();
 			std::function<void(GameEngineTimeEvent::TimeEvent&, GameEngineTimeEvent*)> LevelChange = [](GameEngineTimeEvent::TimeEvent& _Event, GameEngineTimeEvent* _Manager)
 			{
 				LevelChangeFade::MainLevelFade->LevelChangeFadeOut("BattleLevel");

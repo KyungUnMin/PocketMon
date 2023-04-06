@@ -968,7 +968,8 @@ void FieldmapLevel::Update(float _DeltaTime)
 
 	if (true == GameEngineInput::IsDown("PlayEnding"))
 	{
-		EndingPlayActor::MainEndingPlayActor->PlayEnding();
+		Player::MainPlayer->GymClear = true;
+		//EndingPlayActor::MainEndingPlayActor->PlayEnding();
 		return;
 	}
 
