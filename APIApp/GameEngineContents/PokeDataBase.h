@@ -158,7 +158,7 @@ public:
 		MonsterLevel += 1;
 
 		// 현재체력 갱신
-		int RenewalcurrentHP = GetMonsterCurrentHP() + 5;
+		int RenewalcurrentHP = GetMonsterCurrentHP() + 1;
 
 		if (GetMonsterMaxHP_int() <= RenewalcurrentHP)
 		{

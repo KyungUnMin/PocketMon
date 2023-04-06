@@ -688,7 +688,7 @@ void PokeDataBase::PokeLevelUp(PokeDataBase& _Ownerpokemon)
 	//_Ownerpokemon.SetMonsterCurrentHP(RenewalcurrentHP);
 
 	// 현재체력 갱신
-	int RenewalcurrentHP = _Ownerpokemon.GetMonsterCurrentHP() + 5;
+	int RenewalcurrentHP = _Ownerpokemon.GetMonsterCurrentHP() + 1;
 
 	if (_Ownerpokemon.GetMonsterMaxHP_int() <= RenewalcurrentHP)
 	{
