@@ -46,7 +46,7 @@ void PocketMonCore::Start()
 	CreateLevel<OpeningLevel>("OpeningLevel");
 	CreateLevel<TrainerCardLevel>("TrainerCardLevel");
 
-	ChangeLevel("CenterLevel");
+	ChangeLevel("OpeningLevel");
 }
 
 void PocketMonCore::Update(float _DeltaTime)
