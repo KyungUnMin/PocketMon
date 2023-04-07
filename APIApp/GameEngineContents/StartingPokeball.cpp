@@ -59,12 +59,6 @@ void StartingPokeball::EventFunc()
 		std::bind([](StartingPokeball* _This) {
 			_This->SelectEvent();
 			}, this));
-
-	if (nullptr == StaticRivalPokeball)
-	{
-		StaticRivalPokeball = RivalPokeball;
-		StaticRivalMovelIndex = RivalBallIndex;
-	}
 }
 
 void StartingPokeball::SelectEvent()
@@ -72,6 +66,12 @@ void StartingPokeball::SelectEvent()
 	PokeballRender->Off();
 	PokemonScript::EndScript(100);
 	BgmPlayer::SoundPlayBgmPauseFade("GetFirstPokemon.wav");
+
+	if (nullptr == StaticRivalPokeball)
+	{
+		StaticRivalPokeball = RivalPokeball;
+		StaticRivalMovelIndex = RivalBallIndex;
+	}
 }
 
 void StartingPokeball::RenderOff()
