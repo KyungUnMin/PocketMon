@@ -37,8 +37,8 @@ FriendlyHPBackground::~FriendlyHPBackground()
 void FriendlyHPBackground::Start()
 {
 	//미리 메모리에 올려놓은 뒤 실행시켜놓고 stop
-	HpLowSound();
-	B_HpLow.Stop();
+	//HpLowSound();
+	//B_HpLow.Stop();
 	/// //////////////
 
 	
@@ -142,7 +142,7 @@ void FriendlyHPBackground::Start()
 void FriendlyHPBackground::HpLowSound()
 {
 	B_HpLow = GameEngineResources::GetInst().SoundPlayToControl("HpLow.wav");
-	B_HpLow.Volume(1.0f);
+	B_HpLow.Volume(0.0f);
 
 }
 
@@ -184,7 +184,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		if (SecoundHp > 0.0f && SecoundHp < Hp30Under) {
 			if (true == HpSoundCheck)
 			{
-						HpLowSound();
+						//HpLowSound();
 						HpSoundCheck = false;
 					
 			}
@@ -208,7 +208,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 				if (TickNumber_1 == 0) 
 				{
 					//(이겼을때)끝나는 상황을 exp가 오르는상황으로 가정해서 여기다가 사운드
-					B_HpLow.Stop();
+					//B_HpLow.Stop();
 					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
 					ExpGetSound();
 
@@ -262,7 +262,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num, SecoundHp);
 			//////턴이 넘어왔을때 소리를 멈춰놓고 Check하는 bool 값을 다시true로 초기화함
 			//그러면 이 다음에 반영되는 hp를 체크한뒤 위에서 다시 사운드 재생+bool값 false
-			B_HpLow.Stop();
+			//B_HpLow.Stop();
 			HpSoundCheck = true;
 		}
 		NextTickTime += _DeltaTime;
