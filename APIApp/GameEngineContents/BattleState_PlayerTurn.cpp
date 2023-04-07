@@ -183,9 +183,6 @@ void BattleState_PlayerTurn::Update(float _DeltaTime)
 	if (false == BattleLevel::BattleLevelPtr->IsWildBattle())
 		return;
 
-	if (false == GameEngineInput::IsDown("FreeCamera"))
-		return;
-
 	BattleLevel::BattleLevelPtr->CreateActor<BattleDebug>(UpdateOrder::Battle_Actors);
 }
 

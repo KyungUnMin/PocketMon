@@ -60,12 +60,6 @@ void BattleDebug::Start()
 
 void BattleDebug::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		Death();
-		return;
-	}
-
 	for (size_t i = 0; i < DebugKeys.size(); ++i)
 	{
 		if (false == GameEngineInput::IsDown(DebugKeys[i]))

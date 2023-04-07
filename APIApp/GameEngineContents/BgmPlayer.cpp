@@ -203,16 +203,6 @@ void BgmPlayer::SetVolume(float _Volumn)
  
 void BgmPlayer::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("FadeOnBGM"))
-	{
-		SoundFadePauseOff(MainBGM, 3.0, 1.0f);
-	}
-
-	if (true == GameEngineInput::IsDown("FadeOutBGM"))
-	{
-		SoundFadeStop(MainBGM, 1.0f, false);
-	}
-
 	if (false == EffectSound.VaildCheck())
 	{
 		return;

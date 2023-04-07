@@ -28,7 +28,7 @@ void GameEngineCore::GlobalUpdate()
 	// 프레임 시작할때 한번 델타타임을 정하고
 	GameEngineSound::SoundUpdate();
 	float TimeDeltaTime = GameEngineTime::GlobalTime.TimeCheck();
-	if (GameEngineInput::IsPress("CollisionRender"))
+	if (GameEngineInput::IsPress("DoubleSpeed"))
 	{
 		TimeDeltaTime *= 4;
 	}

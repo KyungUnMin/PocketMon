@@ -38,11 +38,6 @@ void PlayerTestLevel::Loading()
 
 void PlayerTestLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		return;
-	}
 }
 
 

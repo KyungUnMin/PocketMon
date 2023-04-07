@@ -36,8 +36,6 @@ void PocketMonCore::Start()
 	CreateLevel<CenterLevel>("CenterLevel");
 	CreateLevel<FieldmapLevel>("FieldmapLevel");
 	CreateLevel<BattleLevel>("BattleLevel");
-	CreateLevel<PlayerTestLevel>("PlayerLevel");
-	CreateLevel<TextTestLevel>("TextTestLevel");
 	CreateLevel<BagLevel>("BagLevel");
 	CreateLevel<PokemonLevel>("PokemonLevel");
 	CreateLevel<SummaryLevel>("SummaryLevel");

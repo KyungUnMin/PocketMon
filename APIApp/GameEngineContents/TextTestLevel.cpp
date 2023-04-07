@@ -47,15 +47,8 @@ void TextTestLevel::Loading()
 
 void TextTestLevel::Update(float _DeltaTime)
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		return;
-	}
 	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
-	{
-		
-		
+	{		
 
 
 	}

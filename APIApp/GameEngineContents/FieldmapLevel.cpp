@@ -953,41 +953,57 @@ void FieldmapLevel::Update(float _DeltaTime)
 		DebugTextPush("NoBattleState");
 	}
 
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		return;
-	}
 	if (true == GameEngineInput::IsDown("WalkableDebug"))
 	{
 		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::Walkable);
-	}
-
-	if (true == GameEngineInput::IsDown("FieldmapTypeDebug"))
-	{
-		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::GroundType);
 	}
 
 	if (true == GameEngineInput::IsDown("EventDebug"))
 	{
 		MainFieldRender->RenderTypeSwitch(TileDebugRender::RenderType::Event);
 	}
-	
-	if (true == GameEngineInput::IsDown("EventLog"))
+
+	if (true == GameEngineInput::IsDown("GetMasterPokemon"))
 	{
-		Fieldmap::ShowEventLog(Fieldmap::GetIndex(MainPlayer->GetPos()));
+		Player* PlayerPtr = Player::MainPlayer;
+
+		TrainerPokemon* PlaterPoke = PlayerPtr->GetPlayerPokemon();
+
+		if (nullptr != PlaterPoke && 6 > PlaterPoke->GetPokemonCount())
+		{
+			PlaterPoke->AddSpecialPokemon(SpecialPokeEnum::DebugBulbasaur, 99);
+		}
 	}
 
-	if (true == GameEngineInput::IsDown("PlayEnding"))
+	if (true == GameEngineInput::IsDown("PewterCityMove"))
 	{
-		Player::MainPlayer->GymClear = true;
-		//EndingPlayActor::MainEndingPlayActor->PlayEnding();
+		Player* PlayerPtr = Player::MainPlayer;
+
+		PlayerPtr->GymClear = true;
+		PlayerPtr->SetPos(Fieldmap::GetPos("PewterCity", int2(17, 26)));
+		PlayerPtr->SetPlayerDirDown();
+		Fieldmap::FieldUpdate();
 		return;
 	}
 
-	if (true == GameEngineInput::IsDown("FreeCamera"))
+	if (true == GameEngineInput::IsDown("ViridianCityMove"))
 	{
-		IsCameraDebug = !IsCameraDebug;
+		Player* PlayerPtr = Player::MainPlayer;
+
+		PlayerPtr->GymClear = true;
+		PlayerPtr->SetPos(Fieldmap::GetPos("ViridianCity", int2(20, 27)));
+		PlayerPtr->SetPlayerDirDown();
+		Fieldmap::FieldUpdate();
+
+		return;
+	}
+	
+	if (true == GameEngineInput::IsDown("PlayEnding"))
+	{
+		Player::MainPlayer->GymClear = true;
+		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity_Gym", int2(6, 6)));
+		Fieldmap::FieldUpdate();
+		return;
 	}
 
 	if (true == GameEngineInput::IsDown("NoBattle"))
@@ -995,75 +1011,14 @@ void FieldmapLevel::Update(float _DeltaTime)
 		FieldmapBattleZone::NoBattleDebugOn = !FieldmapBattleZone::NoBattleDebugOn;
 	}
 	
-	if (true == IsCameraDebug)
-	{
-		DebugTextPush("FREE CAMERA MODE");
-	
-		if (true == GameEngineInput::IsPress("FreeCameraMoveUp"))
-		{
-			SetCameraMove(float4::Up * 2000.0f * _DeltaTime);
-		}
-		else if (true == GameEngineInput::IsPress("FreeCameraMoveDown"))
-		{
-			SetCameraMove(float4::Down * 2000.0f * _DeltaTime);
-		}
-		else if (true == GameEngineInput::IsPress("FreeCameraMoveLeft"))
-		{
-			SetCameraMove(float4::Left * 2000.0f * _DeltaTime);
-		}
-		else if (true == GameEngineInput::IsPress("FreeCameraMoveRight"))
-		{
-			SetCameraMove(float4::Right * 2000.0f * _DeltaTime);
-		}
-	
-		int2 PlayerIndex = Fieldmap::GetIndex(MainPlayer->GetPos());
-	
-		DebugTextPush("PlayerIndex : " + PlayerIndex.ToString());
-		MainPlayer->SetPos(GetCameraPos() + GameEngineWindow::GetScreenSize().half());
-		MainPlayer->Off();
-	}
-	else
-	{
-		PlayerPos = MainPlayer->GetPos();
-	
-		SetCameraPos(PlayerPos - GameEngineWindow::GetScreenSize().half());
-		
-		if (true == MainFieldRender->IsUpdate())
-		{
-			MainFieldRender->RenderPosUpdate(PlayerPos);
-		}
-	
-		MainPlayer->On();
-	}
-	
-	if (true == GameEngineInput::IsDown("FieldUITestSwitch"))
-	{
-		MainPokemonCenterUI->CenterStart();
-		//MainSelectStartingUI->TestSelectMonster();
-		//MainShopUIManager->OnOffSwtich();
-		//GameEngineCore::GetInst()->ChangeLevel("BuyLevel");
-		//MainFieldDialog->OnOffSwtich();
-	}
-	if (true == GameEngineInput::IsDown("MovePC"))
-	{
-		Fieldmap::ChangeCity("PewterCity_PokemonCenter");
-		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity_PokemonCenter", int2(8, 6)));
-		Fieldmap::FieldUpdate();
-	}
+	PlayerPos = MainPlayer->GetPos();
 
+	SetCameraPos(PlayerPos - GameEngineWindow::GetScreenSize().half());
 
-	if (true == GameEngineInput::IsDown("StartEventCheck"))
+	if (true == MainFieldRender->IsUpdate())
 	{
-		Fieldmap::StartEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
-	}
-	if (true == GameEngineInput::IsDown("UpdateEventCheck"))
-	{
-		Fieldmap::UpdateEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
-	}
-	if (true == GameEngineInput::IsDown("EndEventCheck"))
-	{
-		Fieldmap::EndEventCheck(Fieldmap::GetIndex(MainPlayer->GetPos()));
-	}
+		MainFieldRender->RenderPosUpdate(PlayerPos);
+	}	
 }
 
 void FieldmapLevel::LevelChangeStart(GameEngineLevel* _PrevLevel)
