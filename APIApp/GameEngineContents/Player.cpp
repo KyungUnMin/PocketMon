@@ -327,16 +327,31 @@ void Player::PlayerDeathCheckFunction()
 	{
 		Fieldmap::ChangeCity("PalletTown_Home2F");
 		Player::MainPlayer->SetPos(Fieldmap::GetPos("PalletTown_Home2F", int2{ 7,7 }));
+
+		if (nullptr != PlayerPokemon)
+		{
+			PlayerPokemon->AllRecovery();
+		}
 	}
 	else if (1 == CityValue)
 	{
 		Fieldmap::ChangeCity("ViridianCity");
 		Player::MainPlayer->SetPos(Fieldmap::GetPos("ViridianCity", int2{ 20,27 }));
+
+		if (nullptr != PlayerPokemon)
+		{
+			PlayerPokemon->AllRecovery();
+		}
 	}
 	else if (2 == CityValue)
 	{
 		Fieldmap::ChangeCity("PewterCity");
 		Player::MainPlayer->SetPos(Fieldmap::GetPos("PewterCity", int2{ 17,26 }));
+		
+		if (nullptr != PlayerPokemon)
+		{
+			PlayerPokemon->AllRecovery();
+		}
 	}
 	else
 	{
