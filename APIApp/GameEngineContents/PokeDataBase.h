@@ -28,6 +28,7 @@ enum class SpecialPokeEnum
 	MasterPikachu,
 	UngGeodude,
 	UngOnix,
+	DebugBulbasaur,
 };
 
 // 도감번호는 +1로 표시
@@ -627,6 +628,7 @@ private:
 	static void GeodudeData(int _Level, PokeDataBase& _PoKeCreatePtr);
 	static void OnixData(int _Level, PokeDataBase& _PoKeCreatePtr);
 	static void PikachuData(int _Level, PokeDataBase& _PoKeCreatePtr);
+	static void DebugBulbasaurData(int _Level, PokeDataBase& PoKeCreatePtr);
 
 	SpecialPokeEnum Value = SpecialPokeEnum::UngOnix;  // 스페셜 이넘용 변수 (일반 포켓몬은 UngOnix가 정상)
 

@@ -1218,6 +1218,36 @@ void PokeDataBase::PikachuData(int _Level, PokeDataBase& PoKeCreatePtr)
 	PoKeCreatePtr.PokeDexText = "It has small electrical pouches on either side of its cheeks. When a crisis is sensed, it discharges.";
 }
 
+void PokeDataBase::DebugBulbasaurData(int _Level, PokeDataBase& PoKeCreatePtr)
+{
+	GenderDecision(PoKeCreatePtr);                          
+	PersonalityDecision(PoKeCreatePtr);                     
+	PoKeCreatePtr.Type = PokeType::Grass;                   
+	PoKeCreatePtr.Characteristic = PokeCharacteristic::½É·Ï;
+	PoKeCreatePtr.Name = "Bulbasaur";                       
+	PoKeCreatePtr.TypeName = "Grass";                       
+	PoKeCreatePtr.NumberName = "001";                       
+
+	PoKeCreatePtr.MaxHealthPoint = 56;                      
+	PoKeCreatePtr.CurrentHealthPoint = 56;                  
+	PoKeCreatePtr.AttackPower = 79;                         
+	PoKeCreatePtr.Defense = 79;                             
+	PoKeCreatePtr.SpecialAttackPower = 95;                  
+	PoKeCreatePtr.SpecialDefense = 95;                      
+	PoKeCreatePtr.Agility = 95;                             
+
+	int PlusLevel = PoKeCreatePtr.MonsterLevel + _Level;    
+
+	for (int i = 1; i < PlusLevel; i++)
+	{
+		PokeStatusUp(PoKeCreatePtr);
+	}
+
+	PoKeCreatePtr.MonsterLevel = PlusLevel;
+
+	PoKeCreatePtr.PokeDexText = "From birth, they carry plant seeds on their back.";
+}
+
 PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 {
 	PokeDataBase PoKeCreatePtr;
@@ -1471,6 +1501,20 @@ PokeDataBase PokeDataBase::SpecialPokeCreate(SpecialPokeEnum _Enum, int _Level)
 		PokeSkillInit(1, PokeSkill::Tackle, PoKeCreatePtr);
 		PokeSkillInit(2, PokeSkill::Magnitude, PoKeCreatePtr);
 		PokeSkillInit(3, PokeSkill::DragonBreath, PoKeCreatePtr);
+		PokeSkillInit(4, PokeSkill::Earthquake, PoKeCreatePtr);
+
+		PoKeCreatePtr.SkillCount = 4;
+
+		break;
+	case SpecialPokeEnum::DebugBulbasaur:
+
+		PoKeCreatePtr.PokeDexNumber = PokeNumber::Bulbasaur;
+
+		DebugBulbasaurData(99, PoKeCreatePtr);
+
+		PokeSkillInit(1, PokeSkill::AirSlash, PoKeCreatePtr);
+		PokeSkillInit(2, PokeSkill::DragonBreath, PoKeCreatePtr);
+		PokeSkillInit(3, PokeSkill::Thunder, PoKeCreatePtr);
 		PokeSkillInit(4, PokeSkill::Earthquake, PoKeCreatePtr);
 
 		PoKeCreatePtr.SkillCount = 4;
