@@ -60,8 +60,11 @@ void StartingPokeball::EventFunc()
 			_This->SelectEvent();
 			}, this));
 
-	StaticRivalPokeball = RivalPokeball;
-	StaticRivalMovelIndex = RivalBallIndex;
+	if (nullptr == StaticRivalPokeball)
+	{
+		StaticRivalPokeball = RivalPokeball;
+		StaticRivalMovelIndex = RivalBallIndex;
+	}
 }
 
 void StartingPokeball::SelectEvent()
