@@ -159,6 +159,8 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		return;
 
  	if (true == PokemonUI::MainPokemon->GetIsPotion	()) {
+		HPRenderPtr1->Off();
+		HPRenderPtr2->Off();
 		P_Num = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP());
 		P_Num1 = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_int());
 		float P_Numpersent = P_Num / P_Num1;
