@@ -403,7 +403,15 @@ void PlayerBag::ChangeSpace(BagSpace _Space)
 
 	//______ 해당 카테고리에 맞는 아이템들을 나열_______
 	std::vector<Item>& CurrentSpaceItems = CurrentSpace == BagSpace::Items ? Items : (CurrentSpace == BagSpace::KeyItems ? KeyItems : PokeBalls);
-	for (int i = 0; i < CurrentSpaceItems.size(); i++)
+	
+	size_t ItemCount = CurrentSpaceItems.size();
+
+	if (ItemCount > ItemName.size())
+	{
+		ItemCount = ItemName.size();
+	}
+
+	for (int i = 0; i < ItemCount; i++)
 	{
 		ItemName[i]->SetText(CurrentSpaceItems[i].GetItemName());
 		if (CurrentSpaceItems[i].GetItemCode() == ItemCode::Cancel)
