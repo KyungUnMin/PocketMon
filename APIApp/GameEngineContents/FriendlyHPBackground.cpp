@@ -150,7 +150,7 @@ void FriendlyHPBackground::HpLowSound()
 
 bool IsDeath_B = false;
 bool IsUpdateHp = false;
-bool IsBoolTest = true;
+bool IsBoolTest = false;
 
 void FriendlyHPBackground::Update(float _DeltaTime)
 {
@@ -169,7 +169,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		HPRenderPtr->SetScale(float4{ 192.0f - P_Hpmeg, 172 });
 		HPRenderPtr->SetPosition({ 560.0f - (P_Hpmeg) / 2 , 360.0f });
 		SecoundHp = 192.0f - P_Hpmeg;
-
+		IsBoolTest = true;
 	}
 	
 	StringToRender(PoketMonName_R, BattlePlayer::PlayerPtr->GetMonsterDB()->ForUI_GetMonsterName());
@@ -211,40 +211,7 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 					B_HpLow.Stop();
 					ExpUpdate(50.0f + BattleEnemy::EnemyPtr->GetMonsterDB()->GetMonsterLevel_float(), static_cast<float>(CurExp), CurMyExpPos, ExpNum);
 					ExpGetSound();
-				if (true == IsUpdateHp) {
-						//HPRenderPtr->Off();
-						//HPRenderPtr1->Off();
-						//HPRenderPtr2->Off();
-						//float CurNum_T = static_cast<float>(BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterCurrentHP()) + 1.0f;
-						//if (CurNum_T >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
-						//	CurNum_T = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
-						//}
-						//float LevelUpHp = CurNum_T / BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()-1;
-						//float LevelUpPos = GameEngineMath::Lerp(192.0f, 0.0f, LevelUpHp);
-						//if (LevelUpHp < 0.56f && LevelUpHp>0.26f) {
-						//	HPRenderPtr1->On();
 
-						//	HPRenderPtr1->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-						//	HPRenderPtr1->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
-						//}
-						//else if (LevelUpHp > 0.0f && LevelUpHp <0.26f) {
-						//	HPRenderPtr2->On();
-
-						//	HPRenderPtr2->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-						//	HPRenderPtr2->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
-
-						//}
-						//else {
-						//	HPRenderPtr->On();
-
-						//	HPRenderPtr->SetScale(float4{ 192.0f - LevelUpPos, 172 });
-						//	HPRenderPtr->SetPosition({ 560.0f - (LevelUpPos) / 2 , 360.0f });
-
-						//}
-						//// 여기 마저 작업하기.
-						//						
-						//IsUpdateHp = false;
-					}
 				}
 				EXPRenderPtr->SetScale(float4{ EXPTick[TickNumber_1], 172 });
 				EXPRenderPtr->SetPosition({ 528.0f - (256.0f - EXPTick[TickNumber_1]) / 2 , 360.0f });
@@ -282,7 +249,16 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 
 		if(TickNumber ==0)
 		{
-	
+			if (true == IsBoolTest) {
+				Num += 20;
+				if (Num >= BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float()) {
+					Num = BattlePlayer::PlayerPtr->GetMonsterDB()->GetMonsterMaxHP_float();
+				}
+				if (SecoundHp >= 192.0f) {
+					SecoundHp = 192.0f;
+				}
+				IsBoolTest = false;
+			}
 			HpUpdate(static_cast<float>(EnumyMonsterDamage), Num, SecoundHp);
 			//////턴이 넘어왔을때 소리를 멈춰놓고 Check하는 bool 값을 다시true로 초기화함
 			//그러면 이 다음에 반영되는 hp를 체크한뒤 위에서 다시 사운드 재생+bool값 false
@@ -292,25 +268,31 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 		NextTickTime += _DeltaTime;
 		if (NextTickTime > 0.07f) {
 			NextTickTime = 0;
+			
 			if (TickNumber != 10) {
 				if(DamegeTick[TickNumber] < Hp50Under && DamegeTick[TickNumber]>Hp30Under){
 					HPRenderPtr->Off();
+					HPRenderPtr2->Off();
 					HPRenderPtr1->On();
 					HPRenderPtr1->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr1->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
-				if (DamegeTick[TickNumber] < Hp30Under) {
+				else if (DamegeTick[TickNumber] < Hp30Under) {
 					HPRenderPtr1->Off();
+					HPRenderPtr->Off();
 					HPRenderPtr2->On();
 					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
-				HPRenderPtr2->Off();
-				HPRenderPtr2->On();
-
-				HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
-				HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
+				else {
+					HPRenderPtr1->Off();
+					HPRenderPtr2->Off();
+					HPRenderPtr->On();
+					HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
+					HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
+				}
 				TickNumber++;
+
 			}
 		}
 		
@@ -434,6 +416,7 @@ void FriendlyHPBackground::StringToRender(std::vector<GameEngineRender*> _Render
 
 void FriendlyHPBackground::HpUpdate(float _EnumyMonsterDamage , float _MyCurHp , float _curpos )
 {
+	
 	DamegeTick.clear();
 	if (_EnumyMonsterDamage >= _MyCurHp) {
 		_EnumyMonsterDamage = _MyCurHp;
