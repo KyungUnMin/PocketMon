@@ -673,6 +673,7 @@ void PokemonUI::PotionUse()
 		BarText->SetText(Pokemons[CurrentCursor].ForUI_GetMonsterName() + " HP was restored.", true);
 		PokemonHPBars[CurrentCursor]->SetTargetValue(Pokemons[CurrentCursor].GetMonsterCurrentHP() / Pokemons[CurrentCursor].GetMonsterMaxHP_float());
 		IsPotion = true;
+		Timer = 0;
 		IsStop = true;
 		if (true == IsBattle)
 		{
