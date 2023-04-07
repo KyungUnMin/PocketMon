@@ -638,27 +638,14 @@ void CenterLevel::Loading()
 	// 맵 관련 키
 	if (false == GameEngineInput::IsKey("WalkableDebug"))
 	{
-		GameEngineInput::CreateKeyNoToupper("FreeCamera", VK_F1);
-		GameEngineInput::CreateKeyNoToupper("WalkableDebug", VK_F2);
-		GameEngineInput::CreateKeyNoToupper("FieldmapTypeDebug", VK_F3);
-		GameEngineInput::CreateKeyNoToupper("EventDebug", VK_F4);
-		GameEngineInput::CreateKeyNoToupper("EventLog", 'L');
-		GameEngineInput::CreateKeyNoToupper("StartEventCheck", VK_F6);
-		GameEngineInput::CreateKeyNoToupper("UpdateEventCheck", VK_F7);
-		GameEngineInput::CreateKeyNoToupper("EndEventCheck", VK_F8);
-		GameEngineInput::CreateKeyNoToupper("PlayEnding", VK_F9);
-		GameEngineInput::CreateKeyNoToupper("AddMove", 'M');
+		GameEngineInput::CreateKeyNoToupper("WalkableDebug", VK_F1);
+		GameEngineInput::CreateKeyNoToupper("EventDebug", VK_F2);
+		GameEngineInput::CreateKeyNoToupper("PewterCityMove", VK_F3);
+		GameEngineInput::CreateKeyNoToupper("ViridianCityMove", VK_F4);
+		GameEngineInput::CreateKeyNoToupper("GetMasterPokemon", VK_F5);
+		GameEngineInput::CreateKeyNoToupper("PlayEnding", VK_F6);
+		GameEngineInput::CreateKeyNoToupper("DoubleSpeed", VK_SPACE);
 
-		GameEngineInput::CreateKey("FreeCameraMoveUp", VK_UP);
-		GameEngineInput::CreateKey("FreeCameraMoveDown", VK_DOWN);
-		GameEngineInput::CreateKey("FreeCameraMoveLeft", VK_LEFT);
-		GameEngineInput::CreateKey("FreeCameraMoveRight", VK_RIGHT);
-
-		GameEngineInput::CreateKey("BackCenterLevel", VK_ESCAPE);
-		GameEngineInput::CreateKey("CollisionRender", VK_SPACE);
-
-		GameEngineInput::CreateKey("FadeOnBGM", 'N');
-		GameEngineInput::CreateKey("FadeOutBGM", 'B');
 		GameEngineInput::CreateKey("Ridefalse", 'C');
 		GameEngineInput::CreateKey("NoBattle", 'V');
 	}
@@ -666,8 +653,8 @@ void CenterLevel::Loading()
 	//Field_UI 관련 키
 	if (false == GameEngineInput::IsKey("FieldDialogSwitch"))
 	{
-		GameEngineInput::CreateKey("FieldUITestSwitch", 'p'); //테스트용
-		GameEngineInput::CreateKey("MovePC", 'm'); //테스트용
+		//GameEngineInput::CreateKey("FieldUITestSwitch", 'p'); //테스트용
+		//GameEngineInput::CreateKey("MovePC", 'm'); //테스트용
 		GameEngineInput::CreateKeyNoToupper("FieldMainMenuSwitch", VK_RETURN);
 		GameEngineInput::CreateKeyNoToupper("Menu_Up", VK_UP);
 		GameEngineInput::CreateKeyNoToupper("Menu_Down", VK_DOWN);

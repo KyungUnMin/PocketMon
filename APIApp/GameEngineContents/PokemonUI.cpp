@@ -182,11 +182,11 @@ void PokemonUI::Update(float _DeltaTime)
 			PokemonCurrentHPText[CurrentCursor]->SetText(std::to_string(static_cast<int>(std::lerp(BeforeHP, CurrentHP, std::min<float>(1, Timer)))), "Font_Dialog_White.bmp", 3, false);
 		}
 		return; }
-	if (GameEngineInput::IsDown("FieldUITestSwitch"))
-	{
-		Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
-		PokeDataSetting();
-	}
+	//if (GameEngineInput::IsDown("FieldUITestSwitch"))
+	//{
+	//	Pokemons[CurrentCursor].MinusMonsterCurrentHP(10);
+	//	PokeDataSetting();
+	//}
 	if (true == IsSelect)
 	{
 		if (GameEngineInput::IsDown("A"))

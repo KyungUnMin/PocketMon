@@ -77,10 +77,6 @@ void ShopNpc::Update(float _DeltaTime)
 
 void ShopNpc::Render(float _DeltaTime)
 {
-	if (GameEngineInput::IsPress("CollisionRender"))
-	{
-		C_NPC_R->DebugRender();
-	}
 }
 
 

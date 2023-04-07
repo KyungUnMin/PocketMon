@@ -184,14 +184,6 @@ void BattleLevel::Update(float _DeltaTime)
 
 bool BattleLevel::TestKeyUpdate()
 {
-	if (true == GameEngineInput::IsDown("BackCenterLevel"))
-	{
-		Clear();
-		PocketMonCore::GetInst().ChangeLevel("CenterLevel");
-		return true;
-	}
-
-
 	return false;
 }
 
