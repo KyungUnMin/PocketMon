@@ -295,15 +295,19 @@ void FriendlyHPBackground::Update(float _DeltaTime)
 			if (TickNumber != 10) {
 				if(DamegeTick[TickNumber] < Hp50Under && DamegeTick[TickNumber]>Hp30Under){
 					HPRenderPtr->Off();
+					HPRenderPtr1->On();
 					HPRenderPtr1->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr1->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
 				if (DamegeTick[TickNumber] < Hp30Under) {
 					HPRenderPtr1->Off();
-					
+					HPRenderPtr2->On();
 					HPRenderPtr2->SetScale(float4{ DamegeTick[TickNumber], 172 });
 					HPRenderPtr2->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				}
+				HPRenderPtr2->Off();
+				HPRenderPtr2->On();
+
 				HPRenderPtr->SetScale(float4{ DamegeTick[TickNumber], 172 });
 				HPRenderPtr->SetPosition({ 560.0f - (192.0f - DamegeTick[TickNumber]) / 2 , 360.0f });
 				TickNumber++;
