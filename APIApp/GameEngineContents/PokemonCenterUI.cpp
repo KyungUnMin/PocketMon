@@ -262,6 +262,7 @@ bool PokemonCenterUI::IsAnyTwinkleBallAnimationUpdate()
 			}
 		}
 	}
+	return false;
 }
 
 void PokemonCenterUI::CountAndTwinkleBallAnimationOn(int _Count)
