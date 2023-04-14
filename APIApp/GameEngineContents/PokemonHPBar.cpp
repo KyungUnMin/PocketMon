@@ -16,7 +16,7 @@ void PokemonHPBar::SetValue(float _Value)
 	TargetValue = _Value;
 
 	float4 Scale = { 0, 172 };
-	Scale.x = std::lerp(0, 192, CurrentValue);
+	Scale.x = static_cast<float>(std::lerp(0, 192, CurrentValue));
 	float4 Pos = { Scale.x * 0.5f , 0 };
 
 	BarRender->SetScale(Scale);
@@ -57,7 +57,7 @@ void PokemonHPBar::Update(float _DeltaTime)
 	CurrentValue = std::lerp(StartValue, TargetValue, Timer);
 
 	float4 Scale = { 0, 172 };
-	Scale.x = std::lerp(0, 192, CurrentValue);
+	Scale.x = static_cast<float>(std::lerp(0, 192, CurrentValue));
 	float4 Pos = {Scale.x * 0.5f , 0 };
 
 	BarRender->SetScale(Scale);

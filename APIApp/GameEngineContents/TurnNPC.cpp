@@ -11,19 +11,22 @@ TurnNPC::~TurnNPC()
 
 void TurnNPC::IdleUpdate(float _DeltaTime)
 {
-	TurnProgress += _DeltaTime;
-
-	if (TurnTime <= TurnProgress)
+	if (false == IsBattleEnd)
 	{
-		TurnProgress -= TurnTime;
+		TurnProgress += _DeltaTime;
 
-		if (TurnDirEnum == TurnDir::Left)
+		if (TurnTime <= TurnProgress)
 		{
-			Look(TurnLeftDir(Dir));
-		}
-		else
-		{
-			Look(TurnRightDir(Dir));
+			TurnProgress -= TurnTime;
+
+			if (TurnDirEnum == TurnDir::Left)
+			{
+				Look(TurnLeftDir(Dir));
+			}
+			else
+			{
+				Look(TurnRightDir(Dir));
+			}
 		}
 	}
 

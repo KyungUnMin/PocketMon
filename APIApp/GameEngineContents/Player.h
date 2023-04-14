@@ -234,6 +234,9 @@ private:
 	void GymClearUpdate(float _Time);
 	void GymClearEnd();
 
+	void MoveStartLogic();
+	bool MoveCheck();
+
 	//////////Speed&Pos//////////
 	int2 Playerindex = int2::Zero;
 	float PlayerMoveSpeed = 5.0f;

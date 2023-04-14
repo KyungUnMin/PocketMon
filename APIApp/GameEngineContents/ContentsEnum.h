@@ -113,7 +113,7 @@ enum class UpdateOrder
 {
 	Default,
 	Battle_Actors,
-
+	Battle_Fade
 };
 
 

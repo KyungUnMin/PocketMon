@@ -193,6 +193,14 @@ bool BattleLevel::TestKeyUpdate()
 
 void BattleLevel::LevelChangeEnd(GameEngineLevel* _NextLevel)
 {
+	std::vector<GameEngineActor*> Actors = GetActors(UpdateOrder::Battle_Fade);
+	for (GameEngineActor* Actor : Actors)
+	{
+		Actor->Death();
+	}
+
+	Actors.clear();
+
 	//가방으로 이동하는 경우엔 Actor들을 삭제하지 않음
 	BagLevel* BagUILevel = dynamic_cast<BagLevel*>(_NextLevel);
 	if (nullptr != BagUILevel)
@@ -286,7 +294,7 @@ void BattleLevel::ChangeFieldLevel(bool IsWin, bool _FadeColorBlack, float _Fade
 {
 	BattleFadeCtrl::FadeType FadeType = _FadeColorBlack ? BattleFadeCtrl::FadeType::BlackOut : BattleFadeCtrl::FadeType::WhiteOut;
 
-	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Actors);
+	BattleFadeCtrl* Fade = CreateActor<BattleFadeCtrl>(UpdateOrder::Battle_Fade);
 	Fade->Init(FadeType, std::bind(&BattleLevel::Clear, this), false);
 	Fade->SetDuration(_FadeDuration);
 	FadeDuration = _FadeDuration;

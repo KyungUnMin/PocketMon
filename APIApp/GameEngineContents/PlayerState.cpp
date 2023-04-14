@@ -88,95 +88,11 @@ void Player::IdleStart()
 }
 void Player::IdleUpdate(float _Time)
 {
-	if (NextMovePos.size() != 0)
+	Playerindex = Fieldmap::GetIndex(GetPos());
+
+	if (true == MoveCheck())
 	{
-		EndPos = NextMovePos.front();
-		NextMovePos.pop_front();
-
-		switch (CalLookDir(GetPos(), EndPos))
-		{
-		case LookDir::Up:
-			Dir = LookDir::Up;
-			DirString = "Up_";
-			break;
-		case LookDir::Down:
-			Dir = LookDir::Down;
-			DirString = "Down_";
-			break;
-		case LookDir::Left:
-			Dir = LookDir::Left;
-			DirString = "Left_";
-			break;
-		case LookDir::Right:
-			Dir = LookDir::Right;
-			DirString = "Right_";
-			break;
-		default:
-			Dir = LookDir::Down;
-			DirString = "Down_";
-			break;
-		}
-
 		ChangeState(PlayerState::MOVE);
-		return;
-	}
-
-	if (false == InputControll::CanControll())
-	{
-		return;
-	}
-
-	Playerindex = Fieldmap::GetIndex(GetPos());	
-
-	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
-	{
-		NextIndex = Playerindex;
-
-		if (true == GameEngineInput::IsPress("LeftMove"))
-		{
-			NextIndex.x -= 1;		
-			DirString = "Left_";
-			Dir = LookDir::Left;
-		}
-		else if (true == GameEngineInput::IsPress("RightMove"))
-		{
-			NextIndex.x += 1;
-			DirString = "Right_";
-			Dir = LookDir::Right;
-		}
-		else if (true == GameEngineInput::IsPress("UpMove"))
-		{
-			NextIndex.y -= 1;
-			DirString = "Up_";
-			Dir = LookDir::Up;
-		}
-		else if (true == GameEngineInput::IsPress("DownMove"))
-		{
-			NextIndex.y += 1;
-			DirString = "Down_";
-			Dir = LookDir::Down;
-		}
-
-		DirCheck("Idle");
-
-		if (Fieldmap::Walkable(NextIndex))
-		{
-			EndPos = Fieldmap::GetPos(NextIndex);
-			ChangeState(PlayerState::MOVE);
-			InputControlHandle = InputControll::UseControll();
-			return;
-		}
-		else if (!(Fieldmap::Walkable(NextIndex)) &&
-			(GameEngineInput::IsDown("LeftMove") ||
-				GameEngineInput::IsDown("RightMove") ||
-				GameEngineInput::IsDown("DownMove") ||
-				GameEngineInput::IsDown("UpMove")))
-		{
-			BlockSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerMoveBlock.wav");
-			BlockSound.LoopCount(1);
-			BlockSound.Volume(0.8f);
-		}
-		
 	}
 
 	Fieldmap::UpdateEventCheck(Playerindex);
@@ -189,10 +105,7 @@ void Player::IdleEnd()
 
 void Player::MoveStart()
 {
-	DirCheck("Move");
-	StartPos = GetPos();
-	Fieldmap::EndEventCheck(Fieldmap::GetIndex(GetPos()));
-	
+	MoveStartLogic();
 }
 
 void Player::MoveUpdate(float _Time)
@@ -208,17 +121,28 @@ void Player::MoveUpdate(float _Time)
 		
 		 Fieldmap::FieldUpdate();
 
-		 ChangeState(PlayerState::IDLE);
+		 if (0 <= InputControlHandle)
+		 {
+			 InputControlHandle = InputControll::ResetControll(InputControlHandle);
+		 }
+
+		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
+
+		 Playerindex = Fieldmap::GetIndex(GetPos());
+
+		 if (true == MoveCheck())
+		 {
+			 MoveStartLogic();
+		 }
+		 else
+		 {
+			ChangeState(PlayerState::IDLE);
+		 }
 	 }	 
 }
 
 void Player::MoveEnd()
 {
-	if (0 <= InputControlHandle)
-	{
-		InputControlHandle = InputControll::ResetControll(InputControlHandle);
-	}
-	Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 }
 
 void Player::JumpStart()
@@ -280,6 +204,103 @@ void Player::GymClearUpdate(float _Time)
 void Player::GymClearEnd()
 {
 
+}
+
+void Player::MoveStartLogic()
+{
+	DirCheck("Move");
+	StartPos = GetPos();
+	Fieldmap::EndEventCheck(Fieldmap::GetIndex(GetPos()));
+}
+
+bool Player::MoveCheck()
+{
+	if (NextMovePos.size() != 0)
+	{
+		EndPos = NextMovePos.front();
+		NextMovePos.pop_front();
+
+		switch (CalLookDir(GetPos(), EndPos))
+		{
+		case LookDir::Up:
+			Dir = LookDir::Up;
+			DirString = "Up_";
+			break;
+		case LookDir::Down:
+			Dir = LookDir::Down;
+			DirString = "Down_";
+			break;
+		case LookDir::Left:
+			Dir = LookDir::Left;
+			DirString = "Left_";
+			break;
+		case LookDir::Right:
+			Dir = LookDir::Right;
+			DirString = "Right_";
+			break;
+		default:
+			Dir = LookDir::Down;
+			DirString = "Down_";
+			break;
+		}
+
+		return true;
+	}
+
+	if (false == InputControll::CanControll())
+	{
+		return false;
+	}
+
+	if (GameEngineInput::IsPress("LeftMove") || GameEngineInput::IsPress("RightMove") || GameEngineInput::IsPress("DownMove") || GameEngineInput::IsPress("UpMove"))
+	{
+		NextIndex = Playerindex;
+
+		if (true == GameEngineInput::IsPress("LeftMove"))
+		{
+			NextIndex.x -= 1;
+			DirString = "Left_";
+			Dir = LookDir::Left;
+		}
+		else if (true == GameEngineInput::IsPress("RightMove"))
+		{
+			NextIndex.x += 1;
+			DirString = "Right_";
+			Dir = LookDir::Right;
+		}
+		else if (true == GameEngineInput::IsPress("UpMove"))
+		{
+			NextIndex.y -= 1;
+			DirString = "Up_";
+			Dir = LookDir::Up;
+		}
+		else if (true == GameEngineInput::IsPress("DownMove"))
+		{
+			NextIndex.y += 1;
+			DirString = "Down_";
+			Dir = LookDir::Down;
+		}
+
+		if (Fieldmap::Walkable(NextIndex))
+		{
+			EndPos = Fieldmap::GetPos(NextIndex);
+			InputControlHandle = InputControll::UseControll();
+			return true;
+		}
+		else if (!(Fieldmap::Walkable(NextIndex)) &&
+			(GameEngineInput::IsDown("LeftMove") ||
+				GameEngineInput::IsDown("RightMove") ||
+				GameEngineInput::IsDown("DownMove") ||
+				GameEngineInput::IsDown("UpMove")))
+		{
+			BlockSound = GameEngineResources::GetInst().SoundPlayToControl("PlayerMoveBlock.wav");
+			BlockSound.LoopCount(1);
+			BlockSound.Volume(0.8f);
+		}
+
+	}
+
+	return false;
 }
 
 void Player::PlayerAutoMove()
