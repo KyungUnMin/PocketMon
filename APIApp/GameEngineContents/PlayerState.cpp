@@ -129,6 +129,7 @@ void Player::MoveUpdate(float _Time)
 		 Fieldmap::StartEventCheck(Fieldmap::GetIndex(GetPos()));
 
 		 Playerindex = Fieldmap::GetIndex(GetPos());
+		 Fieldmap::UpdateEventCheck(Playerindex);
 
 		 if (true == MoveCheck())
 		 {
