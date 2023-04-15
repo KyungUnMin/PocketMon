@@ -93,8 +93,10 @@ void Player::IdleUpdate(float _Time)
 	if (true == MoveCheck())
 	{
 		ChangeState(PlayerState::MOVE);
+		return;
 	}
 
+	DirCheck("Idle");
 	Fieldmap::UpdateEventCheck(Playerindex);
 }
 void Player::IdleEnd() 
