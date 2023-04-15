@@ -133,6 +133,8 @@ void Player::MoveUpdate(float _Time)
 		 Playerindex = Fieldmap::GetIndex(GetPos());
 		 Fieldmap::UpdateEventCheck(Playerindex);
 
+		 BaseNPC::CheckInteractionNPC(Fieldmap::GetCityName());
+
 		 if (true == MoveCheck())
 		 {
 			 MoveStartLogic();

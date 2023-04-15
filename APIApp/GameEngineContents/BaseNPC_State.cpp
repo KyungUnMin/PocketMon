@@ -17,12 +17,7 @@ void BaseNPC::IdleStart()
 
 void BaseNPC::IdleUpdate(float _DeltaTime)
 {
-	if (false == IsBattleEnd && true == CheckInteractionTrigger())
-	{
-		Look(GetDir(Fieldmap::GetIndex(GetPos()), Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
-		ChangeState(NPCState::interaction);
-		return;
-	}
+	IdleInteractionCheck();
 
 	if (0 < MovePoints.size())
 	{
@@ -272,6 +267,16 @@ void BaseNPC::AddPokeData(PokeDataBase _Data)
 	}
 
 	PokemonDatas.AddPokemon(_Data);
+}
+
+void BaseNPC::IdleInteractionCheck()
+{
+	if (false == IsBattleEnd && true == CheckInteractionTrigger())
+	{
+		Look(GetDir(Fieldmap::GetIndex(GetPos()), Fieldmap::GetIndex(Player::MainPlayer->GetPos())));
+		ChangeState(NPCState::interaction);
+		return;
+	}
 }
 
 void BaseNPC::PlayInteraction()

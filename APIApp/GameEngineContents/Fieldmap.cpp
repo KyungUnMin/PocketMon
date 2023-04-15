@@ -124,6 +124,18 @@ GroundType Fieldmap::GetGroundType(const int2& _Index)
 	return CurCity->GetGroundType(_Index);
 }
 
+std::string Fieldmap::GetCityName()
+{
+	if (nullptr != CurCity)
+	{
+		return CurCity->GetCityName();
+	}
+	else
+	{
+		return "";
+	}
+}
+
 void Fieldmap::AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr)
 {
 	std::string UpperName = GameEngineString::ToUpper(_CityName);

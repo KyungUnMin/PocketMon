@@ -54,6 +54,8 @@ public:
 
 	static GroundType GetGroundType(const int2& _Index);
 
+	static std::string GetCityName();
+
 	static void AddCity(const std::string_view& _CityName, FieldmapCity* _CityPtr);
 	static void ChangeCity(FieldmapCity* _CityPtr, bool _PlayUI = true, bool _BgmPlay = true);
 	static void ChangeCity(const std::string_view& _CityName, bool _PlayUI = true, bool _BgmPlay = true);
@@ -75,6 +77,7 @@ public:
 	static void LinkNeighbor(const std::string_view& _CityNameA, const std::string_view& _CityNameB);
 
 	static void FieldUpdate();
+	
 
 private:
 	static FieldmapCity* CurCity;

@@ -28,6 +28,11 @@ protected:
 		Move,
 		interaction
 	};
+public:
+	static void CheckInteractionNPC(const std::string_view& _CityName);
+
+private:
+	static std::map<std::string, std::vector<BaseNPC*>> AllNPC;
 
 public:
 	BaseNPC();
@@ -88,6 +93,7 @@ public:
 	void AddPokeData(int _Index, int _Level);
 	void AddPokeData(PokeDataBase _Data);
 
+	void IdleInteractionCheck();
 
 	// 상호작용 실행
 	void PlayInteraction();

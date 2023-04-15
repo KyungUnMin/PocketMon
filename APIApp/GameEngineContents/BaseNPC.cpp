@@ -1,5 +1,6 @@
 #include "BaseNPC.h"
 #include <GameEngineBase/GameEngineDebug.h>
+#include <GameEngineBase/GameEngineString.h>
 #include <GameEnginePlatform/GameEngineInput.h>
 #include <GameEngineCore/GameEngineRender.h>
 #include "Fieldmap.h"
@@ -8,6 +9,8 @@
 #include "Player.h"
 #include "InputControll.h"
 #include "BattleLevel.h"
+
+std::map<std::string, std::vector<BaseNPC*>> BaseNPC::AllNPC;
 
 BaseNPC::BaseNPC() :
 	Dir(LookDir::Up),
@@ -46,12 +49,14 @@ void BaseNPC::InitNPC(const std::string_view& _Name, const std::string_view& _Im
 
 void BaseNPC::AddNPC(const std::string_view& _CityName, int2 _Index, bool _IsAdd)
 {
-	CityName = _CityName;
+	CityName = GameEngineString::ToUpper(_CityName);
 
 	if (true == _IsAdd)
 	{
 		Fieldmap::AddActor(_CityName, _Index, this, false);
 	}
+
+	AllNPC[CityName].push_back(this);
 }
 
 void BaseNPC::AddScript(const std::string_view& _Script, int _Key)
@@ -342,4 +347,17 @@ bool BaseNPC::CheckInteractionTrigger() const
 	}
 
 	return false;
+}
+
+
+void BaseNPC::CheckInteractionNPC(const std::string_view& _CityName)
+{
+	std::string CityName = GameEngineString::ToUpper(_CityName);
+
+	const std::vector<BaseNPC*>& NpcPtrs = AllNPC[CityName];
+
+	for (BaseNPC* NpcPtr : NpcPtrs)
+	{
+		NpcPtr->IdleInteractionCheck();
+	}
 }
